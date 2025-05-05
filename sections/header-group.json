@@ -37,6 +37,52 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "brand_WHwbqy": {
+          "type": "brand",
+          "settings": {
+            "tab_image": "shopify://shop_images/TVC_Nav_Logo.png",
+            "mobile_tab_image": "shopify://shop_images/tvc-tab-mobile.png",
+            "nav_image": "shopify://shop_images/TVC_Logo_Web.png",
+            "text": "The Village Co.",
+            "brand_color": "#00a1dd",
+            "brand_text_color": "#323131",
+            "brand_page_link": "",
+            "menu": "the-village-co-mega"
+          }
+        },
+        "brand_RKTJdn": {
+          "type": "brand",
+          "settings": {
+            "tab_image": "shopify://shop_images/mrbubble-tab.png",
+            "mobile_tab_image": "shopify://shop_images/mrbubble-tab.png",
+            "nav_image": "shopify://shop_images/mrbubble-nav.png",
+            "text": "Mr. Bubble",
+            "brand_color": "#f04d98",
+            "brand_text_color": "#323131",
+            "brand_page_link": "shopify://pages/mr-bubble",
+            "menu": "mr-bubble"
+          }
+        },
+        "brand_H46BjU": {
+          "type": "brand",
+          "settings": {
+            "tab_image": "shopify://shop_images/Therapy_Nav_Logo.png",
+            "mobile_tab_image": "shopify://shop_images/Therapy_Nav_Logo.png",
+            "nav_image": "shopify://shop_images/Therapy_Logo_Web.png",
+            "text": "Village Naturals Therapy",
+            "brand_color": "#5f885f",
+            "brand_text_color": "#323131",
+            "brand_page_link": "shopify://pages/therapy",
+            "menu": "therapy"
+          }
+        }
+      },
+      "block_order": [
+        "brand_WHwbqy",
+        "brand_RKTJdn",
+        "brand_H46BjU"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "mobile_logo_position": "left",
