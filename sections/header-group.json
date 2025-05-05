@@ -88,13 +88,26 @@
             "brand_page_link": "shopify://pages/hallu",
             "menu": "hallu"
           }
+        },
+        "brand_Nhk8gC": {
+          "type": "brand",
+          "settings": {
+            "tab_image": "shopify://shop_images/SND_Nav_Logo.png",
+            "mobile_tab_image": "shopify://shop_images/SND_Nav_Logo.png",
+            "text": "Soft&Dri",
+            "brand_color": "#da2171",
+            "brand_text_color": "#323131",
+            "brand_page_link": "shopify://pages/soft-dri",
+            "menu": "soft-dri"
+          }
         }
       },
       "block_order": [
         "brand_WHwbqy",
         "brand_RKTJdn",
         "brand_H46BjU",
-        "brand_x4qtyr"
+        "brand_x4qtyr",
+        "brand_Nhk8gC"
       ],
       "settings": {
         "logo_position": "middle-left",
