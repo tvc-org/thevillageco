@@ -76,12 +76,25 @@
             "brand_page_link": "shopify://pages/therapy",
             "menu": "therapy"
           }
+        },
+        "brand_x4qtyr": {
+          "type": "brand",
+          "settings": {
+            "tab_image": "shopify://shop_images/Hallu_Nav_Logo.png",
+            "mobile_tab_image": "shopify://shop_images/Hallu_Nav_Logo.png",
+            "text": "Hallu",
+            "brand_color": "#dd7d99",
+            "brand_text_color": "#323131",
+            "brand_page_link": "shopify://pages/hallu",
+            "menu": "hallu"
+          }
         }
       },
       "block_order": [
         "brand_WHwbqy",
         "brand_RKTJdn",
-        "brand_H46BjU"
+        "brand_H46BjU",
+        "brand_x4qtyr"
       ],
       "settings": {
         "logo_position": "middle-left",
