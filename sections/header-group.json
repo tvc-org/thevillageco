@@ -17,14 +17,14 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Free Shipping on all US Orders Over $50",
             "link": ""
           }
         },
         "announcement_inKhTr": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store!",
+            "text": "Subscribe and Save 10% On Your Favorite Products",
             "link": ""
           }
         }
