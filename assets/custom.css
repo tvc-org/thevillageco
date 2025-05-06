@@ -148,15 +148,10 @@ body.cookie-not-accepted #global-overlay {
     }
 }
 
-@media (min-width:1025px) and (max-width:1750px) {
-	.header-bottom .header-logo.brand-b88c488d-903b-4f8e-b092-5e37e499d277 {
-		width:40px;
-		min-width:auto;
-	}
-	
-	.header-bottom .header-logo a {
-		width:210px;
-	}
+@media (min-width:1025px) {
+	.header-bottom .header-logo {
+        margin: 0 40px;
+    }
 }
 
 .drawer-title,
@@ -3456,4 +3451,24 @@ form .btn::hover {
     line-height: 18px;
     letter-spacing: 2px;
     text-transform: uppercase;
+}
+
+.announcement-bar__message {
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    min-height: 0px;
+    height: 30px;
+    padding: 0;
+}
+
+.announcement-bar .slider-button {
+    display: none;
+}
+
+@media screen and (min-width: 990px) {
+    .announcement-bar .slider-button {
+        height: 30px;
+    }
 }
