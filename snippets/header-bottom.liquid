@@ -1,19 +1,4 @@
 <div class="header-bottom">
-  <div class="header-bottom__left mobile-only">
-    <div class="header-block block-mobile-nav">
-      <button class="block-title menu-toggle" aria-controls="NavDrawer" aria-label="Menu" aria-expanded="false">
-        <span class="animated-hamburger"> <span></span><span></span><span></span> </span>
-      </button>
-    </div>
-    <div class="header-block block-search">
-      <button class="block-title search-toggle">
-        <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
-      </button>
-      <div class="block-content">
-        {% include 'search-form', search_form_id: 'SearchInline' %}
-      </div>
-    </div>
-  </div>
   <div class="header-logo brand-{{ current_brand.id }}">
     <a href="{{ block.settings.brand_page_link | default: '/' }}" class="header-block header-brand">
       <img src="{{ current_brand.settings.nav_image | img_url: 'x76' }}" alt="{{ block.settings.text }}">
@@ -190,68 +175,6 @@
       {%- endfor -%}
     {% endcomment %}
   </ul>
-  <div class="header-bottom__right mobile-only">
-    {% if shop.customer_accounts_enabled %}
-      {%- if for_mobile_menu -%}
-        {% comment %} Account blocks for small screen ONLY {% endcomment %}
-        <div class="header-block block-account">
-          {% if customer %}
-            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.account' | t }}</a>
-            <a href="{{ routes.account_logout_url }}" class="block-title">{{ 'layout.customer.log_out' | t }}</a>
-          {% else %}
-            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.log_in' | t }}</a>
-          {% endif %}
-        </div>
-      {%- else -%}
-        {% comment %} Account blocks for large screen ONLY with dropdown content {% endcomment %}
-        <div class="header-block block-account has-dropdown">
-          {% if customer %}
-            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.account' | t }}</a>
-            {% comment %}
-              <div class="block-content dropdown">
-                  {% if customer.first_name != blank %}
-                      <a href="{{ routes.account_url }}">{{ 'layout.customer.logged_in_as_html' | t: first_name: customer.first_name }}</a>
-                  {% else %}
-                      <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
-                  {% endif %}
-                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
-              </div>
-            {% endcomment %}
-          {% else %}
-            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.log_in' | t }}</a>
-            {% comment %}
-              <div class="block-content dropdown">
-                  {{ 'layout.customer.log_in' | t | customer_login_link }}
-                  {{ 'layout.customer.create_account' | t | customer_register_link }}
-              </div>
-            {% endcomment %}
-          {% endif %}
-        </div>
-      {%- endif -%}
-    {% endif %}
-    <div class="header-block block-minicart has-dropdown" aria-controls="MiniCart" aria-expanded="false">
-      <button class="block-title">
-        <span id="CartTitle">{{- 'layout.cart.title' | t -}}</span>
-        <span id="CartCount" class="minicart-count {% if cart.item_count == 0 %}hidden-count{% endif %}">
-          {{- cart.item_count -}}
-        </span>
-        <span id="CartCost" class="minicart-cost">{{- cart.total_price | money -}}</span>
-      </button>
-      <div class="cart-count">
-        {{- cart.item_count -}}
-      </div>
-      {% comment %} Comment out following 'MiniCartAsDropdown' to use drawer layout on Desktop {% endcomment %}
-      {% comment %}
-        <div id="MiniCartAsDropdown" class="block-content dropdown">
-            <div class="block-content-wrapper">
-                <div class="dropdown-title">
-                    {{ 'general.minicart.title' | t }}<span>(<span class="minicart-count">{{cart.item_count}}</span>)</span>
-                </div>
-                <div class="minicart-container"></div>
-            </div>
-        </div>
-      {% endcomment %}
-    </div>
-  </div>
+
   <div class="dropdown-bg hide-medium-down"></div>
 </div>

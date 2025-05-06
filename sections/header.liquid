@@ -7,7 +7,7 @@
   media="print"
   onload="this.media='all'"
 >
-<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}">
 {%- if settings.predictive_search_enabled -%}
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
@@ -225,38 +225,40 @@
       endif
     -%}
 
-    {%- if section.settings.logo_position != 'middle-center' -%}
-      {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
-      {%- endif -%}
-      <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-        {%- if settings.logo != blank -%}
-          <div class="header__heading-logo-wrapper">
-            {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-            {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-            {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-            {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-            {{
-              settings.logo
-              | image_url: width: 600
-              | image_tag:
-                class: 'header__heading-logo motion-reduce',
-                widths: widths,
-                height: logo_height,
-                width: settings.logo_width,
-                alt: logo_alt,
-                sizes: sizes,
-                preload: true
-            }}
-          </div>
-        {%- else -%}
-          <span class="h2">{{ shop.name }}</span>
+    {% comment %}
+      {%- if section.settings.logo_position != 'middle-center' -%}
+        {%- if request.page_type == 'index' -%}
+          <h1 class="header__heading">
         {%- endif -%}
-      </a>
-      {%- if request.page_type == 'index' -%}
-        </h1>
+        <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+          {%- if settings.logo != blank -%}
+            <div class="header__heading-logo-wrapper">
+              {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+              {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+              {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+              {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+              {{
+                settings.logo
+                | image_url: width: 600
+                | image_tag:
+                  class: 'header__heading-logo motion-reduce',
+                  widths: widths,
+                  height: logo_height,
+                  width: settings.logo_width,
+                  alt: logo_alt,
+                  sizes: sizes,
+                  preload: true
+              }}
+            </div>
+          {%- else -%}
+            <span class="h2">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+        {%- if request.page_type == 'index' -%}
+          </h1>
+        {%- endif -%}
       {%- endif -%}
-    {%- endif -%}
+    {% endcomment %}
 
     {%- liquid
       if section.settings.menu != blank
@@ -345,7 +347,8 @@
     }
 
     setHeaderHeight() {
-      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      // document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      document.documentElement.style.setProperty('--header-height', `123px`);
     }
 
     disconnectedCallback() {
@@ -401,12 +404,14 @@
 
     reveal() {
       if (this.headerIsAlwaysSticky) return;
+      console.log('reveal menu');
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
     }
 
     reset() {
       if (this.headerIsAlwaysSticky) return;
+      console.log('reset menu');
       this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
     }
 
@@ -422,6 +427,59 @@
   }
 
   customElements.define('sticky-header', StickyHeader);
+
+  function isMobileCheck() {
+    const mobileDisplay = getComputedStyle(document.querySelector('header-drawer')).display;
+    return mobileDisplay !== 'none';
+  }
+
+  function closeNav() {
+    document.querySelector('.header-bottom').classList.remove('active');
+    document.querySelectorAll('.header-bottom__item.has-dropdown.active').forEach((item) => {
+      item.classList.remove('active');
+    });
+    document.querySelector('.header-bottom .dropdown-bg').style.height = '0';
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const dropdownCheck = document.querySelectorAll('.header-bottom__item.has-dropdown').length;
+    console.log('dropdownCheck', dropdownCheck);
+
+    document.querySelectorAll('.header-bottom__item.has-dropdown').forEach((item) => {
+      item.addEventListener('mouseover', function () {
+        if (!isMobileCheck()) {
+          document.querySelectorAll('.header-bottom__item.has-dropdown.active').forEach((activeItem) => {
+            activeItem.classList.remove('active');
+          });
+          this.classList.add('active');
+          const dropdown = this.querySelector('.header-bottom__submenu');
+          const height = dropdown.offsetHeight;
+          console.log('height: ' + height);
+          document.querySelector('.header-bottom').classList.add('active');
+          document.querySelector('.header-bottom .dropdown-bg').style.height = height + 'px';
+        }
+      });
+    });
+
+    document.querySelectorAll('.header-bottom__item:not(.has-dropdown) > a').forEach((link) => {
+      link.addEventListener('mouseover', function () {
+        if (!isMobileCheck()) {
+          closeNav();
+        }
+      });
+    });
+
+    document.querySelector('.header-bottom').addEventListener('mouseleave', function () {
+      if (!isMobileCheck()) {
+        closeNav();
+      }
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.header-top').classList.add('loaded');
+    document.querySelector('.header-bottom').classList.add('loaded');
+  });
 {% endjavascript %}
 
 <script type="application/ld+json">
