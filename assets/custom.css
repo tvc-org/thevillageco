@@ -102,16 +102,16 @@ body.cookie-not-accepted #global-overlay {
 }
 
 @media screen and (min-width:1025px) {
-    body #MainContent {
+    /* body #MainContent {
         margin-top: 123px
-    }
+    } */
     body.drawer-opt #global-overlay {
         z-index: 1001
     }
-    body:not(.template-index).promo-banner-active #MainContent,
+    /* body:not(.template-index).promo-banner-active #MainContent,
 	body.template-index.promo-banner-active #MainContent {
         margin-top: 153px
-    }
+    } */
     /*body.template-index.promo-banner-active #MainContent {
         margin-top: 30px
     }*/
@@ -1397,7 +1397,7 @@ header nav.nav-bar {
     -moz-opacity: 1
 }
 
-header.site-header {
+header.site-header-x {
     background: #fff;
     width: 100%;
     top: 0;
@@ -3092,4 +3092,361 @@ form .btn::hover {
 .yotpo-widget-loyalty-floater-widget .yotpo-floater-widget-layout,
 .swell-tab {
     z-index:998 !important;
+}
+
+.header-bottom ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.header-bottom ul a {
+    text-decoration: none;
+}
+
+
+@font-face {
+    font-family: mreavessanot-reg-webfont;
+    src: url(../assets/mreavessanot-reg-webfont.woff) format("woff"),
+         url(../assets/mreavessanot-reg-webfont.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: mreavessanot-bold-webfont;
+    src: url(../assets/mreavessanot-bold-webfont.woff) format("woff"),
+         url(../assets/mreavessanot-bold-webfont.woff2) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.base-font-1 {
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.base-font-1,
+.base-font-2 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+}
+
+.base-font-2 {
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.title-font-1 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 42px;
+    line-height: 45px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 1025px) {
+    .title-font-1 {
+        font-size: 55px;
+        line-height: 60px;
+        letter-spacing: 5px;
+    }
+}
+
+.title-font-2 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 34px;
+    line-height: 40px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 1025px) {
+    .title-font-2 {
+        font-size: 45px;
+        line-height: 48px;
+        letter-spacing: 0;
+    }
+}
+
+.title-font-3 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 1025px) {
+    .title-font-3 {
+        font-size: 25px;
+        line-height: 30px;
+        letter-spacing: 0;
+    }
+}
+
+.title-font-4 {
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 35px;
+    letter-spacing: 0;
+    line-height: 44px;
+}
+
+.title-font-4,
+.title-font-5 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+}
+
+.title-font-5 {
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    letter-spacing: 2.43px;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+    .title-font-5 {
+        font-size: 17px;
+        line-height: 18px;
+        letter-spacing: 2px;
+    }
+}
+
+.title-font-6 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 1.86px;
+    text-transform: uppercase;
+}
+
+.title-font-7 {
+    font-size: 40px;
+    letter-spacing: 0;
+    line-height: 44px;
+}
+
+.title-font-7,
+.title-font-8 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.title-font-8 {
+    font-size: 45px;
+    line-height: 41px;
+    letter-spacing: 1.01px;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 1025px) {
+    .title-font-8 {
+        font-size: 53px;
+        line-height: 46px;
+        letter-spacing: 1.29px;
+    }
+}
+
+.body-font-1 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 1025px) {
+    .body-font-1 {
+        font-size: 16px;
+        line-height: 21px;
+    }
+}
+
+.body-font-2 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0;
+    font-weight: 700;
+}
+
+@media screen and (min-width: 1025px) {
+    .body-font-2 {
+        font-size: 16px;
+        line-height: 21px;
+    }
+}
+
+.body-font-3 {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.body-font-3,
+.body-font-4 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.body-font-4 {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-size: 21px;
+    line-height: 21px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .body-font-4 {
+        font-size: 24px;
+        line-height: 25px;
+    }
+}
+
+.body-font-5 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 2px;
+}
+
+@media screen and (min-width: 1025px) {
+    .body-font-5 {
+        letter-spacing: 2.14px;
+    }
+}
+
+.body-font-6 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 19px;
+    line-height: 22px;
+}
+
+@media screen and (min-width: 1025px) {
+    .body-font-6 {
+        font-size: 20px;
+    }
+}
+
+.body-font-7 {
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.body-font-7,
+.body-font-8 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.body-font-8 {
+    font-size: 20px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 1025px) {
+    .body-font-8 {
+        font-size: 22px;
+        line-height: 23px;
+    }
+}
+
+.body-font-9 {
+    font-size: 17px;
+    line-height: 20px;
+}
+
+.body-font-9,
+.body-font-10 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+.body-font-10 {
+    font-size: 24px;
+    letter-spacing: 0.52px;
+    line-height: 28px;
+}
+
+@media screen and (min-width: 1025px) {
+    .body-font-10 {
+        font-size: 27px;
+        letter-spacing: 0.59px;
+        line-height: 34px;
+    }
+}
+
+.cta-1,
+.cta-font-1 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    font-weight: 400;
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }

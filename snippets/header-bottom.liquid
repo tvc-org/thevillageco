@@ -1,12 +1,25 @@
-{% comment %}
-  Renders a megamenu for the header.
-
-  Usage:
-  {% render 'header-mega-menu-brand' %}
-{% endcomment %}
-
-<nav class="header__inline-menu">
-  <ul class="list-menu list-menu--inline" role="list">
+<div class="header-bottom">
+  <div class="header-bottom__left mobile-only">
+    <div class="header-block block-mobile-nav">
+      <button class="block-title menu-toggle" aria-controls="NavDrawer" aria-label="Menu" aria-expanded="false">
+        <span class="animated-hamburger"> <span></span><span></span><span></span> </span>
+      </button>
+    </div>
+    <div class="header-block block-search">
+      <button class="block-title search-toggle">
+        <span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
+      </button>
+      <div class="block-content">
+        {% include 'search-form', search_form_id: 'SearchInline' %}
+      </div>
+    </div>
+  </div>
+  <div class="header-logo brand-{{ current_brand.id }}">
+    <a href="{{ block.settings.brand_page_link | default: '/' }}" class="header-block header-brand">
+      <img src="{{ current_brand.settings.nav_image | img_url: 'x76' }}" alt="{{ block.settings.text }}">
+    </a>
+  </div>
+  <ul class="header-bottom__links mobile-hidden" data-size="{{ current_brand.settings.menu.links | size }}">
     {%- for link in current_brand.settings.menu.links -%}
       {% assign toutMatches = null | sort %}
       {% for block in tout_blocks %}
@@ -63,22 +76,22 @@
                               {% assign list_image_size = '440x' %}
                           {%- endunless -%}
 
-                                {%- include 'responsive-image-lazy',
-                                    class: 'product-image',
-                                    image: product.featured_image,
-                                    imageSmall: product.featured_image,
-                                    imageAlt: image.alt,
-                                    size: list_image_size,
-                                    sizeMedium: list_image_size,
-                                    sizeSmall: list_image_size,
-                                    heightFix: true,
-                                -%}
+                                   {%- include 'responsive-image-lazy',
+                                       class: 'product-image',
+                                       image: product.featured_image,
+                                       imageSmall: product.featured_image,
+                                       imageAlt: image.alt,
+                                       size: list_image_size,
+                                       sizeMedium: list_image_size,
+                                       sizeSmall: list_image_size,
+                                       heightFix: true,
+                                   -%}
                         {% endcomment %}
                       </a>
                       <a href="{{ product.url | within: collection }}">
                         <p class="product-name">{{ product.title }}</p>
                       </a>
-                      {% comment %} {%- include 'product-badge' -%} {% endcomment %}
+                      {%- include 'product-badge' -%}
                       <div style="text-align:center;">
                         <a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
                       </div>
@@ -126,7 +139,7 @@
                       <a href="{{ collection.url }}">
                         <p class="product-name">{{ featured_title }}</p>
                       </a>
-                      {% comment %} {%- include 'product-badge' -%} {% endcomment %}
+                      {%- include 'product-badge' -%}
                       <div style="text-align:center;">
                         <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
                       </div>
@@ -161,5 +174,84 @@
         {%- endif -%}
       </li>
     {%- endfor -%}
+
+    {% comment %}
+      {%- for link in current_brand.settings.menu.links[0].links -%}
+          <li class="header-bottom__item {% if link.links != blank %}has-dropdown{% endif %}">
+              <a href="{{ link.url }}" class="header-bottom__link">{{ link.title }}</a>
+              {%- if link.links != blank -%}
+                  <ul class="header-bottom__submenu">
+                      {%- for child_link in link.links -%}
+                          <li><a class="header-bottom__sublink" href={{ child_link.url }}>{{ child_link.title }}</a></li>
+                      {%- endfor -%}
+                  </ul>
+              {%- endif -%}
+          </li>
+      {%- endfor -%}
+    {% endcomment %}
   </ul>
-</nav>
+  <div class="header-bottom__right mobile-only">
+    {% if shop.customer_accounts_enabled %}
+      {%- if for_mobile_menu -%}
+        {% comment %} Account blocks for small screen ONLY {% endcomment %}
+        <div class="header-block block-account">
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.account' | t }}</a>
+            <a href="{{ routes.account_logout_url }}" class="block-title">{{ 'layout.customer.log_out' | t }}</a>
+          {% else %}
+            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.log_in' | t }}</a>
+          {% endif %}
+        </div>
+      {%- else -%}
+        {% comment %} Account blocks for large screen ONLY with dropdown content {% endcomment %}
+        <div class="header-block block-account has-dropdown">
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.account' | t }}</a>
+            {% comment %}
+              <div class="block-content dropdown">
+                  {% if customer.first_name != blank %}
+                      <a href="{{ routes.account_url }}">{{ 'layout.customer.logged_in_as_html' | t: first_name: customer.first_name }}</a>
+                  {% else %}
+                      <a href="{{ routes.account_url }}">{{ 'layout.customer.account' | t }}</a>
+                  {% endif %}
+                  {{ 'layout.customer.log_out' | t | customer_logout_link }}
+              </div>
+            {% endcomment %}
+          {% else %}
+            <a href="{{ routes.account_url }}" class="block-title">{{ 'layout.customer.log_in' | t }}</a>
+            {% comment %}
+              <div class="block-content dropdown">
+                  {{ 'layout.customer.log_in' | t | customer_login_link }}
+                  {{ 'layout.customer.create_account' | t | customer_register_link }}
+              </div>
+            {% endcomment %}
+          {% endif %}
+        </div>
+      {%- endif -%}
+    {% endif %}
+    <div class="header-block block-minicart has-dropdown" aria-controls="MiniCart" aria-expanded="false">
+      <button class="block-title">
+        <span id="CartTitle">{{- 'layout.cart.title' | t -}}</span>
+        <span id="CartCount" class="minicart-count {% if cart.item_count == 0 %}hidden-count{% endif %}">
+          {{- cart.item_count -}}
+        </span>
+        <span id="CartCost" class="minicart-cost">{{- cart.total_price | money -}}</span>
+      </button>
+      <div class="cart-count">
+        {{- cart.item_count -}}
+      </div>
+      {% comment %} Comment out following 'MiniCartAsDropdown' to use drawer layout on Desktop {% endcomment %}
+      {% comment %}
+        <div id="MiniCartAsDropdown" class="block-content dropdown">
+            <div class="block-content-wrapper">
+                <div class="dropdown-title">
+                    {{ 'general.minicart.title' | t }}<span>(<span class="minicart-count">{{cart.item_count}}</span>)</span>
+                </div>
+                <div class="minicart-container"></div>
+            </div>
+        </div>
+      {% endcomment %}
+    </div>
+  </div>
+  <div class="dropdown-bg hide-medium-down"></div>
+</div>

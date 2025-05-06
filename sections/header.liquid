@@ -263,7 +263,7 @@
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu', current_brand: current_brand, brand_blocks: brand_blocks
         elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-mega-menu-brand', current_brand: current_brand, brand_blocks: brand_blocks
+          render 'header-bottom', current_brand: current_brand, brand_blocks: brand_blocks
         endif
       endif
     %}
