@@ -1,0 +1,165 @@
+{% comment %}
+  Renders a megamenu for the header.
+
+  Usage:
+  {% render 'header-mega-menu' %}
+{% endcomment %}
+
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline" role="list">
+    {%- for link in current_brand.settings.menu.links -%}
+      {% assign toutMatches = null | sort %}
+      {% for block in tout_blocks %}
+        {% if block.settings.brand_title == current_brand.settings.text
+          and block.settings.nav_parent_title == link.title
+        %}
+          {% assign blockItem = block | sort %}
+          {% assign toutMatches = toutMatches | concat: blockItem %}
+        {% endif %}
+      {% endfor %}
+
+      <li
+        class="header-bottom__item {% if link.links.size > 0 or toutMatches.size > 0 %}has-dropdown{% endif %}"
+        data-current_brand="{{ current_brand.settings.text }}"
+        data-link-count="{{ link.links.size }}"
+      >
+        <a href="{{ link.url }}" class="header-bottom__link">{{ link.title }}</a>
+        {%- if link.links.size > 0 or toutMatches.size > 0 -%}
+          <div class="header-bottom__submenu">
+            <div class="flex-container">
+              {%- for child_link in link.links -%}
+                <ul>
+                  <li class="level-2">
+                    <a class="header-bottom__sublink" href="{{ child_link.url }}">{{ child_link.title }}</a>
+                  </li>
+
+                  {% if child_link.links != blank %}
+                    <ul>
+                      {% for child_child_link in child_link.links %}
+                        <li>
+                          <a class="header-bottom__sublink" href="{{ child_child_link.url }}">
+                            {{- child_child_link.title -}}
+                          </a>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </ul>
+              {%- endfor -%}
+              {% for block in toutMatches %}
+                {% for product in block.settings.product_list %}
+                  <div class="product-column">
+                    <div class="featured-product">
+                      <a class="image" href="{{ product.url | within: collection }}">
+                        {% if product.metafields.custom_fields.featured_nav_image != blank %}
+                          {% assign featured_image = product.metafields.custom_fields.featured_nav_image.value %}
+                        {% else %}
+                          {% assign featured_image = product.featured_image %}
+                        {% endif %}
+
+                        {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
+                        {% comment %}
+                          {%- unless list_image_size -%}
+                              {% assign list_image_size = '440x' %}
+                          {%- endunless -%}
+
+                                {%- include 'responsive-image-lazy',
+                                    class: 'product-image',
+                                    image: product.featured_image,
+                                    imageSmall: product.featured_image,
+                                    imageAlt: image.alt,
+                                    size: list_image_size,
+                                    sizeMedium: list_image_size,
+                                    sizeSmall: list_image_size,
+                                    heightFix: true,
+                                -%}
+                        {% endcomment %}
+                      </a>
+                      <a href="{{ product.url | within: collection }}">
+                        <p class="product-name">{{ product.title }}</p>
+                      </a>
+                      {% comment %} {%- include 'product-badge' -%} {% endcomment %}
+                      <div style="text-align:center;">
+                        <a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+
+                {% for collection in block.settings.collection_list %}
+                  <div class="product-column">
+                    <div class="featured-product">
+                      <a class="image" href="{{ collection.url }}">
+                        {% comment %}
+                          {%- unless list_image_size -%}
+                              {% assign list_image_size = '440x' %}
+                          {%- endunless -%}
+                        {% endcomment %}
+
+                        {% if collection.metafields.custom_fields.featured_nav_image != blank %}
+                          {% assign featured_image = collection.metafields.custom_fields.featured_nav_image.value %}
+                        {% else %}
+                          {% assign featured_image = collection.featured_image %}
+                        {% endif %}
+
+                        {% if collection.metafields.custom_fields.featured_nav_title != blank %}
+                          {% assign featured_title = collection.metafields.custom_fields.featured_nav_title.value %}
+                        {% else %}
+                          {% assign featured_title = collection.title %}
+                        {% endif %}
+
+                        {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
+
+                        {% comment %}
+                          {%- include 'responsive-image-lazy',
+                              class: 'product-image',
+                              image: grid_image,
+                              imageSmall: grid_image,
+                              imageAlt: collection.title,
+                              size: list_image_size,
+                              sizeMedium: list_image_size,
+                              sizeSmall: list_image_size,
+                              heightFix: false,
+                          -%}
+                        {% endcomment %}
+                      </a>
+                      <a href="{{ collection.url }}">
+                        <p class="product-name">{{ featured_title }}</p>
+                      </a>
+                      {% comment %} {%- include 'product-badge' -%} {% endcomment %}
+                      <div style="text-align:center;">
+                        <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              {% endfor %}
+            </div>
+
+            {% assign bottom_button_count = 0 %}
+            {% for block in toutMatches %}
+              {% if block.settings.bottom_button_link != blank and block.settings.bottom_button_text != blank %}
+                {% if bottom_button_count == 0 %}<div class="bottom-links">{% endif %}
+                <a href="{{ block.settings.bottom_button_link }}">
+                  <span>{{ block.settings.bottom_button_text }}</span>
+                  <svg
+                    class="chevron"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="17"
+                    height="16"
+                    viewBox="0 0 17 16"
+                    fill="none"
+                  >
+                    <path d="M6.5 12L10.5 8L6.5 4" stroke="#323131" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+                {% if bottom_button_count == 0 %}</div>{% endif %}
+                {% assign bottom_button_count = 1 %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
