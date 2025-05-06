@@ -17,18 +17,26 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Free Shipping on all US Orders Over $50",
+            "link": ""
+          }
+        },
+        "announcement_inKhTr": {
+          "type": "announcement",
+          "settings": {
+            "text": "Subscribe and Save 10% On Your Favorite Products",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement-bar-0",
+        "announcement_inKhTr"
       ],
       "settings": {
-        "auto_rotate": false,
+        "auto_rotate": true,
         "change_slides_speed": 5,
-        "color_scheme": "",
+        "color_scheme": "scheme-2",
         "show_line_separator": true,
         "show_social": false,
         "enable_country_selector": false,
@@ -115,7 +123,7 @@
         "menu": "main-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
-        "show_line_separator": true,
+        "show_line_separator": false,
         "color_scheme": "scheme-1",
         "menu_color_scheme": "",
         "enable_country_selector": false,
