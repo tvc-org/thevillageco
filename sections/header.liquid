@@ -118,6 +118,69 @@
   endif
 %}
 
+{% assign brand_blocks = section.blocks | where: 'type', 'brand' %}
+{% assign tout_blocks = section.blocks | where: 'type', 'touts_group' %}
+
+{% comment %} default to first nav brand, then check for active link within branded nav {% endcomment %}
+{%- liquid
+  assign current_brand = section.blocks[0]
+  for block in brand_blocks
+    assign has_active_link = false
+    for link in block.settings.menu.links
+      if link.active or link.child_active
+        assign has_active_link = true
+        break
+      endif
+    endfor
+    if has_active_link
+      assign current_brand = block
+      break
+    endif
+  endfor
+-%}
+
+{%- liquid
+  assign current_url = request.path
+  assign url_segments = current_url | split: '/'
+  assign last_segment = url_segments | last
+  for block in brand_blocks
+    if block.settings.brand_page_link != blank
+      if current_url contains block.settings.brand_page_link
+        assign current_brand = block
+        break
+      elsif last_segment contains 'mr-bubble' and block.settings.brand_page_link contains 'mr-bubble'
+        assign current_brand = block
+        break
+      elsif last_segment contains 'therapy' and block.settings.brand_page_link contains 'therapy'
+        assign current_brand = block
+        break
+      endif
+    endif
+  endfor
+-%}
+
+{% comment %} if product check the vendor {% endcomment %}
+{% if product %}
+  {% for block in brand_blocks %}
+    {% if block.settings.text == product.vendor %}
+      {% assign current_brand = block %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if blog %}
+  {% for block in brand_blocks %}
+    {% if block.settings.text == 'Village Naturals Therapy' and blog.handle == 'village-naturals-therapy' %}
+      {% assign current_brand = block %}
+      {% break %}
+    {% elsif block.settings.text == 'Mr. Bubble' and blog.handle == 'fun' %}
+      {% assign current_brand = block %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
@@ -138,8 +201,8 @@
   -%}
   <header class="header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- liquid
-      if section.settings.menu != blank
-        render 'header-drawer'
+      if current_brand.settings.menu != blank
+        render 'header-drawer', current_brand: current_brand
       endif
 
       if section.settings.logo_position == 'top-center' or section.settings.menu == blank
