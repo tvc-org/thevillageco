@@ -82,7 +82,7 @@
             "brand_color": "#5f885f",
             "brand_text_color": "#323131",
             "brand_page_link": "shopify://pages/therapy",
-            "menu": "therapy"
+            "menu": "therapy-mega"
           }
         },
         "brand_Nhk8gC": {
@@ -94,7 +94,7 @@
             "brand_color": "#da2171",
             "brand_text_color": "#323131",
             "brand_page_link": "shopify://pages/soft-dri",
-            "menu": "soft-dri"
+            "menu": "soft-dri-mega"
           }
         }
       },
