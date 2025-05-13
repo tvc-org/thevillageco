@@ -254,21 +254,6 @@
             "bottom_button_text": "All Products"
           }
         },
-        "touts_group_cqpxnX": {
-          "type": "touts_group",
-          "settings": {
-            "brand_title": "Village Naturals Therapy",
-            "nav_parent_title": "Recovery & Relief",
-            "text": "VNT - Recovery and Relief",
-            "product_list": [
-              "cold-allergy-foaming-body-soak",
-              "aches-pains-muscle-relief-hand-body-lotion"
-            ],
-            "collection_list": [],
-            "bottom_button_link": "shopify://collections/therapy-collections",
-            "bottom_button_text": "All Products"
-          }
-        },
         "touts_group_geeHhi": {
           "type": "touts_group",
           "settings": {
@@ -278,6 +263,21 @@
             "product_list": [
               "wellness-by-v-n-therapy-hydrate-cooling-body-spray",
               "tension-hand-body-lotion"
+            ],
+            "collection_list": [],
+            "bottom_button_link": "shopify://collections/therapy-collections",
+            "bottom_button_text": "All Products"
+          }
+        },
+        "touts_group_cqpxnX": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Village Naturals Therapy",
+            "nav_parent_title": "Recovery & Relief",
+            "text": "VNT - Recovery and Relief",
+            "product_list": [
+              "cold-allergy-foaming-body-soak",
+              "aches-pains-muscle-relief-hand-body-lotion"
             ],
             "collection_list": [],
             "bottom_button_link": "shopify://collections/therapy-collections",
@@ -300,8 +300,8 @@
         "touts_group_GDCBRh",
         "touts_group_NMAYaB",
         "touts_group_hjnBmU",
-        "touts_group_cqpxnX",
-        "touts_group_geeHhi"
+        "touts_group_geeHhi",
+        "touts_group_cqpxnX"
       ],
       "settings": {
         "logo_position": "middle-left",
