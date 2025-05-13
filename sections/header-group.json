@@ -96,13 +96,30 @@
             "brand_page_link": "shopify://pages/soft-dri",
             "menu": "soft-dri-mega"
           }
+        },
+        "touts_group_7K4zJ4": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "The Village Co.",
+            "nav_parent_title": "Mr. Bubble",
+            "text": "TVC - MRB",
+            "product_list": [
+              "mr-bubble-calm-sleep-bubble-bath"
+            ],
+            "collection_list": [
+              "mr-bubble-foam-bath-soap"
+            ],
+            "bottom_button_link": "shopify://collections/mr-bubble-collections",
+            "bottom_button_text": "All Products"
+          }
         }
       },
       "block_order": [
         "brand_WHwbqy",
         "brand_RKTJdn",
         "brand_H46BjU",
-        "brand_Nhk8gC"
+        "brand_Nhk8gC",
+        "touts_group_7K4zJ4"
       ],
       "settings": {
         "logo_position": "middle-left",
