@@ -49,8 +49,8 @@
                   <div class="product-column">
                     <div class="featured-product">
                       <a class="image" href="{{ product.url | within: collection }}">
-                        {% if product.metafields.custom_fields.featured_nav_image != blank %}
-                          {% assign featured_image = product.metafields.custom_fields.featured_nav_image.value %}
+                        {% if product.metafields.custom.featured_nav_image != blank %}
+                          {% assign featured_image = product.metafields.custom.featured_nav_image.value %}
                         {% else %}
                           {% assign featured_image = product.featured_image %}
                         {% endif %}
@@ -76,7 +76,7 @@
                       <a href="{{ product.url | within: collection }}">
                         <p class="product-name">{{ product.title }}</p>
                       </a>
-                      {%- include 'product-badge' -%}
+                      {%- render 'product-badge' -%}
                       <div style="text-align:center;">
                         <a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
                       </div>
@@ -94,14 +94,14 @@
                           {%- endunless -%}
                         {% endcomment %}
 
-                        {% if collection.metafields.custom_fields.featured_nav_image != blank %}
-                          {% assign featured_image = collection.metafields.custom_fields.featured_nav_image.value %}
+                        {% if collection.metafields.custom.featured_nav_image != blank %}
+                          {% assign featured_image = collection.metafields.custom.featured_nav_image.value %}
                         {% else %}
                           {% assign featured_image = collection.featured_image %}
                         {% endif %}
 
-                        {% if collection.metafields.custom_fields.featured_nav_title != blank %}
-                          {% assign featured_title = collection.metafields.custom_fields.featured_nav_title.value %}
+                        {% if collection.metafields.custom.featured_nav_title != blank %}
+                          {% assign featured_title = collection.metafields.custom.featured_nav_title.value %}
                         {% else %}
                           {% assign featured_title = collection.title %}
                         {% endif %}
@@ -124,7 +124,9 @@
                       <a href="{{ collection.url }}">
                         <p class="product-name">{{ featured_title }}</p>
                       </a>
-                      {%- include 'product-badge' -%}
+                      {% if product != blank %}
+                        {%- include 'product-badge' -%}
+                      {% endif %}
                       <div style="text-align:center;">
                         <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
                       </div>

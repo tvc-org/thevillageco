@@ -1,0 +1,55 @@
+{% comment %}
+  {% assign badgeValuePart = '' %}
+  {% assign all_product_tags = product.tags | join: '|' | append: '|' %}
+  {% assign parts = all_product_tags | split: 'badge:' %}
+  {%- if parts -%}
+      {% assign badgeValuePart = parts[1] | split: '|' %}
+  {%- endif -%}
+  {%- if badgeValuePart != blank -%}
+      <div class="product-badge">
+          <span>{{ badgeValuePart[0] }}</span>
+      </div>
+  {%- endif -%}
+{% endcomment %}
+
+{%- assign tag_groups = 'badge:New' | split: ',' -%}
+
+{%- assign sorted_tags = '' -%}
+{%- for group in tag_groups -%}
+  {% for tag in product.tags %}
+    {%- assign tag_group = tag | split: '_' | first -%}
+    {%- if tag_group == group -%}
+      {%- assign sorted_tags = sorted_tags | append: tag | append: ',' -%}
+    {%- endif -%}
+  {% endfor %}
+{%- endfor -%}
+{%- assign sorted_tags_arr = sorted_tags | remove_last: ',' | split: ',' -%}
+
+{%- assign low_inventory = 0 -%}
+{% for option in product.options %}
+  {% for variant in product.variants %}
+    {% if variant.available %}
+      {% if variant.inventory_quantity < 30 and variant.inventory_management == 'shopify' %}
+        {%- assign low_inventory = 1 -%}
+        {% break %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<div class="product-badges">
+  {% for tag in sorted_tags_arr %}
+    {% if tag contains 'badge:' %}
+      {% assign parts = tag | split: 'badge:' %}
+      {% assign badgeValuePart = parts[1] | split: '|' %}
+      <div class="product-badge {{ badgeValuePart[0] | handle }}">
+        <span>{{ badgeValuePart[0] }}</span>
+      </div>
+    {% endif %}
+  {% endfor %}
+  {% if low_inventory == 1 %}
+    <div class="product-badge low-stock">
+      <span>Low Stock</span>
+    </div>
+  {% endif %}
+</div>
