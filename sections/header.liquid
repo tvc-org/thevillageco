@@ -188,10 +188,6 @@
       {% comment %}This append fixes vs code text highlighting{% endcomment %}
       background: {{ current_brand.settings.brand_color | append: " !important"}};
   }
-
-  .header-bottom, #MobileNav .nav-bar {
-      color: {{ current_brand.settings.brand_text_color }};
-  }
 </style>
 
 <{{ header_tag }}
