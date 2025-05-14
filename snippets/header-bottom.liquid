@@ -125,7 +125,7 @@
                         <p class="product-name">{{ featured_title }}</p>
                       </a>
                       {% if product != blank %}
-                        {%- include 'product-badge' -%}
+                        {%- render 'product-badge' -%}
                       {% endif %}
                       <div style="text-align:center;">
                         <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
