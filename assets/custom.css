@@ -23,6 +23,12 @@ html {
     height: 43px;
 }
 
+.header__icon.link.find-in-store {
+    font-size: 16px;
+    max-width:none;
+    width: 120px;
+}
+
 /* #admin_bar_iframe {
     display: none!important
 } */
@@ -3562,5 +3568,9 @@ form .btn::hover {
 
     .header--mobile-left {
         grid-template-columns: 1fr 2fr 1fr !important;
+    }
+
+    header-drawer {
+        display: block !important;
     }
 }
