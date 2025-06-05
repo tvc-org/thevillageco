@@ -11,6 +11,11 @@ html {
     letter-spacing: 0
 }
 
+h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
+    font-weight: 400;
+    font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
 @media screen and (min-width:1025px) {
     body,
     html {
@@ -3573,4 +3578,13 @@ form .btn::hover {
     header-drawer {
         display: block !important;
     }
+}
+
+.grid__item .price {
+    font-size: 1.25rem;
+}
+
+.grid__item .card__heading {
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 1.1em;
 }
