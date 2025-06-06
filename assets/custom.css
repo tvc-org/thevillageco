@@ -3580,6 +3580,20 @@ form .btn::hover {
     }
 }
 
+/* Main section overrides */
+
+#MainContent p {
+    font-size: 19px;
+}
+
+@media screen and (min-width: 1025px) {
+    #MainContent p {
+        font-size: 21px;
+    }
+}
+
+/* Grid Items */
+
 .grid__item .price {
     font-size: 1.5rem;
 }
@@ -3587,4 +3601,11 @@ form .btn::hover {
 .grid__item .card__heading {
     font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 1.15em;
+}
+
+/* Footer */
+
+.footer-block__details-content .list-menu__item--link,
+.footer-block__details-content > p {
+    font-size: 16px;
 }
