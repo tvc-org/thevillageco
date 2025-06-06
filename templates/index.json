@@ -121,20 +121,20 @@
         "collection-0": {
           "type": "collection",
           "settings": {
-            "collection": "the-village-co-shower"
+            "collection": "hallu-shower-bombs"
           }
         },
         "product": {
           "type": "product",
           "settings": {
-            "product": "mr-bubble-hand-soap",
+            "product": "adult-slogan-short-sleeve-t-shirt",
             "second_image": false
           }
         },
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": "hallu-bath-body"
+            "collection": "holiday"
           }
         }
       },
