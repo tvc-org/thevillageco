@@ -44,6 +44,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/VNT_FlashSale_Hero_Mobile.jpg",
         "image_overlay_opacity": 40,
         "image_height": "large",
         "image_behavior": "none",
@@ -120,20 +121,20 @@
         "collection-0": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "the-village-co-shower"
           }
         },
         "product": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "mr-bubble-hand-soap",
             "second_image": false
           }
         },
         "collection-1": {
           "type": "collection",
           "settings": {
-            "collection": ""
+            "collection": "hallu-bath-body"
           }
         }
       },
@@ -153,16 +154,18 @@
         "padding_bottom": 36
       }
     },
-    "video": {
+    "video_8jFdHL": {
       "type": "video",
+      "name": "t:sections.video.presets.name",
       "settings": {
-        "heading": "",
+        "heading": "Video",
         "heading_size": "h1",
         "enable_video_looping": false,
+        "video": "shopify://files/videos/mothers-day-header_1.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "full_width": false,
-        "color_scheme": "scheme-1",
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -594,22 +597,6 @@
         "padding_bottom": 36
       }
     },
-    "video_8jFdHL": {
-      "type": "video",
-      "name": "t:sections.video.presets.name",
-      "settings": {
-        "heading": "Video",
-        "heading_size": "h1",
-        "enable_video_looping": false,
-        "video": "shopify://files/videos/mothers-day-header_1.mp4",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_blog_zQHEYQ": {
       "type": "featured-blog",
       "name": "t:sections.featured-blog.presets.name",
@@ -634,7 +621,7 @@
     "rich_text",
     "featured_collection",
     "collage",
-    "video",
+    "video_8jFdHL",
     "multicolumn",
     "featured_product_8tXYNU",
     "collection_list_RGqthW",
@@ -643,7 +630,6 @@
     "multicolumn_APBqT7",
     "multirow_XwRmTD",
     "collapsible_content_PYUYWB",
-    "video_8jFdHL",
     "featured_blog_zQHEYQ"
   ]
 }
