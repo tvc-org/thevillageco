@@ -156,7 +156,6 @@
     },
     "video_8jFdHL": {
       "type": "video",
-      "name": "t:sections.video.presets.name",
       "settings": {
         "heading": "Video",
         "heading_size": "h1",
@@ -277,7 +276,6 @@
         "buy_buttons_iRhgUk",
         "share_zajBKc"
       ],
-      "name": "t:sections.featured-product.presets.name",
       "settings": {
         "product": "mr-bubble-bubbling-bath-bomb",
         "color_scheme": "",
@@ -320,7 +318,6 @@
         "featured_collection_66BTAL",
         "featured_collection_YaAEYw"
       ],
-      "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "Collections",
         "heading_size": "h1",
@@ -367,7 +364,6 @@
         "text_VXn7rK",
         "button_9j9hWT"
       ],
-      "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
@@ -408,7 +404,6 @@
         "text_MRaVGX",
         "button_EbqmwE"
       ],
-      "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "image": "shopify://shop_images/VNT_SoakSale_Mobile.jpg",
         "height": "adapt",
@@ -461,7 +456,6 @@
         "column_YMbG8U",
         "column_TMLwHJ"
       ],
-      "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Multicolumn",
         "heading_size": "h1",
@@ -518,7 +512,6 @@
         "row_3XktQa",
         "row_nrXGU8"
       ],
-      "name": "t:sections.multirow.presets.name",
       "settings": {
         "image_height": "medium",
         "desktop_image_width": "medium",
@@ -543,7 +536,7 @@
           "settings": {
             "heading": "Collapsible row",
             "icon": "check_mark",
-            "row_content": "",
+            "row_content": "<p>some content</p>",
             "page": ""
           }
         },
@@ -581,7 +574,6 @@
         "collapsible_row_irgEWd",
         "collapsible_row_xifyDc"
       ],
-      "name": "t:sections.collapsible_content.presets.name",
       "settings": {
         "caption": "",
         "heading": "Collapsible content",
@@ -599,7 +591,6 @@
     },
     "featured_blog_zQHEYQ": {
       "type": "featured-blog",
-      "name": "t:sections.featured-blog.presets.name",
       "settings": {
         "blog": "village-naturals-therapy",
         "post_limit": 3,
