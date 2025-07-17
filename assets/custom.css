@@ -3594,13 +3594,20 @@ form .btn::hover {
 
 /* Grid Items */
 
-.grid__item .price {
+.product-grid-container .grid__item .price {
     font-size: 1.5rem;
 }
 
-.grid__item .card__heading {
+.product-grid-container .grid__item .card__heading {
     font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 1.15em;
+}
+
+/* Product Page */
+
+.product__info-wrapper .price {
+    font-size: 22px;
+    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 /* Footer */
