@@ -3607,7 +3607,12 @@ form .btn::hover {
 
 .product__info-wrapper .price {
     font-size: 22px;
-    font-family: mreavessanot-bold-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: mreavessanot-bold-webfont;
+}
+
+.product-form__submit.button {
+    text-transform: uppercase;
+    font-family: mreavessanot-bold-webfont;
 }
 
 /* Footer */
