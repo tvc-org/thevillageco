@@ -85,6 +85,7 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+          {%- assign collapsible_tab_count = 0 -%}
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
@@ -210,10 +211,11 @@
               {%- when 'custom_liquid' -%}
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
+                {%- assign collapsible_tab_count = collapsible_tab_count | plus: 1 -%}
                 <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                   <details
                     id="Details-{{ block.id }}-{{ section.id }}"
-                    {% if forloop.first %}
+                    {% if collapsible_tab_count == 1 %}
                       open
                     {% endif %}
                   >
@@ -226,7 +228,7 @@
                       </div>
                       {{- 'icon-caret.svg' | inline_asset_content -}}
                     </summary>
-                    <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                    <div class="accordion__content content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                       {{ block.settings.content }}
                       {{ block.settings.page.content }}
                     </div>
@@ -729,6 +731,7 @@
     <script type="application/ld+json">
       {{ product | structured_data }}
     </script>
+    <script src="{{ 'Accordion-animate.js' | asset_url }}" defer="defer"></script>
   </div>
 </product-info>
 

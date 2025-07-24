@@ -3615,9 +3615,44 @@ form .btn::hover {
     font-family: mreavessanot-bold-webfont;
 }
 
+.accordion__title  {
+    text-transform: uppercase;
+    font-family: mreavessanot-bold-webfont;
+}
+
+/* Accordion motion effects */
+
+/* Smooth caret rotation */
+.accordion summary .icon-caret {
+    transition: transform 0.3s ease-in-out;
+}
+
+.accordion details[open] summary .icon-caret {
+    transform: rotate(180deg);
+}
+
 /* Footer */
 
 .footer-block__details-content .list-menu__item--link,
+
+/* Fix bullet point wrapping in RTE content */
+.rte ul,
+.rte ol {
+  list-style-position: outside;
+  padding-left: 2rem;
+}
 .footer-block__details-content > p {
     font-size: 16px;
+}
+
+@media screen and (min-width: 990px) {
+    .slider-button .icon {
+        height: 1.6rem !important;
+    }
+
+    .slider-buttons-custom-desktop {
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+    }
 }
