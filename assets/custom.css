@@ -3651,8 +3651,14 @@ form .btn::hover {
     }
 
     .slider-buttons-custom-desktop {
-        display: flex !important;
+        display: flex;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media screen and (max-width: 989px) {
+    .slider-buttons-custom-desktop {
+        display: none !important;
     }
 }
