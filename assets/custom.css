@@ -3644,3 +3644,8 @@ form .btn::hover {
 .footer-block__details-content > p {
     font-size: 16px;
 }
+
+/* Variant media filtering */
+.variant-media-hidden {
+    display: none;
+}

@@ -300,10 +300,23 @@ function throttle(fn, delay) {
 }
 
 function filterMediaByVariant(container, productInfo) {
-  if (!container || !productInfo) return;
+  console.log('🔍 filterMediaByVariant called', {
+    container: container?.tagName,
+    productInfo: productInfo?.tagName,
+  });
+
+  if (!container || !productInfo) {
+    console.log('❌ Early return: missing container or productInfo');
+    return;
+  }
 
   const currentVariant = productInfo.getSelectedVariant?.(productInfo);
-  if (!currentVariant) return;
+  console.log('📦 Current variant:', currentVariant?.title || 'No variant');
+
+  if (!currentVariant) {
+    console.log('❌ Early return: no current variant');
+    return;
+  }
 
   // Get all variant option values for the current variant
   const variantOptions = [];
@@ -313,15 +326,24 @@ function filterMediaByVariant(container, productInfo) {
     const selectedOptions = variantSelector.querySelectorAll(
       'input:checked, select option:checked, button[aria-pressed="true"]'
     );
+    console.log('✅ Selected options found:', selectedOptions.length);
 
     selectedOptions.forEach((selectedOption) => {
       const optionValue = selectedOption.value || selectedOption.textContent.trim();
       variantOptions.push(optionValue);
+      console.log('➕ Added variant option:', optionValue);
     });
+  } else {
+    console.log('❌ No variant selector found');
   }
 
+  console.log('📋 All variant options:', variantOptions);
+
   // If no variant options found, don't filter
-  if (variantOptions.length === 0) return;
+  if (variantOptions.length === 0) {
+    console.log('❌ Early return: no variant options found');
+    return;
+  }
 
   // Define delimiters that can be used to mark variant names in alt text
   const delimiters = ['|', '*', ':', ';', '~'];
@@ -329,12 +351,14 @@ function filterMediaByVariant(container, productInfo) {
   // Find which delimiter is being used (if any)
   let usedDelimiter = null;
   const mediaItems = container.querySelectorAll('img[alt]');
+  console.log('🖼️ Media items with alt text found:', mediaItems.length);
 
   for (const item of mediaItems) {
     const altText = item.alt;
     for (const delimiter of delimiters) {
       if (altText.includes(delimiter)) {
         usedDelimiter = delimiter;
+        console.log('🎯 Found delimiter:', delimiter, 'in alt text:', altText);
         break;
       }
     }
@@ -342,17 +366,36 @@ function filterMediaByVariant(container, productInfo) {
   }
 
   // If no delimiter found, don't filter
-  if (!usedDelimiter) return;
+  if (!usedDelimiter) {
+    console.log('❌ Early return: no delimiter found in any alt text');
+    return;
+  }
+
+  console.log('✅ Using delimiter:', usedDelimiter);
 
   // Filter media items based on variant names in alt text
   const mediaContainers = container.querySelectorAll('li[data-media-id]');
+  console.log('📦 Media containers found:', mediaContainers.length);
 
-  mediaContainers.forEach((mediaContainer) => {
+  // Debug: Log all container IDs to see what we're processing
+  console.log('🔍 Container IDs being processed:');
+  mediaContainers.forEach((container, index) => {
+    console.log(`  ${index}: ${container.id}`);
+  });
+
+  let hiddenCount = 0;
+  let visibleCount = 0;
+
+  mediaContainers.forEach((mediaContainer, index) => {
     const img = mediaContainer.querySelector('img');
-    if (!img || !img.alt) return;
+    if (!img || !img.alt) {
+      console.log(`📦 Container ${index}: No img or alt text`);
+      return;
+    }
 
     const altText = img.alt;
     const variantNamesInAlt = altText.split(usedDelimiter).map((part) => part.trim());
+    console.log(`📦 Container ${index}: Alt text "${altText}" -> Variant names:`, variantNamesInAlt);
 
     // Check if any of the current variant options match the variant names in alt text
     const shouldShow = variantNamesInAlt.some((variantName) =>
@@ -362,22 +405,57 @@ function filterMediaByVariant(container, productInfo) {
     // If no variant names found in alt text, show the media (fallback behavior)
     const hasVariantNames = variantNamesInAlt.some((name) => name.length > 0);
 
+    console.log(`📦 Container ${index}: shouldShow=${shouldShow}, hasVariantNames=${hasVariantNames}`);
+
     if (hasVariantNames && !shouldShow) {
-      mediaContainer.style.display = 'none';
+      // Add a class to hide the element
+      mediaContainer.classList.add('variant-media-hidden');
       // Also hide any images within the container
       const images = mediaContainer.querySelectorAll('img');
       images.forEach((img) => {
-        img.style.display = 'none';
+        img.classList.add('variant-media-hidden');
       });
+      hiddenCount++;
+      console.log(
+        `📦 Container ${index}: HIDDEN - display: ${mediaContainer.style.display}, computed: ${
+          window.getComputedStyle(mediaContainer).display
+        }`
+      );
     } else {
-      mediaContainer.style.display = '';
+      // Remove the hide class to show
+      mediaContainer.classList.remove('variant-media-hidden');
       // Show images within the container
       const images = mediaContainer.querySelectorAll('img');
       images.forEach((img) => {
-        img.style.display = '';
+        img.classList.remove('variant-media-hidden');
       });
+      visibleCount++;
+      console.log(
+        `📦 Container ${index}: VISIBLE - display: ${mediaContainer.style.display}, computed: ${
+          window.getComputedStyle(mediaContainer).display
+        }`
+      );
     }
   });
+
+  console.log(`✅ filterMediaByVariant completed - Hidden: ${hiddenCount}, Visible: ${visibleCount}`);
+
+  // Check if any hidden elements are still visible due to CSS
+  const hiddenElements = container.querySelectorAll('li[data-media-id].variant-media-hidden');
+  console.log('🔍 Hidden elements found:', hiddenElements.length);
+  hiddenElements.forEach((el, index) => {
+    const computedStyle = window.getComputedStyle(el);
+    console.log(`🔍 Hidden element ${index}: computed display = ${computedStyle.display}`);
+    console.log(`🔍 Hidden element ${index}: has class = ${el.classList.contains('variant-media-hidden')}`);
+  });
+
+  // Debug: Check if CSS is loaded
+  const testElement = document.createElement('div');
+  testElement.className = 'variant-media-hidden';
+  document.body.appendChild(testElement);
+  const testComputedStyle = window.getComputedStyle(testElement);
+  console.log('🔍 CSS test: variant-media-hidden computed display =', testComputedStyle.display);
+  document.body.removeChild(testElement);
 }
 
 function fetchConfig(type = 'json') {

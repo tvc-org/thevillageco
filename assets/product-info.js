@@ -263,9 +263,6 @@ if (!customElements.get('product-info')) {
           return [mediaGallerySourceItems, sourceSet, sourceMap];
         };
 
-        // Filter media based on variant names in alt text
-        filterMediaByVariant(mediaGalleryDestination, this);
-
         if (mediaGallerySource && mediaGalleryDestination) {
           let [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
           const mediaGalleryDestinationItems = Array.from(
@@ -315,13 +312,20 @@ if (!customElements.get('product-info')) {
           true
         );
 
+        // Filter media based on variant names in alt text AFTER all DOM manipulation
+        setTimeout(() => {
+          filterMediaByVariant(mediaGallerySource, this);
+        }, 50);
+
         // update media modal
         const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);
         const newModalContent = html.querySelector(`product-modal .product-media-modal__content`);
         if (modalContent && newModalContent) {
-          // Filter modal content as well
-          filterMediaByVariant(newModalContent, this);
           modalContent.innerHTML = newModalContent.innerHTML;
+          // Filter modal content as well AFTER DOM update
+          setTimeout(() => {
+            filterMediaByVariant(modalContent, this);
+          }, 50);
         }
       }
 
