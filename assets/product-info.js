@@ -27,6 +27,14 @@ if (!customElements.get('product-info')) {
 
         this.initQuantityHandlers();
         this.dispatchEvent(new CustomEvent('product-info:loaded', { bubbles: true }));
+
+        // Trigger media filtering after product info is loaded
+        setTimeout(() => {
+          const mediaGallery = this.querySelector('media-gallery');
+          if (mediaGallery && mediaGallery.filterByVariant) {
+            mediaGallery.filterByVariant();
+          }
+        }, 50);
       }
 
       addPreProcessCallback(callback) {
@@ -255,6 +263,9 @@ if (!customElements.get('product-info')) {
           return [mediaGallerySourceItems, sourceSet, sourceMap];
         };
 
+        // Filter media based on variant names in alt text
+        filterMediaByVariant(mediaGalleryDestination, this);
+
         if (mediaGallerySource && mediaGalleryDestination) {
           let [mediaGallerySourceItems, sourceSet, sourceMap] = refreshSourceData();
           const mediaGalleryDestinationItems = Array.from(
@@ -307,7 +318,11 @@ if (!customElements.get('product-info')) {
         // update media modal
         const modalContent = this.productModal?.querySelector(`.product-media-modal__content`);
         const newModalContent = html.querySelector(`product-modal .product-media-modal__content`);
-        if (modalContent && newModalContent) modalContent.innerHTML = newModalContent.innerHTML;
+        if (modalContent && newModalContent) {
+          // Filter modal content as well
+          filterMediaByVariant(newModalContent, this);
+          modalContent.innerHTML = newModalContent.innerHTML;
+        }
       }
 
       setQuantityBoundries() {

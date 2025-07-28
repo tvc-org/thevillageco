@@ -295,8 +295,89 @@ function throttle(fn, delay) {
       return;
     }
     lastCall = now;
-    return fn(...args);
+    return fn.apply(this, args);
   };
+}
+
+function filterMediaByVariant(container, productInfo) {
+  if (!container || !productInfo) return;
+
+  const currentVariant = productInfo.getSelectedVariant?.(productInfo);
+  if (!currentVariant) return;
+
+  // Get all variant option values for the current variant
+  const variantOptions = [];
+  const variantSelector = productInfo.variantSelectors;
+
+  if (variantSelector) {
+    const selectedOptions = variantSelector.querySelectorAll(
+      'input:checked, select option:checked, button[aria-pressed="true"]'
+    );
+
+    selectedOptions.forEach((selectedOption) => {
+      const optionValue = selectedOption.value || selectedOption.textContent.trim();
+      variantOptions.push(optionValue);
+    });
+  }
+
+  // If no variant options found, don't filter
+  if (variantOptions.length === 0) return;
+
+  // Define delimiters that can be used to mark variant names in alt text
+  const delimiters = ['|', '*', ':', ';', '~'];
+
+  // Find which delimiter is being used (if any)
+  let usedDelimiter = null;
+  const mediaItems = container.querySelectorAll('img[alt]');
+
+  for (const item of mediaItems) {
+    const altText = item.alt;
+    for (const delimiter of delimiters) {
+      if (altText.includes(delimiter)) {
+        usedDelimiter = delimiter;
+        break;
+      }
+    }
+    if (usedDelimiter) break;
+  }
+
+  // If no delimiter found, don't filter
+  if (!usedDelimiter) return;
+
+  // Filter media items based on variant names in alt text
+  const mediaContainers = container.querySelectorAll('li[data-media-id]');
+
+  mediaContainers.forEach((mediaContainer) => {
+    const img = mediaContainer.querySelector('img');
+    if (!img || !img.alt) return;
+
+    const altText = img.alt;
+    const variantNamesInAlt = altText.split(usedDelimiter).map((part) => part.trim());
+
+    // Check if any of the current variant options match the variant names in alt text
+    const shouldShow = variantNamesInAlt.some((variantName) =>
+      variantOptions.some((option) => option.toLowerCase() === variantName.toLowerCase())
+    );
+
+    // If no variant names found in alt text, show the media (fallback behavior)
+    const hasVariantNames = variantNamesInAlt.some((name) => name.length > 0);
+
+    if (hasVariantNames && !shouldShow) {
+      mediaContainer.style.display = 'none';
+      // Also hide any images within the container
+      const images = mediaContainer.querySelectorAll('img');
+      images.forEach((img) => {
+        img.style.display = 'none';
+      });
+    } else {
+      mediaContainer.style.display = '';
+      // Show images within the container
+      const images = mediaContainer.querySelectorAll('img');
+      images.forEach((img) => {
+        img.style.display = '';
+      });
+    }
+  });
 }
 
 function fetchConfig(type = 'json') {

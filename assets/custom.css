@@ -3644,21 +3644,3 @@ form .btn::hover {
 .footer-block__details-content > p {
     font-size: 16px;
 }
-
-@media screen and (min-width: 990px) {
-    .slider-button .icon {
-        height: 1.6rem !important;
-    }
-
-    .slider-buttons-custom-desktop {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-
-@media screen and (max-width: 989px) {
-    .slider-buttons-custom-desktop {
-        display: none !important;
-    }
-}
