@@ -1,0 +1,75 @@
+{%- if review_widget == 'badge' -%}
+  <div class="product-core-block block-review-rate">
+    {%- if settings.review_type == 'shopify' -%}
+      <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+      {% comment %} {%- elsif settings.review_type == 'yotpo' -%} {% endcomment %}
+    {%- else -%}
+      {% comment %}
+        <!-- <div class="yotpo bottomLine"
+            data-appkey="6XvueLXr9yDDOTtON5d20zKXvD3JXfJSkWMn9DRu"
+            data-domain="{{shop.permanent_domain | escape }}"
+            data-product-id="{{ product.id }}"
+            data-product-models="{{ product.id }}"
+            data-name="{{ product.title | escape }}"
+            data-url="{{ shop.url }}{{ product.url }}"
+            data-image-url="{{ product.featured_image | product_img_url: 'large' |replace: '?', '%3F' | replace: '&','%26'}}"
+            data-description="{{ product.description | escape }}"
+            data-bread-crumbs="{% for tag in product.tags %}{{ tag | escape }};{% endfor %}">
+        </div> -->
+      {% endcomment %}
+
+      {% if request.host == 'thevillagecompany-dev.myshopify.com' or request.host == 'dev.myshopify.com' %}
+        {% assign instance_id = '412596' %}
+      {% else %}
+        {% assign instance_id = '449922' %}
+      {% endif %}
+
+      <div
+        class="yotpo-widget-instance"
+        data-yotpo-instance-id="{{ instance_id }}"
+        data-yotpo-product-id="{{product.id}}"
+        data-yotpo-cart-product-id="{{item.product.id}}"
+        data-yotpo-section-id="{{template.name}}"
+      ></div>
+    {%- endif -%}
+  </div>
+{%- elsif review_widget == 'reviews' -%}
+  <div class="review-container">
+    {%- if settings.review_type == 'shopify' -%}
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+    {%- elsif settings.review_type == 'yotpo' -%}
+      {% assign yp_product_image = product.featured_image
+        | product_img_url: 'large'
+        | replace: '?', '%3F'
+        | replace: '&', '%26'
+      %}
+      {% comment %}
+        <!-- <div id="yotpo-product-reviews" class="yotpo yotpo-main-widget"
+            data-product-id="{{ product.id }}"
+            data-name="{{ product.title | escape }}"
+            data-url="{{ shop.url }}{{ product.url }}"
+            data-image-url="{{ yp_product_image }}"
+            data-description="{{ product.description | escape }}">
+        </div> -->
+      {% endcomment %}
+
+      {% if request.host == 'thevillagecompany-dev.myshopify.com' or request.host == 'dev.myshopify.com' %}
+        {% assign instance_id = '408238' %}
+      {% else %}
+        {% assign instance_id = '442314' %}
+      {% endif %}
+
+      <div
+        class="yotpo-widget-instance"
+        data-yotpo-instance-id="{{ instance_id }}"
+        data-yotpo-product-id="{{product.id}}"
+        data-yotpo-name="{{ product.title | escape }}"
+        data-yotpo-url="{{ shop.url }}{{ product.url }}"
+        data-yotpo-image-url="{{ product.featured_image | product_img_url: "large" | prepend: "https:" | replace: '?', '%3F' | replace: '&','%26'}}"
+        data-yotpo-price="{{ product.price | money_without_currency }}"
+        data-yotpo-currency="{{ shop.currency }}"
+        data-yotpo-description="{{ product.description | escape }}"
+      ></div>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -3,9 +3,9 @@ class Accordion {
     // Store the <details> element
     this.el = el;
     // Store the <summary> element
-    this.summary = el.querySelector('summary');
+    this.summary = el.querySelector('.accordion__summary');
     // Store the <div class="content"> element
-    this.content = el.querySelector('.content');
+    this.content = el.querySelector('.accordion__content');
 
     // Store the animation object (so we can cancel it if needed)
     this.animation = null;
@@ -117,6 +117,6 @@ class Accordion {
   }
 }
 
-document.querySelectorAll('details').forEach((el) => {
+document.querySelectorAll('.product__accordion details').forEach((el) => {
   new Accordion(el);
 });
