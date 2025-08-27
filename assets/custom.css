@@ -3582,12 +3582,12 @@ form .btn::hover {
 
 /* Main section overrides */
 
-#MainContent p {
+#MainContent p, .rte ul, .rte ol {
     font-size: 19px;
 }
 
 @media screen and (min-width: 1025px) {
-    #MainContent p {
+    #MainContent p, .rte ul, .rte ol {
         font-size: 21px;
     }
 }
