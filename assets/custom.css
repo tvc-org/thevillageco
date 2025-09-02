@@ -3631,10 +3631,6 @@ form .btn::hover {
     transform: rotate(180deg);
 }
 
-/* Footer */
-
-.footer-block__details-content .list-menu__item--link,
-
 /* Fix bullet point wrapping in RTE content */
 .rte ul,
 .rte ol {
@@ -3648,4 +3644,12 @@ form .btn::hover {
 /* Variant media filtering */
 .variant-media-hidden {
     display: none;
+}
+
+.banner--screen-height {
+    height: 100vh;
+}
+
+.shopify-section:first-child .banner--screen-height {
+    height: calc(100vh - var(--header-height));
 }
