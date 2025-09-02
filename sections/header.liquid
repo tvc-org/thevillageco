@@ -321,6 +321,7 @@
 
     connectedCallback() {
       this.header = document.querySelector('.section-header');
+      this.announcementBar = document.querySelector('.announcement-bar');
       this.headerIsAlwaysSticky =
         this.getAttribute('data-sticky-type') === 'always' ||
         this.getAttribute('data-sticky-type') === 'reduce-logo-size';
@@ -328,7 +329,7 @@
 
       this.setHeaderHeight();
 
-      window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
+      window.matchMedia('(max-width: 1024px)').addEventListener('change', this.setHeaderHeight.bind(this));
 
       if (this.headerIsAlwaysSticky) {
         this.header.classList.add('shopify-section-header-sticky');
@@ -348,8 +349,17 @@
     }
 
     setHeaderHeight() {
-      // document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
-      document.documentElement.style.setProperty('--header-height', `123px`);
+      console.log('setHeaderHeight', this.header.offsetHeight);
+      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+      if (this.announcementBar) {
+        document.documentElement.style.setProperty(
+          '--header-height-full',
+          `${this.announcementBar.offsetHeight + this.header.offsetHeight}px`
+        );
+      } else {
+        document.documentElement.style.setProperty('--header-height-full', `${this.header.offsetHeight}px`);
+      }
+      //document.documentElement.style.setProperty('--header-height', `123px`);
     }
 
     disconnectedCallback() {

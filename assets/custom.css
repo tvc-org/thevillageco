@@ -3651,5 +3651,5 @@ form .btn::hover {
 }
 
 .shopify-section:first-child .banner--screen-height {
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh - var(--header-height-full));
 }
