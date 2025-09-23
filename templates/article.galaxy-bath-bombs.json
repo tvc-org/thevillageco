@@ -8,15 +8,14 @@
  * ------------------------------------------------------------
  */
 {
-    "layout": "theme",
-    "sections": {
-      "main": {
-        "type": "article-header",
-        "settings": {
-        }
-      }
-    },
-    "order": [
-      "main"
-    ]
-  }
+  "layout": "theme",
+  "sections": {
+    "main": {
+      "type": "article-header",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
