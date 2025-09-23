@@ -12,10 +12,275 @@
   "sections": {
     "main": {
       "type": "article-header",
+      "settings": {
+        "header_layout": "small-title-above",
+        "video_bg": "shopify://files/videos/MrBubbleGalaxy_header.mp4"
+      }
+    },
+    "article_copy_section_mWHDDX": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<p>Bath time just got a cosmic upgrade<a href=\"https://thevillagecompany.com/collections/mr-bubble-kids-bath-bombs/products/galaxy-bath-bombs\">! Mr. Bubble's Galaxy Bath Bombs</a> transform your tub into a space-themed adventure where kids can explore the planets while enjoying fizzy, colorful fun. These planet bath bombs aren't just about relaxation. They make learning exciting by engaging kids in STEAM (Science, Technology, Engineering, Arts, and Math) concepts in a way they'll love. Plus, you can continue learning and having fun with other <a href=\"https://thevillagecompany.com/collections/mr-bubble-sensory-stem\">Mr. Bubble STEAM bath sensory products</a>, designed to make every bath an interactive experience.</p><p>If you're looking for a way to spark curiosity about space and encourage bath time learning, Mr. Bubble's Galaxy Bath Bombs are the perfect product for your little explorer!</p>",
+        "html_content": ""
+      }
+    },
+    "article_banner_section_Vz98ga": {
+      "type": "article-banner-section",
+      "name": "Article Banner Section",
+      "settings": {
+        "image": "shopify://shop_images/Mr-Bubble-bath-bombs-bar.jpg",
+        "full_width": true,
+        "bottom_margin": "",
+        "top_margin": ""
+      }
+    },
+    "article_copy_section_pr4nUm": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Blast Off: Turning Bath Time into a Cosmic Adventure </h2><p>With Mr. Bubble’s Galaxy Bath Bombs, kids can dive into the solar system right from the tub! Each bath bomb represents one of the eight planets, bringing science to life with:</p><ul><li><strong>Fizzing Fun</strong> – Watch the planets bubble and dissolve into a swirl of vibrant colors.</li><li><strong>Signature Bubblegum Scent</strong> – A delightful fragrance that makes the experience even sweeter!</li><li><strong>Planetary Facts</strong> – As each bath bomb dissolves, kids learn fun space facts that make bath time relaxing and educational.</li></ul><p>Whether they’re splashing around on Earth, fizzing through the rings of Saturn, or floating with Neptune, every bath is a new space mission!</p><p><strong>Ready for liftoff? Shop now and bring the solar system to your tub!</strong></p>",
+        "html_content": ""
+      }
+    },
+    "article_copy_section_jPPELf": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2> Meet the Planets: A Journey Through the Solar System </h2><p>Each planet bath bomb represents an actual celestial body, bringing space exploration to life in a fun and simple way:</p>",
+        "html_content": ""
+      }
+    },
+    "article_related_products_4fpmYd": {
+      "type": "article-related-products",
+      "name": "Article Related Products",
+      "settings": {
+        "related_products": [
+          "galaxy-bath-bombs"
+        ],
+        "horizontal_layout": false
+      }
+    },
+    "article_visual_callouts_JtmPxt": {
+      "type": "article-visual-callouts",
+      "blocks": {
+        "callout_8iQLYH": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/MERCURY Mr Bubble Bath Bomb2.mp4",
+            "title": "Mercury",
+            "content": "<p>The smallest and fastest planet, racing around the Sun in just 88 days.<br/><br/><strong>Fun Fact: </strong>Imagine having a birthday every three months—Mercury orbits the Sun that fast!</p>"
+          }
+        },
+        "callout_zPTMw4": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/VENUS Mr Bubble Bath Bomb.mp4",
+            "title": "Venus",
+            "content": "<p>The hottest planet and Earth’s “sister” in size.<br/><br/><strong>Fun Fact:</strong> Venus spins backward, so the Sun rises in the west and sets in the east!</p>"
+          }
+        },
+        "callout_W3yqHk": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/EARTH Mr Bubble Bath Bomb.mp4",
+            "title": "Earth",
+            "content": "<p>The only planet known to support life (and bath bombs).<br/><br/><strong>Fun Fact:</strong> Earth gives us pizza, puppies, and playgrounds—pretty awesome, right?</p>"
+          }
+        },
+        "callout_9dXtWP": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/Mr Bubble Mars Bath Bomb.mp4",
+            "title": "Mars",
+            "content": "<p>A dusty, red world home to the tallest volcano in the solar system.<br/><br/><strong>Fun Fact:</strong> Mars is covered in rusty dust, making it look like a giant sandbox!</p>"
+          }
+        },
+        "callout_iQKb6J": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/JUPITER Mr Bubble Bath Bomb.mp4",
+            "title": "Jupiter",
+            "content": "<p>The largest planet, famous for its Great Red Spot—a storm raging for 300+ years!<br/><br/><strong>Fun Fact:</strong> More than 1,000 Earths could fit inside Jupiter—talk about jumbo-sized!</p>"
+          }
+        },
+        "callout_tjXVWU": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/SATURN Mr Bubble Bath Bomb.mp4",
+            "title": "Saturn",
+            "content": "<p>A stunning planet with icy rings stretching thousands of miles.<br/><br/><strong>Fun Fact:</strong> If you had a spaceship, you could fly right between Saturn’s rings!</p>"
+          }
+        },
+        "callout_AhrDCH": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/URANUS Mr Bubble Bath Bomb.mp4",
+            "title": "Uranus",
+            "content": "<p>The only planet that spins on its side.<br/><br/><strong>Fun Fact:</strong> Uranus rolls around the Sun like a giant tilted ball!</p>"
+          }
+        },
+        "callout_hEPPLB": {
+          "type": "callout",
+          "settings": {
+            "video": "shopify://files/videos/NEPTUNE Mr Bubble Bath Bomb.mp4",
+            "title": "Neptune",
+            "content": "<p>A deep blue planet with the fastest winds in the solar system.<br/><br/><strong>Fun Fact:</strong> A year on Neptune lasts 165 Earth years—imagine waiting that long for your next birthday!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "callout_8iQLYH",
+        "callout_zPTMw4",
+        "callout_W3yqHk",
+        "callout_9dXtWP",
+        "callout_iQKb6J",
+        "callout_tjXVWU",
+        "callout_AhrDCH",
+        "callout_hEPPLB"
+      ],
+      "name": "Article Visual Callouts",
       "settings": {}
+    },
+    "article_copy_section_wANUNJ": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>STEAM-Powered Bath Time Fun!</h2><p><br/>Turn bath time into a world of discovery with these hands-on, STEAM-inspired products! From fizzy reactions to colorful creations, these picks make learning fun while kids splash and play. Check out our favorites:</p>",
+        "html_content": ""
+      }
+    },
+    "article_related_products_JkUpxL": {
+      "type": "article-related-products",
+      "name": "Article Related Products",
+      "settings": {
+        "related_products": [
+          "mr-bubble-scientific-terrific-bath-potion",
+          "mr-bubble-bath-time-fun-play-pack",
+          "mr-bubble-fizzy-tub-colors"
+        ],
+        "horizontal_layout": true
+      }
+    },
+    "article_carousel_section_zbPFDV": {
+      "type": "article-carousel-section",
+      "blocks": {
+        "slide_Cyk6Tg": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/MrBubbleScience1.jpg",
+            "caption": ""
+          }
+        },
+        "slide_UAUn4d": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/MrBubbleScience2.jpg",
+            "caption": ""
+          }
+        },
+        "slide_zewAwg": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/MrBubbleScience3.jpg",
+            "caption": ""
+          }
+        },
+        "slide_RBiHC6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/MrBubbleScience4.jpg",
+            "caption": ""
+          }
+        },
+        "slide_MVYQkN": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/MrBubbleScience5.jpg",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Cyk6Tg",
+        "slide_UAUn4d",
+        "slide_zewAwg",
+        "slide_RBiHC6",
+        "slide_MVYQkN"
+      ],
+      "name": "Article Carousel Section",
+      "settings": {}
+    },
+    "article_copy_section_GHbqm3": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Beyond the Bath: Encouraging STEAM Learning Through Space Exploration</h2><p>Bath time may be over, but the learning doesn't have to stop! Here are some easy, budget-friendly ways to keep exploring space at home:</p><h3>Building Curiosity & Critical Thinking</h3><ul><li><strong>Encourage questions:</strong> Learning about planets fuels scientific curiosity, getting kids to ask \"why\" and \"how.\"</li><li><strong>Problem-solving skills:</strong> Space exploration teaches kids how astronauts overcome challenges in space!</li></ul><h3>Sensory Learning & Creativity</h3><ul><li><strong>Hands-on learning:</strong> The fizzing, colors, and scents of the bath bombs help kids absorb new information in a fun way.</li><li><strong>Imaginative play:</strong> Encourage kids to pretend they're astronauts on a mission to discover new planets!</li></ul><h3>Fun & Budget-Friendly Ways to Explore Space at Home</h3><h4>Space-Themed Storytime</h4><p>Reading books about space fuels imagination and expands knowledge. Some great options include:</p><ul><li>There's No Place Like Space (Dr. Seuss' Learning Library)</li><li>National Geographic Little Kids First Big Book of Space</li><li>Mae Among the Stars (Inspired by astronaut Mae Jemison)</li></ul><p><strong>Pro Tip</strong>: Check your local library or use free audiobook apps like Libby!</p><h4>Stargazing Nights</h4><ul><li>No telescope? No problem! Just step outside and look up!</li></ul><p><strong>Best tips for spotting planets & constellations:</strong></p><ul><li>Find a dark spot away from city lights.</li><li>Use a free stargazing app (SkyView, Star Walk) to identify stars & planets.</li><li>Spot easy constellations like Orion's Belt and the Big Dipper.</li></ul><p><strong>Bonus Activity:</strong> Have kids draw and compare what they see to real space images!</p><h4>Watch a Space Adventure</h4><p>Lean into family movie night! Some fun and educational options include:</p><ul><li>The Magic School Bus: Lost in the Solar System</li><li>Ask the StoryBots: How Do Planets Form? (Netflix, Season 3, Episode 2)</li><li>NASA's YouTube Channel (Real space footage & fun facts)</li></ul><p>No streaming service? NASA offers <a href=\"https://plus.nasa.gov/playlist/nasa-chill/\">free space videos</a> online for junior explorers!</p>",
+        "html_content": ""
+      }
+    },
+    "article_banner_section_7GbgRh": {
+      "type": "article-banner-section",
+      "name": "Article Banner Section",
+      "settings": {
+        "image": "shopify://shop_images/MRB-Galaxy-Bath-Bombs-dissolving.jpg",
+        "full_width": false,
+        "bottom_margin": "",
+        "top_margin": ""
+      }
+    },
+    "article_copy_section_c9CGTB": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Unlock the Magic of Learning: Explore Space with Mr. Bubble</h2><p>Parents and caregivers can spark a love for discovery by making learning fun, interactive, and engaging. Exploring space through sensory experiences boosts curiosity and strengthens critical thinking and problem-solving skills. With <a href=\"https://thevillagecompany.com/collections/mr-bubble-kids-bath-bombs/products/galaxy-bath-bombs\">Mr. Bubble’s Galaxy Bath Bombs</a>, kids can embark on an out-of-this-world adventure, bringing the excitement of STEAM learning into the tub.</p><p>Make bath time a blast-off moment for creativity, imagination, and discovery because learning should always be as fun as it is educational! </p>",
+        "html_content": ""
+      }
+    },
+    "article_copy_section_XhD7Bt": {
+      "type": "article-copy-section",
+      "name": "Article Copy Section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>FAQ: Galaxy Bath Bombs and Space Learning</h2><h3>What makes Mr. Bubble Galaxy Bath Bombs educational?</h3><p>These space-themed bath bombs introduce kids to the planets in our solar system. They engage their senses with color, scent, and fizz while teaching fun facts. It’s a perfect STEAM learning experience.</p><h3>Are Mr. Bubble Galaxy Bath Bombs safe for kids?</h3><p>Yes! They are made for kids and contain skin-friendly, non-toxic ingredients. As with any bath product, adult supervision is recommended.</p><h3>How do sensory experiences help kids learn?</h3><p>Sensory play engages multiple senses: sight, touch, and smell. Helping kids retain information better. The fizzing bath bombs, vibrant colors, and planetary facts make bath time a hands-on learning experience.</p><h3>What age group are Mr. Bubble Galaxy Bath Bombs best for?</h3><p>These bath bombs are ideal for kids aged 6-12. They combine fun with space-themed education, making bath time exciting while interactively introducing real planetary science.</p><h2>Keep Learning Going: Explore More About Space<strong> </strong></h2><p>Exploring the wonders of our solar system through sensory learning is an exciting way to introduce kids to space science. If you're interested in learning more about the planets, space exploration, and STEAM education, check out these reputable sources:</p><ul><li><strong>NASA – Solar System Exploration</strong> (<a href=\"https://solarsystem.nasa.gov\">solarsystem.nasa.gov</a>) – Explore in-depth information about each planet, space missions, and educational activities.</li><li><strong>National Geographic Kids – Space</strong> (<a href=\"https://kids.nationalgeographic.com\">kids.nationalgeographic.com</a>) – Fun facts, videos, and articles designed to make learning about space fun for kids.</li><li><strong>American Academy of Pediatrics – Sensory Play Benefits</strong> (<a href=\"https://www.healthychildren.org\">healthychildren.org</a>) – Learn how engaging multiple senses during play enhances cognitive development.</li><li><strong>Sky & Telescope – Beginner’s Stargazing Guide</strong> (<a href=\"https://skyandtelescope.org\">skyandtelescope.org</a>) – Tips on identifying planets and constellations in the night sky.</li></ul><p>These resources can help extend the learning experience beyond bath time, inspiring curiosity and discovery in young space explorers.</p>",
+        "html_content": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "article_copy_section_mWHDDX",
+    "article_banner_section_Vz98ga",
+    "article_copy_section_pr4nUm",
+    "article_copy_section_jPPELf",
+    "article_related_products_4fpmYd",
+    "article_visual_callouts_JtmPxt",
+    "article_copy_section_wANUNJ",
+    "article_related_products_JkUpxL",
+    "article_carousel_section_zbPFDV",
+    "article_copy_section_GHbqm3",
+    "article_banner_section_7GbgRh",
+    "article_copy_section_c9CGTB",
+    "article_copy_section_XhD7Bt"
   ]
 }
