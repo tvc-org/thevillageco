@@ -12,8 +12,7 @@
     "sections": {
       "main": {
         "type": "article-header",
-        "settings": {
-        }
+        "settings": {}
       }
     },
     "order": [
