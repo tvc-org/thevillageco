@@ -1,164 +1,166 @@
 {% schema %}
 {
-    "name": "Article Header",
-	"settings": [
-		{
-		  "type": "select",
-		  "id": "header_layout",
-		  "label": "Header Layout",
-		  "options": [
-		    {
-		      "value": "small-title-above",
-		      "label": "Small Title Above"
-		    },
-		    {
-		      "value": "small-title-below",
-		      "label": "Small Title Below"
-		    },
-		    {
-		      "value": "medium-title-inside",
-		      "label": "Medium Title Inside"
-		    },
-		    {
-		      "value": "medium-title-above",
-		      "label": "Medium Title Above"
-		    },
-		    {
-		      "value": "medium-title-below",
-		      "label": "Medium Title Below"
-		    },
-		    {
-		      "value": "large-full-width",
-		      "label": "Large Full Width"
-		    },
-		    {
-		      "value": "side-by-side-title-left",
-		      "label": "Side By Side Title Left"
-		    },
-		    {
-		      "value": "side-by-side-title-right",
-		      "label": "Side By Side Title Right"
-		    },
-		    {
-		      "value": "title-only",
-		      "label": "Title Only"
-		    }
-		  ],
-		  "default": "small-title-above",
-		  "info": "Article Featured image will be used for main header image. Header image will be cropped and scaled per selected layout."
-		},
-		{
-		  "type": "video",
-		  "id": "video_bg",
-		  "label": "Video Background",
-		  "info": "Optional video to override the header image. Needs to be a compressed mp4. 1036x495 for standard size, 1920x742 for large full width."
-		}
-	],
-	"presets": [
+  "name": "Article Header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "Header Layout",
+      "options": [
         {
-            "name": "Article Header",
-            "category": "Article",
-            "settings": {}
+          "value": "small-title-above",
+          "label": "Small Title Above"
+        },
+        {
+          "value": "small-title-below",
+          "label": "Small Title Below"
+        },
+        {
+          "value": "medium-title-inside",
+          "label": "Medium Title Inside"
+        },
+        {
+          "value": "medium-title-above",
+          "label": "Medium Title Above"
+        },
+        {
+          "value": "medium-title-below",
+          "label": "Medium Title Below"
+        },
+        {
+          "value": "large-full-width",
+          "label": "Large Full Width"
+        },
+        {
+          "value": "side-by-side-title-left",
+          "label": "Side By Side Title Left"
+        },
+        {
+          "value": "side-by-side-title-right",
+          "label": "Side By Side Title Right"
+        },
+        {
+          "value": "title-only",
+          "label": "Title Only"
         }
-    ],
-  	"enabled_on": {
-      "templates": ["article"]
+      ],
+      "default": "small-title-above",
+      "info": "Article Featured image will be used for main header image. Header image will be cropped and scaled per selected layout."
+    },
+    {
+      "type": "video",
+      "id": "video_bg",
+      "label": "Video Background",
+      "info": "Optional video to override the header image. Needs to be a compressed mp4. 1036x495 for standard size, 1920x742 for large full width."
     }
+  ],
+  "presets": [
+    {
+      "name": "Article Header",
+      "category": "Article",
+      "settings": {}
+    }
+  ],
+  "enabled_on": {
+    "templates": ["article"]
+  }
 }
 {% endschema %}
 
-
-
 {% case section.settings.header_layout %}
+  {% when 'medium-title-inside', 'medium-title-above', 'medium-title-below' %}
+    {% assign desktop_width = 1248 %}
+    {% assign desktop_height = 742 %}
+    {% assign tablet_width = 767 %}
+    {% assign tablet_height = 456 %}
+    {% assign mobile_width = 640 %}
+    {% assign mobile_height = 381 %}
 
-	{% when "medium-title-inside", "medium-title-above", "medium-title-below" %}
-	{% assign desktop_width  = 1248 %}
-	{% assign desktop_height = 742 %}
-	{% assign tablet_width   = 767 %}
-	{% assign tablet_height  = 456 %}
-	{% assign mobile_width   = 640 %}
-	{% assign mobile_height  = 381 %}
-	
-	{% when "large-full-width" %}
-	{% assign desktop_width  = 1920 %}
-	{% assign desktop_height = 742 %}
-	{% assign tablet_width   = 767 %}
-	{% assign tablet_height  = 366 %}
-	{% assign mobile_width   = 640 %}
-	{% assign mobile_height  = 306 %}
-	
-	{% when "side-by-side-title-left", "side-by-side-title-right" %}
-	{% assign desktop_width  = 768 %}
-	{% assign desktop_height = 768 %}
-	{% assign tablet_width   = 767 %}
-	{% assign tablet_height  = 767 %}
-	{% assign mobile_width   = 640 %}
-	{% assign mobile_height  = 640 %}
-	
-	{% else %}
-	{% assign desktop_width  = 1036 %}
-	{% assign desktop_height = 495 %}
-	{% assign tablet_width   = 767 %}
-	{% assign tablet_height  = 366 %}
-	{% assign mobile_width   = 640 %}
-	{% assign mobile_height  = 306 %}
-	
+  {% when 'large-full-width' %}
+    {% assign desktop_width = 1920 %}
+    {% assign desktop_height = 742 %}
+    {% assign tablet_width = 767 %}
+    {% assign tablet_height = 366 %}
+    {% assign mobile_width = 640 %}
+    {% assign mobile_height = 306 %}
+
+  {% when 'side-by-side-title-left', 'side-by-side-title-right' %}
+    {% assign desktop_width = 768 %}
+    {% assign desktop_height = 768 %}
+    {% assign tablet_width = 767 %}
+    {% assign tablet_height = 767 %}
+    {% assign mobile_width = 640 %}
+    {% assign mobile_height = 640 %}
+
+  {% else %}
+    {% assign desktop_width = 1036 %}
+    {% assign desktop_height = 495 %}
+    {% assign tablet_width = 767 %}
+    {% assign tablet_height = 366 %}
+    {% assign mobile_width = 640 %}
+    {% assign mobile_height = 306 %}
 {% endcase %}
 
-{% assign desktop_width_2x  = desktop_width | times: 2 %}
+{% assign desktop_width_2x = desktop_width | times: 2 %}
 {% assign desktop_height_2x = desktop_height | times: 2 %}
-{% assign tablet_width_2x   = tablet_width | times: 2 %}
-{% assign tablet_height_2x  = tablet_height | times: 2 %}
-{% assign mobile_width_2x   = mobile_width | times: 2 %}
-{% assign mobile_height_2x  = mobile_height | times: 2 %}
+{% assign tablet_width_2x = tablet_width | times: 2 %}
+{% assign tablet_height_2x = tablet_height | times: 2 %}
+{% assign mobile_width_2x = mobile_width | times: 2 %}
+{% assign mobile_height_2x = mobile_height | times: 2 %}
 
 <div class="article-header-container {{ section.settings.header_layout }}">
-    <header class="article-header" role="banner">
-        <div class="inner">
-	        {% if article.tags.size > 0 %}
-	          <ul class="article-tags">
-	            {% for tag in article.tags %}
-	              <li>
-	                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-	              </li>
-	            {% endfor %}
-	          </ul>
-	        {% endif %}
-	        <div class="article-date">{{ article.published_at | time_tag: format: 'month_day_year' }}</div>
-	        <h1 class="article-title">{{ article.title }}</h1>
-        </div>
-    </header>
-	{% if section.settings.video_bg and section.settings.header_layout != 'title-only' %}
-		<div class="article-image-wrapper-meta video-bg">
-			{{ section.settings.video_bg | video_tag: autoplay:true, loop:true, muted:true }}
-		</div>
-    {% elsif article.image and section.settings.header_layout != 'title-only' %}
-        <div class="article-image-wrapper-meta">
-        	<figure>
-	          <picture>
-	  		   <source
-	  		     media="(min-width: 768px)"
-	  		     srcset="
-	  		       {{ article | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
-	  		       {{ article | image_url: width: desktop_width_2x, height: desktop_height_2x, crop: 'center' }} 2x,
-	  		       ">
-	  		   <source
-	  		     media="(min-width: 640px)"
-	  		     srcset="
-	  		       {{ article | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
-	  		       {{ article | image_url: width: tablet_width_2x, height: tablet_height_2x, crop: 'center' }} 2x,
-	  		       ">
-	  		   <source
-	  		     media="(min-width: 1px)"
-	  		     srcset="
-	  		       {{ article | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
-	  		       {{ article | image_url: width: mobile_width_2x, height: mobile_height_2x, crop: 'center' }} 2x,
-	  		       ">
-	  		   <img src="{{ article | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}" alt="{{ article.image.alt }}" loading="lazy"/>
-	  		  </picture>
-	  		</figure>
-        </div>
-    {% endif %}
+  <header class="article-header" role="banner">
+    <div class="inner">
+      {% if article.tags.size > 0 %}
+        <ul class="article-tags">
+          {% for tag in article.tags %}
+            <li>
+              <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+              {%- unless forloop.last %}, {% endunless %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <div class="article-date">{{ article.published_at | date: '%B %d, %Y' }}</div>
+      <h1 class="article-title">{{ article.title }}</h1>
+    </div>
+  </header>
+  {% if section.settings.video_bg and section.settings.header_layout != 'title-only' %}
+    <div class="article-image-wrapper-meta video-bg">
+      {{ section.settings.video_bg | video_tag: autoplay: true, loop: true, muted: true }}
+    </div>
+  {% elsif article.image and section.settings.header_layout != 'title-only' %}
+    <div class="article-image-wrapper-meta">
+      <figure>
+        <picture>
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              {{ article | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
+              {{ article | image_url: width: desktop_width_2x, height: desktop_height_2x, crop: 'center' }} 2x,
+            "
+          >
+          <source
+            media="(min-width: 640px)"
+            srcset="
+              {{ article | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
+              {{ article | image_url: width: tablet_width_2x, height: tablet_height_2x, crop: 'center' }} 2x,
+            "
+          >
+          <source
+            media="(min-width: 1px)"
+            srcset="
+              {{ article | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
+              {{ article | image_url: width: mobile_width_2x, height: mobile_height_2x, crop: 'center' }} 2x,
+            "
+          >
+          <img
+            src="{{ article | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
+            alt="{{ article.image.alt }}"
+            loading="lazy"
+          >
+        </picture>
+      </figure>
+    </div>
+  {% endif %}
 </div>
-
-    
