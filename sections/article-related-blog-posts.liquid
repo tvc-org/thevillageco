@@ -1,0 +1,68 @@
+{% schema %}
+{
+    "name": "Article Related Posts",
+    "settings": [
+        {
+            "type": "text",
+            "id": "section_title",
+            "label": "Section Title",
+			"default": "Additional Reads..."
+        }
+    ],
+	"max_blocks": 3,
+    "blocks": [
+		{
+			"type": "item",
+			"name": "Item",
+			"settings": [
+		        {
+		            "type": "article",
+		            "id": "related_article",
+		            "label": "Related Article"
+		        }
+			]
+		}
+    ],
+    "presets": [
+        {
+            "name": "Article Related Posts",
+            "category": "Article",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["article"]
+    }
+}
+{% endschema %}
+
+
+<section class="related-blog-posts">
+	<h2 class="related-posts-title">{{ section.settings.section_title }}</h2>
+	<div class="related-items">  
+	    {% for block in section.blocks %}
+			{% assign article  = block.settings.related_article %}
+            <div class="item">
+			{% if article.image %}
+	  		  <a class="image" href="{{ article.url }}">
+		  		  <picture>
+		  		   <source
+		  		     media="(min-width: 1px)"
+		  		     srcset="
+		  		       {{ article | image_url: width: 402, height: 402, crop: 'center' }} 1x,
+		  		       {{ article | image_url: width: 804, height: 804, crop: 'center' }} 2x,
+		  		       ">
+		  		   <img src="{{ article | image_url: width: 402, height: 402, crop: 'center' }}" alt="{{ article.image.alt }}" loading="lazy"/>
+		  		  </picture>
+	  		  </a>
+				{% endif %}
+				<h2 class="h4 title">{{ article.title | link_to: article.url }}</h2>
+				{% if article.excerpt %}
+					{{ article.excerpt | truncate:100  }}
+				{% else %}
+					{{ article.content | truncate:100  }}
+				{% endif %}
+			</div>
+	    {% endfor %}
+	</div>
+</section>

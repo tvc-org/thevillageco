@@ -1,0 +1,70 @@
+{% schema %}
+{
+    "name": "Article Carousel Section",
+    "blocks": [
+		{
+			"type": "slide",
+			"name": "Slide",
+			"settings": [
+		        {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image"
+		        },
+		        {
+		            "type": "richtext",
+		            "id": "caption",
+		            "label": "Caption"
+		        }
+			]
+		}
+    ],
+    "presets": [
+        {
+            "name": "Article Carousel Section",
+            "category": "Article",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["article"]
+    }
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+<section class="blog-carousel-section">
+	<div class="blog-carousel" data-flickity='{ "freeScroll": true, "contain": "true" }'>
+		{% for block in section.blocks %}
+		<div class="item">
+			<div class="inner">
+				<div class="image ratio-height ratio-100">
+					<div class="ratio-inner">
+			  		  <picture>
+			  		   <source
+			  		     media="(min-width: 640px)"
+			  		     srcset="
+			  		       {{ block.settings.image | image_url: width: 614, height: 614, crop: 'center' }} 1x,
+			  		       {{ block.settings.image | image_url: width: 1228, height: 1228, crop: 'center' }} 2x,
+			  		       ">
+			  		   <source
+			  		     media="(min-width: 1px)"
+			  		     srcset="
+			  		       {{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }} 1x,
+			  		       {{ block.settings.image | image_url: width: 860, height: 860, crop: 'center' }} 2x,
+			  		       ">
+			  		   <img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+			  		  </picture>
+					</div>
+				</div>
+				{% if block.settings.caption %}
+				<div class="text">
+					{{ block.settings.caption }}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}

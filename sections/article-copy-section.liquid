@@ -1,0 +1,106 @@
+{% schema %}
+{
+    "name": "Article Copy Section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+			"info": "Upload at least 806x806 for retina. Images will be cropped and scaled."
+        },
+		{
+		    "type": "checkbox",
+		    "id": "image_align_right",
+		    "label": "Right Align Image?",
+			"info": "Defaults to left align.",
+		    "default": false
+		},
+        {
+            "type": "text",
+            "id": "image_paragraph_position",
+            "label": "Image Paragraph Position",
+			"info": "Vertical position of image based on paragraphs. Default is 0 for the top paragraph."
+        },
+        {
+            "type": "richtext",
+            "id": "image_caption",
+            "label": "Image Caption",
+			"info": "Optional caption"
+        },
+        {
+            "type": "richtext",
+            "id": "body_text",
+            "label": "Body Text"
+        },
+		{
+		  "type": "html",
+		  "id": "html_content",
+		  "label": "HTML Content",
+		  "info": "Use when the Body field just won't cut it."
+		}
+    ],
+    "blocks": [
+		{
+			"type": "icon_block",
+			"name": "Icon Text Block",
+			"settings": [
+		        {
+		            "type": "image_picker",
+		            "id": "icon_image",
+		            "label": "Icon Image",
+					"info": "SVG or transparent PNG"
+		        },
+		        {
+		            "type": "richtext",
+		            "id": "icon_text",
+		            "label": "Text"
+		        }
+			]
+		}
+    ],
+    "presets": [
+        {
+            "name": "Article Copy Section",
+            "category": "Article",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["article"]
+    }
+}
+{% endschema %}
+
+
+<section class="blog-copy-section">
+	<div class="article-container">
+		{% if section.settings.image %}
+		<figure class="inline-image {% if section.settings.image_align_right %}image-right{% else %}image-left{% endif %}" data-position="{{ section.settings.image_paragraph_position }}">
+			<picture>
+				<source
+				media="(min-width: 1px)"
+				srcset="
+				{{ section.settings.image | image_url: width: 403, height: 403, crop: 'center' }} 1x,
+				{{ section.settings.image | image_url: width: 806, height: 806, crop: 'center' }} 2x,
+				">
+				<img src="{{ section.settings.image | image_url: width: 403, height: 403, crop: 'center' }}" alt="{{ section.settings.image.alt }}" loading="lazy"/>
+			</picture>
+		  	{% if section.settings.image_caption %}
+				<figcaption class="article-image-caption">{{ section.settings.image_caption }}</figcaption>
+			{% endif %}
+		</figure>
+		{% endif %}
+		{{ section.settings.body_text }}
+		{% for block in section.blocks %}
+			<div class="graphic-text-block">
+				<div class="graphic">
+					<img src="{{ block.settings.icon_image | image_url }}" alt="{{ block.settings.icon_image.alt }}" loading="lazy"/>
+				</div>
+				<div class="text">
+					{{ block.settings.icon_text }}
+				</div>
+			</div>
+		{% endfor %}
+		{{ section.settings.html_content }}
+	</div>
+</section>

@@ -44,6 +44,12 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {%- if template.name == 'article' -%}
+      <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'theme.article-sections.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     {{ content_for_header }}
 
     {%- liquid
@@ -294,6 +300,11 @@
         media="print"
         onload="this.media='all'"
       >
+    {%- endif -%}
+
+    {%- if template.name == 'article' -%}
+      {{ 'flickity.min.css' | asset_url | stylesheet_tag }}
+      {{ 'theme.article-styles.scss.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
     <script>

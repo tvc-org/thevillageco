@@ -1,0 +1,56 @@
+{% schema %}
+{
+    "name": "Article Carousel Flexible",
+    "blocks": [
+		{
+			"type": "slide",
+			"name": "Slide",
+			"settings": [
+		        {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image"
+		        },
+		        {
+		            "type": "richtext",
+		            "id": "caption",
+		            "label": "Caption"
+		        }
+			]
+		}
+    ],
+    "presets": [
+        {
+            "name": "Article Carousel Flexible",
+            "category": "Article",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["article"]
+    }
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+<section class="blog-carousel-section single">
+	<div class="blog-carousel single" data-flickity='{ "freeScroll": true, "contain": "true" }'>
+		{% for block in section.blocks %}
+		<div class="item">
+			<div class="inner">
+				<div class="image">
+					
+					{{ block.settings.image | image_url: width: 2880 | image_tag: widths: '640, 768, 1440, 1920' }}
+		  		  
+				</div>
+				{% if block.settings.caption %}
+				<div class="text">
+					{{ block.settings.caption }}
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}

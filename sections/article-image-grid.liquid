@@ -1,0 +1,244 @@
+{% schema %}
+{
+    "name": "Article Image Grid",
+	"settings": [
+		{
+		  "type": "select",
+		  "id": "grid_layout",
+		  "label": "Grid Layout",
+		  "options": [
+		    {
+		      "value": "across-3",
+		      "label": "3 Across"
+		    },
+		    {
+		      "value": "stacked-4",
+		      "label": "4 Stacked"
+		    },
+		    {
+		      "value": "tall-right-3",
+		      "label": "3 Tall Right"
+		    },
+		    {
+		      "value": "tall-left-3",
+		      "label": "3 Tall Left"
+		    },
+		    {
+		      "value": "wide-bottom-3",
+		      "label": "3 Wide Bottom"
+		    },
+		    {
+		      "value": "wide-top-3",
+		      "label": "3 Wide Top"
+		    }
+		  ],
+		  "default": "across-3",
+		  "info": "First item will be treated as tall/wide if a tall/wide layout is selected, make sure it has appropriate sized image."
+		}
+	],
+	"max_blocks": 4,
+    "blocks": [
+		{
+			"type": "item",
+			"name": "Item",
+			"settings": [
+		        {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image",
+					"info": "Upload at least 1228x1228 for square, 1228x2496 for tall, 2496x1228 for wide. Images will be cropped and scaled."
+		        },
+		        {
+		            "type": "richtext",
+		            "id": "caption",
+		            "label": "Caption"
+		        }
+			]
+		}
+    ],
+    "presets": [
+        {
+            "name": "Article Image Grid",
+            "category": "Article",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["article"]
+    }
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+<section class="blog-image-grid-section">
+	<div class="blog-image-grid {{ section.settings.grid_layout }}">
+		
+		{% case section.settings.grid_layout %}
+		
+			{% when "across-3" %}
+			{% for block in section.blocks limit:3 %}
+				<div class="item">
+					<div class="inner">
+						<div class="image ratio-height ratio-100">
+							<div class="ratio-inner">
+								<picture>
+									<source
+									media="(min-width: 1px)"
+									srcset="
+									{{ block.settings.image | image_url: width: 614, height: 614, crop: 'center' }} 1x,
+									{{ block.settings.image | image_url: width: 1228, height: 1228, crop: 'center' }} 2x,
+									">
+									<img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+								</picture>
+							</div>
+						</div>
+						{% if block.settings.caption %}
+						<div class="text">
+							{{ block.settings.caption }}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+			
+			{% when "stacked-4" %}
+			{% for block in section.blocks limit:4 %}
+				<div class="item">
+					<div class="inner">
+						<div class="image ratio-height ratio-100">
+							<div class="ratio-inner">
+								<picture>
+									<source
+									media="(min-width: 1px)"
+									srcset="
+									{{ block.settings.image | image_url: width: 614, height: 614, crop: 'center' }} 1x,
+									{{ block.settings.image | image_url: width: 1228, height: 1228, crop: 'center' }} 2x,
+									">
+									<img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+								</picture>
+							</div>
+						</div>
+						{% if block.settings.caption %}
+						<div class="text">
+							{{ block.settings.caption }}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+			
+			{% when "tall-right-3" or "tall-left-3" %}
+			{% for block in section.blocks limit:3 %}
+		
+				{% if forloop.first %}
+				<div class="column">
+				<div class="item tall">
+					<div class="inner">
+						<div class="image ratio-height ratio-204">
+							<div class="ratio-inner">
+								<picture>
+									<source
+									media="(min-width: 1px)"
+									srcset="
+									{{ block.settings.image | image_url: width: 614, height: 1248, crop: 'center' }} 1x,
+									{{ block.settings.image | image_url: width: 1228, height: 2496, crop: 'center' }} 2x,
+									">
+									<img src="{{ block.settings.image | image_url: width: 614, height: 1248, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+								</picture>
+							</div>
+						</div>
+				{% else %}
+				{% if forloop.index0 == 1 %}
+				<div class="column column2">
+				{% endif %}
+				<div class="item">
+					<div class="inner">
+						<div class="image ratio-height ratio-100">
+							<div class="ratio-inner">
+								<picture>
+									<source
+									media="(min-width: 1px)"
+									srcset="
+									{{ block.settings.image | image_url: width: 614, height: 614, crop: 'center' }} 1x,
+									{{ block.settings.image | image_url: width: 1228, height: 1228, crop: 'center' }} 2x,
+									">
+									<img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+								</picture>
+							</div>
+						</div>
+				{% endif %}
+				
+						{% if block.settings.caption %}
+						<div class="text">
+							{{ block.settings.caption }}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				
+				{% if forloop.first or forloop.last %}
+				</div><!-- column close -->
+				{% endif %}
+		
+			{% endfor %}
+			
+			{% when "wide-bottom-3" or "wide-top-3" %}
+			{% for block in section.blocks limit:3 %}
+		
+				{% if forloop.first %}
+				<div class="column">
+				<div class="item wide">
+					<div class="inner">
+						<div class="image ratio-height ratio-49">
+							<div class="ratio-inner">
+								<picture>
+									<source
+									media="(min-width: 1px)"
+									srcset="
+									{{ block.settings.image | image_url: width: 1248, height: 614, crop: 'center' }} 1x,
+									{{ block.settings.image | image_url: width: 2496, height: 1228, crop: 'center' }} 2x,
+									">
+									<img src="{{ block.settings.image | image_url: width: 1248, height: 614, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+								</picture>
+							</div>
+						</div>
+				{% else %}
+				{% if forloop.index0 == 1 %}
+				<div class="column column2">
+				{% endif %}
+				<div class="item">
+					<div class="inner">
+						<div class="image ratio-height ratio-100">
+							<div class="ratio-inner">
+								<picture>
+									<source
+									media="(min-width: 1px)"
+									srcset="
+									{{ block.settings.image | image_url: width: 614, height: 614, crop: 'center' }} 1x,
+									{{ block.settings.image | image_url: width: 1228, height: 1228, crop: 'center' }} 2x,
+									">
+									<img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+								</picture>
+							</div>
+						</div>
+				{% endif %}
+				
+						{% if block.settings.caption %}
+						<div class="text">
+							{{ block.settings.caption }}
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				
+				{% if forloop.first or forloop.last %}
+				</div><!-- column close -->
+				{% endif %}
+		
+			{% endfor %}
+			
+		{% endcase %}
+		
+	</div>
+</section>
+{% endif %}

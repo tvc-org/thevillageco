@@ -1,0 +1,79 @@
+{% schema %}
+{
+    "name": "Article Banner Section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+		{
+		  "type": "video",
+		  "id": "video_bg",
+		  "label": "Video Background",
+		  "info": "Optional video to override the image. Needs to be a compressed mp4. Should be at least 1920px wide."
+		},
+		{
+		    "type": "checkbox",
+		    "id": "full_width",
+		    "label": "Full Width?",
+		    "default": false
+		},
+        {
+            "type": "text",
+            "id": "bottom_margin",
+            "label": "Bottom Margin",
+			"info": "optional override, just the number."
+        },
+        {
+            "type": "text",
+            "id": "top_margin",
+            "label": "Top Margin",
+			"info": "optional override, just the number."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Article Banner Section",
+            "category": "Article",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["article"]
+    }
+}
+{% endschema %}
+
+
+<section class="blog-banner-section">
+	{% if section.settings.video_bg %}
+		<div class="image{% if section.settings.full_width %} full-width{% endif %}" style="{% if section.settings.bottom_margin != blank %}margin-bottom:{{ section.settings.bottom_margin }}px;{% endif %}{% if section.settings.top_margin != blank %} margin-top:{{ section.settings.top_margin }}px;{% endif %}">
+			{{ section.settings.video_bg | video_tag: autoplay:true, loop:true, muted:true }}
+		</div>
+	{% elsif section.settings.image %}
+	  <div class="image{% if section.settings.full_width %} full-width{% endif %}" style="{% if section.settings.bottom_margin != blank %}margin-bottom:{{ section.settings.bottom_margin }}px;{% endif %}{% if section.settings.top_margin != blank %} margin-top:{{ section.settings.top_margin }}px;{% endif %}">
+			  <picture>
+			   <source
+			     media="(min-width: 768px)"
+			     srcset="
+			       {{ section.settings.image | image_url: width: 1920 }} 1x,
+			       {{ section.settings.image | image_url: width: 2496 }} 2x,
+			       ">
+			   <source
+			     media="(min-width: 640px)"
+			     srcset="
+			       {{ section.settings.image | image_url: width: 767 }} 1x,
+			       {{ section.settings.image | image_url: width: 1534 }} 2x,
+			       ">
+			   <source
+			     media="(min-width: 1px)"
+			     srcset="
+			       {{ section.settings.image | image_url: width: 640 }} 1x,
+			       {{ section.settings.image | image_url: width: 1280 }} 2x,
+			       ">
+			   <img src="{{ section.settings.image | image_url: width: 640 }}" alt="{{ section.settings.image.alt }}" loading="lazy"/>
+			  </picture>
+	  </div>
+	{% endif %}
+</section>
