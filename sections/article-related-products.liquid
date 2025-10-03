@@ -1,120 +1,67 @@
 {% schema %}
 {
-    "name": "Article Related Products",
-    "settings": [
-		{
-		  "type": "product_list",
-		  "id": "related_products",
-		  "label": "Products",
-		  "limit": 6
-		},
-		{
-		    "type": "checkbox",
-		    "id": "horizontal_layout",
-		    "label": "Horizontal Layout?",
-		    "default": false
-		},
-    ],
-    "presets": [
-        {
-            "name": "Article Related Products",
-            "category": "Article",
-            "settings": {}
-        }
-    ],
-  	"enabled_on": {
-      "templates": ["article"]
+  "name": "Article Related Products",
+  "settings": [
+    {
+      "type": "product_list",
+      "id": "related_products",
+      "label": "Products",
+      "limit": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "horizontal_layout",
+      "label": "Horizontal Layout?",
+      "default": false
     }
+  ],
+  "presets": [
+    {
+      "name": "Article Related Products",
+      "category": "Article",
+      "settings": {}
+    }
+  ],
+  "enabled_on": {
+    "templates": ["article"]
+  }
 }
 {% endschema %}
 
-
 <section class="blog-related-products-section">
-    <div class="collection-listing-wrapper">
-      <div class="collection-products items{% if section.settings.horizontal_layout %} horizontal-layout{% endif %}">
-          {% for product in section.settings.related_products %}
-			{%- unless list_image_size -%}
-			    {% assign list_image_size = '1400x' %}
-			{%- endunless -%}
-
-			{%- include 'product-core-data', product: product -%}
-
-			<div class="item product-grid-item" data-handle="{{ product.handle }}" data-id="{{ product.id }}" data-page="{{ current_page }}" data-product-index="{{ forloop.index }}" >
-			    <div class="product-image-wrapper">
-			        <a class="product-link" href="{{ product.url | within: collection }}">
-			            {%- include 'responsive-image-lazy',
-			                class: 'product-image',
-			                image: product.featured_image,
-			                imageSmall: product.featured_image,
-			                imageAlt: image.alt,
-			                size: list_image_size,
-			                sizeMedium: list_image_size,
-			                sizeSmall: list_image_size,
-			                heightFix: true,
-			            -%}
-			            {%- include 'responsive-image-lazy',
-			                class: 'product-image alt hide',
-			                image: product.images[1],
-			                imageSmall: product.images[1],
-			                imageAlt: image.alt,
-			                size: list_image_size,
-			                sizeMedium: list_image_size,
-			                sizeSmall: list_image_size,
-			                heightFix: true,
-			            -%}
-			        </a>
-        
-			        {% unless sold_out %}
-			            {%- if plp_quickshop -%}
-			            <button class="quick-shop-trigger" data-url="{{ product.url | within: collection }}">{{ 'collections.general.quick_shop' | t }}<span class="quick-shop-icon"></span></button>    
-			            {%- endif -%}
-        
-			            {%- if plp_quickbuy -%}
-			            <button class="quick-buy-trigger" data-toggle="close" >{{ 'collections.general.quick_buy' | t }}</button>
-			            <div class="quick-buy-container" >
-			                {%- include 'product-core-form' -%}
-			            </div>    
-			            {%- endif -%}
-			        {% endunless %}
-			    </div>
-			    <div class="product-info-wrapper">
-					
-			        <div>
-						{%- include 'product-badge' -%}
-        
-						{%- if isPreOrder -%}
-						<div class="product-preorder-badge">
-							<span>{{ preOrderBadge }}</span>
-						</div>
-						{%- endif -%}
-			
-						{%- if isFinalSale -%}
-						<div class="product-finalsale-badge">
-							<span>{{ finalSaleBadge }}</span>
-						</div>
-						{%- endif -%}
-						
-						<a href="{{ product.url | within: collection }}">
-							<p class="product-name">{{ product.title }}</p>
-						</a>
-			
-						{%- if sold_out and product.metafields["custom_fields"]["hide_sold_out_flag"] != true -%}
-						<p class="out-of-stock">{{ 'products.product.sold_out' | t }}</p>
-						{%- endif -%}
-			
-						{%- include 'product-compare-add', product: product -%}
-
-						{% render 'product-reviews', review_widget: 'badge', product: product %}
-						
-						<a href="{{ product.url | within: collection }}">
-							{%- include 'product-price', product: product -%}
-						</a>
-					</div>
-		
-					<a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
-			    </div>
-			</div>
-          {% endfor %}
-      </div>
-    </div>
+  <div class="page-width">
+    <ul
+      class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--4-col-desktop grid--2-col-tablet-down{% if section.settings.horizontal_layout %} grid--horizontal{% endif %}"
+      role="list"
+      aria-label="{{ 'general.slider.name' | t }}"
+    >
+      {% assign skip_card_product_styles = false %}
+      {%- for product in section.settings.related_products -%}
+        {% assign lazy_load = false %}
+        {%- if forloop.index > 2 -%}
+          {%- assign lazy_load = true -%}
+        {%- endif -%}
+        <li
+          class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+        >
+          {% render 'card-product',
+            card_product: product,
+            media_aspect_ratio: 'square',
+            show_secondary_image: true,
+            show_vendor: false,
+            show_rating: true,
+            lazy_load: lazy_load,
+            skip_styles: skip_card_product_styles,
+            section_id: section.id,
+            quick_add: 'standard'
+          %}
+        </li>
+        {%- assign skip_card_product_styles = true -%}
+      {%- endfor -%}
+    </ul>
+  </div>
 </section>
