@@ -4649,10 +4649,16 @@ body .additional-checkout-button iframe {
 
 .article.metafields h2,
 .article.metafields .article-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 	margin-bottom:32px;
 }
 
 .article.metafields .article-container ul li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 	padding-left:2em;
 	margin-bottom:20px;
 }
@@ -4775,7 +4781,7 @@ body .additional-checkout-button iframe {
     font-weight: bold;
     display: inline-block;
     /* vertical-align: middle; */
-    font-size: 2.5rem;
+    font-size: 4.2rem;
     /* line-height: 1; */
     width: 0.65em;
     margin-left: -0.65em;
