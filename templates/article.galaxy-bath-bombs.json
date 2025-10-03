@@ -67,7 +67,9 @@
         "related_products": [
           "galaxy-bath-bombs"
         ],
-        "horizontal_layout": false
+        "horizontal_layout": false,
+        "quick_add": "standard",
+        "image_shape": "square"
       }
     },
     "article_visual_callouts_JtmPxt": {
@@ -171,7 +173,9 @@
           "mr-bubble-bath-time-fun-play-pack",
           "mr-bubble-fizzy-tub-colors"
         ],
-        "horizontal_layout": true
+        "horizontal_layout": true,
+        "quick_add": "standard",
+        "image_shape": "square"
       }
     },
     "article_carousel_section_zbPFDV": {
