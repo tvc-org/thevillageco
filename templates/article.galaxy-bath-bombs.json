@@ -65,9 +65,7 @@
       "name": "Article Related Products",
       "settings": {
         "related_products": [
-          "galaxy-bath-bombs",
-          "new-bora-bora-bubble-bath",
-          "berry-smooth-3in1-body-wash-shampoo-conditioner"
+          "galaxy-bath-bombs"
         ],
         "horizontal_layout": false
       }
