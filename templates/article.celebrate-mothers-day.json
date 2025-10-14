@@ -121,7 +121,10 @@
           "nighttime-2in1-foaming-epsom-bath-soak",
           "tension-wellness-gift-set",
           "muscle-moisturizing-shea-butter-lotion"
-        ]
+        ],
+        "horizontal_layout": false,
+        "quick_add": "none",
+        "image_shape": "default"
       }
     },
     "article_copy_section_6iGF7f": {
