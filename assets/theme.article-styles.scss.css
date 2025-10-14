@@ -4104,7 +4104,7 @@ body .additional-checkout-button iframe {
     line-height: 17px;
     letter-spacing: 0;
     font-size: 21px;
-    line-height: 26px
+    line-height: 26px;
 }
 
 @media screen and (min-width:1025px) {
@@ -4289,8 +4289,15 @@ body .additional-checkout-button iframe {
     max-width: 876px
 }
 
-.article .collection-products.horizontal-layout {
+.article .collection-products.horizontal-layout,
+.article .product-grid.horizontal-layout {
 	max-width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article .product-grid.horizontal-layout {
+    padding: 0 25px;
 }
 
 .article .article-header {
@@ -4360,7 +4367,8 @@ body .additional-checkout-button iframe {
     width: calc(200% - 27px)
 }
 
-.article .collection-products>.item {
+.article .collection-products>.item,
+.article .product-grid>.grid__item {
     margin-bottom: 60px!important
 }
 
@@ -4465,6 +4473,11 @@ body .additional-checkout-button iframe {
     }
 }
 
+.article.metafields .blog-related-products-section .product-grid:not(.horizontal-layout) .grid__item {
+    width: 100%;
+    max-width: 820px;
+}
+
 @media screen and (min-width:1025px) {
     .article .article-image-wrapper {
         margin-bottom: 43px
@@ -4476,10 +4489,12 @@ body .additional-checkout-button iframe {
         margin-bottom: 43px
     }
 	
-	.article.metafields .blog-related-products-section .collection-products.items:not(.horizontal-layout) .product-grid-item {
+	.article.metafields .blog-related-products-section .collection-products.items:not(.horizontal-layout) .product-grid-item,
+    .article.metafields .blog-related-products-section .product-grid:not(.horizontal-layout) .grid__item .card {
 		display: flex;
 		width: 100%;
 		gap: 30px;
+        flex-direction: row;
 	}
 	
 	.article.metafields .blog-related-products-section .collection-products.items.horizontal-layout .product-grid-item {
@@ -4828,7 +4843,8 @@ body .additional-checkout-button iframe {
 	margin: 20px 25px;
 }
 
-.article.metafields .blog-related-products-section .collection-products.items:not(.horizontal-layout) {
+.article.metafields .blog-related-products-section .collection-products.items:not(.horizontal-layout),
+.article.metafields .blog-related-products-section .product-grid:not(.horizontal-layout) {
 	flex-direction: column;
 	align-items:center;
 }

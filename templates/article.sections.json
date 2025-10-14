@@ -11,7 +11,7 @@
     "layout": "theme",
     "sections": {
       "main": {
-        "type": "article-test",
+        "type": "article-header",
         "settings": {}
       }
     },

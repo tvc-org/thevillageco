@@ -1,0 +1,126 @@
+{% schema %}
+{
+    "name": "Homepage Favorites",
+	"settings": [
+		{
+		  "type": "text",
+		  "id": "section_title",
+		  "label": "Section Title"
+		}
+	],
+	"max_blocks": 3,
+    "blocks": [
+		{
+			"type": "item",
+			"name": "Item",
+			"settings": [
+		        {
+		            "type": "image_picker",
+		            "id": "image",
+		            "label": "Image",
+					"info": "Upload at least 370x725, 740x1450 for crisp text on retina screens. Images will be cropped and scaled."
+		        },
+				{
+				  "type": "video",
+				  "id": "video_bg",
+				  "label": "Video Background",
+				  "info": "Optional video to override the header image. Needs to be a compressed mp4. Follow similar sizing to images."
+				},
+		        {
+		            "type": "text",
+		            "id": "link_label",
+		            "label": "Link Label",
+					"default": "Shop Now"
+		        },
+		        {
+		            "type": "url",
+		            "id": "link_url",
+		            "label": "Link URL"
+		        }
+			]
+		}
+    ],
+    "presets": [
+        {
+            "name": "Homepage Favorites",
+            "category": "Homepage",
+            "settings": {}
+        }
+    ],
+  	"enabled_on": {
+      "templates": ["index","page","article"]
+    }
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+
+	{% assign img_desktop_width  = 370 %}
+	{% assign img_desktop_height = 725 %}
+	{% assign img_tablet_width   = 370 %}
+	{% assign img_tablet_height  = 725 %}
+	{% assign img_mobile_width   = 370 %}
+	{% assign img_mobile_height  = 725 %}
+	
+  {% assign img_desktop_width_2x  = img_desktop_width | times: 2 %}
+  {% assign img_desktop_height_2x = img_desktop_height | times: 2 %}
+  {% assign img_tablet_width_2x   = img_tablet_width | times: 2 %}
+  {% assign img_tablet_height_2x  = img_tablet_height | times: 2 %}
+  {% assign img_mobile_width_2x   = img_mobile_width | times: 2 %}
+  {% assign img_mobile_height_2x  = img_mobile_height | times: 2 %}
+
+<section class="home-section home-favorites-section">
+	{% if section.settings.section_title %}
+		<div class="home-container center title-wrap">
+			<h2 class="title-font-2">{{ section.settings.section_title }}</h2>
+		</div>
+	{% endif %}
+	<div class="home-container favorites-section carousel">
+		{% for block in section.blocks limit:3 %}
+	    <div class="item">
+			{% if block.settings.link_url %}
+    			<a href="{{ block.settings.link_url }}">
+			{% endif %}
+		    <div class="image relative">
+			  
+			  {% if block.settings.video_bg %}
+	  	
+				{{ block.settings.video_bg | video_tag: autoplay:true, loop:true, muted:true }}
+			  
+			  {% elsif block.settings.image %}
+  	          <picture>
+  	  		   <!-- <source
+  	  		     media="(min-width: 1025px)"
+  	  		     srcset="
+  	  		       {{ block.settings.image | image_url: width: img_desktop_width, height: img_desktop_height, crop: 'center' }} 1x,
+  	  		       {{ block.settings.image | image_url: width: img_desktop_width_2x, height: img_desktop_height_2x, crop: 'center' }} 2x,
+  	  		       ">
+  	  		   <source
+  	  		     media="(min-width: 768px)"
+  	  		     srcset="
+  	  		       {{ block.settings.image | image_url: width: img_tablet_width, height: img_tablet_height, crop: 'center' }} 1x,
+  	  		       {{ block.settings.image | image_url: width: img_tablet_width_2x, height: img_tablet_height_2x, crop: 'center' }} 2x,
+  	  		       "> -->
+  	  		   <source
+  	  		     media="(min-width: 1px)"
+  	  		     srcset="
+  	  		       {{ block.settings.image | image_url: width: img_mobile_width, height: img_mobile_height, crop: 'center' }} 1x,
+  	  		       {{ block.settings.image | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x,
+  	  		       ">
+  	  		   <img src="{{ block.settings.image | image_url: width: img_mobile_width, height: img_mobile_height, crop: 'center' }}" alt="{{ article.image.alt }}" loading="lazy"/>
+  	  		  </picture>
+			  {% endif %}
+		    </div>
+			{% if block.settings.link_url %}
+    			</a>
+			{% endif %}
+		    <div class="content relative">
+				{% if block.settings.link_url %}
+	    			<a  class="title-font-3" href="{{ block.settings.link_url }}">{{ block.settings.link_label }}</a>
+				{% endif %}
+		    </div>
+	    </div>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}

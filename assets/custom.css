@@ -8,7 +8,11 @@ html {
     font-family: mreavessanot-reg-webfont, HelveticaNeue, Helvetica Neue, Helvetica, Arial, sans-serif;
     /* font-size: 14px;
     line-height: 17px; */
-    letter-spacing: 0
+    letter-spacing: 0;
+}
+
+.site-wrap {
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
