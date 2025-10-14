@@ -8,45 +8,146 @@
  * ------------------------------------------------------------
  */
 {
+  "layout": "theme",
   "sections": {
     "main": {
-      "type": "main-article",
-      "blocks": {
-        "featured_image": {
-          "type": "featured_image",
-          "settings": {
-            "image_height": "adapt"
-          }
-        },
-        "title": {
-          "type": "title",
-          "settings": {
-            "blog_show_date": true,
-            "blog_show_author": false
-          }
-        },
-        "share": {
-          "type": "share",
-          "disabled": true,
-          "settings": {
-            "share_label": "Share"
-          }
-        },
-        "content": {
-          "type": "content",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "featured_image",
-        "title",
-        "share",
-        "content"
-      ],
-      "settings": {}
+      "type": "article-header",
+      "settings": {
+        "header_layout": "small-title-above",
+        "video_bg": "shopify://files/videos/mothers-day-header_1.mp4"
+      }
+    },
+    "article_copy_section_TNpRE7": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<p>As the calendar turns to May, the world gears up to honor an irreplaceable figure in life - the mother. Mother's Day isn't just another occasion; it's a heartfelt celebration of maternal bonds, acknowledging the strength, love, and dedication of mothers and maternal figures worldwide. At the heart of this celebration is the art of self-appreciation, recognizing the relentless effort it takes to nurture and support. This Mother's Day, let Village Naturals Therapy guide you in showing the mothers in your life the importance of relaxation and self-care. Dive into the world of luxurious, nature-inspired bath and body products designed to soothe, rejuvenate, and express gratitude to every mother and mother-figure’s spirit. Start your journey of appreciation and self-love today with Village Naturals Therapy.</p><p>Ready to embrace the art of self-appreciation and wellness this Mother's Day? Dive in and explore empowering <a href=\"https://thevillagecompany.com/blogs/village-naturals-therapy/self-care-tips-strategies\">self-care strategies</a> that resonate with the spirit of motherhood. Your journey to well-being starts here.</p>",
+        "html_content": ""
+      }
+    },
+    "article_copy_section_i37hnD": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Summary</h2><p>Mother's Day is a poignant celebration of maternal bonds and the relentless efforts of mothers and maternal figures worldwide. Recognizing the significance of self-care and relaxation, Village Naturals Therapy offers a diverse range of luxurious, nature-inspired bath and body products designed to soothe, rejuvenate, and express gratitude. From the historical roots of Mother's Day as \"Mothering Sunday\" to its evolution into a global day of appreciation, the blog highlights how important it is for mothers to carve out moments for themselves amidst the hustle of daily life. This year, delve into practices that amplify self-appreciation with Village Naturals Therapy, transforming ordinary routines into extraordinary moments of peace, reflection, and care. Explore self-care strategies that resonate with the spirit of motherhood, enhance connections with loved ones, and choose the perfect gifts that advocate wellness and relaxation. Join us in making this Mother's Day memorable by embracing the essence of motherhood through the art of relaxation with Village Naturals Therapy.</p>",
+        "html_content": ""
+      }
+    },
+    "article_banner_section_wq9gpA": {
+      "type": "article-banner-section",
+      "settings": {
+        "image": "shopify://shop_images/VNT_self-care.jpg",
+        "full_width": false,
+        "bottom_margin": "",
+        "top_margin": ""
+      }
+    },
+    "article_copy_section_pNMX8g": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Key Takeaways</h2><ol><li>Mother's Day is a global celebration that honors the strength, love, and dedication of mothers and maternal figures, emphasizing the universal importance of recognizing their monumental contributions.</li><li>Village Naturals Therapy products are specifically designed to support crucial self-care for mothers. By providing tools for relaxation and rejuvenation, they help them maintain their health and happiness amidst daily challenges.</li><li>Village Naturals Therapy offers a range of products that can turn daily routines into extraordinary moments of care and connection, from luxurious baths with soothing soaks to creating a spa-like environment at home.</li><li>Incorporating mindfulness practices and fostering connections with loved ones is highlighted as essential for self-care, helping to enhance mental well-being and enrich lives.</li><li>The blog provides guidance on selecting the perfect <a href=\"https://thevillagecompany.com/collections/mothers-day-gifts\">Mother's Day gifts from Village Naturals Therapy's</a> range, which are intended to offer relaxation and wellness and express deep gratitude and love for mothers.</li></ol>",
+        "html_content": ""
+      }
+    },
+    "article_copy_section_bxzftU": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>History – When Did Mother's Day Start?</h2><p>Tracing back to its roots, Mother's Day began as an early Christian festival known as \"Mothering Sunday.\" It evolved, and by the 20th century, it had transformed into the day we know and cherish today - a day dedicated to celebrating and appreciating mothers. This evolution underscores the universal need to acknowledge mothers' monumental contributions, both in the confines of their homes and in the broader societal context. Mother's Day is a testament to mothers' unwavering strength, compassion, and influence throughout history.</p>",
+        "html_content": ""
+      }
+    },
+    "article_banner_section_mHeF6J": {
+      "type": "article-banner-section",
+      "settings": {
+        "image": "shopify://shop_images/VNT_collage.jpg",
+        "full_width": true,
+        "bottom_margin": "",
+        "top_margin": ""
+      }
+    },
+    "article_copy_section_KBa6W6": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>The Importance of Self-Care for Mothers</h2><p>Motherhood comes with joys and many challenges and pressures, from managing daily responsibilities to nurturing a family. Amid these demands, self-care becomes crucial for maintaining a mother's health and happiness. Village Naturals Therapy recognizes this need and offers a range of products designed to facilitate relaxation and rejuvenation. By providing essential tools like <a href=\"https://thevillagecompany.com/collections/therapy-bath-salts-epsom-soaks\">soothing bath soaks</a> and <a href=\"https://thevillagecompany.com/collections/therapy-lotion\">calming lotions</a>, we help mothers carve out necessary moments for themselves, enhancing their well-being and enabling them to continue nurturing others with renewed energy and love.</p>",
+        "html_content": ""
+      }
+    },
+    "article_banner_section_TcyGw7": {
+      "type": "article-banner-section",
+      "settings": {
+        "image": "shopify://shop_images/VNT_bar.jpg",
+        "full_width": true,
+        "bottom_margin": "",
+        "top_margin": ""
+      }
+    },
+    "article_copy_section_XqQMHH": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>5 Ideas to Make Your Mother's Day Special with Self-Care & Appreciation</h2><p>Celebrating Mother's Day is not just about the gifts and the grand gestures; it's equally about embracing moments of peace, reflection, and self-care. <a href=\"https://thevillagecompany.com/pages/therapy-collections\">Village Naturals Therapy products</a> offer a sanctuary for mothers seeking relaxation and rejuvenation. This Mother's Day, let's delve into practices that amplify self-appreciation, turning ordinary routines into extraordinary moments of care and connection.</p><h3>1. Begin with a Relaxing Bath</h3><p>Start the day enveloped in the warmth of a luxurious bath, transforming a simple routine into an indulgence with Village Naturals Therapy's bath products. <a href=\"https://thevillagecompany.com/collections/therapy-bath-salts-epsom-soaks/products/comfort-body-soak?variant=41325362151622\">The Comfort Foaming Body Soak </a>blends natural ingredients known for their soothing properties, perfect for unwinding and rejuvenating sore muscles. For those seeking to dissolve stress and tension, the <a href=\"https://thevillagecompany.com/collections/therapy-bath-salts-epsom-soaks/products/village-naturals-therapy-aches-pains-muscle-releif-foaming-bath-soak?variant=41325355663558\">Muscle 2 in 1 Foaming Epsom Bath Soak </a>offers a tranquil escape, enveloping you in scents and sensations that calm the mind and body. These moments of solitude in the bath are not just acts of cleansing but profound gestures of self-love and appreciation.</p><h3>2. Creating a Spa Experience at Home</h3><p>Transform your home into a serene retreat, crafting a spa-like environment that whispers calm and peace. With Village Naturals Therapy products, you can recreate the soothing ambiance of a spa without stepping outside. Begin by dimming the lights and igniting scented candles to set a tranquil mood. Let calming music play softly in the background, weaving a tapestry of sounds that soothe the soul. Incorporate aromatherapy using our products infused with essential oils, enhancing the spa experience with their therapeutic fragrances. Each element works harmoniously, creating a sanctuary where stress retreats and serenity reigns.</p><h3>3. Pamper with a Personal Care Routine</h3><p>A comprehensive self-care routine goes beyond the surface, nurturing the skin and the spirit. Village Naturals Therapy's nourishing products are crafted to pamper and rejuvenate. Whether our deeply moisturizing lotions or enriching salts, each product is a testament to self-care. Tailor your self-care routine with selections like our <a href=\"https://thevillagecompany.com/collections/therapy-bath-oils-body-washes\">Soothing Body Washes </a>and Therapy Body Lotions. Each is formulated to leave your skin feeling soft, hydrated, and refreshed. Embrace this ritual not as a task but as a cherished moment of self-discovery and appreciation.</p><h3>4. Embrace Mindfulness and Relaxation</h3><p>The essence of self-care lies in mindfulness and relaxation—practices that elevate mental well-being to its pinnacle. Village Naturals Therapy encourages incorporating these practices into your daily routine, complemented by our soothing bath products for a holistic approach to relaxation. Whether meditation, yoga, or simply taking a moment to breathe deeply and be present, mindfulness can transform your outlook, reducing stress and enhancing inner peace. Let our products be your companions on this journey, creating a tranquil space for reflection and relaxation.</p><h3>5. Enjoy Connections with Loved Ones</h3><p>At the heart of Mother's Day is the celebration of connections—those unbreakable bonds that nourish our souls. Dedicate time to be with family or reach out to the significant women in your life, sharing moments of joy, laughter, and love. These connections are the essence of self-care, enriching our lives with depth and warmth. Village Naturals Therapy champions these moments, reminding us that connecting with loved ones is a profound form of self-care amidst our busy lives.</p>",
+        "html_content": ""
+      }
+    },
+    "article_copy_section_MapPtp": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Mother's Day Gift Ideas for the Mothers in Your Life:</h2><p>Finding the perfect Mother's Day gift can be a journey of love and thoughtfulness. This year, make it a journey of relaxation and wellness with Village Naturals Therapy. To help you convey your love and gratitude, we've curated a selection of customer favorites, each designed to offer moments of tranquility and care. Dive into our product carousel, a showcase of the best in self-care, meticulously chosen to delight every mother and maternal figure in your life.</p>",
+        "html_content": ""
+      }
+    },
+    "article_related_products_GYENWj": {
+      "type": "article-related-products",
+      "settings": {
+        "related_products": [
+          "nighttime-2in1-foaming-epsom-bath-soak",
+          "tension-wellness-gift-set",
+          "muscle-moisturizing-shea-butter-lotion"
+        ]
+      }
+    },
+    "article_copy_section_6iGF7f": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<p>Each of these selections from Village Naturals Therapy is more than a gift; they express love, a wish for wellness, and a token of appreciation for mothers' endless roles. This Mother's Day, let these gifts speak volumes of your care and respect, offering the women in your life the luxury of self-care and the joy of well-deserved relaxation.</p><h2>Celebrating the Essence of Motherhood with Village Naturals Therapy</h2><p>As Mother's Day approaches, let's take a moment to honor the incredible women in our lives with the gift of relaxation and self-care. <a href=\"https://thevillagecompany.com/blogs/village-naturals-therapy\">Village Naturals Therapy</a> offers thoughtful products that foster peace and rejuvenation, from soothing bath soaks to nourishing lotions. This year, make Mother's Day special by choosing gifts that show appreciation and encourage self-care, highlighting the importance of taking time. Dive into our collections to find the perfect expressions of love and gratitude, and join us in celebrating the essence of motherhood through self-care and relaxation.</p>",
+        "html_content": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "article_copy_section_TNpRE7",
+    "article_copy_section_i37hnD",
+    "article_banner_section_wq9gpA",
+    "article_copy_section_pNMX8g",
+    "article_copy_section_bxzftU",
+    "article_banner_section_mHeF6J",
+    "article_copy_section_KBa6W6",
+    "article_banner_section_TcyGw7",
+    "article_copy_section_XqQMHH",
+    "article_copy_section_MapPtp",
+    "article_related_products_GYENWj",
+    "article_copy_section_6iGF7f"
   ]
 }
