@@ -8,45 +8,186 @@
  * ------------------------------------------------------------
  */
 {
+  "layout": "theme",
   "sections": {
     "main": {
-      "type": "main-article",
+      "type": "article-header",
+      "settings": {
+        "header_layout": "small-title-above",
+        "video_bg": "shopify://files/videos/MB_BathDough_video-1036.mp4"
+      }
+    },
+    "article_copy_section_r9Pbrn": {
+      "type": "article-copy-section",
+      "custom_css": [
+        ".blog-copy-section {margin-top: 0;}"
+      ],
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<p>For over 60 years, Mr. Bubble has been America’s #1 trusted bubble bath brand, and now we’re making bath time even more exciting with our new Soapy Bath Dough! This playful, moldable dough combines vibrant colors and irresistible scents like strawberry, watermelon, and blueberry, inviting kids to shape, create, and clean—all while having fun. </p><p>Perfect for multiple baths, this STEAM-inspired (science, technology, engineering, arts & math) product encourages hands-on play that blends learning with sensory exploration.</p><h2>Why You'll Love the New Mr. Bubble Soapy Bath Dough</h2>",
+        "html_content": ""
+      }
+    },
+    "homepage_favorites_zbhiEL": {
+      "type": "homepage-favorites",
       "blocks": {
-        "featured_image": {
-          "type": "featured_image",
+        "item_dH9mx3": {
+          "type": "item",
           "settings": {
-            "image_height": "adapt"
+            "image": "shopify://shop_images/3-doughs-stacked_a9b90cf4-bf28-4cf8-96ae-96535d343679.jpg",
+            "link_label": "Shop Now",
+            "link_url": ""
           }
         },
-        "title": {
-          "type": "title",
+        "item_Y9kUje": {
+          "type": "item",
           "settings": {
-            "blog_show_date": true,
-            "blog_show_author": false
+            "image": "shopify://shop_images/creations.jpg",
+            "link_label": "Shop Now",
+            "link_url": ""
           }
         },
-        "share": {
-          "type": "share",
-          "disabled": true,
+        "item_VFrxhj": {
+          "type": "item",
           "settings": {
-            "share_label": "Share"
+            "image": "shopify://shop_images/kid-stacking-dough.jpg",
+            "link_label": "Shop Now",
+            "link_url": ""
           }
-        },
-        "content": {
-          "type": "content",
-          "settings": {}
         }
       },
       "block_order": [
-        "featured_image",
-        "title",
-        "share",
-        "content"
+        "item_dH9mx3",
+        "item_Y9kUje",
+        "item_VFrxhj"
       ],
-      "settings": {}
+      "settings": {
+        "section_title": ""
+      }
+    },
+    "article_copy_section_ktMVM6": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<ul><li><strong>Fun and Creative: </strong>Mold and shape vibrant dough in your favorite colors and scents.</li><li><strong>STEAM-Inspired:</strong> Promotes learning through sensory play, encouraging creativity and problem-solving.</li><li><strong>Long-Lasting:</strong> Each jar provides multiple baths when stored properly, giving great value.</li><li><strong>Safe and Gentle:</strong> Non-toxic, sulfate-free, paraben-free, and phthalate-free, ensuring it’s gentle on young skin for worry-free bath time fun.</li></ul>",
+        "html_content": ""
+      }
+    },
+    "article_image_grid_UxKUty": {
+      "type": "article-image-grid",
+      "blocks": {
+        "item_WHQJWc": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/strawberry_bath-dough_front-sized.jpg",
+            "caption": "<p><a href=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough?variant=44252738846918\" title=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough?variant=44252738846918\">Strawberry Soapy Bath-Dough</a></p>"
+          }
+        },
+        "item_i44yjf": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/blueberry_bath-dough-sized.jpg",
+            "caption": "<p><a href=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough?variant=44252738912454\" title=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough?variant=44252738912454\">Blueberry Soapy Bath-Dough</a></p>"
+          }
+        },
+        "item_3dLeW3": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/watermelon_bath-dough_front-sized.jpg",
+            "caption": "<p><a href=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough?variant=44252738879686\" title=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough?variant=44252738879686\">Watermelon Soapy Bath-Dough</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_WHQJWc",
+        "item_i44yjf",
+        "item_3dLeW3"
+      ],
+      "custom_css": [
+        ".text {text-align: center;}"
+      ],
+      "settings": {
+        "grid_layout": "across-3"
+      }
+    },
+    "article_copy_section_RP9j4b": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "",
+        "html_content": "<div class=\"text-center\">\n\t<a class=\"shop-now button cta-2\" href=\"https://thevillagecompany.com/collections/mr-bubble-collections/products/soapy-bath-dough\">Get Your Soapy Bath Dough Today!</a>\n</div>"
+      }
+    },
+    "article_copy_section_nyMNxq": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>How to Use Soapy Bath Dough</h2>",
+        "html_content": ""
+      }
+    },
+    "article_image_grid_GmFFwr": {
+      "type": "article-image-grid",
+      "blocks": {
+        "item_zHKQKd": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/squish-image.jpg",
+            "caption": "<h4>Squish</h4><p>Take a handful of dough and squish it to start the fun!</p>"
+          }
+        },
+        "item_kHGLBh": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/kid-sculpting.jpg",
+            "caption": "<h4>Shape & Mold</h4><p>Shape and mold the dough into fun designs and creations.</p>"
+          }
+        },
+        "item_LwBLaQ": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/hand-suds.jpg",
+            "caption": "<h4>Store it for Next Time</h4><p>Store Soapy Bath Dough in the jar and reuse it in the next bath!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_zHKQKd",
+        "item_kHGLBh",
+        "item_LwBLaQ"
+      ],
+      "settings": {
+        "grid_layout": "across-3"
+      }
+    },
+    "article_copy_section_wfV39g": {
+      "type": "article-copy-section",
+      "settings": {
+        "image_align_right": false,
+        "image_paragraph_position": "",
+        "image_caption": "",
+        "body_text": "<h2>Helpful Bath Dough Questions and Answers:</h2><h3>What is Soapy Bath Dough?</h3><p>Soapy Bath Dough is a unique, moldable dough that combines the fun of play dough with the benefits of a bath, creating an interactive and sensory-rich bath experience for kids.</p><h3>Is Soapy Bath Dough safe for children?</h3><p>Absolutely! We know how important safety is for parents, which is why our Soapy Bath Dough is non-toxic, sulfate-free, paraben-free, and phthalate-free. It’s designed to be gentle on your child’s delicate skin, giving you peace of mind while they have fun in the bath.</p><h3>How does Soapy Bath Dough make bath time fun?</h3><p>Soapy Bath Dough sparks creativity and sensory exploration, allowing kids to shape and mold the dough into their own fun works of art. This hands-on play encourages STEAM (Science, Technology, Engineering, Arts & Math) learning while kids enjoy bubbly bath time. It’s the perfect way to blend imaginative fun with educational play!</p><h3>Can Soapy Bath Dough help with sensory development?</h3><p>Absolutely! The interactive nature of Soapy Bath Dough supports sensory exploration, making it a great tool for imaginative play and tactile development during bath time.</p><h3>Does Soapy Bath Dough have fun scents or colors?</h3><p>Yes! Our Soapy Bath Dough comes in three exciting scents—Strawberry, Blueberry, and Watermelon—each with vibrant, fun colors that make bath time even more enjoyable. Whether you love the sweet aroma of strawberry, the fresh scent of blueberry, or the refreshing fragrance of watermelon, there’s a perfect dough for every bath!</p><h3>How do I store Soapy Bath Dough?</h3><p>Store Soapy Bath Dough in its resealable container to keep it fresh and moldable for the next bath.</p>",
+        "html_content": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "article_copy_section_r9Pbrn",
+    "homepage_favorites_zbhiEL",
+    "article_copy_section_ktMVM6",
+    "article_image_grid_UxKUty",
+    "article_copy_section_RP9j4b",
+    "article_copy_section_nyMNxq",
+    "article_image_grid_GmFFwr",
+    "article_copy_section_wfV39g"
   ]
 }
