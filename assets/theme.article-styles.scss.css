@@ -5143,24 +5143,57 @@ body .additional-checkout-button iframe {
 	padding-right:20px;
 }
 
+@media (min-width: 768px) {
+.favorites-section {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-items: center;
+	}
+}
+
 .favorites-section .item {
 	aspect-ratio: 1 / 1.96;
 	position:relative;
 	border-radius:20px;
 	overflow:hidden;
 	max-width:370px;
+	width: 100%;
+}
+
+/* Mobile: Flickity carousel */
+@media (max-width: 767px) {
+	.favorites-section {
+		display: block !important;
+		grid-template-columns: none !important;
+	}
 	
+	/* Flickity sizing */
+	.favorites-section.flickity-enabled .item {
+		width: 85vw;
+		max-width: 320px;
+		min-width: 280px;
+		margin-right: 15px;
+	}
+	
+	.favorites-section.flickity-enabled .item:first-child {
+		margin-left: 20px;
+	}
+	
+	.favorites-section .flickity-viewport {
+		overflow: visible;
+	}
+	
+	/* Remove focus/active state shadows */
+	.favorites-section.flickity-enabled:focus,
+	.favorites-section .flickity-viewport:focus,
+	.favorites-section .flickity-slider:focus {
+		outline: none;
+		box-shadow: none;
+	}
 }
 
-.favorites-section .slick-slide {
-	margin:0 10px;
-	max-width:380px;
-}
 
-.favorites-section .slick-list {
-      margin: 0 -10px;
-	  overflow:visible;
-}
 
 .favorites-section .item .image, 
 .favorites-section .item .image img, 

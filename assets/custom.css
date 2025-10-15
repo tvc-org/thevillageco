@@ -11,6 +11,8 @@ html {
     letter-spacing: 0;
 }
 
+.text-center { text-align: center; }
+
 .site-wrap {
     overflow: hidden;
 }

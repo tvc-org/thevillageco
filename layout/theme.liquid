@@ -49,6 +49,11 @@
       <script src="{{ 'theme.article-sections.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {%- if template.name == 'index' or template.name == 'page' -%}
+      <script src="{{ 'flickity.pkgd.min.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'theme.article-sections.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     {{ content_for_header }}
 
     {%- liquid

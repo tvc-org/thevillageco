@@ -13,157 +13,57 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Blog carousel functionality
-  document.querySelectorAll('.blog-carousel').forEach(function (carousel) {
-    initCarousel(carousel, {
-      arrows: true,
-      dots: false,
-      infinite: false,
-      slidesToShow: 2.5,
-      slidesToScroll: 2,
-      responsive: [
-        {
-          breakpoint: 960,
-          settings: {
-            slidesToShow: 1.5,
-            slidesToScroll: 1,
-          },
-        },
-        {
-          breakpoint: 640,
-          settings: {
-            slidesToShow: 1.25,
-            slidesToScroll: 1,
-          },
-        },
-      ],
-    });
+  // Initialize Flickity for blog carousels that don't already have data-flickity
+  // (blog-carousel-section.liquid already uses data-flickity attribute)
+  document.querySelectorAll('.blog-carousel:not([data-flickity])').forEach(function (carousel) {
+    if (typeof Flickity !== 'undefined') {
+      new Flickity(carousel, {
+        freeScroll: true,
+        contain: true,
+        prevNextButtons: false,
+        pageDots: false,
+      });
+    }
   });
 
-  // Favorites section carousel
+  // Initialize Flickity for favorites section carousel (mobile only)
   document.querySelectorAll('.favorites-section.carousel').forEach(function (carousel) {
-    initCarousel(carousel, {
-      mobileFirst: true,
-      infinite: false,
-      slidesToShow: 1.2,
-      arrows: false,
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 3,
-          },
-        },
-      ],
-    });
+    if (typeof Flickity !== 'undefined') {
+      let flickityInstance = null;
+
+      function initFavoritesCarousel() {
+        const isMobile = window.innerWidth < 768;
+        console.log('Favorites carousel init - isMobile:', isMobile, 'width:', window.innerWidth);
+
+        if (isMobile && !flickityInstance) {
+          // Initialize Flickity on mobile only
+          console.log('Initializing Flickity, items found:', carousel.querySelectorAll('.item').length);
+          flickityInstance = new Flickity(carousel, {
+            cellAlign: 'left',
+            contain: false,
+            prevNextButtons: false,
+            pageDots: false,
+            freeScroll: false,
+            wrapAround: false,
+            cellSelector: '.item',
+          });
+          console.log('Flickity initialized successfully');
+        } else if (!isMobile && flickityInstance) {
+          // Destroy Flickity on desktop
+          console.log('Destroying Flickity on desktop');
+          flickityInstance.destroy();
+          flickityInstance = null;
+        }
+      }
+
+      initFavoritesCarousel();
+
+      // Debounce resize events
+      let resizeTimer;
+      window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initFavoritesCarousel, 250);
+      });
+    }
   });
-
-  // Basic carousel implementation
-  function initCarousel(container, options) {
-    const slides = container.querySelectorAll('.carousel-slide, .slide, [data-slide]');
-    if (slides.length === 0) return;
-
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-
-    // Create carousel wrapper if it doesn't exist
-    if (!container.querySelector('.carousel-wrapper')) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'carousel-wrapper';
-      wrapper.style.display = 'flex';
-      wrapper.style.transition = 'transform 0.3s ease';
-
-      // Move slides into wrapper
-      slides.forEach((slide) => {
-        wrapper.appendChild(slide);
-      });
-
-      container.appendChild(wrapper);
-    }
-
-    const wrapper = container.querySelector('.carousel-wrapper');
-
-    // Add navigation arrows if enabled
-    if (options.arrows) {
-      const prevBtn = document.createElement('button');
-      prevBtn.className = 'carousel-prev';
-      prevBtn.innerHTML = '‹';
-      prevBtn.addEventListener('click', () => {
-        currentSlide = Math.max(0, currentSlide - (options.slidesToScroll || 1));
-        updateCarousel();
-      });
-
-      const nextBtn = document.createElement('button');
-      nextBtn.className = 'carousel-next';
-      nextBtn.innerHTML = '›';
-      nextBtn.addEventListener('click', () => {
-        currentSlide = Math.min(totalSlides - 1, currentSlide + (options.slidesToScroll || 1));
-        updateCarousel();
-      });
-
-      container.appendChild(prevBtn);
-      container.appendChild(nextBtn);
-    }
-
-    // Add dots if enabled
-    if (options.dots) {
-      const dotsContainer = document.createElement('div');
-      dotsContainer.className = 'carousel-dots';
-
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot';
-        dot.addEventListener('click', () => {
-          currentSlide = i;
-          updateCarousel();
-        });
-        dotsContainer.appendChild(dot);
-      }
-
-      container.appendChild(dotsContainer);
-    }
-
-    function updateCarousel() {
-      const slideWidth = 100 / (options.slidesToShow || 1);
-      const translateX = -currentSlide * slideWidth;
-      wrapper.style.transform = `translateX(${translateX}%)`;
-
-      // Update active dot
-      if (options.dots) {
-        const dots = container.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentSlide);
-        });
-      }
-
-      // Update arrow states
-      if (options.arrows) {
-        const prevBtn = container.querySelector('.carousel-prev');
-        const nextBtn = container.querySelector('.carousel-next');
-        prevBtn.disabled = currentSlide === 0;
-        nextBtn.disabled = currentSlide >= totalSlides - 1;
-      }
-    }
-
-    // Handle responsive breakpoints
-    function handleResize() {
-      const width = window.innerWidth;
-      let currentOptions = options;
-
-      if (options.responsive) {
-        options.responsive.forEach((breakpoint) => {
-          if (width <= breakpoint.breakpoint) {
-            currentOptions = { ...currentOptions, ...breakpoint.settings };
-          }
-        });
-      }
-
-      // Recalculate slide width
-      const slideWidth = 100 / (currentOptions.slidesToShow || 1);
-      wrapper.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-    }
-
-    window.addEventListener('resize', handleResize);
-    updateCarousel();
-  }
 });
