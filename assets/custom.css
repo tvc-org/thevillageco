@@ -14,7 +14,7 @@ html {
 .text-center { text-align: center; }
 
 .site-wrap {
-    overflow: hidden;
+    /* overflow: hidden; - this breaks the sticky column on the PDP.*/
 }
 
 h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
