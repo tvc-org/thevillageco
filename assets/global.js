@@ -1332,9 +1332,12 @@ function filterMediaByVariant(container, productInfo) {
 
   // Get all variant option values for the current variant
   const variantOptions = [];
+  // Get all possible variant option values (to check if filename contains variant-specific info)
+  const allPossibleVariantOptions = [];
   const variantSelector = productInfo.variantSelectors;
 
   if (variantSelector) {
+    // Get currently selected options
     const selectedOptions = variantSelector.querySelectorAll(
       'input:checked, select option:checked, button[aria-pressed="true"]'
     );
@@ -1342,6 +1345,32 @@ function filterMediaByVariant(container, productInfo) {
     selectedOptions.forEach((selectedOption) => {
       const optionValue = selectedOption.value || selectedOption.textContent.trim();
       variantOptions.push(optionValue);
+    });
+
+    // Get all possible option values (for filename matching check)
+    const allOptionInputs = variantSelector.querySelectorAll('input[type="radio"], input[type="checkbox"]');
+    const allOptionButtons = variantSelector.querySelectorAll('button[role="button"], button[type="button"]');
+    const allSelectOptions = variantSelector.querySelectorAll('select option');
+
+    allOptionInputs.forEach((input) => {
+      const value = input.value || input.textContent.trim();
+      if (value && !allPossibleVariantOptions.includes(value)) {
+        allPossibleVariantOptions.push(value);
+      }
+    });
+
+    allOptionButtons.forEach((button) => {
+      const value = button.value || button.textContent.trim();
+      if (value && !allPossibleVariantOptions.includes(value)) {
+        allPossibleVariantOptions.push(value);
+      }
+    });
+
+    allSelectOptions.forEach((option) => {
+      const value = option.value || option.textContent.trim();
+      if (value && !allPossibleVariantOptions.includes(value)) {
+        allPossibleVariantOptions.push(value);
+      }
     });
   }
 
@@ -1371,6 +1400,14 @@ function filterMediaByVariant(container, productInfo) {
     // Check if variant is at the end of filename (before extension)
     const withoutExtension = normalizedMedia.replace(/\.[^.]*$/, '');
     if (withoutExtension.endsWith(normalizedVariant)) {
+      return true;
+    }
+
+    // Check for underscore-dash combinations (e.g., "36_-fl-oz" should match "36-fl-oz")
+    // Handle cases where there might be multiple dashes or underscores
+    const underscoreDashPattern = normalizedVariant.replace(/-/g, '[-_]+');
+    const underscoreDashRegex = new RegExp(underscoreDashPattern);
+    if (underscoreDashRegex.test(normalizedMedia)) {
       return true;
     }
 
@@ -1434,8 +1471,16 @@ function filterMediaByVariant(container, productInfo) {
       // If alt text has variant names, only hide if it doesn't match
       shouldHide = !shouldShow;
     } else if (img.src) {
-      // If no alt text variant names but we have a filename, hide if it doesn't match
-      shouldHide = !shouldShow;
+      // Check if filename contains any variant-specific information
+      // Use allPossibleVariantOptions to check against all variants, not just current selection
+      const filename = img.src.split('/').pop().split('?')[0];
+      const filenameHasVariantInfo = allPossibleVariantOptions.some((option) => variantMatchesMedia(option, filename));
+
+      if (filenameHasVariantInfo) {
+        // If filename contains variant info, hide if it doesn't match current variant
+        shouldHide = !shouldShow;
+      }
+      // If filename doesn't contain variant info, don't hide (fallback behavior)
     }
     // If no alt text variant names AND no filename, don't hide (fallback behavior)
 
