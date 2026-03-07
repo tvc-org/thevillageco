@@ -46,19 +46,6 @@
     "header": {
       "type": "header",
       "blocks": {
-        "brand_WHwbqy": {
-          "type": "brand",
-          "settings": {
-            "tab_image": "shopify://shop_images/TVC_Nav_Logo.png",
-            "mobile_tab_image": "shopify://shop_images/TVC_Logo_White_Mobile_0c492967-5a8b-45c6-af4b-a2cf4819d890.png",
-            "nav_image": "shopify://shop_images/TVC_Logo_Web-cropped.png",
-            "text": "The Village Co.",
-            "brand_color": "#00a1dd",
-            "brand_text_color": "#323131",
-            "brand_page_link": "",
-            "menu": "the-village-co-mega"
-          }
-        },
         "brand_RKTJdn": {
           "type": "brand",
           "settings": {
@@ -97,6 +84,19 @@
             "menu": "soft-dri-mega"
           }
         },
+        "brand_WHwbqy": {
+          "type": "brand",
+          "settings": {
+            "tab_image": "shopify://shop_images/TVC_Nav_Logo.png",
+            "mobile_tab_image": "shopify://shop_images/TVC_Logo_White_Mobile_0c492967-5a8b-45c6-af4b-a2cf4819d890.png",
+            "nav_image": "shopify://shop_images/TVC_Logo_Web-cropped.png",
+            "text": "The Village Co.",
+            "brand_color": "#00a1dd",
+            "brand_text_color": "#323131",
+            "brand_page_link": "",
+            "menu": "the-village-co-mega"
+          }
+        },
         "touts_group_f68EyW": {
           "type": "touts_group",
           "settings": {
@@ -109,6 +109,10 @@
             "collection_list": [
               "mr-bubble-foam-bath-soap"
             ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/mr-bubble-collections",
             "bottom_button_text": "All Products"
           }
@@ -124,6 +128,10 @@
               "therapy-muscle",
               "magnesium-bath-flakes"
             ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
@@ -139,6 +147,10 @@
               "new-bora-bora-bubble-bath"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/hallu-collections",
             "bottom_button_text": "All Products"
           }
@@ -156,6 +168,10 @@
               "mr-bubble-new-products",
               "mr-bubble-collections"
             ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/mr-bubble-collections",
             "bottom_button_text": "All Products"
           }
@@ -173,6 +189,10 @@
               "mr-bubble-extra-gentle-foam-soap-8-oz"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/mr-bubble-collections",
             "bottom_button_text": "All Products"
           }
@@ -188,6 +208,10 @@
               "baby-bubble-bubble-bath"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/mr-bubble-collections",
             "bottom_button_text": "All Products"
           }
@@ -203,6 +227,10 @@
               "soapy-bath-dough"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/mr-bubble-collections",
             "bottom_button_text": "All Products"
           }
@@ -220,6 +248,10 @@
               "therapy-gift-sets",
               "therapy-on-sale"
             ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
@@ -235,6 +267,10 @@
               "muscle-magnesium-bath-flakes"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
@@ -250,6 +286,10 @@
               "tension-relief-mineral-bath-soak"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
@@ -265,6 +305,10 @@
               "tension-hand-body-lotion"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
@@ -280,16 +324,20 @@
               "aches-pains-muscle-relief-hand-body-lotion"
             ],
             "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
         }
       },
       "block_order": [
-        "brand_WHwbqy",
         "brand_RKTJdn",
         "brand_H46BjU",
         "brand_Nhk8gC",
+        "brand_WHwbqy",
         "touts_group_f68EyW",
         "touts_group_G4fiem",
         "touts_group_hK3GRb",
