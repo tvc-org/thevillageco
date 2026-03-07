@@ -29,7 +29,7 @@
   {%- endif -%}
 
   {%- if section.settings.menu_type_desktop != "drawer" -%}
-    @media screen and (min-width: 990px) {
+    @media screen and (min-width: 1025px) {
       header-drawer {
         display: none;
       }
@@ -121,9 +121,15 @@
 {% assign brand_blocks = section.blocks | where: 'type', 'brand' %}
 {% assign tout_blocks = section.blocks | where: 'type', 'touts_group' %}
 
-{% comment %} default to first nav brand, then check for active link within branded nav {% endcomment %}
+{% comment %} default to "The Village Co." brand or last block, then check for active link within branded nav {% endcomment %}
 {%- liquid
-  assign current_brand = section.blocks[0]
+  assign current_brand = brand_blocks | last
+  for block in brand_blocks
+    if block.settings.text == 'The Village Co.'
+      assign current_brand = block
+      break
+    endif
+  endfor
   for block in brand_blocks
     assign has_active_link = false
     for link in block.settings.menu.links
@@ -214,15 +220,14 @@
   -%}
 
   <header class="header site-header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width-x{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
-    {%- liquid
-      if current_brand.settings.menu != blank
-        render 'header-drawer', current_brand: current_brand, tout_blocks: tout_blocks
-      endif
-
-      if section.settings.logo_position == 'top-center' or section.settings.menu == blank
-        render 'header-search', input_id: 'Search-In-Modal-1'
-      endif
-    -%}
+    {%- if current_brand.settings.menu != blank -%}
+      <div class="header__left-icons hide-min-1025">
+        {%- render 'header-drawer', current_brand: current_brand, tout_blocks: tout_blocks -%}
+        {%- render 'header-search', input_id: 'Search-In-Modal' -%}
+      </div>
+    {%- elsif section.settings.logo_position == 'top-center' or section.settings.menu == blank -%}
+      {%- render 'header-search', input_id: 'Search-In-Modal-1' -%}
+    {%- endif -%}
 
     {% comment %}
       {%- if section.settings.logo_position != 'middle-center' -%}
@@ -269,7 +274,7 @@
       endif
     %}
 
-    {% render 'header-icons', section: section, class: 'hide-min-1025' %}
+    {% render 'header-icons', section: section, class: 'hide-min-1025', hide_search: true %}
 
     {%- if section.settings.logo_position == 'middle-center' -%}
       {%- if request.page_type == 'index' -%}

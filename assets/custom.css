@@ -3682,6 +3682,14 @@ form .btn::hover {
     header-drawer {
         display: block !important;
     }
+
+    .header__left-icons {
+        grid-area: left-icons;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-self: start;
+    }
 }
 
 /* Main section overrides */
