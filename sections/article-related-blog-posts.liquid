@@ -52,7 +52,7 @@
 		  		       {{ article | image_url: width: 402, height: 402, crop: 'center' }} 1x,
 		  		       {{ article | image_url: width: 804, height: 804, crop: 'center' }} 2x,
 		  		       ">
-		  		   <img src="{{ article | image_url: width: 402, height: 402, crop: 'center' }}" alt="{{ article.image.alt }}" loading="lazy"/>
+		  		   <img src="{{ article | image_url: width: 402, height: 402, crop: 'center' }}" alt="{{ article.image.alt }}" width="402" height="402" loading="lazy"/>
 		  		  </picture>
 	  		  </a>
 				{% endif %}

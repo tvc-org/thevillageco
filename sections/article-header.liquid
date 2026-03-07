@@ -157,6 +157,8 @@
           <img
             src="{{ article | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
             alt="{{ article.image.alt }}"
+            width="{{ mobile_width }}"
+            height="{{ mobile_height }}"
             loading="lazy"
           >
         </picture>

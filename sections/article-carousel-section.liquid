@@ -53,7 +53,7 @@
 			  		       {{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }} 1x,
 			  		       {{ block.settings.image | image_url: width: 860, height: 860, crop: 'center' }} 2x,
 			  		       ">
-			  		   <img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" loading="lazy"/>
+			  		   <img src="{{ block.settings.image | image_url: width: 430, height: 430, crop: 'center' }}" alt="{{ block.settings.image.alt }}" width="430" height="430" loading="lazy"/>
 			  		  </picture>
 					</div>
 				</div>

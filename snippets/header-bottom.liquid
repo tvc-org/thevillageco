@@ -1,7 +1,7 @@
 <div class="header-bottom">
   <div class="header-logo brand-{{ current_brand.id }}">
     <a href="{{ block.settings.brand_page_link | default: '/' }}" class="header-block header-brand">
-      <img src="{{ current_brand.settings.nav_image | img_url: 'x76' }}" alt="{{ block.settings.text }}">
+      <img src="{{ current_brand.settings.nav_image | img_url: 'x76' }}" alt="{{ block.settings.text }}" width="76" height="76">
     </a>
   </div>
   <ul class="header-bottom__links mobile-hidden" data-size="{{ current_brand.settings.menu.links | size }}">

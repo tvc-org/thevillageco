@@ -72,7 +72,7 @@
 			       {{ section.settings.image | image_url: width: 640 }} 1x,
 			       {{ section.settings.image | image_url: width: 1280 }} 2x,
 			       ">
-			   <img src="{{ section.settings.image | image_url: width: 640 }}" alt="{{ section.settings.image.alt }}" loading="lazy"/>
+			   <img src="{{ section.settings.image | image_url: width: 640 }}" alt="{{ section.settings.image.alt }}" width="640" height="400" loading="lazy"/>
 			  </picture>
 	  </div>
 	{% endif %}

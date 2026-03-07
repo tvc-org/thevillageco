@@ -8,11 +8,15 @@
         class="brand-logo desktop-only"
         src="{{ block.settings.tab_image | img_url: 'x42' }}"
         alt="{{ block.settings.text }}"
+        width="42"
+        height="42"
       >
       <img
         class="brand-logo mobile-only"
         src="{{ block.settings.mobile_tab_image | img_url: 'x42' }}"
         alt="{{ block.settings.text }}"
+        width="42"
+        height="42"
       >
     </a>
   {%- endfor -%}

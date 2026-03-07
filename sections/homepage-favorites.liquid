@@ -107,7 +107,7 @@
   	  		       {{ block.settings.image | image_url: width: img_mobile_width, height: img_mobile_height, crop: 'center' }} 1x,
   	  		       {{ block.settings.image | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x,
   	  		       ">
-  	  		   <img src="{{ block.settings.image | image_url: width: img_mobile_width, height: img_mobile_height, crop: 'center' }}" alt="{{ article.image.alt }}" loading="lazy"/>
+  	  		   <img src="{{ block.settings.image | image_url: width: img_mobile_width, height: img_mobile_height, crop: 'center' }}" alt="{{ article.image.alt }}" width="{{ img_mobile_width }}" height="{{ img_mobile_height }}" loading="lazy"/>
   	  		  </picture>
 			  {% endif %}
 		    </div>
