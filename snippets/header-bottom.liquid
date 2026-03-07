@@ -124,14 +124,41 @@
                       <a href="{{ collection.url }}">
                         <p class="product-name">{{ featured_title }}</p>
                       </a>
-                      {% if product != blank %}
-                        {%- render 'product-badge' -%}
-                      {% endif %}
                       <div style="text-align:center;">
                         <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
                       </div>
                     </div>
                   </div>
+                {% endfor %}
+
+                {% assign article_fields = 'article_1,article_2,article_3,article_4' | split: ',' %}
+                {% for article_field in article_fields %}
+                  {% assign article = block.settings[article_field] %}
+                  {% if article != blank %}
+                    <div class="product-column">
+                      <div class="featured-product">
+                        <a class="image" href="{{ article.url }}">
+                          {% if article.metafields.custom.featured_nav_image != blank %}
+                            {% assign featured_image = article.metafields.custom.featured_nav_image.value %}
+                          {% else %}
+                            {% assign featured_image = article.image %}
+                          {% endif %}
+                          {% if article.metafields.custom.featured_nav_title != blank %}
+                            {% assign featured_title = article.metafields.custom.featured_nav_title.value %}
+                          {% else %}
+                            {% assign featured_title = article.title %}
+                          {% endif %}
+                          {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
+                        </a>
+                        <a href="{{ article.url }}">
+                          <p class="product-name">{{ featured_title }}</p>
+                        </a>
+                        <div style="text-align:center;">
+                          <a class="shop-now button cta-2" href="{{ article.url }}">Read More</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
                 {% endfor %}
               {% endfor %}
             </div>
