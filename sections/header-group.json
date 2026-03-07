@@ -49,7 +49,7 @@
         "brand_RKTJdn": {
           "type": "brand",
           "settings": {
-            "tab_image": "shopify://shop_images/mrbubble-tab.png",
+            "tab_image": "shopify://shop_images/tab-logo-mr-bubble.png",
             "mobile_tab_image": "shopify://shop_images/mrbubble-tab.png",
             "nav_image": "shopify://shop_images/mrbubble-nav.png",
             "text": "Mr. Bubble",
@@ -62,7 +62,7 @@
         "brand_H46BjU": {
           "type": "brand",
           "settings": {
-            "tab_image": "shopify://shop_images/Therapy_Nav_Logo.png",
+            "tab_image": "shopify://shop_images/tab-logo-therapy.png",
             "mobile_tab_image": "shopify://shop_images/Therapy_Nav_Logo.png",
             "nav_image": "shopify://shop_images/Therapy_Logo_Web.png",
             "text": "Village Naturals Therapy",
@@ -75,7 +75,7 @@
         "brand_Nhk8gC": {
           "type": "brand",
           "settings": {
-            "tab_image": "shopify://shop_images/SND_Nav_Logo.png",
+            "tab_image": "shopify://shop_images/tab-logo-soft-dri.png",
             "mobile_tab_image": "shopify://shop_images/SND_Nav_Logo.png",
             "text": "Soft&Dri",
             "brand_color": "#da2171",
@@ -87,7 +87,7 @@
         "brand_WHwbqy": {
           "type": "brand",
           "settings": {
-            "tab_image": "shopify://shop_images/TVC_Nav_Logo.png",
+            "tab_image": "shopify://shop_images/tab-logo-tvc.png",
             "mobile_tab_image": "shopify://shop_images/TVC_Logo_White_Mobile_0c492967-5a8b-45c6-af4b-a2cf4819d890.png",
             "nav_image": "shopify://shop_images/TVC_Logo_Web-cropped.png",
             "text": "The Village Co.",
