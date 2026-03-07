@@ -110,7 +110,6 @@
                   class="yotpo-widget-instance"
                   data-yotpo-instance-id="412596"
                   data-yotpo-product-id="{{product.id}}"
-                  data-yotpo-cart-product-id="{{item.product.id}}"
                   data-yotpo-section-id="{{template.name}}"
                 ></div>
               {%- when 'price' -%}
@@ -219,7 +218,60 @@
                 {{ block.settings.custom_liquid }}
               {%- when 'collapsible_tab' -%}
                 {%- assign collapsible_tab_count = collapsible_tab_count | plus: 1 -%}
-                {% if block.settings.content != blank or block.settings.page.content != blank %}
+                {%- comment -%}
+                  ============================================
+                  BONIFY FALLBACK - REMOVE WHEN MIGRATION COMPLETE
+                  ============================================
+                  This section provides fallback support for old Bonify custom fields
+                  stored in product.metafields.global namespace. Once all products have
+                  been migrated to native Shopify metafields (product.metafields.custom.*),
+                  remove the following Bonify-related code:
+
+                  1. Remove the entire "bonify_content" assignment block (from
+                     "{%- assign bonify_content = blank -%}" through the closing
+                     "{%- endif -%}" that ends the Bonify field checks)
+
+                  2. Remove "or bonify_content != blank" from the has_content condition
+
+                  3. Remove the "{%- elsif bonify_content != blank -%}" block in the
+                     accordion content display section
+
+                  4. Simplify the has_content check to:
+                     {% if block.settings.content != blank or block.settings.page.content != blank %}
+                {%- endcomment -%}
+                {%- assign bonify_content = blank -%}
+                {%- assign bonify_content_raw = blank -%}
+                {%- if block.settings.content == blank or block.settings.content == '' -%}
+                  {%- comment -%} Map common metafield names to Bonify field names in global namespace {%- endcomment -%}
+                  {%- assign heading_lower = block.settings.heading | downcase -%}
+                  {%- if heading_lower contains 'details' or heading_lower contains 'detail' -%}
+                    {%- if product.metafields.global.details != blank -%}
+                      {%- assign bonify_content_raw = product.metafields.global.details.value -%}
+                    {%- endif -%}
+                  {%- elsif heading_lower contains 'how to use'
+                    or heading_lower contains 'usage'
+                    or heading_lower contains 'directions'
+                  -%}
+                    {%- if product.metafields.global['how-to-use'] != blank -%}
+                      {%- assign bonify_content_raw = product.metafields.global['how-to-use'].value -%}
+                    {%- endif -%}
+                  {%- elsif heading_lower contains 'ingredient' -%}
+                    {%- if product.metafields.global.ingredients != blank -%}
+                      {%- assign bonify_content_raw = product.metafields.global.ingredients.value -%}
+                    {%- endif -%}
+                  {%- endif -%}
+                  {%- if bonify_content_raw != blank -%}
+                    {%- assign bonify_content = bonify_content_raw -%}
+                  {%- endif -%}
+                {%- endif -%}
+                {%- assign has_content = false -%}
+                {%- if block.settings.content != blank
+                  or block.settings.page.content != blank
+                  or bonify_content != blank
+                -%}
+                  {%- assign has_content = true -%}
+                {%- endif -%}
+                {% if has_content %}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
                     <details
                       id="Details-{{ block.id }}-{{ section.id }}"
@@ -237,7 +289,11 @@
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </summary>
                       <div class="accordion__content content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                        {{ block.settings.content }}
+                        {%- if block.settings.content != blank -%}
+                          {{ block.settings.content }}
+                        {%- elsif bonify_content != blank -%}
+                          {{ bonify_content }}
+                        {%- endif -%}
                         {{ block.settings.page.content }}
                       </div>
                     </details>
@@ -587,9 +643,12 @@
                                 {% endif %}
                               >
                                 <ul class="list-unstyled" role="list">
+                                  {%- assign current_offset = forloop.index0
+                                    | times: block.settings.products_per_page
+                                  -%}
                                   {%- for product in recommendations.products
                                     limit: block.settings.products_per_page
-                                    offset: continue
+                                    offset: current_offset
                                   -%}
                                     <li>
                                       {%- if block.settings.enable_quick_add -%}
