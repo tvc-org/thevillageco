@@ -13,9 +13,10 @@
       value="{{ search.terms | escape }}"
       placeholder="{{ 'general.search.search' | t }}"
       aria-label="{{ 'general.search.search' | t }}"
+      data-header-top-search-input
     >
     <input type="hidden" name="options[prefix]" value="last">
-    <button type="submit" class="header-top__search-button" aria-label="{{ 'general.search.search' | t }}">
+    <button type="button" class="header-top__search-button" aria-label="{{ 'general.search.search' | t }}" data-header-top-search-trigger>
       <span class="svg-wrapper">{{ 'icon-search.svg' | inline_asset_content }}</span>
     </button>
   </div>

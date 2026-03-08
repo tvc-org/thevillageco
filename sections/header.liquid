@@ -101,6 +101,7 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'header-top-search-modal.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks
@@ -218,6 +219,11 @@
   {%- liquid
     render 'header-top-brands', brand_blocks: brand_blocks, current_brand: current_brand
   -%}
+
+  {%- comment -%} Desktop search modal: opens on focus of our input, outside header-top {%- endcomment -%}
+  <div class="header-desktop-search-modal hide-max-1024" data-desktop-search-modal>
+    {% render 'header-search', input_id: 'Search-In-Modal-Header-Top' %}
+  </div>
 
   <header class="header site-header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width-x{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
     {%- if current_brand.settings.menu != blank -%}
