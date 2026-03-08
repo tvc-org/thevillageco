@@ -1,25 +1,31 @@
 <div class="header-top">
-  {%- for block in brand_blocks -%}
-    <a
-      href="{{ block.settings.brand_page_link | default: '/' }}"
-      class="header-block header-brand brand--{{ block.id }}"
-    >
-      <img
-        class="brand-logo desktop-only"
-        src="{{ block.settings.tab_image | img_url: 'x42' }}"
-        alt="{{ block.settings.text }}"
-        width="42"
-        height="42"
+  <div class="header-top__brands">
+    {%- for block in brand_blocks -%}
+      <a
+        href="{{ block.settings.brand_page_link | default: '/' }}"
+        class="header-block header-brand brand--{{ block.id }}{% if current_brand.id == block.id %} header-brand--active{% endif %}"
       >
-      <img
-        class="brand-logo mobile-only"
-        src="{{ block.settings.mobile_tab_image | img_url: 'x42' }}"
-        alt="{{ block.settings.text }}"
-        width="42"
-        height="42"
-      >
-    </a>
-  {%- endfor -%}
+        <img
+          class="brand-logo desktop-only"
+          src="{{ block.settings.tab_image | img_url: 'x42' }}"
+          alt="{{ block.settings.text }}"
+          width="42"
+          height="42"
+        >
+        <img
+          class="brand-logo mobile-only"
+          src="{{ block.settings.mobile_tab_image | img_url: 'x42' }}"
+          alt="{{ block.settings.text }}"
+          width="42"
+          height="42"
+        >
+      </a>
+    {%- endfor -%}
+  </div>
 
-  {% render 'header-icons', section: section, class: 'hide-max-1024' %}
+  <div class="header-top__search hide-max-1024">
+    {% render 'header-top-search' %}
+  </div>
+
+  {% render 'header-icons', section: section, class: 'hide-max-1024', hide_search: true %}
 </div>

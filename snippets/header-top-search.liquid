@@ -1,0 +1,22 @@
+{% comment %}
+  Desktop inline search form for header-top.
+  Fills remaining space between brands and utility icons.
+  Search icon acts as submit button.
+{% endcomment %}
+
+<form action="{{ routes.search_url }}" method="get" role="search" class="header-top__search-form">
+  <div class="header-top__search-field">
+    <input
+      class="header-top__search-input"
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="{{ 'general.search.search' | t }}"
+      aria-label="{{ 'general.search.search' | t }}"
+    >
+    <input type="hidden" name="options[prefix]" value="last">
+    <button type="submit" class="header-top__search-button" aria-label="{{ 'general.search.search' | t }}">
+      <span class="svg-wrapper">{{ 'icon-search.svg' | inline_asset_content }}</span>
+    </button>
+  </div>
+</form>
