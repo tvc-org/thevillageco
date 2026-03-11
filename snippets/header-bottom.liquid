@@ -6,13 +6,13 @@
   </div>
   <ul class="header-bottom__links mobile-hidden" data-size="{{ current_brand.settings.menu.links | size }}">
     {%- for link in current_brand.settings.menu.links -%}
-      {% assign toutMatches = null | sort %}
+      {% assign toutMatches = '' | split: '' %}
       {% for block in tout_blocks %}
         {% if block.settings.brand_title == current_brand.settings.text
           and block.settings.nav_parent_title == link.title
         %}
-          {% assign blockItem = block | sort %}
-          {% assign toutMatches = toutMatches | concat: blockItem %}
+          {% assign block_array = tout_blocks | where: 'id', block.id %}
+          {% assign toutMatches = toutMatches | concat: block_array %}
         {% endif %}
       {% endfor %}
 
@@ -77,7 +77,7 @@
                         <p class="product-name">{{ product.title }}</p>
                       </a>
                       {%- render 'product-badge' -%}
-                      <div style="text-align:center;">
+                      <div class="text-center">
                         <a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
                       </div>
                     </div>
@@ -124,7 +124,7 @@
                       <a href="{{ collection.url }}">
                         <p class="product-name">{{ featured_title }}</p>
                       </a>
-                      <div style="text-align:center;">
+                      <div class="text-center">
                         <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
                       </div>
                     </div>
@@ -153,7 +153,7 @@
                         <a href="{{ article.url }}">
                           <p class="product-name">{{ featured_title }}</p>
                         </a>
-                        <div style="text-align:center;">
+                        <div class="text-center">
                           <a class="shop-now button cta-2" href="{{ article.url }}">Read More</a>
                         </div>
                       </div>
@@ -180,10 +180,10 @@
                     <path d="M6.5 12L10.5 8L6.5 4" stroke="#323131" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="round"/>
                   </svg>
                 </a>
-                {% if bottom_button_count == 0 %}</div>{% endif %}
                 {% assign bottom_button_count = 1 %}
               {% endif %}
             {% endfor %}
+            {% if bottom_button_count > 0 %}</div>{% endif %}
           </div>
         {%- endif -%}
       </li>
