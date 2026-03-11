@@ -53,13 +53,14 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image_overlay_opacity": 0,
+        "image": "shopify://shop_images/VNT_FlashSale_Hero_Mobile.jpg",
+        "image_overlay_opacity": 40,
         "image_height": "screen-height",
         "image_behavior": "none",
         "desktop_content_position": "middle-center",
         "desktop_content_alignment": "center",
-        "show_text_box": true,
-        "color_scheme": "",
+        "show_text_box": false,
+        "color_scheme": "scheme-4",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "center",
         "show_text_below": true
