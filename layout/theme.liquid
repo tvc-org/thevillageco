@@ -19,6 +19,36 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
+    <style>
+      @font-face {
+        font-family: 'Bubbly';
+        src: url('{{ "bubbly-regular-webfont.woff2" | asset_url }}') format('woff2'),
+             url('{{ "bubbly-regular-webfont.woff" | asset_url }}') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "FuturaPTMedium";
+        src: url('{{ "FuturaPTMedium.woff2" | asset_url }}') format('woff2'),
+             url('{{ "FuturaPTMedium.woff" | asset_url }}') format('woff');
+      }
+      @font-face {
+        font-family: "FuturaPTDemi";
+        src: url('{{ "FuturaPTDemi.woff2" | asset_url }}') format('woff2'),
+             url('{{ "FuturaPTDemi.woff" | asset_url }}') format('woff');
+      }
+      @font-face {
+        font-family: "FuturaPTBold";
+        src: url('{{ "FuturaPTBold.woff2" | asset_url }}') format('woff2'),
+             url('{{ "FuturaPTBold.woff" | asset_url }}') format('woff');
+      }
+      @font-face {
+        font-family: "FuturaPTHeavy";
+        src: url('{{ "FuturaPTHeavy.woff2" | asset_url }}') format('woff2'),
+             url('{{ "FuturaPTHeavy.woff" | asset_url }}') format('woff');
+      }
+    </style>
+
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
