@@ -24,7 +24,7 @@
           "type": "heading",
           "settings": {
             "heading": "Image banner",
-            "heading_size": "h1"
+            "heading_size": "h0"
           }
         },
         "text_DxrFCP": {
@@ -42,7 +42,7 @@
             "button_style_secondary_1": false,
             "button_label_2": "Button label",
             "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_2": true
           }
         }
       },
