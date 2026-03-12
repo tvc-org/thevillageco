@@ -44,7 +44,7 @@ html {
 /* .site-wrap overflow: hidden breaks sticky column on PDP */
 
 /* FuturaPTDemi = 500 (Figma) */
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
 }
 
@@ -110,44 +110,48 @@ header.site-header {
     position: absolute;
 }
 
+/* Mobile-first: header utilities & layout */
+.header {
+    padding: 0 10px !important;
+    height: 55px;
+}
+.hide-max-1024 {
+    display: none !important;
+}
+.header--mobile-left {
+    grid-template-columns: 1fr 2fr 1fr !important;
+}
+header-drawer {
+    display: block !important;
+}
+.header__left-icons {
+    grid-area: left-icons;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-self: start;
+}
+
 @media screen and (min-width: 1025px) {
     .hide-min-1025 {
         display: none !important;
     }
+    .hide-max-1024 {
+        display: flex !important;
+    }
     .header {
         display: block !important;
         padding: 0 !important;
+        height: auto;
     }
-
     .header__icons {
         padding: 0 35px;
     }
-    
     .header__icon--cart {
         margin-right: 0;
     }
-}
-
-@media (max-width: 1024px) {
-    .header {
-        padding: 0 10px !important;
-        height: 55px;
-    }
-    .hide-max-1024 {
-        display: none !important;
-    }
-    .header--mobile-left {
-        grid-template-columns: 1fr 2fr 1fr !important;
-    }
     header-drawer {
-        display: block !important;
-    }
-    .header__left-icons {
-        grid-area: left-icons;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        justify-self: start;
+        display: none !important;
     }
 }
 
@@ -207,11 +211,23 @@ header.site-header {
     display: block;
 }
 
+/* Mobile-first: brands centered, search hidden */
+.header-top__brands {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-top .header-brand img {
+    margin: 8px auto;
+}
+.header-top__search {
+    display: none;
+}
+
 @media screen and (min-width: 1025px) {
     .header-top__brands {
         flex: 0 0 auto;
-        display: flex;
-        align-items: center;
     }
     .header-top .header-brand {
         flex: 0 0 auto;
@@ -219,6 +235,7 @@ header.site-header {
     }
     .header-top .header-brand img {
         height: 23px;
+        margin: 0;
         padding: 0 5px;
     }
     .header-top .header-brand .brand-logo.desktop-only {
@@ -297,30 +314,14 @@ header.site-header {
     }
 }
 
-@media screen and (max-width: 1024px) {
-    .header-top__brands {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .header-top .header-brand {
-        flex: 0 0 auto;
-    }
-    .header-top .header-brand img {
-        margin: 8px auto;
-    }
-    .header-top__search {
-        display: none;
-    }
-}
-
 /* ==========================================================================
    Header Bottom - Main nav & mega menu
    ========================================================================== */
 
+/* Mobile-first base */
 .header-bottom {
-    height: 80px;
+    height: 55px;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     -webkit-font-smoothing: antialiased;
@@ -332,12 +333,18 @@ header.site-header {
     color: var(--color-text-muted);
 }
 
+.header-bottom .header-block {
+    display: flex;
+    align-items: center;
+    width: 38px;
+}
+
 .header-bottom .header-logo {
     min-width: fit-content;
     min-width: -webkit-fit-content;
     min-width: -moz-fit-content;
-    margin: 0 10px;
-    height: 40px;
+    margin: 0 auto;
+    height: 30px;
     overflow: hidden;
 }
 
@@ -345,6 +352,11 @@ header.site-header {
     display: flex;
     align-items: center;
     height: 100%;
+    width: auto;
+}
+
+.header-bottom .header-logo a:before {
+    font-size: 30px;
 }
 
 .header-bottom .header-logo a img {
@@ -354,9 +366,7 @@ header.site-header {
 }
 
 .header-bottom .header-bottom__links {
-    flex: 1;
-    display: flex;
-    align-items: center;
+    display: none;
 }
 
 .header-bottom .header-bottom__links .header-bottom__item {
@@ -485,70 +495,28 @@ header.site-header {
 @media screen and (min-width: 1025px) {
     .header-bottom {
         font-size: 16px;
-    }
-}
-
-@media screen and (min-width: 1200px) {
-    .header-bottom .header-bottom__links .header-bottom__item {
-        padding: 0 10px;
-    }
-}
-
-@media screen and (min-width: 1300px) {
-    .header-bottom .header-bottom__link {
-        font-size: 14px;
-    }
-}
-
-@media screen and (min-width: 1440px) {
-    .header-bottom .header-logo {
-        margin: 0 50px;
-    }
-}
-
-@media screen and (min-width: 1600px) {
-    .header-bottom .header-bottom__links .header-bottom__item {
-        padding: 0 20px;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .header-bottom {
-        height: 55px;
-        padding: 0 10px;
-    }
-    .header-bottom .header-block {
-        display: flex;
-        align-items: center;
-        width: 38px;
-    }
-    .header-bottom .header-logo {
-        margin: 0 auto;
-        height: 30px;
-    }
-    .header-bottom .header-logo a {
-        width: auto;
-    }
-    .header-bottom .header-logo a:before {
-        font-size: 30px;
-    }
-    .header-bottom .header-bottom__links {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 1025px) {
-    .header-bottom .header-logo {
-        margin: 0 40px;
-    }
-}
-
-/* Mega menu (768px+) */
-@media screen and (min-width: 768px) {
-    .header-bottom {
+        height: 80px;
+        padding: 0;
         position: relative;
     }
+
+    .header-bottom .header-block {
+        width: auto;
+    }
+    .header-bottom .header-logo {
+        margin: 0 40px;
+        height: 40px;
+    }
+    .header-bottom .header-logo a {
+        width: 100%;
+    }
+    .header-bottom .header-logo a:before {
+        font-size: 40px;
+    }
     .header-bottom .header-bottom__links {
+        display: flex;
+        flex: 1;
+        align-items: center;
         position: static;
         z-index: 2;
     }
@@ -642,6 +610,30 @@ header.site-header {
         width: auto;
         padding: 0 40px;
         margin-top: 10px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .header-bottom .header-bottom__links .header-bottom__item {
+        padding: 0 10px;
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .header-bottom .header-bottom__link {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .header-bottom .header-logo {
+        margin: 0 50px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .header-bottom .header-bottom__links .header-bottom__item {
+        padding: 0 20px;
     }
 }
 
@@ -920,6 +912,26 @@ header.site-header {
     font-size: 14px;
 }
 
+/* Mobile-first: product reviews layout */
+#shopify-product-reviews .spr-header {
+    padding: 0 20px;
+}
+#shopify-product-reviews .spr-container .spr-review {
+    padding: 20px;
+}
+#shopify-product-reviews .spr-container .spr-review .spr-review-header .spr-review-header-starratings,
+#shopify-product-reviews .spr-container .spr-review .spr-review-header .spr-review-header-title {
+    width: 70%;
+    margin-left: 30%;
+}
+#shopify-product-reviews .spr-container .spr-review .spr-review-header .spr-review-header-byline {
+    width: 30%;
+}
+#shopify-product-reviews .spr-container .spr-review .spr-review-content {
+    width: 70%;
+    margin-left: 30%;
+}
+
 @media screen and (min-width: 1025px) {
     #shopify-product-reviews .spr-review-header-title,
     #shopify-product-reviews .spr-review-content-body,
@@ -944,27 +956,6 @@ header.site-header {
     #shopify-product-reviews .spr-container .spr-review .spr-review-content {
         width: 80%;
         margin-left: 20%;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    #shopify-product-reviews .spr-header {
-        padding: 0 20px;
-    }
-    #shopify-product-reviews .spr-container .spr-review {
-        padding: 20px;
-    }
-    #shopify-product-reviews .spr-container .spr-review .spr-review-header .spr-review-header-starratings,
-    #shopify-product-reviews .spr-container .spr-review .spr-review-header .spr-review-header-title {
-        width: 70%;
-        margin-left: 30%;
-    }
-    #shopify-product-reviews .spr-container .spr-review .spr-review-header .spr-review-header-byline {
-        width: 30%;
-    }
-    #shopify-product-reviews .spr-container .spr-review .spr-review-content {
-        width: 70%;
-        margin-left: 30%;
     }
 }
 
