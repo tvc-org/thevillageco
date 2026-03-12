@@ -1,7 +1,12 @@
 <div class="header-bottom">
   <div class="header-logo brand-{{ current_brand.id }}">
     <a href="{{ block.settings.brand_page_link | default: '/' }}" class="header-block header-brand">
-      <img src="{{ current_brand.settings.nav_image | img_url: 'x76' }}" alt="{{ block.settings.text }}" width="76" height="76">
+      <img
+        src="{{ current_brand.settings.nav_image | img_url: 'x76' }}"
+        alt="{{ block.settings.text }}"
+        width="76"
+        height="76"
+      >
     </a>
   </div>
   <ul class="header-bottom__links mobile-hidden" data-size="{{ current_brand.settings.menu.links | size }}">
@@ -73,12 +78,16 @@
                                    -%}
                         {% endcomment %}
                       </a>
-                      <a href="{{ product.url | within: collection }}">
-                        <p class="product-name">{{ product.title }}</p>
-                      </a>
-                      {%- render 'product-badge' -%}
-                      <div class="text-center">
-                        <a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
+                      <div class="product-info">
+                        <a href="{{ product.url | within: collection }}">
+                          <p class="product-name">{{ product.title }}</p>
+                        </a>
+                        {%- render 'product-badge' -%}
+                        <div class="text-center">
+                          <a class="shop-now button button--secondary" href="{{ product.url | within: collection }}"
+                            >Shop Now</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -121,11 +130,13 @@
                           -%}
                         {% endcomment %}
                       </a>
-                      <a href="{{ collection.url }}">
-                        <p class="product-name">{{ featured_title }}</p>
-                      </a>
-                      <div class="text-center">
-                        <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
+                      <div class="product-info">
+                        <a href="{{ collection.url }}">
+                          <p class="product-name">{{ featured_title }}</p>
+                        </a>
+                        <div class="text-center">
+                          <a class="shop-now button button--secondary" href="{{ collection.url }}">Shop Now</a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -150,11 +161,14 @@
                           {% endif %}
                           {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
                         </a>
-                        <a href="{{ article.url }}">
-                          <p class="product-name">{{ featured_title }}</p>
-                        </a>
-                        <div class="text-center">
-                          <a class="shop-now button cta-2" href="{{ article.url }}">Read More</a>
+
+                        <div class="product-info">
+                          <a href="{{ article.url }}">
+                            <p class="product-name">{{ featured_title }}</p>
+                          </a>
+                          <div class="text-center">
+                            <a class="shop-now button button--secondary" href="{{ article.url }}">Read More</a>
+                          </div>
                         </div>
                       </div>
                     </div>

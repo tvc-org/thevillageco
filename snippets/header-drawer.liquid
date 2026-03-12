@@ -120,7 +120,9 @@
                           {%- comment -%} Mobile nav: tout blocks (products, collections, articles, bottom button) {%- endcomment -%}
                           {%- if tout_blocks.size > 0 -%}
                             {%- for block in tout_blocks -%}
-                              {%- if block.settings.brand_title == current_brand.settings.text and block.settings.nav_parent_title == link.title -%}
+                              {%- if block.settings.brand_title == current_brand.settings.text
+                                and block.settings.nav_parent_title == link.title
+                              -%}
                                 <div class="menu-drawer__touts">
                                   {%- for product in block.settings.product_list -%}
                                     <div class="menu-drawer__tout menu-drawer__tout--product">
@@ -131,12 +133,22 @@
                                           {%- else -%}
                                             {%- assign featured_image = product.featured_image -%}
                                           {%- endif -%}
-                                          {{ featured_image | image_url: width: 160 | image_tag: widths: '160, 320', loading: 'lazy' }}
+                                          {{
+                                            featured_image
+                                            | image_url: width: 160
+                                            | image_tag: widths: '160, 320', loading: 'lazy'
+                                          }}
                                         </a>
                                         <div class="menu-drawer__tout-info">
-                                          <a href="{{ product.url }}" class="menu-drawer__tout-name">{{ product.title }}</a>
+                                          <a href="{{ product.url }}" class="menu-drawer__tout-name">
+                                            {{- product.title -}}
+                                          </a>
                                           {%- render 'product-badge' -%}
-                                          <a class="menu-drawer__tout-cta button cta-2" href="{{ product.url }}">Shop Now</a>
+                                          <a
+                                            class="menu-drawer__tout-cta button button--secondary"
+                                            href="{{ product.url }}"
+                                            >Shop Now</a
+                                          >
                                         </div>
                                       </div>
                                     </div>
@@ -155,11 +167,21 @@
                                           {%- else -%}
                                             {%- assign featured_image = collection.featured_image -%}
                                           {%- endif -%}
-                                          {{ featured_image | image_url: width: 160 | image_tag: widths: '160, 320', loading: 'lazy' }}
+                                          {{
+                                            featured_image
+                                            | image_url: width: 160
+                                            | image_tag: widths: '160, 320', loading: 'lazy'
+                                          }}
                                         </a>
                                         <div class="menu-drawer__tout-info">
-                                          <a href="{{ collection.url }}" class="menu-drawer__tout-name">{{ featured_title }}</a>
-                                          <a class="menu-drawer__tout-cta button cta-2" href="{{ collection.url }}">Shop Now</a>
+                                          <a href="{{ collection.url }}" class="menu-drawer__tout-name">
+                                            {{- featured_title -}}
+                                          </a>
+                                          <a
+                                            class="menu-drawer__tout-cta button button--secondary"
+                                            href="{{ collection.url }}"
+                                            >Shop Now</a
+                                          >
                                         </div>
                                       </div>
                                     </div>
@@ -181,22 +203,44 @@
                                             {%- else -%}
                                               {%- assign featured_image = article.image -%}
                                             {%- endif -%}
-                                            {{ featured_image | image_url: width: 160 | image_tag: widths: '160, 320', loading: 'lazy' }}
+                                            {{
+                                              featured_image
+                                              | image_url: width: 160
+                                              | image_tag: widths: '160, 320', loading: 'lazy'
+                                            }}
                                           </a>
                                           <div class="menu-drawer__tout-info">
-                                            <a href="{{ article.url }}" class="menu-drawer__tout-name">{{ featured_title }}</a>
-                                            <a class="menu-drawer__tout-cta button cta-2" href="{{ article.url }}">Read More</a>
+                                            <a href="{{ article.url }}" class="menu-drawer__tout-name">
+                                              {{- featured_title -}}
+                                            </a>
+                                            <a
+                                              class="menu-drawer__tout-cta button button--secondary"
+                                              href="{{ article.url }}"
+                                              >Read More</a
+                                            >
                                           </div>
                                         </div>
                                       </div>
                                     {%- endif -%}
                                   {%- endfor -%}
                                 </div>
-                                {%- if block.settings.bottom_button_link != blank and block.settings.bottom_button_text != blank -%}
+                                {%- if block.settings.bottom_button_link != blank
+                                  and block.settings.bottom_button_text != blank
+                                -%}
                                   <div class="menu-drawer__touts-bottom">
-                                    <a href="{{ block.settings.bottom_button_link }}" class="menu-drawer__tout-bottom-link">
+                                    <a
+                                      href="{{ block.settings.bottom_button_link }}"
+                                      class="menu-drawer__tout-bottom-link"
+                                    >
                                       <span>{{ block.settings.bottom_button_text }}</span>
-                                      <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                      <svg
+                                        class="chevron"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="17"
+                                        height="16"
+                                        viewBox="0 0 17 16"
+                                        fill="none"
+                                      >
                                         <path d="M6.5 12L10.5 8L6.5 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="round"/>
                                       </svg>
                                     </a>

@@ -75,12 +75,16 @@
                                 -%}
                         {% endcomment %}
                       </a>
-                      <a href="{{ product.url | within: collection }}">
-                        <p class="product-name">{{ product.title }}</p>
-                      </a>
-                      {% comment %} {%- include 'product-badge' -%} {% endcomment %}
-                      <div class="text-center">
-                        <a class="shop-now button cta-2" href="{{ product.url | within: collection }}">Shop Now</a>
+                      <div class="product-info">
+                        <a href="{{ product.url | within: collection }}">
+                          <p class="product-name">{{ product.title }}</p>
+                        </a>
+                        {% comment %} {%- include 'product-badge' -%} {% endcomment %}
+                        <div class="text-center">
+                          <a class="shop-now button button--secondary" href="{{ product.url | within: collection }}"
+                            >Shop Now</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -123,12 +127,14 @@
                           -%}
                         {% endcomment %}
                       </a>
-                      <a href="{{ collection.url }}">
-                        <p class="product-name">{{ featured_title }}</p>
-                      </a>
-                      {% comment %} {%- include 'product-badge' -%} {% endcomment %}
-                      <div class="text-center">
-                        <a class="shop-now button cta-2" href="{{ collection.url }}">Shop Now</a>
+                      <div class="product-info">
+                        <a href="{{ collection.url }}">
+                          <p class="product-name">{{ featured_title }}</p>
+                        </a>
+                        {% comment %} {%- include 'product-badge' -%} {% endcomment %}
+                        <div class="text-center">
+                          <a class="shop-now button button--secondary" href="{{ collection.url }}">Shop Now</a>
+                        </div>
                       </div>
                     </div>
                   </div>
