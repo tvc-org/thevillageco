@@ -7,7 +7,68 @@
 
 {% assign footer_brand_blocks = section.blocks | where: 'type', 'brand' %}
 {% if footer_brand_blocks.size > 0 %}
-  {% render 'current-brand', brand_blocks: footer_brand_blocks %}
+  {%- liquid
+    assign footer_current_brand = footer_brand_blocks | last
+    for block in footer_brand_blocks
+      if block.settings.text == 'The Village Co.'
+        assign footer_current_brand = block
+        break
+      endif
+    endfor
+    for block in footer_brand_blocks
+      assign has_active_link = false
+      if block.settings.menu != blank
+        for link in block.settings.menu.links
+          if link.active or link.child_active
+            assign has_active_link = true
+            break
+          endif
+        endfor
+      endif
+      if has_active_link
+        assign footer_current_brand = block
+        break
+      endif
+    endfor
+  -%}
+  {%- liquid
+    assign current_url = request.path
+    assign url_segments = current_url | split: '/'
+    assign last_segment = url_segments | last
+    for block in footer_brand_blocks
+      if block.settings.brand_page_link != blank
+        if current_url contains block.settings.brand_page_link
+          assign footer_current_brand = block
+          break
+        elsif last_segment contains 'mr-bubble' and block.settings.brand_page_link contains 'mr-bubble'
+          assign footer_current_brand = block
+          break
+        elsif last_segment contains 'therapy' and block.settings.brand_page_link contains 'therapy'
+          assign footer_current_brand = block
+          break
+        endif
+      endif
+    endfor
+  -%}
+  {% if product %}
+    {% for block in footer_brand_blocks %}
+      {% if block.settings.text == product.vendor %}
+        {% assign footer_current_brand = block %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if blog %}
+    {% for block in footer_brand_blocks %}
+      {% if block.settings.text == 'Village Naturals Therapy' and blog.handle == 'village-naturals-therapy' %}
+        {% assign footer_current_brand = block %}
+        {% break %}
+      {% elsif block.settings.text == 'Mr. Bubble' and blog.handle == 'fun' %}
+        {% assign footer_current_brand = block %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 {%- style -%}
@@ -30,19 +91,19 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-  {%- if footer_brand_blocks.size > 0 and current_brand -%}
+  {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
   .footer--{{ section.id }}.footer--branded {
-    {%- if current_brand.settings.brand_color != blank -%}
-    background: {{ current_brand.settings.brand_color }};
+    {%- if footer_current_brand.settings.brand_color != blank -%}
+    background: {{ footer_current_brand.settings.brand_color }};
     {%- endif -%}
-    {%- if current_brand.settings.footer_text_color != blank -%}
-    --footer-text-color: {{ current_brand.settings.footer_text_color }};
+    {%- if footer_current_brand.settings.footer_text_color != blank -%}
+    --footer-text-color: {{ footer_current_brand.settings.footer_text_color }};
     {%- endif -%}
   }
   {%- endif -%}
 {%- endstyle -%}
 
-<footer class="footer footer--{{ section.id }}{% if footer_brand_blocks.size > 0 and current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="footer footer--{{ section.id }}{% if footer_brand_blocks.size > 0 and footer_current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -144,8 +205,8 @@
                         <div class="rte">{{ settings.brand_description }}</div>
                       {%- endif -%}
                       {%- if block.settings.show_social and has_social_icons -%}
-                        {%- if footer_brand_blocks.size > 0 and current_brand -%}
-                          {%- render 'social-icons-from-brand', brand: current_brand, class: 'footer__list-social' -%}
+                        {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
+                          {%- render 'social-icons-from-brand', brand: footer_current_brand, class: 'footer__list-social' -%}
                         {%- else -%}
                           {%- render 'social-icons', class: 'footer__list-social' -%}
                         {%- endif -%}
@@ -262,8 +323,8 @@
           {%- endif -%}
 
           {%- if section.settings.show_social and has_social_icons -%}
-            {%- if footer_brand_blocks.size > 0 and current_brand -%}
-              {%- render 'social-icons-from-brand', brand: current_brand, class: 'footer__list-social' -%}
+            {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
+              {%- render 'social-icons-from-brand', brand: footer_current_brand, class: 'footer__list-social' -%}
             {%- else -%}
               {%- render 'social-icons', class: 'footer__list-social' -%}
             {%- endif -%}
