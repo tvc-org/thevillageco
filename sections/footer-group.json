@@ -18,7 +18,7 @@
           "type": "brand",
           "settings": {
             "text": "Mr. Bubble",
-            "brand_color": "",
+            "brand_color": "#f04d98",
             "footer_text_color": "#ffffff",
             "brand_page_link": "shopify://pages/mr-bubble",
             "menu": "",
