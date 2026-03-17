@@ -24,7 +24,7 @@
         "footer-1": {
           "type": "link_list",
           "settings": {
-            "heading": "Support",
+            "heading": "Help",
             "menu": "footer-slim"
           }
         },
