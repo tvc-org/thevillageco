@@ -1036,6 +1036,36 @@ header-drawer {
    Footer & Misc
    ========================================================================== */
 
+/* Brand-colored footer: text, links, and social icons use footer text color */
+.footer--branded,
+.footer--branded .footer-block__heading,
+.footer--branded .footer-block__details-content {
+    color: var(--footer-text-color);
+}
+.footer--branded a,
+.footer--branded .link,
+.footer--branded .list-menu__item--link,
+.footer--branded .list-menu__item--active,
+.footer--branded .copyright__content a,
+.footer--branded .list-social__link {
+    color: var(--footer-text-color);
+}
+.footer--branded a:hover,
+.footer--branded .link:hover,
+.footer--branded .list-menu__item--link:hover,
+.footer--branded .list-menu__item--active:hover,
+.footer--branded .copyright__content a:hover,
+.footer--branded .list-social__link:hover {
+    color: var(--footer-text-color);
+    opacity: 0.85;
+}
+.footer--branded .list-social__item .icon {
+    fill: var(--footer-text-color);
+}
+.footer--branded .footer__content-bottom {
+    border-top-color: color-mix(in srgb, var(--footer-text-color) 20%, transparent);
+}
+
 .footer-block__details-content > p {
     font-size: 16px;
 }

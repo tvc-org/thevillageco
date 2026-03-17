@@ -5,6 +5,11 @@
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 
+{% assign footer_brand_blocks = section.blocks | where: 'type', 'brand' %}
+{% if footer_brand_blocks.size > 0 %}
+  {% render 'current-brand', brand_blocks: footer_brand_blocks %}
+{% endif %}
+
 {%- style -%}
   .footer {
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
@@ -25,9 +30,19 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  {%- if footer_brand_blocks.size > 0 and current_brand -%}
+  .footer--{{ section.id }}.footer--branded {
+    {%- if current_brand.settings.brand_color != blank -%}
+    background: {{ current_brand.settings.brand_color }};
+    {%- endif -%}
+    {%- if current_brand.settings.footer_text_color != blank -%}
+    --footer-text-color: {{ current_brand.settings.footer_text_color }};
+    {%- endif -%}
+  }
+  {%- endif -%}
 {%- endstyle -%}
 
-<footer class="footer color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="footer footer--{{ section.id }}{% if footer_brand_blocks.size > 0 and current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -129,7 +144,11 @@
                         <div class="rte">{{ settings.brand_description }}</div>
                       {%- endif -%}
                       {%- if block.settings.show_social and has_social_icons -%}
-                        {%- render 'social-icons', class: 'footer__list-social' -%}
+                        {%- if footer_brand_blocks.size > 0 and current_brand -%}
+                          {%- render 'social-icons-from-brand', brand: current_brand, class: 'footer__list-social' -%}
+                        {%- else -%}
+                          {%- render 'social-icons', class: 'footer__list-social' -%}
+                        {%- endif -%}
                       {%- endif -%}
                     </div>
                   {%- when 'image' -%}
@@ -243,7 +262,11 @@
           {%- endif -%}
 
           {%- if section.settings.show_social and has_social_icons -%}
-            {%- render 'social-icons', class: 'footer__list-social' -%}
+            {%- if footer_brand_blocks.size > 0 and current_brand -%}
+              {%- render 'social-icons-from-brand', brand: current_brand, class: 'footer__list-social' -%}
+            {%- else -%}
+              {%- render 'social-icons', class: 'footer__list-social' -%}
+            {%- endif -%}
           {%- endif -%}
         </div>
       </div>
@@ -327,6 +350,90 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "name": "Brand",
+      "type": "brand",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Add the same brands as the header for consistent theming. Brand colors and social links apply to the footer based on the current page."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Brand name (fallback)"
+        },
+        {
+          "type": "color",
+          "id": "brand_color",
+          "label": "Brand color"
+        },
+        {
+          "type": "color",
+          "id": "footer_text_color",
+          "label": "Footer text color"
+        },
+        {
+          "type": "url",
+          "id": "brand_page_link",
+          "label": "Brand page link"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu (for active link detection)"
+        },
+        {
+          "type": "header",
+          "content": "Social links"
+        },
+        {
+          "type": "text",
+          "id": "social_facebook_link",
+          "label": "Facebook"
+        },
+        {
+          "type": "text",
+          "id": "social_instagram_link",
+          "label": "Instagram"
+        },
+        {
+          "type": "text",
+          "id": "social_youtube_link",
+          "label": "YouTube"
+        },
+        {
+          "type": "text",
+          "id": "social_tiktok_link",
+          "label": "TikTok"
+        },
+        {
+          "type": "text",
+          "id": "social_twitter_link",
+          "label": "Twitter"
+        },
+        {
+          "type": "text",
+          "id": "social_pinterest_link",
+          "label": "Pinterest"
+        },
+        {
+          "type": "text",
+          "id": "social_snapchat_link",
+          "label": "Snapchat"
+        },
+        {
+          "type": "text",
+          "id": "social_tumblr_link",
+          "label": "Tumblr"
+        },
+        {
+          "type": "text",
+          "id": "social_vimeo_link",
+          "label": "Vimeo"
+        }
+      ]
     },
     {
       "type": "link_list",

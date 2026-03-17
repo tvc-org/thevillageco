@@ -1,0 +1,74 @@
+{% comment %}
+  Computes current_brand from brand_blocks based on URL, active nav, product vendor, blog.
+  Accepts:
+  - brand_blocks: {Array} blocks of type 'brand' from header or footer section
+
+  Usage:
+  {% assign brand_blocks = section.blocks | where: 'type', 'brand' %}
+  {% render 'current-brand', brand_blocks: brand_blocks %}
+  {% comment %} current_brand is now available {% endcomment %}
+{% endcomment %}
+
+{%- liquid
+  assign current_brand = brand_blocks | last
+  for block in brand_blocks
+    if block.settings.text == 'The Village Co.'
+      assign current_brand = block
+      break
+    endif
+  endfor
+  for block in brand_blocks
+    assign has_active_link = false
+    for link in block.settings.menu.links
+      if link.active or link.child_active
+        assign has_active_link = true
+        break
+      endif
+    endfor
+    if has_active_link
+      assign current_brand = block
+      break
+    endif
+  endfor
+-%}
+
+{%- liquid
+  assign current_url = request.path
+  assign url_segments = current_url | split: '/'
+  assign last_segment = url_segments | last
+  for block in brand_blocks
+    if block.settings.brand_page_link != blank
+      if current_url contains block.settings.brand_page_link
+        assign current_brand = block
+        break
+      elsif last_segment contains 'mr-bubble' and block.settings.brand_page_link contains 'mr-bubble'
+        assign current_brand = block
+        break
+      elsif last_segment contains 'therapy' and block.settings.brand_page_link contains 'therapy'
+        assign current_brand = block
+        break
+      endif
+    endif
+  endfor
+-%}
+
+{% if product %}
+  {% for block in brand_blocks %}
+    {% if block.settings.text == product.vendor %}
+      {% assign current_brand = block %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if blog %}
+  {% for block in brand_blocks %}
+    {% if block.settings.text == 'Village Naturals Therapy' and blog.handle == 'village-naturals-therapy' %}
+      {% assign current_brand = block %}
+      {% break %}
+    {% elsif block.settings.text == 'Mr. Bubble' and blog.handle == 'fun' %}
+      {% assign current_brand = block %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
