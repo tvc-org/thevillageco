@@ -33,6 +33,25 @@
             "social_vimeo_link": ""
           }
         },
+        "brand_Qm8y9b": {
+          "type": "brand",
+          "settings": {
+            "text": "Village Naturals Therapy",
+            "brand_color": "#5f885f",
+            "footer_text_color": "#ffffff",
+            "brand_page_link": "shopify://pages/therapy",
+            "menu": "",
+            "social_facebook_link": "",
+            "social_instagram_link": "",
+            "social_youtube_link": "",
+            "social_tiktok_link": "",
+            "social_twitter_link": "",
+            "social_pinterest_link": "",
+            "social_snapchat_link": "",
+            "social_tumblr_link": "",
+            "social_vimeo_link": ""
+          }
+        },
         "footer-0": {
           "type": "link_list",
           "settings": {
@@ -58,6 +77,7 @@
       },
       "block_order": [
         "brand_GDbJNU",
+        "brand_Qm8y9b",
         "footer-0",
         "footer-1",
         "footer-2"
