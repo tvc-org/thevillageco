@@ -14,6 +14,25 @@
     "footer": {
       "type": "footer",
       "blocks": {
+        "brand_GDbJNU": {
+          "type": "brand",
+          "settings": {
+            "text": "Mr. Bubble",
+            "brand_color": "",
+            "footer_text_color": "#ffffff",
+            "brand_page_link": "shopify://pages/mr-bubble",
+            "menu": "",
+            "social_facebook_link": "https://www.facebook.com/Mr.Bubble",
+            "social_instagram_link": "https://www.instagram.com/mrbubbleofficial/",
+            "social_youtube_link": "https://www.youtube.com/user/MrBubbleBubbleBath",
+            "social_tiktok_link": "https://www.tiktok.com/@mrbubbleofficial",
+            "social_twitter_link": "https://twitter.com/mrbubble",
+            "social_pinterest_link": "https://www.pinterest.com/mrbubble/_created/",
+            "social_snapchat_link": "",
+            "social_tumblr_link": "",
+            "social_vimeo_link": ""
+          }
+        },
         "footer-0": {
           "type": "link_list",
           "settings": {
@@ -38,6 +57,7 @@
         }
       },
       "block_order": [
+        "brand_GDbJNU",
         "footer-0",
         "footer-1",
         "footer-2"
