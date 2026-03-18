@@ -1036,6 +1036,20 @@ header-drawer {
    Footer & Misc
    ========================================================================== */
 
+/* Footer brand logo */
+.footer-brand-logo {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+.footer-brand-logo__link {
+    display: inline-block;
+}
+.footer-brand-logo__image {
+    max-width: 120px;
+    height: auto;
+    display: block;
+}
+
 /* Brand-colored footer: text, links, and social icons use footer text color */
 .footer--branded,
 .footer--branded .footer-block__heading,
@@ -1048,7 +1062,7 @@ header-drawer {
 .footer--branded .list-menu__item--active,
 .footer--branded .copyright__content a,
 .footer--branded .list-social__link {
-    color: var(--footer-text-color);
+    color: var(--footer-text-color) !important;
 }
 .footer--branded a:hover,
 .footer--branded .link:hover,

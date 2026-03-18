@@ -15,21 +15,6 @@
         break
       endif
     endfor
-    for block in footer_brand_blocks
-      assign has_active_link = false
-      if block.settings.menu != blank
-        for link in block.settings.menu.links
-          if link.active or link.child_active
-            assign has_active_link = true
-            break
-          endif
-        endfor
-      endif
-      if has_active_link
-        assign footer_current_brand = block
-        break
-      endif
-    endfor
   -%}
   {%- liquid
     assign current_url = request.path
@@ -204,7 +189,16 @@
                       {%- if settings.brand_description != blank -%}
                         <div class="rte">{{ settings.brand_description }}</div>
                       {%- endif -%}
-                      {%- if block.settings.show_social and has_social_icons -%}
+                      {%- assign show_brand_social = false -%}
+                      {%- if block.settings.show_social -%}
+                        {%- if has_social_icons -%}
+                          {%- assign show_brand_social = true -%}
+                        {%- endif -%}
+                        {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
+                          {%- assign show_brand_social = true -%}
+                        {%- endif -%}
+                      {%- endif -%}
+                      {%- if show_brand_social -%}
                         {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
                           {%- render 'social-icons-from-brand', brand: footer_current_brand, class: 'footer__list-social' -%}
                         {%- else -%}
@@ -245,6 +239,20 @@
             data-cascade
           {% endif %}
         >
+          {%- if footer_brand_blocks.size > 0 and footer_current_brand and footer_current_brand.settings.footer_logo != blank -%}
+            <div class="footer-brand-logo">
+              <a href="{% if footer_current_brand.settings.brand_page_link != blank %}{{ footer_current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}" class="footer-brand-logo__link">
+                <img
+                  src="{{ footer_current_brand.settings.footer_logo | image_url: width: 200 }}"
+                  alt="{{ footer_current_brand.settings.text | escape }}"
+                  width="{{ footer_current_brand.settings.footer_logo.width }}"
+                  height="{{ footer_current_brand.settings.footer_logo.height }}"
+                  loading="lazy"
+                  class="footer-brand-logo__image"
+                >
+              </a>
+            </div>
+          {%- endif -%}
           {%- if section.settings.newsletter_enable -%}
             <div class="footer-block__newsletter">
               {%- if section.settings.newsletter_heading != blank -%}
@@ -322,7 +330,16 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.show_social and has_social_icons -%}
+          {%- assign show_footer_social = false -%}
+          {%- if section.settings.show_social -%}
+            {%- if has_social_icons -%}
+              {%- assign show_footer_social = true -%}
+            {%- endif -%}
+            {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
+              {%- assign show_footer_social = true -%}
+            {%- endif -%}
+          {%- endif -%}
+          {%- if show_footer_social -%}
             {%- if footer_brand_blocks.size > 0 and footer_current_brand -%}
               {%- render 'social-icons-from-brand', brand: footer_current_brand, class: 'footer__list-social' -%}
             {%- else -%}
@@ -441,13 +458,18 @@
           "label": "Brand page link"
         },
         {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu (for active link detection)"
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Footer logo"
         },
         {
           "type": "header",
           "content": "Social links"
+        },
+        {
+          "type": "text",
+          "id": "social_tiktok_link",
+          "label": "TikTok"
         },
         {
           "type": "text",
@@ -466,18 +488,13 @@
         },
         {
           "type": "text",
-          "id": "social_tiktok_link",
-          "label": "TikTok"
+          "id": "social_pinterest_link",
+          "label": "Pinterest"
         },
         {
           "type": "text",
           "id": "social_twitter_link",
           "label": "Twitter"
-        },
-        {
-          "type": "text",
-          "id": "social_pinterest_link",
-          "label": "Pinterest"
         },
         {
           "type": "text",

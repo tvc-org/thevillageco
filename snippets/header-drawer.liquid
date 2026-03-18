@@ -329,13 +329,13 @@
               </div>
             {%- endif -%}
             <ul class="list list-social list-unstyled" role="list">
-              {%- if settings.social_twitter_link != blank -%}
+              {%- if settings.social_tiktok_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                  <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-twitter.svg' | inline_asset_content -}}
+                      {{- 'icon-tiktok.svg' | inline_asset_content -}}
                     </span>
-                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                    <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -349,16 +349,6 @@
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_pinterest_link != blank -%}
-                <li class="list-social__item">
-                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
-                    <span class="svg-wrapper">
-                      {{- 'icon-pinterest.svg' | inline_asset_content -}}
-                    </span>
-                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
-                  </a>
-                </li>
-              {%- endif -%}
               {%- if settings.social_instagram_link != blank -%}
                 <li class="list-social__item">
                   <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
@@ -369,23 +359,33 @@
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_tiktok_link != blank -%}
+              {%- if settings.social_youtube_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                  <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-tiktok.svg' | inline_asset_content -}}
+                      {{- 'icon-youtube.svg' | inline_asset_content -}}
                     </span>
-                    <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                    <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_tumblr_link != blank -%}
+              {%- if settings.social_pinterest_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                  <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-tumblr.svg' | inline_asset_content -}}
+                      {{- 'icon-pinterest.svg' | inline_asset_content -}}
                     </span>
-                    <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                    <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                  </a>
+                </li>
+              {%- endif -%}
+              {%- if settings.social_twitter_link != blank -%}
+                <li class="list-social__item">
+                  <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                    <span class="svg-wrapper">
+                      {{- 'icon-twitter.svg' | inline_asset_content -}}
+                    </span>
+                    <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}
@@ -399,13 +399,13 @@
                   </a>
                 </li>
               {%- endif -%}
-              {%- if settings.social_youtube_link != blank -%}
+              {%- if settings.social_tumblr_link != blank -%}
                 <li class="list-social__item">
-                  <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                  <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
                     <span class="svg-wrapper">
-                      {{- 'icon-youtube.svg' | inline_asset_content -}}
+                      {{- 'icon-tumblr.svg' | inline_asset_content -}}
                     </span>
-                    <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                    <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
                   </a>
                 </li>
               {%- endif -%}

@@ -33,6 +33,14 @@
 -%}
 
 <ul class="list-unstyled list-social{% if class %} {{ class}}{% endif %}" role="list">
+  {%- if tt != blank -%}
+    <li class="list-social__item">
+      <a href="{{ tt }}" class="link list-social__link">
+        <span class="svg-wrapper">{{- 'icon-tiktok.svg' | inline_asset_content -}}</span>
+        <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+      </a>
+    </li>
+  {%- endif -%}
   {%- if fb != blank -%}
     <li class="list-social__item">
       <a href="{{ fb }}" class="link list-social__link">
@@ -57,11 +65,11 @@
       </a>
     </li>
   {%- endif -%}
-  {%- if tt != blank -%}
+  {%- if pin != blank -%}
     <li class="list-social__item">
-      <a href="{{ tt }}" class="link list-social__link">
-        <span class="svg-wrapper">{{- 'icon-tiktok.svg' | inline_asset_content -}}</span>
-        <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+      <a href="{{ pin }}" class="link list-social__link">
+        <span class="svg-wrapper">{{- 'icon-pinterest.svg' | inline_asset_content -}}</span>
+        <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
       </a>
     </li>
   {%- endif -%}
@@ -70,14 +78,6 @@
       <a href="{{ tw }}" class="link list-social__link">
         <span class="svg-wrapper">{{- 'icon-twitter.svg' | inline_asset_content -}}</span>
         <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
-      </a>
-    </li>
-  {%- endif -%}
-  {%- if pin != blank -%}
-    <li class="list-social__item">
-      <a href="{{ pin }}" class="link list-social__link">
-        <span class="svg-wrapper">{{- 'icon-pinterest.svg' | inline_asset_content -}}</span>
-        <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
       </a>
     </li>
   {%- endif -%}
