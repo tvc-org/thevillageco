@@ -129,6 +129,8 @@
         "enable_language_selector": false,
         "payment_enable": false,
         "show_policy": true,
+        "show_powered_by": false,
+        "trademark_text": "<p>Mr. Bubble, Village Naturals Therapy, HALLU, and Soft & Dri are all registered trademarks and property of The Village Company. All rights reserved.</p>",
         "margin_top": 48,
         "padding_top": 36,
         "padding_bottom": 36
