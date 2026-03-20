@@ -88,11 +88,10 @@
   {%- endif -%}
 {%- endstyle -%}
 
+{%- if settings.signup_embed != blank -%}
+  {%- render 'footer-subscription', brand: footer_current_brand -%}
+{%- endif -%}
 <footer class="footer footer--{{ section.id }}{% if footer_brand_blocks.size > 0 and footer_current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
-  {%- comment -%} Custom newsletter signup (Klaviyo embed) above footer content {%- endcomment -%}
-  {%- if section.settings.custom_newsletter_enable and settings.signup_embed != blank -%}
-    {%- render 'footer-subscription', brand: footer_current_brand -%}
-  {%- endif -%}
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -120,9 +119,15 @@
         <div class="footer__top-row">
           {%- comment -%} Brand logo (left on desktop, top on mobile) {%- endcomment -%}
           <div class="footer__brand-col">
-            {%- if footer_brand_blocks.size > 0 and footer_current_brand and footer_current_brand.settings.footer_logo != blank -%}
+            {%- if footer_brand_blocks.size > 0
+              and footer_current_brand
+              and footer_current_brand.settings.footer_logo != blank
+            -%}
               <div class="footer-brand-logo">
-                <a href="{% if footer_current_brand.settings.brand_page_link != blank %}{{ footer_current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}" class="footer-brand-logo__link">
+                <a
+                  href="{% if footer_current_brand.settings.brand_page_link != blank %}{{ footer_current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
+                  class="footer-brand-logo__link"
+                >
                   <img
                     src="{{ footer_current_brand.settings.footer_logo | image_url: width: 200 }}"
                     alt="{{ footer_current_brand.settings.text | escape }}"
@@ -183,7 +188,10 @@
         </div>
 
         {%- comment -%} Newsletter and Follow on Shop (when enabled) {%- endcomment -%}
-        {%- if section.settings.newsletter_enable or shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
+        {%- if section.settings.newsletter_enable
+          or shop.features.follow_on_shop?
+          and section.settings.enable_follow_on_shop
+        -%}
           <div class="footer-block--newsletter">
             {%- if section.settings.newsletter_enable -%}
               <div class="footer-block__newsletter">
@@ -265,7 +273,11 @@
 
         {%- comment -%} Other blocks (text, image, brand_information, @app) {%- endcomment -%}
         {%- for block in section.blocks -%}
-          {%- if block.type == 'text' or block.type == 'image' or block.type == 'brand_information' or block.type == '@app' -%}
+          {%- if block.type == 'text'
+            or block.type == 'image'
+            or block.type == 'brand_information'
+            or block.type == '@app'
+          -%}
             <div class="footer-block grid__item" {{ block.shopify_attributes }}>
               {%- if block.settings.heading != blank -%}
                 <h2 class="footer-block__heading inline-richtext">{{- block.settings.heading -}}</h2>
@@ -280,9 +292,22 @@
                 {%- when 'brand_information' -%}
                   <div class="footer-block__brand-info">
                     {%- if settings.brand_image != blank -%}
-                      {%- assign brand_image_height = settings.brand_image_width | divided_by: settings.brand_image.aspect_ratio -%}
-                      <div class="footer-block__image-wrapper" style="max-width: min(100%, {{ settings.brand_image_width }}px);">
-                        {{ settings.brand_image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100', height: brand_image_height, width: settings.brand_image_width }}
+                      {%- assign brand_image_height = settings.brand_image_width
+                        | divided_by: settings.brand_image.aspect_ratio
+                      -%}
+                      <div
+                        class="footer-block__image-wrapper"
+                        style="max-width: min(100%, {{ settings.brand_image_width }}px);"
+                      >
+                        {{
+                          settings.brand_image
+                          | image_url: width: 1100
+                          | image_tag:
+                            loading: 'lazy',
+                            widths: '50, 100, 150, 200, 300, 400, 550, 800, 1100',
+                            height: brand_image_height,
+                            width: settings.brand_image_width
+                        }}
                       </div>
                     {%- endif -%}
                     {%- if settings.brand_headline != blank -%}
@@ -296,7 +321,10 @@
                   <div class="footer-block__details-content footer-block-image {{ block.settings.alignment }}">
                     {%- if block.settings.image != blank -%}
                       {%- assign image_size_2x = block.settings.image_width | times: 2 | at_most: 5760 -%}
-                      <div class="footer-block__image-wrapper" style="max-width: min(100%, {{ block.settings.image_width }}px);">
+                      <div
+                        class="footer-block__image-wrapper"
+                        style="max-width: min(100%, {{ block.settings.image_width }}px);"
+                      >
                         <img
                           srcset="{{ block.settings.image | image_url: width: block.settings.image_width }}, {{ block.settings.image | image_url: width: image_size_2x }} 2x"
                           src="{{ block.settings.image | image_url: width: 760 }}"
@@ -370,7 +398,8 @@
         {%- comment -%} Mobile: copyright above trademark, policies below trademark {%- endcomment -%}
         <div class="footer__copyright-mobile">
           <small class="copyright__content"
-            >&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url -}}
+            >&copy; {{ 'now' | date: '%Y' }}
+            {{ shop.name | link_to: routes.root_url -}}
           </small>
         </div>
         {%- if section.settings.trademark_text != blank -%}
@@ -394,7 +423,8 @@
         {%- comment -%} Desktop: trademark left, copyright row right {%- endcomment -%}
         <div class="footer__copyright-row">
           <small class="copyright__content"
-            >&copy; {{ 'now' | date: '%Y' }} {{ shop.name | link_to: routes.root_url -}}
+            >&copy; {{ 'now' | date: '%Y' }}
+            {{ shop.name | link_to: routes.root_url -}}
           </small>
           {%- if section.settings.show_powered_by -%}
             <small class="copyright__content">{{ powered_by_link }}</small>
@@ -457,6 +487,26 @@
           "type": "image_picker",
           "id": "footer_logo",
           "label": "Footer logo"
+        },
+        {
+          "type": "header",
+          "content": "Newsletter"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_newsletter_background_image",
+          "label": "Footer newsletter background image"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_newsletter_background_image_mobile",
+          "label": "Footer newsletter background image (mobile)"
+        },
+        {
+          "type": "color",
+          "id": "footer_newsletter_form_bg",
+          "label": "Footer newsletter form background",
+          "info": "Background for the form panel (right side on desktop)"
         },
         {
           "type": "header",
@@ -610,17 +660,6 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
-    },
-    {
-      "type": "header",
-      "content": "Newsletter signup"
-    },
-    {
-      "type": "checkbox",
-      "id": "custom_newsletter_enable",
-      "default": false,
-      "label": "Show custom newsletter signup above footer",
-      "info": "Uses signup form code from Theme settings > Newsletter Module"
     },
     {
       "type": "header",

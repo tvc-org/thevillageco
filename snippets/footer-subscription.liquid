@@ -1,21 +1,87 @@
 {% comment %}
-  Footer newsletter signup - Klaviyo embed + social icons.
-  Renders above the main footer content. Styled per-brand later.
-  Accepts:
-  - brand: {Object} optional brand block for per-brand social links
+  Footer newsletter - Therapy-style: image left, form right (desktop);
+  stacked image 1:1 + form (mobile). Mr Bubble overrides via brand class.
+  Accepts: brand (optional) - footer brand block
 {% endcomment %}
+{%- liquid
+  assign brand_slug = ''
+  assign newsletter_image = nil
+  assign newsletter_image_mobile = nil
+  assign form_bg = ''
+  if brand != blank
+    assign brand_slug = brand.settings.text | handleize
+    assign newsletter_image = brand.settings.footer_newsletter_background_image
+    assign newsletter_image_mobile = brand.settings.footer_newsletter_background_image_mobile | default: newsletter_image
+    assign form_bg = brand.settings.footer_newsletter_form_bg | default: '#E5E0D8'
+  else
+    assign form_bg = '#E5E0D8'
+  endif
+  assign has_image = false
+  if newsletter_image != blank
+    assign has_image = true
+  endif
+-%}
 
-<div class="footer-subscription">
-  <div class="footer-subscription__inner page-width">
-    <div class="footer-subscription__form">
-      {{ settings.signup_embed }}
-    </div>
-    <div class="footer-subscription__social">
-      {%- if brand != blank -%}
-        {%- render 'social-icons-from-brand', brand: brand, class: 'footer-subscription__list-social' -%}
-      {%- else -%}
-        {%- render 'social-icons', class: 'footer-subscription__list-social' -%}
-      {%- endif -%}
+{%- if form_bg != blank and form_bg != 'rgba(0,0,0,0)' -%}
+  <style>
+    .footer-newsletter-section{% if brand != blank %}.footer-newsletter--{{ brand_slug }}{% endif %} .footer-newsletter__form-col {
+      background-color: {{ form_bg }};
+    }
+  </style>
+{%- endif -%}
+
+<div class="footer-newsletter-section{% if brand != blank %} footer-newsletter--{{ brand_slug }}{% endif %}{% unless has_image %} footer-newsletter--no-image{% endunless %}">
+  <div class="footer-newsletter__layout">
+    {%- if has_image -%}
+      <div class="footer-newsletter__image-col">
+        <picture>
+          {%- if newsletter_image_mobile != blank -%}
+            <source media="(max-width: 749px)" srcset="{{ newsletter_image_mobile | image_url: width: 750 }}">
+          {%- endif -%}
+          <img
+            src="{{ newsletter_image | image_url: width: 1920 }}"
+            alt=""
+            width="{{ newsletter_image.width }}"
+            height="{{ newsletter_image.height }}"
+            loading="lazy"
+            class="footer-newsletter__image"
+          >
+        </picture>
+      </div>
+    {%- endif -%}
+    <div class="footer-newsletter__form-col">
+      <div class="footer-newsletter__form-inner">
+        <div class="footer-newsletter__form">
+          {{ settings.signup_embed }}
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+{%- comment -%}
+  Hardcoded brand-specific newsletter styles (toggle via current brand).
+  Add color, typography, spacing overrides per brand as needed.
+{%- endcomment -%}
+<style>
+  /* Mr. Bubble */
+  .footer-newsletter--mr-bubble {
+    --footer-newsletter-text: #fff;
+    --footer-newsletter-accent: #f04d98;
+  }
+  /* Village Naturals Therapy - dark text on beige form panel */
+  .footer-newsletter--village-naturals-therapy {
+    --footer-newsletter-text: #2d2d2d;
+    --footer-newsletter-accent: #5f885f;
+  }
+  /* Soft&Dri */
+  .footer-newsletter--soft-dri {
+    --footer-newsletter-text: #fff;
+    --footer-newsletter-accent: #da2171;
+  }
+  /* The Village Co. */
+  .footer-newsletter--the-village-co {
+    --footer-newsletter-text: #fff;
+    --footer-newsletter-accent: #00a1dd;
+  }
+</style>

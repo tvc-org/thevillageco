@@ -39,6 +39,7 @@
             "text": "Village Naturals Therapy",
             "brand_color": "#5f885f",
             "footer_text_color": "#ffffff",
+            "footer_newsletter_form_bg": "#E5E0D8",
             "brand_page_link": "shopify://pages/therapy",
             "social_tiktok_link": "",
             "social_facebook_link": "",
@@ -121,7 +122,6 @@
       ],
       "settings": {
         "color_scheme": "scheme-1",
-        "custom_newsletter_enable": true,
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,

@@ -1367,6 +1367,12 @@
         "id": "signup_embed",
         "label": "Signup form code",
         "info": "Paste Klaviyo or other newsletter form embed code (e.g. <div class=\"klaviyo-form-XXXX\"></div>)"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo_company_id",
+        "label": "Klaviyo Company ID",
+        "info": "Required for Klaviyo embed forms to load. Find in Klaviyo: Account > Settings > API Keys (Public API Key). Default: UT3Uie"
       }
     ]
   },

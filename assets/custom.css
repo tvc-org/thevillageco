@@ -1310,25 +1310,95 @@ header-drawer {
     font-size: 16px;
 }
 
-/* Footer newsletter signup - minimal layout; per-brand styles later */
-.footer-subscription {
-    padding: 2rem 0;
+/* Footer newsletter - Therapy layout: image left, form right (desktop); stack on mobile */
+.footer-newsletter-section {
+    overflow: hidden;
 }
-.footer-subscription__inner {
+.footer-newsletter__layout {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    min-height: 320px;
 }
-.footer-subscription__form {
+.footer-newsletter__image-col {
+    order: 1;
+    aspect-ratio: 1;
+    overflow: hidden;
+}
+.footer-newsletter__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.footer-newsletter__form-col {
+    order: 2;
     flex: 1;
-    min-width: 200px;
-}
-.footer-subscription__social .list-social {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+.footer-newsletter__form-inner {
+    width: 100%;
+    max-width: 100%;
+}
+.footer-newsletter__form {
+    margin-bottom: 0;
+}
+
+/* Desktop: image left (flex), form right (fixed width), set height */
+@media screen and (min-width: 750px) {
+    .footer-newsletter__layout {
+        flex-direction: row;
+        min-height: 400px;
+        height: 400px;
+    }
+    .footer-newsletter__image-col {
+        flex: 1;
+        order: 1;
+        aspect-ratio: auto;
+        height: 100%;
+        min-width: 0;
+    }
+    .footer-newsletter__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .footer-newsletter__form-col {
+        flex: 0 0 420px;
+        max-width: 420px;
+        order: 2;
+        padding: 2.5rem 3rem;
+    }
+    .footer-newsletter__form-inner {
+        max-width: 360px;
+    }
+}
+
+/* Brand CSS variables */
+.footer-newsletter-section {
+    color: var(--footer-newsletter-text, inherit);
+}
+
+/* No-image fallback: form full width, centered */
+.footer-newsletter-section.footer-newsletter--no-image .footer-newsletter__layout {
+    flex-direction: row;
+    min-height: auto;
+    height: auto;
+}
+@media screen and (min-width: 750px) {
+    .footer-newsletter-section.footer-newsletter--no-image .footer-newsletter__layout {
+        height: auto;
+    }
+}
+.footer-newsletter-section.footer-newsletter--no-image .footer-newsletter__form-col {
+    flex: 1;
+    max-width: none;
+}
+.footer-newsletter-section.footer-newsletter--no-image .footer-newsletter__form-inner {
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .variant-media-hidden {

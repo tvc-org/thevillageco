@@ -443,5 +443,8 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
+
+    {%- comment -%} Klaviyo onsite tracking - required for embed forms to display {%- endcomment -%}
+    <script async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"></script>
   </body>
 </html>
