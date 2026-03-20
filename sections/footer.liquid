@@ -89,6 +89,10 @@
 {%- endstyle -%}
 
 <footer class="footer footer--{{ section.id }}{% if footer_brand_blocks.size > 0 and footer_current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  {%- comment -%} Custom newsletter signup (Klaviyo embed) above footer content {%- endcomment -%}
+  {%- if section.settings.custom_newsletter_enable and settings.signup_embed != blank -%}
+    {%- render 'footer-subscription', brand: footer_current_brand -%}
+  {%- endif -%}
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -606,6 +610,17 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter signup"
+    },
+    {
+      "type": "checkbox",
+      "id": "custom_newsletter_enable",
+      "default": false,
+      "label": "Show custom newsletter signup above footer",
+      "info": "Uses signup form code from Theme settings > Newsletter Module"
     },
     {
       "type": "header",

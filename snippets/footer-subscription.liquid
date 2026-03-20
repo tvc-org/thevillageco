@@ -1,0 +1,21 @@
+{% comment %}
+  Footer newsletter signup - Klaviyo embed + social icons.
+  Renders above the main footer content. Styled per-brand later.
+  Accepts:
+  - brand: {Object} optional brand block for per-brand social links
+{% endcomment %}
+
+<div class="footer-subscription">
+  <div class="footer-subscription__inner page-width">
+    <div class="footer-subscription__form">
+      {{ settings.signup_embed }}
+    </div>
+    <div class="footer-subscription__social">
+      {%- if brand != blank -%}
+        {%- render 'social-icons-from-brand', brand: brand, class: 'footer-subscription__list-social' -%}
+      {%- else -%}
+        {%- render 'social-icons', class: 'footer-subscription__list-social' -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>

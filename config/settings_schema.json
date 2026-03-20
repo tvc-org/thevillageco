@@ -1360,6 +1360,17 @@
     ]
   },
   {
+    "name": "Newsletter Module",
+    "settings": [
+      {
+        "type": "html",
+        "id": "signup_embed",
+        "label": "Signup form code",
+        "info": "Paste Klaviyo or other newsletter form embed code (e.g. <div class=\"klaviyo-form-XXXX\"></div>)"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.search_input.name",
     "settings": [
       {
