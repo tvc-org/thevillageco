@@ -5,16 +5,16 @@
 {% endcomment %}
 {%- liquid
   assign brand_slug = ''
-  assign newsletter_image = nil
-  assign newsletter_image_mobile = nil
+  assign newsletter_image = null
+  assign newsletter_image_mobile = null
   assign form_bg = ''
   if brand != blank
     assign brand_slug = brand.settings.text | handleize
     assign newsletter_image = brand.settings.footer_newsletter_background_image
     assign newsletter_image_mobile = brand.settings.footer_newsletter_background_image_mobile | default: newsletter_image
-    assign form_bg = brand.settings.footer_newsletter_form_bg | default: '#E5E0D8'
+    assign form_bg = brand.settings.footer_newsletter_form_bg | default: '#e4dbd4'
   else
-    assign form_bg = '#E5E0D8'
+    assign form_bg = '#e4dbd4'
   endif
   assign has_image = false
   if newsletter_image != blank

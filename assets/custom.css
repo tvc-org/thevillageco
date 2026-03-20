@@ -1321,7 +1321,7 @@ header-drawer {
 }
 .footer-newsletter__image-col {
     order: 1;
-    aspect-ratio: 1;
+    aspect-ratio: 2 / 1;
     overflow: hidden;
 }
 .footer-newsletter__image {
@@ -1336,7 +1336,7 @@ header-drawer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1.5rem;
+    padding: 32px 20px 40px;
 }
 .footer-newsletter__form-inner {
     width: 100%;
@@ -1344,6 +1344,10 @@ header-drawer {
 }
 .footer-newsletter__form {
     margin-bottom: 0;
+}
+
+.footer-newsletter__form form {
+    padding: 0 !important;
 }
 
 /* Desktop: image left (flex), form right (fixed width), set height */
@@ -1379,6 +1383,121 @@ header-drawer {
 /* Brand CSS variables */
 .footer-newsletter-section {
     color: var(--footer-newsletter-text, inherit);
+}
+
+/* Footer newsletter form typography - Therapy defaults (Village Naturals Therapy) */
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p,
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p span {
+    color: #4F4F4F !important;
+    font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif !important;
+    font-size: 40px !important;
+    font-weight: normal !important;
+}
+.footer-newsletter__form .klaviyo-form fieldset legend {
+    color: #4F4F4F !important;
+    font-family: Inter, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+.footer-newsletter__form .klaviyo-form label,
+.footer-newsletter__form .klaviyo-form label div {
+    color: #4F4F4F !important;
+    font-family: Inter, sans-serif !important;
+    font-size: 16px !important;
+}
+.footer-newsletter__form .klaviyo-form input[type="email"],
+.footer-newsletter__form .klaviyo-form button[type="button"] {
+    font-family: Inter, sans-serif !important;
+}
+
+/* Footer newsletter email + button - integrated rounded container, pill button (Therapy default) */
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type {
+    background: #FFF !important;
+    border-radius: 9px !important;
+    /* overflow: hidden; */
+    padding: 11px 11px 11px 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px;
+    border: none !important;
+}
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type [data-testid="form-component"]:first-child {
+    flex: 1;
+    min-width: 0;
+}
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"] {
+    width: 100% !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 10px 0 !important;
+    font-size: 16px !important;
+    color: #4F4F4F !important;
+}
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]::placeholder {
+    color: #2d2d2d !important;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    opacity: 1;
+}
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type button[type="button"] {
+    background: #4F4F4F !important;
+    color: #FFF !important;
+    border: none !important;
+    border-radius: 36px !important;
+    padding: 2px 24px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    flex-shrink: 0;
+}
+
+/* Footer newsletter checkboxes - custom square style (Therapy default) */
+/* Hide Klaviyo's default checkbox/checkmark SVGs - we use custom ::before/::after */
+.footer-newsletter__form .klaviyo-form fieldset label svg,
+.footer-newsletter__form .klaviyo-form [role="group"] svg {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+.footer-newsletter__form .klaviyo-form fieldset label {
+    position: relative;
+    padding-left: 28px;
+    min-height: 20px;
+    margin-bottom: 16px;
+    padding-bottom: 3px !important;
+}
+.footer-newsletter__form .klaviyo-form fieldset input[type="checkbox"] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid #A4A4A4;
+    background: #FFF;
+    box-sizing: border-box;
+}
+.footer-newsletter__form .klaviyo-form fieldset input[type="checkbox"]:checked + label::before {
+    border: 2px solid #688663;
+}
+.footer-newsletter__form .klaviyo-form fieldset input[type="checkbox"]:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 1px;
+    border: 1px solid #688663;
+    background: #688663;
+    box-sizing: border-box;
 }
 
 /* No-image fallback: form full width, centered */
