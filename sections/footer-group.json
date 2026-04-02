@@ -25,6 +25,7 @@
             "footer_newsletter_background_image": "shopify://shop_images/mr-bubble-email-signup-bg.jpg",
             "footer_newsletter_background_image_mobile": "shopify://shop_images/mr-bubble-email-signup-bg-mobile.jpg",
             "footer_newsletter_form_bg": "rgba(0,0,0,0)",
+            "footer_newsletter_form_ui_accent": "#f04d98",
             "social_tiktok_link": "https://www.tiktok.com/@mrbubbleofficial",
             "social_facebook_link": "https://www.facebook.com/Mr.Bubble",
             "social_instagram_link": "https://www.instagram.com/mrbubbleofficial/",

@@ -8,11 +8,13 @@
   assign newsletter_image = null
   assign newsletter_image_mobile = null
   assign form_bg = ''
+  assign form_ui_accent = ''
   if brand != blank
     assign brand_slug = brand.settings.text | handleize
     assign newsletter_image = brand.settings.footer_newsletter_background_image
     assign newsletter_image_mobile = brand.settings.footer_newsletter_background_image_mobile | default: newsletter_image
     assign form_bg = brand.settings.footer_newsletter_form_bg | default: '#e4dbd4'
+    assign form_ui_accent = brand.settings.footer_newsletter_form_ui_accent
   else
     assign form_bg = '#e4dbd4'
   endif
@@ -26,6 +28,13 @@
   <style>
     .footer-newsletter-section{% if brand != blank %}.footer-newsletter--{{ brand_slug }}{% endif %} .footer-newsletter__form-col {
       background-color: {{ form_bg }};
+    }
+  </style>
+{%- endif -%}
+{%- if brand != blank and form_ui_accent != blank -%}
+  <style>
+    .footer-newsletter-section.footer-newsletter--{{ brand_slug }} {
+      --footer-newsletter-form-ui-accent: {{ form_ui_accent }};
     }
   </style>
 {%- endif -%}

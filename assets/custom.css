@@ -1350,12 +1350,16 @@ header-drawer {
     padding: 0 !important;
 }
 
+.footer-newsletter__form-inner {
+    max-width: 480px;
+}
+
 /* Desktop: image left (flex), form right (fixed width), set height */
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 961px) {
     .footer-newsletter__layout {
         flex-direction: row;
-        min-height: 400px;
-        height: 400px;
+        min-height: 490px;
+        height: 490px;
     }
     .footer-newsletter__image-col {
         flex: 1;
@@ -1370,13 +1374,93 @@ header-drawer {
         object-fit: cover;
     }
     .footer-newsletter__form-col {
-        flex: 0 0 420px;
-        max-width: 420px;
+        flex: 1 0 auto;
+        max-width: 750px;
         order: 2;
-        padding: 2.5rem 3rem;
+        padding: 40px 80px;
     }
-    .footer-newsletter__form-inner {
-        max-width: 360px;
+}
+
+/* Mr. Bubble: taller desktop strip; anchor hero image to bottom (mobile + desktop) */
+.footer-newsletter-section.footer-newsletter--mr-bubble {
+    overflow: visible;
+}
+.footer-newsletter--mr-bubble .footer-newsletter__image {
+    object-position: bottom;
+}
+/* Mr. Bubble: frosted floating card (comp); desktop positions over full-bleed image */
+.footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+    border-radius: 33px;
+    border: 1px solid #D4D4D4;
+    background: rgba(255, 255, 255, 0.80) !important;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+}
+/* Mr. Bubble: mobile — full-bleed background, form card layered on top (centered) */
+@media screen and (max-width: 960px) {
+    .footer-newsletter--mr-bubble .footer-newsletter__layout {
+        display: block;
+        position: relative;
+        min-height: 520px;
+    }
+    .footer-newsletter--mr-bubble .footer-newsletter__image-col {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 100%;
+        overflow: hidden;
+    }
+    .footer-newsletter--mr-bubble .footer-newsletter__image {
+        height: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+    }
+    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 24px;
+        bottom: auto;
+        transform: translateX(-50%);
+        width: min(480px, calc(100% - 40px));
+        max-width: 480px;
+        padding: 28px 20px 32px;
+        flex: none;
+        margin: 0;
+    }
+}
+@media screen and (min-width: 961px) {
+    .footer-newsletter--mr-bubble .footer-newsletter__layout {
+        position: relative;
+        min-height: 590px;
+        height: 590px;
+    }
+    .footer-newsletter--mr-bubble .footer-newsletter__image-col {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        flex: none;
+    }
+    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+        position: absolute;
+        bottom: 85px;
+        right: 350px;
+        left: auto;
+        top: auto;
+        flex: none;
+        max-width: 480px;
+        width: min(480px, calc(100% - 350px - 48px));
+        padding: 40px 36px;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .footer-newsletter__form-col {
+        padding-right: 200px;
     }
 }
 
@@ -1411,6 +1495,9 @@ header-drawer {
 }
 
 /* Footer newsletter email + button - integrated rounded container, pill button (Therapy default) */
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type {
+    background: var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #f04d98)) !important;
+}
 .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type {
     background: #FFF !important;
     border-radius: 9px !important;
@@ -1484,7 +1571,7 @@ header-drawer {
     box-sizing: border-box;
 }
 .footer-newsletter__form .klaviyo-form fieldset input[type="checkbox"]:checked + label::before {
-    border: 2px solid #688663;
+    border: 2px solid var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #688663));
 }
 .footer-newsletter__form .klaviyo-form fieldset input[type="checkbox"]:checked + label::after {
     content: '';
@@ -1495,8 +1582,8 @@ header-drawer {
     width: 8px;
     height: 8px;
     border-radius: 1px;
-    border: 1px solid #688663;
-    background: #688663;
+    border: 1px solid var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #688663));
+    background: var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #688663));
     box-sizing: border-box;
 }
 
