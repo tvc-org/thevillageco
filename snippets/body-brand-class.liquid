@@ -1,0 +1,61 @@
+{% comment %}
+  Appends the current brand handle as an extra class on <body> (see layout/theme.liquid).
+
+  HOW IT WORKS
+  1) When sections['header'] is available, we render snippets/resolve-brand-handle.liquid
+     with the header’s brand blocks — same rules as sections/header.liquid (full logic).
+  2) When it isn’t (common in theme.liquid while <body> is rendering), we use the FALLBACK
+     below so the body class still matches real brand context as closely as possible.
+
+  KEEP IN SYNC WITH resolve-brand-handle.liquid
+  The fallback only approximates parts of resolve-brand-handle that don’t need brand blocks:
+    • URL / path / template.suffix heuristics — mirror the mr-bubble / therapy / soft-dri
+      style checks there (add new brands or path hints here when you add them to the URL
+      loop in resolve-brand-handle).
+    • Product: product.vendor | handleize — same idea as the product {% for %} in resolve-brand-handle.
+    • Blog: village-naturals-therapy + fun — same as the blog {% if %} in resolve-brand-handle.
+
+  The fallback does NOT replicate: default brand, “The Village Co.” preference, mega menu
+  active link, or per-block brand_page_link matching. If those change behavior in the header,
+  body may still differ until sections['header'] is available in layout (rare) or we refactor.
+
+  When you change brand selection rules in resolve-brand-handle.liquid, update this fallback
+  for any new URL keywords, vendors, or blog handles you rely on for body.* CSS.
+{% endcomment %}
+{%- assign brand_body_handle = '' -%}
+{%- if sections['header'] != blank -%}
+  {%- assign header_brand_blocks = sections['header'].blocks | where: 'type', 'brand' -%}
+  {%- if header_brand_blocks.size > 0 -%}
+    {%- capture brand_handle_for_body -%}
+      {%- render 'resolve-brand-handle', brand_blocks: header_brand_blocks -%}
+    {%- endcapture -%}
+    {%- assign brand_body_handle = brand_handle_for_body | strip -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- if brand_body_handle == blank -%}
+  {%- liquid
+    assign current_url = request.path
+    assign url_segments = current_url | split: '/'
+    assign last_segment = url_segments | last
+    if template.suffix contains 'mr-bubble' or current_url contains 'mr-bubble' or last_segment contains 'mr-bubble'
+      assign brand_body_handle = 'mr-bubble'
+    elsif template.suffix contains 'therapy' or current_url contains 'therapy' or last_segment contains 'therapy'
+      assign brand_body_handle = 'village-naturals-therapy'
+    elsif template.suffix contains 'soft-dri' or current_url contains 'soft-dri' or last_segment contains 'soft-dri'
+      assign brand_body_handle = 'soft-dri'
+    endif
+    if product and product.vendor != blank
+      assign brand_body_handle = product.vendor | handleize
+    endif
+    if blog
+      if blog.handle == 'village-naturals-therapy'
+        assign brand_body_handle = 'village-naturals-therapy'
+      elsif blog.handle == 'fun'
+        assign brand_body_handle = 'mr-bubble'
+      endif
+    endif
+  -%}
+{%- endif -%}
+
+{%- if brand_body_handle != blank %} {{ brand_body_handle }}{% endif -%}
