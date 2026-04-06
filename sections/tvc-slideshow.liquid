@@ -8,16 +8,6 @@
     assign section_classes = section_classes | append: ' tvc-slideshow--layout-stacked'
   else
     assign section_classes = section_classes | append: ' tvc-slideshow--layout-split'
-    if section.settings.split_text_tone == 'light'
-      assign section_classes = section_classes | append: ' tvc-slideshow--text-light'
-    else
-      assign section_classes = section_classes | append: ' tvc-slideshow--text-dark'
-    endif
-    if section.settings.split_media_position == 'left'
-      assign section_classes = section_classes | append: ' tvc-slideshow--media-left'
-    else
-      assign section_classes = section_classes | append: ' tvc-slideshow--media-right'
-    endif
   endif
 -%}
 
@@ -89,6 +79,21 @@
     data-speed="{{ section.settings.change_slides_speed }}"
   >
     {%- for block in section.blocks -%}
+      {%- liquid
+        assign inner_classes = 'tvc-slideshow__inner'
+        if section.settings.layout == 'split'
+          if block.settings.split_media_position == 'left'
+            assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--media-left'
+          else
+            assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--media-right'
+          endif
+          if block.settings.split_text_tone == 'light'
+            assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--text-light'
+          else
+            assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--text-dark'
+          endif
+        endif
+      -%}
       <div
         class="slideshow__slide grid__item slider__slide tvc-slideshow__slide"
         id="Slide-{{ section.id }}-{{ forloop.index }}"
@@ -98,7 +103,7 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-        <div class="tvc-slideshow__inner">
+        <div class="{{ inner_classes }}">
           <div class="tvc-slideshow__media">
             {%- liquid
               assign show_video = false
@@ -163,7 +168,7 @@
           <div
             class="tvc-slideshow__panel"
             {% if section.settings.layout == 'split' %}
-              style="background-color: {{ section.settings.split_background }};"
+              style="background-color: {{ block.settings.split_background }};"
             {% endif %}
           >
             {%- if block.settings.heading != blank -%}
@@ -266,47 +271,6 @@
       "default": "stacked"
     },
     {
-      "type": "color",
-      "id": "split_background",
-      "label": "Split layout — text panel background",
-      "default": "#FFD1DC",
-      "visible_if": "{{ section.settings.layout == 'split' }}"
-    },
-    {
-      "type": "select",
-      "id": "split_text_tone",
-      "label": "Split layout — text color",
-      "options": [
-        {
-          "value": "dark",
-          "label": "Dark"
-        },
-        {
-          "value": "light",
-          "label": "Light"
-        }
-      ],
-      "default": "dark",
-      "visible_if": "{{ section.settings.layout == 'split' }}"
-    },
-    {
-      "type": "select",
-      "id": "split_media_position",
-      "label": "Split layout — media position (desktop)",
-      "options": [
-        {
-          "value": "right",
-          "label": "Right"
-        },
-        {
-          "value": "left",
-          "label": "Left"
-        }
-      ],
-      "default": "right",
-      "visible_if": "{{ section.settings.layout == 'split' }}"
-    },
-    {
       "type": "header",
       "content": "Slideshow"
     },
@@ -342,6 +306,55 @@
       "type": "slide",
       "name": "Slide",
       "settings": [
+        {
+          "type": "paragraph",
+          "content": "Split layout options below apply only when this section’s Desktop layout is set to “Split — text and media side by side.” They are ignored for the stacked layout."
+        },
+        {
+          "type": "color",
+          "id": "split_background",
+          "label": "Split — text panel background",
+          "default": "#FFD1DC",
+          "visible_if": "{{ section.settings.layout == 'split' }}"
+        },
+        {
+          "type": "select",
+          "id": "split_text_tone",
+          "label": "Split — text color",
+          "options": [
+            {
+              "value": "dark",
+              "label": "Dark"
+            },
+            {
+              "value": "light",
+              "label": "Light"
+            }
+          ],
+          "default": "dark",
+          "visible_if": "{{ section.settings.layout == 'split' }}"
+        },
+        {
+          "type": "select",
+          "id": "split_media_position",
+          "label": "Split — media position (desktop)",
+          "options": [
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ],
+          "default": "right",
+          "visible_if": "{{ section.settings.layout == 'split' }}"
+        },
+        {
+          "type": "header",
+          "content": "Media & content"
+        },
         {
           "type": "select",
           "id": "media_type",
