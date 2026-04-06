@@ -9,6 +9,16 @@
   else
     assign section_classes = section_classes | append: ' tvc-slideshow--layout-split'
   endif
+  if section.blocks.size > 1
+    assign section_classes = section_classes | append: ' tvc-slideshow--has-nav'
+  endif
+  if section.settings.layout == 'split' and section.blocks.size > 0
+    if section.blocks.first.settings.split_media_position == 'left'
+      assign section_classes = section_classes | append: ' tvc-slideshow--split-nav-text-right'
+    else
+      assign section_classes = section_classes | append: ' tvc-slideshow--split-nav-text-left'
+    endif
+  endif
 -%}
 
 <slideshow-component
