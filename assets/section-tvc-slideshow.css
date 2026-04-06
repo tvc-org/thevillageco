@@ -115,26 +115,6 @@
   }
 }
 
-@media screen and (max-width: 749px) {
-  .tvc-slideshow--layout-split .tvc-slideshow__inner {
-    min-height: 0;
-  }
-
-  .tvc-slideshow--layout-split .tvc-slideshow__media {
-    order: 1;
-    flex: 0 0 auto;
-    min-height: 50vh;
-    min-height: 50dvh;
-  }
-
-  .tvc-slideshow--layout-split .tvc-slideshow__panel {
-    order: 2;
-    text-align: center;
-    align-items: center;
-    padding: 3rem 2rem 4rem;
-  }
-}
-
 .tvc-slideshow--layout-split .tvc-slideshow__inner--text-dark .tvc-slideshow__panel {
   color: var(--tvc-split-heading-dark);
 }
@@ -166,6 +146,40 @@
     min-width: 0;
     align-self: stretch;
     min-height: 0;
+  }
+}
+
+/*
+ * Mobile split: stack media + text.
+ * Slider height = tallest slide; shorter slides must stretch so the pink panel reaches the same
+ * bottom edge as the dots (dots are position:absolute on slideshow-component).
+ */
+@media screen and (max-width: 749px) {
+  .tvc-slideshow--layout-split .slideshow__slide {
+    align-self: stretch;
+  }
+
+  .tvc-slideshow--layout-split .slideshow__slide .tvc-slideshow__inner {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .tvc-slideshow--layout-split .tvc-slideshow__media {
+    order: 1;
+    flex: 0 0 auto;
+    min-height: 50vh;
+    min-height: 50dvh;
+  }
+
+  .tvc-slideshow--layout-split .tvc-slideshow__panel {
+    order: 2;
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+    min-height: 0;
+    padding: 3rem 2rem 4rem;
   }
 }
 
