@@ -20,6 +20,10 @@ Dawn represents a HTML-first, JavaScript-only-as-needed approach to theme develo
 
 You can find a more detailed version of our theme code principles in the [contribution guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md#theme-code-principles).
 
+## The Village Company — custom sections
+
+This fork adds **TVC** (The Village Company)–specific sections and patterns alongside Dawn. Conventions for **file naming**, **schema structure**, and **presets** for those sections live in **[docs/tvc-sections.md](docs/tvc-sections.md)**.
+
 ## Getting started
 We recommend using Dawn as a starting point for theme development. [Learn more on Shopify.dev](https://shopify.dev/themes/getting-started/create).
 

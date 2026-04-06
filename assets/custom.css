@@ -1381,93 +1381,6 @@ header-drawer {
     }
 }
 
-/* ==========================================================================
-   Brand overrides
-   Per-brand UI (e.g. .footer-newsletter--{slug}). Default newsletter block above.
-   Add subsections per brand; split to a separate asset only if this grows very large.
-   ========================================================================== */
-
-/* --- Mr. Bubble — site + footer newsletter --- */
-body.mr-bubble {
-    --text-color-blue: #2c5db5;
-}
-.text-color-blue {
-    color: var(--text-color-blue);
-}
-.footer-newsletter-section.footer-newsletter--mr-bubble {
-    overflow: visible;
-}
-.footer-newsletter--mr-bubble .footer-newsletter__image {
-    object-position: bottom;
-}
-.footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
-    border-radius: 33px;
-    border: 1px solid #D4D4D4;
-    background: rgba(255, 255, 255, 0.80) !important;
-    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
-}
-@media screen and (max-width: 960px) {
-    .footer-newsletter--mr-bubble .footer-newsletter__layout {
-        display: block;
-        position: relative;
-        min-height: 520px;
-    }
-    .footer-newsletter--mr-bubble .footer-newsletter__image-col {
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        aspect-ratio: auto;
-        height: 100%;
-        min-height: 100%;
-        overflow: hidden;
-    }
-    .footer-newsletter--mr-bubble .footer-newsletter__image {
-        height: 100%;
-        min-height: 100%;
-        object-fit: cover;
-        object-position: bottom;
-    }
-    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
-        position: absolute;
-        z-index: 1;
-        left: 50%;
-        top: 24px;
-        bottom: auto;
-        transform: translateX(-50%);
-        width: min(480px, calc(100% - 40px));
-        max-width: 480px;
-        padding: 28px 20px 32px;
-        flex: none;
-        margin: 0;
-    }
-}
-@media screen and (min-width: 961px) {
-    .footer-newsletter--mr-bubble .footer-newsletter__layout {
-        position: relative;
-        min-height: 590px;
-        height: 590px;
-    }
-    .footer-newsletter--mr-bubble .footer-newsletter__image-col {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        flex: none;
-    }
-    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
-        position: absolute;
-        bottom: 85px;
-        right: 350px;
-        left: auto;
-        top: auto;
-        flex: none;
-        max-width: 480px;
-        width: min(480px, calc(100% - 350px - 48px));
-        padding: 40px 36px;
-        margin: 0;
-    }
-}
-
 @media screen and (min-width: 1200px) {
     .footer-newsletter__form-col {
         padding-right: 200px;
@@ -1505,19 +1418,6 @@ body.mr-bubble {
 }
 
 /* Footer newsletter email + button - integrated rounded container, pill button (Therapy default) */
-.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type {
-    background: var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #f04d98)) !important;
-}
-.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"] {
-    color: #fff !important;
-}
-.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]::placeholder {
-    color: #fff !important;
-}
-.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type button[type="button"] {
-    background: #fff !important;
-    color: #313131 !important;
-}
 .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type {
     background: #FFF !important;
     border-radius: 9px !important;
@@ -1537,8 +1437,19 @@ body.mr-bubble {
     border: none !important;
     background: transparent !important;
     padding: 10px 0 !important;
-    font-size: 16px !important;
-    color: #4F4F4F !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    color: #2d2d2d !important;
+}
+/* Override browser autofill background (Therapy / default newsletter row: white field) */
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill,
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:hover,
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:focus,
+.footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #2d2d2d !important;
+    caret-color: #2d2d2d;
 }
 .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]::placeholder {
     color: #2d2d2d !important;
@@ -1639,4 +1550,157 @@ body.mr-bubble {
     .shopify-section:first-child .banner--screen-height {
         height: calc(100vh - var(--header-height-full));
     }
+}
+
+/* ==========================================================================
+   Brand overrides
+   Per-brand UI (body.{handle}, .footer-newsletter--{slug}, utilities).
+   ========================================================================== */
+
+/* --- Mr. Bubble — site + footer newsletter --- */
+body.mr-bubble {
+    --text-color-blue: #2c5db5;
+}
+.text-color-blue {
+    color: var(--text-color-blue);
+}
+.footer-newsletter-section.footer-newsletter--mr-bubble {
+    overflow: visible;
+}
+.footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+    border-radius: 33px;
+    border: 1px solid #D4D4D4;
+    background: rgba(255, 255, 255, 0.80) !important;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+}
+.footer-newsletter--mr-bubble .footer-newsletter__image-col picture {
+    display: block;
+    width: 100%;
+    flex-shrink: 0;
+}
+.footer-newsletter--mr-bubble .footer-newsletter__image {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    object-fit: unset;
+    object-position: bottom;
+    display: block;
+}
+@media screen and (max-width: 960px) {
+    .footer-newsletter--mr-bubble .footer-newsletter__layout {
+        display: block;
+        position: relative;
+        min-height: 590px;
+    }
+    .footer-newsletter--mr-bubble .footer-newsletter__image-col {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        aspect-ratio: auto;
+        height: 100%;
+        min-height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+    }
+    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 24px;
+        bottom: auto;
+        transform: translateX(-50%);
+        width: min(480px, calc(100% - 40px));
+        max-width: 480px;
+        padding: 28px 20px 32px;
+        flex: none;
+        margin: 0;
+    }
+}
+@media screen and (min-width: 961px) {
+    .footer-newsletter--mr-bubble .footer-newsletter__layout {
+        position: relative;
+        min-height: 590px;
+        height: 590px;
+    }
+    .footer-newsletter--mr-bubble .footer-newsletter__image-col {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        flex: none;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+    }
+    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+        position: absolute;
+        bottom: 85px;
+        right: 150px;
+        left: auto;
+        top: auto;
+        flex: none;
+        max-width: 580px;
+        width: min(580px, calc(100% - 350px - 48px));
+        padding: 40px 48px;
+        margin: 0;
+    }
+
+    .footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p span {
+        font-size: 52px !important;
+        margin-bottom: 16px !important;
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .footer-newsletter-section.footer-newsletter--mr-bubble .footer-newsletter__form-col {
+        right: 350px;
+    }
+}
+
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p,
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p span {
+    color: var(--text-color-blue) !important;
+    font-family: Bubbly, sans-serif !important;
+}
+
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type {
+    background: var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #f04d98)) !important;
+    border-radius: 999px !important;
+}
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"] {
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+}
+/* Mr. Bubble: autofill fill matches pink row + white text */
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill,
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:hover,
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:focus,
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #f04d98)) inset !important;
+    box-shadow: 0 0 0 1000px var(--footer-newsletter-form-ui-accent, var(--footer-newsletter-accent, #f04d98)) inset !important;
+    -webkit-text-fill-color: #fff !important;
+    caret-color: #fff;
+}
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:focus,
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:focus-visible {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]::placeholder {
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    opacity: 1;
+}
+.footer-newsletter--mr-bubble .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:last-of-type button[type="button"] {
+    background: #fff !important;
+    color: #313131 !important;
 }

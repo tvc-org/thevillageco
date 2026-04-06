@@ -43,10 +43,27 @@
   <div class="footer-newsletter__layout">
     {%- if has_image -%}
       <div class="footer-newsletter__image-col">
-        <picture>
-          {%- if newsletter_image_mobile != blank -%}
-            <source media="(max-width: 749px)" srcset="{{ newsletter_image_mobile | image_url: width: 750 }}">
-          {%- endif -%}
+        {%- if newsletter_image_mobile != blank -%}
+          {%- comment -%}
+            Mobile-first: default <img> is the mobile asset so small viewports always load it.
+            Desktop art uses <source media="(min-width: 961px)"> to match newsletter desktop layout.
+          {%- endcomment -%}
+          <picture>
+            <source
+              media="(min-width: 961px)"
+              srcset="{{ newsletter_image | image_url: width: 1920 }}"
+            >
+            <img
+              src="{{ newsletter_image_mobile | image_url: width: 750 }}"
+              alt=""
+              width="{{ newsletter_image_mobile.width }}"
+              height="{{ newsletter_image_mobile.height }}"
+              sizes="100vw"
+              loading="lazy"
+              class="footer-newsletter__image"
+            >
+          </picture>
+        {%- else -%}
           <img
             src="{{ newsletter_image | image_url: width: 1920 }}"
             alt=""
@@ -55,7 +72,7 @@
             loading="lazy"
             class="footer-newsletter__image"
           >
-        </picture>
+        {%- endif -%}
       </div>
     {%- endif -%}
     <div class="footer-newsletter__form-col">
