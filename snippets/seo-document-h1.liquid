@@ -1,0 +1,26 @@
+{% comment %}
+  One visually hidden document <h1> for SEO/accessibility on the homepage and brand landing pages
+  (/pages/mr-bubble, /pages/therapy, /pages/soft-dri). Uses page_title so it stays aligned with
+  the SEO title when set in the admin; falls back to shop.name on the index if needed.
+{% endcomment %}
+{%- liquid
+  assign show_document_h1 = false
+  assign document_title = page_title | strip
+
+  if template.name == 'index'
+    assign show_document_h1 = true
+    if document_title == blank
+      assign document_title = shop.name
+    endif
+  elsif template.name == 'page'
+    if page.handle == 'mr-bubble' or page.handle == 'therapy' or page.handle == 'soft-dri'
+      assign show_document_h1 = true
+    endif
+    if document_title == blank and page.title != blank
+      assign document_title = page.title | strip
+    endif
+  endif
+-%}
+{%- if show_document_h1 and document_title != blank -%}
+  <h1 class="visually-hidden">{{ document_title | escape }}</h1>
+{%- endif -%}

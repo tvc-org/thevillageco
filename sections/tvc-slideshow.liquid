@@ -182,7 +182,7 @@
             {% endif %}
           >
             {%- if block.settings.heading != blank -%}
-              <h2 class="tvc-slideshow__heading">{{ block.settings.heading }}</h2>
+              <h2 class="tvc-slideshow__heading h2">{{ block.settings.heading }}</h2>
             {%- endif -%}
             {%- if block.settings.text != blank -%}
               <div class="tvc-slideshow__body rte">{{ block.settings.text }}</div>
@@ -195,7 +195,7 @@
                   assign link_label = 'Learn more'
                 endif
               -%}
-              <a href="{{ block.settings.link }}" class="tvc-slideshow__link link">
+              <a href="{{ block.settings.link }}" class="tvc-slideshow__link cta-link">
                 {{- link_label | escape -}}
               </a>
             {%- endif -%}

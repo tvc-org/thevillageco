@@ -369,6 +369,7 @@
       {% sections 'header-group' %}
 
       <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+        {%- render 'seo-document-h1' -%}
         {%- if template.name == 'article' -%}
           <article
             class="article metafields blog-{{ blog.handle }}"
