@@ -115,6 +115,81 @@ h2, .h2 { font-size: 26px; }
 }
 
 /* ==========================================================================
+   Collection sections — gutters vs Dawn .page-width (featured collection, PLP grid)
+   Drops max-width cap on large screens and uses --layout-gutter-x (960px+), same idea as footer bands.
+   ========================================================================== */
+
+/* @media screen and (min-width: 960px) {
+    .shopify-section.section .collection .page-width,
+    .shopify-section.section .collection.page-width {
+        max-width: none;
+        padding-left: var(--layout-gutter-x);
+        padding-right: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection .page-width-desktop {
+        max-width: none;
+        padding-left: var(--layout-gutter-x);
+        padding-right: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection slider-component.page-width {
+        max-width: none;
+        padding-left: var(--layout-gutter-x);
+        padding-right: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection.collection--full-width slider-component:not(.slider-component-desktop) {
+        padding-left: var(--layout-gutter-x);
+        padding-right: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection .loading-overlay {
+        padding-left: var(--layout-gutter-x);
+        padding-right: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection.collection--full-width .slider-component-full-width .slider--desktop {
+        scroll-padding-left: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection.collection--full-width .slider-component-full-width .slider--desktop .slider__slide:first-child {
+        margin-left: var(--layout-gutter-x);
+        scroll-margin-left: var(--layout-gutter-x);
+    }
+
+    .shopify-section.section .collection.collection--full-width .slider-component-full-width .slider--desktop:after {
+        padding-left: var(--layout-gutter-x);
+    }
+}
+*/
+@media screen and (min-width: 990px) {
+    /* Overrides template-collection.css hard-coded 5rem on self-padded titles */
+    .shopify-section.section .collection .collection__title.title-wrapper--self-padded-tablet-down {
+        /* padding-left: var(--layout-gutter-x);
+        padding-right: var(--layout-gutter-x); */
+    }
+
+
+} 
+
+.shopify-section.section .collection .card--standard .card__inner {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+body.mr-bubble .shopify-section.section .collection .card--standard .card__inner {
+    border-radius: 16px;
+    border: 1px solid #C7C7C7;
+}
+
+@media screen and (min-width: 960px) {
+    body.mr-bubble .shopify-section.section .collection .card--standard .card__inner {
+        border-radius: 35px;
+    }
+}
+
+/* ==========================================================================
    Header - Site header & icons
    ========================================================================== */
 
