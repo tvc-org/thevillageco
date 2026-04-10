@@ -143,6 +143,18 @@
       {% comment %}This append fixes vs code text highlighting{% endcomment %}
       background: {{ current_brand.settings.brand_color | append: " !important"}};
   }
+  {%- if current_brand.settings.brand_background_color != blank -%}
+  :root {
+    --brand-background-color: {{ current_brand.settings.brand_background_color }};
+  }
+  body.gradient {
+    background: var(--brand-background-color);
+    background-attachment: scroll;
+  }
+  .header-wrapper {
+    background: var(--brand-background-color);
+  }
+  {%- endif -%}
 </style>
 
 <{{ header_tag }}
@@ -708,6 +720,12 @@
           "type": "color",
           "label": "Brand text color",
           "id": "brand_text_color"
+        },
+        {
+          "type": "color",
+          "label": "Brand background color",
+          "id": "brand_background_color",
+          "info": "Page and header background when this brand is active. Exposed as CSS variable --brand-background-color on :root for use in custom CSS."
         },
         {
           "type": "url",
