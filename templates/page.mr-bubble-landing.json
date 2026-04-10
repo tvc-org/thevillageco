@@ -23,7 +23,7 @@
         "slide_8WEbix": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "split_media_position": "right",
             "media_type": "image",
@@ -40,7 +40,7 @@
       ],
       "name": "TVC Slideshow",
       "settings": {
-        "layout": "split",
+        "layout": "stacked",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "accessibility_info": "Featured promotions slideshow"
