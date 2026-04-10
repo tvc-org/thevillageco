@@ -33,10 +33,24 @@
             "link": "shopify://collections/mr-bubble-collections",
             "link_label": "Shop Now"
           }
+        },
+        "slide_wjiKdx": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "split_media_position": "right",
+            "media_type": "image",
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "link": "",
+            "link_label": ""
+          }
         }
       },
       "block_order": [
-        "slide_8WEbix"
+        "slide_8WEbix",
+        "slide_wjiKdx"
       ],
       "name": "TVC Slideshow",
       "settings": {
