@@ -36,7 +36,7 @@
         "slide_GT4QfP": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "split_media_position": "right",
             "media_type": "image",
@@ -58,10 +58,40 @@
         "change_slides_speed": 5,
         "accessibility_info": "Featured promotions slideshow"
       }
+    },
+    "featured_collection_kVGz6V": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "therapy-bestsellers",
+        "products_to_show": 12,
+        "title": "Best Sellers",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": true,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "main",
-    "tvc_slideshow_69KrER"
+    "tvc_slideshow_69KrER",
+    "featured_collection_kVGz6V"
   ]
 }
