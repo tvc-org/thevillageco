@@ -64,7 +64,7 @@ html {
 /* FuturaPTDemi = 500 (Figma) */
 h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
-    line-height: 0.78;
+    line-height: 0.85;
     color: var(--color-text);
 }
 

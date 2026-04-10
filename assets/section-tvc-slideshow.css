@@ -308,3 +308,30 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (min-width: 1440px) {
+  .tvc-slideshow--layout-split .tvc-slideshow__panel {
+    padding-left: 95px;
+    padding-right: 95px;
+  }
+
+  .tvc-slideshow--layout-split.tvc-slideshow--has-nav .slideshow__controls {
+    padding-left: 86px;
+    padding-right: 86px;
+  }
+}
+
+.slider-counter__link {
+  padding: 1rem 3px;
+}
+
+@media screen and (min-width: 960px) {
+  .slider-counter__link--dots .dot {
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+  }
+  .slider-counter__link {
+    padding: 1rem 4px;
+  }
+}

@@ -33,38 +33,10 @@
             "link": "shopify://collections/mr-bubble-collections",
             "link_label": "Shop Now"
           }
-        },
-        "slide_qCgiLw": {
-          "type": "slide",
-          "settings": {
-            "split_background": "#FFD1DC",
-            "split_text_tone": "dark",
-            "split_media_position": "right",
-            "media_type": "image",
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
-            "link": "",
-            "link_label": ""
-          }
-        },
-        "slide_G6DJfz": {
-          "type": "slide",
-          "settings": {
-            "split_background": "#FFD1DC",
-            "split_text_tone": "dark",
-            "split_media_position": "right",
-            "media_type": "image",
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
-            "link": "",
-            "link_label": ""
-          }
         }
       },
       "block_order": [
-        "slide_8WEbix",
-        "slide_qCgiLw",
-        "slide_G6DJfz"
+        "slide_8WEbix"
       ],
       "name": "TVC Slideshow",
       "settings": {
