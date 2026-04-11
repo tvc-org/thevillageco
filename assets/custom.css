@@ -173,18 +173,21 @@ h2, .h2 { font-size: 26px; }
 
 } 
 
-.shopify-section.section .collection .card--standard .card__inner {
+.shopify-section.section .collection .card--standard .card__inner,
+.shopify-section.section .collection-list .card--standard .card__inner {
     border-radius: 12px;
     overflow: hidden;
 }
 
-body.mr-bubble .shopify-section.section .collection .card--standard .card__inner {
+    body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
+    body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
     border-radius: 16px;
     border: 1px solid #C7C7C7;
 }
 
 @media screen and (min-width: 960px) {
-    body.mr-bubble .shopify-section.section .collection .card--standard .card__inner {
+    body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
+    body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
         border-radius: 35px;
     }
 }
