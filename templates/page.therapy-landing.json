@@ -89,53 +89,45 @@
         "padding_bottom": 36
       }
     },
-    "image_banner_aPxxxg": {
-      "type": "image-banner",
+    "collection_list_VhNWzm": {
+      "type": "collection-list",
       "blocks": {
-        "heading_zciMKE": {
-          "type": "heading",
+        "featured_collection_B6xhLy": {
+          "type": "featured_collection",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
+            "collection": "therapy-breathe-foaming-concentrated-soaks"
           }
         },
-        "text_FtKAbd": {
-          "type": "text",
+        "featured_collection_YJ88LN": {
+          "type": "featured_collection",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "collection": "therapy-2in1-epsom-salts"
           }
         },
-        "buttons_gRgjwn": {
-          "type": "buttons",
+        "featured_collection_QiEpnA": {
+          "type": "featured_collection",
           "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "collection": "calm"
           }
         }
       },
       "block_order": [
-        "heading_zciMKE",
-        "text_FtKAbd",
-        "buttons_gRgjwn"
+        "featured_collection_B6xhLy",
+        "featured_collection_YJ88LN",
+        "featured_collection_QiEpnA"
       ],
-      "name": "t:sections.image-banner.presets.name",
+      "name": "t:sections.collection-list.presets.name",
       "settings": {
-        "image": "shopify://shop_images/therapy-footer-newsletter-bg.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-4",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
-        "show_text_below": true
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 3,
+        "color_scheme": "",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
@@ -143,6 +135,6 @@
     "main",
     "tvc_slideshow_69KrER",
     "featured_collection_kVGz6V",
-    "image_banner_aPxxxg"
+    "collection_list_VhNWzm"
   ]
 }
