@@ -85,11 +85,15 @@ h1, h2, h3, h4, h5, h6, .h0, .h1, .h2, .h3, .h4, .h5, .h6 {
 h1, .h1 { font-size: 26px; }
 h2, .h2 { font-size: 26px; }
 h3, .h3 { font-size: 20px; }
+h4, .h4 { font-size: 18px; }
+h5, .h5 { font-size: 16px; }
 
 @media screen and (min-width: 1025px) {
     h1, .h1 { font-size: 48px; }
     h2, .h2 { font-size: 44px; }
-    h3, .h3 { font-size: 26px; }
+    h3, .h3 { font-size: 32px; }
+    h4, .h4 { font-size: 26px; }
+    h5, .h5 { font-size: 18px; }
 }
 
 /* ==========================================================================
@@ -241,6 +245,15 @@ body slider-component.slider-component-full-width {
         transition: opacity 0.28s ease, visibility 0s linear 0.28s;
     }
 
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button .svg-wrapper {
+        width: 11px;
+        height: 22px;
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .shopify-section.section
             .collection
@@ -309,10 +322,28 @@ body slider-component.slider-component-full-width {
     overflow: hidden;
 }
 
-    body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
-    body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
+.shopify-section.section .collection .card--standard .card-information > .price {
+    color: #777;
+}
+
+.shopify-section.section .collection .card--standard .block-review-rate {
+    margin-top: 10px;
+}
+
+.shopify-section.section .collection-list .card--standard .icon-wrap {
+    display: none;
+}
+
+body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
+body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
     border-radius: 16px;
     border: 1px solid #C7C7C7;
+}
+
+@media screen and (max-width: 959px) {
+    .shopify-section.section .collection .slider-buttons {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 960px) {
