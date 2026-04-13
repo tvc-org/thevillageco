@@ -96,6 +96,20 @@ h5, .h5 { font-size: 16px; }
     h5, .h5 { font-size: 18px; }
 }
 
+body.village-naturals-therapy h1,
+body.village-naturals-therapy .h1,
+body.village-naturals-therapy h2,
+body.village-naturals-therapy .h2,
+body.village-naturals-therapy h3,
+body.village-naturals-therapy .h3,
+body.village-naturals-therapy h4,
+body.village-naturals-therapy .h4,
+body.village-naturals-therapy h5,
+body.village-naturals-therapy .h5 {
+    font-family: "Larken", sans-serif;
+    font-weight: 400;
+}
+
 /* ==========================================================================
    Main Content & Typography
    ========================================================================== */
