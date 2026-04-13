@@ -24,6 +24,18 @@ You can find a more detailed version of our theme code principles in the [contri
 
 This fork adds **TVC** (The Village Company)–specific sections and patterns alongside Dawn. Conventions for **file naming**, **schema structure**, and **presets** for those sections live in **[docs/tvc-sections.md](docs/tvc-sections.md)**.
 
+### Layout: page width, gutters, and desktop carousels
+
+These rules live in **`assets/custom.css`** (keep them there rather than editing Dawn’s `base.css` so upstream merges stay tractable).
+
+- **`--layout-gutter-x`**: horizontal gutter (16px by default, 48px from 960px up). Use for `.page-width` side padding and related slider spacers.
+- **`--page-width` (this fork)**: **inner** content width—the space **between** `.page-width` left and right paddings—not Shopify Dawn’s meaning (where the same token is the **max border box** and horizontal padding sits **inside** that max). Here, `.page-width` sets `padding: 0 var(--layout-gutter-x)` and `max-width: calc(var(--page-width) + 2× gutter)` so the **outer** cap is inner width plus both gutters.
+- **`--desktop-margin-left-first-item`** on `body slider-component`: aligns the desktop breakout carousel with that inner column. Use **`calc((100vw - var(--page-width) - var(--grid-desktop-horizontal-spacing)) / 2)`** (and `max(..., var(--layout-gutter-x))` for the floor). **Do not** add **`+ (2 × --layout-gutter-x)`** to that numerator: Dawn’s stock formula used **`+10rem`** because their `--page-width` already baked in a different box model; repeating gutters here misaligns by **one gutter** (e.g. 48px).
+- **Desktop slider + `.page-width` on `slider-component`**: stock `component-slider.css` still applies horizontal padding on the host while the first-slide margin already encodes alignment, which stacked to a **~50px** double inset. From 990px up we set **`padding-left` / `padding-right: 0`** on `body slider-component.slider-component-desktop.page-width` so padding is not applied twice.
+- **Featured collection desktop arrows (≥990px)**: vertically centered on the first slide’s **image** (`.card__media`), not the full card. **`featured-collection-carousel-layout.js`** (loaded when the desktop slider is enabled) measures layout and sets **`--fc-carousel-arrow-center`** on **`slider-component`**; **`custom.css`** uses `top: var(--fc-carousel-arrow-center, 50%)` with `translateY(-50%)`. CSS anchor positioning was unreliable here (scroll / coordinate mapping).
+
+Longer inline notes sit under **Base / Global** and **Sliders** in `custom.css`.
+
 ## Getting started
 We recommend using Dawn as a starting point for theme development. [Learn more on Shopify.dev](https://shopify.dev/themes/getting-started/create).
 

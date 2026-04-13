@@ -64,6 +64,10 @@
   endif
 -%}
 
+{%- if show_desktop_slider -%}
+  <script src="{{ 'featured-collection-carousel-layout.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 <div
   class="color-{{ section.settings.color_scheme }}-x isolate gradient-x"
 >
@@ -74,7 +78,7 @@
   >
     <div class="collection__title title-wrapper title-wrapper--no-top-margin page-width{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% endif %}{% if show_desktop_slider %} collection__title--desktop-slider{% endif %}">
       {%- if section.settings.title != blank -%}
-        <h2 class="title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <h2 class="title inline-richtext h3{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
@@ -117,9 +121,10 @@
                   style="--animation-order: {{ forloop.index }};"
                 {% endif %}
               >
+                {%- comment -%} Product media is always 1:1 (square) per design comp. {%- endcomment -%}
                 {% render 'card-product',
                   card_product: product,
-                  media_aspect_ratio: section.settings.image_ratio,
+                  media_aspect_ratio: 'square',
                   image_shape: section.settings.image_shape,
                   lazy_load: lazy_load,
                   show_secondary_image: section.settings.show_secondary_image,
@@ -154,7 +159,7 @@
               {%- assign placeholder_image = 'product-apparel-' | append: ridx -%}
               {% render 'card-product',
                 show_vendor: section.settings.show_vendor,
-                media_aspect_ratio: section.settings.image_ratio,
+                media_aspect_ratio: 'square',
                 image_shape: section.settings.image_shape,
                 lazy_load: false,
                 placeholder_image: placeholder_image
@@ -164,7 +169,22 @@
         {%- endif -%}
       </ul>
       {%- if show_mobile_slider or show_desktop_slider -%}
-        <div class="slider-buttons">
+        {%- if show_desktop_slider -%}
+          {%- capture featured_collection_slider_icon -%}
+            <span class="svg-wrapper featured-collection__carousel-chevron" aria-hidden="true">
+              {{- 'icon-featured-collection-carousel-arrow.svg' | inline_asset_content -}}
+            </span>
+          {%- endcapture -%}
+        {%- else -%}
+          {%- capture featured_collection_slider_icon -%}
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          {%- endcapture -%}
+        {%- endif -%}
+        <div
+          class="slider-buttons{% if show_desktop_slider %} featured-collection--desktop-carousel{% endif %}"
+        >
           <button
             type="button"
             class="slider-button slider-button--prev"
@@ -172,9 +192,7 @@
             aria-label="{{ 'general.slider.previous_slide' | t }}"
             aria-controls="Slider-{{ section.id }}"
           >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
+            {{ featured_collection_slider_icon }}
           </button>
           <div class="slider-counter caption">
             <span class="slider-counter--current">1</span>
@@ -189,24 +207,24 @@
             aria-label="{{ 'general.slider.next_slide' | t }}"
             aria-controls="Slider-{{ section.id }}"
           >
-            <span class="svg-wrapper">
-              {{- 'icon-caret.svg' | inline_asset_content -}}
-            </span>
+            {{ featured_collection_slider_icon }}
           </button>
         </div>
       {%- endif -%}
     </slider-component>
 
     {%- if section.settings.show_view_all and more_in_collection -%}
-      <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-        <a
-          href="{{ section.settings.collection.url }}"
-          class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
-          aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
-        >
-          {{ 'sections.featured_collection.view_all' | t }}
-        </a>
-      </div>
+      {% comment %}
+        <div class="center collection__view-all{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          <a
+            href="{{ section.settings.collection.url }}"
+            class="{% if section.settings.view_all_style == 'link' %}link underlined-link{% elsif section.settings.view_all_style == 'solid' %}button{% else %}button button--secondary{% endif %}"
+            aria-label="{{ 'sections.featured_collection.view_all_label' | t: collection_name: section.settings.collection.title | escape }}"
+          >
+            {{ 'sections.featured_collection.view_all' | t }}
+          </a>
+        </div>
+      {% endcomment %}
     {%- endif -%}
     {% if section.settings.image_shape == 'arch' %}
       {{ 'mask-arch.svg' | inline_asset_content }}
@@ -246,34 +264,6 @@
       "id": "title",
       "default": "t:sections.featured-collection.settings.title.default",
       "label": "t:sections.featured-collection.settings.title.label"
-    },
-    {
-      "type": "select",
-      "id": "heading_size",
-      "options": [
-        {
-          "value": "h2",
-          "label": "t:sections.all.heading_size.options__1.label"
-        },
-        {
-          "value": "h1",
-          "label": "t:sections.all.heading_size.options__2.label"
-        },
-        {
-          "value": "h0",
-          "label": "t:sections.all.heading_size.options__3.label"
-        },
-        {
-          "value": "hxl",
-          "label": "t:sections.all.heading_size.options__4.label"
-        },
-        {
-          "value": "hxxl",
-          "label": "t:sections.all.heading_size.options__5.label"
-        }
-      ],
-      "default": "h1",
-      "label": "t:sections.all.heading_size.label"
     },
     {
       "type": "richtext",
@@ -368,26 +358,6 @@
     {
       "type": "header",
       "content": "t:sections.featured-collection.settings.header.content"
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
-        },
-        {
-          "value": "portrait",
-          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
-        },
-        {
-          "value": "square",
-          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.featured-collection.settings.image_ratio.label"
     },
     {
       "type": "select",
