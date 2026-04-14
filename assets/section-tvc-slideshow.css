@@ -61,6 +61,11 @@
   .tvc-slideshow--layout-stacked .tvc-slideshow__panel {
     padding: 40px var(--layout-gutter-x) 50px;
   }
+
+  /* With dot nav: panel bottom padding moves below controls (visual space after dots) */
+  .tvc-slideshow--layout-stacked.tvc-slideshow--has-nav .tvc-slideshow__panel {
+    padding-bottom: 0;
+  }
 }
 
 /* ----- Split — mobile defaults (stacked column: media, then text) ----- */
@@ -337,7 +342,8 @@
     padding: 1rem 4px;
   }
   .tvc-slideshow--layout-stacked.tvc-slideshow--has-nav .slideshow__controls {
-    padding-bottom: 20px;
+    /* 20px bar + 50px relocated from .tvc-slideshow__panel (desktop stacked) */
+    padding-bottom: 70px;
   }
 }
 

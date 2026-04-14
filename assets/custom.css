@@ -155,23 +155,24 @@ body.village-naturals-therapy .h5 {
 }
 
 .announcement-bar-section .announcement-bar,
-.announcement-bar-section .announcement-bar__announcement {
+.announcement-bar-section .announcement-bar__announcement,
+.announcement-bar-section .announcement-bar__message {
     color: var(--brand-announcement-bar-text);
 }
 
 .announcement-bar-section .announcement-bar__link {
-    color: inherit;
+    color: inherit !important;
 }
 
 .announcement-bar-section .utility-bar .list-social__link,
 .announcement-bar-section .utility-bar .localization-wrapper .disclosure__link,
 .announcement-bar-section .utility-bar .localization-wrapper .localization-form__select,
 .announcement-bar-section .utility-bar .localization-wrapper .disclosure__button {
-    color: var(--brand-announcement-bar-text);
+    color: var(--brand-announcement-bar-text) !important;
 }
 
 .announcement-bar-section .announcement-bar .slider-button {
-    color: var(--brand-announcement-bar-text);
+    color: var(--brand-announcement-bar-text) !important;
 }
 
 /* ==========================================================================
