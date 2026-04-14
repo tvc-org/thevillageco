@@ -1,0 +1,249 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-tvc-dual-feature.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign tvc_df_padding_top = 36
+  assign tvc_df_padding_bottom = 36
+  assign tvc_df_color_scheme = section.settings.color_scheme | default: 'scheme-1'
+-%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ tvc_df_padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ tvc_df_padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ tvc_df_padding_top }}px;
+      padding-bottom: {{ tvc_df_padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="tvc-dual-feature color-{{ tvc_df_color_scheme }}-x gradient-x">
+  <div class="page-width section-{{ section.id }}-padding isolate">
+    {%- if section.settings.heading != blank -%}
+      <div class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <h2 class="title inline-richtext h3">{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ul class="tvc-dual-feature__grid grid grid--1-col-tablet-down grid--2-col-desktop" role="list">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign bp = block.settings.product
+            assign bc = block.settings.collection
+            assign d_image = block.settings.image
+            assign d_heading_rt = block.settings.heading_block
+            assign d_text_rt = block.settings.text
+            assign d_link = block.settings.link
+            assign d_link_label = block.settings.link_label
+
+            assign d_heading_plain = ''
+            assign d_text_plain = ''
+
+            if bp != blank
+              if d_image == blank
+                if bp.featured_image != blank
+                  assign d_image = bp.featured_image
+                elsif bp.featured_media != blank
+                  assign d_image = bp.featured_media.preview_image
+                endif
+              endif
+              if d_heading_rt == blank
+                assign d_heading_plain = bp.title
+              endif
+              if d_text_rt == blank and bp.description != blank
+                assign d_text_plain = bp.description | strip_html | truncatewords: 45
+              endif
+              if d_link == blank
+                assign d_link = bp.url
+              endif
+            elsif bc != blank
+              if d_image == blank and bc.featured_image != blank
+                assign d_image = bc.featured_image
+              endif
+              if d_heading_rt == blank
+                assign d_heading_plain = bc.title
+              endif
+              if d_text_rt == blank and bc.description != blank
+                assign d_text_plain = bc.description | strip_html | truncatewords: 45
+              endif
+              if d_link == blank
+                assign d_link = bc.url
+              endif
+            endif
+
+            assign tvc_df_show_card_badge = false
+            if bp != blank
+              if bp.available == false
+                assign tvc_df_show_card_badge = true
+              elsif bp.compare_at_price > bp.price and bp.available
+                assign tvc_df_show_card_badge = true
+              elsif bp.available and bp.selected_or_first_available_variant.inventory_management == 'shopify' and bp.selected_or_first_available_variant.inventory_quantity > 0 and bp.selected_or_first_available_variant.inventory_quantity <= 10
+                assign tvc_df_show_card_badge = true
+              endif
+            endif
+            assign tvc_df_badge_section_id = section.id | append: '-' | append: block.id
+          -%}
+          <li
+            class="tvc-dual-feature__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {{ block.shopify_attributes }}
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            <article class="tvc-dual-feature__card">
+              {%- if d_image != blank -%}
+                <div class="tvc-dual-feature__media">
+                  {%- liquid
+                    assign img_alt = d_image.alt | default: d_heading_plain
+                    if img_alt == blank and d_heading_rt != blank
+                      assign img_alt = d_heading_rt | strip_html
+                    endif
+                    if img_alt == blank
+                      assign img_alt = shop.name
+                    endif
+                    assign widths = '375, 550, 750, 1100, 1500'
+                    assign sizes = '(min-width: 990px) calc((100vw - 10rem) / 2), calc(100vw - 3rem)'
+                  -%}
+                  {{
+                    d_image
+                    | image_url: width: 1500
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: widths,
+                      sizes: sizes,
+                      class: 'tvc-dual-feature__image',
+                      alt: img_alt
+                  }}
+                  {%- if tvc_df_show_card_badge -%}
+                    {% render 'product-badge-new', card_product: bp, section_id: tvc_df_badge_section_id %}
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+
+              <div class="tvc-dual-feature__content">
+                {%- if d_heading_rt != blank -%}
+                  <h3 class="tvc-dual-feature__title">{{ d_heading_rt }}</h3>
+                {%- elsif d_heading_plain != blank -%}
+                  <h3 class="tvc-dual-feature__title">{{ d_heading_plain | escape }}</h3>
+                {%- endif -%}
+
+                {%- if d_text_rt != blank -%}
+                  <div class="tvc-dual-feature__body rte">{{ d_text_rt }}</div>
+                {%- elsif d_text_plain != blank -%}
+                  <div class="tvc-dual-feature__body rte">{{ d_text_plain | escape | newline_to_br }}</div>
+                {%- endif -%}
+
+                {%- if d_link != blank -%}
+                  <a href="{{ d_link }}" class="tvc-dual-feature__cta cta-link">
+                    {%- if d_link_label != blank -%}
+                      {{- d_link_label | escape -}}
+                    {%- else -%}
+                      {{- 'sections.collection_list.shop_now' | t -}}
+                    {%- endif -%}
+                  </a>
+                {%- endif -%}
+              </div>
+            </article>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-dual-feature.name",
+  "tag": "section",
+  "class": "section section-tvc-dual-feature",
+  "max_blocks": 2,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.tvc-dual-feature.settings.heading.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "t:sections.tvc-dual-feature.blocks.feature.name",
+      "settings": [
+        {
+          "type": "header",
+          "content": "t:sections.tvc-dual-feature.blocks.feature.settings.header_resource.content"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.product.label"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.collection.label"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.tvc-dual-feature.blocks.feature.settings.resource_info.content"
+        },
+        {
+          "type": "header",
+          "content": "t:sections.tvc-dual-feature.blocks.feature.settings.header_overrides.content"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.image.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading_block",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.heading_block.label"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.link_label.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

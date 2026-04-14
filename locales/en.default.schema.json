@@ -681,6 +681,54 @@
         "name": "Collection list"
       }
     },
+    "tvc-dual-feature": {
+      "name": "TVC Dual Feature",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        }
+      },
+      "blocks": {
+        "feature": {
+          "name": "Feature",
+          "settings": {
+            "header_resource": {
+              "content": "Product or collection"
+            },
+            "product": {
+              "label": "Product"
+            },
+            "collection": {
+              "label": "Collection"
+            },
+            "resource_info": {
+              "content": "Optional. Image, title, text, and link default from the product or collection when the fields below are empty. If both are set, the product is used. When a product is selected, sold out, sale, and low stock badges match product cards (Theme settings → Badges)."
+            },
+            "header_overrides": {
+              "content": "Overrides"
+            },
+            "image": {
+              "label": "Image"
+            },
+            "heading_block": {
+              "label": "Heading"
+            },
+            "text": {
+              "label": "Text"
+            },
+            "link_label": {
+              "label": "CTA label"
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "TVC Dual Feature"
+      }
+    },
     "contact-form": {
       "name": "Contact Form",
       "presets": {

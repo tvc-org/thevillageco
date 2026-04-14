@@ -1,0 +1,116 @@
+/* TVC Dual Feature — two-up promos (product/collection + overrides) */
+
+.tvc-dual-feature__grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: var(--grid-mobile-vertical-spacing) var(--grid-mobile-horizontal-spacing);
+}
+
+.tvc-dual-feature .title-wrapper + .tvc-dual-feature__grid {
+  margin-top: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .tvc-dual-feature__grid {
+    gap: var(--grid-desktop-vertical-spacing) var(--grid-desktop-horizontal-spacing);
+  }
+
+  .tvc-dual-feature .title-wrapper + .tvc-dual-feature__grid {
+    margin-top: 3rem;
+  }
+}
+
+.tvc-dual-feature__item {
+  min-width: 0;
+}
+
+.tvc-dual-feature__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+}
+
+.tvc-dual-feature__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--border-radius, 0.4rem);
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+.tvc-dual-feature__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Same badge snippet as product cards; position follows Theme settings → Badges → Badge position */
+.tvc-dual-feature__media .card__badge {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  align-self: unset;
+  justify-self: unset;
+  grid-row-start: auto;
+  width: auto;
+  max-width: calc(100% - 2rem);
+}
+
+.tvc-dual-feature__media .card__badge.bottom.left {
+  bottom: 1rem;
+  left: 1rem;
+  top: auto;
+  right: auto;
+}
+
+.tvc-dual-feature__media .card__badge.bottom.right {
+  bottom: 1rem;
+  right: 1rem;
+  top: auto;
+  left: auto;
+}
+
+.tvc-dual-feature__media .card__badge.top.left {
+  top: 1rem;
+  left: 1rem;
+  bottom: auto;
+  right: auto;
+}
+
+.tvc-dual-feature__media .card__badge.top.right {
+  top: 1rem;
+  right: 1rem;
+  bottom: auto;
+  left: auto;
+}
+
+.tvc-dual-feature__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  padding-top: 1.5rem;
+  gap: 1rem;
+}
+
+.tvc-dual-feature__title {
+  margin: 0;
+  max-width: 42rem;
+}
+
+.tvc-dual-feature__body {
+  margin: 0;
+  max-width: 42rem;
+}
+
+.tvc-dual-feature__body p:last-child {
+  margin-bottom: 0;
+}
+
+.tvc-dual-feature__cta {
+  margin-top: 0.25rem;
+}
