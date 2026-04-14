@@ -54,7 +54,7 @@
                 assign d_heading_plain = bp.title
               endif
               if d_text_rt == blank and bp.description != blank
-                assign d_text_plain = bp.description | strip_html | truncatewords: 45
+                assign d_text_plain = bp.description | strip_html | truncate: 140
               endif
               if d_link == blank
                 assign d_link = bp.url
@@ -67,7 +67,7 @@
                 assign d_heading_plain = bc.title
               endif
               if d_text_rt == blank and bc.description != blank
-                assign d_text_plain = bc.description | strip_html | truncatewords: 45
+                assign d_text_plain = bc.description | strip_html | truncate: 140
               endif
               if d_link == blank
                 assign d_link = bc.url
@@ -124,7 +124,7 @@
                 </div>
               {%- endif -%}
 
-              <div class="tvc-dual-feature__content">
+              <div class="tvc-dual-feature__content mt-3 lg-mt-4">
                 {%- if d_heading_rt != blank -%}
                   <h3 class="tvc-dual-feature__title">{{ d_heading_rt }}</h3>
                 {%- elsif d_heading_plain != blank -%}
@@ -132,9 +132,9 @@
                 {%- endif -%}
 
                 {%- if d_text_rt != blank -%}
-                  <div class="tvc-dual-feature__body rte">{{ d_text_rt }}</div>
+                  <div class="tvc-dual-feature__body rte mt-2">{{ d_text_rt }}</div>
                 {%- elsif d_text_plain != blank -%}
-                  <div class="tvc-dual-feature__body rte">{{ d_text_plain | escape | newline_to_br }}</div>
+                  <div class="tvc-dual-feature__body rte mt-2">{{ d_text_plain | escape | newline_to_br }}</div>
                 {%- endif -%}
 
                 {%- if d_link != blank -%}

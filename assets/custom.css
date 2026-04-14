@@ -146,6 +146,7 @@ body.village-naturals-therapy .h5 {
     text-underline-offset: auto;
     text-underline-position: from-font;
     font-weight: 600;
+    color: inherit;
 }
 
 /* Brand announcement bar (--brand-announcement-bar-* set in sections/header.liquid from brand blocks) */
@@ -394,6 +395,17 @@ body.mr-bubble .shopify-section.section .collection-list .card--standard .card__
 @media screen and (min-width: 960px) {
     body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
+        border-radius: 35px;
+    }
+}
+
+/* Mr. Bubble — TVC Dual Feature image area matches featured collection card radius */
+body.mr-bubble .tvc-dual-feature__media {
+    border-radius: 16px;
+}
+
+@media screen and (min-width: 960px) {
+    body.mr-bubble .tvc-dual-feature__media {
         border-radius: 35px;
     }
 }

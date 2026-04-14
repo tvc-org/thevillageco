@@ -7,6 +7,10 @@
   gap: var(--grid-mobile-vertical-spacing) var(--grid-mobile-horizontal-spacing);
 }
 
+.tvc-dual-feature .title-wrapper {
+  text-align: left;
+}
+
 .tvc-dual-feature .title-wrapper + .tvc-dual-feature__grid {
   margin-top: 2rem;
 }
@@ -29,13 +33,13 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .tvc-dual-feature__media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: var(--border-radius, 0.4rem);
   background: rgba(var(--color-foreground), 0.06);
@@ -91,7 +95,7 @@
 .tvc-dual-feature__content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   flex: 1 1 auto;
   padding-top: 1.5rem;
   gap: 1rem;
