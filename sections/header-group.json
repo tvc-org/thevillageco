@@ -56,6 +56,8 @@
             "brand_color": "#f04d98",
             "brand_text_color": "#323131",
             "brand_background_color": "",
+            "announcement_bar_background": "#f04d98",
+            "announcement_bar_text": "#ffffff",
             "brand_page_link": "shopify://pages/mr-bubble",
             "menu": "mr-bubble-mega"
           }
@@ -70,6 +72,8 @@
             "brand_color": "#5f885f",
             "brand_text_color": "#323131",
             "brand_background_color": "#f3ebe3",
+            "announcement_bar_background": "#59414b",
+            "announcement_bar_text": "#ffffff",
             "brand_page_link": "shopify://pages/therapy",
             "menu": "therapy-mega"
           }
@@ -83,6 +87,8 @@
             "brand_color": "#da2171",
             "brand_text_color": "#323131",
             "brand_background_color": "",
+            "announcement_bar_background": "",
+            "announcement_bar_text": "",
             "brand_page_link": "shopify://pages/soft-dri",
             "menu": "soft-dri-mega"
           }
@@ -97,6 +103,8 @@
             "brand_color": "#00a1dd",
             "brand_text_color": "#323131",
             "brand_background_color": "",
+            "announcement_bar_background": "",
+            "announcement_bar_text": "",
             "brand_page_link": "",
             "menu": "the-village-co-mega"
           }
