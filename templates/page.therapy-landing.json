@@ -67,7 +67,6 @@
         "collection": "therapy-bestsellers",
         "products_to_show": 12,
         "title": "Best Sellers",
-        "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
@@ -77,7 +76,6 @@
         "show_view_all": true,
         "view_all_style": "solid",
         "color_scheme": "",
-        "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
@@ -95,19 +93,25 @@
         "featured_collection_B6xhLy": {
           "type": "featured_collection",
           "settings": {
-            "collection": "therapy-breathe-foaming-concentrated-soaks"
+            "collection": "therapy-breathe-foaming-concentrated-soaks",
+            "title_override": "",
+            "short_description": ""
           }
         },
         "featured_collection_YJ88LN": {
           "type": "featured_collection",
           "settings": {
-            "collection": "therapy-2in1-epsom-salts"
+            "collection": "therapy-2in1-epsom-salts",
+            "title_override": "",
+            "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
           }
         },
         "featured_collection_QiEpnA": {
           "type": "featured_collection",
           "settings": {
-            "collection": "calm"
+            "collection": "calm",
+            "title_override": "",
+            "short_description": ""
           }
         }
       },
@@ -119,7 +123,6 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "Collections",
-        "heading_size": "h2",
         "image_ratio": "square",
         "columns_desktop": 3,
         "color_scheme": "",
