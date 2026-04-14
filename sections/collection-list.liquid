@@ -63,7 +63,7 @@
         {%- for block in section.blocks -%}
           <li
             id="Slide-{{ section.id }}-{{ forloop.index }}"
-            class="collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="collection-list__item grid__item{% if show_mobile_slider %} slider__slide{% endif %}{% if block.settings.collection.featured_image == nil and block.settings.image_override == blank %} collection-list__item--no-media{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
@@ -76,7 +76,11 @@
               card_collection: block.settings.collection,
               media_aspect_ratio: section.settings.image_ratio,
               columns: columns,
-              placeholder_image: placeholder_image
+              placeholder_image: placeholder_image,
+              title_override: block.settings.title_override,
+              short_description: block.settings.short_description,
+              image_override: block.settings.image_override,
+              show_shop_now: true
             %}
           </li>
         {%- endfor -%}
@@ -256,6 +260,24 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_override",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.image_override.label",
+          "info": "t:sections.collection-list.blocks.featured_collection.settings.image_override.info"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "title_override",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.title_override.label",
+          "info": "t:sections.collection-list.blocks.featured_collection.settings.title_override.info"
+        },
+        {
+          "type": "textarea",
+          "id": "short_description",
+          "label": "t:sections.collection-list.blocks.featured_collection.settings.short_description.label",
+          "info": "t:sections.collection-list.blocks.featured_collection.settings.short_description.info"
         }
       ]
     }

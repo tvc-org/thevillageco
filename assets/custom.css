@@ -1946,6 +1946,7 @@ header-drawer {
   }
 }
 
+.inline-block { display:inline-block; }
 .block { display:block; }
 img.block {
 	display:block;

@@ -652,6 +652,18 @@
           "settings": {
             "collection": {
               "label": "Collection"
+            },
+            "image_override": {
+              "label": "Image override",
+              "info": "Optional. Replaces the collection featured image when set."
+            },
+            "title_override": {
+              "label": "Title override",
+              "info": "Optional. Replaces the collection title when set."
+            },
+            "short_description": {
+              "label": "Short description",
+              "info": "Optional. Plain text shown under the title. The collection description is hidden when this is set."
             }
           }
         }

@@ -59,3 +59,13 @@
 .collection-list-view-all {
   margin-top: 2rem;
 }
+
+.collection-list-card__short-description {
+  margin: 0.75rem 0 0;
+}
+
+.collection-list-card__shop-now,
+.collection-list-card__shop-now:visited {
+  margin-top: 1rem;
+  color: inherit;
+}
