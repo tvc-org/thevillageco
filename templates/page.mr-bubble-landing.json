@@ -60,6 +60,42 @@
         "accessibility_info": "Featured promotions slideshow"
       }
     },
+    "tvc_dual_feature_BgzCht": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_dqDqd6": {
+          "type": "feature",
+          "settings": {
+            "product": "mr-bubble-bubbling-bath-bomb",
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_J8beFn": {
+          "type": "feature",
+          "settings": {
+            "product": "mr-bubble-extra-gentle-foam-soap-8-oz",
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_dqDqd6",
+        "feature_J8beFn"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": ""
+      }
+    },
     "featured_collection_ihWKGy": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -70,10 +106,8 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
-        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
@@ -84,6 +118,7 @@
   "order": [
     "main",
     "tvc_slideshow_XRhT4H",
+    "tvc_dual_feature_BgzCht",
     "featured_collection_ihWKGy"
   ]
 }
