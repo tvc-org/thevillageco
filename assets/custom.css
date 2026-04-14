@@ -148,6 +148,32 @@ body.village-naturals-therapy .h5 {
     font-weight: 600;
 }
 
+/* Brand announcement bar (--brand-announcement-bar-* set in sections/header.liquid from brand blocks) */
+.announcement-bar-section .utility-bar.gradient {
+    background: var(--brand-announcement-bar-background);
+    color: var(--brand-announcement-bar-text);
+}
+
+.announcement-bar-section .announcement-bar,
+.announcement-bar-section .announcement-bar__announcement {
+    color: var(--brand-announcement-bar-text);
+}
+
+.announcement-bar-section .announcement-bar__link {
+    color: inherit;
+}
+
+.announcement-bar-section .utility-bar .list-social__link,
+.announcement-bar-section .utility-bar .localization-wrapper .disclosure__link,
+.announcement-bar-section .utility-bar .localization-wrapper .localization-form__select,
+.announcement-bar-section .utility-bar .localization-wrapper .disclosure__button {
+    color: var(--brand-announcement-bar-text);
+}
+
+.announcement-bar-section .announcement-bar .slider-button {
+    color: var(--brand-announcement-bar-text);
+}
+
 /* ==========================================================================
    Sliders — desktop first slide / slide widths / end spacer
    README: “Layout: page width, gutters, and desktop carousels”.
@@ -327,6 +353,10 @@ body slider-component.slider-component-full-width {
         .featured-collection__carousel-chevron
         svg {
         transform: rotate(180deg);
+    }
+
+    .collection-list-card__short-description {
+        font-size: 18px !important;
     }
 }
 

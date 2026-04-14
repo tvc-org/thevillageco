@@ -143,10 +143,32 @@
       {% comment %}This append fixes vs code text highlighting{% endcomment %}
       background: {{ current_brand.settings.brand_color | append: " !important"}};
   }
-  {%- if current_brand.settings.brand_background_color != blank -%}
+  {%- liquid
+    assign brand_root_vars = false
+    if current_brand.settings.brand_background_color != blank
+      assign brand_root_vars = true
+    endif
+    if current_brand.settings.announcement_bar_background != blank
+      assign brand_root_vars = true
+    endif
+    if current_brand.settings.announcement_bar_text != blank
+      assign brand_root_vars = true
+    endif
+  -%}
+  {%- if brand_root_vars -%}
   :root {
+    {%- if current_brand.settings.brand_background_color != blank -%}
     --brand-background-color: {{ current_brand.settings.brand_background_color }};
+    {%- endif -%}
+    {%- if current_brand.settings.announcement_bar_background != blank -%}
+    --brand-announcement-bar-background: {{ current_brand.settings.announcement_bar_background }};
+    {%- endif -%}
+    {%- if current_brand.settings.announcement_bar_text != blank -%}
+    --brand-announcement-bar-text: {{ current_brand.settings.announcement_bar_text }};
+    {%- endif -%}
   }
+  {%- endif -%}
+  {%- if current_brand.settings.brand_background_color != blank -%}
   body.gradient {
     background: var(--brand-background-color);
     background-attachment: scroll;
@@ -726,6 +748,18 @@
           "label": "Brand background color",
           "id": "brand_background_color",
           "info": "Page and header background when this brand is active. Exposed as CSS variable --brand-background-color on :root for use in custom CSS."
+        },
+        {
+          "type": "color",
+          "label": "Announcement bar background",
+          "id": "announcement_bar_background",
+          "info": "Optional. When set, overrides the announcement / utility bar background for this brand. Exposed as --brand-announcement-bar-background on :root."
+        },
+        {
+          "type": "color",
+          "label": "Announcement bar text",
+          "id": "announcement_bar_text",
+          "info": "Optional. When set, overrides announcement message and utility bar text color for this brand. Exposed as --brand-announcement-bar-text on :root."
         },
         {
           "type": "url",
