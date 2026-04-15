@@ -4,7 +4,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: var(--grid-mobile-vertical-spacing) var(--grid-mobile-horizontal-spacing);
+  gap: 60px var(--grid-mobile-horizontal-spacing);
 }
 
 .tvc-dual-feature .title-wrapper {
