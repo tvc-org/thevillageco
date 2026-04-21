@@ -156,11 +156,11 @@
     z-index: 2;
     /* shrink-to-content so justify-self (left/center/right) can take effect */
     width: auto;
-    max-width: min(42rem, 100%);
+    max-width: min(625px, 100%);
     box-sizing: border-box;
     margin: 0;
     background: transparent;
-    padding: 40px var(--layout-gutter-x) 50px;
+    padding: 68px;
   }
 
   .tvc-slideshow--layout-stacked.tvc-slideshow--has-nav .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--stacked-desktop-inmedia {
@@ -267,6 +267,10 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .tvc-slideshow__panel--stacked-desktop-inmedia .tvc-slideshow__link {
+    margin-bottom: 0 !important;
+  }
 }
 
 /* ----- Split — mobile defaults (stacked column: media, then text) ----- */
@@ -345,6 +349,23 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Preserve desktop image aspect ratio (must follow stacked/split cover rules so `contain` wins) */
+.tvc-slideshow__media--preserve-aspect {
+  min-height: 0 !important;
+  max-height: min(92vh, 960px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tvc-slideshow__media--preserve-aspect picture,
+.tvc-slideshow__media--preserve-aspect picture img,
+.tvc-slideshow__media--preserve-aspect > img,
+.tvc-slideshow__media--preserve-aspect video,
+.tvc-slideshow__media--preserve-aspect > svg {
+  object-fit: contain;
+  object-position: center center;
 }
 
 /* ----- Split — desktop (960px+): side-by-side row ----- */

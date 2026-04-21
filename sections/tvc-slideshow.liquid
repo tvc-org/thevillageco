@@ -96,6 +96,8 @@
       {%- liquid
         assign inner_classes = 'tvc-slideshow__inner'
         assign panel_classes = 'tvc-slideshow__panel'
+        assign media_classes = 'tvc-slideshow__media'
+        assign media_aspect_style = ''
         assign split_media_position = section.settings.split_media_position_desktop
 
         if split_media_position == blank
@@ -139,6 +141,15 @@
             endif
           endif
         endif
+
+        assign show_video = false
+        if block.settings.video != blank
+          assign show_video = true
+        endif
+        if show_video == false and block.settings.image != blank and block.settings.preserve_image_aspect_ratio
+          assign media_classes = media_classes | append: ' tvc-slideshow__media--preserve-aspect'
+          assign media_aspect_style = 'aspect-ratio: ' | append: block.settings.image.aspect_ratio | append: ';'
+        endif
       -%}
       <div
         class="slideshow__slide grid__item slider__slide tvc-slideshow__slide"
@@ -150,13 +161,12 @@
         tabindex="-1"
       >
         <div class="{{ inner_classes }}">
-          <div class="tvc-slideshow__media">
-            {%- liquid
-              assign show_video = false
-              if block.settings.video != blank
-                assign show_video = true
-              endif
-            -%}
+          <div
+            class="{{ media_classes }}"
+            {% if media_aspect_style != blank %}
+              style="{{ media_aspect_style }}"
+            {% endif %}
+          >
             {%- if show_video -%}
               {{
                 block.settings.video
@@ -447,6 +457,13 @@
           "id": "mobile_image",
           "label": "Mobile image",
           "info": "Optional. Used for image slides on screens below 750px."
+        },
+        {
+          "type": "checkbox",
+          "id": "preserve_image_aspect_ratio",
+          "label": "Preserve image aspect ratio (no crop)",
+          "info": "Uses the desktop image’s proportions for the media frame (applies to mobile swaps too). Ignored when a video is set.",
+          "default": false
         },
         {
           "type": "video",
