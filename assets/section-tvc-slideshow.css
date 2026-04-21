@@ -123,7 +123,8 @@
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    min-height: 0;
+    /* `1fr` needs a definite height; slideshow slides don't always provide one */
+    min-height: max(420px, min(85vh, 920px));
     flex: 1 1 auto;
     align-self: stretch;
     height: 100%;
