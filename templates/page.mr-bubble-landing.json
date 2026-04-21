@@ -26,6 +26,7 @@
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/MrBubbleHomePageHeader1.jpg",
+            "preserve_image_aspect_ratio": false,
             "heading": "Somebunny Loves Bubbles!",
             "text": "<p>Swap sweets for squeaky-clean fun this Easter. Our bubbly favorites make the perfect basket stuffer for kids who love to splash.</p>",
             "stacked_text_in_media": false,
@@ -40,6 +41,7 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
+            "preserve_image_aspect_ratio": false,
             "heading": "Headline",
             "text": "<p>Add descriptive text for this slide.</p>",
             "stacked_text_in_media": false,
@@ -110,6 +112,7 @@
             "split_text_tone": "dark",
             "image": "shopify://shop_images/millions-of-bubbles.jpg",
             "mobile_image": "shopify://shop_images/millions-of-bubbles-mobile.jpg",
+            "preserve_image_aspect_ratio": true,
             "heading": "BUBBLES MAKE \nEVERYTHING BETTER",
             "text": "<p>The original bubble bath, now 65 years of giggles and foam beards.  Big, fluffy bubbles that are gentle enough for little skin</p>",
             "stacked_text_in_media": true,
