@@ -2440,3 +2440,12 @@ body.mr-bubble {
     background: #fff !important;
     color: var(--color-text) !important;
 }
+
+.badge {
+    border-radius: 8px;
+    font-family: "FuturaPTBold", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    line-height: 1;
+}

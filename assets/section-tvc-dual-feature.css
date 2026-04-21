@@ -52,7 +52,7 @@
   display: block;
 }
 
-/* Same badge snippet as product cards; position follows Theme settings → Badges → Badge position */
+/* Badge position follows Theme settings -> Badges -> Badge position */
 .tvc-dual-feature__media .card__badge {
   position: absolute;
   z-index: 2;
@@ -64,32 +64,54 @@
   max-width: calc(100% - 2rem);
 }
 
-.tvc-dual-feature__media .card__badge.bottom.left {
-  bottom: 1rem;
-  left: 1rem;
+.tvc-dual-feature__media--badge-bottom-left .card__badge {
+  bottom: 20px;
+  left: 14px;
   top: auto;
   right: auto;
 }
 
-.tvc-dual-feature__media .card__badge.bottom.right {
-  bottom: 1rem;
-  right: 1rem;
+.tvc-dual-feature__media--badge-bottom-right .card__badge {
+  bottom: 20px;
+  right: 14px;
   top: auto;
   left: auto;
 }
 
-.tvc-dual-feature__media .card__badge.top.left {
-  top: 1rem;
-  left: 1rem;
+.tvc-dual-feature__media--badge-top-left .card__badge {
+  top: 20px;
+  left: 14px;
   bottom: auto;
   right: auto;
 }
 
-.tvc-dual-feature__media .card__badge.top.right {
-  top: 1rem;
-  right: 1rem;
+.tvc-dual-feature__media--badge-top-right .card__badge {
+  top: 20px;
+  right: 14px;
   bottom: auto;
   left: auto;
+}
+
+@media screen and (min-width: 1025px) {
+  .tvc-dual-feature__media--badge-bottom-left .card__badge {
+    bottom: 40px;
+    left: 40px;
+  }
+
+  .tvc-dual-feature__media--badge-bottom-right .card__badge {
+    bottom: 40px;
+    right: 40px;
+  }
+
+  .tvc-dual-feature__media--badge-top-left .card__badge {
+    top: 40px;
+    left: 40px;
+  }
+
+  .tvc-dual-feature__media--badge-top-right .card__badge {
+    top: 40px;
+    right: 40px;
+  }
 }
 
 .tvc-dual-feature__content {

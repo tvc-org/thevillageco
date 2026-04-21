@@ -85,6 +85,7 @@
               endif
             endif
             assign tvc_df_badge_section_id = section.id | append: '-' | append: block.id
+            assign tvc_df_badge_position_class = settings.badge_position | replace: ' ', '-'
           -%}
           <li
             class="tvc-dual-feature__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -96,7 +97,7 @@
           >
             <article class="tvc-dual-feature__card">
               {%- if d_image != blank -%}
-                <div class="tvc-dual-feature__media">
+                <div class="tvc-dual-feature__media tvc-dual-feature__media--badge-{{ tvc_df_badge_position_class }}">
                   {%- liquid
                     assign img_alt = d_image.alt | default: d_heading_plain
                     if img_alt == blank and d_heading_rt != blank
