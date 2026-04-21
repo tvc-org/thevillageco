@@ -147,7 +147,7 @@
           <div class="tvc-slideshow__media">
             {%- liquid
               assign show_video = false
-              if block.settings.media_type == 'video' and block.settings.video != blank
+              if block.settings.video != blank
                 assign show_video = true
               endif
             -%}
@@ -413,24 +413,12 @@
           "visible_if": "{{ section.settings.layout == 'split' }}"
         },
         {
-          "type": "header",
-          "content": "Media & content"
+          "type": "paragraph",
+          "content": "If a video is added, it automatically overrides image and mobile image for this slide."
         },
         {
-          "type": "select",
-          "id": "media_type",
-          "label": "Media type",
-          "options": [
-            {
-              "value": "image",
-              "label": "Image"
-            },
-            {
-              "value": "video",
-              "label": "Video"
-            }
-          ],
-          "default": "image"
+          "type": "header",
+          "content": "Media & content"
         },
         {
           "type": "image_picker",
@@ -447,7 +435,7 @@
           "type": "video",
           "id": "video",
           "label": "Video",
-          "info": "Muted and looping. Used when media type is Video."
+          "info": "Muted and looping. Overrides image and mobile image when set."
         },
         {
           "type": "text",
@@ -497,7 +485,7 @@
             },
             {
               "value": "light",
-              "label": "Light (white)"
+              "label": "Light"
             }
           ],
           "default": "dark",
