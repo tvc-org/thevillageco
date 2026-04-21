@@ -21,8 +21,12 @@
   endif
 -%}
 
+{% if section.settings.full_width == false %}
+  <div class="page-width">
+{% endif %}
+
 <slideshow-component
-  class="slider-mobile-gutter {{ section_classes }}"
+  class="slider-mobile-gutter {{ section_classes }}{% if section.settings.full_width %} tvc-slideshow--full-width{% else %} tvc-slideshow--contained{% endif %}"
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ section.settings.accessibility_info | escape }}"
@@ -222,7 +226,9 @@
 
             {%- capture panel_content -%}
               {%- if block.settings.heading != blank -%}
-                <h2 class="tvc-slideshow__heading h2 mt-1 mb-3 md-mb-4">{{ block.settings.heading }}</h2>
+                <h2 class="tvc-slideshow__heading h2 mt-1 mb-3 md-mb-4">
+                  {{ block.settings.heading | escape | newline_to_br }}
+                </h2>
               {%- endif -%}
               {%- if block.settings.text != blank -%}
                 <div class="tvc-slideshow__body rte">{{ block.settings.text }}</div>
@@ -298,6 +304,10 @@
   {%- endif -%}
 </slideshow-component>
 
+{% if section.settings.full_width == false %}
+</div>
+{% endif %}
+
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
@@ -330,6 +340,12 @@
         }
       ],
       "default": "stacked"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
     },
     {
       "type": "select",
@@ -438,7 +454,7 @@
           "info": "Muted and looping. Overrides image and mobile image when set."
         },
         {
-          "type": "text",
+          "type": "textarea",
           "id": "heading",
           "label": "Heading",
           "default": "Headline"

@@ -22,6 +22,17 @@
   min-height: 0;
 }
 
+/* Optional contained mode */
+.tvc-slideshow--contained .tvc-slideshow__media {
+  border-radius: 14px;
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-slideshow--contained .tvc-slideshow__media {
+    border-radius: 35px;
+  }
+}
+
 /* ----- Stacked — mobile defaults ----- */
 .tvc-slideshow--layout-stacked .tvc-slideshow__inner {
   display: flex;
@@ -138,17 +149,22 @@
 
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--inmedia-bottom-left {
     justify-self: start;
-    text-align: left;
   }
 
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--inmedia-bottom-center {
     justify-self: center;
-    text-align: center;
   }
 
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--inmedia-bottom-right {
     justify-self: end;
-    text-align: right;
+  }
+
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--align-left {
+    text-align: left;
+  }
+
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--align-center {
+    text-align: center;
   }
 
   /* Dark (default) and light text only when overlaid on desktop */
@@ -156,7 +172,17 @@
     color: var(--tvc-split-heading-dark);
   }
 
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__heading {
+    color: var(--tvc-split-heading-dark);
+  }
+
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body {
+    color: var(--tvc-split-body-dark);
+  }
+
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body p,
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body li,
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body a {
     color: var(--tvc-split-body-dark);
   }
 
@@ -168,7 +194,34 @@
     color: var(--tvc-split-heading-light);
   }
 
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__heading {
+    color: var(--tvc-split-heading-light);
+  }
+
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body {
+    color: var(--tvc-split-body-light);
+  }
+
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body p,
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body li,
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body a {
+    color: var(--tvc-split-body-light);
+  }
+
+  /* Override global #MainContent p and .rte list color defaults inside desktop in-media stacked slides */
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body p,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body ul,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body ol,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body li,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-dark .tvc-slideshow__body a {
+    color: var(--tvc-split-body-dark);
+  }
+
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body p,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body ul,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body ol,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body li,
+  #MainContent .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--tone-light .tvc-slideshow__body a {
     color: var(--tvc-split-body-light);
   }
 
