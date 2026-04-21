@@ -13,7 +13,7 @@
     assign section_classes = section_classes | append: ' tvc-slideshow--has-nav'
   endif
   if section.settings.layout == 'split' and section.blocks.size > 0
-    if section.blocks.first.settings.split_media_position == 'left'
+    if section.settings.split_media_position_desktop == 'left'
       assign section_classes = section_classes | append: ' tvc-slideshow--split-nav-text-right'
     else
       assign section_classes = section_classes | append: ' tvc-slideshow--split-nav-text-left'
@@ -91,8 +91,15 @@
     {%- for block in section.blocks -%}
       {%- liquid
         assign inner_classes = 'tvc-slideshow__inner'
+        assign panel_classes = 'tvc-slideshow__panel'
+        assign split_media_position = section.settings.split_media_position_desktop
+
+        if split_media_position == blank
+          assign split_media_position = block.settings.split_media_position
+        endif
+
         if section.settings.layout == 'split'
-          if block.settings.split_media_position == 'left'
+          if split_media_position == 'left'
             assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--media-left'
           else
             assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--media-right'
@@ -101,6 +108,29 @@
             assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--text-light'
           else
             assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--text-dark'
+          endif
+        else
+          if block.settings.stacked_text_alignment == 'left'
+            assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--align-left'
+          else
+            assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--align-center'
+          endif
+
+          if block.settings.stacked_text_in_media
+            assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--stacked-desktop-inmedia'
+            assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--stacked-desktop-inmedia'
+            if block.settings.stacked_text_position == 'bottom_left'
+              assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--inmedia-bottom-left'
+            elsif block.settings.stacked_text_position == 'bottom_right'
+              assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--inmedia-bottom-right'
+            else
+              assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--inmedia-bottom-center'
+            endif
+            if block.settings.stacked_desktop_overlay_text_tone == 'light'
+              assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--tone-light'
+            else
+              assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--tone-dark'
+            endif
           endif
         endif
       -%}
@@ -134,7 +164,9 @@
               }}
             {%- elsif block.settings.image != blank -%}
               {%- liquid
-                assign height = block.settings.image.width | divided_by: block.settings.image.aspect_ratio | round
+                assign desktop_image = block.settings.image
+                assign mobile_image = block.settings.mobile_image
+                assign height = desktop_image.width | divided_by: desktop_image.aspect_ratio | round
                 assign sizes = '100vw'
                 assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
                 assign fetch_priority = 'auto'
@@ -142,29 +174,43 @@
                   assign fetch_priority = 'high'
                 endif
               -%}
-              {%- if forloop.first -%}
-                {{
-                  block.settings.image
-                  | image_url: width: 3840
-                  | image_tag:
-                    height: height,
-                    sizes: sizes,
-                    widths: widths,
-                    fetchpriority: fetch_priority,
-                    class: 'tvc-slideshow__image'
-                }}
-              {%- else -%}
-                {{
-                  block.settings.image
-                  | image_url: width: 3840
-                  | image_tag:
-                    loading: 'lazy',
-                    height: height,
-                    sizes: sizes,
-                    widths: widths,
-                    class: 'tvc-slideshow__image'
-                }}
-              {%- endif -%}
+              <picture>
+                {%- if mobile_image != blank -%}
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ mobile_image | image_url: width: 375 }} 375w,
+                      {{ mobile_image | image_url: width: 550 }} 550w,
+                      {{ mobile_image | image_url: width: 750 }} 750w,
+                      {{ mobile_image | image_url: width: 1100 }} 1100w
+                    "
+                    sizes="100vw"
+                  >
+                {%- endif -%}
+                {%- if forloop.first -%}
+                  {{
+                    desktop_image
+                    | image_url: width: 3840
+                    | image_tag:
+                      height: height,
+                      sizes: sizes,
+                      widths: widths,
+                      fetchpriority: fetch_priority,
+                      class: 'tvc-slideshow__image'
+                  }}
+                {%- else -%}
+                  {{
+                    desktop_image
+                    | image_url: width: 3840
+                    | image_tag:
+                      loading: 'lazy',
+                      height: height,
+                      sizes: sizes,
+                      widths: widths,
+                      class: 'tvc-slideshow__image'
+                  }}
+                {%- endif -%}
+              </picture>
             {%- else -%}
               {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
               {%- if placeholder_slide == 1 -%}
@@ -173,32 +219,37 @@
                 {{ 'hero-apparel-1' | placeholder_svg_tag: 'tvc-slideshow__placeholder placeholder-svg' }}
               {%- endif -%}
             {%- endif -%}
+
+            {%- capture panel_content -%}
+              {%- if block.settings.heading != blank -%}
+                <h2 class="tvc-slideshow__heading h2 mt-1 mb-3 md-mb-4">{{ block.settings.heading }}</h2>
+              {%- endif -%}
+              {%- if block.settings.text != blank -%}
+                <div class="tvc-slideshow__body rte">{{ block.settings.text }}</div>
+              {%- endif -%}
+              {%- if block.settings.link != blank -%}
+                {%- liquid
+                  if block.settings.link_label != blank
+                    assign link_label = block.settings.link_label
+                  else
+                    assign link_label = 'Learn more'
+                  endif
+                -%}
+                <a href="{{ block.settings.link }}" class="tvc-slideshow__link cta-link mt-3 mb-5">
+                  {{- link_label | escape -}}
+                </a>
+              {%- endif -%}
+            {%- endcapture -%}
+
           </div>
 
           <div
-            class="tvc-slideshow__panel"
+            class="{{ panel_classes }}"
             {% if section.settings.layout == 'split' %}
               style="background-color: {{ block.settings.split_background }};"
             {% endif %}
           >
-            {%- if block.settings.heading != blank -%}
-              <h2 class="tvc-slideshow__heading h2 mt-1 mb-3 md-mb-4">{{ block.settings.heading }}</h2>
-            {%- endif -%}
-            {%- if block.settings.text != blank -%}
-              <div class="tvc-slideshow__body rte">{{ block.settings.text }}</div>
-            {%- endif -%}
-            {%- if block.settings.link != blank -%}
-              {%- liquid
-                if block.settings.link_label != blank
-                  assign link_label = block.settings.link_label
-                else
-                  assign link_label = 'Learn more'
-                endif
-              -%}
-              <a href="{{ block.settings.link }}" class="tvc-slideshow__link cta-link mt-3 mb-5">
-                {{- link_label | escape -}}
-              </a>
-            {%- endif -%}
+            {{ panel_content }}
           </div>
         </div>
       </div>
@@ -281,6 +332,23 @@
       "default": "stacked"
     },
     {
+      "type": "select",
+      "id": "split_media_position_desktop",
+      "label": "Split — media position (desktop)",
+      "options": [
+        {
+          "value": "right",
+          "label": "Right"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "right",
+      "visible_if": "{{ section.settings.layout == 'split' }}"
+    },
+    {
       "type": "header",
       "content": "Slideshow"
     },
@@ -345,23 +413,6 @@
           "visible_if": "{{ section.settings.layout == 'split' }}"
         },
         {
-          "type": "select",
-          "id": "split_media_position",
-          "label": "Split — media position (desktop)",
-          "options": [
-            {
-              "value": "right",
-              "label": "Right"
-            },
-            {
-              "value": "left",
-              "label": "Left"
-            }
-          ],
-          "default": "right",
-          "visible_if": "{{ section.settings.layout == 'split' }}"
-        },
-        {
           "type": "header",
           "content": "Media & content"
         },
@@ -387,6 +438,12 @@
           "label": "Image"
         },
         {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "Mobile image",
+          "info": "Optional. Used for image slides on screens below 750px."
+        },
+        {
           "type": "video",
           "id": "video",
           "label": "Video",
@@ -403,6 +460,70 @@
           "id": "text",
           "label": "Text",
           "default": "<p>Add descriptive text for this slide.</p>"
+        },
+        {
+          "type": "select",
+          "id": "stacked_text_alignment",
+          "label": "Full-width media — text alignment",
+          "options": [
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "left",
+              "label": "Left"
+            }
+          ],
+          "default": "center",
+          "visible_if": "{{ section.settings.layout == 'stacked' }}"
+        },
+        {
+          "type": "checkbox",
+          "id": "stacked_text_in_media",
+          "label": "Full-width media — place text over media (desktop)",
+          "info": "On screens below 960px, text always appears below the image with dark text on a white panel.",
+          "default": false,
+          "visible_if": "{{ section.settings.layout == 'stacked' }}"
+        },
+        {
+          "type": "select",
+          "id": "stacked_desktop_overlay_text_tone",
+          "label": "Full-width media — text color over media (desktop)",
+          "options": [
+            {
+              "value": "dark",
+              "label": "Dark"
+            },
+            {
+              "value": "light",
+              "label": "Light (white)"
+            }
+          ],
+          "default": "dark",
+          "visible_if": "{{ section.settings.layout == 'stacked' and block.settings.stacked_text_in_media == true }}"
+        },
+        {
+          "type": "select",
+          "id": "stacked_text_position",
+          "label": "Full-width media — text position over media (desktop)",
+          "info": "Below 960px, use “text alignment” for the panel under the image.",
+          "options": [
+            {
+              "value": "bottom_left",
+              "label": "Bottom left"
+            },
+            {
+              "value": "bottom_center",
+              "label": "Bottom center"
+            },
+            {
+              "value": "bottom_right",
+              "label": "Bottom right"
+            }
+          ],
+          "default": "bottom_center",
+          "visible_if": "{{ section.settings.layout == 'stacked' and block.settings.stacked_text_in_media == true }}"
         },
         {
           "type": "url",

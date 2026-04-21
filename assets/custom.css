@@ -2449,3 +2449,13 @@ body.mr-bubble {
     padding: 6px 14px;
     line-height: 1;
 }
+
+.card--media .card__inner .card__content {
+    padding: 20px 8px !important;
+}
+
+@media screen and (min-width: 1025px) {
+    .card--media .card__inner .card__content {
+        padding: 32px 32px !important;
+    }
+}
