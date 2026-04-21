@@ -122,8 +122,11 @@
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: minmax(420px, min(85vh, 920px));
+    grid-template-rows: 1fr;
     min-height: 0;
+    flex: 1 1 auto;
+    align-self: stretch;
+    height: 100%;
   }
 
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media {
@@ -139,8 +142,9 @@
     grid-row: 1 / -1;
     align-self: end;
     z-index: 2;
-    width: 100%;
-    max-width: none;
+    /* shrink-to-content so justify-self (left/center/right) can take effect */
+    width: auto;
+    max-width: min(42rem, 100%);
     box-sizing: border-box;
     margin: 0;
     background: transparent;
