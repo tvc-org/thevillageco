@@ -148,7 +148,12 @@
         endif
         if show_video == false and block.settings.image != blank and block.settings.preserve_image_aspect_ratio
           assign media_classes = media_classes | append: ' tvc-slideshow__media--preserve-aspect'
-          assign media_aspect_style = 'aspect-ratio: ' | append: block.settings.image.aspect_ratio | append: ';'
+          assign d_ar = block.settings.image.aspect_ratio
+          assign m_ar = d_ar
+          if block.settings.mobile_image != blank
+            assign m_ar = block.settings.mobile_image.aspect_ratio
+          endif
+          assign media_aspect_style = '--tvc-media-aspect-desktop: ' | append: d_ar | append: '; --tvc-media-aspect-mobile: ' | append: m_ar | append: ';'
         endif
       -%}
       <div
@@ -462,7 +467,7 @@
           "type": "checkbox",
           "id": "preserve_image_aspect_ratio",
           "label": "Preserve image aspect ratio (no crop)",
-          "info": "Uses the desktop image’s proportions for the media frame (applies to mobile swaps too). Ignored when a video is set.",
+          "info": "Below 750px uses the mobile image’s aspect ratio when a mobile image is set; otherwise it uses the desktop image. From 750px up, uses the desktop image. Ignored when a video is set.",
           "default": false
         },
         {

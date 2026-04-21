@@ -351,12 +351,24 @@
   display: block;
 }
 
-/* Preserve desktop image aspect ratio (must follow stacked/split cover rules so `contain` wins) */
+/* Preserve image aspect ratio (must follow stacked/split cover rules so `contain` wins) */
 .tvc-slideshow__media--preserve-aspect {
   min-height: 0 !important;
   max-height: min(92vh, 960px);
   margin-left: auto;
   margin-right: auto;
+}
+
+@media screen and (max-width: 749px) {
+  .tvc-slideshow__media--preserve-aspect {
+    aspect-ratio: var(--tvc-media-aspect-mobile);
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .tvc-slideshow__media--preserve-aspect {
+    aspect-ratio: var(--tvc-media-aspect-desktop);
+  }
 }
 
 .tvc-slideshow__media--preserve-aspect picture,
