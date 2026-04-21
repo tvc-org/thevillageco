@@ -147,6 +147,7 @@
           assign show_video = true
         endif
         if show_video == false and block.settings.image != blank and block.settings.preserve_image_aspect_ratio
+          assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--preserve-aspect'
           assign media_classes = media_classes | append: ' tvc-slideshow__media--preserve-aspect'
           assign d_ar = block.settings.image.aspect_ratio
           assign m_ar = d_ar
@@ -198,7 +199,7 @@
               <picture>
                 {%- if mobile_image != blank -%}
                   <source
-                    media="(max-width: 749px)"
+                    media="(max-width: 959px)"
                     srcset="
                       {{ mobile_image | image_url: width: 375 }} 375w,
                       {{ mobile_image | image_url: width: 550 }} 550w,
@@ -461,13 +462,13 @@
           "type": "image_picker",
           "id": "mobile_image",
           "label": "Mobile image",
-          "info": "Optional. Used for image slides on screens below 750px."
+          "info": "Optional. Used for image slides on screens below 960px."
         },
         {
           "type": "checkbox",
           "id": "preserve_image_aspect_ratio",
           "label": "Preserve image aspect ratio (no crop)",
-          "info": "Below 750px uses the mobile image’s aspect ratio when a mobile image is set; otherwise it uses the desktop image. From 750px up, uses the desktop image. Ignored when a video is set.",
+          "info": "Below 960px uses the mobile image’s aspect ratio when a mobile image is set; otherwise it uses the desktop image. From 960px up, uses the desktop image. Ignored when a video is set.",
           "default": false
         },
         {

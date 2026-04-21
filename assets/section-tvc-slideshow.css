@@ -5,7 +5,6 @@
  */
 
 .tvc-slideshow {
-  --tvc-stacked-content-bg: #ffffff;
   --tvc-split-aspect-ratio: 1 / 0.36;
   /* Desktop split: comp uses slightly wider image column */
   --tvc-split-text-basis: 47%;
@@ -71,7 +70,6 @@
 }
 
 .tvc-slideshow--layout-stacked .tvc-slideshow__panel {
-  background: var(--tvc-stacked-content-bg);
   color: var(--tvc-split-heading-dark);
   text-align: center;
   padding: 30px var(--layout-gutter-x) 0;
@@ -106,10 +104,26 @@
   min-height: 50dvh;
 }
 
-.tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--stacked-desktop-inmedia {
-  background: var(--tvc-stacked-content-bg);
-  color: var(--tvc-split-heading-dark);
-  padding: 28px var(--layout-gutter-x) 0;
+/*
+ * Below-desktop only: panel below image + padding. Must stay max-width scoped so
+ * .tvc-slideshow--contained (4-class selectors) does not beat the 960px+ overlay rules (3 classes).
+ */
+@media screen and (max-width: 959px) {
+  /* Contained: page-width already applies horizontal inset — no side padding on the panel */
+  .tvc-slideshow--contained.tvc-slideshow--layout-stacked
+    .tvc-slideshow__inner--stacked-desktop-inmedia
+    .tvc-slideshow__panel--stacked-desktop-inmedia {
+    color: var(--tvc-split-heading-dark);
+    padding: 28px 0 0;
+  }
+
+  /* Full width: panel must carry horizontal gutter (no page-width wrapper) */
+  .tvc-slideshow--full-width.tvc-slideshow--layout-stacked
+    .tvc-slideshow__inner--stacked-desktop-inmedia
+    .tvc-slideshow__panel--stacked-desktop-inmedia {
+    color: var(--tvc-split-heading-dark);
+    padding: 28px var(--layout-gutter-x) 0;
+  }
 }
 
 .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--stacked-desktop-inmedia .tvc-slideshow__body {
@@ -139,6 +153,11 @@
     flex: 1 1 auto;
     align-self: stretch;
     height: 100%;
+  }
+
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia.tvc-slideshow__inner--preserve-aspect {
+    min-height: 0 !important;
+    height: auto;
   }
 
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media {
@@ -354,18 +373,19 @@
 /* Preserve image aspect ratio (must follow stacked/split cover rules so `contain` wins) */
 .tvc-slideshow__media--preserve-aspect {
   min-height: 0 !important;
-  max-height: min(92vh, 960px);
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 959px) {
   .tvc-slideshow__media--preserve-aspect {
     aspect-ratio: var(--tvc-media-aspect-mobile);
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 960px) {
   .tvc-slideshow__media--preserve-aspect {
     aspect-ratio: var(--tvc-media-aspect-desktop);
   }
@@ -378,6 +398,35 @@
 .tvc-slideshow__media--preserve-aspect > svg {
   object-fit: contain;
   object-position: center center;
+}
+
+/* Preserve-aspect: remove “hero min-heights” that prevent proportional shrink */
+.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect {
+  min-height: 0 !important;
+  height: auto;
+}
+
+.tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media--preserve-aspect {
+  min-height: 0 !important;
+  height: auto;
+}
+
+.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect {
+  min-height: 0 !important;
+  height: auto;
+}
+
+.tvc-slideshow__inner--preserve-aspect.tvc-slideshow__inner--stacked-desktop-inmedia {
+  min-height: 0 !important;
+  height: auto;
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-slideshow--layout-split .tvc-slideshow__inner--preserve-aspect {
+    aspect-ratio: auto;
+    min-height: 0;
+    height: auto;
+  }
 }
 
 /* ----- Split — desktop (960px+): side-by-side row ----- */
