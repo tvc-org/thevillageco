@@ -20,15 +20,29 @@
     "tvc_slideshow_UnQFjF": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_VM6Lie": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/MrBubbleHomePageHeader1.jpg",
+            "heading": "Somebunny Loves Bubbles!",
+            "text": "<p>Swap sweets for squeaky-clean fun this Easter. Our bubbly favorites make the perfect basket stuffer for kids who love to splash.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "link": "shopify://collections/mr-bubble-collections",
+            "link_label": "Shop Now"
+          }
+        },
         "slide_hFhtUd": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "heading": "Headline",
             "text": "<p>Add descriptive text for this slide.</p>",
-            "stacked_text_alignment": "center",
-            "stacked_text_in_media": true,
+            "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "link": "",
@@ -37,6 +51,7 @@
         }
       },
       "block_order": [
+        "slide_VM6Lie",
         "slide_hFhtUd"
       ],
       "name": "TVC Slideshow",
