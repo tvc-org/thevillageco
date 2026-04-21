@@ -106,12 +106,12 @@
         "slide_XUeQDm": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/millions-of-bubbles.jpg",
             "mobile_image": "shopify://shop_images/millions-of-bubbles-mobile.jpg",
             "heading": "BUBBLES MAKE \nEVERYTHING BETTER",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "text": "<p>The original bubble bath, now 65 years of giggles and foam beards.  Big, fluffy bubbles that are gentle enough for little skin</p>",
             "stacked_text_in_media": true,
             "stacked_desktop_overlay_text_tone": "light",
             "stacked_text_position": "bottom_left",
