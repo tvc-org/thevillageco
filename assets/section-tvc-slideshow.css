@@ -85,6 +85,10 @@
   text-align: center;
 }
 
+.tvc-slideshow--layout-stacked .tvc-slideshow__panel--align-right {
+  text-align: right;
+}
+
 /* Stacked + “text over media (desktop)”: mobile = panel below image (dark on white); desktop = grid overlay */
 .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media {
   min-height: 50vh;
@@ -165,6 +169,10 @@
 
   .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--align-center {
     text-align: center;
+  }
+
+  .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__panel--align-right {
+    text-align: right;
   }
 
   /* Dark (default) and light text only when overlaid on desktop */

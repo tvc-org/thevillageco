@@ -114,8 +114,10 @@
             assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--text-dark'
           endif
         else
-          if block.settings.stacked_text_alignment == 'left'
+          if block.settings.stacked_text_position == 'bottom_left'
             assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--align-left'
+          elsif block.settings.stacked_text_position == 'bottom_right'
+            assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--align-right'
           else
             assign panel_classes = panel_classes | append: ' tvc-slideshow__panel--align-center'
           endif
@@ -466,23 +468,6 @@
           "default": "<p>Add descriptive text for this slide.</p>"
         },
         {
-          "type": "select",
-          "id": "stacked_text_alignment",
-          "label": "Full-width media — text alignment",
-          "options": [
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "left",
-              "label": "Left"
-            }
-          ],
-          "default": "center",
-          "visible_if": "{{ section.settings.layout == 'stacked' }}"
-        },
-        {
           "type": "checkbox",
           "id": "stacked_text_in_media",
           "label": "Full-width media — place text over media (desktop)",
@@ -510,8 +495,8 @@
         {
           "type": "select",
           "id": "stacked_text_position",
-          "label": "Full-width media — text position over media (desktop)",
-          "info": "Below 960px, use “text alignment” for the panel under the image.",
+          "label": "Full-width media — text position",
+          "info": "Controls left/center/right placement when text is over media (desktop), and text alignment when text is below media.",
           "options": [
             {
               "value": "bottom_left",
@@ -527,7 +512,7 @@
             }
           ],
           "default": "bottom_center",
-          "visible_if": "{{ section.settings.layout == 'stacked' and block.settings.stacked_text_in_media == true }}"
+          "visible_if": "{{ section.settings.layout == 'stacked' }}"
         },
         {
           "type": "url",
