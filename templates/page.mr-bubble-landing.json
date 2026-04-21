@@ -17,6 +17,38 @@
         "padding_bottom": 28
       }
     },
+    "tvc_slideshow_UnQFjF": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_hFhtUd": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_alignment": "center",
+            "stacked_text_in_media": true,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "link": "",
+            "link_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_hFhtUd"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "accessibility_info": "Featured promotions slideshow"
+      }
+    },
     "tvc_dual_feature_BgzCht": {
       "type": "tvc-dual-feature",
       "blocks": {
@@ -74,6 +106,7 @@
   },
   "order": [
     "main",
+    "tvc_slideshow_UnQFjF",
     "tvc_dual_feature_BgzCht",
     "featured_collection_ihWKGy"
   ]
