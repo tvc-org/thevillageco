@@ -808,9 +808,7 @@
         }
       },
       "presets": {
-        "thank_you": {
-          "name": "Thank you / 65th callout"
-        }
+        "name": "TVC Promo callout"
       }
     },
     "contact-form": {
