@@ -1,27 +1,35 @@
 .tvc-featured-review {
   --tvc-fr-star-color: #e85aa4;
+  /* Unitless; fed to component-rating as ×1rem — ~glyph height; ≈36px / 45px per star at 16px root */
+  --tvc-fr-star-size-mobile: 4;
+  --tvc-fr-star-size-desktop: 5;
+  /* rem multiplier for space between ★ characters */
+  --tvc-fr-star-tracking: 0.8;
 }
 
+/* Mobile: centered. Desktop: left (749+ matches theme “mobile” breakpoint). */
 .tvc-featured-review__inner {
-  max-width: 48rem;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.tvc-featured-review__eyebrow {
-  margin: 0 0 0.75rem;
-  font-size: 0.85em;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(var(--color-foreground), 0.65);
+  width: 100%;
+  text-align: center;
 }
 
 .tvc-featured-review__rating {
-  margin: 0 0 1rem;
+  margin: 0 0 1.25rem;
+  line-height: 0;
 }
 
+/*
+ * component-rating.css only sets --font-size / --letter-spacing on .product or .card-wrapper;
+ * without them stars disappear. --font-size is a rem multiplier (×1rem) ≈ one star’s visual size.
+ */
 .tvc-featured-review__rating .rating-star {
+  --letter-spacing: var(--tvc-fr-star-tracking);
+  --font-size: var(--tvc-fr-star-size-mobile);
   --color-rating-star: var(--tvc-fr-star-color);
+}
+
+.tvc-featured-review__rating .rating-star::before {
+  background-clip: text;
 }
 
 .tvc-featured-review__title {
@@ -33,6 +41,21 @@
 .tvc-featured-review__body {
   margin: 0 0 1.25rem;
   color: rgb(var(--color-foreground));
+  max-width: 1000px;
+}
+
+/* Curly double quotes around the whole RTE (first block opens, last block closes). */
+.tvc-featured-review__body > *:first-child::before {
+  content: '\201C';
+}
+
+.tvc-featured-review__body > *:last-child::after {
+  content: '\201D';
+}
+
+.tvc-featured-review__body p {
+  font-size: 24px !important;
+  font-family: "FuturaPTMedium", Helvetica, Arial, sans-serif;
 }
 
 .tvc-featured-review__body p:last-child {
@@ -40,9 +63,9 @@
 }
 
 .tvc-featured-review__attribution {
-  margin: 0 0 1.5rem;
-  color: rgba(var(--color-foreground), 0.55);
-  font-size: 0.95em;
+  margin: 0;
+  color: #656565 !important;
+  font-size: 16px;
 }
 
 .tvc-featured-review__attribution a {
@@ -59,5 +82,35 @@
   margin: 0;
   width: 100%;
   border: 0;
-  border-top: 1px solid rgba(var(--color-foreground), 0.12);
+  border-top: 1px solid #C9C9C9;
+}
+
+@media screen and (min-width: 750px) {
+  .tvc-featured-review__inner {
+    text-align: left;
+  }
+
+  .tvc-featured-review__rating .rating-star {
+    --font-size: var(--tvc-fr-star-size-desktop);
+  }
+
+  .tvc-featured-review__body p {
+    font-size: 32px !important;
+  }
+}
+
+
+/* Brand Overrides */
+body.mr-bubble .tvc-featured-review__title {
+  color: var(--text-color-blue);
+  font-family: "Bubbly", Helvetica, Arial, sans-serif;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+@media screen and (min-width: 750px) {
+  body.mr-bubble .tvc-featured-review__title {
+    font-size: 103px;
+  }
 }

@@ -106,14 +106,11 @@
       "type": "tvc-featured-review",
       "name": "t:sections.tvc-featured-review.presets.name",
       "settings": {
-        "eyebrow": "Featured Review",
         "rating": "5",
         "title": "Mr.Bubble is as amazing as ever!",
         "review_text": "<p>Great to have in the tub. It’s able to be fun and relaxing which is a good thing! Nothing compares to this wonderful bath time product!</p>",
         "product": "baby-bubble-bubble-bath",
-        "color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "color_scheme": ""
       }
     },
     "tvc_slideshow_J6tYjq": {

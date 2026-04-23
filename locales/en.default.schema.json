@@ -735,9 +735,6 @@
         "yotpo_info": {
           "content": "Yotpo does not expose individual reviews in the theme editor. Enter the quote and stars here, or paste content from your Yotpo dashboard."
         },
-        "eyebrow": {
-          "label": "Label"
-        },
         "rating": {
           "label": "Star rating"
         },
