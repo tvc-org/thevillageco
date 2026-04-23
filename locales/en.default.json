@@ -357,6 +357,9 @@
       "carousel": "Carousel",
       "slide": "Slide"
     },
+    "tvc_featured_review": {
+      "attribution_prefix": "Review of the"
+    },
     "page": {
       "title": "Page title"
     },

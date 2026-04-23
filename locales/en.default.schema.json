@@ -729,6 +729,32 @@
         "name": "TVC Dual Feature"
       }
     },
+    "tvc-featured-review": {
+      "name": "TVC Featured Review",
+      "settings": {
+        "yotpo_info": {
+          "content": "Yotpo does not expose individual reviews in the theme editor. Enter the quote and stars here, or paste content from your Yotpo dashboard."
+        },
+        "eyebrow": {
+          "label": "Label"
+        },
+        "rating": {
+          "label": "Star rating"
+        },
+        "title": {
+          "label": "Title"
+        },
+        "review_text": {
+          "label": "Review text"
+        },
+        "product": {
+          "label": "Product"
+        }
+      },
+      "presets": {
+        "name": "TVC Featured Review"
+      }
+    },
     "contact-form": {
       "name": "Contact Form",
       "presets": {
