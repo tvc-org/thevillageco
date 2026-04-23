@@ -7,7 +7,7 @@
   assign featured_product = section.settings.product
 -%}
 
-<div class="tvc-featured-review color-{{ section.settings.color_scheme }} v-margin-5 lg-v-margin-7">
+<div class="tvc-featured-review v-margin-5 lg-v-margin-7">
   <div class="page-width isolate">
     <div class="tvc-featured-review__inner{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="tvc-featured-review__rating">
@@ -91,12 +91,6 @@
       "type": "product",
       "id": "product",
       "label": "t:sections.tvc-featured-review.settings.product.label"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
     }
   ],
   "presets": [
