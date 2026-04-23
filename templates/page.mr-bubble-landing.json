@@ -163,6 +163,24 @@
         "show_rating": false,
         "quick_add": "none"
       }
+    },
+    "tvc_promo_callout_axKDzR": {
+      "type": "tvc-promo-callout",
+      "name": "TVC Promo callout",
+      "settings": {
+        "image_mobile": "shopify://shop_images/mr-bubble-65-mobile.jpg",
+        "image_desktop": "shopify://shop_images/mr-bubble-65.png",
+        "card_background": "#E65A8E",
+        "section_background": "#E65A8E",
+        "heading_color": "#FFE8F3",
+        "text_color": "#FFFFFF",
+        "corner_radius": 24,
+        "bleed_desktop": 12,
+        "heading": "Thank you!",
+        "body": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>",
+        "cta_label": "Shop exclusive birthday products",
+        "cta_link": ""
+      }
     }
   },
   "order": [
@@ -171,6 +189,7 @@
     "tvc_dual_feature_BgzCht",
     "tvc_featured_review_EDnAKT",
     "tvc_slideshow_J6tYjq",
-    "featured_collection_ihWKGy"
+    "featured_collection_ihWKGy",
+    "tvc_promo_callout_axKDzR"
   ]
 }
