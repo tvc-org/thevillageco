@@ -752,6 +752,67 @@
         "name": "TVC Featured Review"
       }
     },
+    "tvc-promo-callout": {
+      "name": "TVC Promo callout",
+      "settings": {
+        "bleed_info": {
+          "content": "Mobile: one stacked image (often a full art card). Desktop: optional second image — PNG with transparency above the art. The desktop image sits bottom-left in its column, auto width, and is taller than the column by your bleed % so it grows upward (no transform). Row height follows the text column. Match Section background to Card background for a seamless bleed."
+        },
+        "image_mobile": {
+          "label": "Image (mobile)"
+        },
+        "image_desktop": {
+          "label": "Image (desktop, optional)",
+          "info": "Leave empty to reuse the mobile image on all breakpoints."
+        },
+        "header_colors": {
+          "content": "Colors"
+        },
+        "card_background": {
+          "label": "Card background"
+        },
+        "section_background": {
+          "label": "Section background",
+          "info": "Usually the same as the card so the desktop bleed area matches the pink panel."
+        },
+        "heading_color": {
+          "label": "Heading color"
+        },
+        "text_color": {
+          "label": "Body & CTA color"
+        },
+        "header_layout": {
+          "content": "Layout"
+        },
+        "corner_radius": {
+          "label": "Corner radius"
+        },
+        "bleed_desktop": {
+          "label": "Desktop upward bleed",
+          "info": "Extra height as a percent of the image column’s layout height (e.g. 20% = image is 120% as tall as the cell, anchored bottom-left, so more art extends above the pink card). Scales when text wraps and the row gets taller."
+        },
+        "header_content": {
+          "content": "Content"
+        },
+        "heading": {
+          "label": "Heading"
+        },
+        "body": {
+          "label": "Text"
+        },
+        "cta_label": {
+          "label": "CTA label"
+        },
+        "cta_link": {
+          "label": "CTA link"
+        }
+      },
+      "presets": {
+        "thank_you": {
+          "name": "Thank you / 65th callout"
+        }
+      }
+    },
     "contact-form": {
       "name": "Contact Form",
       "presets": {

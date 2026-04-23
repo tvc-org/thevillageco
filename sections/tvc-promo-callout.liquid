@@ -1,0 +1,215 @@
+{{ 'section-tvc-promo-callout.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign img_m = section.settings.image_mobile
+  assign img_d = section.settings.image_desktop
+  if img_m == blank
+    assign img_m = img_d
+  endif
+  if img_d == blank
+    assign img_d = img_m
+  endif
+  assign dual_art = false
+  if section.settings.image_mobile != blank and section.settings.image_desktop != blank
+    assign dual_art = true
+  endif
+
+  assign sec_bg = section.settings.section_background
+  if sec_bg == blank
+    assign sec_bg = section.settings.card_background
+  endif
+-%}
+
+{%- style -%}
+  .tvc-promo-callout--{{ section.id }} {
+    --tvc-pc-card-bg: {{ section.settings.card_background }};
+    --tvc-pc-section-bg: {{ sec_bg }};
+    --tvc-pc-radius: {{ section.settings.corner_radius }}px;
+    --tvc-pc-bleed-num: {{ section.settings.bleed_desktop }};
+    --tvc-pc-heading-color: {{ section.settings.heading_color }};
+    --tvc-pc-text-color: {{ section.settings.text_color }};
+  }
+{%- endstyle -%}
+
+<div class="tvc-promo-callout tvc-promo-callout--{{ section.id }}">
+  <div class="page-width tvc-promo-callout__wrap">
+    <div class="tvc-promo-callout__shell">
+      <div class="tvc-promo-callout__grid">
+        <div class="tvc-promo-callout__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+          {%- if section.settings.heading != blank -%}
+            <h2 class="tvc-promo-callout__heading inline-richtext h1">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.body != blank -%}
+            <div class="tvc-promo-callout__body rte">{{ section.settings.body }}</div>
+          {%- endif -%}
+          {%- if section.settings.cta_label != blank -%}
+            <p class="tvc-promo-callout__cta">
+              {%- if section.settings.cta_link != blank -%}
+                <a href="{{ section.settings.cta_link }}">{{ section.settings.cta_label | escape }}</a>
+              {%- else -%}
+                <span>{{ section.settings.cta_label | escape }}</span>
+              {%- endif -%}
+            </p>
+          {%- endif -%}
+        </div>
+
+        {%- if img_m != blank -%}
+          <div class="tvc-promo-callout__media">
+            {%- liquid
+              assign alt_m = img_m.alt | default: section.settings.heading | strip_html
+              assign alt_d = img_d.alt | default: alt_m
+              assign widths = '375, 550, 750, 990, 1100, 1500'
+            -%}
+            {%- if dual_art -%}
+              {{
+                img_m
+                | image_url: width: 1500
+                | image_tag:
+                  loading: 'lazy',
+                  widths: widths,
+                  sizes: '(min-width: 990px) 50vw, 100vw',
+                  class: 'tvc-promo-callout__img tvc-promo-callout__img--mobile',
+                  alt: alt_m
+              }}
+              {{
+                img_d
+                | image_url: width: 2000
+                | image_tag:
+                  loading: 'lazy',
+                  widths: widths,
+                  sizes: '(min-width: 990px) 45vw, 100vw',
+                  class: 'tvc-promo-callout__img tvc-promo-callout__img--desktop',
+                  alt: alt_d
+              }}
+            {%- else -%}
+              {{
+                img_m
+                | image_url: width: 2000
+                | image_tag:
+                  loading: 'lazy',
+                  widths: widths,
+                  sizes: '(min-width: 990px) 45vw, 100vw',
+                  class: 'tvc-promo-callout__img tvc-promo-callout__img--solo',
+                  alt: alt_m
+              }}
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-promo-callout.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:sections.tvc-promo-callout.settings.bleed_info.content"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:sections.tvc-promo-callout.settings.image_mobile.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "t:sections.tvc-promo-callout.settings.image_desktop.label",
+      "info": "t:sections.tvc-promo-callout.settings.image_desktop.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-promo-callout.settings.header_colors.content"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "t:sections.tvc-promo-callout.settings.card_background.label",
+      "default": "#E65A8E"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "t:sections.tvc-promo-callout.settings.section_background.label",
+      "info": "t:sections.tvc-promo-callout.settings.section_background.info",
+      "default": "#E65A8E"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "t:sections.tvc-promo-callout.settings.heading_color.label",
+      "default": "#FFE8F3"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:sections.tvc-promo-callout.settings.text_color.label",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-promo-callout.settings.header_layout.content"
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "min": 8,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.tvc-promo-callout.settings.corner_radius.label",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "bleed_desktop",
+      "min": 0,
+      "max": 45,
+      "step": 1,
+      "unit": "%",
+      "label": "t:sections.tvc-promo-callout.settings.bleed_desktop.label",
+      "default": 12,
+      "info": "t:sections.tvc-promo-callout.settings.bleed_desktop.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-promo-callout.settings.header_content.content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:sections.tvc-promo-callout.settings.heading.label",
+      "default": "Thank you!"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "t:sections.tvc-promo-callout.settings.body.label",
+      "default": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "t:sections.tvc-promo-callout.settings.cta_label.label",
+      "default": "Shop exclusive birthday products"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "t:sections.tvc-promo-callout.settings.cta_link.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-promo-callout.presets.thank_you.name"
+    }
+  ]
+}
+{% endschema %}

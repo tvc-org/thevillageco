@@ -1,0 +1,151 @@
+/* TVC Promo callout — mobile stack; desktop split + optional top image bleed */
+
+.tvc-promo-callout {
+  background-color: var(--tvc-pc-section-bg, transparent);
+}
+
+.tvc-promo-callout__wrap {
+  max-width: 100%;
+}
+
+.tvc-promo-callout__shell {
+  position: relative;
+  overflow: visible;
+  background-color: var(--tvc-pc-card-bg, #e65a8e);
+  border-radius: var(--tvc-pc-radius, 24px);
+}
+
+.tvc-promo-callout__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 28px 20px 28px;
+}
+
+.tvc-promo-callout__copy {
+  color: var(--tvc-pc-text-color, #fff);
+  text-align: center;
+}
+
+.tvc-promo-callout__heading {
+  margin: 0 0 12px;
+  color: var(--tvc-pc-heading-color, #ffe8f0);
+  line-height: 1.1;
+}
+
+.tvc-promo-callout__body {
+  margin: 0 0 16px;
+}
+
+.tvc-promo-callout__body p:last-child {
+  margin-bottom: 0;
+}
+
+.tvc-promo-callout__body a {
+  color: inherit;
+}
+
+.tvc-promo-callout__cta {
+  margin: 0;
+}
+
+.tvc-promo-callout__cta a {
+  color: inherit;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.tvc-promo-callout__media {
+  position: relative;
+  margin: 0;
+}
+
+.tvc-promo-callout__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+@media screen and (min-width: 990px) {
+  /*
+   * Desktop art: bottom-left in the media cell, width auto, height = 100% + bleed% of cell height.
+   * Row uses align-items: stretch so the cell has a real height (matches text column); extra image height bleeds up.
+   */
+  .tvc-promo-callout {
+    padding-top: clamp(
+      0px,
+      calc(var(--tvc-pc-bleed-num, 0) / 100 * 56vw),
+      200px
+    );
+  }
+
+  .tvc-promo-callout__grid {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 32px 40px;
+    align-items: stretch;
+    align-content: stretch;
+    padding: 60px 40px 60px 28px;
+    /* 300px includes 60px top + 60px bottom padding (border-box) */
+    min-height: 300px;
+  }
+
+  .tvc-promo-callout__media {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: stretch;
+    overflow: visible;
+    line-height: 0;
+  }
+
+  .tvc-promo-callout__copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+    min-height: 0;
+  }
+
+  .tvc-promo-callout__img--desktop,
+  .tvc-promo-callout__img--solo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: auto;
+    max-width: 100%;
+    height: calc(100% * (100 + var(--tvc-pc-bleed-num, 0)) / 100);
+    max-height: none;
+    object-fit: contain;
+    object-position: bottom left;
+  }
+
+  .tvc-promo-callout__img--mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 989px) {
+  /* Static flow: image height follows asset; section height = copy + image + gaps */
+  .tvc-promo-callout__media {
+    line-height: normal;
+  }
+
+  .tvc-promo-callout__img {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .tvc-promo-callout__img--desktop {
+    display: none;
+  }
+}
