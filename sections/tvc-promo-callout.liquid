@@ -13,7 +13,6 @@
   if section.settings.image_mobile != blank and section.settings.image_desktop != blank
     assign dual_art = true
   endif
-
 -%}
 
 {%- style -%}
@@ -29,7 +28,7 @@
   <div class="page-width tvc-promo-callout__wrap">
     <div class="tvc-promo-callout__shell">
       <div class="tvc-promo-callout__grid">
-        <div class="tvc-promo-callout__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        <div class="tvc-promo-callout__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} mb-5 lg-mb-0">
           {%- if section.settings.heading != blank -%}
             <h2 class="tvc-promo-callout__heading inline-richtext h1">{{ section.settings.heading }}</h2>
           {%- endif -%}
@@ -61,7 +60,7 @@
                 | image_tag:
                   loading: 'lazy',
                   widths: widths,
-                  sizes: '(min-width: 990px) 50vw, 100vw',
+                  sizes: '(min-width: 1025px) 50vw, 100vw',
                   class: 'tvc-promo-callout__img tvc-promo-callout__img--mobile',
                   alt: alt_m
               }}
@@ -71,7 +70,7 @@
                 | image_tag:
                   loading: 'lazy',
                   widths: widths,
-                  sizes: '(min-width: 990px) 45vw, 100vw',
+                  sizes: '(min-width: 1025px) 45vw, 100vw',
                   class: 'tvc-promo-callout__img tvc-promo-callout__img--desktop',
                   alt: alt_d
               }}
@@ -82,7 +81,7 @@
                 | image_tag:
                   loading: 'lazy',
                   widths: widths,
-                  sizes: '(min-width: 990px) 45vw, 100vw',
+                  sizes: '(min-width: 1025px) 45vw, 100vw',
                   class: 'tvc-promo-callout__img tvc-promo-callout__img--solo',
                   alt: alt_m
               }}
