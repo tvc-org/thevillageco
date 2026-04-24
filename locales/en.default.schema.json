@@ -771,10 +771,6 @@
         "card_background": {
           "label": "Card background"
         },
-        "section_background": {
-          "label": "Section background",
-          "info": "Usually the same as the card so the desktop bleed area matches the pink panel."
-        },
         "heading_color": {
           "label": "Heading color"
         },
@@ -783,9 +779,6 @@
         },
         "header_layout": {
           "content": "Layout"
-        },
-        "corner_radius": {
-          "label": "Corner radius"
         },
         "bleed_desktop": {
           "label": "Desktop upward bleed",

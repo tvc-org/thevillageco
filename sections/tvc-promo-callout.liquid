@@ -14,17 +14,11 @@
     assign dual_art = true
   endif
 
-  assign sec_bg = section.settings.section_background
-  if sec_bg == blank
-    assign sec_bg = section.settings.card_background
-  endif
 -%}
 
 {%- style -%}
   .tvc-promo-callout--{{ section.id }} {
     --tvc-pc-card-bg: {{ section.settings.card_background }};
-    --tvc-pc-section-bg: {{ sec_bg }};
-    --tvc-pc-radius: {{ section.settings.corner_radius }}px;
     --tvc-pc-bleed-num: {{ section.settings.bleed_desktop }};
     --tvc-pc-heading-color: {{ section.settings.heading_color }};
     --tvc-pc-text-color: {{ section.settings.text_color }};
@@ -136,13 +130,6 @@
     },
     {
       "type": "color",
-      "id": "section_background",
-      "label": "t:sections.tvc-promo-callout.settings.section_background.label",
-      "info": "t:sections.tvc-promo-callout.settings.section_background.info",
-      "default": "#E65A8E"
-    },
-    {
-      "type": "color",
       "id": "heading_color",
       "label": "t:sections.tvc-promo-callout.settings.heading_color.label",
       "default": "#FFE8F3"
@@ -156,16 +143,6 @@
     {
       "type": "header",
       "content": "t:sections.tvc-promo-callout.settings.header_layout.content"
-    },
-    {
-      "type": "range",
-      "id": "corner_radius",
-      "min": 8,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "label": "t:sections.tvc-promo-callout.settings.corner_radius.label",
-      "default": 24
     },
     {
       "type": "range",

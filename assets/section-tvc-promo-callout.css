@@ -4,7 +4,7 @@
   position: relative;
   overflow: visible;
   background-color: var(--tvc-pc-card-bg, #e65a8e);
-  border-radius: var(--tvc-pc-radius, 24px);
+  border-radius: 14px;
 }
 
 .tvc-promo-callout__grid {
@@ -27,22 +27,41 @@
 
 .tvc-promo-callout__body {
   margin: 0 0 16px;
+  color: var(--tvc-pc-text-color, #fff);
+}
+
+.tvc-promo-callout__copy .tvc-promo-callout__body,
+.tvc-promo-callout__copy .tvc-promo-callout__body p,
+.tvc-promo-callout__copy .tvc-promo-callout__body li,
+.tvc-promo-callout__copy .tvc-promo-callout__body span {
+  color: var(--tvc-pc-text-color, #fff);
+}
+
+/* RTE can emit inline color spans; force body descendants to section text color */
+.tvc-promo-callout__copy .tvc-promo-callout__body * {
+  color: var(--tvc-pc-text-color, #fff) !important;
 }
 
 .tvc-promo-callout__body p:last-child {
   margin-bottom: 0;
 }
 
-.tvc-promo-callout__body a {
-  color: inherit;
+.tvc-promo-callout__copy .tvc-promo-callout__body a {
+  color: var(--tvc-pc-text-color, #fff);
 }
 
 .tvc-promo-callout__cta {
   margin: 0;
+  color: var(--tvc-pc-text-color, #fff);
 }
 
-.tvc-promo-callout__cta a {
-  color: inherit;
+.tvc-promo-callout__copy .tvc-promo-callout__cta,
+.tvc-promo-callout__copy .tvc-promo-callout__cta a,
+.tvc-promo-callout__copy .tvc-promo-callout__cta span {
+  color: var(--tvc-pc-text-color, #fff);
+}
+
+.tvc-promo-callout__copy .tvc-promo-callout__cta a {
   font-size: 0.85em;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -65,6 +84,10 @@
 }
 
 @media screen and (min-width: 990px) {
+  .tvc-promo-callout__shell {
+    border-radius: 32px;
+  }
+
   /*
    * Desktop art: bottom-left in the media cell, width auto, height = 100% + bleed% of cell height.
    * Row uses align-items: stretch so the cell has a real height (matches text column); extra image height bleeds up.
