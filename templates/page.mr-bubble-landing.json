@@ -169,7 +169,7 @@
       "name": "TVC Promo callout",
       "settings": {
         "image_mobile": "shopify://shop_images/mr-bubble-65-mobile.jpg",
-        "image_desktop": "shopify://shop_images/mr-bubble-65.png",
+        "image_desktop": "shopify://shop_images/mr-bubble-65-cropped.png",
         "card_background": "#e75e98",
         "heading_color": "#ffd4df",
         "text_color": "#ffffff",
