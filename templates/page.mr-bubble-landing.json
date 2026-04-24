@@ -179,7 +179,7 @@
         "heading": "Thank you!",
         "body": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>",
         "cta_label": "Shop exclusive birthday products",
-        "cta_link": ""
+        "cta_link": "shopify://pages/about-brandname"
       }
     }
   },
