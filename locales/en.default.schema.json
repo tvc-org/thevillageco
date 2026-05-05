@@ -755,12 +755,11 @@
     "tvc-promo-callout": {
       "name": "TVC Promo callout",
       "settings": {
+        "image_desktop": {
+          "label": "Image (desktop)"
+        },
         "image_mobile": {
           "label": "Image (mobile)"
-        },
-        "image_desktop": {
-          "label": "Image (desktop, optional)",
-          "info": "Leave empty to reuse the mobile image on all breakpoints."
         },
         "header_image_focus": {
           "content": "Desktop image focal point"
