@@ -35,6 +35,15 @@
      * same semantic as Dawn’s inner column, so do not add 2× gutter again in the calc.
      */
     --page-width: 1820px;
+
+    /*
+     * Vertical gap between stacked main sections (schema `"class"` includes "section").
+     * Baseline: 80px; 120px from 1025px up. Refine globally via --section-margin-mobile /
+     * --section-margin-desktop, or add a more specific `.shopify-section.section + …` rule.
+     */
+    --section-margin-mobile: 80px;
+    --section-margin-desktop: 120px;
+    --section-margin: var(--section-margin-mobile);
 }
 
 /* Outer cap = inner + side padding; padding uses --layout-gutter-x (see Sliders block). */
@@ -47,6 +56,27 @@
     :root {
         --layout-gutter-x: 48px;
     }
+}
+
+@media screen and (min-width: 1025px) {
+    :root {
+        --section-margin: var(--section-margin-desktop);
+    }
+}
+
+/*
+ * Section stack spacing — applies to any adjacent sections that opt in with Dawn’s
+ * `.section` class (TVC sections, Featured collection, Collection list, etc.).
+ * Overrides base.css `.section + .section` (theme “spacing between template sections”
+ * no longer drives this stack gap).
+ */
+.section + .section {
+    margin-top: var(--section-margin);
+}
+
+/* Match vertical gap above footer Klaviyo block (after last template section) */
+main#MainContent + * .footer-newsletter-section {
+    margin-top: var(--section-margin);
 }
 
 /*

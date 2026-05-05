@@ -349,6 +349,7 @@
       "load_video": "Load video: {{ description }}"
     },
     "slideshow": {
+      "name": "Image slideshow",
       "load_slide": "Load slide",
       "previous_slideshow": "Previous slide",
       "next_slideshow": "Next slide",

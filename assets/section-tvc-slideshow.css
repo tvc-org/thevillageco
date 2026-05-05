@@ -474,7 +474,7 @@
 }
 
 /* ----- Type ----- */
-.tvc-slideshow__heading {
+body.mr-bubble .tvc-slideshow__heading {
   text-transform: uppercase;
 }
 
@@ -606,7 +606,7 @@
 
 .tvc-slideshow--layout-stacked.tvc-slideshow--has-nav .slideshow__controls {
   justify-content: center;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
 }
 
 .tvc-slideshow--layout-stacked .slideshow__controls .slider-counter {

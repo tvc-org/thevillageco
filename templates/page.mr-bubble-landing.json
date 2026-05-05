@@ -62,8 +62,7 @@
         "full_width": true,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5,
-        "accessibility_info": "Featured promotions slideshow"
+        "change_slides_speed": 5
       }
     },
     "tvc_dual_feature_BgzCht": {
@@ -142,8 +141,7 @@
         "full_width": false,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5,
-        "accessibility_info": "Featured promotions slideshow"
+        "change_slides_speed": 5
       }
     },
     "featured_collection_ihWKGy": {
@@ -173,7 +171,6 @@
         "card_background": "#e75e98",
         "heading_color": "#ffd4df",
         "text_color": "#ffffff",
-        "bleed_desktop": 8,
         "heading": "Thank you!",
         "body": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>",
         "cta_label": "Shop exclusive birthday products",

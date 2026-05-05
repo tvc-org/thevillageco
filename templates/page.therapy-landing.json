@@ -62,8 +62,7 @@
         "full_width": true,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5,
-        "accessibility_info": "Featured promotions slideshow"
+        "change_slides_speed": 5
       }
     },
     "featured_collection_kVGz6V": {
@@ -167,8 +166,7 @@
         "full_width": false,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5,
-        "accessibility_info": "Featured promotions slideshow"
+        "change_slides_speed": 5
       }
     }
   },

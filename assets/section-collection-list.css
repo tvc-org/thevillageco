@@ -56,6 +56,13 @@
   }
 }
 
+/* Stacked layout (1 col tablet-down, no mobile carousel): match global section vertical rhythm */
+@media screen and (max-width: 989px) {
+  .section-collection-list .collection-list.grid--1-col-tablet-down:not(.slider) {
+    row-gap: var(--section-margin);
+  }
+}
+
 .collection-list-view-all {
   margin-top: 2rem;
 }

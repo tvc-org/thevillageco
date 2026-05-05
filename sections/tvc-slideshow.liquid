@@ -29,7 +29,7 @@
   class="slider-mobile-gutter {{ section_classes }}{% if section.settings.full_width %} tvc-slideshow--full-width{% else %} tvc-slideshow--contained{% endif %}"
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
-  aria-label="{{ section.settings.accessibility_info | escape }}"
+  aria-label="{{ 'sections.slideshow.name' | t }}"
 >
   {%- if section.blocks.size > 1 and section.settings.auto_rotate -%}
     <div class="slideshow__controls slideshow__controls--top slider-buttons">
@@ -400,16 +400,6 @@
       "unit": "s",
       "label": "Change slides every",
       "default": 5
-    },
-    {
-      "type": "header",
-      "content": "Accessibility"
-    },
-    {
-      "type": "text",
-      "id": "accessibility_info",
-      "label": "Slideshow label",
-      "default": "Featured promotions slideshow"
     }
   ],
   "blocks": [

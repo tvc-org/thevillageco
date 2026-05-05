@@ -3,24 +3,9 @@
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign cl_padding_top = 36
-  assign cl_padding_bottom = 36
   assign cl_color_scheme = section.settings.color_scheme | default: 'scheme-1'
   assign columns_mobile_int = 1
 -%}
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ cl_padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ cl_padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ cl_padding_top }}px;
-      padding-bottom: {{ cl_padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
 
 {%- liquid
   assign show_mobile_slider = false
@@ -30,7 +15,7 @@
 -%}
 
 <div class="color-{{ cl_color_scheme }}-x gradient-x">
-  <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
+  <div class="collection-list-wrapper page-width isolate{% if show_mobile_slider %} page-width-desktop{% endif %}{% if section.settings.title == blank %} no-heading{% endif %}{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %}">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link{% if show_mobile_slider %} title-wrapper--self-padded-tablet-down{% else %} title-wrapper--self-padded-mobile{% endif %} title-wrapper--no-top-margin">
         <h2

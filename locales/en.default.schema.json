@@ -755,15 +755,19 @@
     "tvc-promo-callout": {
       "name": "TVC Promo callout",
       "settings": {
-        "bleed_info": {
-          "content": "Mobile: one stacked image (often a full art card). Desktop: optional second image — PNG with transparency above the art. The desktop image sits bottom-left in its column, auto width, and is taller than the column by your bleed % so it grows upward (no transform). Row height follows the text column. Match Section background to Card background for a seamless bleed."
-        },
         "image_mobile": {
           "label": "Image (mobile)"
         },
         "image_desktop": {
           "label": "Image (desktop, optional)",
           "info": "Leave empty to reuse the mobile image on all breakpoints."
+        },
+        "header_image_focus": {
+          "content": "Desktop image focal point"
+        },
+        "image_position_desktop": {
+          "label": "Image anchor",
+          "info": "Applies only from 1025px up where the photo is cropped beside the copy. Below that, mobile art uses full width and natural height."
         },
         "header_colors": {
           "content": "Colors"
@@ -776,13 +780,6 @@
         },
         "text_color": {
           "label": "Body & CTA color"
-        },
-        "header_layout": {
-          "content": "Layout"
-        },
-        "bleed_desktop": {
-          "label": "Desktop upward bleed",
-          "info": "Extra height as a percent of the image column’s layout height (e.g. 20% = image is 120% as tall as the cell, anchored bottom-left, so more art extends above the pink card). Scales when text wraps and the row gets taller."
         },
         "header_content": {
           "content": "Content"
