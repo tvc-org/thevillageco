@@ -137,6 +137,39 @@
         "link_url": "",
         "bottom_margin": "default"
       }
+    },
+    "tvc_slideshow_QbGw9g": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_f7BRBG": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/sleep-awareness.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "All Nighttime + Calm \nproducts are 25% Off",
+            "text": "<p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum.</p>",
+            "stacked_text_in_media": true,
+            "stacked_desktop_overlay_text_tone": "light",
+            "stacked_text_position": "bottom_left",
+            "link": "shopify://collections/therapy-nighttime",
+            "link_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "slide_f7BRBG"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "accessibility_info": "Featured promotions slideshow"
+      }
     }
   },
   "order": [
@@ -144,6 +177,7 @@
     "tvc_slideshow_69KrER",
     "featured_collection_kVGz6V",
     "collection_list_VhNWzm",
-    "tvc_cta_short_EhaYhm"
+    "tvc_cta_short_EhaYhm",
+    "tvc_slideshow_QbGw9g"
   ]
 }
