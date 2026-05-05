@@ -25,11 +25,13 @@
           "settings": {
             "split_background": "#d9c7d5",
             "split_text_tone": "dark",
-            "split_media_position": "right",
-            "media_type": "image",
             "image": "shopify://shop_images/therapy-magnesium-hero.jpg",
+            "preserve_image_aspect_ratio": false,
             "heading": "Ease Into Peace — Naturally",
             "text": "<p>Discover the Calm Collection — a soothing ritual of plant-based milk bubbles and mineral-rich magnesium flakes to help quiet your mind, melt tension, and restore balance after a long day.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
             "link": "shopify://collections/therapy-wellness",
             "link_label": "Shop Calm"
           }
@@ -39,10 +41,12 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "split_media_position": "right",
-            "media_type": "image",
+            "preserve_image_aspect_ratio": false,
             "heading": "Headline",
             "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
             "link": "",
             "link_label": ""
           }
@@ -55,6 +59,8 @@
       "name": "TVC Slideshow",
       "settings": {
         "layout": "split",
+        "full_width": true,
+        "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "accessibility_info": "Featured promotions slideshow"
@@ -70,10 +76,8 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "full_width": false,
         "show_view_all": false,
         "view_all_style": "solid",
-        "image_shape": "default",
         "show_secondary_image": false,
         "show_vendor": false,
         "show_rating": false,
@@ -116,14 +120,21 @@
       "name": "t:sections.collection-list.presets.name",
       "settings": {
         "title": "Collections",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "color_scheme": "",
         "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "swipe_on_mobile": false
+      }
+    },
+    "tvc_cta_short_EhaYhm": {
+      "type": "tvc-cta-short",
+      "name": "t:sections.tvc-cta-short.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/VNT_CTA_Short_v2.webp",
+        "mobile_image": "shopify://shop_images/VNT_CTA_Mobile_v2.webp",
+        "title": "",
+        "description": "",
+        "link_label": "",
+        "link_url": "",
+        "bottom_margin": "default"
       }
     }
   },
@@ -131,6 +142,7 @@
     "main",
     "tvc_slideshow_69KrER",
     "featured_collection_kVGz6V",
-    "collection_list_VhNWzm"
+    "collection_list_VhNWzm",
+    "tvc_cta_short_EhaYhm"
   ]
 }
