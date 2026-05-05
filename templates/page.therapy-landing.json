@@ -164,7 +164,7 @@
       "name": "TVC Slideshow",
       "settings": {
         "layout": "stacked",
-        "full_width": true,
+        "full_width": false,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
