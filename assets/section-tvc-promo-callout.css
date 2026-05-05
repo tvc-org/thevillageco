@@ -60,15 +60,6 @@
   color: var(--tvc-pc-text-color, #fff);
 }
 
-.tvc-promo-callout__copy .tvc-promo-callout__cta a {
-  font-size: 0.85em;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
 /* Mobile / tablet: full-width art, natural height (matches pre–focal-point behavior) */
 .tvc-promo-callout__media {
   position: relative;
@@ -115,7 +106,7 @@
     max-width: 540px;
     min-width: 0;
     margin: 0;
-    padding: 36px 40px 36px 0;
+    padding: 36px 40px 48px 0;
     text-align: left;
   }
 

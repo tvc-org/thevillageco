@@ -40,7 +40,7 @@
           {%- if section.settings.cta_label != blank -%}
             <p class="tvc-promo-callout__cta">
               {%- if section.settings.cta_link != blank -%}
-                <a href="{{ section.settings.cta_link }}">{{ section.settings.cta_label | escape }}</a>
+                <a href="{{ section.settings.cta_link }}" class="cta-link">{{ section.settings.cta_label | escape }}</a>
               {%- else -%}
                 <span>{{ section.settings.cta_label | escape }}</span>
               {%- endif -%}

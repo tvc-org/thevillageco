@@ -633,10 +633,7 @@ body.mr-bubble .tvc-slideshow__heading {
   .tvc-slideshow .slider-counter__link {
     padding: 1rem 4px;
   }
-  .tvc-slideshow--layout-stacked.tvc-slideshow--has-nav .slideshow__controls {
-    /* 20px bar + 50px relocated from .tvc-slideshow__panel (desktop stacked) */
-    padding-bottom: 70px;
-  }
+
 }
 
 @media screen and (min-width: 1440px) {

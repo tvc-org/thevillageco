@@ -2,25 +2,11 @@
 {{ 'section-tvc-dual-feature.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  assign tvc_df_padding_top = 36
-  assign tvc_df_padding_bottom = 36
   assign tvc_df_color_scheme = section.settings.color_scheme | default: 'scheme-1'
 -%}
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ tvc_df_padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ tvc_df_padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ tvc_df_padding_top }}px;
-      padding-bottom: {{ tvc_df_padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
 
 <div class="tvc-dual-feature color-{{ tvc_df_color_scheme }}-x gradient-x">
-  <div class="page-width section-{{ section.id }}-padding isolate">
+  <div class="page-width isolate">
     {%- if section.settings.heading != blank -%}
       <div class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <h2 class="title inline-richtext h3">{{ section.settings.heading }}</h2>

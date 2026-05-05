@@ -159,14 +159,6 @@ body.village-naturals-therapy .h5 {
     padding-left: 2rem;
 }
 
-@media screen and (min-width: 1025px) {
-    #MainContent p,
-    .rte ul,
-    .rte ol {
-        font-size: 16px;
-    }
-}
-
 .cta-link {
     text-transform: uppercase;
     text-decoration-line: underline;
@@ -177,6 +169,17 @@ body.village-naturals-therapy .h5 {
     text-underline-position: from-font;
     font-weight: 600;
     color: inherit;
+}
+
+@media screen and (min-width: 1025px) {
+    #MainContent p,
+    .rte ul,
+    .rte ol {
+        font-size: 16px;
+    }
+    .cta-link {
+        font-size: 18px;
+    }
 }
 
 /* Brand announcement bar (--brand-announcement-bar-* set in sections/header.liquid from brand blocks) */
