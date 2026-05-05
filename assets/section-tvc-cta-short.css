@@ -1,5 +1,31 @@
 /* TVC CTA short — full-width image banner with overlaid title, copy, CTA */
 
+/* Viewport fills optional .page-width parent when contained — mirrors TVC Slideshow */
+.tvc-cta-short__viewport {
+  position: relative;
+  width: 100%;
+}
+
+/* Contained: rounded frame + clip overlay to match promo / slideshow contained media */
+.tvc-cta-short--contained .tvc-cta-short__inner {
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-cta-short--contained .tvc-cta-short__inner {
+    border-radius: 35px;
+  }
+}
+
+/* Contained banners sit inside .page-width; avoid nested .page-width on overlay copy */
+.tvc-cta-short--contained .tvc-cta-short__content-inner:not(.page-width) {
+  padding-left: var(--layout-gutter-x);
+  padding-right: var(--layout-gutter-x);
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .tvc-cta-short__placeholder {
   padding: 2rem 0;
 }

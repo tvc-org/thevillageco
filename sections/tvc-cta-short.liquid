@@ -25,74 +25,97 @@
   assign img_mobile_height_2x = mobile_height | times: 2
 
   assign alt_m = img_m.alt | default: section.settings.title | strip_html
+
+  assign tvc_cta_show = false
+  if img_d != blank
+    assign tvc_cta_show = true
+  elsif request.design_mode
+    assign tvc_cta_show = true
+  endif
+
+  if section.settings.full_width == false
+    assign cta_viewport_classes = 'slider-mobile-gutter tvc-cta-short--contained'
+  else
+    assign cta_viewport_classes = 'slider-mobile-gutter tvc-cta-short--full-width'
+  endif
 -%}
 
 <div
   class="tvc-cta-short tvc-cta-short--margin-{{ section.settings.bottom_margin }}"
   id="tvc-cta-short-{{ section.id }}"
 >
-  {%- if img_d == blank -%}
-    {%- if request.design_mode -%}
-      <div class="page-width tvc-cta-short__placeholder">
-        {{ 't:sections.tvc-cta-short.editor.empty_state' | t }}
-      </div>
+  {%- if tvc_cta_show -%}
+    {%- if section.settings.full_width == false -%}
+      <div class="page-width">
     {%- endif -%}
-  {%- else -%}
-    <div class="tvc-cta-short__inner">
-      <div class="tvc-cta-short__media">
-        <picture class="tvc-cta-short__picture">
-          <source
-            media="(min-width: 1025px)"
-            srcset="
-              {{ img_d | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
-              {{ img_d | image_url: width: img_desktop_width_2x, height: img_desktop_height_2x, crop: 'center' }} 2x
-            "
-          >
-          <source
-            media="(min-width: 768px)"
-            srcset="
-              {{ img_d | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
-              {{ img_d | image_url: width: img_tablet_width_2x, height: img_tablet_height_2x, crop: 'center' }} 2x
-            "
-          >
-          <source
-            media="(min-width: 1px)"
-            srcset="
-              {{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
-              {{ img_m | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x
-            "
-          >
-          <img
-            src="{{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
-            alt="{{ alt_m | escape }}"
-            loading="lazy"
-            width="{{ mobile_width }}"
-            height="{{ mobile_height }}"
-            class="tvc-cta-short__img"
-          >
-        </picture>
+    {%- if img_d == blank -%}
+      <div class="{{ cta_viewport_classes }} tvc-cta-short__placeholder-wrap">
+        <div class="tvc-cta-short__placeholder">
+          {{ 't:sections.tvc-cta-short.editor.empty_state' | t }}
+        </div>
       </div>
-
-      <div class="tvc-cta-short__content">
-        <div class="page-width tvc-cta-short__content-inner">
-          <div class="tvc-cta-short__text{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            {%- if section.settings.title != blank -%}
-              <h2 class="tvc-cta-short__heading">{{ section.settings.title | escape }}</h2>
-            {%- endif -%}
-            {%- if section.settings.description != blank -%}
-              <div class="tvc-cta-short__body rte">{{ section.settings.description }}</div>
-            {%- endif -%}
+    {%- else -%}
+      <div class="tvc-cta-short__viewport {{ cta_viewport_classes }}">
+        <div class="tvc-cta-short__inner">
+          <div class="tvc-cta-short__media">
+            <picture class="tvc-cta-short__picture">
+              <source
+                media="(min-width: 1025px)"
+                srcset="
+                  {{ img_d | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
+                  {{ img_d | image_url: width: img_desktop_width_2x, height: img_desktop_height_2x, crop: 'center' }} 2x
+                "
+              >
+              <source
+                media="(min-width: 768px)"
+                srcset="
+                  {{ img_d | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
+                  {{ img_d | image_url: width: img_tablet_width_2x, height: img_tablet_height_2x, crop: 'center' }} 2x
+                "
+              >
+              <source
+                media="(min-width: 1px)"
+                srcset="
+                  {{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
+                  {{ img_m | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x
+                "
+              >
+              <img
+                src="{{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
+                alt="{{ alt_m | escape }}"
+                loading="lazy"
+                width="{{ mobile_width }}"
+                height="{{ mobile_height }}"
+                class="tvc-cta-short__img"
+              >
+            </picture>
           </div>
-          <div class="tvc-cta-short__actions">
-            {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
-              <a class="button tvc-cta-short__button" href="{{ section.settings.link_url }}">
-                {{ section.settings.link_label | escape }}
-              </a>
-            {%- endif -%}
+
+          <div class="tvc-cta-short__content">
+            <div class="tvc-cta-short__content-inner{% if section.settings.full_width %} page-width{% endif %}">
+              <div class="tvc-cta-short__text{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+                {%- if section.settings.title != blank -%}
+                  <h2 class="tvc-cta-short__heading">{{ section.settings.title | escape }}</h2>
+                {%- endif -%}
+                {%- if section.settings.description != blank -%}
+                  <div class="tvc-cta-short__body rte">{{ section.settings.description }}</div>
+                {%- endif -%}
+              </div>
+              <div class="tvc-cta-short__actions">
+                {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
+                  <a class="button tvc-cta-short__button" href="{{ section.settings.link_url }}">
+                    {{ section.settings.link_label | escape }}
+                  </a>
+                {%- endif -%}
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    {%- endif -%}
+    {%- if section.settings.full_width == false -%}
+      </div>
+    {%- endif -%}
   {%- endif -%}
 </div>
 
@@ -105,6 +128,20 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:sections.tvc-cta-short.settings.full_width.label",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
     {
       "type": "image_picker",
       "id": "image",
@@ -157,7 +194,9 @@
   "presets": [
     {
       "name": "t:sections.tvc-cta-short.presets.name",
-      "category": "Banner"
+      "settings": {
+        "full_width": true
+      }
     }
   ]
 }

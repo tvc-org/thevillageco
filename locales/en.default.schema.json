@@ -810,6 +810,9 @@
         "empty_state": "Add a desktop image to preview this banner. Optional mobile image uses its own crops."
       },
       "settings": {
+        "full_width": {
+          "label": "Full width"
+        },
         "image": {
           "label": "Image (desktop)",
           "info": "Use at least 3840×1054 for 2× desktop crops (1920×527 layout)."
