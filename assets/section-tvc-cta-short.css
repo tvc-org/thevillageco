@@ -1,0 +1,122 @@
+/* TVC CTA short — full-width image banner with overlaid title, copy, CTA */
+
+.tvc-cta-short__placeholder {
+  padding: 2rem 0;
+}
+
+.tvc-cta-short--margin-default {
+  margin-bottom: 40px;
+}
+
+.tvc-cta-short--margin-none {
+  margin-bottom: 0 !important;
+}
+
+.tvc-cta-short__inner {
+  position: relative;
+}
+
+.tvc-cta-short__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 0.764;
+}
+
+.tvc-cta-short__picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+
+.tvc-cta-short__img {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tvc-cta-short__content {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  color: #fff;
+}
+
+.tvc-cta-short__content-inner {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
+  padding-top: 15%;
+  padding-bottom: 50px;
+}
+
+.tvc-cta-short__body a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.tvc-cta-short__heading {
+  margin: 0 0 0.5em;
+  color: inherit;
+}
+
+.tvc-cta-short__body {
+  margin: 0;
+  color: inherit;
+}
+
+.tvc-cta-short__body p:last-child {
+  margin-bottom: 0;
+}
+
+.tvc-cta-short__text {
+  max-width: 500px;
+}
+
+.tvc-cta-short__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.tvc-cta-short__button {
+  width: auto;
+  background: #fff;
+  color: #000;
+}
+
+.tvc-cta-short__button:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media screen and (max-width: 640px) {
+  .tvc-cta-short__content-inner {
+    padding-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .tvc-cta-short--margin-default {
+    margin-bottom: 60px;
+  }
+
+  .tvc-cta-short__media {
+    aspect-ratio: 1 / 0.2742;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .tvc-cta-short__content-inner {
+    padding-top: 10%;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .tvc-cta-short--margin-default {
+    overflow: hidden;
+  }
+}

@@ -804,6 +804,46 @@
         "name": "TVC Promo callout"
       }
     },
+    "tvc-cta-short": {
+      "name": "TVC CTA short",
+      "editor": {
+        "empty_state": "Add a desktop image to preview this banner. Optional mobile image uses its own crops."
+      },
+      "settings": {
+        "image": {
+          "label": "Image (desktop)",
+          "info": "Use at least 3840×1054 for 2× desktop crops (1920×527 layout)."
+        },
+        "mobile_image": {
+          "label": "Image (mobile)",
+          "info": "Optional. Falls back to desktop art. Aim for at least 1534×1172 for 2×."
+        },
+        "title": {
+          "label": "Heading"
+        },
+        "description": {
+          "label": "Text"
+        },
+        "link_label": {
+          "label": "Button label"
+        },
+        "link_url": {
+          "label": "Button link"
+        },
+        "bottom_margin": {
+          "label": "Bottom spacing",
+          "options__1": {
+            "label": "Default"
+          },
+          "options__2": {
+            "label": "None"
+          }
+        }
+      },
+      "presets": {
+        "name": "TVC CTA short"
+      }
+    },
     "contact-form": {
       "name": "Contact Form",
       "presets": {

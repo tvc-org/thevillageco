@@ -1,0 +1,164 @@
+{{ 'section-tvc-cta-short.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign img_d = section.settings.image
+  if img_d == blank
+    assign img_d = section.settings.mobile_image
+  endif
+  assign img_m = section.settings.mobile_image
+  if img_m == blank
+    assign img_m = img_d
+  endif
+
+  assign desktop_width = 1920
+  assign desktop_height = 527
+  assign tablet_width = 1024
+  assign tablet_height = 281
+  assign mobile_width = 767
+  assign mobile_height = 586
+
+  assign img_desktop_width_2x = desktop_width | times: 2
+  assign img_desktop_height_2x = desktop_height | times: 2
+  assign img_tablet_width_2x = tablet_width | times: 2
+  assign img_tablet_height_2x = tablet_height | times: 2
+  assign img_mobile_width_2x = mobile_width | times: 2
+  assign img_mobile_height_2x = mobile_height | times: 2
+
+  assign alt_m = img_m.alt | default: section.settings.title | strip_html
+-%}
+
+<div
+  class="tvc-cta-short tvc-cta-short--margin-{{ section.settings.bottom_margin }}"
+  id="tvc-cta-short-{{ section.id }}"
+>
+  {%- if img_d == blank -%}
+    {%- if request.design_mode -%}
+      <div class="page-width tvc-cta-short__placeholder">
+        {{ 't:sections.tvc-cta-short.editor.empty_state' | t }}
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <div class="tvc-cta-short__inner">
+      <div class="tvc-cta-short__media">
+        <picture class="tvc-cta-short__picture">
+          <source
+            media="(min-width: 1025px)"
+            srcset="
+              {{ img_d | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
+              {{ img_d | image_url: width: img_desktop_width_2x, height: img_desktop_height_2x, crop: 'center' }} 2x
+            "
+          >
+          <source
+            media="(min-width: 768px)"
+            srcset="
+              {{ img_d | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
+              {{ img_d | image_url: width: img_tablet_width_2x, height: img_tablet_height_2x, crop: 'center' }} 2x
+            "
+          >
+          <source
+            media="(min-width: 1px)"
+            srcset="
+              {{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
+              {{ img_m | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x
+            "
+          >
+          <img
+            src="{{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
+            alt="{{ alt_m | escape }}"
+            loading="lazy"
+            width="{{ mobile_width }}"
+            height="{{ mobile_height }}"
+            class="tvc-cta-short__img"
+          >
+        </picture>
+      </div>
+
+      <div class="tvc-cta-short__content">
+        <div class="page-width tvc-cta-short__content-inner">
+          <div class="tvc-cta-short__text{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+            {%- if section.settings.title != blank -%}
+              <h2 class="tvc-cta-short__heading">{{ section.settings.title | escape }}</h2>
+            {%- endif -%}
+            {%- if section.settings.description != blank -%}
+              <div class="tvc-cta-short__body rte">{{ section.settings.description }}</div>
+            {%- endif -%}
+          </div>
+          <div class="tvc-cta-short__actions">
+            {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
+              <a class="button tvc-cta-short__button" href="{{ section.settings.link_url }}">
+                {{ section.settings.link_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-cta-short.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.tvc-cta-short.settings.image.label",
+      "info": "t:sections.tvc-cta-short.settings.image.info"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "t:sections.tvc-cta-short.settings.mobile_image.label",
+      "info": "t:sections.tvc-cta-short.settings.mobile_image.info"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:sections.tvc-cta-short.settings.title.label"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:sections.tvc-cta-short.settings.description.label"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "t:sections.tvc-cta-short.settings.link_label.label"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:sections.tvc-cta-short.settings.link_url.label"
+    },
+    {
+      "type": "select",
+      "id": "bottom_margin",
+      "label": "t:sections.tvc-cta-short.settings.bottom_margin.label",
+      "options": [
+        {
+          "value": "default",
+          "label": "t:sections.tvc-cta-short.settings.bottom_margin.options__1.label"
+        },
+        {
+          "value": "none",
+          "label": "t:sections.tvc-cta-short.settings.bottom_margin.options__2.label"
+        }
+      ],
+      "default": "default"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-cta-short.presets.name",
+      "category": "Banner"
+    }
+  ]
+}
+{% endschema %}
