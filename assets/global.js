@@ -768,7 +768,9 @@ class SliderComponent extends HTMLElement {
     if (!this.slider || !this.nextButton) return;
 
     const previousPage = this.currentPage;
-    this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+    const calculatedPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+    const maxPage = this.totalPages || this.sliderItemsToShow?.length || 1;
+    this.currentPage = Math.min(Math.max(calculatedPage, 1), maxPage);
 
     if (this.currentPageElement && this.pageTotalElement) {
       this.currentPageElement.textContent = this.currentPage;
@@ -1502,4 +1504,43 @@ function filterMediaByVariant(container, productInfo) {
       });
     }
   });
+
+  // Keep gallery counter in sync with the filtered (visible) media set.
+  const mediaGallery = container.matches?.('media-gallery') ? container : container.closest?.('media-gallery');
+  const viewer = mediaGallery?.querySelector?.('[id^="GalleryViewer"]');
+  const sliderList = viewer?.querySelector?.('ul[id^="Slider-Gallery"]');
+  const counterCurrent = mediaGallery?.querySelector?.('.slider-counter--current');
+  const counterTotal = mediaGallery?.querySelector?.('.slider-counter--total');
+
+  if (!sliderList || !counterCurrent || !counterTotal) {
+    return;
+  }
+
+  const allSlides = Array.from(sliderList.querySelectorAll('li[data-media-id]'));
+  const visibleSlides = allSlides.filter((slide) => !slide.classList.contains('variant-media-hidden'));
+
+  if (visibleSlides.length === 0) {
+    counterCurrent.textContent = '0';
+    counterTotal.textContent = '0';
+    return;
+  }
+
+  let activeSlide = sliderList.querySelector('li[data-media-id].is-active');
+  if (!activeSlide || activeSlide.classList.contains('variant-media-hidden')) {
+    activeSlide?.classList?.remove('is-active');
+    activeSlide = visibleSlides[0];
+    activeSlide.classList.add('is-active');
+  }
+
+  // Rebuild slider pages after variant filtering so next/prev buttons only use visible slides.
+  if (typeof viewer.resetPages === 'function') {
+    viewer.resetPages();
+  }
+
+  // Keep the scroll position aligned to the active visible slide after page reset.
+  sliderList.scrollTo({ left: activeSlide.offsetLeft });
+
+  const activeIndex = Math.max(visibleSlides.indexOf(activeSlide), 0);
+  counterCurrent.textContent = String(activeIndex + 1);
+  counterTotal.textContent = String(visibleSlides.length);
 }

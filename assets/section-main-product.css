@@ -270,6 +270,32 @@ a.product__text {
   padding: 0 1rem;
 }
 
+/* Normalize pasted rich text in PDP accordions (inline styles from editors). */
+.product__accordion .accordion__content.rte,
+.product__accordion .accordion__content.rte p,
+.product__accordion .accordion__content.rte li,
+.product__accordion .accordion__content.rte span,
+.product__accordion .accordion__content.rte div,
+.product__accordion .accordion__content.rte strong,
+.product__accordion .accordion__content.rte em,
+.product__accordion .accordion__content.rte b,
+.product__accordion .accordion__content.rte i,
+.product__description.rte,
+.product__description.rte p,
+.product__description.rte li,
+.product__description.rte span,
+.product__description.rte div,
+.product__description.rte strong,
+.product__description.rte em,
+.product__description.rte b,
+.product__description.rte i {
+  font-family: var(--font-body-family) !important;
+  font-size: 1.6rem !important;
+  line-height: calc(1 + 0.5 / var(--font-body-scale)) !important;
+  letter-spacing: 0.06rem !important;
+  color: rgba(var(--color-foreground), 0.75) !important;
+}
+
 .product .price .badge {
   margin-bottom: 0.5rem;
 }
@@ -948,6 +974,10 @@ a.product__text {
 }
 
 @media screen and (max-width: 749px) {
+  .product__media-item.variant-media-hidden {
+    display: none;
+  }
+
   .product__media-item {
     display: flex;
     align-items: center;
