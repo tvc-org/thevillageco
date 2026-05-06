@@ -29,7 +29,7 @@
     assign no_content_styles = true
   endif
 
-  if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_opacity > 0
+  if settings.text_boxes_border_thickness > 0 and settings.text_boxes_border_opacity > 0 and settings.media_border_thickness > 0 and settings.media_border_color != blank
     assign borders_class = ' collapse-borders'
   endif
 
