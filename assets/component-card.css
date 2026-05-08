@@ -550,16 +550,33 @@
   clip-path: polygon(var(--shape--blob-1));
 }
 
-/* Quick-add anchored to card media: overlay image on tablet/desktop; omit on mobile. */
+/* Quick-add on image: desktop-only stacking/link overrides (see min-width: 750px).
+   Below 750px, theme stacking keeps the stretched title ::after over the image for tap-to-PDP. */
+
 .card__inner .card__media-quick-add {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 5;
   display: flex;
-  align-items: flex-end;
-  justify-content: stretch;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: stretch;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 30px;
+}
+
+.card__inner .card__media-detail-hit {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  text-decoration: none;
+}
+
+.card__inner .card__media-quick-add__actions {
+  position: relative;
+  z-index: 1;
+  width: 100%;
 }
 
 .card__inner .card__media-quick-add .quick-add,
@@ -567,6 +584,7 @@
   grid-row-start: auto;
   margin: 0;
   width: 100%;
+  position: relative;
 }
 
 .card--card .card__inner .card__media-quick-add .quick-add {
@@ -580,6 +598,28 @@
 }
 
 @media screen and (min-width: 750px) {
+  /* Lift media + quick-add above outer `.card__content` so the hover overlay receives clicks. */
+  .product-card-wrapper--media-quick-add > .card.card--media:not(.card--horizontal) > .card__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ::after often covers the whole card-wrapper; let hits reach the quick-add layer on the image. */
+  .product-card-wrapper--media-quick-add
+    > .card
+    > .card__content
+    > .card__information
+    .card__heading
+    a::after,
+  .product-card-wrapper--media-quick-add
+    > .card
+    > .card__content
+    > .card__information
+    .card__heading
+    a:after {
+    pointer-events: none;
+  }
+
   .product-card-wrapper .card__media-quick-add {
     opacity: 0;
     visibility: hidden;

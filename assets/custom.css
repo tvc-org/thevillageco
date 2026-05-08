@@ -1258,6 +1258,21 @@ header-drawer {
     stroke: #1f1f1f !important;
 }
 
+/* Grid / collection cards: Yotpo injects column flex on .yotpo-sr-bottom-line-summary; show stars + count inline. */
+.product-grid .grid__item .yotpo-sr-bottom-line-summary,
+.shopify-section.section .collection .card .yotpo-sr-bottom-line-summary {
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap;
+    gap: 0px !important;
+}
+
+.product-grid .grid__item .yotpo-sr-bottom-line-text--right-panel,
+.shopify-section.section .collection .card .yotpo-sr-bottom-line-text--right-panel {
+    padding-top: 0 !important;
+    line-height: 1.2 !important;
+}
+
 @media screen and (min-width: 1025px) {
     .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container {
         width: 26px !important;

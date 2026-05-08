@@ -39,9 +39,13 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+    assign card_media_quick_add = false
+    if card_product.featured_media and horizontal_class != true and quick_add != blank and quick_add != 'none'
+      assign card_media_quick_add = true
+    endif
   -%}
   {% comment %} assign ratio = card_product.featured_media.aspect_ratio {% endcomment %}
-  <div class="card-wrapper product-card-wrapper underline-links-hover">
+  <div class="card-wrapper product-card-wrapper underline-links-hover{% if card_media_quick_add %} product-card-wrapper--media-quick-add{% endif %}">
     <div
       class="
         card card--{{ settings.card_style }}
@@ -107,16 +111,24 @@
             </div>
           </div>
         {%- endif -%}
-        {%- if card_product.featured_media and horizontal_class != true and quick_add != blank and quick_add != 'none' -%}
+        {%- if card_media_quick_add -%}
           <div class="card__media-quick-add no-js-hidden">
-            {% render 'card-product-quick-add',
-              card_product: card_product,
-              section: section,
-              section_id: section_id,
-              quick_add: quick_add,
-              horizontal_quick_add: horizontal_quick_add,
-              lazy_load: lazy_load
-            %}
+            <a
+              href="{{ card_product.url }}"
+              class="card__media-detail-hit"
+              tabindex="-1"
+              aria-hidden="true"
+            ></a>
+            <div class="card__media-quick-add__actions">
+              {% render 'card-product-quick-add',
+                card_product: card_product,
+                section: section,
+                section_id: section_id,
+                quick_add: quick_add,
+                horizontal_quick_add: horizontal_quick_add,
+                lazy_load: lazy_load
+              %}
+            </div>
           </div>
         {%- endif -%}
         <div class="card__content">
@@ -286,7 +298,7 @@
             {%- endif -%}
           </div>
         </div>
-        {%- unless card_product.featured_media and horizontal_class != true and quick_add != blank and quick_add != 'none' -%}
+        {%- unless card_media_quick_add -%}
           {% render 'card-product-quick-add',
             card_product: card_product,
             section: section,
