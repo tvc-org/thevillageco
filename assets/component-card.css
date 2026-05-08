@@ -550,6 +550,57 @@
   clip-path: polygon(var(--shape--blob-1));
 }
 
+/* Quick-add anchored to card media: overlay image on tablet/desktop; omit on mobile. */
+.card__inner .card__media-quick-add {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: stretch;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+.card__inner .card__media-quick-add .quick-add,
+.card__inner .card__media-quick-add quick-add-bulk {
+  grid-row-start: auto;
+  margin: 0;
+  width: 100%;
+}
+
+.card--card .card__inner .card__media-quick-add .quick-add {
+  margin-inline: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .card__inner .card__media-quick-add {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .product-card-wrapper .card__media-quick-add {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity var(--duration-default) ease, visibility var(--duration-default) ease;
+  }
+
+  .product-card-wrapper:hover .card__media-quick-add,
+  .product-card-wrapper .card__media-quick-add:focus-within {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card-wrapper .card__media-quick-add {
+    transition: none;
+  }
+}
+
 /* Card Shape Hover Rules */
 
 @media (prefers-reduced-motion: no-preference) {

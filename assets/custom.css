@@ -507,6 +507,7 @@ header.site-header {
 .header {
     padding: 0 var(--layout-gutter-x) !important;
     height: 55px;
+    border-bottom: 1px solid var(--color-border);
 }
 .hide-max-1024 {
     display: none !important;
@@ -885,6 +886,10 @@ header-drawer {
     text-decoration: none;
 }
 
+.header-bottom .button.shop-now {
+    background: transparent;
+}
+
 .yotpo-widget-loyalty-floater-widget .yotpo-floater-widget-layout,
 .swell-tab {
     z-index: 998 !important;
@@ -896,11 +901,14 @@ header-drawer {
 
 @media screen and (min-width: 1025px) {
 
+    .header { border-bottom: none; }
+
     .header-bottom {
         font-size: 16px;
         height: 80px;
         padding: 0;
         position: relative;
+        box-shadow: 10px 5px 22px 0 #F2F2F2;
     }
 
     .header-bottom .header-block {
@@ -1243,6 +1251,19 @@ header-drawer {
 
 .product-form__submit.button {
     text-transform: uppercase;
+}
+
+.product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container path,
+.shopify-section.section .collection .card--standard .block-review-rate svg.star-container path {
+    stroke: #1f1f1f !important;
+}
+
+@media screen and (min-width: 1025px) {
+    .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container {
+        width: 26px !important;
+        height: 26px !important;
+        margin-inline-end: 10px !important;
+    }
 }
 
 /* ==========================================================================

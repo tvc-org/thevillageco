@@ -378,7 +378,8 @@ quick-add-bulk {
   z-index: 1;
 }
 
-.card__content quick-add-bulk .quantity {
+.card__content quick-add-bulk .quantity,
+.card__media-quick-add quick-add-bulk .quantity {
   width: 100%;
 }
 
