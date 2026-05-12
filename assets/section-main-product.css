@@ -296,6 +296,24 @@ a.product__text {
   padding: 0 1rem;
 }
 
+.product__accordion.accordion .summary__title + .icon-caret,
+.product__accordion.accordion summary > .icon-caret,
+.product__accordion.accordion summary .icon-caret {
+  /* Override base.css summary .icon-caret + later component-accordion.css height */
+  position: static;
+  inset: auto;
+  right: auto;
+  top: auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  min-height: 30px;
+  flex-shrink: 0;
+  align-self: center;
+  color: #1f1f1f;
+}
+
 /* Normalize pasted rich text in PDP accordions (inline styles from editors). */
 .product__accordion .accordion__content.rte,
 .product__accordion .accordion__content.rte p,
@@ -315,7 +333,7 @@ a.product__text {
 .product__description.rte em,
 .product__description.rte b,
 .product__description.rte i {
-  font-family: var(--font-body-family) !important;
+  font-family: 'Inter', sans-serif !important;
   font-size: 16px !important;
   line-height: 1.4 !important;
   letter-spacing: 0px !important;

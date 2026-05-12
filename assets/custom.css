@@ -1237,11 +1237,12 @@ header-drawer {
    Product Grid & Product Page
    ========================================================================== */
 
-.product-grid-container .grid__item .price {
+/* Any product card grid (collection, featured, related, search) — not only .product-grid-container */
+.product-grid .grid__item .price {
     font-size: 1.5rem;
 }
 
-.product-grid-container .grid__item .card__heading {
+.product-grid .grid__item .card__heading {
     font-size: 1.15em;
 }
 
@@ -1289,8 +1290,40 @@ header-drawer {
    Accordion
    ========================================================================== */
 
+.accordion {
+    border-top: 2px solid #e7e9ed !important;
+    border-bottom: 2px solid #e7e9ed !important;
+}
+
+/* First accordion among siblings (not :first-child — PDP blocks share .product__info-container). */
+.accordion:nth-child(1 of .accordion),
+.accordion + .accordion {
+    border-top: none !important;
+}
+
+.accordion:nth-child(1 of .accordion) {
+    margin-top: 50px;
+}
+
+/* Center title + icons between borders (stretch was pinning heading text to the top of the row). */
+.accordion summary {
+    align-items: center;
+}
+
+.accordion .summary__title {
+    align-items: center;
+}
+
 .accordion__title {
     text-transform: uppercase;
+    font-family: "FuturaPTHeavy";
+    font-size: 20px;
+}
+
+@media screen and (min-width: 1025px) {
+    .accordion__title {
+        font-size: 24px;
+    }
 }
 
 .accordion summary .icon-caret {
