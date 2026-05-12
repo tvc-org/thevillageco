@@ -10,7 +10,7 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
-<div {{ block.shopify_attributes }}>
+<div class="product-form__purchase-actions" {{ block.shopify_attributes }}>
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false
@@ -82,14 +82,19 @@
               disabled
             {% endif %}
           >
-            <span>
-              {%- if product.selected_or_first_available_variant == null -%}
-                {{ 'products.product.unavailable' | t }}
-              {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- endif -%}
+            <span class="product-form__submit-inner">
+              <span class="product-form__submit-text">
+                {%- if product.selected_or_first_available_variant == null -%}
+                  {{ 'products.product.unavailable' | t }}
+                {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- else -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- endif -%}
+              </span>
+              <span class="svg-wrapper product-form__submit-icon" aria-hidden="true">
+                {{- 'icon-cart-custom.svg' | inline_asset_content -}}
+              </span>
             </span>
             {%- render 'loading-spinner' -%}
           </button>
@@ -108,7 +113,12 @@
           class="product-form__submit button button--full-width button--primary"
           disabled
         >
-          {{ 'products.product.sold_out' | t }}
+          <span class="product-form__submit-inner">
+            <span class="product-form__submit-text">{{ 'products.product.sold_out' | t }}</span>
+            <span class="svg-wrapper product-form__submit-icon" aria-hidden="true">
+              {{- 'icon-cart-custom.svg' | inline_asset_content -}}
+            </span>
+          </span>
         </button>
       </div>
     </div>

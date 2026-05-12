@@ -2379,6 +2379,24 @@ img.object-fit-contain {
 body.mr-bubble {
     --text-color-blue: #2c5db5;
 }
+
+/* PDP variant pills: Mr. Bubble uses outlined active state (blue) instead of filled */
+body.mr-bubble .product-form__input--pill input[type='radio']:checked + label {
+    background-color: rgb(var(--color-background));
+    color: var(--text-color-blue);
+    border-color: var(--text-color-blue);
+    border-width: 1px;
+}
+
+body.mr-bubble .product-form__input--pill input[type='radio']:checked + label::selection {
+    background-color: rgba(44, 93, 181, 0.2);
+}
+
+body.mr-bubble .product-form__input--pill input[type='radio'].disabled:checked + label,
+body.mr-bubble .product-form__input--pill input[type='radio']:disabled:checked + label {
+    color: rgba(44, 93, 181, 0.45);
+    background-color: rgb(var(--color-background));
+}
 .text-color-blue {
     color: var(--text-color-blue);
 }

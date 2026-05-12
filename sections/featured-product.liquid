@@ -161,6 +161,7 @@
                     {{- product.selected_or_first_available_variant.sku -}}
                   </p>
                 {%- when 'quantity_selector' -%}
+                  {% render 'product-purchase-row-open', index0: forloop.index0 %}
                   <div
                     id="Quantity-Form-{{ section.id }}"
                     class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -406,6 +407,7 @@
                     product_form_id: product_form_id,
                     section_id: section.id
                   -%}
+                  {% render 'product-purchase-row-close', index0: forloop.index0 %}
                 {%- when 'custom_liquid' -%}
                   {{ block.settings.custom_liquid }}
                 {%- when 'rating' -%}

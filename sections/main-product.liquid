@@ -300,6 +300,7 @@
                   </div>
                 {% endif %}
               {%- when 'quantity_selector' -%}
+                {% render 'product-purchase-row-open', index0: forloop.index0 %}
                 <div
                   id="Quantity-Form-{{ section.id }}"
                   class="product-form__input product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}"
@@ -557,6 +558,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
+                {% render 'product-purchase-row-close', index0: forloop.index0 %}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">

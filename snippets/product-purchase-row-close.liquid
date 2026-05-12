@@ -1,0 +1,18 @@
+{% comment %}
+  Closes .product-form__purchase-row when this block is buy_buttons and the previous block was quantity_selector.
+  @param index0 {Number} forloop.index0 for the current block
+{% endcomment %}
+{%- liquid
+  assign prev_i = index0 | minus: 1
+  assign purchase_row_close = false
+  if prev_i >= 0
+    for b in section.blocks
+      if forloop.index0 == prev_i and b.type == 'quantity_selector'
+        assign purchase_row_close = true
+      endif
+    endfor
+  endif
+-%}
+{%- if purchase_row_close -%}
+  </div>
+{%- endif -%}

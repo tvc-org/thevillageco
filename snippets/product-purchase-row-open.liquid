@@ -1,0 +1,18 @@
+{% comment %}
+  Opens .product-form__purchase-row when this block is quantity_selector and the next block is buy_buttons.
+  @param index0 {Number} forloop.index0 for the current block
+{% endcomment %}
+{%- liquid
+  assign next_i = index0 | plus: 1
+  assign purchase_row_open = false
+  if next_i < section.blocks.size
+    for b in section.blocks
+      if forloop.index0 == next_i and b.type == 'buy_buttons'
+        assign purchase_row_open = true
+      endif
+    endfor
+  endif
+-%}
+{%- if purchase_row_open -%}
+  <div class="product-form__purchase-row">
+{%- endif -%}

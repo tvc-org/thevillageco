@@ -10,7 +10,11 @@ if (!customElements.get('product-form')) {
         this.form.addEventListener('submit', this.onSubmitHandler.bind(this));
         this.cart = document.querySelector('cart-notification') || document.querySelector('cart-drawer');
         this.submitButton = this.querySelector('[type="submit"]');
-        this.submitButtonText = this.submitButton.querySelector('span');
+        this.submitButtonInner = this.submitButton.querySelector('.product-form__submit-inner');
+        this.submitButtonText =
+          this.submitButton.querySelector('.product-form__submit-text') ||
+          (this.submitButtonInner && this.submitButtonInner.querySelector('span')) ||
+          this.submitButton.querySelector('span');
 
         if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');
 
@@ -57,7 +61,11 @@ if (!customElements.get('product-form')) {
               const soldOutMessage = this.submitButton.querySelector('.sold-out-message');
               if (!soldOutMessage) return;
               this.submitButton.setAttribute('aria-disabled', true);
-              this.submitButtonText.classList.add('hidden');
+              if (this.submitButtonInner) {
+                this.submitButtonInner.classList.add('hidden');
+              } else {
+                this.submitButtonText?.classList.add('hidden');
+              }
               soldOutMessage.classList.remove('hidden');
               this.error = true;
               return;
@@ -127,10 +135,10 @@ if (!customElements.get('product-form')) {
       toggleSubmitButton(disable = true, text) {
         if (disable) {
           this.submitButton.setAttribute('disabled', 'disabled');
-          if (text) this.submitButtonText.textContent = text;
+          if (text && this.submitButtonText) this.submitButtonText.textContent = text;
         } else {
           this.submitButton.removeAttribute('disabled');
-          this.submitButtonText.textContent = window.variantStrings.addToCart;
+          if (this.submitButtonText) this.submitButtonText.textContent = window.variantStrings.addToCart;
         }
       }
 
