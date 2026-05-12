@@ -41,6 +41,10 @@
           "type": "price",
           "settings": {}
         },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -58,10 +62,6 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
-        },
-        "description": {
-          "type": "description",
-          "settings": {}
         },
         "collapsible-row-0": {
           "type": "collapsible_tab",
@@ -104,10 +104,10 @@
         "caption",
         "yotpo_product_reviews_star_rating_MBU6Wb",
         "price",
+        "description",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description",
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
