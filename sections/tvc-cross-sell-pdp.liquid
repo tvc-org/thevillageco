@@ -1,0 +1,98 @@
+{%- comment -%}
+  Popular Add-Ons (Cross Sell legacy): outputs #cross-sell / #upsell / #xs_bundle and xsellSettings scripts
+  when shop.metafields.shopCrosssell.settings is present. Requires Cross Sell app + snippets/cross-sell-custom in layout.
+{%- endcomment -%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .tvc-cross-sell-pdp .product-recommend-core #cross-sell .collection-products.items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 1rem;
+  }
+  @media screen and (min-width: 750px) {
+    .tvc-cross-sell-pdp .product-recommend-core #cross-sell .collection-products.items {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .tvc-cross-sell-pdp .product-recommend-core .product-image-wrapper {
+    position: relative;
+  }
+  .tvc-cross-sell-pdp .product-recommend-core .product-image-wrapper .product-image {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
+{%- endstyle -%}
+{%- if shop.metafields.shopCrosssell.settings == blank -%}
+  {%- if request.design_mode -%}
+    <div class="page-width">
+      <p class="caption">
+        Cross Sell is not configured (missing <code>shop.metafields.shopCrosssell.settings</code>). Install the Cross Sell
+        app or sync metafields.
+      </p>
+    </div>
+  {%- endif -%}
+{%- else -%}
+  <div
+    class="tvc-cross-sell-pdp section-{{ section.id }}-padding{% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    {{ section.shopify_attributes }}
+  >
+    <div class="product-recommend-core">
+      {%- comment -%} include cross-sell {%- endcomment -%}
+      {% render 'cross-sell' %}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Cross Sell (add-ons)",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "include_margins",
+      "default": true,
+      "label": "Include horizontal margins"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cross Sell (add-ons)"
+    }
+  ]
+}
+{% endschema %}
