@@ -1275,6 +1275,19 @@ header-drawer {
     line-height: 1.2 !important;
 }
 
+/*
+ * PDP — Yotpo Product Reviews (Apps section / app embed): neutral canvas.
+ * qa-theme targeted the legacy .yotpo.yotpo-main-widget under .product-extra with hundreds of
+ * white/contrast rules; this theme uses the new widget + .yotpo-widget-instance with almost no
+ * overrides, so Mr Bubble’s full-page body brand background + Yotpo defaults can read as one blue slab.
+ */
+.template-product .shopify-section.section:has(.yotpo-widget-instance) {
+    background-color: #fff;
+    color: #323131;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+
 @media screen and (min-width: 1025px) {
     .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container {
         width: 26px !important;

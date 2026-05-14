@@ -96,8 +96,23 @@
 
     {% render 'meta-tags' %}
 
+    {%- comment -%}
+      Yotpo loads two separate “widgets repository” app keys (each key = its own bundle of widget instances in Yotpo).
+      — First script (9ctSh…): loyalty / rewards and other widgets still tied to that legacy key (matches older live theme).
+      — Second script (app_id): primary storefront key for reviews, star-rating app blocks, snippet embeds, etc.; dev vs
+        prod keys below; languageCode drives translated widget copy.
+      Do not merge into one script without Yotpo confirming loyalty is migrated under the primary key.
+    {%- endcomment -%}
+    <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/9ctShCL202rpQSFyiozQpQ" async></script>
+
+    {% if request.host == 'thevillagecompany-dev.myshopify.com' %}
+      {% assign app_id = '2mhbmmlY6aOMg44jAy0uvAMOSDZ5BD5wStdn65Pe' %}
+    {% else %}
+      {% assign app_id = 'l6AzTTD5OevNOFSyGdAT6w948g9zqKCeN0DMtWzq' %}
+    {% endif %}
+
     <script
-      src="https://cdn-widgetsrepository.yotpo.com/v1/loader/l6AzTTD5OevNOFSyGdAT6w948g9zqKCeN0DMtWzq"
+      src="https://cdn-widgetsrepository.yotpo.com/v1/loader/{{ app_id }}?languageCode={{ localization.language.iso_code | escape }}"
       async
     ></script>
 
@@ -480,6 +495,9 @@
     {%- endif -%}
 
     {%- comment -%} Klaviyo onsite tracking - required for embed forms to display {%- endcomment -%}
-    <script async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"></script>
+    <script
+      async
+      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"
+    ></script>
   </body>
 </html>

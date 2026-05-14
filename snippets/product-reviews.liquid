@@ -35,9 +35,9 @@
   </div>
 {%- elsif review_widget == 'reviews' -%}
   <div class="review-container">
-    {%- if settings.review_type == 'shopify' -%}
+    {%- if settings.review_type == 'shopify' and force_yotpo_reviews != true -%}
       <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
-    {%- elsif settings.review_type == 'yotpo' -%}
+    {%- elsif settings.review_type == 'yotpo' or force_yotpo_reviews == true -%}
       {% assign yp_product_image = product.featured_image
         | product_img_url: 'large'
         | replace: '?', '%3F'
@@ -53,6 +53,11 @@
         </div> -->
       {% endcomment %}
 
+      {% comment %}
+        Full reviews widget instance IDs (On-site appearance is per instance in Yotpo).
+        OS 2.0 “Reviews” app blocks use whatever instance the Yotpo Shopify app wires up — often not these.
+        Inspect: compare data-yotpo-instance-id on this embed vs an app block.
+      {% endcomment %}
       {% if request.host == 'thevillagecompany-dev.myshopify.com' or request.host == 'dev.myshopify.com' %}
         {% assign instance_id = '408238' %}
       {% else %}
