@@ -48,10 +48,47 @@
         "auto_rotate": false,
         "change_slides_speed": 5
       }
+    },
+    "tvc_dual_feature_DaeV7K": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_WMtrmX": {
+          "type": "feature",
+          "settings": {
+            "product": "body-buffer-body-wash-infused-sponge",
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_6iAqTx": {
+          "type": "feature",
+          "settings": {
+            "product": "limited-edition-par-fect-watermelon-bubble-bath",
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_WMtrmX",
+        "feature_6iAqTx"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": ""
+      }
     }
   },
   "order": [
     "main",
-    "tvc_slideshow_YYRRVn"
+    "tvc_slideshow_YYRRVn",
+    "tvc_dual_feature_DaeV7K"
   ]
 }
