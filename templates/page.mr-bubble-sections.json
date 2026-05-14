@@ -15,9 +15,42 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "tvc_slideshow_YYRRVn": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_7ELzFU": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/MrBubbleHomePageHeader1.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Somebunny Loves Bubbles!",
+            "text": "<p>Swap sweets for squeaky-clean fun this Easter. Our bubbly favorites make the perfect basket stuffer for kids who love to splash.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "link": "shopify://collections/mr-bubble-collections",
+            "link_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "slide_7ELzFU"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "tvc_slideshow_YYRRVn"
   ]
 }
