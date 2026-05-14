@@ -1266,7 +1266,7 @@ header-drawer {
     flex-direction: row !important;
     align-items: center !important;
     flex-wrap: wrap;
-    gap: 0px !important;
+    gap: 8px !important;
 }
 
 .product-grid .grid__item .yotpo-sr-bottom-line-text--right-panel,
@@ -2411,6 +2411,31 @@ img.object-fit-contain {
 /* --- Mr. Bubble — site + footer newsletter --- */
 body.mr-bubble {
     --text-color-blue: #2c5db5;
+    /* Pink aligned with footer newsletter accent; announcement uses --brand-announcement-bar-background from header when set */
+    --mr-bubble-brand-pink: #f04d98;
+}
+
+/*
+ * Yotpo stars use fill="url(#...)" with linearGradient (half star: first stop @ 51% = fill, second = white).
+ * Do NOT set path { fill } — it overrides the gradient and makes yotpo-sr-star-half look fully filled.
+ * Recolor the first gradient stop + stroke on full/half only; empty stars keep default stroke from global rules.
+ */
+body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
+body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
+body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type {
+    stop-color: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
+}
+
+body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
+body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
+body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
+body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
+body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full path,
+body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half path {
+    stroke: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
 }
 
 /* PDP variant pills: Mr. Bubble uses outlined active state (blue) instead of filled */
