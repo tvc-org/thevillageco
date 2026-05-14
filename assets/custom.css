@@ -1260,6 +1260,68 @@ header-drawer {
     stroke: #1f1f1f !important;
 }
 
+/* PDP buy box: same inline row layout as cards so review count shows beside stars (Yotpo defaults to column). */
+.product__info-wrapper .yotpo-sr-bottom-line-summary {
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap;
+    gap: 8px !important;
+}
+
+.product__info-wrapper .yotpo-sr-bottom-line-text--right-panel {
+    padding-top: 0 !important;
+    line-height: 1.2 !important;
+}
+
+.product__info-wrapper .yotpo-sr-bottom-line-summary,
+.product__info-wrapper .yotpo-sr-bottom-line-summary * {
+    cursor: pointer;
+}
+
+/*
+ * Legacy Yotpo bottomLine (v2 / widget.js) — buy box only.
+ * Production often renders this instead of .yotpo-sr-* (widgets repository v3).
+ */
+.product__info-wrapper .yotpo.bottomLine .yotpo-display-wrapper {
+    visibility: visible !important;
+}
+
+.product__info-wrapper .yotpo.bottomLine .yotpo-bottomline {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap;
+    gap: 8px 8px;
+    float: none !important;
+    cursor: pointer;
+}
+
+.product__info-wrapper .yotpo.bottomLine .yotpo-stars {
+    display: inline-flex !important;
+    align-items: center;
+    float: none !important;
+}
+
+.product__info-wrapper .yotpo.bottomLine .yotpo-stars .rating-star,
+.product__info-wrapper .yotpo.bottomLine .yotpo-stars .yotpo-icon {
+    float: none !important;
+}
+
+.product__info-wrapper .yotpo.bottomLine a.text-m {
+    float: none !important;
+    display: inline !important;
+    line-height: 1.2;
+    color: var(--color-text) !important;
+    font-size: 18px !important;
+    font-family: "Inter" !important;
+    font-weight: 400 !important;
+}
+
+.product__info-wrapper .yotpo.bottomLine .yotpo-icon-star.rating-star,
+.product__info-wrapper .yotpo.bottomLine .yotpo-stars .yotpo-icon {
+    color: #1f1f1f;
+}
+
 /* Grid / collection cards: Yotpo injects column flex on .yotpo-sr-bottom-line-summary; show stars + count inline. */
 .product-grid .grid__item .yotpo-sr-bottom-line-summary,
 .shopify-section.section .collection .card .yotpo-sr-bottom-line-summary {
@@ -1294,6 +1356,13 @@ header-drawer {
         height: 26px !important;
         margin-inline-end: 10px !important;
     }
+
+    .product__info-wrapper .yotpo.bottomLine .yotpo-icon.yotpo-icon-star {
+        font-size: 26px !important;
+        line-height: 1;
+        padding: 0 2px !important;
+    }
+
     .product__info-wrapper .price {
         font-size: 24px;
     }
@@ -2449,6 +2518,12 @@ body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-
 body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full path,
 body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half path {
     stroke: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
+}
+
+/* Legacy bottomLine on PDP: icon-font stars (not .yotpo-sr SVG widgets). */
+body.mr-bubble .product__info-wrapper .yotpo.bottomLine .yotpo-icon-star.rating-star,
+body.mr-bubble .product__info-wrapper .yotpo.bottomLine .yotpo-stars .yotpo-icon {
+    color: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
 }
 
 /* PDP variant pills: Mr. Bubble uses outlined active state (blue) instead of filled */

@@ -3,6 +3,7 @@
   The Yotpo OS 2.0 “Reviews” app block uses instances from the app’s own config and can look different.
 {%- endcomment -%}
 <div
+  id="yotpo-reviews-section"
   class="{% if section.settings.include_margins %}page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} product-extra yotpo-reviews-snippet"
 >
   {% render 'product-reviews', review_widget: 'reviews', product: product, force_yotpo_reviews: true %}

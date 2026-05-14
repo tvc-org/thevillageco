@@ -1800,6 +1800,10 @@ a.product__text {
   .product__info-container .yotpo-widget-instance {
     margin: 34px 0 24px;
   }
+
+  .product__info-container .yotpo.bottomLine {
+    margin: 34px 0 24px;
+  }
 }
 
 .product__info-container .quantity__input {

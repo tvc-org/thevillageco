@@ -30,11 +30,9 @@
             "text_style": "subtitle"
           }
         },
-        "yotpo_product_reviews_star_rating_MBU6Wb": {
-          "type": "shopify://apps/yotpo-product-reviews/blocks/star-rating/eb7dfd7d-db44-4334-bc49-c893b51b36cf",
-          "settings": {
-            "product": "{{product}}"
-          }
+        "yotpo_star_rating_snippet": {
+          "type": "yotpo_star_rating_snippet",
+          "settings": {}
         },
         "price": {
           "type": "price",
@@ -101,7 +99,7 @@
         "vendor",
         "title",
         "caption",
-        "yotpo_product_reviews_star_rating_MBU6Wb",
+        "yotpo_star_rating_snippet",
         "price",
         "description",
         "variant_picker",

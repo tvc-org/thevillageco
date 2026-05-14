@@ -40,6 +40,7 @@
   {%- endstyle -%}
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'yotpo-pdp-star-rating.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
@@ -106,12 +107,13 @@
                     </h2>
                   </a>
                 </div>
-                <div
-                  class="yotpo-widget-instance"
-                  data-yotpo-instance-id="412596"
-                  data-yotpo-product-id="{{product.id}}"
-                  data-yotpo-section-id="{{template.name}}"
-                ></div>
+              {%- when 'yotpo_star_rating_snippet' -%}
+                {%- comment -%}
+                  Yotpo star row via `product-reviews` badge (prod instance 449922 — same as legacy site / PLP cards), not the OS 2.0 app block (different wiring).
+                {%- endcomment -%}
+                <div class="product__yotpo-star-snippet" {{ block.shopify_attributes }}>
+                  {% render 'product-reviews', review_widget: 'badge', product: product %}
+                </div>
               {%- when 'price' -%}
                 <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                   {%- render 'price',
@@ -860,6 +862,11 @@
     {
       "type": "title",
       "name": "t:sections.main-product.blocks.title.name",
+      "limit": 1
+    },
+    {
+      "type": "yotpo_star_rating_snippet",
+      "name": "Yotpo star (449922)",
       "limit": 1
     },
     {

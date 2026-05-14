@@ -18,6 +18,9 @@
         </div> -->
       {% endcomment %}
 
+      {%- comment -%}
+        Star-rating widget instance (compact bottom line / widgets repo). Prod 449922 = legacy live site; dev 412596.
+      {%- endcomment -%}
       {% if request.host == 'thevillagecompany-dev.myshopify.com' or request.host == 'dev.myshopify.com' %}
         {% assign instance_id = '412596' %}
       {% else %}
