@@ -5,29 +5,41 @@
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
+  # Cross Sell: prefer metafield_text|parse_json for JSON metafields (handles string .value). Do not gate on xs_cfg alone.
+
   assign xs_cfg = nil
   assign xs_product_entries = nil
   assign xs_default_entries = nil
   assign source_entries = nil
   assign xs_heading = block.settings.heading
 
-  unless shop.metafields.shopCrosssell.settings == blank
-    assign smf_settings = shop.metafields.shopCrosssell.settings
-    if smf_settings.value != blank
+  assign xs_shop_ns = shop.metafields.shopCrosssell
+  if xs_shop_ns == blank
+    assign xs_shop_ns = shop.metafields['shopCrosssell']
+  endif
+
+  unless xs_shop_ns == blank or xs_shop_ns.settings == blank
+    assign smf_settings = xs_shop_ns.settings
+    assign xs_settings_txt = smf_settings | metafield_text
+    if xs_settings_txt != blank
+      assign xs_settings_parsed = xs_settings_txt | strip | parse_json
+      if xs_settings_parsed.titleproductpage != blank or xs_settings_parsed.showdefault != blank
+        assign xs_cfg = xs_settings_parsed
+      elsif xs_settings_parsed[0] != blank
+        assign xs_row0 = xs_settings_parsed[0]
+        if xs_row0.titleproductpage != blank or xs_row0.showdefault != blank or xs_row0.productpagemaxitems != blank
+          assign xs_cfg = xs_row0
+        endif
+      endif
+    endif
+    if xs_cfg == blank and smf_settings.value != blank
       assign v = smf_settings.value
       if v.titleproductpage != blank or v.showdefault != blank
         assign xs_cfg = v
       elsif v[0] != blank
-        assign xs_cfg = v[0]
-      endif
-    else
-      assign xs_settings_txt = smf_settings | metafield_text
-      if xs_settings_txt != blank
-        assign xs_settings_arr = xs_settings_txt | parse_json
-        if xs_settings_arr.titleproductpage != blank or xs_settings_arr.showdefault != blank
-          assign xs_cfg = xs_settings_arr
-        elsif xs_settings_arr[0] != blank
-          assign xs_cfg = xs_settings_arr[0]
+        assign xs_rowv = v[0]
+        if xs_rowv.titleproductpage != blank or xs_rowv.showdefault != blank or xs_rowv.productpagemaxitems != blank
+          assign xs_cfg = xs_rowv
         endif
       endif
     endif
@@ -35,24 +47,26 @@
 
   unless product.metafields.productDetails.crosssell == blank
     assign smf_p = product.metafields.productDetails.crosssell
-    if smf_p.value != blank
-      assign xs_product_entries = smf_p.value
-    else
-      assign xs_p_txt = smf_p | metafield_text
-      if xs_p_txt != blank
-        assign xs_product_entries = xs_p_txt | parse_json
+    assign xs_p_txt = smf_p | metafield_text
+    if xs_p_txt != blank
+      assign xs_product_entries = xs_p_txt | strip | parse_json
+    elsif smf_p.value != blank
+      assign xs_pv = smf_p.value
+      if xs_pv.first.handle != blank or xs_pv[0].handle != blank
+        assign xs_product_entries = xs_pv
       endif
     endif
   endunless
 
-  unless shop.metafields.shopCrosssell.default == blank
-    assign smf_d = shop.metafields.shopCrosssell.default
-    if smf_d.value != blank
-      assign xs_default_entries = smf_d.value
-    else
-      assign xs_d_txt = smf_d | metafield_text
-      if xs_d_txt != blank
-        assign xs_default_entries = xs_d_txt | parse_json
+  unless xs_shop_ns == blank or xs_shop_ns.default == blank
+    assign smf_d = xs_shop_ns.default
+    assign xs_d_txt = smf_d | metafield_text
+    if xs_d_txt != blank
+      assign xs_default_entries = xs_d_txt | strip | parse_json
+    elsif smf_d.value != blank
+      assign xs_dv = smf_d.value
+      if xs_dv.first.handle != blank or xs_dv[0].handle != blank
+        assign xs_default_entries = xs_dv
       endif
     endif
   endunless
@@ -143,18 +157,20 @@
 {%- endstyle -%}
 
 <div id="CrossSellAddons-{{ block.id }}" class="tvc-cross-sell-addons" {{ block.shopify_attributes }}>
-  {%- if xs_cfg == blank -%}
+  {%- if source_entries == blank -%}
     {%- if request.design_mode -%}
       <div class="tvc-xs-pad-{{ block.id }}">
         <p class="caption">
-          Cross Sell shop settings were not found. Confirm shop.metafields.shopCrosssell.settings exists.
+          No cross-sell products resolved for this product. Confirm Cross Sell lists exist on the product
+          (productDetails.crosssell) and/or shop default list (shopCrosssell.default), and that metafields are available to
+          the storefront.
         </p>
-      </div>
-    {%- endif -%}
-  {%- elsif source_entries == blank -%}
-    {%- if request.design_mode -%}
-      <div class="tvc-xs-pad-{{ block.id }}">
-        <p class="caption">No cross-sell product list for this product.</p>
+        {%- if xs_shop_ns == blank -%}
+          <p class="caption">
+            The shop metafield namespace shopCrosssell is not visible to this theme in Liquid. If lists exist in Admin but
+            not here, check Cross Sell app storefront access or contact their support.
+          </p>
+        {%- endif -%}
       </div>
     {%- endif -%}
   {%- else -%}
