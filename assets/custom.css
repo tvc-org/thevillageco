@@ -1337,6 +1337,34 @@ header-drawer {
     line-height: 1.2 !important;
 }
 
+.yotpo-star-rating-reviews-highly-rated-topics {
+    margin-top:20px;
+}
+
+#yotpo-headline-reviews {
+    font-family: "FuturaPTDemi";
+    font-size: 32px !important;
+}
+
+.yotpo-base-layout {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+@media screen and (max-width: 1024px) {
+    .yotpo-base-layout {
+        width: 100% !important;
+    }
+}
+
+
+
+@media screen and (min-width: 1025px) {
+    #yotpo-headline-reviews {
+        font-size: 45px !important;
+    }
+}
+
 /*
  * PDP — Yotpo Product Reviews (Apps section / app embed): neutral canvas.
  * qa-theme targeted the legacy .yotpo.yotpo-main-widget under .product-extra with hundreds of
