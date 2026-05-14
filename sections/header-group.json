@@ -51,7 +51,7 @@
           "settings": {
             "tab_image": "shopify://shop_images/tab-logo-mr-bubble.png",
             "mobile_tab_image": "shopify://shop_images/tab-logo-mr-bubble.png",
-            "nav_image": "shopify://shop_images/mrbubble-nav.png",
+            "nav_image": "shopify://shop_images/mrbubble-nav_1.png",
             "text": "Mr. Bubble",
             "brand_color": "#f04d98",
             "brand_text_color": "#323131",
@@ -83,6 +83,7 @@
           "settings": {
             "tab_image": "shopify://shop_images/tab-logo-soft-dri.png",
             "mobile_tab_image": "shopify://shop_images/tab-logo-soft-dri.png",
+            "nav_image": "shopify://shop_images/Soft-N-Dri-Logo-main-level_ef3414a6-d239-4cb6-baa7-e6e496390914.png",
             "text": "Soft&Dri",
             "brand_color": "#da2171",
             "brand_text_color": "#323131",
