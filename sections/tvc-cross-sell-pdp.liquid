@@ -1,7 +1,126 @@
 {%- comment -%}
-  Popular Add-Ons (Cross Sell legacy): outputs #cross-sell / #upsell / #xs_bundle and xsellSettings scripts
-  when shop.metafields.shopCrosssell.settings is present. Requires Cross Sell app + snippets/cross-sell-custom in layout.
+  Popular Add-Ons: reads Cross Sell metafields (same store data as the legacy app) and renders theme product cards
+  using the standard grid + card-product pattern (featured collection / related products). No Cross Sell JS.
+  Add this section from the theme customizer on the product template.
 {%- endcomment -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign xs_cfg = nil
+  assign xs_product_entries = nil
+  assign xs_default_entries = nil
+  assign source_entries = nil
+  assign xs_heading = section.settings.heading
+
+  unless shop.metafields.shopCrosssell.settings == blank
+    assign smf_settings = shop.metafields.shopCrosssell.settings
+    if smf_settings.value != blank
+      assign v = smf_settings.value
+      if v.titleproductpage != blank or v.showdefault != blank
+        assign xs_cfg = v
+      elsif v[0] != blank
+        assign xs_cfg = v[0]
+      endif
+    else
+      assign xs_settings_txt = smf_settings | metafield_text
+      if xs_settings_txt != blank
+        assign xs_settings_arr = xs_settings_txt | parse_json
+        if xs_settings_arr.titleproductpage != blank or xs_settings_arr.showdefault != blank
+          assign xs_cfg = xs_settings_arr
+        elsif xs_settings_arr[0] != blank
+          assign xs_cfg = xs_settings_arr[0]
+        endif
+      endif
+    endif
+  endunless
+
+  unless product.metafields.productDetails.crosssell == blank
+    assign smf_p = product.metafields.productDetails.crosssell
+    if smf_p.value != blank
+      assign xs_product_entries = smf_p.value
+    else
+      assign xs_p_txt = smf_p | metafield_text
+      if xs_p_txt != blank
+        assign xs_product_entries = xs_p_txt | parse_json
+      endif
+    endif
+  endunless
+
+  unless shop.metafields.shopCrosssell.default == blank
+    assign smf_d = shop.metafields.shopCrosssell.default
+    if smf_d.value != blank
+      assign xs_default_entries = smf_d.value
+    else
+      assign xs_d_txt = smf_d | metafield_text
+      if xs_d_txt != blank
+        assign xs_default_entries = xs_d_txt | parse_json
+      endif
+    endif
+  endunless
+
+  assign showdefault = '3'
+  if xs_cfg != blank
+    if xs_cfg.showdefault != blank
+      assign showdefault = xs_cfg.showdefault | append: '' | strip
+    endif
+  endif
+
+  assign use_product = false
+  if xs_product_entries != blank and xs_product_entries.size > 0
+    assign use_product = true
+  endif
+
+  if showdefault == '4'
+    if use_product
+      assign source_entries = xs_product_entries
+    endif
+  elsif showdefault == '1'
+    assign source_entries = xs_default_entries
+  elsif showdefault == '2'
+    if use_product
+      assign source_entries = xs_product_entries
+    else
+      assign source_entries = xs_default_entries
+    endif
+  else
+    if use_product
+      assign source_entries = xs_product_entries
+    else
+      assign source_entries = xs_default_entries
+    endif
+  endif
+
+  assign max_from_app = 5
+  if xs_cfg != blank
+    if xs_cfg.productpagemaxitems != blank
+      assign max_from_app = xs_cfg.productpagemaxitems | plus: 0
+      if max_from_app < 1
+        assign max_from_app = 5
+      endif
+    endif
+  endif
+
+  assign max_items = section.settings.products_to_show
+  if max_from_app < max_items
+    assign max_items = max_from_app
+  endif
+
+  if xs_heading == blank and xs_cfg != blank
+    if xs_cfg.titleproductpage != blank
+      assign xs_heading = xs_cfg.titleproductpage
+    elsif xs_cfg.titleproductpagedefault != blank
+      assign xs_heading = xs_cfg.titleproductpagedefault
+    endif
+  endif
+  if xs_heading == blank
+    assign xs_heading = 'Popular Add-Ons'
+  endif
+
+  assign xs_scheme = section.settings.color_scheme | default: 'scheme-1'
+-%}
+
 {%- style -%}
   .section-{{ section.id }}-padding {
     padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
@@ -13,44 +132,102 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
-  .tvc-cross-sell-pdp .product-recommend-core #cross-sell .collection-products.items {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem 1rem;
+  .tvc-cross-sell-pdp .product-recommend-core .collection__title {
+    text-align: center;
   }
-  @media screen and (min-width: 750px) {
-    .tvc-cross-sell-pdp .product-recommend-core #cross-sell .collection-products.items {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  .tvc-cross-sell-pdp .product-recommend-core .card__information,
+  .tvc-cross-sell-pdp .product-recommend-core .card__heading,
+  .tvc-cross-sell-pdp .product-recommend-core .card-information {
+    text-align: center;
   }
-  .tvc-cross-sell-pdp .product-recommend-core .product-image-wrapper {
-    position: relative;
-  }
-  .tvc-cross-sell-pdp .product-recommend-core .product-image-wrapper .product-image {
-    width: 100%;
-    height: auto;
-    vertical-align: middle;
+  .tvc-cross-sell-pdp .product-recommend-core .price {
+    justify-content: center;
   }
 {%- endstyle -%}
-{%- if shop.metafields.shopCrosssell.settings == blank -%}
+
+{%- if xs_cfg == blank -%}
   {%- if request.design_mode -%}
-    <div class="page-width">
+    <div class="page-width section-{{ section.id }}-padding">
       <p class="caption">
-        Cross Sell is not configured (missing <code>shop.metafields.shopCrosssell.settings</code>). Install the Cross Sell
-        app or sync metafields.
+        Cross Sell shop settings were not found. Confirm <code>shop.metafields.shopCrosssell.settings</code> exists (Cross
+        Sell app).
       </p>
+    </div>
+  {%- endif -%}
+{%- elsif source_entries == blank -%}
+  {%- if request.design_mode -%}
+    <div class="page-width section-{{ section.id }}-padding">
+      <p class="caption">No cross-sell product list for this product (check product and shop Cross Sell metafields).</p>
     </div>
   {%- endif -%}
 {%- else -%}
   <div
-    class="tvc-cross-sell-pdp section-{{ section.id }}-padding{% if section.settings.include_margins %} page-width{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    id="tvc-cross-sell-{{ section.id }}"
+    class="tvc-cross-sell-pdp color-{{ xs_scheme }} gradient{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
     {{ section.shopify_attributes }}
   >
-    <div class="product-recommend-core">
-      {%- comment -%} include cross-sell {%- endcomment -%}
-      {% render 'cross-sell' %}
+    <div
+      class="product-recommend-core collection{% if section.settings.include_margins %} page-width{% endif %} section-{{ section.id }}-padding isolate"
+    >
+      <div class="collection__title title-wrapper title-wrapper--no-top-margin">
+        <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ xs_heading }}</h2>
+      </div>
+
+      <ul
+        class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+        role="list"
+      >
+        {%- assign skip_card_product_styles = false -%}
+        {%- assign xs_rendered = 0 -%}
+        {%- for entry in source_entries -%}
+          {%- if xs_rendered >= max_items -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- assign xs_handle = entry.handle | default: entry['handle'] -%}
+          {%- if xs_handle == blank -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- assign card_product = all_products[xs_handle] -%}
+          {%- if card_product == blank -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- if card_product.id == product.id -%}
+            {%- continue -%}
+          {%- endif -%}
+          {%- assign lazy_load = false -%}
+          {%- if xs_rendered >= 2 -%}
+            {%- assign lazy_load = true -%}
+          {%- endif -%}
+          <li
+            class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ xs_rendered | plus: 1 }};"
+            {% endif %}
+          >
+            {% render 'card-product',
+              card_product: card_product,
+              media_aspect_ratio: section.settings.image_ratio,
+              image_shape: section.settings.image_shape,
+              lazy_load: lazy_load,
+              show_secondary_image: section.settings.show_secondary_image,
+              show_vendor: section.settings.show_vendor,
+              show_rating: false,
+              skip_styles: skip_card_product_styles,
+              section_id: section.id,
+              quick_add: 'none'
+            %}
+          </li>
+          {%- assign skip_card_product_styles = true -%}
+          {%- assign xs_rendered = xs_rendered | plus: 1 -%}
+        {%- endfor -%}
+      </ul>
     </div>
   </div>
+{%- endif -%}
+
+{%- if section.settings.image_shape == 'arch' -%}
+  {{ 'mask-arch.svg' | inline_asset_content }}
 {%- endif -%}
 
 {% schema %}
@@ -63,10 +240,106 @@
   },
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Uses Cross Sell metafields (shopCrosssell + productDetails.crosssell). Layout matches featured collection / related products grid."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "info": "Leave blank to use the title from Cross Sell settings (e.g. Popular Add-Ons)."
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h3", "label": "Small" },
+        { "value": "h2", "label": "Medium" },
+        { "value": "h1", "label": "Large" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "label": "Maximum products to show"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns on mobile",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "square",
+      "label": "Image ratio"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "arch", "label": "Arch" },
+        { "value": "blob", "label": "Blob" },
+        { "value": "chevronleft", "label": "Chevron left" },
+        { "value": "chevronright", "label": "Chevron right" },
+        { "value": "diamond", "label": "Diamond" },
+        { "value": "parallelogram", "label": "Parallelogram" },
+        { "value": "round", "label": "Round" }
+      ],
+      "default": "default",
+      "label": "Image shape"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": true,
+      "label": "Show second image on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "Show vendor"
+    },
+    {
       "type": "checkbox",
       "id": "include_margins",
       "default": true,
-      "label": "Include horizontal margins"
+      "label": "Include horizontal margins (page width)"
     },
     {
       "type": "range",

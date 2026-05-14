@@ -399,14 +399,6 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-
-    {%- if shop.metafields.shopCrosssell.settings != blank -%}
-      {%- comment -%}
-        Cross Sell “custom theme” hook: defines window.xsellCustom.buildxsellsoutput for the app’s xsellLib (see
-        snippets/cross-sell.liquid + sections/tvc-cross-sell-pdp.liquid).
-      {%- endcomment -%}
-      {% render 'cross-sell-custom' %}
-    {%- endif -%}
   </head>
 
   <body
