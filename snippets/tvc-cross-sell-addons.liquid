@@ -1,0 +1,225 @@
+{%- comment -%}
+  Cross Sell add-ons grid for main-product `cross_sell_addons` block. Params: product, section, block.
+{%- endcomment -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign xs_cfg = nil
+  assign xs_product_entries = nil
+  assign xs_default_entries = nil
+  assign source_entries = nil
+  assign xs_heading = block.settings.heading
+
+  unless shop.metafields.shopCrosssell.settings == blank
+    assign smf_settings = shop.metafields.shopCrosssell.settings
+    if smf_settings.value != blank
+      assign v = smf_settings.value
+      if v.titleproductpage != blank or v.showdefault != blank
+        assign xs_cfg = v
+      elsif v[0] != blank
+        assign xs_cfg = v[0]
+      endif
+    else
+      assign xs_settings_txt = smf_settings | metafield_text
+      if xs_settings_txt != blank
+        assign xs_settings_arr = xs_settings_txt | parse_json
+        if xs_settings_arr.titleproductpage != blank or xs_settings_arr.showdefault != blank
+          assign xs_cfg = xs_settings_arr
+        elsif xs_settings_arr[0] != blank
+          assign xs_cfg = xs_settings_arr[0]
+        endif
+      endif
+    endif
+  endunless
+
+  unless product.metafields.productDetails.crosssell == blank
+    assign smf_p = product.metafields.productDetails.crosssell
+    if smf_p.value != blank
+      assign xs_product_entries = smf_p.value
+    else
+      assign xs_p_txt = smf_p | metafield_text
+      if xs_p_txt != blank
+        assign xs_product_entries = xs_p_txt | parse_json
+      endif
+    endif
+  endunless
+
+  unless shop.metafields.shopCrosssell.default == blank
+    assign smf_d = shop.metafields.shopCrosssell.default
+    if smf_d.value != blank
+      assign xs_default_entries = smf_d.value
+    else
+      assign xs_d_txt = smf_d | metafield_text
+      if xs_d_txt != blank
+        assign xs_default_entries = xs_d_txt | parse_json
+      endif
+    endif
+  endunless
+
+  assign showdefault = '3'
+  if xs_cfg != blank
+    if xs_cfg.showdefault != blank
+      assign showdefault = xs_cfg.showdefault | append: '' | strip
+    endif
+  endif
+
+  assign use_product = false
+  if xs_product_entries != blank and xs_product_entries.size > 0
+    assign use_product = true
+  endif
+
+  if showdefault == '4'
+    if use_product
+      assign source_entries = xs_product_entries
+    endif
+  elsif showdefault == '1'
+    assign source_entries = xs_default_entries
+  elsif showdefault == '2'
+    if use_product
+      assign source_entries = xs_product_entries
+    else
+      assign source_entries = xs_default_entries
+    endif
+  else
+    if use_product
+      assign source_entries = xs_product_entries
+    else
+      assign source_entries = xs_default_entries
+    endif
+  endif
+
+  assign max_from_app = 5
+  if xs_cfg != blank
+    if xs_cfg.productpagemaxitems != blank
+      assign max_from_app = xs_cfg.productpagemaxitems | plus: 0
+      if max_from_app < 1
+        assign max_from_app = 5
+      endif
+    endif
+  endif
+
+  assign max_items = block.settings.products_to_show
+  if max_from_app < max_items
+    assign max_items = max_from_app
+  endif
+
+  if xs_heading == blank and xs_cfg != blank
+    if xs_cfg.titleproductpage != blank
+      assign xs_heading = xs_cfg.titleproductpage
+    elsif xs_cfg.titleproductpagedefault != blank
+      assign xs_heading = xs_cfg.titleproductpagedefault
+    endif
+  endif
+  if xs_heading == blank
+    assign xs_heading = 'Popular Add-Ons'
+  endif
+
+  assign xs_scheme = block.settings.color_scheme | default: 'scheme-1'
+-%}
+
+{%- style -%}
+  .tvc-xs-pad-{{ block.id }} {
+    padding-top: {{ block.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ block.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .tvc-xs-pad-{{ block.id }} {
+      padding-top: {{ block.settings.padding_top }}px;
+      padding-bottom: {{ block.settings.padding_bottom }}px;
+    }
+  }
+  #CrossSellAddons-{{ block.id }} .product-recommend-core .collection__title {
+    text-align: center;
+  }
+  #CrossSellAddons-{{ block.id }} .product-recommend-core .card__information,
+  #CrossSellAddons-{{ block.id }} .product-recommend-core .card__heading,
+  #CrossSellAddons-{{ block.id }} .product-recommend-core .card-information {
+    text-align: center;
+  }
+  #CrossSellAddons-{{ block.id }} .product-recommend-core .price {
+    justify-content: center;
+  }
+{%- endstyle -%}
+
+<div id="CrossSellAddons-{{ block.id }}" class="tvc-cross-sell-addons" {{ block.shopify_attributes }}>
+  {%- if xs_cfg == blank -%}
+    {%- if request.design_mode -%}
+      <div class="tvc-xs-pad-{{ block.id }}">
+        <p class="caption">
+          Cross Sell shop settings were not found. Confirm shop.metafields.shopCrosssell.settings exists.
+        </p>
+      </div>
+    {%- endif -%}
+  {%- elsif source_entries == blank -%}
+    {%- if request.design_mode -%}
+      <div class="tvc-xs-pad-{{ block.id }}">
+        <p class="caption">No cross-sell product list for this product.</p>
+      </div>
+    {%- endif -%}
+  {%- else -%}
+    <div
+      class="tvc-cross-sell-addons__inner color-{{ xs_scheme }} gradient tvc-xs-pad-{{ block.id }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    >
+      <div class="product-recommend-core collection isolate">
+        <div class="collection__title title-wrapper title-wrapper--no-top-margin">
+          <h2 class="title inline-richtext {{ block.settings.heading_size }}">{{ xs_heading }}</h2>
+        </div>
+
+        <ul
+          class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ block.settings.columns_desktop }}-col-desktop grid--{{ block.settings.columns_mobile }}-col-tablet-down"
+          role="list"
+        >
+          {%- assign skip_card_product_styles = false -%}
+          {%- assign xs_rendered = 0 -%}
+          {%- for entry in source_entries -%}
+            {%- if xs_rendered >= max_items -%}
+              {%- break -%}
+            {%- endif -%}
+            {%- assign xs_handle = entry.handle | default: entry['handle'] -%}
+            {%- if xs_handle == blank -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- assign card_product = all_products[xs_handle] -%}
+            {%- if card_product == blank -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- if card_product.id == product.id -%}
+              {%- continue -%}
+            {%- endif -%}
+            {%- assign lazy_load = false -%}
+            {%- if xs_rendered >= 2 -%}
+              {%- assign lazy_load = true -%}
+            {%- endif -%}
+            <li
+              class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ xs_rendered | plus: 1 }};"
+              {% endif %}
+            >
+              {% render 'card-product',
+                card_product: card_product,
+                media_aspect_ratio: block.settings.image_ratio,
+                image_shape: block.settings.image_shape,
+                lazy_load: lazy_load,
+                show_secondary_image: block.settings.show_secondary_image,
+                show_vendor: block.settings.show_vendor,
+                show_rating: false,
+                skip_styles: skip_card_product_styles,
+                section_id: section.id,
+                quick_add: 'none'
+              %}
+            </li>
+            {%- assign skip_card_product_styles = true -%}
+            {%- assign xs_rendered = xs_rendered | plus: 1 -%}
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{%- if block.settings.image_shape == 'arch' -%}
+  {{ 'mask-arch.svg' | inline_asset_content }}
+{%- endif -%}

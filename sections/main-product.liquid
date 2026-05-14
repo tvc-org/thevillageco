@@ -751,6 +751,8 @@
                     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 </product-recommendations>
+              {%- when 'cross_sell_addons' -%}
+                {% render 'tvc-cross-sell-addons', product: product, section: section, block: block %}
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
@@ -1546,6 +1548,129 @@
           "id": "enable_quick_add",
           "label": "t:sections.main-product.blocks.complementary_products.settings.enable_quick_add.label",
           "default": false
+        }
+      ]
+    },
+    {
+      "type": "cross_sell_addons",
+      "name": "Cross Sell add-ons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Uses Cross Sell metafields (shopCrosssell + productDetails.crosssell). Renders in the product column with the theme product card grid."
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "Heading",
+          "info": "Leave blank to use Cross Sell settings (e.g. Popular Add-Ons)."
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Heading size",
+          "options": [
+            { "value": "h3", "label": "Small" },
+            { "value": "h2", "label": "Medium" },
+            { "value": "h1", "label": "Large" }
+          ],
+          "default": "h2"
+        },
+        {
+          "type": "range",
+          "id": "products_to_show",
+          "min": 2,
+          "max": 10,
+          "step": 1,
+          "default": 3,
+          "label": "Maximum products to show"
+        },
+        {
+          "type": "select",
+          "id": "columns_desktop",
+          "label": "Columns on desktop",
+          "options": [
+            { "value": "2", "label": "2" },
+            { "value": "3", "label": "3" },
+            { "value": "4", "label": "4" }
+          ],
+          "default": "3"
+        },
+        {
+          "type": "select",
+          "id": "columns_mobile",
+          "label": "Columns on mobile",
+          "options": [
+            { "value": "1", "label": "1" },
+            { "value": "2", "label": "2" }
+          ],
+          "default": "2"
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "Color scheme",
+          "default": "scheme-1"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "options": [
+            { "value": "adapt", "label": "Adapt to image" },
+            { "value": "portrait", "label": "Portrait" },
+            { "value": "square", "label": "Square" }
+          ],
+          "default": "square",
+          "label": "Image ratio"
+        },
+        {
+          "type": "select",
+          "id": "image_shape",
+          "options": [
+            { "value": "default", "label": "Default" },
+            { "value": "arch", "label": "Arch" },
+            { "value": "blob", "label": "Blob" },
+            { "value": "chevronleft", "label": "Chevron left" },
+            { "value": "chevronright", "label": "Chevron right" },
+            { "value": "diamond", "label": "Diamond" },
+            { "value": "parallelogram", "label": "Parallelogram" },
+            { "value": "round", "label": "Round" }
+          ],
+          "default": "default",
+          "label": "Image shape"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_secondary_image",
+          "default": true,
+          "label": "Show second image on hover"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "default": false,
+          "label": "Show vendor"
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 60,
+          "step": 4,
+          "unit": "px",
+          "label": "Padding top",
+          "default": 24
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "min": 0,
+          "max": 60,
+          "step": 4,
+          "unit": "px",
+          "label": "Padding bottom",
+          "default": 24
         }
       ]
     },
