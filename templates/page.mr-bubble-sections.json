@@ -85,11 +85,41 @@
         "heading": "",
         "color_scheme": ""
       }
+    },
+    "tvc_featured_review_qjVW3m": {
+      "type": "tvc-featured-review",
+      "name": "t:sections.tvc-featured-review.presets.name",
+      "settings": {
+        "rating": "5",
+        "title": "Mr.Bubble is as amazing as ever!",
+        "review_text": "<p>Great to have in the tub. It’s able to be fun and relaxing which is a good thing! Nothing compares to this wonderful bath time product!</p>",
+        "product": "mr-bubble-bath-time-fun-play-pack"
+      }
+    },
+    "featured_collection_Limy4M": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "mr-bubble-bestsellers",
+        "products_to_show": 12,
+        "title": "Best Sellers",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none"
+      }
     }
   },
   "order": [
     "main",
     "tvc_slideshow_YYRRVn",
-    "tvc_dual_feature_DaeV7K"
+    "tvc_dual_feature_DaeV7K",
+    "tvc_featured_review_qjVW3m",
+    "featured_collection_Limy4M"
   ]
 }
