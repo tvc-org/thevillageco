@@ -87,17 +87,21 @@
             "page": ""
           }
         },
-        "complementary_b9ptEW": {
-          "type": "complementary",
+        "cross_sell_addons_4DhH8X": {
+          "type": "cross_sell_addons",
           "settings": {
-            "block_heading": "Pairs well with",
-            "make_collapsible_row": false,
-            "icon": "price_tag",
-            "product_list_limit": 10,
-            "products_per_page": 3,
-            "pagination_style": "counter",
+            "heading": "",
+            "heading_size": "h2",
+            "products_to_show": 3,
+            "columns_desktop": "3",
+            "columns_mobile": "2",
+            "color_scheme": "scheme-1",
             "image_ratio": "square",
-            "enable_quick_add": false
+            "image_shape": "default",
+            "show_secondary_image": true,
+            "show_vendor": false,
+            "padding_top": 24,
+            "padding_bottom": 24
           }
         },
         "share": {
@@ -121,7 +125,7 @@
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
-        "complementary_b9ptEW",
+        "cross_sell_addons_4DhH8X",
         "share"
       ],
       "settings": {
