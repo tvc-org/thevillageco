@@ -470,6 +470,7 @@ a.product__text {
   height: 62px;
   box-sizing: border-box;
   align-items: center;
+  justify-content: space-between;
 }
 
 .product__info-container .product-form__purchase-row .product-form__submit.button--primary,
@@ -537,6 +538,7 @@ a.product__text {
     min-height: 62px;
     height: 62px;
     box-sizing: border-box;
+    justify-content: space-between;
   }
 
   .product-form__purchase-row .quantity:before {
@@ -1798,4 +1800,32 @@ a.product__text {
   .product__info-container .yotpo-widget-instance {
     margin: 34px 0 24px;
   }
+}
+
+.product__info-container .quantity__input {
+  font-size: 18px;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+.product-form__purchase-row .quantity {
+  column-gap: 4px !important;
+  width: auto;
+}
+
+/* +/- control icons: base.css uses 1rem (~10px); comp asks for 14px wide on PDP */
+.product .quantity__button .svg-wrapper {
+  width: 14px;
+  height: 14px;
+}
+
+/* Tight quantity value field (~2 digits); pill uses space-between so +/- stay at ends */
+.product-form__purchase-row .quantity__input {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 2ch;
+  min-width: 2ch;
+  max-width: 2ch;
+  padding-left: 0;
+  padding-right: 0;
 }
