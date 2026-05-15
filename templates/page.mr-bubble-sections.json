@@ -178,6 +178,46 @@
         "auto_rotate": false,
         "change_slides_speed": 5
       }
+    },
+    "collection_list_VdxPhX": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_eiVmmN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mr-bubble-baby-bubble",
+            "title_override": "BABY BUBBLE",
+            "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
+          }
+        },
+        "featured_collection_A4MMy9": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mr-bubble-bubble-bath",
+            "title_override": "MR BUBBLE",
+            "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
+          }
+        },
+        "featured_collection_YfcNPj": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "mr-bubble-new-products",
+            "title_override": "NEW ARRIVALS",
+            "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_eiVmmN",
+        "featured_collection_A4MMy9",
+        "featured_collection_YfcNPj"
+      ],
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Collections",
+        "show_view_all": false,
+        "swipe_on_mobile": false
+      }
     }
   },
   "order": [
@@ -187,6 +227,7 @@
     "tvc_featured_review_qjVW3m",
     "featured_collection_Limy4M",
     "tvc_slideshow_XnQ6dC",
-    "tvc_slideshow_DWTaV9"
+    "tvc_slideshow_DWTaV9",
+    "collection_list_VdxPhX"
   ]
 }
