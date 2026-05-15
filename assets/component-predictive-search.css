@@ -196,8 +196,9 @@ predictive-search[loading] .predictive-search__results-groups-wrapper ~ .predict
 }
 
 .predictive-search__item--term {
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
+  justify-content: center;
   padding: 1.3rem 2rem;
   word-break: break-all;
   line-height: calc(1 + 0.4 / var(--font-body-scale));
