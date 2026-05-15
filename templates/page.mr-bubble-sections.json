@@ -113,6 +113,38 @@
         "show_rating": false,
         "quick_add": "none"
       }
+    },
+    "tvc_slideshow_XnQ6dC": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_6geXqk": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "preserve_image_aspect_ratio": false,
+            "video": "shopify://files/videos/MRB_PLAYABLES_15_LogoOnly_1.mp4",
+            "heading": "Turn Bath Time \nInto Bubble Time",
+            "text": "<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_left",
+            "link": "shopify://collections/mr-bubble-bubble-bath",
+            "link_label": "Shop Bubble Bath"
+          }
+        }
+      },
+      "block_order": [
+        "slide_6geXqk"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": false,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5
+      }
     }
   },
   "order": [
@@ -120,6 +152,7 @@
     "tvc_slideshow_YYRRVn",
     "tvc_dual_feature_DaeV7K",
     "tvc_featured_review_qjVW3m",
-    "featured_collection_Limy4M"
+    "featured_collection_Limy4M",
+    "tvc_slideshow_XnQ6dC"
   ]
 }
