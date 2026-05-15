@@ -147,6 +147,15 @@
     padding: 40px 0 50px;
   }
 
+  /* Single slide (no dot nav): avoid extra bottom gap; multi-slide keeps space via controls below */
+  .tvc-slideshow--layout-stacked:not(.tvc-slideshow--has-nav) .tvc-slideshow__panel {
+    padding-bottom: 0;
+  }
+
+  .tvc-slideshow--layout-stacked:not(.tvc-slideshow--has-nav) .tvc-slideshow__panel .tvc-slideshow__link {
+    margin-bottom: 0 !important;
+  }
+
   /* With dot nav: panel bottom padding moves below controls (visual space after dots) */
   .tvc-slideshow--layout-stacked.tvc-slideshow--has-nav .tvc-slideshow__panel {
     padding-bottom: 0;

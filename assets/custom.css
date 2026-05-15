@@ -42,7 +42,7 @@
      * --section-margin-desktop, or add a more specific `.shopify-section.section + …` rule.
      */
     --section-margin-mobile: 80px;
-    --section-margin-desktop: 120px;
+    --section-margin-desktop: 130px;
     --section-margin: var(--section-margin-mobile);
 }
 
@@ -76,7 +76,7 @@
 
 /* Match vertical gap above footer Klaviyo block (after last template section) */
 main#MainContent + * .footer-newsletter-section {
-    margin-top: var(--section-margin);
+    /* margin-top: var(--section-margin); */
 }
 
 /*
@@ -419,6 +419,10 @@ body.mr-bubble .shopify-section.section .collection-list .card--standard .card__
     border: 1px solid #C7C7C7;
 }
 
+.shopify-section.section .collection .card--standard > .card__content .card__information {
+    padding-bottom: 0 !important;
+}
+
 @media screen and (max-width: 959px) {
     .shopify-section.section .collection .slider-buttons {
         display: none;
@@ -443,6 +447,30 @@ body.mr-bubble .tvc-dual-feature__media {
     }
 }
 
+/* Mr. Bubble — section titles uppercase */
+body.mr-bubble .tvc-dual-feature__title,
+body.mr-bubble .collection__title .title,
+body.mr-bubble .collection-list-wrapper h2 {
+    text-transform: uppercase;
+}
+
+
+.collection-list-wrapper h2 {
+    font-family: "FuturaPTHeavy" !important;
+}
+
+.collection-list .card__information  {
+    margin-top: 16px !important;
+}
+
+@media screen and (min-width: 1025px) {
+    .collection-list-wrapper h2 {
+        margin-bottom: 16px !important;
+    }
+    .collection-list .card__information  {
+        margin-top: 24px !important;
+    }
+}
 /* ==========================================================================
    Header - Site header & icons
    ========================================================================== */
