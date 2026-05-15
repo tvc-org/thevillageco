@@ -110,17 +110,71 @@
             "menu": "the-village-co-mega"
           }
         },
+        "touts_group_z6EgtR": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "The Village Co.",
+            "nav_parent_title": "Blog",
+            "text": "TVC - Blog Links",
+            "product_list": [],
+            "collection_list": [],
+            "article_1": "fun/make-slime",
+            "article_2": "village-naturals-therapy/enhance-your-bubble-bath-the-benefits-of-using-essential-oils-in-a-bath",
+            "article_3": "village-naturals-therapy/your-best-self-guide-to-epsom-salt-baths",
+            "article_4": "",
+            "bottom_button_link": "",
+            "bottom_button_text": ""
+          }
+        },
+        "touts_group_cV3B44": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "The Village Co.",
+            "nav_parent_title": "Soft & Dri",
+            "text": "TVC - Soft & Dri",
+            "product_list": [
+              "soft-dri-sparkling-citrus-aluminum-free-deodorant"
+            ],
+            "collection_list": [
+              "soft-dri-aluminum-free"
+            ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/soft-dri-aluminum-free",
+            "bottom_button_text": "All Products"
+          }
+        },
+        "touts_group_Drzedz": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "The Village Co.",
+            "nav_parent_title": "Bath Shoppe",
+            "text": "TVC - Bath Shoppe",
+            "product_list": [
+              "lavender-chamomile-milk-bath",
+              "white-tea-jasmine-milk-bath"
+            ],
+            "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://products/lavender-chamomile-milk-bath",
+            "bottom_button_text": "All Products"
+          }
+        },
         "touts_group_f68EyW": {
           "type": "touts_group",
           "settings": {
             "brand_title": "The Village Co.",
             "nav_parent_title": "Mr. Bubble",
             "text": "TVC - MRB",
-            "product_list": [
-              "mr-bubble-calm-sleep-bubble-bath"
-            ],
+            "product_list": [],
             "collection_list": [
-              "mr-bubble-foam-bath-soap"
+              "mr-bubble-foam-bath-soap",
+              "mr-bubble-collections"
             ],
             "article_1": "",
             "article_2": "",
@@ -134,13 +188,12 @@
           "type": "touts_group",
           "settings": {
             "brand_title": "The Village Co.",
-            "nav_parent_title": "Village Naturals Therapy",
+            "nav_parent_title": "Therapy",
             "text": "TVC - VNT",
-            "product_list": [],
-            "collection_list": [
-              "therapy-muscle",
-              "magnesium-bath-flakes"
+            "product_list": [
+              "muscle-magnesium-bath-flakes"
             ],
+            "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
@@ -155,11 +208,11 @@
             "brand_title": "The Village Co.",
             "nav_parent_title": "Hallu",
             "text": "TVC - Hallu",
-            "product_list": [
-              "unicorn-bath-bomb",
-              "new-bora-bora-bubble-bath"
+            "product_list": [],
+            "collection_list": [
+              "hallu-sea-salt-citrus",
+              "hallu-bath-bombs"
             ],
-            "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
@@ -172,14 +225,13 @@
           "type": "touts_group",
           "settings": {
             "brand_title": "Mr. Bubble",
-            "nav_parent_title": "All Products",
-            "text": "MRB - All Products",
+            "nav_parent_title": "Shop All",
+            "text": "MRB - Shop All",
             "product_list": [],
             "collection_list": [
+              "mr-bubble-collections",
               "mr-bubble-limited-editions-gifts",
-              "mr-bubble-bestsellers",
-              "mr-bubble-new-products",
-              "mr-bubble-collections"
+              "mr-bubble-new-products"
             ],
             "article_1": "",
             "article_2": "",
@@ -187,97 +239,228 @@
             "article_4": "",
             "bottom_button_link": "shopify://collections/mr-bubble-collections",
             "bottom_button_text": "All Products"
+          }
+        },
+        "touts_group_neWbhh": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "Make Slime",
+            "text": "MRB - Make Slime",
+            "product_list": [],
+            "collection_list": [],
+            "article_1": "fun/make-slime",
+            "article_2": "fun/think-outside-the-bath-to-bubble-up-fun",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://blogs/fun",
+            "bottom_button_text": "View All Blogs"
+          }
+        },
+        "touts_group_RKKzEj": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "Foam Soaps",
+            "text": "MRB - Foam Soaps",
+            "product_list": [
+              "mr-bubble-extra-gentle-foam-soap-8-oz",
+              "fluffy-limited-edition-foam-soap"
+            ],
+            "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/mr-bubble-foam-bath-soap",
+            "bottom_button_text": "Shop All"
+          }
+        },
+        "touts_group_WzrBFQ": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "Bubble Bath",
+            "text": "MRB - Bubble Bath",
+            "product_list": [
+              "mr-bubble-retro-bubble-bath-8-oz",
+              "mr-bubble-original-bubble-bath"
+            ],
+            "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/mr-bubble-bubble-bath",
+            "bottom_button_text": "Shop All"
+          }
+        },
+        "touts_group_ykzD7L": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "New & Limited Edition",
+            "text": "MRB - New & Limited Edition",
+            "product_list": [
+              "super-blaster-body-wash"
+            ],
+            "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/mr-bubble-limited-editions-gifts",
+            "bottom_button_text": "Shop All"
+          }
+        },
+        "touts_group_eKryYB": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "Merch",
+            "text": "MRB - Merch",
+            "product_list": [
+              "limited-edition-mr-bubble-shoe-charms-pack-of-5",
+              "adult-slogan-short-sleeve-t-shirt",
+              "new-mighty-bubble-towel-cape-superhero-mask",
+              "mr-bubble-light-blue-vintage-duckie-kids-t-shirt"
+            ],
+            "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/mr-bubble-merch",
+            "bottom_button_text": "Shop All"
+          }
+        },
+        "touts_group_7Lbdew": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "Extra Gentle",
+            "text": "MRB - Extra Gentle",
+            "product_list": [
+              "mr-bubble-extra-gentle-bubble-bath",
+              "mr-bubble-extra-gentle-foam-soap-8-oz"
+            ],
+            "collection_list": [
+              "mr-bubble-baby-bubble"
+            ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/mr-bubble-extra-gentle",
+            "bottom_button_text": "Shop All"
           }
         },
         "touts_group_MYhEHk": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Mr. Bubble",
-            "nav_parent_title": "Kids Baths",
-            "text": "MRB - Kids Baths",
+            "nav_parent_title": "Bath Boosters",
+            "text": "MRB - Bath Boosters",
             "product_list": [
-              "mr-bubble-scientific-terrific-bath-potion",
-              "galaxy-bath-bombs",
-              "calm-sleep-bubble-bath-2-5-fl-oz",
-              "mr-bubble-extra-gentle-foam-soap-8-oz"
+              "mr-bubble-bubbling-bath-bomb",
+              "scientific-terrific-bath-potion"
             ],
             "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
             "article_4": "",
-            "bottom_button_link": "shopify://collections/mr-bubble-collections",
-            "bottom_button_text": "All Products"
+            "bottom_button_link": "shopify://collections/mr-bubble-bath",
+            "bottom_button_text": "Shop All"
           }
         },
-        "touts_group_bVVPW7": {
+        "touts_group_PMBpeb": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Mr. Bubble",
-            "nav_parent_title": "Baby & Toddler Baths",
-            "text": "MRB - Baby & Toddler Baths",
+            "nav_parent_title": "Baby",
+            "text": "MRB - Baby",
             "product_list": [
-              "calm-sleep-3-in-1-bubble-bath-body-wash-shampoo",
-              "baby-bubble-bubble-bath"
+              "baby-bubble-ultra-gentle-body-wash-shampoo",
+              "baby-bubble-bubble-bath",
+              "baby-bubble-ultra-gentle-moisturizing-lotion",
+              "baby-bubble-ultra-gentle-elephant-bubble-bath"
             ],
             "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
             "article_4": "",
-            "bottom_button_link": "shopify://collections/mr-bubble-collections",
-            "bottom_button_text": "All Products"
-          }
-        },
-        "touts_group_nM3Qct": {
-          "type": "touts_group",
-          "settings": {
-            "brand_title": "Mr. Bubble",
-            "nav_parent_title": "Bathtime fun!",
-            "text": "MRB - Bathtime fun!",
-            "product_list": [
-              "mr-bubble-magic-bath-crackles",
-              "soapy-bath-dough"
-            ],
-            "collection_list": [],
-            "article_1": "",
-            "article_2": "",
-            "article_3": "",
-            "article_4": "",
-            "bottom_button_link": "shopify://collections/mr-bubble-collections",
-            "bottom_button_text": "All Products"
+            "bottom_button_link": "shopify://collections/mr-bubble-baby-bubble",
+            "bottom_button_text": "Shop All"
           }
         },
         "touts_group_GDCBRh": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Village Naturals Therapy",
-            "nav_parent_title": "All Products",
-            "text": "VNT - All Products",
+            "nav_parent_title": "Hello Wellness",
+            "text": "VNT - Hello Wellness",
             "product_list": [],
-            "collection_list": [
-              "therapy-new-products",
-              "therapy-bestsellers",
-              "therapy-gift-sets",
-              "therapy-on-sale"
+            "collection_list": [],
+            "article_1": "village-naturals-therapy/enhance-your-bubble-bath-the-benefits-of-using-essential-oils-in-a-bath",
+            "article_2": "village-naturals-therapy/your-best-self-guide-to-epsom-salt-baths",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://blogs/village-naturals-therapy",
+            "bottom_button_text": "View All Blogs"
+          }
+        },
+        "touts_group_jFQWFc": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Village Naturals Therapy",
+            "nav_parent_title": "Shop All",
+            "text": "VNT - Shop All",
+            "product_list": [
+              "breathe-bubble-bath",
+              "mothers-day-bath-soak-gift-set"
             ],
+            "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
             "article_4": "",
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
+          }
+        },
+        "touts_group_ajxCyG": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Village Naturals Therapy",
+            "nav_parent_title": "Collections",
+            "text": "VNT - Collections",
+            "product_list": [],
+            "collection_list": [
+              "therapy-muscle",
+              "therapy-chronic-pain-comfort",
+              "therapy-cold-allergy",
+              "therapy-nighttime"
+            ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://pages/therapy-collections",
+            "bottom_button_text": "All Collections"
           }
         },
         "touts_group_NMAYaB": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Village Naturals Therapy",
-            "nav_parent_title": "Bath & Shower",
-            "text": "VNT - Bath & Shower",
+            "nav_parent_title": "Bath & Foot Soaks",
+            "text": "VNT - Bath & Foot Soaks",
             "product_list": [
-              "chronic-pain-fatigue-body-wash",
-              "muscle-magnesium-bath-flakes"
+              "calm-magnesium-bath-flakes",
+              "muscle-concentrated-mineral-bath-soak",
+              "mothers-day-bath-soak-gift-set"
             ],
             "collection_list": [],
             "article_1": "",
@@ -288,53 +471,54 @@
             "bottom_button_text": "All Products"
           }
         },
-        "touts_group_hjnBmU": {
+        "touts_group_hUkgYf": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Village Naturals Therapy",
-            "nav_parent_title": "Self-Care",
-            "text": "VNT - Self-Care",
+            "nav_parent_title": "Lotion",
+            "text": "VNT - Lotion",
             "product_list": [
-              "cold-allergy-bubble-bath",
-              "tension-relief-mineral-bath-soak"
+              "village-naturals-therapy-chronic-pain-fatigue-lotion-2oz",
+              "muscle-moisturizing-shea-butter-lotion"
             ],
             "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
             "article_4": "",
-            "bottom_button_link": "shopify://collections/therapy-collections",
-            "bottom_button_text": "All Products"
+            "bottom_button_link": "shopify://collections/therapy-lotion",
+            "bottom_button_text": "Shop All"
           }
         },
-        "touts_group_geeHhi": {
+        "touts_group_9zbVBw": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Village Naturals Therapy",
-            "nav_parent_title": "Body Care",
-            "text": "VNT - Body Care",
+            "nav_parent_title": "Bath Oil & Washes",
+            "text": "VNT - Bath Oil & Washes",
             "product_list": [
-              "wellness-by-v-n-therapy-hydrate-cooling-body-spray",
-              "tension-hand-body-lotion"
+              "muscle-2in1-foaming-bath-oil-body-wash",
+              "breathe-bubble-bath",
+              "comfort-foaming-bath-oil-body-wash"
             ],
             "collection_list": [],
             "article_1": "",
             "article_2": "",
             "article_3": "",
             "article_4": "",
-            "bottom_button_link": "shopify://collections/therapy-collections",
-            "bottom_button_text": "All Products"
+            "bottom_button_link": "shopify://collections/therapy-bath-oils-body-washes",
+            "bottom_button_text": "Shop All"
           }
         },
-        "touts_group_cqpxnX": {
+        "touts_group_YXUCGA": {
           "type": "touts_group",
           "settings": {
             "brand_title": "Village Naturals Therapy",
-            "nav_parent_title": "Recovery & Relief",
-            "text": "VNT - Recovery and Relief",
+            "nav_parent_title": "Shower",
+            "text": "VNT - Shower",
             "product_list": [
-              "cold-allergy-foaming-body-soak",
-              "aches-pains-muscle-relief-hand-body-lotion"
+              "breathe-shower-bomb",
+              "comfort-body-wash"
             ],
             "collection_list": [],
             "article_1": "",
@@ -351,18 +535,28 @@
         "brand_H46BjU",
         "brand_Nhk8gC",
         "brand_WHwbqy",
+        "touts_group_z6EgtR",
+        "touts_group_cV3B44",
+        "touts_group_Drzedz",
         "touts_group_f68EyW",
         "touts_group_G4fiem",
         "touts_group_hK3GRb",
         "touts_group_YJAzNw",
+        "touts_group_neWbhh",
+        "touts_group_RKKzEj",
+        "touts_group_WzrBFQ",
+        "touts_group_ykzD7L",
+        "touts_group_eKryYB",
+        "touts_group_7Lbdew",
         "touts_group_MYhEHk",
-        "touts_group_bVVPW7",
-        "touts_group_nM3Qct",
+        "touts_group_PMBpeb",
         "touts_group_GDCBRh",
+        "touts_group_jFQWFc",
+        "touts_group_ajxCyG",
         "touts_group_NMAYaB",
-        "touts_group_hjnBmU",
-        "touts_group_geeHhi",
-        "touts_group_cqpxnX"
+        "touts_group_hUkgYf",
+        "touts_group_9zbVBw",
+        "touts_group_YXUCGA"
       ],
       "settings": {
         "logo_position": "middle-left",

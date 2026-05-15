@@ -1,0 +1,25 @@
+{% comment %}
+  Tout collection/article display title: custom, then Bonify custom_fields, then resource default.
+  Pass exactly one of: collection, article
+{% endcomment %}
+{%- liquid
+  assign tout_nav_title = ''
+  if collection != blank
+    if collection.metafields.custom.featured_nav_title != blank
+      assign tout_nav_title = collection.metafields.custom.featured_nav_title.value
+    elsif collection.metafields.custom_fields.featured_nav_title != blank
+      assign tout_nav_title = collection.metafields.custom_fields.featured_nav_title.value
+    else
+      assign tout_nav_title = collection.title
+    endif
+  elsif article != blank
+    if article.metafields.custom.featured_nav_title != blank
+      assign tout_nav_title = article.metafields.custom.featured_nav_title.value
+    elsif article.metafields.custom_fields.featured_nav_title != blank
+      assign tout_nav_title = article.metafields.custom_fields.featured_nav_title.value
+    else
+      assign tout_nav_title = article.title
+    endif
+  endif
+-%}
+{{- tout_nav_title -}}

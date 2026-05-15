@@ -128,16 +128,12 @@
                                     <div class="menu-drawer__tout menu-drawer__tout--product">
                                       <div class="menu-drawer__tout-product">
                                         <a class="menu-drawer__tout-image" href="{{ product.url }}">
-                                          {%- if product.metafields.custom.featured_nav_image != blank -%}
-                                            {%- assign featured_image = product.metafields.custom.featured_nav_image.value -%}
-                                          {%- else -%}
-                                            {%- assign featured_image = product.featured_image -%}
-                                          {%- endif -%}
-                                          {{
-                                            featured_image
-                                            | image_url: width: 160
-                                            | image_tag: widths: '160, 320', loading: 'lazy'
-                                          }}
+                                          {% render 'tout-nav-featured-image',
+                                            product: product,
+                                            image_width: 160,
+                                            image_widths: '160, 320',
+                                            load_lazy: true
+                                          %}
                                         </a>
                                         <div class="menu-drawer__tout-info">
                                           <a href="{{ product.url }}" class="menu-drawer__tout-name">
@@ -154,24 +150,18 @@
                                     </div>
                                   {%- endfor -%}
                                   {%- for collection in block.settings.collection_list -%}
-                                    {%- if collection.metafields.custom.featured_nav_title != blank -%}
-                                      {%- assign featured_title = collection.metafields.custom.featured_nav_title.value -%}
-                                    {%- else -%}
-                                      {%- assign featured_title = collection.title -%}
-                                    {%- endif -%}
+                                    {%- capture featured_title -%}
+                                      {%- render 'tout-nav-featured-title', collection: collection -%}
+                                    {%- endcapture -%}
                                     <div class="menu-drawer__tout menu-drawer__tout--collection">
                                       <div class="menu-drawer__tout-product">
                                         <a class="menu-drawer__tout-image" href="{{ collection.url }}">
-                                          {%- if collection.metafields.custom.featured_nav_image != blank -%}
-                                            {%- assign featured_image = collection.metafields.custom.featured_nav_image.value -%}
-                                          {%- else -%}
-                                            {%- assign featured_image = collection.featured_image -%}
-                                          {%- endif -%}
-                                          {{
-                                            featured_image
-                                            | image_url: width: 160
-                                            | image_tag: widths: '160, 320', loading: 'lazy'
-                                          }}
+                                          {% render 'tout-nav-featured-image',
+                                            collection: collection,
+                                            image_width: 160,
+                                            image_widths: '160, 320',
+                                            load_lazy: true
+                                          %}
                                         </a>
                                         <div class="menu-drawer__tout-info">
                                           <a href="{{ collection.url }}" class="menu-drawer__tout-name">
@@ -190,24 +180,18 @@
                                   {%- for article_field in article_fields -%}
                                     {%- assign article = block.settings[article_field] -%}
                                     {%- if article != blank -%}
-                                      {%- if article.metafields.custom.featured_nav_title != blank -%}
-                                        {%- assign featured_title = article.metafields.custom.featured_nav_title.value -%}
-                                      {%- else -%}
-                                        {%- assign featured_title = article.title -%}
-                                      {%- endif -%}
+                                      {%- capture featured_title -%}
+                                        {%- render 'tout-nav-featured-title', article: article -%}
+                                      {%- endcapture -%}
                                       <div class="menu-drawer__tout menu-drawer__tout--article">
                                         <div class="menu-drawer__tout-product">
                                           <a class="menu-drawer__tout-image" href="{{ article.url }}">
-                                            {%- if article.metafields.custom.featured_nav_image != blank -%}
-                                              {%- assign featured_image = article.metafields.custom.featured_nav_image.value -%}
-                                            {%- else -%}
-                                              {%- assign featured_image = article.image -%}
-                                            {%- endif -%}
-                                            {{
-                                              featured_image
-                                              | image_url: width: 160
-                                              | image_tag: widths: '160, 320', loading: 'lazy'
-                                            }}
+                                            {% render 'tout-nav-featured-image',
+                                              article: article,
+                                              image_width: 160,
+                                              image_widths: '160, 320',
+                                              load_lazy: true
+                                            %}
                                           </a>
                                           <div class="menu-drawer__tout-info">
                                             <a href="{{ article.url }}" class="menu-drawer__tout-name">

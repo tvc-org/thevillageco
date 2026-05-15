@@ -54,13 +54,11 @@
                   <div class="product-column">
                     <div class="featured-product">
                       <a class="image" href="{{ product.url | within: collection }}">
-                        {% if product.metafields.custom.featured_nav_image != blank %}
-                          {% assign featured_image = product.metafields.custom.featured_nav_image.value %}
-                        {% else %}
-                          {% assign featured_image = product.featured_image %}
-                        {% endif %}
-
-                        {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
+                        {% render 'tout-nav-featured-image',
+                          product: product,
+                          image_width: 440,
+                          image_widths: '220, 440'
+                        %}
                         {% comment %}
                           {%- unless list_image_size -%}
                               {% assign list_image_size = '440x' %}
@@ -96,6 +94,9 @@
                 {% for collection in block.settings.collection_list %}
                   <div class="product-column">
                     <div class="featured-product">
+                      {% capture featured_title %}
+                        {% render 'tout-nav-featured-title', collection: collection %}
+                      {% endcapture %}
                       <a class="image" href="{{ collection.url }}">
                         {% comment %}
                           {%- unless list_image_size -%}
@@ -103,19 +104,11 @@
                           {%- endunless -%}
                         {% endcomment %}
 
-                        {% if collection.metafields.custom.featured_nav_image != blank %}
-                          {% assign featured_image = collection.metafields.custom.featured_nav_image.value %}
-                        {% else %}
-                          {% assign featured_image = collection.featured_image %}
-                        {% endif %}
-
-                        {% if collection.metafields.custom.featured_nav_title != blank %}
-                          {% assign featured_title = collection.metafields.custom.featured_nav_title.value %}
-                        {% else %}
-                          {% assign featured_title = collection.title %}
-                        {% endif %}
-
-                        {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
+                        {% render 'tout-nav-featured-image',
+                          collection: collection,
+                          image_width: 440,
+                          image_widths: '220, 440'
+                        %}
 
                         {% comment %}
                           {%- include 'responsive-image-lazy',
@@ -148,18 +141,15 @@
                   {% if article != blank %}
                     <div class="product-column">
                       <div class="featured-product">
+                        {% capture featured_title %}
+                          {% render 'tout-nav-featured-title', article: article %}
+                        {% endcapture %}
                         <a class="image" href="{{ article.url }}">
-                          {% if article.metafields.custom.featured_nav_image != blank %}
-                            {% assign featured_image = article.metafields.custom.featured_nav_image.value %}
-                          {% else %}
-                            {% assign featured_image = article.image %}
-                          {% endif %}
-                          {% if article.metafields.custom.featured_nav_title != blank %}
-                            {% assign featured_title = article.metafields.custom.featured_nav_title.value %}
-                          {% else %}
-                            {% assign featured_title = article.title %}
-                          {% endif %}
-                          {{ featured_image | image_url: width: 440 | image_tag: widths: '220, 440' }}
+                          {% render 'tout-nav-featured-image',
+                            article: article,
+                            image_width: 440,
+                            image_widths: '220, 440'
+                          %}
                         </a>
 
                         <div class="product-info">

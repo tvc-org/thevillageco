@@ -1,0 +1,40 @@
+{% comment %}
+  Tout nav featured image: custom, then Bonify custom_fields, then product/collection/article default image.
+  Pass exactly one of: product, collection, article
+  - image_width: number for image_url width
+  - image_widths: string for image_tag widths (e.g. '220, 440' or '160, 320')
+  - load_lazy: if true, adds loading='lazy'
+{% endcomment %}
+{%- liquid
+  assign tout_img = blank
+  if product != blank
+    if product.metafields.custom.featured_nav_image != blank
+      assign tout_img = product.metafields.custom.featured_nav_image.value
+    elsif product.metafields.custom_fields.featured_nav_image != blank
+      assign tout_img = product.metafields.custom_fields.featured_nav_image.value
+    else
+      assign tout_img = product.featured_image
+    endif
+  elsif collection != blank
+    if collection.metafields.custom.featured_nav_image != blank
+      assign tout_img = collection.metafields.custom.featured_nav_image.value
+    elsif collection.metafields.custom_fields.featured_nav_image != blank
+      assign tout_img = collection.metafields.custom_fields.featured_nav_image.value
+    else
+      assign tout_img = collection.featured_image
+    endif
+  elsif article != blank
+    if article.metafields.custom.featured_nav_image != blank
+      assign tout_img = article.metafields.custom.featured_nav_image.value
+    elsif article.metafields.custom_fields.featured_nav_image != blank
+      assign tout_img = article.metafields.custom_fields.featured_nav_image.value
+    else
+      assign tout_img = article.image
+    endif
+  endif
+-%}
+{%- if load_lazy -%}
+  {{- tout_img | image_url: width: image_width | image_tag: widths: image_widths, loading: 'lazy' -}}
+{%- else -%}
+  {{- tout_img | image_url: width: image_width | image_tag: widths: image_widths -}}
+{%- endif -%}
