@@ -226,7 +226,7 @@
         "image_desktop": "shopify://shop_images/mr-bubble-65-cropped-simple.jpg",
         "image_mobile": "shopify://shop_images/mr-bubble-65-mobile.jpg",
         "image_position_desktop": "right",
-        "card_background": "#E65A8E",
+        "card_background": "#e75e98",
         "heading_color": "#FFE8F3",
         "text_color": "#FFFFFF",
         "heading": "Thank you!",
