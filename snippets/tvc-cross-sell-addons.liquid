@@ -1,5 +1,5 @@
 {%- comment -%}
-  PDP Cross Sell block: padding/color scheme + scoped CSS for #cross-sell markup (vendor app + cross-sell-custom).
+  PDP Cross Sell block: fixed padding + color-scheme-1, scoped CSS for #cross-sell (vendor app + cross-sell-custom).
   Optional: ordered handles from productDetails.crosssell to pad up to 3 cards when the app omits a slot.
   Params: product, section, block.
 {%- endcomment -%}
@@ -56,14 +56,14 @@
 -%}
 
 {%- style -%}
-  .tvc-cross-sell-pad-{{ block.id }} {
-    padding-top: {{ block.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ block.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  .tvc-cross-sell-addons.tvc-cross-sell-pad {
+    padding-top: 18px;
+    padding-bottom: 18px;
   }
   @media screen and (min-width: 750px) {
-    .tvc-cross-sell-pad-{{ block.id }} {
-      padding-top: {{ block.settings.padding_top }}px;
-      padding-bottom: {{ block.settings.padding_bottom }}px;
+    .tvc-cross-sell-addons.tvc-cross-sell-pad {
+      padding-top: 24px;
+      padding-bottom: 24px;
     }
   }
 
@@ -301,7 +301,7 @@
 
 <div
   id="TvcCrossSell-{{ block.id }}"
-  class="tvc-cross-sell-addons color-{{ block.settings.color_scheme | default: 'scheme-1' }} gradient tvc-cross-sell-pad-{{ block.id }}"
+  class="tvc-cross-sell-addons color-scheme-1 gradient tvc-cross-sell-pad"
   {{ block.shopify_attributes }}
 >
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
@@ -311,7 +311,7 @@
   {%- endif -%}
   <quick-add-modal
     id="QuickAdd-{{ block.id }}"
-    class="quick-add-modal color-{{ block.settings.color_scheme | default: 'scheme-1' }}"
+    class="quick-add-modal color-scheme-1"
   >
     <div
       role="dialog"

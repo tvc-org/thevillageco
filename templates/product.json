@@ -89,11 +89,7 @@
         },
         "cross_sell_addons_4DhH8X": {
           "type": "cross_sell_addons",
-          "settings": {
-            "color_scheme": "scheme-1",
-            "padding_top": 24,
-            "padding_bottom": 24
-          }
+          "settings": {}
         },
         "share": {
           "type": "share",
