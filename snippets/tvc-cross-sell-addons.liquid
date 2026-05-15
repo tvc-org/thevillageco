@@ -1,241 +1,527 @@
 {%- comment -%}
-  Cross Sell add-ons grid for main-product `cross_sell_addons` block. Params: product, section, block.
+  PDP Cross Sell block: padding/color scheme + scoped CSS for #cross-sell markup (vendor app + cross-sell-custom).
+  Optional: ordered handles from productDetails.crosssell to pad up to 3 cards when the app omits a slot.
+  Params: product, section, block.
 {%- endcomment -%}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'template-collection.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
-  # Cross Sell: prefer metafield_text|parse_json for JSON metafields (handles string .value). Do not gate on xs_cfg alone.
-
-  assign xs_cfg = nil
-  assign xs_product_entries = nil
-  assign xs_default_entries = nil
-  assign source_entries = nil
-  assign xs_heading = block.settings.heading
-
-  assign xs_shop_ns = shop.metafields.shopCrosssell
-  if xs_shop_ns == blank
-    assign xs_shop_ns = shop.metafields['shopCrosssell']
+  assign tvc_xs_h = ''
+  assign tvc_xs_mf = product.metafields.productDetails.crosssell
+  if tvc_xs_mf == blank
+    assign tvc_xs_mf = product.metafields['productDetails'].crosssell
   endif
-
-  unless xs_shop_ns == blank or xs_shop_ns.settings == blank
-    assign smf_settings = xs_shop_ns.settings
-    assign xs_settings_txt = smf_settings | metafield_text
-    if xs_settings_txt != blank
-      assign xs_settings_parsed = xs_settings_txt | strip | parse_json
-      if xs_settings_parsed.titleproductpage != blank or xs_settings_parsed.showdefault != blank
-        assign xs_cfg = xs_settings_parsed
-      elsif xs_settings_parsed[0] != blank
-        assign xs_row0 = xs_settings_parsed[0]
-        if xs_row0.titleproductpage != blank or xs_row0.showdefault != blank or xs_row0.productpagemaxitems != blank
-          assign xs_cfg = xs_row0
+  if tvc_xs_mf != blank
+    assign tvc_xs_raw = tvc_xs_mf | metafield_text | strip
+    if tvc_xs_raw == blank and tvc_xs_mf.value != blank
+      assign tvc_xs_raw = tvc_xs_mf.value | append: '' | strip
+    endif
+    if tvc_xs_raw != blank
+      assign tvc_xs_arr = tvc_xs_raw | parse_json
+      if tvc_xs_arr != blank
+        assign tvc_xs_r0 = tvc_xs_arr | first
+        assign tvc_xs_from_rows = false
+        if tvc_xs_r0 != blank
+          assign tvc_h0 = tvc_xs_r0.handle | default: tvc_xs_r0['handle'] | strip
+          if tvc_h0 != blank
+            assign tvc_xs_from_rows = true
+          endif
+        endif
+        if tvc_xs_from_rows
+          for row in tvc_xs_arr
+            assign hh = row.handle | default: row['handle'] | strip
+            if hh == blank and row.url != blank and row.url contains '/products/'
+              assign hh = row.url | split: '/products/' | last | split: '?' | first | split: '#' | first | split: '/' | first | strip
+            endif
+            unless hh == blank
+              assign tvc_xs_h = tvc_xs_h | append: hh | append: '||'
+            endunless
+          endfor
+        else
+          assign tvc_xs_delim = '"' | append: 'handle' | append: '":"'
+          assign tvc_xs_norm = tvc_xs_raw | replace: '"handle" : "', tvc_xs_delim
+          assign tvc_xs_bits = tvc_xs_norm | split: tvc_xs_delim
+          for bit in tvc_xs_bits
+            unless forloop.first
+              assign hh = bit | split: '"' | first | strip
+              unless hh == blank
+                assign tvc_xs_h = tvc_xs_h | append: hh | append: '||'
+              endunless
+            endunless
+          endfor
         endif
       endif
     endif
-    if xs_cfg == blank and smf_settings.value != blank
-      assign v = smf_settings.value
-      if v.titleproductpage != blank or v.showdefault != blank
-        assign xs_cfg = v
-      elsif v[0] != blank
-        assign xs_rowv = v[0]
-        if xs_rowv.titleproductpage != blank or xs_rowv.showdefault != blank or xs_rowv.productpagemaxitems != blank
-          assign xs_cfg = xs_rowv
-        endif
-      endif
-    endif
-  endunless
-
-  unless product.metafields.productDetails.crosssell == blank
-    assign smf_p = product.metafields.productDetails.crosssell
-    assign xs_p_txt = smf_p | metafield_text
-    if xs_p_txt != blank
-      assign xs_product_entries = xs_p_txt | strip | parse_json
-    elsif smf_p.value != blank
-      assign xs_pv = smf_p.value
-      if xs_pv.first.handle != blank or xs_pv[0].handle != blank
-        assign xs_product_entries = xs_pv
-      endif
-    endif
-  endunless
-
-  unless xs_shop_ns == blank or xs_shop_ns.default == blank
-    assign smf_d = xs_shop_ns.default
-    assign xs_d_txt = smf_d | metafield_text
-    if xs_d_txt != blank
-      assign xs_default_entries = xs_d_txt | strip | parse_json
-    elsif smf_d.value != blank
-      assign xs_dv = smf_d.value
-      if xs_dv.first.handle != blank or xs_dv[0].handle != blank
-        assign xs_default_entries = xs_dv
-      endif
-    endif
-  endunless
-
-  assign showdefault = '3'
-  if xs_cfg != blank
-    if xs_cfg.showdefault != blank
-      assign showdefault = xs_cfg.showdefault | append: '' | strip
-    endif
   endif
-
-  assign use_product = false
-  if xs_product_entries != blank and xs_product_entries.size > 0
-    assign use_product = true
-  endif
-
-  if showdefault == '4'
-    if use_product
-      assign source_entries = xs_product_entries
-    endif
-  elsif showdefault == '1'
-    assign source_entries = xs_default_entries
-  elsif showdefault == '2'
-    if use_product
-      assign source_entries = xs_product_entries
-    else
-      assign source_entries = xs_default_entries
-    endif
-  else
-    if use_product
-      assign source_entries = xs_product_entries
-    else
-      assign source_entries = xs_default_entries
-    endif
-  endif
-
-  assign max_from_app = 5
-  if xs_cfg != blank
-    if xs_cfg.productpagemaxitems != blank
-      assign max_from_app = xs_cfg.productpagemaxitems | plus: 0
-      if max_from_app < 1
-        assign max_from_app = 5
-      endif
-    endif
-  endif
-
-  assign max_items = block.settings.products_to_show
-  if max_from_app < max_items
-    assign max_items = max_from_app
-  endif
-
-  if xs_heading == blank and xs_cfg != blank
-    if xs_cfg.titleproductpage != blank
-      assign xs_heading = xs_cfg.titleproductpage
-    elsif xs_cfg.titleproductpagedefault != blank
-      assign xs_heading = xs_cfg.titleproductpagedefault
-    endif
-  endif
-  if xs_heading == blank
-    assign xs_heading = 'Popular Add-Ons'
-  endif
-
-  assign xs_scheme = block.settings.color_scheme | default: 'scheme-1'
+  assign tvc_xs_handles = tvc_xs_h | split: '||' | compact
 -%}
 
 {%- style -%}
-  .tvc-xs-pad-{{ block.id }} {
+  .tvc-cross-sell-pad-{{ block.id }} {
     padding-top: {{ block.settings.padding_top | times: 0.75 | round: 0 }}px;
     padding-bottom: {{ block.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
   @media screen and (min-width: 750px) {
-    .tvc-xs-pad-{{ block.id }} {
+    .tvc-cross-sell-pad-{{ block.id }} {
       padding-top: {{ block.settings.padding_top }}px;
       padding-bottom: {{ block.settings.padding_bottom }}px;
     }
   }
-  #CrossSellAddons-{{ block.id }} .product-recommend-core .collection__title {
+
+  /* Scoped to .tvc-cross-sell-addons so cart/minicart #cross-sell-cart targets stay unchanged */
+  .tvc-cross-sell-addons #cross-sell > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .crosssell-text {
+    width: 100%;
     text-align: center;
   }
-  #CrossSellAddons-{{ block.id }} .product-recommend-core .card__information,
-  #CrossSellAddons-{{ block.id }} .product-recommend-core .card__heading,
-  #CrossSellAddons-{{ block.id }} .product-recommend-core .card-information {
-    text-align: center;
+
+  .tvc-cross-sell-addons #cross-sell .crosssell-text .title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: calc(var(--font-heading-scale) * 2rem);
+    line-height: 1.2;
+    letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
   }
-  #CrossSellAddons-{{ block.id }} .product-recommend-core .price {
+
+  .tvc-cross-sell-addons #cross-sell .collection-products.items {
+    display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 0;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .collection-products.items .item {
+    flex: 1;
+    min-width: 0;
+    padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+    box-sizing: border-box;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .collection-products.items .item:nth-of-type(n + 4) {
+    display: none;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-image-wrapper {
+    position: relative;
+    margin: 0 auto 1rem;
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 1 / 1;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-image-wrapper > a {
+    display: block;
+    line-height: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-image-wrapper img.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    vertical-align: middle;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-image-wrapper img.product-image.alt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-image-wrapper > a:hover img.product-image.alt {
+    opacity: 1;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-image-wrapper .product-badge {
+    display: none;
+  }
+
+  /* Quick Shop: Dawn modal-opener + bar (pointer-events on wrapper so the bar stays clickable) */
+  .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener .quick-shop-trigger {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0.65rem 0.5rem;
+    border: 0;
+    border-radius: 0;
+    cursor: pointer;
+    text-align: center;
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: 600;
+    font-size: calc(var(--font-body-scale) * 1.15rem);
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #006bb6;
+    box-sizing: border-box;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener .quick-shop-trigger .loading__spinner {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener .quick-shop-trigger {
+      opacity: 0;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .item:hover .tvc-cross-sell-quick-add-opener {
+      pointer-events: auto;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .item:hover .tvc-cross-sell-quick-add-opener .quick-shop-trigger {
+      opacity: 1;
+    }
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener {
+      pointer-events: auto;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener .quick-shop-trigger {
+      opacity: 1;
+    }
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper {
+    text-align: center;
+    max-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .product-name {
+    margin: 0 0 0.35rem;
+    font-family: var(--font-heading-family);
+    font-style: var(--font-heading-style);
+    font-weight: var(--font-heading-weight);
+    font-size: calc(var(--font-heading-scale) * 1.25rem);
+    line-height: 1.25;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box {
+    display: block;
+    margin: 0 auto 0.25rem;
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: 400;
+    font-size: calc(var(--font-body-scale) * 1.4rem);
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box .product-price-x {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box.h2,
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box .h2 {
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box .product-compare-price {
+    display: inline-block;
+    margin-left: 0.35rem;
+    color: rgba(var(--color-foreground), 0.75);
+    font-size: 0.92em;
+  }
+
+  .tvc-cross-sell-addons #cross-sell .product-info-wrapper .out-of-stock {
+    margin: 0.25rem 0 0;
+    font-size: calc(var(--font-body-scale) * 1.3rem);
+  }
+
+  @media screen and (max-width: 749px) {
+    .tvc-cross-sell-addons #cross-sell .collection-products.items {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .collection-products.items .item {
+      flex: 1 1 100%;
+      max-width: 100%;
+      padding: 0 0 1.5rem;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .product-image-wrapper {
+      max-width: 280px;
+    }
   }
 {%- endstyle -%}
 
-<div id="CrossSellAddons-{{ block.id }}" class="tvc-cross-sell-addons" {{ block.shopify_attributes }}>
-  {%- if source_entries == blank -%}
-    {%- if request.design_mode -%}
-      <div class="tvc-xs-pad-{{ block.id }}">
-        <p class="caption">
-          No cross-sell products resolved for this product. Confirm Cross Sell lists exist on the product
-          (productDetails.crosssell) and/or shop default list (shopCrosssell.default), and that metafields are available to
-          the storefront.
-        </p>
-        {%- if xs_shop_ns == blank -%}
-          <p class="caption">
-            The shop metafield namespace shopCrosssell is not visible to this theme in Liquid. If lists exist in Admin but
-            not here, check Cross Sell app storefront access or contact their support.
-          </p>
-        {%- endif -%}
-      </div>
-    {%- endif -%}
-  {%- else -%}
-    <div
-      class="tvc-cross-sell-addons__inner color-{{ xs_scheme }} gradient tvc-xs-pad-{{ block.id }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    >
-      <div class="product-recommend-core collection isolate">
-        <div class="collection__title title-wrapper title-wrapper--no-top-margin">
-          <h2 class="title inline-richtext {{ block.settings.heading_size }}">{{ xs_heading }}</h2>
-        </div>
+<script>
+  window.xsellCustom = window.xsellCustom || {};
+  window.xsellCustom.crossSellQuickAddModal = '#QuickAdd-{{ block.id }}';
+</script>
 
-        <ul
-          class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--{{ block.settings.columns_desktop }}-col-desktop grid--{{ block.settings.columns_mobile }}-col-tablet-down"
-          role="list"
-        >
-          {%- assign skip_card_product_styles = false -%}
-          {%- assign xs_rendered = 0 -%}
-          {%- for entry in source_entries -%}
-            {%- if xs_rendered >= max_items -%}
-              {%- break -%}
-            {%- endif -%}
-            {%- assign xs_handle = entry.handle | default: entry['handle'] -%}
-            {%- if xs_handle == blank -%}
-              {%- continue -%}
-            {%- endif -%}
-            {%- assign card_product = all_products[xs_handle] -%}
-            {%- if card_product == blank -%}
-              {%- continue -%}
-            {%- endif -%}
-            {%- if card_product.id == product.id -%}
-              {%- continue -%}
-            {%- endif -%}
-            {%- assign lazy_load = false -%}
-            {%- if xs_rendered >= 2 -%}
-              {%- assign lazy_load = true -%}
-            {%- endif -%}
-            <li
-              class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-              {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ xs_rendered | plus: 1 }};"
-              {% endif %}
-            >
-              {% render 'card-product',
-                card_product: card_product,
-                media_aspect_ratio: block.settings.image_ratio,
-                image_shape: block.settings.image_shape,
-                lazy_load: lazy_load,
-                show_secondary_image: block.settings.show_secondary_image,
-                show_vendor: block.settings.show_vendor,
-                show_rating: false,
-                skip_styles: skip_card_product_styles,
-                section_id: section.id,
-                quick_add: 'none'
-              %}
-            </li>
-            {%- assign skip_card_product_styles = true -%}
-            {%- assign xs_rendered = xs_rendered | plus: 1 -%}
-          {%- endfor -%}
-        </ul>
-      </div>
-    </div>
+<div
+  id="TvcCrossSell-{{ block.id }}"
+  class="tvc-cross-sell-addons color-{{ block.settings.color_scheme | default: 'scheme-1' }} gradient tvc-cross-sell-pad-{{ block.id }}"
+  {{ block.shopify_attributes }}
+>
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  {%- if shop.metafields.shopCrosssell.settings != null -%}
+    {% render 'cross-sell', product: product %}
   {%- endif -%}
+  <quick-add-modal
+    id="QuickAdd-{{ block.id }}"
+    class="quick-add-modal color-{{ block.settings.color_scheme | default: 'scheme-1' }}"
+  >
+    <div
+      role="dialog"
+      aria-label="{{ 'products.product.choose_options' | t | escape }}"
+      aria-modal="true"
+      class="quick-add-modal__content global-settings-popup"
+      tabindex="-1"
+    >
+      <button
+        id="ModalClose-{{ block.id }}"
+        type="button"
+        class="quick-add-modal__toggle"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {{- 'icon-close.svg' | inline_asset_content -}}
+      </button>
+      <div id="QuickAddInfo-{{ block.id }}" class="quick-add-modal__content-info"></div>
+    </div>
+  </quick-add-modal>
 </div>
 
-{%- if block.settings.image_shape == 'arch' -%}
-  {{ 'mask-arch.svg' | inline_asset_content }}
+{%- if tvc_xs_handles.size > 0 -%}
+  <script>
+    (function () {
+      var maxSlots = 3;
+      var handles = {{ tvc_xs_handles | json }};
+      var currentHandle = {{ product.handle | json }};
+      var moneyFormat = {{ shop.money_format | json }};
+      var soldOutLabel = {{ 'products.product.sold_out' | t | json }};
+
+      function formatMoney(cents) {
+        cents = Math.round(Number(cents) || 0);
+        var tpl = moneyFormat || '${{amount}}';
+        var amount = (cents / 100).toFixed(2);
+        if (typeof Shopify !== 'undefined' && typeof Shopify.formatMoney === 'function') {
+          try {
+            return Shopify.formatMoney(cents, tpl);
+          } catch (e) {}
+        }
+        return tpl
+          .replace(/\{\{\s*amount\s*\}\}/gi, amount)
+          .replace(/\{\{\s*amount_no_decimals\s*\}\}/gi, String(Math.round(cents / 100)));
+      }
+
+      function productUrl(handle) {
+        return '/products/' + encodeURIComponent(handle);
+      }
+
+      function primaryImageSrc(p) {
+        if (p.featured_image) {
+          if (typeof p.featured_image === 'string') return p.featured_image;
+          if (p.featured_image.src) return p.featured_image.src;
+        }
+        if (p.image) {
+          if (typeof p.image === 'string') return p.image;
+          if (p.image.src) return p.image.src;
+        }
+        if (p.images && p.images.length) {
+          var im = p.images[0];
+          if (typeof im === 'string') return im;
+          if (im && im.src) return im.src;
+        }
+        return '';
+      }
+
+      function escapeHtml(s) {
+        return String(s == null ? '' : s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function collectHandles(container) {
+        var set = {};
+        container.querySelectorAll('a[href*="/products/"]').forEach(function (a) {
+          var m = a.getAttribute('href').match(/\/products\/([^/?#]+)/);
+          if (m && m[1]) {
+            try {
+              set[decodeURIComponent(m[1])] = true;
+            } catch (e) {
+              set[m[1]] = true;
+            }
+          }
+        });
+        return set;
+      }
+
+      function itemCount(container) {
+        return container.querySelectorAll(':scope > .item').length;
+      }
+
+      function appendItem(container, p, order) {
+        var url = productUrl(p.handle);
+        var img = primaryImageSrc(p);
+        if (img && img.indexOf('//') === 0) img = 'https:' + img;
+        var v = p.variants && p.variants[0];
+        var price = v && typeof v.price !== 'undefined' ? v.price : p.price;
+        var cmp = v && typeof v.compare_at_price !== 'undefined' ? v.compare_at_price : p.compare_at_price;
+        var minP = typeof p.price_min !== 'undefined' ? p.price_min : price;
+        var maxP = typeof p.price_max !== 'undefined' ? p.price_max : price;
+        var priceHtml = '';
+        if (cmp && Number(cmp) > Number(price)) {
+          priceHtml =
+            '<div class="price-box  has-special"><span class="product-price-x">' +
+            formatMoney(price) +
+            '</span><span class="product-compare-price">' +
+            formatMoney(cmp) +
+            '</span></div>';
+        } else if (minP !== maxP) {
+          priceHtml =
+            '<div class="price-box"><span class="product-price-x">' +
+            formatMoney(minP) +
+            ' - ' +
+            formatMoney(maxP) +
+            '</span></div>';
+        } else {
+          priceHtml = '<div class="price-box"><span class="product-price-x">' + formatMoney(price) + '</span></div>';
+        }
+        var sold = p.available ? '' : '<p class="out-of-stock">' + escapeHtml(soldOutLabel) + '</p>';
+        var productUrlAttr = escapeHtml(p.url || url);
+        var qaModalSel =
+          window.xsellCustom && window.xsellCustom.crossSellQuickAddModal
+            ? String(window.xsellCustom.crossSellQuickAddModal)
+            : '';
+        var qaSpin =
+          window.xsellCustom && window.xsellCustom.quickAddSpinnerHtml
+            ? String(window.xsellCustom.quickAddSpinnerHtml)
+            : '<div class="loading__spinner hidden"></div>';
+        var qsBtn = '';
+        if (p.available && qaModalSel) {
+          qsBtn =
+            '<modal-opener class="tvc-cross-sell-quick-add-opener" data-modal="' +
+            escapeHtml(qaModalSel) +
+            '"><button type="button" class="quick-shop-trigger" aria-haspopup="dialog" data-product-url="' +
+            productUrlAttr +
+            '">Quick Shop' +
+            qaSpin +
+            '</button></modal-opener>';
+        } else if (p.available) {
+          qsBtn =
+            '<a class="quick-shop-trigger" href="' + productUrlAttr + '">Quick Shop</a>';
+        }
+        var wrap = document.createElement('div');
+        wrap.className = 'item';
+        wrap.setAttribute('data-xsorder', String(order));
+        wrap.innerHTML =
+          '<div class="product-image-wrapper"><a href="' +
+          escapeHtml(url) +
+          '">' +
+          (img
+            ? '<img class="product-image" src="' + escapeHtml(img) + '" alt="' + escapeHtml(p.title) + '">'
+            : '') +
+          '</a>' +
+          qsBtn +
+          '</div><div class="product-info-wrapper"><p class="product-name">' +
+          escapeHtml(p.title) +
+          '</p>' +
+          priceHtml +
+          sold +
+          '</div>';
+        container.appendChild(wrap);
+      }
+
+      var padBusy = false;
+      async function pad() {
+        if (padBusy) return;
+        padBusy = true;
+        try {
+        var root = document.querySelector('.tvc-cross-sell-addons #cross-sell');
+        if (!root || !handles.length) return;
+        var container = root.querySelector('.collection-products.items');
+        if (!container) return;
+        if (itemCount(container) >= maxSlots) return;
+        var shown = collectHandles(container);
+        shown[currentHandle] = true;
+        var orderSeq = 9000;
+        for (var i = 0; i < handles.length; i++) {
+          if (itemCount(container) >= maxSlots) break;
+          var h = handles[i];
+          if (!h || shown[h]) continue;
+          try {
+            var res = await fetch(productUrl(h) + '.js');
+            if (!res.ok) continue;
+            var p = await res.json();
+            if (!p || !p.handle) continue;
+            if (shown[p.handle]) continue;
+            if (itemCount(container) >= maxSlots) break;
+            shown[p.handle] = true;
+            appendItem(container, p, orderSeq++);
+          } catch (e) {}
+        }
+        } finally {
+          padBusy = false;
+        }
+      }
+
+      function run() {
+        void pad();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          setTimeout(run, 600);
+          setTimeout(run, 2200);
+        });
+      } else {
+        setTimeout(run, 600);
+        setTimeout(run, 2200);
+      }
+    })();
+  </script>
 {%- endif -%}

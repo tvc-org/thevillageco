@@ -1558,99 +1558,13 @@
       "settings": [
         {
           "type": "paragraph",
-          "content": "Uses Cross Sell metafields (shopCrosssell + productDetails.crosssell). Renders in the product column with the theme product card grid."
-        },
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "label": "Heading",
-          "info": "Leave blank to use Cross Sell settings (e.g. Popular Add-Ons)."
-        },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "label": "Heading size",
-          "options": [
-            { "value": "h3", "label": "Small" },
-            { "value": "h2", "label": "Medium" },
-            { "value": "h1", "label": "Large" }
-          ],
-          "default": "h2"
-        },
-        {
-          "type": "range",
-          "id": "products_to_show",
-          "min": 2,
-          "max": 10,
-          "step": 1,
-          "default": 3,
-          "label": "Maximum products to show"
-        },
-        {
-          "type": "select",
-          "id": "columns_desktop",
-          "label": "Columns on desktop",
-          "options": [
-            { "value": "2", "label": "2" },
-            { "value": "3", "label": "3" },
-            { "value": "4", "label": "4" }
-          ],
-          "default": "3"
-        },
-        {
-          "type": "select",
-          "id": "columns_mobile",
-          "label": "Columns on mobile",
-          "options": [
-            { "value": "1", "label": "1" },
-            { "value": "2", "label": "2" }
-          ],
-          "default": "2"
+          "content": "Uses the Cross Sell app snippet (mount #cross-sell). Enable the app embed, set the app to a custom theme if you use cross-sell-custom, and keep shop metafields shopCrosssell. PDP layout CSS lives in the tvc-cross-sell-addons snippet."
         },
         {
           "type": "color_scheme",
           "id": "color_scheme",
-          "label": "Color scheme",
+          "label": "t:sections.all.colors.label",
           "default": "scheme-1"
-        },
-        {
-          "type": "select",
-          "id": "image_ratio",
-          "options": [
-            { "value": "adapt", "label": "Adapt to image" },
-            { "value": "portrait", "label": "Portrait" },
-            { "value": "square", "label": "Square" }
-          ],
-          "default": "square",
-          "label": "Image ratio"
-        },
-        {
-          "type": "select",
-          "id": "image_shape",
-          "options": [
-            { "value": "default", "label": "Default" },
-            { "value": "arch", "label": "Arch" },
-            { "value": "blob", "label": "Blob" },
-            { "value": "chevronleft", "label": "Chevron left" },
-            { "value": "chevronright", "label": "Chevron right" },
-            { "value": "diamond", "label": "Diamond" },
-            { "value": "parallelogram", "label": "Parallelogram" },
-            { "value": "round", "label": "Round" }
-          ],
-          "default": "default",
-          "label": "Image shape"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_secondary_image",
-          "default": true,
-          "label": "Show second image on hover"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_vendor",
-          "default": false,
-          "label": "Show vendor"
         },
         {
           "type": "range",
@@ -1659,7 +1573,7 @@
           "max": 60,
           "step": 4,
           "unit": "px",
-          "label": "Padding top",
+          "label": "t:sections.all.padding.padding_top",
           "default": 24
         },
         {
@@ -1669,7 +1583,7 @@
           "max": 60,
           "step": 4,
           "unit": "px",
-          "label": "Padding bottom",
+          "label": "t:sections.all.padding.padding_bottom",
           "default": 24
         }
       ]

@@ -399,6 +399,11 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+
+    {%- comment -%} Cross Sell custom theme: registers window.xsellCustom.buildxsellsoutput (must load before app script). {%- endcomment -%}
+    {%- if request.page_type == 'product' -%}
+      {%- render 'cross-sell-custom', plp_quickshop: true -%}
+    {%- endif -%}
   </head>
 
   <body
