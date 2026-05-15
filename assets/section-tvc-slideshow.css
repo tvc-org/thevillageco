@@ -75,6 +75,10 @@
   padding: 30px var(--layout-gutter-x) 0;
 }
 
+.tvc-slideshow--layout-stacked.tvc-slideshow--contained .tvc-slideshow__panel {
+  padding: 30px 0 0;
+}
+
 .tvc-slideshow--layout-stacked .tvc-slideshow__panel--align-left {
   text-align: left;
 }
@@ -137,6 +141,10 @@
 @media screen and (min-width: 960px) {
   .tvc-slideshow--layout-stacked .tvc-slideshow__panel {
     padding: 40px var(--layout-gutter-x) 50px;
+  }
+
+  .tvc-slideshow--layout-stacked.tvc-slideshow--contained .tvc-slideshow__panel {
+    padding: 40px 0 50px;
   }
 
   /* With dot nav: panel bottom padding moves below controls (visual space after dots) */

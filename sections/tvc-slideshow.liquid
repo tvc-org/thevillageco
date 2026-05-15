@@ -25,7 +25,7 @@
   <div class="page-width">
 {% endif %}
 
-<slideshow-component
+<tvc-slideshow-component
   class="slider-mobile-gutter {{ section_classes }}{% if section.settings.full_width %} tvc-slideshow--full-width{% else %} tvc-slideshow--contained{% endif %}"
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
@@ -178,10 +178,12 @@
                 block.settings.video
                 | video_tag:
                   image_size: '2048x',
-                  autoplay: true,
+                  autoplay: false,
                   loop: true,
                   muted: true,
+                  playsinline: true,
                   controls: false,
+                  preload: 'metadata',
                   class: 'tvc-slideshow__video'
               }}
             {%- elsif block.settings.image != blank -%}
@@ -319,11 +321,13 @@
       </button>
     </div>
   {%- endif -%}
-</slideshow-component>
+</tvc-slideshow-component>
 
 {% if section.settings.full_width == false %}
   </div>
 {% endif %}
+
+<script src="{{ 'tvc-slideshow.js' | asset_url }}" defer="defer"></script>
 
 {%- if request.design_mode -%}
   <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
