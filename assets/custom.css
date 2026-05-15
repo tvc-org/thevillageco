@@ -406,7 +406,7 @@ body slider-component.slider-component-full-width {
 }
 
 .shopify-section.section .collection .card--standard .block-review-rate {
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 .shopify-section.section .collection-list .card--standard .icon-wrap {
@@ -1239,11 +1239,20 @@ header-drawer {
 
 /* Any product card grid (collection, featured, related, search) — not only .product-grid-container */
 .product-grid .grid__item .price {
-    font-size: 1.5rem;
+    font-size: 16px;
+    letter-spacing: 0;
 }
 
 .product-grid .grid__item .card__heading {
-    font-size: 1.15em;
+    font-size: 16px;
+    letter-spacing: 0;
+}
+
+@media screen and (min-width: 1025px) {
+    .product-grid .grid__item .card__heading, 
+    .product-grid .grid__item .price {
+        font-size: 18px;
+    }
 }
 
 .product__info-wrapper .price {

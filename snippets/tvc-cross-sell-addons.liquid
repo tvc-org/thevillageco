@@ -8,7 +8,7 @@
   assign tvc_xs_h = ''
   assign tvc_xs_mf = product.metafields.productDetails.crosssell
   if tvc_xs_mf == blank
-    assign tvc_xs_mf = product.metafields['productDetails'].crosssell
+    assign tvc_xs_mf = product.metafields.productDetails.crosssell
   endif
   if tvc_xs_mf != blank
     assign tvc_xs_raw = tvc_xs_mf | metafield_text | strip
@@ -21,14 +21,14 @@
         assign tvc_xs_r0 = tvc_xs_arr | first
         assign tvc_xs_from_rows = false
         if tvc_xs_r0 != blank
-          assign tvc_h0 = tvc_xs_r0.handle | default: tvc_xs_r0['handle'] | strip
+          assign tvc_h0 = tvc_xs_r0.handle | default: tvc_xs_r0.handle | strip
           if tvc_h0 != blank
             assign tvc_xs_from_rows = true
           endif
         endif
         if tvc_xs_from_rows
           for row in tvc_xs_arr
-            assign hh = row.handle | default: row['handle'] | strip
+            assign hh = row.handle | default: row.handle | strip
             if hh == blank and row.url != blank and row.url contains '/products/'
               assign hh = row.url | split: '/products/' | last | split: '?' | first | split: '#' | first | split: '/' | first | strip
             endif
@@ -81,13 +81,16 @@
   }
 
   .tvc-cross-sell-addons #cross-sell .crosssell-text .title {
-    margin: 0 0 1.25rem;
-    font-family: var(--font-heading-family);
-    font-style: var(--font-heading-style);
-    font-weight: var(--font-heading-weight);
-    font-size: calc(var(--font-heading-scale) * 2rem);
-    line-height: 1.2;
-    letter-spacing: calc(var(--font-heading-scale) * 0.06rem);
+    text-transform: uppercase;
+    font-family: 'FuturaPTHeavy';
+    font-size: 20px;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 1025px) {
+    .tvc-cross-sell-addons #cross-sell .crosssell-text .title {
+      font-size: 24px;
+    }
   }
 
   .tvc-cross-sell-addons #cross-sell .collection-products.items {
@@ -100,13 +103,13 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    gap: 0;
+    gap: 24px;
   }
 
   .tvc-cross-sell-addons #cross-sell .collection-products.items .item {
     flex: 1;
     min-width: 0;
-    padding: 0 clamp(0.75rem, 3vw, 1.5rem);
+    /* padding: 0 clamp(0.75rem, 3vw, 1.5rem); */
     box-sizing: border-box;
   }
 
@@ -120,6 +123,9 @@
     width: 100%;
     max-width: 220px;
     aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #c7c7c7;
   }
 
   .tvc-cross-sell-addons #cross-sell .product-image-wrapper > a {
@@ -224,36 +230,45 @@
   }
 
   .tvc-cross-sell-addons #cross-sell .product-info-wrapper {
-    text-align: center;
+    text-align: left;
     max-width: 220px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  /* Match .product-grid .grid__item .card__heading + .h5 (custom.css), fixed 16px */
   .tvc-cross-sell-addons #cross-sell .product-info-wrapper .product-name {
     margin: 0 0 0.35rem;
-    font-family: var(--font-heading-family);
-    font-style: var(--font-heading-style);
-    font-weight: var(--font-heading-weight);
-    font-size: calc(var(--font-heading-scale) * 1.25rem);
-    line-height: 1.25;
+    font-family: 'FuturaPTDemi', Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 0.85;
+    color: var(--color-text);
+    letter-spacing: 0;
   }
 
+  body.village-naturals-therapy .tvc-cross-sell-addons #cross-sell .product-info-wrapper .product-name {
+    font-family: 'Larken', sans-serif;
+    font-weight: 400;
+  }
+
+  /* Match .collection .card--standard .card-information > .price + .product-grid .price, fixed 16px */
   .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box {
     display: block;
     margin: 0 auto 0.25rem;
-    font-family: var(--font-body-family);
-    font-style: var(--font-body-style);
-    font-weight: 400;
-    font-size: calc(var(--font-body-scale) * 1.4rem);
-    line-height: 1.35;
-    letter-spacing: 0.02em;
+    font-size: 16px;
+    line-height: calc(1 + 0.5 / var(--font-body-scale));
+    letter-spacing: 0;
+    color: #777;
   }
 
   .tvc-cross-sell-addons #cross-sell .product-info-wrapper .price-box .product-price-x {
     font-size: inherit;
-    font-weight: 400;
+    font-weight: inherit;
     line-height: inherit;
+    letter-spacing: inherit;
+    color: inherit;
     margin: 0;
   }
 
@@ -268,7 +283,9 @@
     display: inline-block;
     margin-left: 0.35rem;
     color: rgba(var(--color-foreground), 0.75);
-    font-size: 0.92em;
+    font-size: inherit;
+    letter-spacing: inherit;
+    text-decoration: line-through;
   }
 
   .tvc-cross-sell-addons #cross-sell .product-info-wrapper .out-of-stock {
@@ -285,7 +302,7 @@
     .tvc-cross-sell-addons #cross-sell .collection-products.items .item {
       flex: 1 1 100%;
       max-width: 100%;
-      padding: 0 0 1.5rem;
+      /* padding: 0 0 1.5rem; */
     }
 
     .tvc-cross-sell-addons #cross-sell .product-image-wrapper {
