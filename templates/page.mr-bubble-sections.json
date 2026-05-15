@@ -218,6 +218,54 @@
         "show_view_all": false,
         "swipe_on_mobile": false
       }
+    },
+    "tvc_promo_callout_JAVrtm": {
+      "type": "tvc-promo-callout",
+      "name": "TVC Promo callout",
+      "settings": {
+        "image_desktop": "shopify://shop_images/mr-bubble-65-cropped-simple.jpg",
+        "image_mobile": "shopify://shop_images/mr-bubble-65-mobile.jpg",
+        "image_position_desktop": "right",
+        "card_background": "#E65A8E",
+        "heading_color": "#FFE8F3",
+        "text_color": "#FFFFFF",
+        "heading": "Thank you!",
+        "body": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>",
+        "cta_label": "Shop exclusive birthday products",
+        "cta_link": "shopify://collections/mr-bubble-bestsellers"
+      }
+    },
+    "tvc_slideshow_arD8Lj": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_hVnGaF": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/super-blaster.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "SUPER BLASTER BODY WASH",
+            "text": "<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_left",
+            "link": "shopify://products/super-blaster-body-wash",
+            "link_label": "SHOP NOW"
+          }
+        }
+      },
+      "block_order": [
+        "slide_hVnGaF"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": false,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5
+      }
     }
   },
   "order": [
@@ -228,6 +276,8 @@
     "featured_collection_Limy4M",
     "tvc_slideshow_XnQ6dC",
     "tvc_slideshow_DWTaV9",
-    "collection_list_VdxPhX"
+    "collection_list_VdxPhX",
+    "tvc_promo_callout_JAVrtm",
+    "tvc_slideshow_arD8Lj"
   ]
 }
