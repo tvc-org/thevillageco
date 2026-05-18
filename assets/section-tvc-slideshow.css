@@ -664,3 +664,60 @@ body.mr-bubble .tvc-slideshow__heading {
     padding-right: 86px;
   }
 }
+
+/* Video sound toggle — 54px white circle, 28px icon, bottom-right inset */
+.tvc-slideshow__sound-toggle {
+  position: absolute;
+  right: 60px;
+  bottom: 45px;
+  z-index: 4;
+  width: 54px;
+  height: 54px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tvc-slideshow__sound-toggle:focus-visible {
+  outline: 2px solid #144d8d;
+  outline-offset: 2px;
+}
+
+.tvc-slideshow__sound-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  line-height: 0;
+}
+
+.tvc-slideshow__sound-icon svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.tvc-slideshow__sound-toggle .tvc-slideshow__sound-icon--on {
+  display: none;
+}
+
+.tvc-slideshow__sound-toggle .tvc-slideshow__sound-icon--off {
+  display: flex;
+}
+
+.tvc-slideshow__sound-toggle[aria-pressed='true'] .tvc-slideshow__sound-icon--on {
+  display: flex;
+}
+
+.tvc-slideshow__sound-toggle[aria-pressed='true'] .tvc-slideshow__sound-icon--off {
+  display: none;
+}

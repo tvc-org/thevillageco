@@ -66,8 +66,40 @@
       log('init', { videos: this.videos.length, observeTarget });
     }
 
+    initSoundToggles() {
+      if (this.root.dataset.showSoundToggle === 'false') return;
+
+      this.root.querySelectorAll('.tvc-slideshow__sound-toggle').forEach((button) => {
+        if (button.dataset.tvcSoundBound === 'true') return;
+        button.dataset.tvcSoundBound = 'true';
+
+        const media = button.closest('.tvc-slideshow__media');
+        const video = media?.querySelector('video');
+        if (!video) return;
+
+        video.muted = true;
+        this.updateSoundToggle(button, video);
+
+        button.addEventListener('click', () => {
+          video.muted = !video.muted;
+          this.updateSoundToggle(button, video);
+          if (!video.paused && !video.muted) {
+            video.play().catch(() => {});
+          }
+        });
+      });
+    }
+
+    updateSoundToggle(button, video) {
+      const unmuted = !video.muted;
+      button.setAttribute('aria-pressed', unmuted ? 'true' : 'false');
+      button.setAttribute('aria-label', unmuted ? 'Mute video' : 'Unmute video');
+      button.setAttribute('data-tvc-sound-state', unmuted ? 'on' : 'off');
+    }
+
     collectVideos() {
       this.videos = Array.from(this.root.querySelectorAll(VIDEO_SELECTOR));
+      this.initSoundToggles();
     }
 
     destroy() {

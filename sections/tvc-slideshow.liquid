@@ -30,6 +30,7 @@
   role="region"
   aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
   aria-label="{{ 'sections.slideshow.name' | t }}"
+  data-show-sound-toggle="{% if section.settings.show_sound_toggle %}true{% else %}false{% endif %}"
 >
   {%- if section.blocks.size > 1 and section.settings.auto_rotate -%}
     <div class="slideshow__controls slideshow__controls--top slider-buttons">
@@ -186,6 +187,17 @@
                   preload: 'metadata',
                   class: 'tvc-slideshow__video'
               }}
+              {%- if section.settings.show_sound_toggle -%}
+                <button
+                  type="button"
+                  class="tvc-slideshow__sound-toggle"
+                  aria-pressed="false"
+                  aria-label="Unmute video"
+                  data-tvc-sound-state="off"
+                >
+                  {% render 'tvc-slideshow-sound-icons', icon_id: block.id %}
+                </button>
+              {%- endif -%}
             {%- elsif block.settings.image != blank -%}
               {%- liquid
                 assign desktop_image = block.settings.image
@@ -404,6 +416,13 @@
       "unit": "s",
       "label": "Change slides every",
       "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sound_toggle",
+      "label": "Show sound toggle",
+      "info": "When enabled, video slides show a mute/unmute control (muted by default).",
+      "default": true
     }
   ],
   "blocks": [
@@ -469,7 +488,7 @@
           "type": "video",
           "id": "video",
           "label": "Video",
-          "info": "Muted and looping. Overrides image and mobile image when set."
+          "info": "Looping video, muted by default. Overrides image and mobile image when set. Use section “Show sound toggle” for an unmute control."
         },
         {
           "type": "textarea",
