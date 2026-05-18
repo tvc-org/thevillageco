@@ -120,10 +120,10 @@
         "slide_6geXqk": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "preserve_image_aspect_ratio": false,
-            "video": "shopify://files/videos/MRB_PLAYABLES_15_LogoOnly_1.mp4",
+            "video": "shopify://files/videos/MRB_PLAYABLES_15_LogoOnly_2.mp4",
             "heading": "Turn Bath Time \nInto Bubble Time",
             "text": "<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus.</p>",
             "stacked_text_in_media": false,
@@ -152,7 +152,7 @@
         "slide_Yreya4": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/millions-of-bubbles-v2.jpg",
             "mobile_image": "shopify://shop_images/millions-of-bubbles-mobile.jpg",
@@ -227,8 +227,8 @@
         "image_mobile": "shopify://shop_images/mr-bubble-65-mobile.jpg",
         "image_position_desktop": "right",
         "card_background": "#e75e98",
-        "heading_color": "#FFE8F3",
-        "text_color": "#FFFFFF",
+        "heading_color": "#ffe8f3",
+        "text_color": "#ffffff",
         "heading": "Thank you!",
         "body": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>",
         "cta_label": "Shop exclusive birthday products",
@@ -241,7 +241,7 @@
         "slide_hVnGaF": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/super-blaster.jpg",
             "preserve_image_aspect_ratio": false,
