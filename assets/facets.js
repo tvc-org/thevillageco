@@ -189,14 +189,38 @@ class FacetFiltersForm extends HTMLElement {
   }
 
   static renderAdditionalElements(html) {
-    const mobileElementSelectors = ['.mobile-facets__open', '.mobile-facets__count', '.sorting'];
+    const parsedHTML = new DOMParser().parseFromString(html, 'text/html');
+    const mobileElementSelectors = ['.mobile-facets__open', '.mobile-facets__count'];
 
     mobileElementSelectors.forEach((selector) => {
-      if (!html.querySelector(selector)) return;
-      document.querySelector(selector).innerHTML = html.querySelector(selector).innerHTML;
+      if (!parsedHTML.querySelector(selector)) return;
+      const target = document.querySelector(selector);
+      if (target) target.innerHTML = parsedHTML.querySelector(selector).innerHTML;
     });
 
+    FacetFiltersForm.renderCollectionSortControls(parsedHTML);
+
     document.getElementById('FacetFiltersFormMobile').closest('menu-drawer').bindEvents();
+  }
+
+  static renderCollectionSortControls(html) {
+    const sourceSorts = html.querySelectorAll('.collection-toolbar__sort');
+    const targetSorts = document.querySelectorAll('.collection-toolbar__sort');
+
+    targetSorts.forEach((target, index) => {
+      if (!sourceSorts[index]) return;
+
+      const sourceSelect = sourceSorts[index].querySelector('select[name="sort_by"]');
+      const targetSelect = target.querySelector('select[name="sort_by"]');
+
+      if (sourceSelect && targetSelect) {
+        targetSelect.innerHTML = sourceSelect.innerHTML;
+        targetSelect.value = sourceSelect.value;
+        return;
+      }
+
+      target.innerHTML = sourceSorts[index].innerHTML;
+    });
   }
 
   static renderCounts(source, target) {
@@ -266,10 +290,20 @@ class FacetFiltersForm extends HTMLElement {
       const searchParams = this.createSearchParams(event.target.closest('form'));
       this.onSubmitForm(searchParams, event);
     } else {
+      const sourceForm = event.target.closest('form');
+      if (!sourceForm) return;
+
+      if (sourceForm.id === 'CollectionSortFormMobile') {
+        this.onSubmitForm(this.createSearchParams(sourceForm), event);
+        return;
+      }
+
       const forms = [];
-      const isMobile = event.target.closest('form').id === 'FacetFiltersFormMobile';
+      const isMobile = sourceForm.id === 'FacetFiltersFormMobile';
 
       sortFilterForms.forEach((form) => {
+        if (form.id === 'CollectionSortFormMobile') return;
+
         if (!isMobile) {
           if (form.id === 'FacetSortForm' || form.id === 'FacetFiltersForm' || form.id === 'FacetSortDrawerForm') {
             forms.push(this.createSearchParams(form));
