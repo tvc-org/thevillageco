@@ -1,0 +1,15 @@
+{% comment %}
+  Removes legacy spacer paragraphs from collection descriptions (Word export / old theme).
+
+  Accepts:
+  - html: {String} Collection description HTML
+{% endcomment %}
+{%- liquid
+  assign sanitized_html = html
+  assign spacer_paragraphs = '<p></p>|<p>&nbsp;</p>|<p> </p>|<p>&#160;</p>|<p class="MsoNormal">&nbsp;</p>|<p class="MsoNormal"></p>|<p class="MsoNormal"> </p>|<p class="MsoNormal">&#160;</p>|<p><br></p>|<p><br/></p>|<p><br /></p>|<p><br><br></p>|<p class="MsoNormal"><br></p>|<p class="MsoNormal"><br/></p>|<p class="MsoNormal"><br /></p>' | split: '|'
+
+  for spacer in spacer_paragraphs
+    assign sanitized_html = sanitized_html | replace: spacer, ''
+  endfor
+-%}
+{{- sanitized_html -}}

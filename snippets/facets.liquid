@@ -20,6 +20,10 @@
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign total_active_values = 0
   assign default_presentation = 'text'
+  assign collection_toolbar_layout = false
+  if filter_type == 'horizontal' and template.name == 'collection' and collection
+    assign collection_toolbar_layout = true
+  endif
   if results.url
     assign results_url = results.url
   else
@@ -28,7 +32,10 @@
   endif
 -%}
 
-<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if collection_toolbar_layout %} facets-container--collection-toolbar{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  {%- if collection_toolbar_layout -%}
+    {% render 'collection-breadcrumbs', collection: collection %}
+  {%- endif -%}
   {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
       <form
@@ -386,7 +393,7 @@
         {%- if filter_type == 'horizontal' -%}
           {% comment %} Sorting and product count are the last elements when filter type is horizontal {% endcomment %}
           {%- if enable_sorting -%}
-            <div class="facet-filters sorting caption">
+            <div class="facet-filters sorting caption{% if collection_toolbar_layout %} collection-toolbar__sort{% endif %}">
               <div class="facet-filters__field">
                 <h2 class="facet-filters__label caption-large text-body">
                   <label for="SortBy">{{ 'products.facets.sort_by_label' | t }}</label>
