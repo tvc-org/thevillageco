@@ -668,8 +668,8 @@ body.mr-bubble .tvc-slideshow__heading {
 /* Video sound toggle — 54px white circle, 28px icon, bottom-right inset */
 .tvc-slideshow__sound-toggle {
   position: absolute;
-  right: 60px;
-  bottom: 45px;
+  right: 30px;
+  bottom: 30px;
   z-index: 4;
   width: 54px;
   height: 54px;
@@ -684,6 +684,13 @@ body.mr-bubble .tvc-slideshow__heading {
   justify-content: center;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 1025px) {
+  .tvc-slideshow__sound-toggle {
+    right: 45px;
+    bottom: 45px;
+  }
 }
 
 .tvc-slideshow__sound-toggle:focus-visible {
