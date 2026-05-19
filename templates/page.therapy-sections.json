@@ -11,13 +11,85 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "tvc_slideshow_6AtkEb": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_LqXL7C": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/VNT_Collection_Calm_v2-1.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Ease Into Peace — \nNaturally",
+            "text": "<p>Discover the Calm Collection — a soothing ritual of plant-based milk bubbles and mineral-rich magnesium flakes to help quiet your mind, melt tension, and restore balance after a long day.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "link": "shopify://collections/calm",
+            "link_label": "Shop Calm"
+          }
+        }
+      },
+      "block_order": [
+        "slide_LqXL7C"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
+      }
+    },
+    "tvc_dual_feature_DLBXnj": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_xDbEHJ": {
+          "type": "feature",
+          "settings": {
+            "product": "comfort-foaming-bath-oil-body-wash",
+            "collection": "",
+            "heading_block": "Relax the Mind. Revive the Body.",
+            "text": "<p>Turn the bath into a quiet reset with moisturizing bubbles and a comforting blueberry citrus scent.</p>",
+            "link_label": "Shop Comfort",
+            "link": ""
+          }
+        },
+        "feature_DpNyAj": {
+          "type": "feature",
+          "settings": {
+            "product": "",
+            "collection": "therapy-cold-allergy",
+            "heading_block": "Breathe Deep, Feel Better",
+            "text": "<p>Invigorating Lemon, Peppermint, and Echinacea help open your senses and calm your mind when seasonal sniffles strike.</p>",
+            "link_label": "Shop Breathe",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_xDbEHJ",
+        "feature_DpNyAj"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "tvc_slideshow_6AtkEb",
+    "tvc_dual_feature_DLBXnj"
   ]
 }
