@@ -1127,6 +1127,28 @@ class VariantSelects extends HTMLElement {
 
 customElements.define('variant-selects', VariantSelects);
 
+function refreshYotpoWidgets() {
+  if (typeof yotpoWidgetsContainer !== 'undefined' && typeof yotpoWidgetsContainer.initWidgets === 'function') {
+    yotpoWidgetsContainer.initWidgets();
+    return true;
+  }
+
+  if (window.yotpo && typeof window.yotpo.initWidgets === 'function') {
+    window.yotpo.initWidgets();
+    return true;
+  }
+
+  return false;
+}
+
+function refreshYotpoWidgetsWhenReady(root, attempt = 0) {
+  if (!root?.querySelector?.('.yotpo-widget-instance')) return;
+  if (refreshYotpoWidgets()) return;
+  if (attempt < 24) {
+    setTimeout(() => refreshYotpoWidgetsWhenReady(root, attempt + 1), 250);
+  }
+}
+
 class ProductRecommendations extends HTMLElement {
   observer = undefined;
 
@@ -1161,6 +1183,7 @@ class ProductRecommendations extends HTMLElement {
 
         if (recommendations?.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML;
+          refreshYotpoWidgetsWhenReady(this);
         }
 
         if (!this.querySelector('slideshow-component') && this.classList.contains('complementary-products')) {

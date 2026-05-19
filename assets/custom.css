@@ -1293,8 +1293,15 @@ header-drawer {
 }
 
 .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container path,
+.product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container path,
 .shopify-section.section .collection .card--standard .block-review-rate svg.star-container path {
     stroke: #1f1f1f !important;
+}
+
+.product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-empty path,
+.product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-empty path,
+.shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-empty path {
+    stroke: #898989 !important;
 }
 
 /* PDP buy box: same inline row layout as cards so review count shows beside stars (Yotpo defaults to column). */
@@ -2565,7 +2572,7 @@ body.mr-bubble {
 /*
  * Yotpo stars use fill="url(#...)" with linearGradient (half star: first stop @ 51% = fill, second = white).
  * Do NOT set path { fill } — it overrides the gradient and makes yotpo-sr-star-half look fully filled.
- * Recolor the first gradient stop + stroke on full/half only; empty stars keep default stroke from global rules.
+ * Recolor the first gradient stop + stroke on full/half only; empty stars use global #898989 stroke.
  */
 body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
 body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,

@@ -493,7 +493,7 @@ a.product__text {
     flex-direction: row;
     align-items: center;
     gap: 1.6rem;
-    margin-top: 0.4rem;
+    margin-top: 42px;
   }
 
   .product-form__purchase-row .product-form__quantity {
@@ -1793,8 +1793,8 @@ a.product__text {
 
 @media screen and (min-width: 1025px) {
   .product__info-container .product__description {
-    margin-top: 0;
-    margin-bottom: 42px;
+    margin-top: 42px;
+    margin-bottom: 0;
   }
 
   .product__info-container .yotpo-widget-instance {
