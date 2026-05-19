@@ -1,0 +1,159 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "tvc_slideshow_6AtkEb": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_LqXL7C": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/VNT_Collection_Calm_v2-1.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Ease Into Peace — \nNaturally",
+            "text": "<p>Discover the Calm Collection — a soothing ritual of plant-based milk bubbles and mineral-rich magnesium flakes to help quiet your mind, melt tension, and restore balance after a long day.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "link": "shopify://collections/calm",
+            "link_label": "Shop Calm"
+          }
+        }
+      },
+      "block_order": [
+        "slide_LqXL7C"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
+      }
+    },
+    "tvc_dual_feature_DLBXnj": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_xDbEHJ": {
+          "type": "feature",
+          "settings": {
+            "product": "comfort-foaming-bath-oil-body-wash",
+            "collection": "",
+            "heading_block": "Relax the Mind. Revive the Body.",
+            "text": "<p>Turn the bath into a quiet reset with moisturizing bubbles and a comforting blueberry citrus scent.</p>",
+            "link_label": "Shop Comfort",
+            "link": ""
+          }
+        },
+        "feature_DpNyAj": {
+          "type": "feature",
+          "settings": {
+            "product": "",
+            "collection": "therapy-cold-allergy",
+            "heading_block": "Breathe Deep, Feel Better",
+            "text": "<p>Invigorating Lemon, Peppermint, and Echinacea help open your senses and calm your mind when seasonal sniffles strike.</p>",
+            "link_label": "Shop Breathe",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_xDbEHJ",
+        "feature_DpNyAj"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": ""
+      }
+    },
+    "tvc_featured_review_pdeaX4": {
+      "type": "tvc-featured-review",
+      "name": "t:sections.tvc-featured-review.presets.name",
+      "settings": {
+        "rating": "5",
+        "title": "Best Epsom!",
+        "review_text": "<p>Never had an Epsom salt work as well as this one! My skin is sensitive & no issues with this. Won’t ever use another brand - gained a lifelong customer!</p>",
+        "product": "breathe-2in1-foaming-epsom-bath-soak"
+      }
+    },
+    "featured_collection_aPjQLk": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "therapy-bestsellers",
+        "products_to_show": 12,
+        "title": "BEST SELLERS",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none"
+      }
+    },
+    "tvc_slideshow_BEmHA4": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_JJ63nA": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "preserve_image_aspect_ratio": false,
+            "video": "shopify://files/videos/VN_MAGNESIUM_15_NoRetialInfo_040125_2.mp4",
+            "heading": "Designed for \nReal Life Self-Care",
+            "text": "<p>Modern living can be hectic — and your bath shouldn’t just be about getting clean. It should be a chance to:</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_left",
+            "link": "shopify://products/muscle-magnesium-bath-flakes",
+            "link_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "slide_JJ63nA"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "tvc_slideshow_6AtkEb",
+    "tvc_dual_feature_DLBXnj",
+    "tvc_featured_review_pdeaX4",
+    "featured_collection_aPjQLk",
+    "tvc_slideshow_BEmHA4"
+  ]
+}
