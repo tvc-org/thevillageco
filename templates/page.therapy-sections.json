@@ -113,6 +113,39 @@
         "show_rating": false,
         "quick_add": "none"
       }
+    },
+    "tvc_slideshow_BEmHA4": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_JJ63nA": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "preserve_image_aspect_ratio": false,
+            "video": "shopify://files/videos/VN_MAGNESIUM_15_NoRetialInfo_040125_2.mp4",
+            "heading": "Designed for \nReal Life Self-Care",
+            "text": "<p>Modern living can be hectic — and your bath shouldn’t just be about getting clean. It should be a chance to:</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_left",
+            "link": "shopify://products/muscle-magnesium-bath-flakes",
+            "link_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "slide_JJ63nA"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
+      }
     }
   },
   "order": [
@@ -120,6 +153,7 @@
     "tvc_slideshow_6AtkEb",
     "tvc_dual_feature_DLBXnj",
     "tvc_featured_review_pdeaX4",
-    "featured_collection_aPjQLk"
+    "featured_collection_aPjQLk",
+    "tvc_slideshow_BEmHA4"
   ]
 }
