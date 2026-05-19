@@ -114,3 +114,7 @@ body.mr-bubble .tvc-featured-review__title {
     font-size: 103px;
   }
 }
+
+body.village-naturals-therapy .tvc-featured-review__rating .rating-star {
+  --color-rating-star: #8E6D98;
+}

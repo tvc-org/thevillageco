@@ -76,7 +76,7 @@
 
 /* Match vertical gap above footer Klaviyo block (after last template section) */
 main#MainContent + * .footer-newsletter-section {
-    /* margin-top: var(--section-margin); */
+    margin-top: var(--section-margin);
 }
 
 /*
@@ -936,7 +936,7 @@ header-drawer {
         height: 80px;
         padding: 0;
         position: relative;
-        box-shadow: 10px 5px 22px 0 #F2F2F2;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
     }
 
     .header-bottom .header-block {
@@ -2583,6 +2583,34 @@ body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-
 body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full path,
 body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half path {
     stroke: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
+}
+
+/* --- Village Naturals Therapy — Yotpo stars --- */
+body.village-naturals-therapy {
+    --village-naturals-therapy-brand: #8E6D98;
+}
+
+body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
+body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
+body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type {
+    stop-color: var(--village-naturals-therapy-brand, var(--village-naturals-therapy-brand)) !important;
+}
+
+body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
+body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
+body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
+body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
+body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full path,
+body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half path {
+    stroke: var(--village-naturals-therapy-brand, var(--village-naturals-therapy-brand)) !important;
+}
+
+body.village-naturals-therapy .product__info-wrapper .yotpo.bottomLine .yotpo-icon-star.rating-star,
+body.village-naturals-therapy .product__info-wrapper .yotpo.bottomLine .yotpo-stars .yotpo-icon {
+    color: var(--village-naturals-therapy-brand, var(--village-naturals-therapy-brand)) !important;
 }
 
 /* Legacy bottomLine on PDP: icon-font stars (not .yotpo-sr SVG widgets). */
