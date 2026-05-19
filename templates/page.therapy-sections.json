@@ -23,7 +23,7 @@
         "slide_LqXL7C": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/VNT_Collection_Calm_v2-1.jpg",
             "preserve_image_aspect_ratio": false,
@@ -120,7 +120,7 @@
         "slide_JJ63nA": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "preserve_image_aspect_ratio": false,
             "video": "shopify://files/videos/VN_MAGNESIUM_15_NoRetialInfo_040125_2.mp4",
@@ -146,6 +146,20 @@
         "change_slides_speed": 5,
         "show_sound_toggle": true
       }
+    },
+    "tvc_cta_short_8Hhf33": {
+      "type": "tvc-cta-short",
+      "name": "t:sections.tvc-cta-short.presets.name",
+      "settings": {
+        "full_width": false,
+        "image": "shopify://shop_images/VNT_CTA_Short_v2.jpg",
+        "mobile_image": "shopify://shop_images/VNT_CTA_Mobile_v2.jpg",
+        "title": "",
+        "description": "",
+        "link_label": "",
+        "link_url": "",
+        "bottom_margin": "default"
+      }
     }
   },
   "order": [
@@ -154,6 +168,7 @@
     "tvc_dual_feature_DLBXnj",
     "tvc_featured_review_pdeaX4",
     "featured_collection_aPjQLk",
-    "tvc_slideshow_BEmHA4"
+    "tvc_slideshow_BEmHA4",
+    "tvc_cta_short_8Hhf33"
   ]
 }
