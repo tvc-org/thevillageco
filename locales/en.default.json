@@ -359,6 +359,9 @@
       "carousel": "Carousel",
       "slide": "Slide"
     },
+    "tvc-cta-short": {
+      "empty_state": "Add a desktop image to preview this banner. Optional mobile image uses its own crops."
+    },
     "tvc_featured_review": {
       "attribution_prefix": "Review of the"
     },
