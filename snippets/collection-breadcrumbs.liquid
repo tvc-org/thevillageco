@@ -9,7 +9,11 @@
     <li class="collection-breadcrumbs__item">
       <a class="collection-breadcrumbs__link" href="{{ routes.root_url }}">Home</a>
     </li>
-    <li class="collection-breadcrumbs__separator" aria-hidden="true">&gt;</li>
+    <li class="collection-breadcrumbs__separator" aria-hidden="true">
+      <span class="svg-wrapper">
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </span>
+    </li>
     <li class="collection-breadcrumbs__item">
       <span class="collection-breadcrumbs__current" aria-current="page">{{ collection.title | escape }}</span>
     </li>
