@@ -85,11 +85,41 @@
         "heading": "",
         "color_scheme": ""
       }
+    },
+    "tvc_featured_review_pdeaX4": {
+      "type": "tvc-featured-review",
+      "name": "t:sections.tvc-featured-review.presets.name",
+      "settings": {
+        "rating": "5",
+        "title": "Best Epsom!",
+        "review_text": "<p>Never had an Epsom salt work as well as this one! My skin is sensitive & no issues with this. Won’t ever use another brand - gained a lifelong customer!</p>",
+        "product": "breathe-2in1-foaming-epsom-bath-soak"
+      }
+    },
+    "featured_collection_aPjQLk": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "therapy-bestsellers",
+        "products_to_show": 12,
+        "title": "BEST SELLERS",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none"
+      }
     }
   },
   "order": [
     "main",
     "tvc_slideshow_6AtkEb",
-    "tvc_dual_feature_DLBXnj"
+    "tvc_dual_feature_DLBXnj",
+    "tvc_featured_review_pdeaX4",
+    "featured_collection_aPjQLk"
   ]
 }
