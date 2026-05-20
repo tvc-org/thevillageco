@@ -1,0 +1,84 @@
+{% comment %}
+  Collection featured image — grid injection (desktop) or banner (mobile).
+
+  Accepts:
+  - collection: {Object} Collection
+  - placement: {String} "grid" or "banner"
+  - image_ratio: {String} Product card image ratio from collection grid section (optional)
+  - columns_desktop: {Number} Desktop column count from collection grid section (optional)
+{% endcomment %}
+{%- if collection.image -%}
+  {%- liquid
+    assign card_ratio = 1
+    if image_ratio == 'portrait'
+      assign card_ratio = 0.8
+    endif
+
+    assign featured_cqi_percent = 50.0 | divided_by: card_ratio
+    assign featured_gap_mult = 0.5 | divided_by: card_ratio
+    assign featured_alt = collection.image.alt | default: collection.title | escape
+
+    assign grid_columns = columns_desktop | default: 3
+    assign featured_col_span = 2
+    assign featured_width_pct = featured_col_span | times: 100.0 | divided_by: grid_columns
+    assign featured_gap_adj = grid_columns | minus: featured_col_span
+    assign featured_width_calc = 'calc(' | append: featured_width_pct | append: '% - var(--grid-desktop-horizontal-spacing) * ' | append: featured_gap_adj | append: ' / ' | append: grid_columns | append: ')'
+  -%}
+
+  {%- if placement == 'grid' -%}
+    <li
+      class="grid__item collection-grid-featured collection-grid-featured--desktop scroll-trigger--cancel"
+      data-collection-grid-columns="{{ grid_columns }}"
+      style="width: {{ featured_width_calc }}; max-width: {{ featured_width_calc }};"
+    >
+      <div class="card-wrapper collection-grid-featured__wrapper">
+        <div class="card card--standard card--media">
+          <div
+            class="card__inner color-{{ settings.card_color_scheme }} gradient collection-grid-featured__inner"
+            style="--featured-height-cqi: {{ featured_cqi_percent }}; --featured-gap-mult: {{ featured_gap_mult }};"
+          >
+            <div class="card__media">
+              <div class="media media--transparent">
+                <img
+                  srcset="
+                    {%- if collection.image.width >= 375 -%}{{ collection.image | image_url: width: 375 }} 375w,{%- endif -%}
+                    {%- if collection.image.width >= 550 -%}{{ collection.image | image_url: width: 550 }} 550w,{%- endif -%}
+                    {%- if collection.image.width >= 750 -%}{{ collection.image | image_url: width: 750 }} 750w,{%- endif -%}
+                    {%- if collection.image.width >= 1100 -%}{{ collection.image | image_url: width: 1100 }} 1100w,{%- endif -%}
+                    {%- if collection.image.width >= 1500 -%}{{ collection.image | image_url: width: 1500 }} 1500w,{%- endif -%}
+                    {{ collection.image | image_url }} {{ collection.image.width }}w
+                  "
+                  src="{{ collection.image | image_url: width: 1100 }}"
+                  sizes="(min-width: 1025px) calc((100vw - 130px) / {{ grid_columns }} * 2), 100vw"
+                  alt="{{ featured_alt }}"
+                  width="{{ collection.image.width }}"
+                  height="{{ collection.image.height }}"
+                  loading="eager"
+                  class="motion-reduce"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  {%- elsif placement == 'banner' -%}
+    <div
+      class="collection-grid-featured collection-grid-featured--banner"
+      style="--collection-featured-aspect: 1 / 0.79;"
+    >
+      <div class="collection-grid-featured__media media media--transparent">
+        {{
+          collection.image
+          | image_url: width: 1500
+          | image_tag:
+            loading: 'eager',
+            sizes: '100vw',
+            widths: '375, 550, 750, 1100, 1500',
+            alt: featured_alt,
+            class: 'collection-grid-featured__image'
+        }}
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}

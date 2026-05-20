@@ -13,6 +13,21 @@
   max-width: calc(var(--page-width) + (var(--layout-gutter-x) * 2));
 }
 
+/* Village Naturals Therapy — collection PLP + header areas use brand page background */
+body.village-naturals-therapy.template-collection #MainContent {
+  background: var(--brand-background-color);
+  background-attachment: scroll;
+}
+
+body.village-naturals-therapy.template-collection .collection-hero.gradient,
+body.village-naturals-therapy.template-collection .shopify-section.section > .gradient,
+body.village-naturals-therapy.template-collection .facets-container--collection-toolbar,
+body.village-naturals-therapy.template-collection .collection-mobile-toolbar {
+  --gradient-background: var(--brand-background-color);
+  background: var(--brand-background-color);
+  background-attachment: scroll;
+}
+
 @media screen and (min-width: 1025px) {
   /* --- Hero: title left, description right (~1/3 width) --- */
   .collection-hero--split .collection-hero__inner {
@@ -294,6 +309,73 @@
   }
 }
 
+/* Collection featured image */
+.collection-grid-featured--banner {
+  display: block;
+  margin-bottom: 1.6rem;
+}
+
+.collection-grid-featured--banner .collection-grid-featured__media {
+  aspect-ratio: var(--collection-featured-aspect, 1 / 0.79);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.collection-grid-featured--desktop {
+  display: none;
+}
+
+.collection-grid-featured__image,
+.collection-grid-featured__inner .media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collection-grid-featured__wrapper {
+  width: 100%;
+}
+
+.collection-grid-featured__inner {
+  width: 100%;
+  position: relative;
+}
+
+.collection-grid-featured__inner::before {
+  display: none;
+  content: none;
+  padding: 0;
+}
+
+.collection-grid-featured__inner .card__media {
+  margin: 0;
+  width: 100%;
+  left: 0;
+  right: 0;
+}
+
+.collection-grid-featured__inner .media {
+  width: 100%;
+  height: 100%;
+}
+
+.collection-grid-featured--banner .collection-grid-featured__media {
+  border-radius: 8px;
+}
+
+@media screen and (max-width: 959px) {
+  .collection-grid-featured--banner .collection-grid-featured__media {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  body.mr-bubble .collection-grid-featured--banner .collection-grid-featured__media {
+    border-radius: 35px;
+  }
+}
+
 @media screen and (min-width: 1025px) {
   .collection-hero__breadcrumbs {
     display: none;
@@ -303,5 +385,45 @@
     display: none;
   }
 
-  
+  .collection-grid-featured--banner {
+    display: none;
+  }
+
+  .product-grid > .grid__item.collection-grid-featured--desktop {
+    display: list-item;
+    flex-grow: 0;
+    flex-shrink: 0;
+    container-type: inline-size;
+  }
+
+  .collection-grid-featured__inner {
+    height: calc(var(--featured-height-cqi, 50) * 1cqi - var(--grid-desktop-horizontal-spacing) * var(--featured-gap-mult, 0.5));
+    aspect-ratio: unset;
+  }
+
+  /* Flex grid column widths override single-class rules — match Dawn calc per column count */
+  .product-grid.grid--2-col-desktop > .grid__item.collection-grid-featured--desktop {
+    width: calc(100% - var(--grid-desktop-horizontal-spacing) * 0 / 2);
+    max-width: calc(100% - var(--grid-desktop-horizontal-spacing) * 0 / 2);
+  }
+
+  .product-grid.grid--3-col-desktop > .grid__item.collection-grid-featured--desktop {
+    width: calc(66.666% - var(--grid-desktop-horizontal-spacing) / 3);
+    max-width: calc(66.666% - var(--grid-desktop-horizontal-spacing) / 3);
+  }
+
+  .product-grid.grid--4-col-desktop > .grid__item.collection-grid-featured--desktop {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+
+  .product-grid.grid--5-col-desktop > .grid__item.collection-grid-featured--desktop {
+    width: calc(40% - var(--grid-desktop-horizontal-spacing) * 3 / 5);
+    max-width: calc(40% - var(--grid-desktop-horizontal-spacing) * 3 / 5);
+  }
+
+  .product-grid.grid--6-col-desktop > .grid__item.collection-grid-featured--desktop {
+    width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 4 / 6);
+    max-width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 4 / 6);
+  }
 }

@@ -396,7 +396,8 @@ body slider-component.slider-component-full-width {
 }
 
 .shopify-section.section .collection .card--standard .card__inner,
-.shopify-section.section .collection-list .card--standard .card__inner {
+.shopify-section.section .collection-list .card--standard .card__inner,
+.shopify-section.section .collection .collection-grid-featured--desktop .card__inner {
     border-radius: 12px;
     overflow: hidden;
 }
@@ -414,7 +415,8 @@ body slider-component.slider-component-full-width {
 }
 
 body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
-body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
+body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
+body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner {
     border-radius: 16px;
     border: 1px solid #C7C7C7;
 }
@@ -431,7 +433,8 @@ body.mr-bubble .shopify-section.section .collection-list .card--standard .card__
 
 @media screen and (min-width: 960px) {
     body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
-    body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner {
+    body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
+    body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner {
         border-radius: 35px;
     }
 }
@@ -1437,6 +1440,26 @@ header-drawer {
     color: #323131;
     padding-top: 2.5rem;
     padding-bottom: 3rem;
+}
+
+/* Village Naturals Therapy — PDP uses brand page background (matches collection PLP) */
+body.village-naturals-therapy.template-product #MainContent {
+    background: var(--brand-background-color);
+    background-attachment: scroll;
+}
+
+body.village-naturals-therapy.template-product product-info.gradient,
+body.village-naturals-therapy.template-product .shopify-section.section > .gradient,
+body.village-naturals-therapy.template-product .shopify-section.section:has(.yotpo-widget-instance),
+body.village-naturals-therapy.template-product .tvc-cross-sell-addons.gradient,
+body.village-naturals-therapy.template-product .quantity:before {
+    --gradient-background: var(--brand-background-color);
+    background: var(--brand-background-color);
+    background-attachment: scroll;
+}
+
+body.village-naturals-therapy.template-product .shopify-section.section:has(.yotpo-widget-instance) {
+    color: #323131;
 }
 
 @media screen and (min-width: 1025px) {
