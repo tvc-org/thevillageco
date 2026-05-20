@@ -1372,13 +1372,30 @@ header-drawer {
     flex-direction: row !important;
     align-items: center !important;
     flex-wrap: wrap;
-    gap: 8px !important;
+    gap: 2px !important;
 }
 
 .product-grid .grid__item .yotpo-sr-bottom-line-text--right-panel,
 .shopify-section.section .collection .card .yotpo-sr-bottom-line-text--right-panel {
     padding-top: 0 !important;
-    line-height: 1.2 !important;
+    margin-top: 2px;
+    line-height: 1 !important;
+    align-self: flex-end;
+}
+
+.product-grid .grid__item .yotpo-sr-bottom-line-left-panel,
+.shopify-section.section .collection .card .yotpo-sr-bottom-line-left-panel {
+    align-self: center;
+}
+
+/* Cards: hide numeric score (e.g. "5") — show stars + review count only */
+.product-grid .grid__item .yotpo-sr-bottom-line-score,
+.product-grid .grid__item .yotpo-sr-bottom-line-center-panel,
+.shopify-section.section .collection .card .yotpo-sr-bottom-line-score,
+.shopify-section.section .collection .card .yotpo-sr-bottom-line-center-panel,
+.shopify-section.section .collection .card--standard .block-review-rate .yotpo-sr-bottom-line-score,
+.shopify-section.section .collection .card--standard .block-review-rate .yotpo-sr-bottom-line-center-panel {
+    display: none !important;
 }
 
 .yotpo-star-rating-reviews-highly-rated-topics {
