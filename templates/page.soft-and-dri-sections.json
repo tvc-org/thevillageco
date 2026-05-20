@@ -11,13 +11,121 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "tvc_slideshow_p4QpyF": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_e9EqgB": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/soft-dri-home-hero.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Your Mood. Your Scent. Your Day.",
+            "text": "<p>Four aluminum-free formulas. All-day protection. <br/>Built to keep up with wherever life takes you.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "link": "shopify://products/soft-dri-signature-classic-soft-scent-aerosol-deodorant",
+            "link_label": "Shop Soft & Dri"
+          }
+        }
+      },
+      "block_order": [
+        "slide_e9EqgB"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
+      }
+    },
+    "tvc_dual_feature_JNAQzn": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_9QmRFn": {
+          "type": "feature",
+          "settings": {
+            "product": "soft-dri-sparkling-citrus-aluminum-free-deodorant",
+            "collection": "",
+            "image": "shopify://shop_images/V2_sparkling-citrus-social_46345175-c514-45b5-b6cb-6da2a04465ce.jpg",
+            "heading_block": "Aluminum Free Solids",
+            "text": "<p>Boosted with pH balancing minerals and formulated to go on smooth and clear — three empowering scents built to keep up with your day, every day.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_VpU3TH": {
+          "type": "feature",
+          "settings": {
+            "product": "soft-dri-signature-classic-soft-scent-aerosol-deodorant",
+            "collection": "",
+            "image": "shopify://shop_images/SND-flowers.jpg",
+            "heading_block": "Classic Signature Aerosol",
+            "text": "<p>Same soft, iconic scent you love — now with just six simple ingredients. Free from aluminum, parabens, and talc. All-day odor protection, nothing you don't need.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_9QmRFn",
+        "feature_VpU3TH"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": ""
+      }
+    },
+    "featured_collection_8BieNP": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "collection": "soft-dri-aerosol-deodorant",
+        "products_to_show": 12,
+        "title": "Best Sellers",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none"
+      }
+    },
+    "tvc_cta_short_KU3JRr": {
+      "type": "tvc-cta-short",
+      "name": "t:sections.tvc-cta-short.presets.name",
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/soft-n-dri-care-about-taller.png",
+        "mobile_image": "shopify://shop_images/soft-n-dri-care-about-mobile.png",
+        "title": "",
+        "description": "",
+        "link_label": "",
+        "link_url": "",
+        "bottom_margin": "default"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "tvc_slideshow_p4QpyF",
+    "tvc_dual_feature_JNAQzn",
+    "featured_collection_8BieNP",
+    "tvc_cta_short_KU3JRr"
   ]
 }
