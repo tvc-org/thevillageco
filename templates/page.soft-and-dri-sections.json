@@ -23,7 +23,7 @@
         "slide_e9EqgB": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/soft-dri-home-hero.jpg",
             "preserve_image_aspect_ratio": false,
@@ -92,7 +92,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "collection": "soft-dri-aerosol-deodorant",
+        "collection": "soft-dri-aluminum-free",
         "products_to_show": 12,
         "title": "Best Sellers",
         "description": "",
