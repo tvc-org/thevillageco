@@ -2818,6 +2818,11 @@ body.mr-bubble .product-form__input--pill input[type='radio']:disabled:checked +
     color: var(--color-text) !important;
 }
 
+.footer-newsletter--soft-dri .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p,
+.footer-newsletter--soft-dri .footer-newsletter__form .klaviyo-form [data-testid="form-row"]:first-of-type p span {
+    color: var(--footer-newsletter-form-ui-accent) !important;
+}
+
 .badge {
     border-radius: 8px;
     font-family: "FuturaPTBold", sans-serif;
