@@ -65,6 +65,7 @@
             "brand_color": "#ffffff",
             "footer_text_color": "#e940a8",
             "brand_page_link": "shopify://pages/soft-dri",
+            "footer_logo": "shopify://shop_images/soft-n-dri-footer-logo.png",
             "footer_newsletter_background_image": "shopify://shop_images/soft-dri-email-bg.jpg",
             "footer_newsletter_form_bg": "#eaeaea",
             "footer_newsletter_form_ui_accent": "#e940a8",
