@@ -1,9 +1,12 @@
 <div class="header-bottom">
   <div class="header-logo brand-{{ current_brand.id }}">
-    <a href="{{ block.settings.brand_page_link | default: '/' }}" class="header-block header-brand">
+    <a
+      href="{% if current_brand.settings.brand_page_link != blank %}{{ current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
+      class="header-block header-brand"
+    >
       <img
         src="{{ current_brand.settings.nav_image | img_url: 'x76' }}"
-        alt="{{ block.settings.text }}"
+        alt="{{ current_brand.settings.text | escape }}"
         width="76"
         height="76"
       >

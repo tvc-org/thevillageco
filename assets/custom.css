@@ -518,10 +518,6 @@ body slider-component.slider-component-full-width {
     color: #777;
 }
 
-.shopify-section.section .collection .card--standard .block-review-rate {
-    margin-top: 6px;
-}
-
 .shopify-section.section .collection-list .card--standard .icon-wrap {
     display: none;
 }
@@ -559,14 +555,16 @@ body.soft-dri .product-grid .grid__item .card--standard .card__inner {
     }
 }
 
-/* Mr. Bubble — TVC Dual Feature image area matches featured collection card radius */
-body.mr-bubble .tvc-dual-feature__media {
+/* Mr. Bubble / Soft & Dri — TVC Dual Feature image area matches featured collection card radius */
+body.mr-bubble .tvc-dual-feature__media,
+body.soft-dri .tvc-dual-feature__media {
     border-radius: 16px;
     border: 1px solid #C7C7C7;
 }
 
 @media screen and (min-width: 960px) {
-    body.mr-bubble .tvc-dual-feature__media {
+    body.mr-bubble .tvc-dual-feature__media,
+    body.soft-dri .tvc-dual-feature__media {
         border-radius: 35px;
     }
 }
@@ -1405,14 +1403,12 @@ header-drawer {
 }
 
 .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container path,
-.product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container path,
-.shopify-section.section .collection .card--standard .block-review-rate svg.star-container path {
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-summary svg.star-container path {
     stroke: #1f1f1f !important;
 }
 
 .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-empty path,
-.product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-empty path,
-.shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-empty path {
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-empty path {
     stroke: #898989 !important;
 }
 
@@ -1478,36 +1474,61 @@ header-drawer {
     color: #1f1f1f;
 }
 
-/* Grid / collection cards: Yotpo injects column flex on .yotpo-sr-bottom-line-summary; show stars + count inline. */
-.product-grid .grid__item .yotpo-sr-bottom-line-summary,
-.shopify-section.section .collection .card .yotpo-sr-bottom-line-summary {
+/*
+ * Product card grids — Yotpo star rating (collection wall, featured collection, related, search).
+ * Markup: .block-review-rate > .yotpo-widget-instance (see snippets/product-reviews.liquid).
+ */
+.product-grid .grid__item .block-review-rate {
+    margin-top: 6px;
+}
+
+.product-grid .grid__item .block-review-rate .yotpo-widget-instance {
+    margin: 0;
+    line-height: 1;
+}
+
+/* Yotpo injects column flex on .yotpo-sr-bottom-line-summary; show stars + count inline. */
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-summary,
+.shopify-section.section .collection .product-grid .grid__item .yotpo-sr-bottom-line-summary {
     flex-direction: row !important;
     align-items: center !important;
-    flex-wrap: wrap;
-    gap: 2px !important;
+    flex-wrap: nowrap !important;
+    column-gap: 8px !important;
+    gap: 8px !important;
 }
 
-.product-grid .grid__item .yotpo-sr-bottom-line-text--right-panel,
-.shopify-section.section .collection .card .yotpo-sr-bottom-line-text--right-panel {
-    padding-top: 0 !important;
-    margin-top: 2px;
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-text--right-panel,
+.shopify-section.section .collection .product-grid .grid__item .yotpo-sr-bottom-line-text--right-panel {
+    padding: 0 !important;
+    margin: 0 !important;
     line-height: 1 !important;
-    align-self: flex-end;
+    align-self: center !important;
+    font-family: "Inter" !important;
 }
 
-.product-grid .grid__item .yotpo-sr-bottom-line-left-panel,
-.shopify-section.section .collection .card .yotpo-sr-bottom-line-left-panel {
-    align-self: center;
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-left-panel,
+.shopify-section.section .collection .product-grid .grid__item .yotpo-sr-bottom-line-left-panel {
+    align-self: center !important;
+    margin: 0 !important;
+}
+
+/* Yotpo inline styles add margin-inline-end on the last star on collection wall; zero it everywhere. */
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-summary svg.star-container:last-of-type,
+.shopify-section.section .collection .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container:last-of-type {
+    margin-inline-end: 0 !important;
 }
 
 /* Cards: hide numeric score (e.g. "5") — show stars + review count only */
-.product-grid .grid__item .yotpo-sr-bottom-line-score,
-.product-grid .grid__item .yotpo-sr-bottom-line-center-panel,
-.shopify-section.section .collection .card .yotpo-sr-bottom-line-score,
-.shopify-section.section .collection .card .yotpo-sr-bottom-line-center-panel,
-.shopify-section.section .collection .card--standard .block-review-rate .yotpo-sr-bottom-line-score,
-.shopify-section.section .collection .card--standard .block-review-rate .yotpo-sr-bottom-line-center-panel {
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-score,
+.product-grid .grid__item .block-review-rate .yotpo-sr-bottom-line-center-panel,
+.shopify-section.section .collection .product-grid .grid__item .yotpo-sr-bottom-line-score,
+.shopify-section.section .collection .product-grid .grid__item .yotpo-sr-bottom-line-center-panel {
     display: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
 .yotpo-star-rating-reviews-highly-rated-topics {
@@ -1569,6 +1590,15 @@ body.village-naturals-therapy.template-product .quantity:before {
 
 body.village-naturals-therapy.template-product .shopify-section.section:has(.yotpo-widget-instance) {
     color: #323131;
+}
+
+.product__info-wrapper .yotpo-sr-bottom-line-text--right-panel {
+    padding: 0 !important;
+    margin: 4px 0 0 0 !important;
+    line-height: 1 !important;
+    align-self: center !important;
+    font-family: "Inter" !important;
+    font-size: 18px !important;
 }
 
 @media screen and (min-width: 1025px) {
@@ -2735,19 +2765,15 @@ body.mr-bubble {
  */
 body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
 body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
-body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
-body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
-body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
-body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type {
+body.mr-bubble .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.mr-bubble .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type {
     stop-color: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
 }
 
 body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
 body.mr-bubble .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
-body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
-body.mr-bubble .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
-body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full path,
-body.mr-bubble .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half path {
+body.mr-bubble .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-full path,
+body.mr-bubble .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-half path {
     stroke: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
 }
 
@@ -2758,19 +2784,15 @@ body.village-naturals-therapy {
 
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
-body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
-body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
-body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
-body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type {
+body.village-naturals-therapy .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
+body.village-naturals-therapy .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type {
     stop-color: var(--village-naturals-therapy-brand, var(--village-naturals-therapy-brand)) !important;
 }
 
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
-body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full path,
-body.village-naturals-therapy .product-grid .grid__item .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half path,
-body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-full path,
-body.village-naturals-therapy .shopify-section.section .collection .card--standard .block-review-rate svg.star-container.yotpo-sr-star-half path {
+body.village-naturals-therapy .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-full path,
+body.village-naturals-therapy .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-half path {
     stroke: var(--village-naturals-therapy-brand, var(--village-naturals-therapy-brand)) !important;
 }
 

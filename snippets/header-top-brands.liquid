@@ -2,7 +2,7 @@
   <div class="header-top__brands">
     {%- for block in brand_blocks -%}
       <a
-        href="{{ block.settings.brand_page_link | default: '/' }}"
+        href="{% if block.settings.brand_page_link != blank %}{{ block.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
         class="header-block header-brand brand--{{ block.id }}{% if current_brand.id == block.id %} header-brand--active{% endif %}"
       >
         <img
