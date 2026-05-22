@@ -35,7 +35,10 @@ window.xsellCustom.buildxsellsoutput = function(xsellitems, numproducts) {
     var xscompareatpricestring = '';
     var xssalepricestring = '';
     var xspriceoutput = '';
-    var xssalebadge = '<span class="product-badge"><span>Sale</span></span>';
+    var tvcXsBadgeOpen = '<div class="card__badge card__badge--media top left">';
+    var tvcXsBadgeClose = '</div>';
+    var tvcXsSaleBadgeSpan = '<span class="badge badge--bottom-left badge-sale color-{{ settings.sale_badge_color_scheme }}">Sale</span>';
+    var xssalebadge = tvcXsBadgeOpen + tvcXsSaleBadgeSpan + tvcXsBadgeClose;
     var xssalebadgeoutput = '';
     var xspreorderbadgeoutput = '';
     var xssoldout = '';
@@ -104,7 +107,10 @@ window.xsellCustom.buildxsellsoutput = function(xsellitems, numproducts) {
                 return typeof tag === 'string' && tag.indexOf('badge:') !== -1;
             });
             if (xsProductBadgeTag) {
-                xssalebadgeoutput = '<span class="product-badge"><span>' + xsProductBadgeTag.replace("badge:", "") + '</span></span>';
+                var tvcXsTagLabel = xsProductBadgeTag.replace('badge:', '');
+                var tvcXsTagHandle = tvcXsTagLabel.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                var tvcXsTagBadgeSpan = '<span class="badge badge--bottom-left badge-' + tvcXsTagHandle + ' color-{{ settings.sale_badge_color_scheme }}">' + tvcXsTagLabel + '</span>';
+                xssalebadgeoutput = tvcXsBadgeOpen + tvcXsTagBadgeSpan + tvcXsBadgeClose;
             } else {
                 xssalebadgeoutput = '';
             }
@@ -116,7 +122,8 @@ window.xsellCustom.buildxsellsoutput = function(xsellitems, numproducts) {
                 return typeof tag === 'string' && tag.indexOf(tvcXsPreorderTag) !== -1;
             });
             if (xsProductPreorderTag) {
-                xspreorderbadgeoutput = '<span class="product-badge"><span>' + {{ 'products.product.pre_order' | t | json }} + '</span></span>';
+                var tvcXsPreorderSpan = '<span class="badge badge--bottom-left badge-preorder color-{{ settings.sale_badge_color_scheme }}">' + {{ 'products.product.pre_order' | t | json }} + '</span>';
+                xspreorderbadgeoutput = tvcXsBadgeOpen + tvcXsPreorderSpan + tvcXsBadgeClose;
             }
         }
 

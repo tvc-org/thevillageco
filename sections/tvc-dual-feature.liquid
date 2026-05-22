@@ -60,16 +60,6 @@
               endif
             endif
 
-            assign tvc_df_show_card_badge = false
-            if bp != blank
-              if bp.available == false
-                assign tvc_df_show_card_badge = true
-              elsif bp.compare_at_price > bp.price and bp.available
-                assign tvc_df_show_card_badge = true
-              elsif bp.available and bp.selected_or_first_available_variant.inventory_management == 'shopify' and bp.selected_or_first_available_variant.inventory_quantity > 0 and bp.selected_or_first_available_variant.inventory_quantity <= 10
-                assign tvc_df_show_card_badge = true
-              endif
-            endif
             assign tvc_df_badge_section_id = section.id | append: '-' | append: block.id
             assign tvc_df_badge_position_class = settings.badge_position | replace: ' ', '-'
           -%}
@@ -105,8 +95,12 @@
                       class: 'tvc-dual-feature__image',
                       alt: img_alt
                   }}
-                  {%- if tvc_df_show_card_badge -%}
-                    {% render 'product-badge-new', card_product: bp, section_id: tvc_df_badge_section_id %}
+                  {%- if bp != blank -%}
+                    {%- render 'card-product-badges',
+                      card_product: bp,
+                      section_id: tvc_df_badge_section_id,
+                      badge_context: 'media'
+                    -%}
                   {%- endif -%}
                 </div>
               {%- endif -%}

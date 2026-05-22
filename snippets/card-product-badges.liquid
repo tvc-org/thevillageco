@@ -1,0 +1,125 @@
+{% comment %}
+  Dawn-style product badges: card__badge wrapper + .badge spans.
+
+  Accepts:
+  - card_product / product: {Object} Product
+  - section_id: {String} Unique id prefix for badge spans (optional)
+  - position: {String} Override theme badge position (optional)
+  - show_low_stock: {Boolean} Include low-stock badge (default: true)
+  - low_stock_threshold: {Number} Inventory qty threshold (default: 10)
+  - badge_context: {String} "media" | "nav" | "content" (optional, default: media)
+{% endcomment %}
+{%- liquid
+  assign badge_product = card_product | default: product
+  assign badge_section_id = section_id | default: 'global'
+  assign badge_position = position | default: settings.badge_position
+  assign show_low_stock = show_low_stock | default: true, allow_false: true
+  assign low_stock_threshold = low_stock_threshold | default: 10
+  assign badge_context = badge_context | default: 'media'
+
+  assign tag_groups = 'badge:New' | split: ','
+  assign sorted_tags = ''
+
+  for group in tag_groups
+    for tag in badge_product.tags
+      assign tag_group = tag | split: '_' | first
+      if tag_group == group
+        assign sorted_tags = sorted_tags | append: tag | append: ','
+      endif
+    endfor
+  endfor
+
+  assign sorted_tags_arr = sorted_tags | remove_last: ',' | split: ','
+
+  assign show_sold_out = false
+  assign show_sale = false
+  assign show_low_stock_badge = false
+  assign show_tag_badges = false
+
+  if sorted_tags != blank
+    assign show_tag_badges = true
+  endif
+
+  if badge_product != blank
+    if badge_product.available == false
+      assign show_sold_out = true
+    else
+      if badge_product.compare_at_price > badge_product.price and badge_product.available
+        assign show_sale = true
+      endif
+      if show_low_stock and badge_product.available
+        assign badge_variant = badge_product.selected_or_first_available_variant
+        if badge_variant.inventory_management == 'shopify' and badge_variant.inventory_quantity > 0 and badge_variant.inventory_quantity <= low_stock_threshold
+          assign show_low_stock_badge = true
+        endif
+        unless show_low_stock_badge
+          for variant in badge_product.variants
+            if variant.available and variant.inventory_management == 'shopify' and variant.inventory_quantity > 0 and variant.inventory_quantity <= low_stock_threshold
+              assign show_low_stock_badge = true
+              break
+            endif
+          endfor
+        endunless
+      endif
+    endif
+  endif
+
+  assign show_card_badges = false
+  if show_sold_out or show_sale or show_low_stock_badge or show_tag_badges
+    assign show_card_badges = true
+  endif
+
+  assign badge_modifier = ''
+  if show_sold_out
+    assign badge_modifier = 'card__badge--sold-out'
+  elsif show_sale
+    assign badge_modifier = 'card__badge--on-sale'
+  elsif show_low_stock_badge
+    assign badge_modifier = 'card__badge--low-stock'
+  endif
+-%}
+{%- if show_card_badges and badge_product != blank -%}
+  <div
+    class="card__badge {{ badge_position }} {{ badge_modifier }}{% if badge_context == 'nav' %} card__badge--nav{% endif %}{% if badge_context == 'media' %} card__badge--media{% endif %}"
+  >
+    {%- if show_sold_out -%}
+      <span
+        id="Badge-{{ badge_section_id }}-{{ badge_product.id }}-sold-out"
+        class="badge badge--bottom-left badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}"
+      >
+        {{- 'products.product.sold_out' | t -}}
+      </span>
+    {%- else -%}
+      {%- if show_tag_badges -%}
+        {%- for tag in sorted_tags_arr -%}
+          {%- if tag contains 'badge:' -%}
+            {%- assign parts = tag | split: 'badge:' -%}
+            {%- assign badge_label = parts[1] | split: '|' | first -%}
+            <span
+              id="Badge-{{ badge_section_id }}-{{ badge_product.id }}-tag-{{ forloop.index }}"
+              class="badge badge--bottom-left badge-{{ badge_label | handle }} color-{{ settings.sale_badge_color_scheme }}"
+            >
+              {{- badge_label -}}
+            </span>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if show_sale -%}
+        <span
+          id="Badge-{{ badge_section_id }}-{{ badge_product.id }}-sale"
+          class="badge badge--bottom-left badge-sale color-{{ settings.sale_badge_color_scheme }}"
+        >
+          {{- 'products.product.on_sale' | t -}}
+        </span>
+      {%- endif -%}
+      {%- if show_low_stock_badge -%}
+        <span
+          id="Badge-{{ badge_section_id }}-{{ badge_product.id }}-low-stock"
+          class="badge badge--bottom-left badge-low-stock color-{{ settings.low_stock_badge_color_scheme | default: 'accent-1' }}"
+        >
+          {{- 'products.product.inventory_low_stock' | t -}}
+        </span>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}

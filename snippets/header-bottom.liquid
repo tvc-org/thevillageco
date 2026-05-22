@@ -80,7 +80,11 @@
                         <a href="{{ product.url | within: collection }}">
                           <p class="product-name">{{ product.title }}</p>
                         </a>
-                        {%- render 'product-badge' -%}
+                        {%- render 'card-product-badges',
+                          product: product,
+                          low_stock_threshold: 30,
+                          badge_context: 'nav'
+                        -%}
                         <div class="text-center">
                           <a class="shop-now button button--secondary" href="{{ product.url | within: collection }}"
                             >Shop Now</a

@@ -139,7 +139,11 @@
                                           <a href="{{ product.url }}" class="menu-drawer__tout-name">
                                             {{- product.title -}}
                                           </a>
-                                          {%- render 'product-badge' -%}
+                                          {%- render 'card-product-badges',
+                                            product: product,
+                                            low_stock_threshold: 30,
+                                            badge_context: 'nav'
+                                          -%}
                                           <a
                                             class="menu-drawer__tout-cta button button--secondary"
                                             href="{{ product.url }}"

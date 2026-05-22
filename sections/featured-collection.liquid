@@ -55,7 +55,7 @@
 {%- endif -%}
 
 <div
-  class="color-{{ fc_color_scheme }}-x isolate gradient-x"
+  class="featured-collection color-{{ fc_color_scheme }}-x isolate gradient-x"
 >
   <div
     class="collection{% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}"
@@ -148,7 +148,9 @@
                 media_aspect_ratio: 'square',
                 image_shape: 'default',
                 lazy_load: false,
-                placeholder_image: placeholder_image
+                placeholder_image: placeholder_image,
+                section_id: section.id,
+                quick_add: section.settings.quick_add
               %}
             </li>
           {%- endfor -%}

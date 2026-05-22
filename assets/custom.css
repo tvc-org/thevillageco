@@ -402,6 +402,108 @@ body slider-component.slider-component-full-width {
     overflow: hidden;
 }
 
+/* Dawn card__badge on product media (replaces legacy .product-badge) */
+.card__inner > .card__badge--media,
+.card__media > .card__badge--media,
+.card__inner .card__media > .card__badge--media {
+    position: absolute;
+    z-index: 6;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: auto;
+    max-width: calc(100% - 2.6rem);
+    align-self: unset;
+    justify-self: unset;
+    grid-row-start: auto;
+    pointer-events: none;
+}
+
+.card__inner > .card__badge--media.top.left,
+.card__media > .card__badge--media.top.left,
+.card__inner .card__media > .card__badge--media.top.left {
+    top: 15px;
+    left: 15px;
+    bottom: auto;
+    right: auto;
+}
+
+.card__inner > .card__badge--media.top.right,
+.card__media > .card__badge--media.top.right,
+.card__inner .card__media > .card__badge--media.top.right {
+    top: 15px;
+    right: 15px;
+    left: auto;
+    bottom: auto;
+}
+
+.card__inner > .card__badge--media.bottom.left,
+.card__media > .card__badge--media.bottom.left,
+.card__inner .card__media > .card__badge--media.bottom.left {
+    bottom: 15px;
+    left: 15px;
+    top: auto;
+    right: auto;
+}
+
+.card__inner > .card__badge--media.bottom.right,
+.card__media > .card__badge--media.bottom.right,
+.card__inner .card__media > .card__badge--media.bottom.right {
+    bottom: 15px;
+    right: 15px;
+    top: auto;
+    left: auto;
+}
+
+@media screen and (min-width: 1025px) {
+    .card__inner > .card__badge--media.top.left,
+    .card__media > .card__badge--media.top.left,
+    .card__inner .card__media > .card__badge--media.top.left {
+        top: 30px;
+        left: 30px;
+    }
+
+    .card__inner > .card__badge--media.top.right,
+    .card__media > .card__badge--media.top.right,
+    .card__inner .card__media > .card__badge--media.top.right {
+        top: 30px;
+        right: 30px;
+    }
+
+    .card__inner > .card__badge--media.bottom.left,
+    .card__media > .card__badge--media.bottom.left,
+    .card__inner .card__media > .card__badge--media.bottom.left {
+        bottom: 30px;
+        left: 30px;
+    }
+
+    .card__inner > .card__badge--media.bottom.right,
+    .card__media > .card__badge--media.bottom.right,
+    .card__inner .card__media > .card__badge--media.bottom.right {
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+/* Featured collection — product cards use card-product-badges via card-product */
+.featured-collection .product-grid .card__inner > .card__badge--media {
+    z-index: 6;
+}
+
+.card__badge--nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0.4rem 0;
+    width: auto;
+    max-width: 100%;
+    align-self: center;
+    grid-row-start: auto;
+}
+
 .shopify-section.section .collection .card--standard .card-information > .price {
     color: #777;
 }
@@ -450,6 +552,7 @@ body.soft-dri .product-grid .grid__item .card--standard .card__inner {
 /* Mr. Bubble — TVC Dual Feature image area matches featured collection card radius */
 body.mr-bubble .tvc-dual-feature__media {
     border-radius: 16px;
+    border: 1px solid #C7C7C7;
 }
 
 @media screen and (min-width: 960px) {
@@ -1047,16 +1150,11 @@ header-drawer {
         height: 100%;
         object-fit: contain;
     }
-    .header-bottom__submenu .featured-product .product-name,
-    .header-bottom__submenu .featured-product .product-badge {
+    .header-bottom__submenu .featured-product .product-name {
         color: var(--color-text);
         text-transform: none;
         font-size: 14px;
         text-align: center;
-    }
-    .header-bottom__submenu .featured-product .product-badge {
-        padding: 0;
-        background: transparent;
     }
     .header-bottom__submenu .featured-product .shop-now {
         /* height: 42px;
@@ -1181,8 +1279,7 @@ header-drawer {
     text-align: center;
 }
 
-.menu-drawer__tout-name,
-.menu-drawer__tout .product-badge {
+.menu-drawer__tout-name {
     color: var(--color-text);
     text-transform: none;
     font-size: 14px;
@@ -1193,12 +1290,6 @@ header-drawer {
     display: block;
     text-decoration: none;
     margin-bottom: 4px;
-}
-
-.menu-drawer__tout .product-badge {
-    color: var(--color-text);
-    padding: 0;
-    background: transparent;
 }
 
 .menu-drawer__tout-cta {
@@ -2846,8 +2937,19 @@ body.mr-bubble .product-form__input--pill input[type='radio']:disabled:checked +
     font-family: "FuturaPTBold", sans-serif;
     font-size: 20px;
     text-transform: uppercase;
-    padding: 6px 14px;
+    padding: 7px 14px;
     line-height: 1;
+    border: transparent;
+}
+
+.badge.badge-new {
+    color: #fff;
+    background: #2C5DB5;
+}
+
+.badge.badge-low-stock {
+    background: #ad311b;
+    color: #fff;
 }
 
 .card--media .card__inner .card__content {

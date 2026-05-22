@@ -131,6 +131,20 @@
             </div>
           </div>
         {%- endif -%}
+        {%- if card_product.featured_media -%}
+          {%- render 'card-product-badges',
+            card_product: card_product,
+            section_id: section_id,
+            show_low_stock: true,
+            badge_context: 'media'
+          -%}
+        {%- else -%}
+          {%- render 'card-product-badges',
+            card_product: card_product,
+            section_id: section_id,
+            badge_context: 'content'
+          -%}
+        {%- endif -%}
         <div class="card__content">
           <div class="card__information">
             <h3
@@ -149,7 +163,6 @@
               </a>
             </h3>
           </div>
-          {% render 'product-badge-new', card_product: card_product, section_id: section_id %}
         </div>
       </div>
       <div class="card__content">
@@ -308,7 +321,6 @@
             lazy_load: lazy_load
           %}
         {%- endunless -%}
-        {% render 'product-badge-new', card_product: card_product, section_id: section_id %}
       </div>
     </div>
   </div>
