@@ -46,7 +46,8 @@
         "full_width": true,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
       }
     },
     "tvc_dual_feature_DaeV7K": {
@@ -143,7 +144,8 @@
         "full_width": false,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
       }
     },
     "tvc_slideshow_DWTaV9": {
@@ -176,7 +178,8 @@
         "full_width": false,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
       }
     },
     "collection_list_VdxPhX": {
@@ -186,6 +189,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "mr-bubble-baby-bubble",
+            "image_override": "shopify://shop_images/collection-baby-bubble.jpg",
             "title_override": "BABY BUBBLE",
             "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
           }
@@ -194,6 +198,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "mr-bubble-bubble-bath",
+            "image_override": "shopify://shop_images/collection-mr-bubble.jpg",
             "title_override": "MR BUBBLE",
             "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
           }
@@ -202,6 +207,7 @@
           "type": "featured_collection",
           "settings": {
             "collection": "mr-bubble-new-products",
+            "image_override": "shopify://shop_images/collection-new-arrivals.jpg",
             "title_override": "NEW ARRIVALS",
             "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
           }
@@ -264,7 +270,8 @@
         "full_width": false,
         "split_media_position_desktop": "right",
         "auto_rotate": false,
-        "change_slides_speed": 5
+        "change_slides_speed": 5,
+        "show_sound_toggle": true
       }
     }
   },
