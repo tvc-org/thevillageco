@@ -105,14 +105,14 @@
           "type": "link_list",
           "settings": {
             "heading": "Shop",
-            "menu": "footer"
+            "menu": "footer-shop"
           }
         },
         "footer-1": {
           "type": "link_list",
           "settings": {
             "heading": "Help",
-            "menu": "footer-slim"
+            "menu": "footer-support"
           }
         },
         "footer-2": {
