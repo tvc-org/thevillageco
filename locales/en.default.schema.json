@@ -1233,6 +1233,10 @@
           "label": "Policy links",
           "info": "[Manage policies](/admin/settings/legal)"
         },
+        "policies_menu": {
+          "label": "Policies menu (optional)",
+          "info": "When set, replaces the default shop policy links in the footer legal row. Create and manage links in Navigation, same as footer menu blocks."
+        },
         "margin_top": {
           "label": "Top margin"
         },

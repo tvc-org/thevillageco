@@ -409,15 +409,25 @@
         {%- endif -%}
         {%- if section.settings.show_policy -%}
           <ul class="footer__policies-mobile policies list-unstyled">
-            {%- for policy in shop.policies -%}
-              {%- if policy != blank -%}
+            {%- if section.settings.policies_menu != blank -%}
+              {%- for link in section.settings.policies_menu.links -%}
                 <li>
                   <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+                    ><a href="{{ link.url }}">{{ link.title | escape }}</a></small
                   >
                 </li>
-              {%- endif -%}
-            {%- endfor -%}
+              {%- endfor -%}
+            {%- else -%}
+              {%- for policy in shop.policies -%}
+                {%- if policy != blank -%}
+                  <li>
+                    <small class="copyright__content"
+                      ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+                    >
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
           </ul>
         {%- endif -%}
         {%- comment -%} Desktop: trademark left, copyright row right {%- endcomment -%}
@@ -431,15 +441,25 @@
           {%- endif -%}
           {%- if section.settings.show_policy -%}
             <ul class="footer__policies policies list-unstyled">
-              {%- for policy in shop.policies -%}
-                {%- if policy != blank -%}
+              {%- if section.settings.policies_menu != blank -%}
+                {%- for link in section.settings.policies_menu.links -%}
                   <li>
                     <small class="copyright__content"
-                      ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+                      ><a href="{{ link.url }}">{{ link.title | escape }}</a></small
                     >
                   </li>
-                {%- endif -%}
-              {%- endfor -%}
+                {%- endfor -%}
+              {%- else -%}
+                {%- for policy in shop.policies -%}
+                  {%- if policy != blank -%}
+                    <li>
+                      <small class="copyright__content"
+                        ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+                      >
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
             </ul>
           {%- endif -%}
         </div>
@@ -741,6 +761,12 @@
       "default": true,
       "label": "t:sections.footer.settings.show_policy.label",
       "info": "t:sections.footer.settings.show_policy.info"
+    },
+    {
+      "type": "link_list",
+      "id": "policies_menu",
+      "label": "t:sections.footer.settings.policies_menu.label",
+      "info": "t:sections.footer.settings.policies_menu.info"
     },
     {
       "type": "header",
