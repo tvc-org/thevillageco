@@ -23,6 +23,13 @@
           "type": "title",
           "settings": {}
         },
+        "product_badges": {
+          "type": "product_badges",
+          "settings": {
+            "show_low_stock": true,
+            "low_stock_threshold": 10
+          }
+        },
         "caption": {
           "type": "text",
           "settings": {
@@ -102,6 +109,7 @@
       "block_order": [
         "vendor",
         "title",
+        "product_badges",
         "caption",
         "yotpo_star_rating_snippet",
         "price",

@@ -107,6 +107,16 @@
                     </h2>
                   </a>
                 </div>
+              {%- when 'product_badges' -%}
+                <div class="product__badges" {{ block.shopify_attributes }}>
+                  {%- render 'card-product-badges',
+                    product: product,
+                    section_id: section.id,
+                    badge_context: 'info',
+                    show_low_stock: block.settings.show_low_stock,
+                    low_stock_threshold: block.settings.low_stock_threshold
+                  -%}
+                </div>
               {%- when 'yotpo_star_rating_snippet' -%}
                 {%- comment -%}
                   Yotpo star row via `product-reviews` badge (prod instance 449922 — same as legacy site / PLP cards), not the OS 2.0 app block (different wiring).
@@ -865,6 +875,28 @@
       "type": "title",
       "name": "t:sections.main-product.blocks.title.name",
       "limit": 1
+    },
+    {
+      "type": "product_badges",
+      "name": "t:sections.main-product.blocks.product_badges.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_low_stock",
+          "default": true,
+          "label": "t:sections.main-product.blocks.product_badges.settings.show_low_stock.label"
+        },
+        {
+          "type": "range",
+          "id": "low_stock_threshold",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 10,
+          "label": "t:sections.main-product.blocks.product_badges.settings.low_stock_threshold.label"
+        }
+      ]
     },
     {
       "type": "yotpo_star_rating_snippet",

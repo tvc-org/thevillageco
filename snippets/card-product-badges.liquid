@@ -7,7 +7,7 @@
   - position: {String} Override theme badge position (optional)
   - show_low_stock: {Boolean} Include low-stock badge (default: true)
   - low_stock_threshold: {Number} Inventory qty threshold (default: 10)
-  - badge_context: {String} "media" | "nav" | "content" (optional, default: media)
+  - badge_context: {String} "media" | "nav" | "info" | "content" (optional, default: media)
 {% endcomment %}
 {%- liquid
   assign badge_product = card_product | default: product
@@ -80,7 +80,7 @@
 -%}
 {%- if show_card_badges and badge_product != blank -%}
   <div
-    class="card__badge {{ badge_position }} {{ badge_modifier }}{% if badge_context == 'nav' %} card__badge--nav{% endif %}{% if badge_context == 'media' %} card__badge--media{% endif %}"
+    class="card__badge{% if badge_context != 'info' %} {{ badge_position }}{% endif %} {{ badge_modifier }}{% if badge_context == 'nav' %} card__badge--nav{% endif %}{% if badge_context == 'media' %} card__badge--media{% endif %}{% if badge_context == 'info' %} card__badge--info{% endif %}"
   >
     {%- if show_sold_out -%}
       <span

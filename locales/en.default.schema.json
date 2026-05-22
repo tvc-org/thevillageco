@@ -2135,6 +2135,17 @@
         "title": {
           "name": "Title"
         },
+        "product_badges": {
+          "name": "Product badges",
+          "settings": {
+            "show_low_stock": {
+              "label": "Show low stock badge"
+            },
+            "low_stock_threshold": {
+              "label": "Low stock threshold"
+            }
+          }
+        },
         "price": {
           "name": "Price"
         },
