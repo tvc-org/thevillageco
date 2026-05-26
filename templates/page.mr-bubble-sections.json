@@ -71,8 +71,9 @@
           "settings": {
             "product": "limited-edition-par-fect-watermelon-bubble-bath",
             "collection": "",
+            "image": "shopify://shop_images/par-fect-watermelon.jpg",
             "heading_block": "",
-            "text": "",
+            "text": "<p>A hole-in-one bath experience.</p>",
             "link_label": "",
             "link": ""
           }
