@@ -2864,6 +2864,26 @@ body.village-naturals-therapy {
     --village-naturals-therapy-brand: #8E6D98;
 }
 
+body.village-naturals-therapy .search-modal.gradient {
+    --gradient-background: var(--brand-background-color);
+    background: var(--brand-background-color);
+    background-attachment: scroll;
+}
+
+@media screen and (max-width: 1024px) {
+    body.village-naturals-therapy .menu-drawer.gradient,
+    body.village-naturals-therapy .menu-drawer__submenu.gradient {
+        --gradient-background: var(--brand-background-color);
+        background: var(--brand-background-color);
+        background-color: var(--brand-background-color);
+        background-attachment: scroll;
+    }
+
+    body.village-naturals-therapy .menu-drawer__tout-cta.button {
+        background: transparent;
+    }
+}
+
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-half linearGradient stop:first-of-type,
 body.village-naturals-therapy .product-grid .grid__item .block-review-rate svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,

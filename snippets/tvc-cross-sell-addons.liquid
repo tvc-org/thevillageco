@@ -85,7 +85,7 @@
     font-family: 'FuturaPTHeavy';
     font-size: 20px;
     text-align: left;
-    margin: 20px 0 10px;
+    margin: 20px 0 30px;
   }
 
   @media screen and (min-width: 1025px) {
@@ -305,18 +305,32 @@
 
   @media screen and (max-width: 749px) {
     .tvc-cross-sell-addons #cross-sell .collection-products.items {
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x proximity;
+      scrollbar-width: none;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .collection-products.items::-webkit-scrollbar {
+      display: none;
     }
 
     .tvc-cross-sell-addons #cross-sell .collection-products.items .item {
-      flex: 1 1 100%;
-      max-width: 100%;
-      /* padding: 0 0 1.5rem; */
+      flex: 0 0 calc((100% - 24px) / 2);
+      min-width: calc((100% - 24px) / 2);
+      max-width: calc((100% - 24px) / 2);
+      scroll-snap-align: start;
     }
 
     .tvc-cross-sell-addons #cross-sell .product-image-wrapper {
-      max-width: 280px;
+      max-width: 100%;
+    }
+
+    .tvc-cross-sell-addons #cross-sell .product-info-wrapper {
+      max-width: 100%;
     }
   }
 {%- endstyle -%}
