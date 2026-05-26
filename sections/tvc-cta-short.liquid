@@ -38,6 +38,18 @@
   else
     assign cta_viewport_classes = 'slider-mobile-gutter tvc-cta-short--full-width'
   endif
+
+  assign media_classes = 'tvc-cta-short__media'
+  assign media_aspect_style = ''
+  if section.settings.preserve_image_aspect_ratio and img_d != blank
+    assign media_classes = media_classes | append: ' tvc-cta-short__media--preserve-aspect'
+    assign cta_desktop_aspect = img_d.aspect_ratio
+    assign cta_mobile_aspect = cta_desktop_aspect
+    if section.settings.mobile_image != blank
+      assign cta_mobile_aspect = section.settings.mobile_image.aspect_ratio
+    endif
+    assign media_aspect_style = '--tvc-cta-media-aspect-desktop: ' | append: cta_desktop_aspect | append: '; --tvc-cta-media-aspect-mobile: ' | append: cta_mobile_aspect | append: ';'
+  endif
 -%}
 
 <div
@@ -57,38 +69,76 @@
     {%- else -%}
       <div class="tvc-cta-short__viewport {{ cta_viewport_classes }}">
         <div class="tvc-cta-short__inner">
-          <div class="tvc-cta-short__media">
-            <picture class="tvc-cta-short__picture">
-              <source
-                media="(min-width: 1025px)"
-                srcset="
-                  {{ img_d | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
-                  {{ img_d | image_url: width: img_desktop_width_2x, height: img_desktop_height_2x, crop: 'center' }} 2x
-                "
-              >
-              <source
-                media="(min-width: 768px)"
-                srcset="
-                  {{ img_d | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
-                  {{ img_d | image_url: width: img_tablet_width_2x, height: img_tablet_height_2x, crop: 'center' }} 2x
-                "
-              >
-              <source
-                media="(min-width: 1px)"
-                srcset="
-                  {{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
-                  {{ img_m | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x
-                "
-              >
-              <img
-                src="{{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
-                alt="{{ alt_m | escape }}"
-                loading="lazy"
-                width="{{ mobile_width }}"
-                height="{{ mobile_height }}"
-                class="tvc-cta-short__img"
-              >
-            </picture>
+          <div
+            class="{{ media_classes }}"
+            {% if media_aspect_style != blank %}
+              style="{{ media_aspect_style }}"
+            {% endif %}
+          >
+            {%- if section.settings.preserve_image_aspect_ratio -%}
+              {%- liquid
+                assign cta_img_widths = '375, 550, 750, 1100, 1500, 1920, 2560, 3840'
+                assign cta_img_height = img_d.width | divided_by: img_d.aspect_ratio | round
+              -%}
+              <picture class="tvc-cta-short__picture">
+                {%- if section.settings.mobile_image != blank -%}
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="
+                      {{ img_m | image_url: width: 375 }} 375w,
+                      {{ img_m | image_url: width: 550 }} 550w,
+                      {{ img_m | image_url: width: 750 }} 750w,
+                      {{ img_m | image_url: width: 1100 }} 1100w
+                    "
+                    sizes="100vw"
+                  >
+                {%- endif -%}
+                {{
+                  img_d
+                  | image_url: width: 3840
+                  | image_tag:
+                    loading: 'lazy',
+                    width: img_d.width,
+                    height: cta_img_height,
+                    sizes: '100vw',
+                    widths: cta_img_widths,
+                    class: 'tvc-cta-short__img',
+                    alt: alt_m
+                }}
+              </picture>
+            {%- else -%}
+              <picture class="tvc-cta-short__picture">
+                <source
+                  media="(min-width: 1025px)"
+                  srcset="
+                    {{ img_d | image_url: width: desktop_width, height: desktop_height, crop: 'center' }} 1x,
+                    {{ img_d | image_url: width: img_desktop_width_2x, height: img_desktop_height_2x, crop: 'center' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 768px)"
+                  srcset="
+                    {{ img_d | image_url: width: tablet_width, height: tablet_height, crop: 'center' }} 1x,
+                    {{ img_d | image_url: width: img_tablet_width_2x, height: img_tablet_height_2x, crop: 'center' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 1px)"
+                  srcset="
+                    {{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }} 1x,
+                    {{ img_m | image_url: width: img_mobile_width_2x, height: img_mobile_height_2x, crop: 'center' }} 2x
+                  "
+                >
+                <img
+                  src="{{ img_m | image_url: width: mobile_width, height: mobile_height, crop: 'center' }}"
+                  alt="{{ alt_m | escape }}"
+                  loading="lazy"
+                  width="{{ mobile_width }}"
+                  height="{{ mobile_height }}"
+                  class="tvc-cta-short__img"
+                >
+              </picture>
+            {%- endif -%}
           </div>
 
           <div class="tvc-cta-short__content">
@@ -153,6 +203,13 @@
       "id": "mobile_image",
       "label": "t:sections.tvc-cta-short.settings.mobile_image.label",
       "info": "t:sections.tvc-cta-short.settings.mobile_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "preserve_image_aspect_ratio",
+      "label": "t:sections.tvc-cta-short.settings.preserve_image_aspect_ratio.label",
+      "info": "t:sections.tvc-cta-short.settings.preserve_image_aspect_ratio.info",
+      "default": false
     },
     {
       "type": "text",

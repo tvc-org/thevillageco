@@ -45,7 +45,19 @@
 .tvc-cta-short__media {
   position: relative;
   overflow: hidden;
+}
+
+.tvc-cta-short__media:not(.tvc-cta-short__media--preserve-aspect) {
   aspect-ratio: 1 / 0.764;
+}
+
+.tvc-cta-short__media--preserve-aspect {
+  aspect-ratio: var(--tvc-cta-media-aspect-mobile);
+}
+
+.tvc-cta-short__media--preserve-aspect .tvc-cta-short__img {
+  object-fit: contain;
+  object-position: center center;
 }
 
 .tvc-cta-short__picture {
@@ -130,8 +142,14 @@
     margin-bottom: 60px;
   }
 
-  .tvc-cta-short__media {
+  .tvc-cta-short__media:not(.tvc-cta-short__media--preserve-aspect) {
     aspect-ratio: 1 / 0.2742;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .tvc-cta-short__media--preserve-aspect {
+    aspect-ratio: var(--tvc-cta-media-aspect-desktop);
   }
 }
 

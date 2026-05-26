@@ -296,8 +296,9 @@ body slider-component.slider-component-full-width {
         min-width: 100px;
         min-height: 100px;
         border-radius: 50%;
-        background-color: #4f463c;
-        color: #fff;
+        border: 1px solid #afa1a1;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #000;
         padding: 0;
         display: flex;
         align-items: center;
@@ -306,7 +307,38 @@ body slider-component.slider-component-full-width {
         box-shadow: none;
         opacity: 1;
         visibility: visible;
-        transition: opacity 0.28s ease, visibility 0s linear;
+        transition:
+            opacity 0.28s ease,
+            visibility 0s linear,
+            background-color 0.28s ease,
+            border-color 0.28s ease;
+    }
+
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button:not([disabled]):hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    /* Future backup: brown circle + white arrow (opt in via .slider-button-dark on the button) */
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button.slider-button-dark {
+        border-color: transparent;
+        background-color: rgba(79, 70, 60, 0.8);
+        color: #fff;
+    }
+
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button.slider-button-dark:not([disabled]):hover {
+        background-color: rgba(79, 70, 60, 1);
     }
 
     .shopify-section.section
@@ -339,7 +371,13 @@ body slider-component.slider-component-full-width {
             .collection
             .slider--desktop
             + .slider-buttons.featured-collection--desktop-carousel
-            .slider-button[disabled] {
+            .slider-button[disabled],
+        .shopify-section.section
+            .collection
+            .slider--desktop
+            + .slider-buttons.featured-collection--desktop-carousel
+            .featured-collection__carousel-chevron
+            svg {
             transition: none;
         }
     }
@@ -365,6 +403,15 @@ body slider-component.slider-component-full-width {
         .slider--desktop
         + .slider-buttons.featured-collection--desktop-carousel
         .slider-button:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: 3px;
+    }
+
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button.slider-button-dark:focus-visible {
         outline: 2px solid #fff;
         outline-offset: 3px;
     }
@@ -378,6 +425,27 @@ body slider-component.slider-component-full-width {
         width: 11px;
         height: 22px;
         display: block;
+        transition: transform 0.28s ease;
+    }
+
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button:not([disabled]):hover
+        .featured-collection__carousel-chevron
+        svg {
+        transform: scale(1.12);
+    }
+
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .featured-collection__carousel-chevron
+        svg
+        path {
+        stroke: currentColor;
     }
 
     .shopify-section.section
@@ -388,6 +456,16 @@ body slider-component.slider-component-full-width {
         .featured-collection__carousel-chevron
         svg {
         transform: rotate(180deg);
+    }
+
+    .shopify-section.section
+        .collection
+        .slider--desktop
+        + .slider-buttons.featured-collection--desktop-carousel
+        .slider-button--prev:not([disabled]):hover
+        .featured-collection__carousel-chevron
+        svg {
+        transform: rotate(180deg) scale(1.12);
     }
 
     .collection-list-card__short-description {
@@ -656,7 +734,7 @@ header.site-header {
 /* Mobile-first: header utilities & layout */
 .header {
     padding: 0 var(--layout-gutter-x) !important;
-    height: 55px;
+    height: 66px;
     border-bottom: 1px solid var(--color-border);
 }
 .hide-max-1024 {
@@ -1892,6 +1970,10 @@ body.village-naturals-therapy.template-product .shopify-section.section:has(.yot
     width: 100%;
     height: 1px;
     opacity: 0.3;
+}
+
+body.soft-dri .footer__content-bottom-wrapper.page-width:first-child:before {
+    background: var(--footer-text-color);
 }
 
 /* Narrow screens: column stacking + tap targets (Dawn tablet breakpoint 750px) */

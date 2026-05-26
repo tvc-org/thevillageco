@@ -817,6 +817,10 @@
           "label": "Image (mobile)",
           "info": "Optional. Falls back to desktop art. Aim for at least 1534×1172 for 2×."
         },
+        "preserve_image_aspect_ratio": {
+          "label": "Preserve image aspect ratio (no crop)",
+          "info": "Below 768px uses the mobile image’s aspect ratio when a mobile image is set; otherwise it uses the desktop image. From 768px up, uses the desktop image."
+        },
         "title": {
           "label": "Heading"
         },

@@ -273,7 +273,13 @@
                     assign link_label = 'Learn more'
                   endif
                 -%}
-                <a href="{{ block.settings.link }}" class="tvc-slideshow__link cta-link mt-3 mb-5">
+                {%- liquid
+                  assign slideshow_link_classes = 'tvc-slideshow__link cta-link mt-3'
+                  if section.blocks.size > 1
+                    assign slideshow_link_classes = slideshow_link_classes | append: ' mb-5'
+                  endif
+                -%}
+                <a href="{{ block.settings.link }}" class="{{ slideshow_link_classes }}">
                   {{- link_label | escape -}}
                 </a>
               {%- endif -%}

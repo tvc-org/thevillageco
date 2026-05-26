@@ -45,11 +45,14 @@
   width: 100%;
   overflow: hidden;
   background: rgb(var(--color-background));
+}
+
+.tvc-slideshow--layout-stacked .tvc-slideshow__media:not(.tvc-slideshow__media--preserve-aspect) {
   aspect-ratio: 1 / 0.78;
 }
 
 @media screen and (min-width: 960px) {
-  .tvc-slideshow--layout-stacked .tvc-slideshow__media {
+  .tvc-slideshow--layout-stacked .tvc-slideshow__media:not(.tvc-slideshow__media--preserve-aspect) {
     aspect-ratio: auto;
     min-height: 100vh;
     min-height: 100dvh;
@@ -110,7 +113,7 @@
 }
 
 /* Stacked + “text over media (desktop)”: mobile = panel below image (dark on white); desktop = grid overlay */
-.tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media {
+.tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media:not(.tvc-slideshow__media--preserve-aspect) {
   min-height: 0;
 }
 
