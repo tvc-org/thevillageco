@@ -111,8 +111,9 @@
       "name": "t:sections.tvc-cta-short.presets.name",
       "settings": {
         "full_width": false,
-        "image": "shopify://shop_images/soft-n-dri-care-about-taller.png",
+        "image": "shopify://shop_images/soft-n-dri-care-about-shorter.png",
         "mobile_image": "shopify://shop_images/soft-n-dri-care-about-mobile.png",
+        "preserve_image_aspect_ratio": true,
         "title": "",
         "description": "",
         "link_label": "",
