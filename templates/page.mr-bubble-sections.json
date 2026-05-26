@@ -25,15 +25,15 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "image": "shopify://shop_images/MrBubbleHomePageHeader1.jpg",
+            "image": "shopify://shop_images/make-a-splash-hero.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Somebunny Loves Bubbles!",
-            "text": "<p>Swap sweets for squeaky-clean fun this Easter. Our bubbly favorites make the perfect basket stuffer for kids who love to splash.</p>",
+            "heading": "Make a Splash Without the Sting",
+            "text": "<p>Turn every summer day into a bubble-filled adventure. Our tear-free formula means more playtime in the sun and more fun in the tub.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "link": "shopify://collections/mr-bubble-collections",
-            "link_label": "Shop Now"
+            "link_label": "Shop Summer Essentials"
           }
         }
       },
