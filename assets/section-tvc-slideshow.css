@@ -45,8 +45,15 @@
   width: 100%;
   overflow: hidden;
   background: rgb(var(--color-background));
-  min-height: 100vh;
-  min-height: 100dvh;
+  aspect-ratio: 1 / 0.78;
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-slideshow--layout-stacked .tvc-slideshow__media {
+    aspect-ratio: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
 }
 
 .tvc-slideshow--layout-stacked .tvc-slideshow__media picture {
@@ -104,8 +111,7 @@
 
 /* Stacked + “text over media (desktop)”: mobile = panel below image (dark on white); desktop = grid overlay */
 .tvc-slideshow--layout-stacked .tvc-slideshow__inner--stacked-desktop-inmedia .tvc-slideshow__media {
-  min-height: 50vh;
-  min-height: 50dvh;
+  min-height: 0;
 }
 
 /*
