@@ -152,8 +152,9 @@
       "name": "t:sections.tvc-cta-short.presets.name",
       "settings": {
         "full_width": false,
-        "image": "shopify://shop_images/VNT_CTA_Short_v2.jpg",
+        "image": "shopify://shop_images/what-we-care-about-therapy-shorter.jpg",
         "mobile_image": "shopify://shop_images/VNT_CTA_Mobile_v2.jpg",
+        "preserve_image_aspect_ratio": true,
         "title": "",
         "description": "",
         "link_label": "",
@@ -167,7 +168,7 @@
         "slide_tqmym8": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/vnt-nightime-hero.jpg",
             "preserve_image_aspect_ratio": false,
