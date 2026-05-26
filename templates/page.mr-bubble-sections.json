@@ -26,6 +26,7 @@
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/make-a-splash-hero.jpg",
+            "mobile_image": "shopify://shop_images/make-a-splash-hero-mobile.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Make a Splash Without the Sting",
             "text": "<p>Turn every summer day into a bubble-filled adventure. Our tear-free formula means more playtime in the sun and more fun in the tub.</p>",
