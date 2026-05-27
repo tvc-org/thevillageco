@@ -53,9 +53,7 @@
 
 @media screen and (min-width: 960px) {
   .tvc-slideshow--layout-stacked .tvc-slideshow__media:not(.tvc-slideshow__media--preserve-aspect) {
-    aspect-ratio: auto;
-    min-height: 100vh;
-    min-height: 100dvh;
+    aspect-ratio: 1 / 0.5625;
   }
 }
 
