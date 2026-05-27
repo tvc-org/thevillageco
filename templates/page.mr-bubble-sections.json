@@ -60,6 +60,7 @@
             "product": "body-buffer-body-wash-infused-sponge",
             "collection": "",
             "image": "shopify://shop_images/bubble-buffer-rocket.jpg",
+            "video": "shopify://files/videos/MB-Rocket-right_1.mp4",
             "heading_block": "",
             "text": "<p>Make Bath Time Blast Off into Fun!</p>",
             "link_label": "",
@@ -86,7 +87,8 @@
       "name": "t:sections.tvc-dual-feature.presets.name",
       "settings": {
         "heading": "",
-        "color_scheme": ""
+        "color_scheme": "",
+        "show_sound_toggle": false
       }
     },
     "tvc_featured_review_qjVW3m": {
