@@ -1,11 +1,15 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-tvc-dual-feature.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'tvc-dual-feature.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign tvc_df_color_scheme = section.settings.color_scheme | default: 'scheme-1'
 -%}
 
-<div class="tvc-dual-feature color-{{ tvc_df_color_scheme }}-x gradient-x">
+<div
+  class="tvc-dual-feature color-{{ tvc_df_color_scheme }}-x gradient-x"
+  data-show-sound-toggle="{% if section.settings.show_sound_toggle %}true{% else %}false{% endif %}"
+>
   <div class="page-width isolate">
     {%- if section.settings.heading != blank -%}
       <div class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
@@ -20,6 +24,7 @@
             assign bp = block.settings.product
             assign bc = block.settings.collection
             assign d_image = block.settings.image
+            assign d_video = block.settings.video
             assign d_heading_rt = block.settings.heading_block
             assign d_text_rt = block.settings.text
             assign d_link = block.settings.link
@@ -72,29 +77,55 @@
             {% endif %}
           >
             <article class="tvc-dual-feature__card">
-              {%- if d_image != blank -%}
+              {%- if d_video != blank or d_image != blank -%}
                 <div class="tvc-dual-feature__media tvc-dual-feature__media--badge-{{ tvc_df_badge_position_class }}">
-                  {%- liquid
-                    assign img_alt = d_image.alt | default: d_heading_plain
-                    if img_alt == blank and d_heading_rt != blank
-                      assign img_alt = d_heading_rt | strip_html
-                    endif
-                    if img_alt == blank
-                      assign img_alt = shop.name
-                    endif
-                    assign widths = '375, 550, 750, 1100, 1500'
-                    assign sizes = '(min-width: 990px) calc((100vw - 10rem) / 2), calc(100vw - 3rem)'
-                  -%}
-                  {{
-                    d_image
-                    | image_url: width: 1500
-                    | image_tag:
-                      loading: 'lazy',
-                      widths: widths,
-                      sizes: sizes,
-                      class: 'tvc-dual-feature__image',
-                      alt: img_alt
-                  }}
+                  {%- if d_video != blank -%}
+                    {{
+                      d_video
+                      | video_tag:
+                        image_size: '1500x',
+                        autoplay: false,
+                        loop: true,
+                        muted: true,
+                        playsinline: true,
+                        controls: false,
+                        preload: 'metadata',
+                        class: 'tvc-dual-feature__video'
+                    }}
+                    {%- if section.settings.show_sound_toggle -%}
+                      <button
+                        type="button"
+                        class="tvc-dual-feature__sound-toggle"
+                        aria-pressed="false"
+                        aria-label="Unmute video"
+                        data-tvc-sound-state="off"
+                      >
+                        {% render 'tvc-slideshow-sound-icons', icon_id: block.id %}
+                      </button>
+                    {%- endif -%}
+                  {%- elsif d_image != blank -%}
+                    {%- liquid
+                      assign img_alt = d_image.alt | default: d_heading_plain
+                      if img_alt == blank and d_heading_rt != blank
+                        assign img_alt = d_heading_rt | strip_html
+                      endif
+                      if img_alt == blank
+                        assign img_alt = shop.name
+                      endif
+                      assign widths = '375, 550, 750, 1100, 1500'
+                      assign sizes = '(min-width: 990px) calc((100vw - 10rem) / 2), calc(100vw - 3rem)'
+                    -%}
+                    {{
+                      d_image
+                      | image_url: width: 1500
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: widths,
+                        sizes: sizes,
+                        class: 'tvc-dual-feature__image',
+                        alt: img_alt
+                    }}
+                  {%- endif -%}
                   {%- if bp != blank -%}
                     {%- render 'card-product-badges',
                       card_product: bp,
@@ -156,6 +187,13 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sound_toggle",
+      "label": "t:sections.tvc-dual-feature.settings.show_sound_toggle.label",
+      "info": "t:sections.tvc-dual-feature.settings.show_sound_toggle.info",
+      "default": false
     }
   ],
   "blocks": [
@@ -189,6 +227,12 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.tvc-dual-feature.blocks.feature.settings.image.label"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.video.label",
+          "info": "t:sections.tvc-dual-feature.blocks.feature.settings.video.info"
         },
         {
           "type": "inline_richtext",

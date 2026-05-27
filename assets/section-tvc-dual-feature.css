@@ -52,6 +52,62 @@
   display: block;
 }
 
+.tvc-dual-feature__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Video sound toggle — matches TVC slideshow (54px white circle, 28px icon) */
+.tvc-dual-feature__sound-toggle {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 4;
+  width: 54px;
+  height: 54px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (min-width: 1025px) {
+  .tvc-dual-feature__sound-toggle {
+    right: 40px;
+    bottom: 40px;
+  }
+}
+
+.tvc-dual-feature__sound-toggle:focus-visible {
+  outline: 2px solid #144d8d;
+  outline-offset: 2px;
+}
+
+.tvc-dual-feature__sound-toggle .tvc-slideshow__sound-icon--on {
+  display: none;
+}
+
+.tvc-dual-feature__sound-toggle .tvc-slideshow__sound-icon--off {
+  display: flex;
+}
+
+.tvc-dual-feature__sound-toggle[aria-pressed='true'] .tvc-slideshow__sound-icon--on {
+  display: flex;
+}
+
+.tvc-dual-feature__sound-toggle[aria-pressed='true'] .tvc-slideshow__sound-icon--off {
+  display: none;
+}
+
 /* Badge position follows Theme settings -> Badges -> Badge position */
 .tvc-dual-feature__media .card__badge {
   position: absolute;

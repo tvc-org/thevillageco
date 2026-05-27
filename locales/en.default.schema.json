@@ -686,6 +686,10 @@
       "settings": {
         "heading": {
           "label": "Heading"
+        },
+        "show_sound_toggle": {
+          "label": "Show sound toggle",
+          "info": "When enabled, video blocks show a mute/unmute control (muted by default)."
         }
       },
       "blocks": {
@@ -709,6 +713,10 @@
             },
             "image": {
               "label": "Image"
+            },
+            "video": {
+              "label": "Video",
+              "info": "Looping video, muted by default. Overrides image when set. Use section “Show sound toggle” for an unmute control."
             },
             "heading_block": {
               "label": "Heading"
