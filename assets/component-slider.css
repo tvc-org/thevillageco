@@ -32,14 +32,14 @@ slider-component.slider-component-full-width {
   padding-bottom: 0;
 }
 
-@media screen and (max-width: 749px) {
+@media screen and (max-width: 959px) {
   .slider.slider--mobile {
     position: relative;
     flex-wrap: inherit;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scroll-padding-left: 1.5rem;
+    scroll-padding-left: var(--layout-gutter-x, 1.5rem);
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1rem;
   }
@@ -48,7 +48,7 @@ slider-component.slider-component-full-width {
   .slider--mobile:after {
     content: '';
     width: 0;
-    padding-left: 1.5rem;
+    padding-left: var(--layout-gutter-x, 1.5rem);
   }
 
   .slider.slider--mobile .slider__slide {
@@ -329,7 +329,7 @@ slider-component.slider-component-full-width {
   }
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 960px) {
   .slider--mobile + .slider-buttons {
     display: none;
   }

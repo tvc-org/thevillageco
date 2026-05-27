@@ -1648,16 +1648,37 @@ header-drawer {
 }
 
 /*
+ * PDP — gallery + buy box stay stacked until 960px (Dawn grid--2-col-tablet is 750px).
+ * Matches layout-gutter / slideshow breakpoint so the side-by-side layout does not feel cramped.
+ */
+@media screen and (max-width: 959px) {
+    .template-product .product.product--pdp-two-col-from-md.grid--2-col-tablet > .grid__item {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (min-width: 960px) {
+    .template-product .product.product--pdp-two-col-from-md.grid--2-col-tablet > .grid__item {
+        width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+        max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+    }
+}
+
+/*
  * PDP — Yotpo Product Reviews (Apps section / app embed): neutral canvas.
  * qa-theme targeted the legacy .yotpo.yotpo-main-widget under .product-extra with hundreds of
  * white/contrast rules; this theme uses the new widget + .yotpo-widget-instance with almost no
  * overrides, so Mr Bubble’s full-page body brand background + Yotpo defaults can read as one blue slab.
  */
-.template-product .shopify-section.section:has(.yotpo-widget-instance) {
+ .template-product .yotpo-display-l .yotpo-main-layout .yotpo-head, .yotpo-display-m .yotpo-main-layout .yotpo-head {
+    margin-top: 0 !important;
+ }
+
+.template-product .shopify-section.section:has(.yotpo-widget-instance):not(:first-child) {
     background-color: #fff;
     color: #323131;
-    padding-top: 2.5rem;
-    padding-bottom: 3rem;
+    margin-top: var(--section-margin);
 }
 
 /* Village Naturals Therapy — PDP uses brand page background (matches collection PLP) */
@@ -1689,19 +1710,23 @@ body.village-naturals-therapy.template-product .shopify-section.section:has(.yot
     font-size: 18px !important;
 }
 
+.product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container {
+    width: 26px !important;
+    height: 26px !important;
+    margin-inline-end: 10px !important;
+}
+
+.product__info-wrapper .yotpo.bottomLine .yotpo-icon.yotpo-icon-star {
+    font-size: 26px !important;
+    line-height: 1;
+    padding: 0 2px !important;
+}
+
+.product__info-wrapper .price {
+    font-size: 20px;
+}
+
 @media screen and (min-width: 1025px) {
-    .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container {
-        width: 26px !important;
-        height: 26px !important;
-        margin-inline-end: 10px !important;
-    }
-
-    .product__info-wrapper .yotpo.bottomLine .yotpo-icon.yotpo-icon-star {
-        font-size: 26px !important;
-        line-height: 1;
-        padding: 0 2px !important;
-    }
-
     .product__info-wrapper .price {
         font-size: 24px;
     }
