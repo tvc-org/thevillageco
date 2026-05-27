@@ -58,12 +58,13 @@
 {%- style -%}
   .tvc-cross-sell-addons.tvc-cross-sell-pad {
     padding-top: 18px;
-    padding-bottom: 18px;
+    padding-bottom: 0;
+    margin-bottom: 0;
   }
   @media screen and (min-width: 750px) {
     .tvc-cross-sell-addons.tvc-cross-sell-pad {
       padding-top: 24px;
-      padding-bottom: 24px;
+      padding-bottom: 0;
     }
   }
 
@@ -229,13 +230,11 @@
     }
   }
 
-  @media (hover: none), (pointer: coarse) {
-    .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener {
-      pointer-events: auto;
-    }
-
-    .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener .quick-shop-trigger {
-      opacity: 1;
+  /* No Quick Shop on mobile — tap product image/title to open PDP */
+  @media screen and (max-width: 959px) {
+    .tvc-cross-sell-addons #cross-sell .item .tvc-cross-sell-quick-add-opener,
+    .tvc-cross-sell-addons #cross-sell .item .product-image-wrapper > a.quick-shop-trigger {
+      display: none;
     }
   }
 
