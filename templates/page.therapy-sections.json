@@ -58,6 +58,7 @@
           "settings": {
             "product": "comfort-foaming-bath-oil-body-wash",
             "collection": "",
+            "image": "shopify://shop_images/therapy-comfort.jpg",
             "heading_block": "Relax the Mind. Revive the Body.",
             "text": "<p>Turn the bath into a quiet reset with moisturizing bubbles and a comforting blueberry citrus scent.</p>",
             "link_label": "Shop Comfort",
@@ -69,6 +70,7 @@
           "settings": {
             "product": "",
             "collection": "therapy-cold-allergy",
+            "image": "shopify://shop_images/therapy-breathe.jpg",
             "heading_block": "Breathe Deep, Feel Better",
             "text": "<p>Invigorating Lemon, Peppermint, and Echinacea help open your senses and calm your mind when seasonal sniffles strike.</p>",
             "link_label": "Shop Breathe",
