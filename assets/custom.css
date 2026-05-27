@@ -633,17 +633,25 @@ body.soft-dri .product-grid .grid__item .card--standard .card__inner {
     }
 }
 
-/* Mr. Bubble / Soft & Dri / Therapy — TVC Dual Feature image area matches featured collection card radius */
+/* Mr. Bubble / Soft & Dri — TVC Dual Feature image area matches featured collection card radius */
 body.mr-bubble .tvc-dual-feature__media,
-body.soft-dri .tvc-dual-feature__media,
-body.village-naturals-therapy .tvc-dual-feature__media {
+body.soft-dri .tvc-dual-feature__media {
     border-radius: 16px;
     border: 1px solid #C7C7C7;
 }
 
+/* Therapy — same radius as Mr. Bubble, no border */
+body.village-naturals-therapy .tvc-dual-feature__media {
+    border-radius: 16px;
+    border: none;
+}
+
 @media screen and (min-width: 960px) {
     body.mr-bubble .tvc-dual-feature__media,
-    body.soft-dri .tvc-dual-feature__media,
+    body.soft-dri .tvc-dual-feature__media {
+        border-radius: 35px;
+    }
+
     body.village-naturals-therapy .tvc-dual-feature__media {
         border-radius: 35px;
     }
