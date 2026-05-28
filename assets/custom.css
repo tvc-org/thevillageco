@@ -1732,6 +1732,11 @@ body.village-naturals-therapy.template-product .shopify-section.section:has(.yot
     }
 }
 
+.template-product .related-products {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
 /* ==========================================================================
    Accordion
    ========================================================================== */
