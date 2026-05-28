@@ -1,0 +1,35 @@
+{% comment %}
+  Renders cross-promo tout metaobject entries scheduled for a given grid position (current page).
+
+  Accepts:
+  - touts: {Array} cross_promotion_tout metaobjects from collection.metafields.custom.cross_promo_touts
+  - position: {Number} grid slot (0 = before products; 1 = before first product on page; etc.)
+  - section_id: {String} for unique heading ids
+  - image_ratio: {String} from section settings
+  - animation_order: {Number} optional cascade index
+{% endcomment %}
+{%- liquid
+  assign tout_position = position | default: 0 | plus: 0
+  assign tout_animation = animation_order | default: 1
+-%}
+{%- if touts != blank -%}
+{%- for tout in touts -%}
+  {%- assign tout_grid_position = tout.grid_position.value | default: tout.grid_position | default: 0 | plus: 0 -%}
+  {%- if tout_grid_position != tout_position -%}
+    {%- continue -%}
+  {%- endif -%}
+  {%- assign tout_image = tout.image.value | default: tout.image -%}
+  {%- assign tout_video = tout.video.value | default: tout.video -%}
+  {%- if tout_image == blank and tout_video == blank -%}
+    {%- continue -%}
+  {%- endif -%}
+  {%- assign tout_uid = section_id | append: '-' | append: tout.id -%}
+  {% render 'collection-grid-cross-promo-tout',
+    tout: tout,
+    tout_uid: tout_uid,
+    image_ratio: image_ratio,
+    animation_order: tout_animation
+  %}
+  {%- assign tout_animation = tout_animation | plus: 1 -%}
+{%- endfor -%}
+{%- endif -%}

@@ -1,0 +1,140 @@
+/* Collection grid — cross-promotion tout (full-bleed media, title/CTA overlay) */
+
+.collection-grid-tout__card {
+  width: 100%;
+  height: 100%;
+}
+
+.collection-grid-tout__link {
+  display: block;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.collection-grid-tout__link--static {
+  cursor: default;
+}
+
+.collection-grid-tout__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--product-card-corner-radius, 0);
+  border: var(--product-card-border-width, 0) solid rgba(var(--color-foreground), var(--product-card-border-opacity, 0));
+  background-color: rgb(var(--color-background));
+}
+
+.collection-grid-tout__media::before {
+  content: '';
+  display: block;
+  padding-top: var(--ratio-percent, 100%);
+}
+
+.collection-grid-tout__image,
+.collection-grid-tout__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.collection-grid-tout__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 0.35rem;
+  padding: 1.2rem 1rem 1rem;
+  pointer-events: none;
+}
+
+/* Default: dark text on media */
+.collection-grid-tout__media--text-dark .collection-grid-tout__overlay {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.72) 100%);
+}
+
+.collection-grid-tout__media--text-dark .collection-grid-tout__title,
+.collection-grid-tout__media--text-dark .collection-grid-tout__cta {
+  color: var(--color-text, #2c2c2c);
+}
+
+.collection-grid-tout__media--text-dark .collection-grid-tout__link:hover .collection-grid-tout__cta,
+.collection-grid-tout__media--text-dark .collection-grid-tout__link:focus-visible .collection-grid-tout__cta {
+  color: var(--color-text, #2c2c2c);
+}
+
+/* Light text + scrim for busy/dark imagery */
+.collection-grid-tout__media--text-light .collection-grid-tout__overlay {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.collection-grid-tout__media--text-light .collection-grid-tout__title,
+.collection-grid-tout__media--text-light .collection-grid-tout__cta {
+  color: #fff;
+}
+
+.collection-grid-tout__media--text-light .collection-grid-tout__link:hover .collection-grid-tout__cta,
+.collection-grid-tout__media--text-light .collection-grid-tout__link:focus-visible .collection-grid-tout__cta {
+  color: #fff;
+}
+
+.collection-grid-tout__title {
+  margin: 0;
+  font-family: 'FuturaPTDemi', Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.collection-grid-tout__cta {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 750px) {
+  .collection-grid-tout__overlay {
+    padding: 1.4rem 1.2rem 1.1rem;
+  }
+
+  .collection-grid-tout__title {
+    font-size: 18px;
+  }
+}
+
+/* Match PLP product card radius (custom.css brand rules) */
+body.mr-bubble .collection-grid-tout__media,
+body.soft-dri .collection-grid-tout__media {
+  border-radius: 16px;
+  border: 1px solid #c7c7c7;
+}
+
+body.village-naturals-therapy .collection-grid-tout__media {
+  border-radius: 16px;
+  border: none;
+}
+
+@media screen and (min-width: 960px) {
+  body.mr-bubble .collection-grid-tout__media,
+  body.soft-dri .collection-grid-tout__media {
+    border-radius: 35px;
+  }
+
+  body.village-naturals-therapy .collection-grid-tout__media {
+    border-radius: 35px;
+  }
+}
+
+body.village-naturals-therapy .collection-grid-tout__title {
+  font-family: 'Larken', sans-serif;
+  font-weight: 400;
+  text-transform: none;
+}

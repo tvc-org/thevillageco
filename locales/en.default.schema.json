@@ -2044,6 +2044,42 @@
             "label": "2"
           }
         }
+      },
+      "blocks": {
+        "cross_promo_tout": {
+          "name": "Cross promotion tout",
+          "settings": {
+            "grid_position": {
+              "label": "Grid position",
+              "info": "Slot on the current results page (1 = before the first product, 2 = before the second, etc.). Use 0 for the first cell before products. The collection featured image in the grid, if enabled, is not counted. Repeats on each paginated page only when that slot exists."
+            },
+            "image": {
+              "label": "Image"
+            },
+            "video": {
+              "label": "Video",
+              "info": "Replaces the image when set. Autoplays muted in the grid."
+            },
+            "title": {
+              "label": "Title"
+            },
+            "link": {
+              "label": "Link"
+            },
+            "link_label": {
+              "label": "Link label"
+            },
+            "text_color": {
+              "label": "Text color",
+              "options__1": {
+                "label": "Dark"
+              },
+              "options__2": {
+                "label": "Light"
+              }
+            }
+          }
+        }
       }
     },
     "main-list-collections": {

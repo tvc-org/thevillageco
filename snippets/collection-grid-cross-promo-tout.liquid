@@ -1,0 +1,108 @@
+{% comment %}
+  Single cross-promotion tout cell for collection product grids.
+
+  Accepts:
+  - tout: {Metaobject} cross_promotion_tout entry
+  - tout_uid: {String} unique id suffix for aria (e.g. section.id + metaobject id)
+  - image_ratio: {String} adapt | portrait | square
+  - animation_order: {Number} optional
+{% endcomment %}
+{%- liquid
+  assign tout_image = tout.image.value | default: tout.image
+  assign tout_video = tout.video.value | default: tout.video
+  assign tout_title = tout.title.value | default: tout.title
+  assign tout_link = tout.link.value | default: tout.link
+  assign tout_link_label = tout.link_label.value | default: tout.link_label
+  assign tout_text_color = tout.text_color.value | default: tout.text_color | default: 'dark' | downcase
+  if tout_text_color != 'light'
+    assign tout_text_color = 'dark'
+  endif
+
+  if tout_link_label == blank
+    assign tout_link_label = 'Shop now'
+  endif
+
+  assign tout_ratio = 1
+  if image_ratio == 'portrait'
+    assign tout_ratio = 0.8
+  endif
+
+  assign tout_ratio_percent = 1 | divided_by: tout_ratio | times: 100
+
+  assign tout_heading_id = 'CollectionGridTout-' | append: tout_uid
+-%}
+<li
+  class="grid__item collection-grid-tout{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+  {% if settings.animations_reveal_on_scroll %}
+    data-cascade
+    style="--animation-order: {{ animation_order | default: 1 }};"
+  {% endif %}
+>
+  <article class="collection-grid-tout__card">
+    {%- if tout_link != blank -%}
+      <a
+        href="{{ tout_link }}"
+        class="collection-grid-tout__link"
+        {% if tout_title != blank %}
+          aria-labelledby="{{ tout_heading_id }}"
+        {% endif %}
+      >
+    {%- else -%}
+      <div class="collection-grid-tout__link collection-grid-tout__link--static">
+    {%- endif -%}
+    <div
+      class="collection-grid-tout__media ratio collection-grid-tout__media--text-{{ tout_text_color }}"
+      style="--ratio-percent: {{ tout_ratio_percent }}%;"
+    >
+      {%- if tout_video != blank -%}
+        {{
+          tout_video
+          | video_tag:
+            image_size: '1500x',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            playsinline: true,
+            controls: false,
+            preload: 'metadata',
+            class: 'collection-grid-tout__video'
+        }}
+      {%- elsif tout_image != blank -%}
+        {%- liquid
+          assign tout_alt = tout_image.alt | default: tout_title | strip_html | escape
+          if tout_alt == blank
+            assign tout_alt = shop.name
+          endif
+        -%}
+        {{
+          tout_image
+          | image_url: width: 1500
+          | image_tag:
+            loading: 'lazy',
+            widths: '165, 360, 533, 720, 940, 1066, 1500',
+            sizes: '(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)',
+            class: 'collection-grid-tout__image',
+            alt: tout_alt
+        }}
+      {%- endif -%}
+
+      {%- if tout_title != blank or tout_link_label != blank -%}
+        <div class="collection-grid-tout__overlay">
+          {%- if tout_title != blank -%}
+            <h3 class="collection-grid-tout__title" id="{{ tout_heading_id }}">
+              {{ tout_title | escape }}
+            </h3>
+          {%- endif -%}
+          {%- if tout_link != blank and tout_link_label != blank -%}
+            <span class="collection-grid-tout__cta cta-link">{{ tout_link_label | escape }}</span>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+    {%- if tout_link != blank -%}
+      </a>
+    {%- else -%}
+      </div>
+    {%- endif -%}
+  </article>
+</li>
