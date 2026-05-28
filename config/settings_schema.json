@@ -181,7 +181,7 @@
         "type": "range",
         "id": "spacing_grid_horizontal",
         "min": 4,
-        "max": 40,
+        "max": 100,
         "step": 4,
         "default": 8,
         "unit": "px",
@@ -191,11 +191,31 @@
         "type": "range",
         "id": "spacing_grid_vertical",
         "min": 4,
-        "max": 40,
+        "max": 100,
         "step": 4,
         "default": 8,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.spacing_grid_vertical.label"
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_horizontal_mobile",
+        "min": 4,
+        "max": 100,
+        "step": 4,
+        "default": 8,
+        "unit": "px",
+        "label": "t:settings_schema.layout.settings.spacing_grid_horizontal_mobile.label"
+      },
+      {
+        "type": "range",
+        "id": "spacing_grid_vertical_mobile",
+        "min": 4,
+        "max": 100,
+        "step": 4,
+        "default": 8,
+        "unit": "px",
+        "label": "t:settings_schema.layout.settings.spacing_grid_vertical_mobile.label"
       }
     ]
   },
