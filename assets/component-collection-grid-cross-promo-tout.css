@@ -58,8 +58,8 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  gap: 0.35rem;
-  padding: 1.2rem 1rem 1rem;
+  gap: 10px;
+  padding: 20px;
   pointer-events: none;
 }
 
@@ -93,29 +93,11 @@
   color: #fff;
 }
 
-.collection-grid-tout__title {
-  margin: 0;
-  font-family: 'FuturaPTDemi', Helvetica, Arial, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.1;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
 
-.collection-grid-tout__cta {
-  font-size: 14px;
-  line-height: 1.2;
-}
 
 @media screen and (min-width: 750px) {
   .collection-grid-tout__overlay {
-    padding: 1.4rem 1.2rem 1.1rem;
-  }
-
-  .collection-grid-tout__title {
-    font-size: 18px;
+    padding: 32px;
   }
 }
 

@@ -18,7 +18,7 @@ Per-collection promo cells in the product grid. Touts only render when assigned 
 | `grid_position` | Integer | Position in the **full collection** (not per page): `0` = first cell on page 1 only; `1` = before 1st product; `5` = before 5th product; `products_count + 1` = after last product. |
 | `image` | File | Images only. Used when `video` is empty. |
 | `video` | File | Video only. **Overrides** `image` when set. |
-| `title` | Single line text | Shown over media. |
+| `title` | Multi-line text | Shown over media (line breaks preserved). |
 | `link` | URL | Card link; Shopify stores `{ url, text }` — theme uses `url` for `href` and `text` for the CTA label (default `Shop now` if empty). |
 | `text_color` | Single line text | `dark` (default) or `light`. Dark = dark title/CTA with light bottom scrim; light = white text with dark scrim. |
 

@@ -81,7 +81,7 @@
           }}
         {%- elsif tout_image != blank -%}
           {%- liquid
-            assign tout_alt = tout_image.alt | default: tout_title | strip_html | escape
+            assign tout_alt = tout_image.alt | default: tout_title | strip_newlines | strip | escape
             if tout_alt == blank
               assign tout_alt = shop.name
             endif
@@ -101,9 +101,9 @@
         {%- if tout_title != blank or tout_link_url != blank and tout_link_text != blank -%}
           <div class="collection-grid-tout__overlay">
             {%- if tout_title != blank -%}
-              <h3 class="collection-grid-tout__title" id="{{ tout_heading_id }}">
-                {{ tout_title | escape }}
-              </h3>
+              <h2 class="collection-grid-tout__title h2 mb-0 lg-mb-2" id="{{ tout_heading_id }}">
+                {{ tout_title | escape | newline_to_br }}
+              </h2>
             {%- endif -%}
             {%- if tout_link_url != blank and tout_link_text != blank -%}
               <span class="collection-grid-tout__cta cta-link">{{ tout_link_text | escape }}</span>
