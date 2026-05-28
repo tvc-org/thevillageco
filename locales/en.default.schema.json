@@ -2051,7 +2051,7 @@
           "settings": {
             "grid_position": {
               "label": "Grid position",
-              "info": "Slot on the current results page (1 = before the first product, 2 = before the second, etc.). Use 0 for the first cell before products. The collection featured image in the grid, if enabled, is not counted. Repeats on each paginated page only when that slot exists."
+              "info": "Position in the full collection (1 = before the first product, 5 = before the fifth, etc.). Use 0 for the first grid cell on page 1 only. Not repeated on other pages. Collection featured image in the grid, if enabled, is not counted."
             },
             "image": {
               "label": "Image"
@@ -2064,10 +2064,8 @@
               "label": "Title"
             },
             "link": {
-              "label": "Link"
-            },
-            "link_label": {
-              "label": "Link label"
+              "label": "Link",
+              "info": "URL and link text; link text is used as the CTA label on the card."
             },
             "text_color": {
               "label": "Text color",

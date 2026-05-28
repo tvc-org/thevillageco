@@ -172,13 +172,15 @@
             >
               {% assign skip_card_product_styles = false %}
               {% assign collection_grid_stream_order = 0 %}
-              {% render 'collection-grid-cross-promo-touts-at-position',
-                touts: collection_cross_promo_touts,
-                section_id: section.id,
-                position: 0,
-                image_ratio: section.settings.image_ratio,
-                animation_order: collection_grid_stream_order
-              %}
+              {%- if paginate.current_offset == 0 -%}
+                {% render 'collection-grid-cross-promo-touts-at-position',
+                  touts: collection_cross_promo_touts,
+                  section_id: section.id,
+                  position: 0,
+                  image_ratio: section.settings.image_ratio,
+                  animation_order: collection_grid_stream_order
+                %}
+              {%- endif -%}
               {%- if collection.image -%}
                 {% render 'collection-grid-featured-image',
                   collection: collection,
@@ -188,10 +190,11 @@
                 %}
               {%- endif -%}
               {%- for product in collection.products -%}
+                {%- assign collection_grid_global_position = paginate.current_offset | plus: forloop.index -%}
                 {% render 'collection-grid-cross-promo-touts-at-position',
                   touts: collection_cross_promo_touts,
                   section_id: section.id,
-                  position: forloop.index,
+                  position: collection_grid_global_position,
                   image_ratio: section.settings.image_ratio,
                   animation_order: collection_grid_stream_order
                 %}
@@ -223,14 +226,17 @@
                 {%- assign skip_card_product_styles = true -%}
                 {% assign collection_grid_stream_order = collection_grid_stream_order | plus: 1 %}
               {%- endfor -%}
-              {%- assign collection_grid_after_products_position = collection.products.size | plus: 1 -%}
-              {% render 'collection-grid-cross-promo-touts-at-position',
-                touts: collection_cross_promo_touts,
-                section_id: section.id,
-                position: collection_grid_after_products_position,
-                image_ratio: section.settings.image_ratio,
-                animation_order: collection_grid_stream_order
-              %}
+              {%- assign collection_grid_global_after_all = collection.products_count | plus: 1 -%}
+              {%- assign collection_grid_page_after_position = paginate.current_offset | plus: collection.products.size | plus: 1 -%}
+              {%- if collection_grid_page_after_position == collection_grid_global_after_all -%}
+                {% render 'collection-grid-cross-promo-touts-at-position',
+                  touts: collection_cross_promo_touts,
+                  section_id: section.id,
+                  position: collection_grid_global_after_all,
+                  image_ratio: section.settings.image_ratio,
+                  animation_order: collection_grid_stream_order
+                %}
+              {%- endif -%}
             </ul>
 
             {%- if paginate.pages > 1 -%}

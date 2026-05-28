@@ -3,7 +3,7 @@
 
   Accepts:
   - touts: {Array} cross_promotion_tout metaobjects from collection.metafields.custom.cross_promo_touts
-  - position: {Number} grid slot (0 = before products; 1 = before first product on page; etc.)
+  - position: {Number} 1-based index in full collection (0 = first cell on page 1 only; N = before Nth product)
   - section_id: {String} for unique heading ids
   - image_ratio: {String} from section settings
   - animation_order: {Number} optional cascade index
@@ -23,7 +23,13 @@
   {%- if tout_image == blank and tout_video == blank -%}
     {%- continue -%}
   {%- endif -%}
-  {%- assign tout_uid = section_id | append: '-' | append: tout.id -%}
+  {%- liquid
+    assign tout_uid_suffix = tout.system.id | default: tout.id | default: tout.handle
+    if tout_uid_suffix == blank
+      assign tout_uid_suffix = forloop.index
+    endif
+    assign tout_uid = section_id | append: '-' | append: tout_uid_suffix
+  -%}
   {% render 'collection-grid-cross-promo-tout',
     tout: tout,
     tout_uid: tout_uid,

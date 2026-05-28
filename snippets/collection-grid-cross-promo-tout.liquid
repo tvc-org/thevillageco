@@ -11,15 +11,26 @@
   assign tout_image = tout.image.value | default: tout.image
   assign tout_video = tout.video.value | default: tout.video
   assign tout_title = tout.title.value | default: tout.title
-  assign tout_link = tout.link.value | default: tout.link
-  assign tout_link_label = tout.link_label.value | default: tout.link_label
+  assign tout_link_field = tout.link.value | default: tout.link
+  assign tout_link_url = ''
+  assign tout_link_text = ''
   assign tout_text_color = tout.text_color.value | default: tout.text_color | default: 'dark' | downcase
+
+  if tout_link_field != blank
+    if tout_link_field.url != blank
+      assign tout_link_url = tout_link_field.url
+      assign tout_link_text = tout_link_field.text
+    else
+      assign tout_link_url = tout_link_field
+    endif
+  endif
+
   if tout_text_color != 'light'
     assign tout_text_color = 'dark'
   endif
 
-  if tout_link_label == blank
-    assign tout_link_label = 'Shop now'
+  if tout_link_text == blank
+    assign tout_link_text = 'Shop now'
   endif
 
   assign tout_ratio = 1
@@ -39,9 +50,9 @@
   {% endif %}
 >
   <article class="collection-grid-tout__card">
-    {%- if tout_link != blank -%}
+    {%- if tout_link_url != blank -%}
       <a
-        href="{{ tout_link }}"
+        href="{{ tout_link_url | escape }}"
         class="collection-grid-tout__link"
         {% if tout_title != blank %}
           aria-labelledby="{{ tout_heading_id }}"
@@ -54,52 +65,54 @@
       class="collection-grid-tout__media ratio collection-grid-tout__media--text-{{ tout_text_color }}"
       style="--ratio-percent: {{ tout_ratio_percent }}%;"
     >
-      {%- if tout_video != blank -%}
-        {{
-          tout_video
-          | video_tag:
-            image_size: '1500x',
-            autoplay: true,
-            loop: true,
-            muted: true,
-            playsinline: true,
-            controls: false,
-            preload: 'metadata',
-            class: 'collection-grid-tout__video'
-        }}
-      {%- elsif tout_image != blank -%}
-        {%- liquid
-          assign tout_alt = tout_image.alt | default: tout_title | strip_html | escape
-          if tout_alt == blank
-            assign tout_alt = shop.name
-          endif
-        -%}
-        {{
-          tout_image
-          | image_url: width: 1500
-          | image_tag:
-            loading: 'lazy',
-            widths: '165, 360, 533, 720, 940, 1066, 1500',
-            sizes: '(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)',
-            class: 'collection-grid-tout__image',
-            alt: tout_alt
-        }}
-      {%- endif -%}
+      <div class="collection-grid-tout__media-fill">
+        {%- if tout_video != blank -%}
+          {{
+            tout_video
+            | video_tag:
+              image_size: '1500x',
+              autoplay: true,
+              loop: true,
+              muted: true,
+              playsinline: true,
+              controls: false,
+              preload: 'metadata',
+              class: 'collection-grid-tout__video'
+          }}
+        {%- elsif tout_image != blank -%}
+          {%- liquid
+            assign tout_alt = tout_image.alt | default: tout_title | strip_html | escape
+            if tout_alt == blank
+              assign tout_alt = shop.name
+            endif
+          -%}
+          {{
+            tout_image
+            | image_url: width: 1500
+            | image_tag:
+              loading: 'lazy',
+              widths: '165, 360, 533, 720, 940, 1066, 1500',
+              sizes: '(min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)',
+              class: 'collection-grid-tout__image',
+              alt: tout_alt
+          }}
+        {%- endif -%}
 
-      {%- if tout_title != blank or tout_link_label != blank -%}
-        <div class="collection-grid-tout__overlay">
-          {%- if tout_title != blank -%}
-            <h3 class="collection-grid-tout__title" id="{{ tout_heading_id }}">
-              {{ tout_title | escape }}
-            </h3>
-          {%- endif -%}
-          {%- if tout_link != blank and tout_link_label != blank -%}
-            <span class="collection-grid-tout__cta cta-link">{{ tout_link_label | escape }}</span>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
+        {%- if tout_title != blank or tout_link_url != blank and tout_link_text != blank -%}
+          <div class="collection-grid-tout__overlay">
+            {%- if tout_title != blank -%}
+              <h3 class="collection-grid-tout__title" id="{{ tout_heading_id }}">
+                {{ tout_title | escape }}
+              </h3>
+            {%- endif -%}
+            {%- if tout_link_url != blank and tout_link_text != blank -%}
+              <span class="collection-grid-tout__cta cta-link">{{ tout_link_text | escape }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
     </div>
-    {%- if tout_link != blank -%}
+    {%- if tout_link_url != blank -%}
       </a>
     {%- else -%}
       </div>

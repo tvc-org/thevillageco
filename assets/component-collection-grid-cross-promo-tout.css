@@ -1,8 +1,12 @@
 /* Collection grid — cross-promotion tout (full-bleed media, title/CTA overlay) */
 
+/* Match product card media (.card__inner.ratio) height only — not full card + title row */
+.product-grid > .grid__item.collection-grid-tout {
+  align-self: start;
+}
+
 .collection-grid-tout__card {
   width: 100%;
-  height: 100%;
 }
 
 .collection-grid-tout__link {
@@ -17,7 +21,6 @@
 }
 
 .collection-grid-tout__media {
-  position: relative;
   width: 100%;
   overflow: hidden;
   border-radius: var(--product-card-corner-radius, 0);
@@ -25,10 +28,12 @@
   background-color: rgb(var(--color-background));
 }
 
-.collection-grid-tout__media::before {
-  content: '';
-  display: block;
-  padding-top: var(--ratio-percent, 100%);
+/* Same aspect-ratio box as .card__inner.ratio on product cards (uses base .ratio::before) */
+.collection-grid-tout__media-fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .collection-grid-tout__image,
@@ -39,6 +44,10 @@
   height: 100%;
   object-fit: cover;
   object-position: center center;
+}
+
+.collection-grid-tout__video {
+  display: block;
 }
 
 .collection-grid-tout__overlay {
