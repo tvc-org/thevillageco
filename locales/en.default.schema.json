@@ -777,7 +777,7 @@
         },
         "title": {
           "label": "Title",
-          "info": "HTML allowed. Use <br> for line breaks and <span class=\"tvc-home-intro__title-accent\">…</span> for the accent color."
+          "info": "HTML allowed. Line breaks and <br> both work. Use <span class=\"tvc-home-intro__title-accent\">…</span> for the accent color."
         },
         "text": {
           "label": "Text"

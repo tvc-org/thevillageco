@@ -10,11 +10,11 @@
     <div class="tvc-home-intro__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="tvc-home-intro__content-inner">
         {%- if section.settings.pre_title != blank -%}
-          <p class="tvc-home-intro__pretitle">{{ section.settings.pre_title | escape }}</p>
+          <p class="tvc-home-intro__pretitle mb-0">{{ section.settings.pre_title | escape }}</p>
         {%- endif -%}
 
         {%- if section.settings.title != blank -%}
-          <h2 class="tvc-home-intro__title">{{ section.settings.title }}</h2>
+          <h2 class="tvc-home-intro__title mt-2 mb-4 lg-mb-6">{{ section.settings.title | newline_to_br }}</h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
@@ -26,10 +26,10 @@
             {%- for block in tvc_hi_callout_blocks -%}
               <li class="tvc-home-intro__callout" {{ block.shopify_attributes }}>
                 {%- if block.settings.title != blank -%}
-                  <span class="tvc-home-intro__callout-title">{{ block.settings.title | escape }}</span>
+                  <span class="tvc-home-intro__callout-title mb-4 lg-mb-5">{{ block.settings.title | escape }}</span>
                 {%- endif -%}
                 {%- if block.settings.text != blank -%}
-                  <span class="tvc-home-intro__callout-text">{{ block.settings.text | escape }}</span>
+                  <span class="tvc-home-intro__callout-text mt-0">{{ block.settings.text | escape }}</span>
                 {%- endif -%}
               </li>
             {%- endfor -%}
@@ -87,7 +87,7 @@
       "id": "title",
       "label": "t:sections.tvc-home-intro.settings.title.label",
       "info": "t:sections.tvc-home-intro.settings.title.info",
-      "default": "Built on trust.<br><span class=\"tvc-home-intro__title-accent\">Made for</span><br>everyday life."
+      "default": "Built on trust.\n<span class=\"tvc-home-intro__title-accent\">Made for</span>\neveryday life."
     },
     {
       "type": "richtext",

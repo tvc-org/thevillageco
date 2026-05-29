@@ -11,7 +11,7 @@
 
 .tvc-home-intro__content {
   order: 1;
-  padding: 48px var(--layout-gutter-x) 40px;
+  padding: 48px var(--layout-gutter-x) 80px;
 }
 
 .tvc-home-intro__content-inner {
@@ -19,23 +19,23 @@
 }
 
 .tvc-home-intro__pretitle {
-  color: #8a7b6f;
-  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  line-height: 1.3;
-  margin: 0 0 20px;
+  color: #7b6655 !important;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
   text-transform: uppercase;
 }
 
 .tvc-home-intro__title {
   color: #2c2c2c;
-  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
-  font-size: clamp(36px, 8vw, 72px);
-  letter-spacing: -0.02em;
-  line-height: 0.92;
-  margin: 0 0 28px;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   text-transform: uppercase;
+  line-height: 85.5%;
+  letter-spacing: -1.56px;
+}
+
+.tvc-home-intro__title, .tvc-home-intro__callout-title {
+  font-size: clamp(42px, 8vw, 78px);
 }
 
 .tvc-home-intro__title .tvc-home-intro__title-accent,
@@ -44,62 +44,47 @@
 }
 
 .tvc-home-intro__body {
-  color: #464646;
-  font-family: Inter, sans-serif;
-  font-size: 16px;
-  letter-spacing: -0.01em;
-  line-height: 1.45;
-  margin: 0 0 36px;
-  max-width: 34rem;
+  
+  max-width: 680px;
 }
 
-.tvc-home-intro__body p:last-child {
-  margin-bottom: 0;
+.tvc-home-intro__body p, .tvc-home-intro__body > * {
+  color: #464646;
+  font-family: Inter, sans-serif;
+  font-size: 20px !important;
 }
 
 .tvc-home-intro__callouts {
+  column-gap: 10px;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   list-style: none;
   margin: 0;
-  max-width: 34rem;
   padding: 0;
+  width: 100%;
+  margin-top: 80px;
 }
 
 .tvc-home-intro__callout {
-  border-bottom: 1px solid #d8cfc4;
-  border-right: 1px solid #d8cfc4;
+  border-top: 1px solid #c5c5c5;
   box-sizing: border-box;
   min-height: 120px;
   padding: 24px 20px 28px;
 }
 
-.tvc-home-intro__callout:nth-child(2n) {
-  border-right: none;
-}
-
-.tvc-home-intro__callout:nth-last-child(-n + 2) {
-  border-bottom: none;
-}
-
 .tvc-home-intro__callout-title {
   color: #2c2c2c;
   display: block;
-  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
-  font-size: clamp(40px, 6vw, 56px);
-  letter-spacing: -0.02em;
-  line-height: 1;
-  margin: 0 0 10px;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  line-height: 51.282%;
 }
 
 .tvc-home-intro__callout-text {
   color: #8a7b6f;
   display: block;
-  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  line-height: 1.35;
-  margin: 0;
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
   text-transform: uppercase;
 }
 
@@ -131,7 +116,7 @@
     justify-content: center;
     max-width: 50%;
     order: 0;
-    padding: 80px var(--layout-gutter-x) 80px clamp(48px, 5vw, 96px);
+    padding: 80px var(--layout-gutter-x) 180px var(--layout-gutter-x);
   }
 
   .tvc-home-intro__content-inner {
@@ -140,31 +125,23 @@
 
   .tvc-home-intro__pretitle {
     font-size: 13px;
-    margin-bottom: 24px;
   }
 
-  .tvc-home-intro__title {
-    font-size: clamp(48px, 4.2vw, 72px);
-    margin-bottom: 32px;
+  .tvc-home-intro__title, .tvc-home-intro__callout-title {
+    font-size: clamp(48px, 4.2vw, 78px);
   }
 
   .tvc-home-intro__body {
     font-size: 16px;
-    margin-bottom: 48px;
+  }
+
+  .tvc-home-intro__callouts {
+    margin-top: 145px;
   }
 
   .tvc-home-intro__callout {
     min-height: 140px;
     padding: 28px 24px 32px;
-  }
-
-  .tvc-home-intro__callout-title {
-    font-size: clamp(44px, 3.5vw, 56px);
-    margin-bottom: 12px;
-  }
-
-  .tvc-home-intro__callout-text {
-    font-size: 12px;
   }
 
   .tvc-home-intro__media {

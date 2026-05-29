@@ -980,7 +980,6 @@ header-drawer {
     min-width: fit-content;
     min-width: -webkit-fit-content;
     min-width: -moz-fit-content;
-    margin: 0 auto;
     height: 30px;
     overflow: hidden;
 }
