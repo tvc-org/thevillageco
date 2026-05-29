@@ -1,7 +1,7 @@
 /* TVC Home Intro — homepage split: copy + stats (left) / full-bleed image (right) */
 
 .tvc-home-intro {
-  background-color: var(--tvc-home-intro-bg, #f9f4ef);
+  background-color: #f9f4ef;
 }
 
 .tvc-home-intro__grid {
@@ -19,7 +19,7 @@
 }
 
 .tvc-home-intro__pretitle {
-  color: var(--tvc-home-intro-pretitle, #8a7b6f);
+  color: #8a7b6f;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   font-size: 12px;
   letter-spacing: 0.12em;
@@ -29,7 +29,7 @@
 }
 
 .tvc-home-intro__title {
-  color: var(--tvc-home-intro-title, #2c2c2c);
+  color: #2c2c2c;
   font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
   font-size: clamp(36px, 8vw, 72px);
   letter-spacing: -0.02em;
@@ -40,11 +40,11 @@
 
 .tvc-home-intro__title .tvc-home-intro__title-accent,
 .tvc-home-intro__title span.tvc-home-intro__title-accent {
-  color: var(--tvc-home-intro-title-accent, #a68b77);
+  color: #a68b77;
 }
 
 .tvc-home-intro__body {
-  color: var(--tvc-home-intro-text, #464646);
+  color: #464646;
   font-family: Inter, sans-serif;
   font-size: 16px;
   letter-spacing: -0.01em;
@@ -67,8 +67,8 @@
 }
 
 .tvc-home-intro__callout {
-  border-bottom: 1px solid var(--tvc-home-intro-divider, #d8cfc4);
-  border-right: 1px solid var(--tvc-home-intro-divider, #d8cfc4);
+  border-bottom: 1px solid #d8cfc4;
+  border-right: 1px solid #d8cfc4;
   box-sizing: border-box;
   min-height: 120px;
   padding: 24px 20px 28px;
@@ -83,7 +83,7 @@
 }
 
 .tvc-home-intro__callout-title {
-  color: var(--tvc-home-intro-title, #2c2c2c);
+  color: #2c2c2c;
   display: block;
   font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
   font-size: clamp(40px, 6vw, 56px);
@@ -93,7 +93,7 @@
 }
 
 .tvc-home-intro__callout-text {
-  color: var(--tvc-home-intro-pretitle, #8a7b6f);
+  color: #8a7b6f;
   display: block;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   font-size: 11px;

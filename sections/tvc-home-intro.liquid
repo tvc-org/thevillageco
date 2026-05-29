@@ -5,18 +5,7 @@
   assign tvc_hi_callout_blocks = section.blocks | where: 'type', 'callout'
 -%}
 
-{%- style -%}
-  .tvc-home-intro--{{ section.id }} {
-    --tvc-home-intro-bg: {{ section.settings.background_color }};
-    --tvc-home-intro-pretitle: {{ section.settings.pretitle_color }};
-    --tvc-home-intro-title: {{ section.settings.title_color }};
-    --tvc-home-intro-title-accent: {{ section.settings.title_accent_color }};
-    --tvc-home-intro-text: {{ section.settings.text_color }};
-    --tvc-home-intro-divider: {{ section.settings.divider_color }};
-  }
-{%- endstyle -%}
-
-<div class="tvc-home-intro tvc-home-intro--{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+<div class="tvc-home-intro">
   <div class="tvc-home-intro__grid">
     <div class="tvc-home-intro__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
       <div class="tvc-home-intro__content-inner">
@@ -110,52 +99,6 @@
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.tvc-home-intro.settings.image.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.tvc-home-intro.settings.header_colors.content"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "scheme-1"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "t:sections.tvc-home-intro.settings.background_color.label",
-      "default": "#f9f4ef"
-    },
-    {
-      "type": "color",
-      "id": "pretitle_color",
-      "label": "t:sections.tvc-home-intro.settings.pretitle_color.label",
-      "default": "#8a7b6f"
-    },
-    {
-      "type": "color",
-      "id": "title_color",
-      "label": "t:sections.tvc-home-intro.settings.title_color.label",
-      "default": "#2c2c2c"
-    },
-    {
-      "type": "color",
-      "id": "title_accent_color",
-      "label": "t:sections.tvc-home-intro.settings.title_accent_color.label",
-      "default": "#a68b77"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "t:sections.tvc-home-intro.settings.text_color.label",
-      "default": "#464646"
-    },
-    {
-      "type": "color",
-      "id": "divider_color",
-      "label": "t:sections.tvc-home-intro.settings.divider_color.label",
-      "default": "#d8cfc4"
     }
   ],
   "blocks": [
@@ -216,4 +159,3 @@
   ]
 }
 {% endschema %}
-<!-- updated? -->
