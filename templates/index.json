@@ -120,8 +120,8 @@
       "name": "t:sections.tvc-home-intro.presets.name",
       "settings": {
         "pre_title": "Trusted personal care — since 1991",
-        "title": "Built on trust.<br><span class=\"tvc-home-intro__title-accent\">Made for</span><br>everyday life.",
-        "text": "<p>For over 30 years, we've been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>",
+        "title": "Built on trust.\n<span class=\"tvc-home-intro__title-accent\">Made for \neveryday life.</span>",
+        "text": "<p>For over 30 years, we’ve been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>",
         "image": "shopify://shop_images/tvc-home-intro.jpg"
       }
     }
