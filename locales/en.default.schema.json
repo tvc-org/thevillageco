@@ -784,27 +784,6 @@
         },
         "image": {
           "label": "Image"
-        },
-        "header_colors": {
-          "content": "Colors"
-        },
-        "background_color": {
-          "label": "Background"
-        },
-        "pretitle_color": {
-          "label": "Pre-title color"
-        },
-        "title_color": {
-          "label": "Title color"
-        },
-        "title_accent_color": {
-          "label": "Title accent color"
-        },
-        "text_color": {
-          "label": "Body text color"
-        },
-        "divider_color": {
-          "label": "Callout divider color"
         }
       },
       "blocks": {
