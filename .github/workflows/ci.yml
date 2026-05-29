@@ -4,6 +4,9 @@ on:
   push:
   pull_request:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   theme-check:
     name: Theme Check
@@ -11,12 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/setup-node@v4
         with:
-          ruby-version: '3.3'
-
-      - name: Install Theme Check
-        run: gem install theme-check -N
+          node-version: '22'
 
       - name: Run Theme Check
-        run: theme-check
+        run: npx --yes @shopify/cli@latest theme check

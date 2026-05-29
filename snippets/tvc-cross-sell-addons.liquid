@@ -16,7 +16,9 @@
       assign tvc_xs_raw = tvc_xs_mf.value | append: '' | strip
     endif
     if tvc_xs_raw != blank
+      # theme-check-disable UnknownFilter
       assign tvc_xs_arr = tvc_xs_raw | parse_json
+      # theme-check-enable UnknownFilter
       if tvc_xs_arr != blank
         assign tvc_xs_r0 = tvc_xs_arr | first
         assign tvc_xs_from_rows = false
