@@ -78,9 +78,56 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "tvc_home_intro_eFKmKt": {
+      "type": "tvc-home-intro",
+      "blocks": {
+        "callout_CDpFeQ": {
+          "type": "callout",
+          "settings": {
+            "title": "30+",
+            "text": "Years of innovation"
+          }
+        },
+        "callout_i3VXT7": {
+          "type": "callout",
+          "settings": {
+            "title": "6",
+            "text": "Beloved brands"
+          }
+        },
+        "callout_GKCxgJ": {
+          "type": "callout",
+          "settings": {
+            "title": "365",
+            "text": "Days / year feeling good"
+          }
+        },
+        "callout_xXAQHX": {
+          "type": "callout",
+          "settings": {
+            "title": "∞",
+            "text": "Moments restored"
+          }
+        }
+      },
+      "block_order": [
+        "callout_CDpFeQ",
+        "callout_i3VXT7",
+        "callout_GKCxgJ",
+        "callout_xXAQHX"
+      ],
+      "name": "t:sections.tvc-home-intro.presets.name",
+      "settings": {
+        "pre_title": "Trusted personal care — since 1991",
+        "title": "Built on trust.<br><span class=\"tvc-home-intro__title-accent\">Made for</span><br>everyday life.",
+        "text": "<p>For over 30 years, we've been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>",
+        "image": "shopify://shop_images/tvc-home-intro.jpg"
+      }
     }
   },
   "order": [
-    "featured_product_8tXYNU"
+    "featured_product_8tXYNU",
+    "tvc_home_intro_eFKmKt"
   ]
 }
