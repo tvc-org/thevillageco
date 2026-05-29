@@ -1,0 +1,44 @@
+{% comment %}
+  Footer policy nav items: brand extra links first, then section Policies menu (or shop policies fallback).
+  Accepts: section, brand (optional footer brand block)
+{% endcomment %}
+{%- liquid
+  assign footer_policy_extra_menu = null
+  if brand != blank and brand.settings.policy_extra_links != blank
+    assign footer_policy_extra_menu = brand.settings.policy_extra_links
+  endif
+  assign footer_has_policy_extra_links = false
+  if footer_policy_extra_menu != blank and footer_policy_extra_menu.links.size > 0
+    assign footer_has_policy_extra_links = true
+  endif
+-%}
+
+{%- if footer_has_policy_extra_links -%}
+  {%- for link in footer_policy_extra_menu.links -%}
+    <li>
+      <small class="copyright__content"
+        ><a href="{{ link.url }}">{{ link.title | escape }}</a></small
+      >
+    </li>
+  {%- endfor -%}
+{%- endif -%}
+
+{%- if section.settings.policies_menu != blank -%}
+  {%- for link in section.settings.policies_menu.links -%}
+    <li>
+      <small class="copyright__content"
+        ><a href="{{ link.url }}">{{ link.title | escape }}</a></small
+      >
+    </li>
+  {%- endfor -%}
+{%- elsif footer_has_policy_extra_links == false -%}
+  {%- for policy in shop.policies -%}
+    {%- if policy != blank -%}
+      <li>
+        <small class="copyright__content"
+          ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+        >
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}

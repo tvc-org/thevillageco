@@ -80,6 +80,7 @@
   .footer--{{ section.id }}.footer--branded {
     {%- if footer_current_brand.settings.brand_color != blank -%}
     background: {{ footer_current_brand.settings.brand_color }};
+    --footer-bg-color: {{ footer_current_brand.settings.brand_color }};
     {%- endif -%}
     {%- if footer_current_brand.settings.footer_text_color != blank -%}
     --footer-text-color: {{ footer_current_brand.settings.footer_text_color }};
@@ -88,10 +89,17 @@
   {%- endif -%}
 {%- endstyle -%}
 
-{%- if settings.signup_embed != blank -%}
+{%- liquid
+  assign footer_is_homepage = false
+  if request.page_type == 'index'
+    assign footer_is_homepage = true
+  endif
+-%}
+
+{%- if settings.signup_embed != blank and footer_is_homepage == false -%}
   {%- render 'footer-subscription', brand: footer_current_brand -%}
 {%- endif -%}
-<footer class="footer footer--{{ section.id }}{% if footer_brand_blocks.size > 0 and footer_current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+<footer class="footer footer--{{ section.id }}{% if footer_is_homepage %} footer--homepage{% endif %}{% if footer_brand_blocks.size > 0 and footer_current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
   {%- liquid
     assign has_social_icons = true
     if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
@@ -119,6 +127,12 @@
         <div class="footer__top-row">
           {%- comment -%} Brand logo (left on desktop, top on mobile) {%- endcomment -%}
           <div class="footer__brand-col">
+            {%- liquid
+              assign footer_logo_width = 200
+              if footer_is_homepage
+                assign footer_logo_width = 824
+              endif
+            -%}
             {%- if footer_brand_blocks.size > 0
               and footer_current_brand
               and footer_current_brand.settings.footer_logo != blank
@@ -129,19 +143,20 @@
                   class="footer-brand-logo__link"
                 >
                   <img
-                    src="{{ footer_current_brand.settings.footer_logo | image_url: width: 200 }}"
+                    src="{{ footer_current_brand.settings.footer_logo | image_url: width: footer_logo_width }}"
                     alt="{{ footer_current_brand.settings.text | escape }}"
                     width="{{ footer_current_brand.settings.footer_logo.width }}"
                     height="{{ footer_current_brand.settings.footer_logo.height }}"
                     loading="lazy"
-                    class="footer-brand-logo__image"
+                    class="footer-brand-logo__image{% if footer_is_homepage %} footer-brand-logo__image--homepage{% endif %}"
                   >
                 </a>
               </div>
             {%- endif -%}
           </div>
 
-          {%- comment -%} Menu columns (Shop, Help) - center on desktop {%- endcomment -%}
+          {%- comment -%} Menu columns (Shop, Help) - hidden on homepage {%- endcomment -%}
+          {%- unless footer_is_homepage -%}
           <div class="footer__menus-col">
             {%- for block in footer_link_blocks -%}
               <div class="footer-block footer-block--menu" {{ block.shopify_attributes }}>
@@ -165,8 +180,18 @@
               </div>
             {%- endfor -%}
           </div>
+          {%- endunless -%}
+
+          {%- if footer_is_homepage and settings.signup_embed != blank -%}
+            <div class="footer__newsletter-col">
+              <div class="footer__newsletter-form">
+                {{ settings.signup_embed }}
+              </div>
+            </div>
+          {%- endif -%}
 
           {%- comment -%} Social icons (right on desktop, below logo on mobile) {%- endcomment -%}
+          {%- unless footer_is_homepage -%}
           <div class="footer__social-col">
             {%- assign show_footer_social = false -%}
             {%- if section.settings.show_social -%}
@@ -185,6 +210,7 @@
               {%- endif -%}
             {%- endif -%}
           </div>
+          {%- endunless -%}
         </div>
 
         {%- comment -%} Newsletter and Follow on Shop (when enabled) {%- endcomment -%}
@@ -402,32 +428,14 @@
             {{ shop.name | link_to: routes.root_url -}}
           </small>
         </div>
-        {%- if section.settings.trademark_text != blank -%}
+        {%- if section.settings.trademark_text != blank and footer_is_homepage == false -%}
           <div class="footer__trademark caption-large">
             {{ section.settings.trademark_text }}
           </div>
         {%- endif -%}
         {%- if section.settings.show_policy -%}
           <ul class="footer__policies-mobile policies list-unstyled">
-            {%- if section.settings.policies_menu != blank -%}
-              {%- for link in section.settings.policies_menu.links -%}
-                <li>
-                  <small class="copyright__content"
-                    ><a href="{{ link.url }}">{{ link.title | escape }}</a></small
-                  >
-                </li>
-              {%- endfor -%}
-            {%- else -%}
-              {%- for policy in shop.policies -%}
-                {%- if policy != blank -%}
-                  <li>
-                    <small class="copyright__content"
-                      ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                    >
-                  </li>
-                {%- endif -%}
-              {%- endfor -%}
-            {%- endif -%}
+            {%- render 'footer-policy-link-items', section: section, brand: footer_current_brand -%}
           </ul>
         {%- endif -%}
         {%- comment -%} Desktop: trademark left, copyright row right {%- endcomment -%}
@@ -441,25 +449,7 @@
           {%- endif -%}
           {%- if section.settings.show_policy -%}
             <ul class="footer__policies policies list-unstyled">
-              {%- if section.settings.policies_menu != blank -%}
-                {%- for link in section.settings.policies_menu.links -%}
-                  <li>
-                    <small class="copyright__content"
-                      ><a href="{{ link.url }}">{{ link.title | escape }}</a></small
-                    >
-                  </li>
-                {%- endfor -%}
-              {%- else -%}
-                {%- for policy in shop.policies -%}
-                  {%- if policy != blank -%}
-                    <li>
-                      <small class="copyright__content"
-                        ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                      >
-                    </li>
-                  {%- endif -%}
-                {%- endfor -%}
-              {%- endif -%}
+              {%- render 'footer-policy-link-items', section: section, brand: footer_current_brand -%}
             </ul>
           {%- endif -%}
         </div>
@@ -507,6 +497,12 @@
           "type": "image_picker",
           "id": "footer_logo",
           "label": "Footer logo"
+        },
+        {
+          "type": "link_list",
+          "id": "policy_extra_links",
+          "label": "Policy extra links",
+          "info": "Optional links shown before the section Policies menu in the footer legal row."
         },
         {
           "type": "header",
