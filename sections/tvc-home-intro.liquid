@@ -1,0 +1,221 @@
+{{ 'section-tvc-home-intro.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign tvc_hi_image = section.settings.image
+  assign tvc_hi_callout_blocks = section.blocks | where: 'type', 'callout'
+-%}
+
+{%- style -%}
+  .tvc-home-intro--{{ section.id }} {
+    --tvc-home-intro-bg: {{ section.settings.background_color }};
+    --tvc-home-intro-pretitle: {{ section.settings.pretitle_color }};
+    --tvc-home-intro-title: {{ section.settings.title_color }};
+    --tvc-home-intro-title-accent: {{ section.settings.title_accent_color }};
+    --tvc-home-intro-text: {{ section.settings.text_color }};
+    --tvc-home-intro-divider: {{ section.settings.divider_color }};
+  }
+{%- endstyle -%}
+
+<div class="tvc-home-intro tvc-home-intro--{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="tvc-home-intro__grid">
+    <div class="tvc-home-intro__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="tvc-home-intro__content-inner">
+        {%- if section.settings.pre_title != blank -%}
+          <p class="tvc-home-intro__pretitle">{{ section.settings.pre_title | escape }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="tvc-home-intro__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.text != blank -%}
+          <div class="tvc-home-intro__body rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if tvc_hi_callout_blocks.size > 0 -%}
+          <ul class="tvc-home-intro__callouts" role="list">
+            {%- for block in tvc_hi_callout_blocks -%}
+              <li class="tvc-home-intro__callout" {{ block.shopify_attributes }}>
+                {%- if block.settings.title != blank -%}
+                  <span class="tvc-home-intro__callout-title">{{ block.settings.title | escape }}</span>
+                {%- endif -%}
+                {%- if block.settings.text != blank -%}
+                  <span class="tvc-home-intro__callout-text">{{ block.settings.text | escape }}</span>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if tvc_hi_image != blank -%}
+      <div class="tvc-home-intro__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {%- liquid
+          assign tvc_hi_alt = tvc_hi_image.alt | default: section.settings.pre_title
+          if tvc_hi_alt == blank and section.settings.title != blank
+            assign tvc_hi_alt = section.settings.title | strip_html
+          endif
+          assign tvc_hi_widths = '750, 990, 1200, 1500, 1800, 2200'
+        -%}
+        {{
+          tvc_hi_image
+          | image_url: width: 2200
+          | image_tag:
+            loading: 'lazy',
+            widths: tvc_hi_widths,
+            sizes: '(min-width: 960px) 50vw, 100vw',
+            class: 'tvc-home-intro__image',
+            alt: tvc_hi_alt
+        }}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-home-intro.name",
+  "tag": "section",
+  "class": "section section-tvc-home-intro",
+  "max_blocks": 4,
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-home-intro.settings.header_content.content"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "t:sections.tvc-home-intro.settings.pre_title.label",
+      "default": "Trusted personal care — since 1991"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "t:sections.tvc-home-intro.settings.title.label",
+      "info": "t:sections.tvc-home-intro.settings.title.info",
+      "default": "Built on trust.<br><span class=\"tvc-home-intro__title-accent\">Made for</span><br>everyday life."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.tvc-home-intro.settings.text.label",
+      "default": "<p>For over 30 years, we've been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.tvc-home-intro.settings.image.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-home-intro.settings.header_colors.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "t:sections.tvc-home-intro.settings.background_color.label",
+      "default": "#f9f4ef"
+    },
+    {
+      "type": "color",
+      "id": "pretitle_color",
+      "label": "t:sections.tvc-home-intro.settings.pretitle_color.label",
+      "default": "#8a7b6f"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "t:sections.tvc-home-intro.settings.title_color.label",
+      "default": "#2c2c2c"
+    },
+    {
+      "type": "color",
+      "id": "title_accent_color",
+      "label": "t:sections.tvc-home-intro.settings.title_accent_color.label",
+      "default": "#a68b77"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:sections.tvc-home-intro.settings.text_color.label",
+      "default": "#464646"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "t:sections.tvc-home-intro.settings.divider_color.label",
+      "default": "#d8cfc4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "callout",
+      "name": "t:sections.tvc-home-intro.blocks.callout.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.tvc-home-intro.blocks.callout.settings.title.label",
+          "default": "30+"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:sections.tvc-home-intro.blocks.callout.settings.text.label",
+          "default": "Years of innovation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-home-intro.presets.name",
+      "category": "Homepage",
+      "blocks": [
+        {
+          "type": "callout",
+          "settings": {
+            "title": "30+",
+            "text": "Years of innovation"
+          }
+        },
+        {
+          "type": "callout",
+          "settings": {
+            "title": "6",
+            "text": "Beloved brands"
+          }
+        },
+        {
+          "type": "callout",
+          "settings": {
+            "title": "365",
+            "text": "Days / year feeling good"
+          }
+        },
+        {
+          "type": "callout",
+          "settings": {
+            "title": "∞",
+            "text": "Moments restored"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

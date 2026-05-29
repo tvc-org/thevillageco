@@ -766,6 +766,64 @@
         "name": "TVC Featured Review"
       }
     },
+    "tvc-home-intro": {
+      "name": "TVC - Home Intro",
+      "settings": {
+        "header_content": {
+          "content": "Content"
+        },
+        "pre_title": {
+          "label": "Pre-title"
+        },
+        "title": {
+          "label": "Title",
+          "info": "HTML allowed. Use <br> for line breaks and <span class=\"tvc-home-intro__title-accent\">…</span> for the accent color."
+        },
+        "text": {
+          "label": "Text"
+        },
+        "image": {
+          "label": "Image"
+        },
+        "header_colors": {
+          "content": "Colors"
+        },
+        "background_color": {
+          "label": "Background"
+        },
+        "pretitle_color": {
+          "label": "Pre-title color"
+        },
+        "title_color": {
+          "label": "Title color"
+        },
+        "title_accent_color": {
+          "label": "Title accent color"
+        },
+        "text_color": {
+          "label": "Body text color"
+        },
+        "divider_color": {
+          "label": "Callout divider color"
+        }
+      },
+      "blocks": {
+        "callout": {
+          "name": "Callout",
+          "settings": {
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "TVC - Home Intro"
+      }
+    },
     "tvc-promo-callout": {
       "name": "TVC Promo callout",
       "settings": {
