@@ -1,0 +1,156 @@
+/* TVC Brands — homepage brand portfolio grid with radial hover reveal */
+
+.tvc-brands {
+  background-color: #ece5dd;
+}
+
+.tvc-brands__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 48px var(--layout-gutter-x) 64px;
+}
+
+.tvc-brands__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tvc-brands__pretitle {
+  color: #7b6655;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.tvc-brands__title {
+  color: #2c2c2c;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-size: clamp(36px, 6vw, 64px);
+  text-transform: uppercase;
+}
+
+.tvc-brands__grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: minmax(0, 1fr);
+  list-style: none;
+  padding: 0;
+}
+
+.tvc-brands__grid-item {
+  min-width: 0;
+}
+
+.tvc-brands__item {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-decoration: none;
+}
+
+.tvc-brands__logo {
+  aspect-ratio: 1;
+  background-color: var(--tvc-brand-bg, #ccc);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.tvc-brands__logo-default {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.tvc-brands__logo-image {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.tvc-brands__logo-reveal {
+  clip-path: circle(0% at 50% 50%);
+  inset: 0;
+  position: absolute;
+  transition: clip-path 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.tvc-brands__hover-image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tvc-brands__item:hover .tvc-brands__logo-reveal,
+.tvc-brands__item:focus-visible .tvc-brands__logo-reveal {
+  clip-path: circle(150% at 50% 50%);
+}
+
+.tvc-brands__item-title {
+  color: #2c2c2c;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-size: 22px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.tvc-brands__item-text {
+  color: #464646;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+}
+
+.tvc-brands__item:hover .tvc-brands__item-title,
+.tvc-brands__item:focus-visible .tvc-brands__item-title {
+  text-decoration-thickness: 2px;
+}
+
+@media screen and (min-width: 750px) {
+  .tvc-brands__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-brands__inner {
+    padding: 80px var(--layout-gutter-x) 96px;
+  }
+
+  .tvc-brands__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .tvc-brands__item-title {
+    font-size: 24px;
+  }
+
+  .tvc-brands__item-text {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tvc-brands__logo-reveal {
+    transition: none;
+  }
+
+  .tvc-brands__item:hover .tvc-brands__logo-reveal,
+  .tvc-brands__item:focus-visible .tvc-brands__logo-reveal {
+    clip-path: circle(150% at 50% 50%);
+  }
+}
+
+@media (hover: none) {
+  .tvc-brands__item:active .tvc-brands__logo-reveal {
+    clip-path: circle(150% at 50% 50%);
+  }
+}

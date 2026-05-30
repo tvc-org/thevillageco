@@ -803,6 +803,49 @@
         "name": "TVC - Home Intro"
       }
     },
+    "tvc-brands": {
+      "name": "TVC Brands",
+      "settings": {
+        "header_content": {
+          "content": "Content"
+        },
+        "pre_title": {
+          "label": "Pre-title"
+        },
+        "title": {
+          "label": "Title",
+          "info": "HTML allowed. Line breaks and <br> both work."
+        }
+      },
+      "blocks": {
+        "brand": {
+          "name": "Brand",
+          "settings": {
+            "logo": {
+              "label": "Logo image"
+            },
+            "logo_background_color": {
+              "label": "Logo background color"
+            },
+            "hover_image": {
+              "label": "Hover image"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            },
+            "link": {
+              "label": "Link"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "TVC Brands"
+      }
+    },
     "tvc-promo-callout": {
       "name": "TVC Promo callout",
       "settings": {
