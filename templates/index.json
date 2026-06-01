@@ -124,10 +124,94 @@
         "text": "<p>For over 30 years, we’ve been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>",
         "image": "shopify://shop_images/tvc-home-intro.jpg"
       }
+    },
+    "tvc_brands_7wWERV": {
+      "type": "tvc-brands",
+      "blocks": {
+        "brand_RNBdDT": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/brands-Mr-Bubble-Logo.png",
+            "logo_background_color": "#3884bb",
+            "hover_image": "shopify://shop_images/brand-hover-mr-bubble.jpg",
+            "title": "Mr. Bubble",
+            "text": "#1 selling kids bubble bath.  Making bath time the best time since 1961.",
+            "link": "shopify://pages/mr-bubble"
+          }
+        },
+        "brand_e9Pq8Y": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/brands-therapy-logo.png",
+            "logo_background_color": "#7b6756",
+            "hover_image": "shopify://shop_images/brand-hover-therapy.jpg",
+            "title": "Therapy",
+            "text": "Everyday wellness, made simple. Feel the difference of thoughtfully crafted ingredients.",
+            "link": "shopify://pages/therapy"
+          }
+        },
+        "brand_KRfmNG": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/brands-logo-soft-dri.png",
+            "logo_background_color": "#e14a9b",
+            "hover_image": "shopify://shop_images/brand-hover-soft-dri.jpg",
+            "title": "Soft & Dri",
+            "text": "Deodorant that keeps up with your day. Reliable protection, every hour.",
+            "link": "shopify://pages/soft-dri"
+          }
+        },
+        "brand_qUA6xd": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/brands-logo-hallu.png",
+            "logo_background_color": "#231f20",
+            "hover_image": "shopify://shop_images/brand-hover-hallu.jpg",
+            "title": "Hallu",
+            "text": "A new kind of personal care experience. Details coming soon.",
+            "link": "shopify://pages/about-hallu"
+          }
+        },
+        "brand_7aHznm": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/brands-logo-dep.png",
+            "logo_background_color": "#092f57",
+            "hover_image": "shopify://shop_images/brand-hover-dep.jpg",
+            "title": "DEP",
+            "text": "A classic name, reimagined.\nStay tuned for what's next.",
+            "link": "shopify://collections/dep-dep-hair-gel"
+          }
+        },
+        "brand_igffK6": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/brands-logo-bath-shoppe.png",
+            "logo_background_color": "#556e2d",
+            "title": "Village Naturals Bath Shoppe",
+            "text": "Create luxurious, moisturizing milk baths for an elevated at-home spa experience.",
+            "link": "shopify://products/white-tea-jasmine-milk-bath"
+          }
+        }
+      },
+      "block_order": [
+        "brand_RNBdDT",
+        "brand_e9Pq8Y",
+        "brand_KRfmNG",
+        "brand_qUA6xd",
+        "brand_7aHznm",
+        "brand_igffK6"
+      ],
+      "name": "t:sections.tvc-brands.presets.name",
+      "settings": {
+        "pre_title": "Brand portfolio",
+        "title": "Our portfolio of\ntrusted personal care brands"
+      }
     }
   },
   "order": [
     "featured_product_8tXYNU",
-    "tvc_home_intro_eFKmKt"
+    "tvc_home_intro_eFKmKt",
+    "tvc_brands_7wWERV"
   ]
 }
