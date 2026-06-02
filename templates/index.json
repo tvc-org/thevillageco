@@ -272,7 +272,7 @@
       "name": "t:sections.tvc-ingredients.presets.name",
       "settings": {
         "pre_title": "Thoughtful innovation",
-        "title": "Carefully selected ingredients.\nCrafted with intention.",
+        "title": "Carefully selected ingredients.\n<span class=\"tvc-title-accent\">Crafted with intention.</span>",
         "text": "<p>From fragrances that inspire calm and comfort to ingredients you can actually recognize — our formulas are made to get the most out of every moment.</p><p>Because everyone deserves to feel their best, every day.</p>"
       }
     }
