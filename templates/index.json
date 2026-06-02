@@ -208,11 +208,79 @@
         "pre_title": "Brand portfolio",
         "title": "Our portfolio of\ntrusted personal care brands"
       }
+    },
+    "tvc_ingredients_Agg6Vq": {
+      "type": "tvc-ingredients",
+      "blocks": {
+        "ingredient_H4QqKz": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/ingredient-lavender.jpg",
+            "title": "Lavender",
+            "text": "<p>Known for its calming scent, lavender helps create a soothing self-care ritual while leaving skin feeling refreshed and comforted.</p>"
+          }
+        },
+        "ingredient_6zmYE7": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/ingredient-aloe.jpg",
+            "title": "Aloe",
+            "text": "<p>Aloe is loved for its cooling, hydrating properties, helping soothe dry skin and support a soft, refreshed feel.</p>"
+          }
+        },
+        "ingredient_3fMGJA": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/ingredient-epsom.jpg",
+            "title": "Epsom Salt",
+            "text": "<p>Epsom salt helps create a relaxing soak while gently refreshing tired skin and leaving the body feeling restored.</p>"
+          }
+        },
+        "ingredient_VaYDfy": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/ingredient-chamomile.jpg",
+            "title": "Chamomile",
+            "text": "<p>Chamomile is known for its calming, skin-comforting benefits, making it ideal for gentle, soothing bath and body products</p>"
+          }
+        },
+        "ingredient_dRULA9": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/ingredient-vitamin-e.jpg",
+            "title": "Vitamin E",
+            "text": "<p>Vitamin E helps nourish and condition the skin, supporting a smoother, softer, more moisturized feel.</p>"
+          }
+        },
+        "ingredient_JCF99P": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/ingredient-eucalyptus.jpg",
+            "title": "Eucalyptus",
+            "text": "<p>Eucalyptus adds a fresh, spa-like aroma while helping create a clean, invigorating bath experience.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_H4QqKz",
+        "ingredient_6zmYE7",
+        "ingredient_3fMGJA",
+        "ingredient_VaYDfy",
+        "ingredient_dRULA9",
+        "ingredient_JCF99P"
+      ],
+      "name": "t:sections.tvc-ingredients.presets.name",
+      "settings": {
+        "pre_title": "Thoughtful innovation",
+        "title": "Carefully selected ingredients.\nCrafted with intention.",
+        "text": "<p>From fragrances that inspire calm and comfort to ingredients you can actually recognize — our formulas are made to get the most out of every moment.</p><p>Because everyone deserves to feel their best, every day.</p>"
+      }
     }
   },
   "order": [
     "featured_product_8tXYNU",
     "tvc_home_intro_eFKmKt",
-    "tvc_brands_7wWERV"
+    "tvc_brands_7wWERV",
+    "tvc_ingredients_Agg6Vq"
   ]
 }
