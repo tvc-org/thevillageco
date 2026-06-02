@@ -188,6 +188,7 @@
           "settings": {
             "logo": "shopify://shop_images/brands-logo-bath-shoppe-padded.png",
             "logo_background_color": "#556e2d",
+            "hover_image": "shopify://shop_images/brand-hover-bath-shoppe.jpg",
             "title": "Village Naturals Bath Shoppe",
             "text": "Create luxurious, moisturizing milk baths for an elevated at-home spa experience.",
             "link": "shopify://products/white-tea-jasmine-milk-bath"
