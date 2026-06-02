@@ -5,15 +5,15 @@
 -%}
 
 <div class="tvc-brands">
-  <div class="tvc-brands__inner">
+  <div class="page-width tvc-brands__inner">
     {%- if section.settings.pre_title != blank or section.settings.title != blank -%}
       <div class="tvc-brands__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {%- if section.settings.pre_title != blank -%}
-          <p class="tvc-brands__pretitle">{{ section.settings.pre_title | escape }}</p>
+          <p class="tvc-brands__pretitle mb-2">{{ section.settings.pre_title | escape }}</p>
         {%- endif -%}
 
         {%- if section.settings.title != blank -%}
-          <h2 class="tvc-brands__title">{{ section.settings.title | newline_to_br }}</h2>
+          <h2 class="tvc-brands__title h1 mt-0 mb-4">{{ section.settings.title | newline_to_br }}</h2>
         {%- endif -%}
       </div>
     {%- endif -%}
@@ -43,53 +43,54 @@
             {%- else -%}
               <div class="tvc-brands__item">
             {%- endif -%}
-              {%- if tvc_brand_logo != blank or tvc_brand_hover != blank -%}
-                <div
-                  class="tvc-brands__logo"
-                  style="--tvc-brand-bg: {{ tvc_brand_bg }};"
-                >
-                  {%- if tvc_brand_logo != blank -%}
-                    <div class="tvc-brands__logo-default">
-                      {{
-                        tvc_brand_logo
-                        | image_url: width: 800
-                        | image_tag:
-                          loading: 'lazy',
-                          widths: '400, 600, 800',
-                          sizes: '(min-width: 960px) 33vw, (min-width: 750px) 50vw, 100vw',
-                          class: 'tvc-brands__logo-image',
-                          alt: tvc_brand_alt
-                      }}
-                    </div>
-                  {%- endif -%}
+            {%- if tvc_brand_logo != blank or tvc_brand_hover != blank -%}
+              <div
+                class="tvc-brands__logo"
+                style="--tvc-brand-bg: {{ tvc_brand_bg }};"
+              >
+                {%- if tvc_brand_logo != blank -%}
+                  <div class="tvc-brands__logo-default">
+                    {{
+                      tvc_brand_logo
+                      | image_url: width: 800
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '400, 600, 800',
+                        sizes: '(min-width: 960px) 33vw, (min-width: 750px) 50vw, 100vw',
+                        class: 'tvc-brands__logo-image',
+                        alt: tvc_brand_alt
+                    }}
+                  </div>
+                {%- endif -%}
 
-                  {%- if tvc_brand_hover != blank -%}
-                    <div class="tvc-brands__logo-reveal">
-                      {{
-                        tvc_brand_hover
-                        | image_url: width: 1200
-                        | image_tag:
-                          loading: 'lazy',
-                          widths: '600, 900, 1200',
-                          sizes: '(min-width: 960px) 33vw, (min-width: 750px) 50vw, 100vw',
-                          class: 'tvc-brands__hover-image',
-                          alt: tvc_brand_alt
-                      }}
-                    </div>
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
+                {%- if tvc_brand_hover != blank -%}
+                  <div class="tvc-brands__logo-reveal">
+                    {{
+                      tvc_brand_hover
+                      | image_url: width: 1200
+                      | image_tag:
+                        loading: 'eager',
+                        widths: '600, 900, 1200',
+                        sizes: '(min-width: 960px) 33vw, (min-width: 750px) 50vw, 100vw',
+                        class: 'tvc-brands__hover-image',
+                        alt: tvc_brand_alt,
+                        fetchpriority: 'low'
+                    }}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
 
-              {%- if tvc_brand_title != blank or tvc_brand_text != blank -%}
-                <div class="tvc-brands__copy">
-                  {%- if tvc_brand_title != blank -%}
-                    <h3 class="tvc-brands__item-title">{{ tvc_brand_title | escape }}</h3>
-                  {%- endif -%}
-                  {%- if tvc_brand_text != blank -%}
-                    <p class="tvc-brands__item-text">{{ tvc_brand_text | escape }}</p>
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
+            {%- if tvc_brand_title != blank or tvc_brand_text != blank -%}
+              <div class="tvc-brands__copy">
+                {%- if tvc_brand_title != blank -%}
+                  <h3 class="tvc-brands__item-title">{{ tvc_brand_title | escape }}</h3>
+                {%- endif -%}
+                {%- if tvc_brand_text != blank -%}
+                  <p class="tvc-brands__item-text">{{ tvc_brand_text | escape }}</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
             {%- if tvc_brand_link != blank -%}
               </a>
             {%- else -%}
@@ -101,6 +102,32 @@
     {%- endif -%}
   </div>
 </div>
+
+<script>
+  (function () {
+    const section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    function primeBrandReveals() {
+      section.querySelectorAll('.tvc-brands__logo-reveal').forEach((el) => {
+        const savedTransition = el.style.transition;
+        el.style.transition = 'none';
+        el.style.clipPath = 'circle(51% at 50% 50%)';
+        void el.offsetWidth;
+        el.style.clipPath = 'circle(0.001% at 50% 50%)';
+        void el.offsetWidth;
+        el.style.transition = savedTransition;
+        el.style.clipPath = '';
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', primeBrandReveals, { once: true });
+    } else {
+      primeBrandReveals();
+    }
+  })();
+</script>
 
 {% schema %}
 {

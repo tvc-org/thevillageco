@@ -1,14 +1,15 @@
 /* TVC Brands — homepage brand portfolio grid with radial hover reveal */
 
 .tvc-brands {
-  background-color: #ece5dd;
+  background-color: #e9e1d9;
 }
 
 .tvc-brands__inner {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: 48px var(--layout-gutter-x) 64px;
+  padding-bottom: 64px;
+  padding-top: 48px;
 }
 
 .tvc-brands__header {
@@ -18,7 +19,7 @@
 }
 
 .tvc-brands__pretitle {
-  color: #7b6655;
+  color: #715c4d !important;
   font-family: Inter, Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -28,7 +29,6 @@
 .tvc-brands__title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: clamp(36px, 6vw, 64px);
   text-transform: uppercase;
 }
 
@@ -53,9 +53,13 @@
 }
 
 .tvc-brands__logo {
+  --tvc-brand-reveal-duration: 0.5s;
+  --tvc-brand-reveal-half: calc(var(--tvc-brand-reveal-duration) / 2);
+  --tvc-brand-reveal-full: 51%;
   aspect-ratio: 1;
   background-color: var(--tvc-brand-bg, #ccc);
   border-radius: 50%;
+  isolation: isolate;
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -66,6 +70,8 @@
   display: flex;
   height: 100%;
   justify-content: center;
+  opacity: 1;
+  transition: opacity var(--tvc-brand-reveal-half) ease 0s;
   width: 100%;
 }
 
@@ -76,10 +82,15 @@
 }
 
 .tvc-brands__logo-reveal {
-  clip-path: circle(0% at 50% 50%);
-  inset: 0;
+  backface-visibility: hidden;
+  clip-path: circle(0.001% at 50% 50%);
+  height: calc(100% + 4px);
+  left: 50%;
   position: absolute;
-  transition: clip-path 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  top: 50%;
+  transform: translate(-50%, -50%) translateZ(0);
+  transition: clip-path var(--tvc-brand-reveal-duration) cubic-bezier(0.16, 1, 0.3, 1);
+  width: calc(100% + 4px);
   z-index: 1;
 }
 
@@ -87,31 +98,44 @@
   display: block;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.04);
+  transform-origin: center center;
   width: 100%;
+}
+
+.tvc-brands__item:hover .tvc-brands__logo,
+.tvc-brands__item:focus-visible .tvc-brands__logo {
+  background-color: transparent;
+  transition: background-color var(--tvc-brand-reveal-half) ease var(--tvc-brand-reveal-half);
+}
+
+.tvc-brands__item:hover .tvc-brands__logo-default,
+.tvc-brands__item:focus-visible .tvc-brands__logo-default {
+  opacity: 0;
+  transition: opacity var(--tvc-brand-reveal-half) ease var(--tvc-brand-reveal-half);
 }
 
 .tvc-brands__item:hover .tvc-brands__logo-reveal,
 .tvc-brands__item:focus-visible .tvc-brands__logo-reveal {
-  clip-path: circle(150% at 50% 50%);
+  clip-path: circle(var(--tvc-brand-reveal-full) at 50% 50%);
 }
 
 .tvc-brands__item-title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: 22px;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  font-size: 36px;
+  text-decoration: none;
 }
 
 .tvc-brands__item-text {
-  color: #464646;
+  color: #7B6756 !important;
   font-family: Inter, sans-serif;
-  font-size: 16px;
 }
 
 .tvc-brands__item:hover .tvc-brands__item-title,
 .tvc-brands__item:focus-visible .tvc-brands__item-title {
-  text-decoration-thickness: 2px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 @media screen and (min-width: 750px) {
@@ -122,35 +146,63 @@
 
 @media screen and (min-width: 960px) {
   .tvc-brands__inner {
-    padding: 80px var(--layout-gutter-x) 96px;
+    padding-top: 100px;
+    padding-bottom: 180px;
   }
 
   .tvc-brands__grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .tvc-brands__title {
+    font-size: 60px;
+  }
+
   .tvc-brands__item-title {
-    font-size: 24px;
+    font-size: 42px;
   }
 
   .tvc-brands__item-text {
-    font-size: 18px;
+    font-size: 20px !important;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .tvc-brands__logo,
+  .tvc-brands__logo-default,
   .tvc-brands__logo-reveal {
     transition: none;
   }
 
+  .tvc-brands__item:hover .tvc-brands__logo,
+  .tvc-brands__item:focus-visible .tvc-brands__logo {
+    background-color: transparent;
+  }
+
+  .tvc-brands__item:hover .tvc-brands__logo-default,
+  .tvc-brands__item:focus-visible .tvc-brands__logo-default {
+    opacity: 0;
+  }
+
   .tvc-brands__item:hover .tvc-brands__logo-reveal,
   .tvc-brands__item:focus-visible .tvc-brands__logo-reveal {
-    clip-path: circle(150% at 50% 50%);
+    clip-path: circle(var(--tvc-brand-reveal-full) at 50% 50%);
   }
 }
 
 @media (hover: none) {
+  .tvc-brands__item:active .tvc-brands__logo {
+    background-color: transparent;
+    transition: background-color var(--tvc-brand-reveal-half) ease var(--tvc-brand-reveal-half);
+  }
+
+  .tvc-brands__item:active .tvc-brands__logo-default {
+    opacity: 0;
+    transition: opacity var(--tvc-brand-reveal-half) ease var(--tvc-brand-reveal-half);
+  }
+
   .tvc-brands__item:active .tvc-brands__logo-reveal {
-    clip-path: circle(150% at 50% 50%);
+    clip-path: circle(var(--tvc-brand-reveal-full) at 50% 50%);
   }
 }
