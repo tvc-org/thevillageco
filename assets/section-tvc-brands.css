@@ -20,6 +20,7 @@
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   text-transform: uppercase;
+  max-width: 970px;
 }
 
 .tvc-brands__grid {
