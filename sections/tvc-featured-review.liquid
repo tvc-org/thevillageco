@@ -9,8 +9,14 @@
 
 <div class="tvc-featured-review v-margin-5 lg-v-margin-7">
   <div class="page-width isolate">
-    <div class="tvc-featured-review__inner{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      <div class="tvc-featured-review__rating">
+    <div class="tvc-featured-review__inner">
+      <div
+        class="tvc-featured-review__rating{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: 1;"
+        {% endif %}
+      >
         <div
           class="rating"
           role="img"
@@ -28,17 +34,37 @@
       </div>
 
       {%- if section.settings.title != blank -%}
-        <h2 class="tvc-featured-review__title inline-richtext h1 mt-5 mb-5">
+        <h2
+          class="tvc-featured-review__title inline-richtext h1 mt-5 mb-5{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 2;"
+          {% endif %}
+        >
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
 
       {%- if section.settings.review_text != blank -%}
-        <div class="tvc-featured-review__body rte">{{ section.settings.review_text }}</div>
+        <div
+          class="tvc-featured-review__body rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 3;"
+          {% endif %}
+        >
+          {{ section.settings.review_text }}
+        </div>
       {%- endif -%}
 
       {%- if featured_product != blank -%}
-        <p class="tvc-featured-review__attribution caption mt-5 mb-5 lg-mb-7">
+        <p
+          class="tvc-featured-review__attribution caption mt-5 mb-5 lg-mb-7{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 4;"
+          {% endif %}
+        >
           {{ 'sections.tvc_featured_review.attribution_prefix' | t }}
           <a href="{{ featured_product.url }}">{{ featured_product.title | escape }}</a>
         </p>

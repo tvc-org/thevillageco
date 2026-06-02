@@ -12,7 +12,13 @@
 >
   <div class="page-width isolate">
     {%- if section.settings.heading != blank -%}
-      <div class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div
+        class="title-wrapper title-wrapper--no-top-margin{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: 0;"
+        {% endif %}
+      >
         <h2 class="title inline-richtext h3">{{ section.settings.heading }}</h2>
       </div>
     {%- endif -%}

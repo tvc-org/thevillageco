@@ -70,8 +70,11 @@
       <div class="tvc-cta-short__viewport {{ cta_viewport_classes }}">
         <div class="tvc-cta-short__inner">
           <div
-            class="{{ media_classes }}"
-            {% if media_aspect_style != blank %}
+            class="{{ media_classes }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: 1;{% if media_aspect_style != blank %} {{ media_aspect_style }}{% endif %}"
+            {% elsif media_aspect_style != blank %}
               style="{{ media_aspect_style }}"
             {% endif %}
           >
@@ -143,7 +146,13 @@
 
           <div class="tvc-cta-short__content">
             <div class="tvc-cta-short__content-inner{% if section.settings.full_width %} page-width{% endif %}">
-              <div class="tvc-cta-short__text{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+              <div
+                class="tvc-cta-short__text{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: 2;"
+                {% endif %}
+              >
                 {%- if section.settings.title != blank -%}
                   <h2 class="tvc-cta-short__heading">{{ section.settings.title | escape }}</h2>
                 {%- endif -%}
@@ -151,7 +160,13 @@
                   <div class="tvc-cta-short__body rte">{{ section.settings.description }}</div>
                 {%- endif -%}
               </div>
-              <div class="tvc-cta-short__actions">
+              <div
+                class="tvc-cta-short__actions{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: 3;"
+                {% endif %}
+              >
                 {%- if section.settings.link_label != blank and section.settings.link_url != blank -%}
                   <a class="button tvc-cta-short__button" href="{{ section.settings.link_url }}">
                     {{ section.settings.link_label | escape }}

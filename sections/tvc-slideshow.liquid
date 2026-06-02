@@ -169,8 +169,11 @@
       >
         <div class="{{ inner_classes }}">
           <div
-            class="{{ media_classes }}"
-            {% if media_aspect_style != blank %}
+            class="{{ media_classes }}{% if settings.animations_reveal_on_scroll and forloop.first %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll and forloop.first %}
+              data-cascade
+              style="--animation-order: 1;{% if media_aspect_style != blank %} {{ media_aspect_style }}{% endif %}"
+            {% elsif media_aspect_style != blank %}
               style="{{ media_aspect_style }}"
             {% endif %}
           >
@@ -287,8 +290,11 @@
           </div>
 
           <div
-            class="{{ panel_classes }}"
-            {% if section.settings.layout == 'split' %}
+            class="{{ panel_classes }}{% if settings.animations_reveal_on_scroll and forloop.first %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll and forloop.first %}
+              data-cascade
+              style="--animation-order: 2;{% if section.settings.layout == 'split' %} background-color: {{ block.settings.split_background }};{% endif %}"
+            {% elsif section.settings.layout == 'split' %}
               style="background-color: {{ block.settings.split_background }};"
             {% endif %}
           >

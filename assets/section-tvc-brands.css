@@ -1,5 +1,9 @@
 /* TVC Brands — homepage brand portfolio grid with radial hover reveal */
 
+.section-tvc-brands {
+  margin-top: 0 !important;
+}
+
 .tvc-brands {
   background-color: #e9e1d9;
 }

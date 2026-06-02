@@ -30,7 +30,13 @@
   <div class="page-width tvc-promo-callout__wrap">
     <div class="tvc-promo-callout__shell">
       <div class="tvc-promo-callout__grid">
-        <div class="tvc-promo-callout__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} mb-5 lg-mb-0">
+        <div
+          class="tvc-promo-callout__copy{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} mb-5 lg-mb-0"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 1;"
+          {% endif %}
+        >
           {%- if section.settings.heading != blank -%}
             <h2 class="tvc-promo-callout__heading inline-richtext h1">{{ section.settings.heading }}</h2>
           {%- endif -%}
@@ -49,7 +55,13 @@
         </div>
 
         {%- if img_m != blank -%}
-          <div class="tvc-promo-callout__media">
+          <div
+            class="tvc-promo-callout__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: 2;"
+            {% endif %}
+          >
             {%- liquid
               assign alt_m = img_m.alt | default: section.settings.heading | strip_html
               assign alt_d = img_d.alt | default: alt_m

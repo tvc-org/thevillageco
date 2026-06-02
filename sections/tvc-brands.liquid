@@ -2,12 +2,22 @@
 
 {%- liquid
   assign tvc_brand_blocks = section.blocks | where: 'type', 'brand'
+  assign tvc_brands_anim_offset = 0
+  if section.settings.pre_title != blank or section.settings.title != blank
+    assign tvc_brands_anim_offset = 1
+  endif
 -%}
 
 <div class="tvc-brands">
   <div class="page-width tvc-brands__inner">
     {%- if section.settings.pre_title != blank or section.settings.title != blank -%}
-      <div class="tvc-brands__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div
+        class="tvc-brands__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: 0;"
+        {% endif %}
+      >
         {%- if section.settings.pre_title != blank -%}
           <p class="tvc-brands__pretitle mb-2">{{ section.settings.pre_title | escape }}</p>
         {%- endif -%}
@@ -35,7 +45,7 @@
             {{ block.shopify_attributes }}
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
-              style="--animation-order: {{ forloop.index }};"
+              style="--animation-order: {{ forloop.index | plus: tvc_brands_anim_offset }};"
             {% endif %}
           >
             {%- if tvc_brand_link != blank -%}
@@ -84,7 +94,7 @@
             {%- if tvc_brand_title != blank or tvc_brand_text != blank -%}
               <div class="tvc-brands__copy">
                 {%- if tvc_brand_title != blank -%}
-                  <h3 class="tvc-brands__item-title">{{ tvc_brand_title | escape }}</h3>
+                  <h3 class="tvc-brands__item-title mb-3">{{ tvc_brand_title | escape }}</h3>
                 {%- endif -%}
                 {%- if tvc_brand_text != blank -%}
                   <p class="tvc-brands__item-text">{{ tvc_brand_text | escape }}</p>

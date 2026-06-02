@@ -69,7 +69,7 @@
   border-top: 1px solid #c5c5c5;
   box-sizing: border-box;
   min-height: 120px;
-  padding: 24px 20px 28px;
+  padding: 24px 0 28px;
 }
 
 .tvc-home-intro__callout-title {

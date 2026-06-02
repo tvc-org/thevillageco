@@ -7,8 +7,14 @@
 
 <div class="tvc-home-intro">
   <div class="tvc-home-intro__grid">
-    <div class="tvc-home-intro__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-      <div class="tvc-home-intro__content-inner">
+    <div class="tvc-home-intro__content">
+      <div
+        class="tvc-home-intro__content-inner{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: 1;"
+        {% endif %}
+      >
         {%- if section.settings.pre_title != blank -%}
           <p class="tvc-home-intro__pretitle mb-0">{{ section.settings.pre_title | escape }}</p>
         {%- endif -%}
@@ -24,7 +30,14 @@
         {%- if tvc_hi_callout_blocks.size > 0 -%}
           <ul class="tvc-home-intro__callouts" role="list">
             {%- for block in tvc_hi_callout_blocks -%}
-              <li class="tvc-home-intro__callout" {{ block.shopify_attributes }}>
+              <li
+                class="tvc-home-intro__callout{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index | plus: 1 }};"
+                {% endif %}
+              >
                 {%- if block.settings.title != blank -%}
                   <span class="tvc-home-intro__callout-title mb-4 lg-mb-5">{{ block.settings.title | escape }}</span>
                 {%- endif -%}
@@ -39,7 +52,13 @@
     </div>
 
     {%- if tvc_hi_image != blank -%}
-      <div class="tvc-home-intro__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div
+        class="tvc-home-intro__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: {{ tvc_hi_callout_blocks.size | plus: 2 }};"
+        {% endif %}
+      >
         {%- liquid
           assign tvc_hi_alt = tvc_hi_image.alt | default: section.settings.pre_title
           if tvc_hi_alt == blank and section.settings.title != blank
