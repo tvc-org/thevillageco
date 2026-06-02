@@ -1,0 +1,22 @@
+/* Shared typography for TVC homepage sections (home intro, brands, ingredients, …) */
+
+.tvc-pretitle {
+  color: #7b6655 !important;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.tvc-title-accent,
+.tvc-home-intro__title-accent,
+.tvc-home-intro__title .tvc-home-intro__title-accent,
+.tvc-home-intro__title span.tvc-home-intro__title-accent,
+.tvc-brands__title .tvc-title-accent,
+.tvc-brands__title .tvc-home-intro__title-accent,
+.tvc-ingredients__title .tvc-title-accent,
+.tvc-ingredients__title .tvc-home-intro__title-accent {
+  color: #a68b77;
+}

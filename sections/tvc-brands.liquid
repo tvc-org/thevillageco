@@ -1,3 +1,4 @@
+{{ 'section-tvc-shared.css' | asset_url | stylesheet_tag }}
 {{ 'section-tvc-brands.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
@@ -19,11 +20,11 @@
         {% endif %}
       >
         {%- if section.settings.pre_title != blank -%}
-          <p class="tvc-brands__pretitle mb-2">{{ section.settings.pre_title | escape }}</p>
+          <p class="tvc-pretitle">{{ section.settings.pre_title | escape }}</p>
         {%- endif -%}
 
         {%- if section.settings.title != blank -%}
-          <h2 class="tvc-brands__title h1 mt-0 mb-4">{{ section.settings.title | newline_to_br }}</h2>
+          <h2 class="tvc-brands__title h1 mt-0 mb-4">{{ section.settings.title }}</h2>
         {%- endif -%}
       </div>
     {%- endif -%}

@@ -16,20 +16,6 @@
   padding-top: 48px;
 }
 
-.tvc-brands__header {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.tvc-brands__pretitle {
-  color: #715c4d !important;
-  font-family: Inter, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
 .tvc-brands__title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;

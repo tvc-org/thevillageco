@@ -1,3 +1,4 @@
+{{ 'section-tvc-shared.css' | asset_url | stylesheet_tag }}
 {{ 'section-tvc-ingredients.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
@@ -11,7 +12,10 @@
 <div class="tvc-ingredients">
   <div class="page-width tvc-ingredients__inner">
     <div class="tvc-ingredients__layout">
-      {%- if section.settings.pre_title != blank or section.settings.title != blank or section.settings.text != blank -%}
+      {%- if section.settings.pre_title != blank
+        or section.settings.title != blank
+        or section.settings.text != blank
+      -%}
         <div
           class="tvc-ingredients__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
           {% if settings.animations_reveal_on_scroll %}
@@ -20,11 +24,11 @@
           {% endif %}
         >
           {%- if section.settings.pre_title != blank -%}
-            <p class="tvc-ingredients__pretitle">{{ section.settings.pre_title | escape }}</p>
+            <p class="tvc-pretitle">{{ section.settings.pre_title | escape }}</p>
           {%- endif -%}
 
           {%- if section.settings.title != blank -%}
-            <h2 class="tvc-ingredients__title">{{ section.settings.title | newline_to_br }}</h2>
+            <h2 class="tvc-ingredients__title mb-4 lg-mb-5">{{ section.settings.title }}</h2>
           {%- endif -%}
 
           {%- if section.settings.text != blank -%}
@@ -111,7 +115,7 @@
       "id": "title",
       "label": "t:sections.tvc-ingredients.settings.title.label",
       "info": "t:sections.tvc-ingredients.settings.title.info",
-      "default": "Carefully selected ingredients.\nCrafted with intention."
+      "default": "Carefully selected ingredients.\n<span class=\"tvc-title-accent\">Crafted with intention.</span>"
     },
     {
       "type": "richtext",

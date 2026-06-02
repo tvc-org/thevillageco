@@ -1,7 +1,7 @@
 /* TVC Home Intro — homepage split: copy + stats (left) / full-bleed image (right) */
 
 .tvc-home-intro {
-  background-color: #f9f4ef;
+  background-color: var(--brand-background-color, #f7f2ec);
 }
 
 .tvc-home-intro__grid {
@@ -18,14 +18,6 @@
   max-width: 640px;
 }
 
-.tvc-home-intro__pretitle {
-  color: #7b6655 !important;
-  font-family: Inter, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
 .tvc-home-intro__title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
@@ -38,20 +30,15 @@
   font-size: clamp(42px, 8vw, 78px);
 }
 
-.tvc-home-intro__title .tvc-home-intro__title-accent,
-.tvc-home-intro__title span.tvc-home-intro__title-accent {
-  color: #a68b77;
-}
-
 .tvc-home-intro__body {
   
   max-width: 680px;
 }
 
 .tvc-home-intro__body p, .tvc-home-intro__body > * {
-  color: #464646;
+  color: #7B6756 !important;
   font-family: Inter, sans-serif;
-  font-size: 20px !important;
+  /* font-size: 20px !important; */
 }
 
 .tvc-home-intro__callouts {
@@ -123,10 +110,6 @@
     max-width: 100%;
   }
 
-  .tvc-home-intro__pretitle {
-    font-size: 13px;
-  }
-
   .tvc-home-intro__title, .tvc-home-intro__callout-title {
     font-size: clamp(48px, 4.2vw, 78px);
   }
@@ -156,5 +139,9 @@
     min-height: 640px;
     object-position: center;
     width: 100%;
+  }
+
+  .tvc-home-intro__body p, .tvc-home-intro__body > * {
+    font-size: 20px !important;
   }
 }

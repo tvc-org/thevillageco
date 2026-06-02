@@ -1,3 +1,4 @@
+{{ 'section-tvc-shared.css' | asset_url | stylesheet_tag }}
 {{ 'section-tvc-home-intro.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
@@ -16,11 +17,11 @@
         {% endif %}
       >
         {%- if section.settings.pre_title != blank -%}
-          <p class="tvc-home-intro__pretitle mb-0">{{ section.settings.pre_title | escape }}</p>
+          <p class="tvc-pretitle">{{ section.settings.pre_title | escape }}</p>
         {%- endif -%}
 
         {%- if section.settings.title != blank -%}
-          <h2 class="tvc-home-intro__title mt-2 mb-4 lg-mb-6">{{ section.settings.title | newline_to_br }}</h2>
+          <h2 class="tvc-home-intro__title mt-2 mb-4 lg-mb-6">{{ section.settings.title }}</h2>
         {%- endif -%}
 
         {%- if section.settings.text != blank -%}
@@ -106,7 +107,7 @@
       "id": "title",
       "label": "t:sections.tvc-home-intro.settings.title.label",
       "info": "t:sections.tvc-home-intro.settings.title.info",
-      "default": "Built on trust.\n<span class=\"tvc-home-intro__title-accent\">Made for</span>\neveryday life."
+      "default": "Built on trust.\n<span class=\"tvc-title-accent\">Made for</span>\neveryday life."
     },
     {
       "type": "richtext",

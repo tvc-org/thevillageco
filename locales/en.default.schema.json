@@ -777,7 +777,7 @@
         },
         "title": {
           "label": "Title",
-          "info": "HTML allowed. Line breaks and <br> both work. Use <span class=\"tvc-home-intro__title-accent\">…</span> for the accent color."
+          "info": "HTML allowed. Line breaks and <br> both work. Use <span class=\"tvc-title-accent\">…</span> for the accent color."
         },
         "text": {
           "label": "Text"
@@ -814,7 +814,7 @@
         },
         "title": {
           "label": "Title",
-          "info": "HTML allowed. Line breaks and <br> both work."
+          "info": "HTML allowed. Line breaks and <br> both work. Use <span class=\"tvc-title-accent\">…</span> for the accent color."
         }
       },
       "blocks": {
@@ -857,7 +857,7 @@
         },
         "title": {
           "label": "Title",
-          "info": "HTML allowed. Line breaks and <br> both work."
+          "info": "HTML allowed. Line breaks and <br> both work. Use <span class=\"tvc-title-accent\">…</span> for the accent color."
         },
         "text": {
           "label": "Text"

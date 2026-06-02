@@ -1,7 +1,7 @@
 /* TVC Ingredients — copy column + ingredient grid with hover reveal */
 
 .tvc-ingredients {
-  background-color: #f9f4ef;
+  background-color: var(--brand-background-color, #f7f2ec);
 }
 
 .tvc-ingredients__inner {
@@ -15,21 +15,6 @@
   gap: 40px;
 }
 
-.tvc-ingredients__content {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.tvc-ingredients__pretitle {
-  color: #7b6655;
-  font-family: Inter, Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  margin: 0;
-  text-transform: uppercase;
-}
-
 .tvc-ingredients__title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
@@ -40,14 +25,14 @@
 }
 
 .tvc-ingredients__body {
-  color: #464646;
+  
   font-family: Inter, sans-serif;
   font-size: 18px;
   max-width: 520px;
 }
 
 .tvc-ingredients__body p {
-  margin: 0 0 1em;
+  color: #7B6756 !important;
 }
 
 .tvc-ingredients__body p:last-child {
@@ -68,9 +53,12 @@
 }
 
 .tvc-ingredients__card {
+  aspect-ratio: 1 / 1.011;
+  background-color: #fff;
   outline: none;
-  padding-bottom: 2.75rem;
+  overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 .tvc-ingredients__card:focus-visible {
@@ -79,48 +67,49 @@
 }
 
 .tvc-ingredients__media-wrap {
+  height: 100%;
   position: relative;
   width: 100%;
 }
 
 .tvc-ingredients__media {
-  aspect-ratio: 1;
-  background-color: #fff;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .tvc-ingredients__image {
   display: block;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
+  object-position: top center;
   transition: opacity 0.4s ease;
   width: 100%;
 }
 
 .tvc-ingredients__media-placeholder {
+  aspect-ratio: 1;
   background-color: #f0f0f0;
-  height: 100%;
   width: 100%;
 }
 
 .tvc-ingredients__panel {
-  left: 0;
-  padding-top: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  inset: 0;
+  justify-content: flex-end;
+  padding: 20px;
   position: absolute;
-  right: 0;
-  top: 100%;
-  transition:
-    top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-    padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
 }
 
 .tvc-ingredients__item-title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: clamp(18px, 2.5vw, 24px);
+  font-size: clamp(18px, 2.5vw, 26px);
   line-height: 1.2;
   margin: 0;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -146,30 +135,9 @@
 }
 
 @media (hover: hover) {
-  .tvc-ingredients__card:hover,
-  .tvc-ingredients__card:focus-within {
-    padding-bottom: 0;
-  }
-
   .tvc-ingredients__card:hover .tvc-ingredients__image,
   .tvc-ingredients__card:focus-within .tvc-ingredients__image {
-    opacity: 0.5;
-  }
-
-  .tvc-ingredients__card:hover .tvc-ingredients__panel,
-  .tvc-ingredients__card:focus-within .tvc-ingredients__panel {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: flex-end;
-    padding: 1.25rem 1rem 1.5rem;
-    top: 0;
-  }
-
-  .tvc-ingredients__card:hover .tvc-ingredients__item-title,
-  .tvc-ingredients__card:focus-within .tvc-ingredients__item-title {
-    transform: translateY(0);
+    opacity: 0.4;
   }
 
   .tvc-ingredients__card:hover .tvc-ingredients__item-text,
@@ -190,7 +158,7 @@
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 1260px) {
   .tvc-ingredients__inner {
     padding-bottom: 96px;
     padding-top: 80px;
@@ -210,7 +178,19 @@
   }
 
   .tvc-ingredients__title {
-    font-size: clamp(40px, 3.2vw, 56px);
+    font-size: clamp(40px, 3.2vw, 60px);
+  }
+
+  .tvc-ingredients__panel {
+    padding: 40px;
+  }
+
+  .tvc-ingredients__body p  {
+    font-size: 20px !important;
+  }
+
+  .tvc-ingredients__item-text p {
+    font-size: 18px !important;
   }
 }
 
