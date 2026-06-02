@@ -846,6 +846,43 @@
         "name": "TVC Brands"
       }
     },
+    "tvc-ingredients": {
+      "name": "TVC Ingredients",
+      "settings": {
+        "header_content": {
+          "content": "Content"
+        },
+        "pre_title": {
+          "label": "Pre-title"
+        },
+        "title": {
+          "label": "Title",
+          "info": "HTML allowed. Line breaks and <br> both work."
+        },
+        "text": {
+          "label": "Text"
+        }
+      },
+      "blocks": {
+        "ingredient": {
+          "name": "Ingredient",
+          "settings": {
+            "image": {
+              "label": "Image"
+            },
+            "title": {
+              "label": "Title"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "TVC Ingredients"
+      }
+    },
     "tvc-promo-callout": {
       "name": "TVC Promo callout",
       "settings": {

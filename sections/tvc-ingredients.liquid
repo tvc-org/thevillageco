@@ -1,0 +1,193 @@
+{{ 'section-tvc-ingredients.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign tvc_ingredient_blocks = section.blocks | where: 'type', 'ingredient'
+  assign tvc_ingredients_anim_offset = 0
+  if section.settings.pre_title != blank or section.settings.title != blank or section.settings.text != blank
+    assign tvc_ingredients_anim_offset = 1
+  endif
+-%}
+
+<div class="tvc-ingredients">
+  <div class="page-width tvc-ingredients__inner">
+    <div class="tvc-ingredients__layout">
+      {%- if section.settings.pre_title != blank or section.settings.title != blank or section.settings.text != blank -%}
+        <div
+          class="tvc-ingredients__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: 0;"
+          {% endif %}
+        >
+          {%- if section.settings.pre_title != blank -%}
+            <p class="tvc-ingredients__pretitle">{{ section.settings.pre_title | escape }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.title != blank -%}
+            <h2 class="tvc-ingredients__title">{{ section.settings.title | newline_to_br }}</h2>
+          {%- endif -%}
+
+          {%- if section.settings.text != blank -%}
+            <div class="tvc-ingredients__body rte">{{ section.settings.text }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if tvc_ingredient_blocks.size > 0 -%}
+        <ul class="tvc-ingredients__grid" role="list">
+          {%- for block in tvc_ingredient_blocks -%}
+            {%- liquid
+              assign tvc_ing_image = block.settings.image
+              assign tvc_ing_title = block.settings.title
+              assign tvc_ing_text = block.settings.text
+              assign tvc_ing_alt = tvc_ing_image.alt | default: tvc_ing_title
+            -%}
+            <li
+              class="tvc-ingredients__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+              {{ block.shopify_attributes }}
+              {% if settings.animations_reveal_on_scroll %}
+                data-cascade
+                style="--animation-order: {{ forloop.index | plus: tvc_ingredients_anim_offset }};"
+              {% endif %}
+            >
+              <article class="tvc-ingredients__card" tabindex="0">
+                <div class="tvc-ingredients__media-wrap">
+                  <div class="tvc-ingredients__media">
+                    {%- if tvc_ing_image != blank -%}
+                      {{
+                        tvc_ing_image
+                        | image_url: width: 800
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '200, 400, 600, 800',
+                          sizes: '(min-width: 960px) 28vw, 45vw',
+                          class: 'tvc-ingredients__image',
+                          alt: tvc_ing_alt
+                      }}
+                    {%- else -%}
+                      <div class="tvc-ingredients__media-placeholder" aria-hidden="true"></div>
+                    {%- endif -%}
+                  </div>
+
+                  {%- if tvc_ing_title != blank or tvc_ing_text != blank -%}
+                    <div class="tvc-ingredients__panel">
+                      {%- if tvc_ing_title != blank -%}
+                        <h3 class="tvc-ingredients__item-title">{{ tvc_ing_title | escape }}</h3>
+                      {%- endif -%}
+                      {%- if tvc_ing_text != blank -%}
+                        <div class="tvc-ingredients__item-text rte">{{ tvc_ing_text }}</div>
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                </div>
+              </article>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-ingredients.name",
+  "tag": "section",
+  "class": "section section-tvc-ingredients",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-ingredients.settings.header_content.content"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "t:sections.tvc-ingredients.settings.pre_title.label",
+      "default": "Thoughtful innovation"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "t:sections.tvc-ingredients.settings.title.label",
+      "info": "t:sections.tvc-ingredients.settings.title.info",
+      "default": "Carefully selected ingredients.\nCrafted with intention."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.tvc-ingredients.settings.text.label",
+      "default": "<p>From fragrances that inspire calm and comfort to ingredients you can actually recognize — our formulas are made to get the most out of every moment.</p><p>Because everyone deserves to feel their best, every day.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "t:sections.tvc-ingredients.blocks.ingredient.name",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:sections.tvc-ingredients.blocks.ingredient.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.tvc-ingredients.blocks.ingredient.settings.title.label",
+          "default": "Ingredient"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.tvc-ingredients.blocks.ingredient.settings.text.label",
+          "default": "<p>Description of this ingredient and its benefits.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-ingredients.presets.name",
+      "category": "Homepage",
+      "blocks": [
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Lavender"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Aloe"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Epsom Salt"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Chamomile"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Vitamin E"
+          }
+        },
+        {
+          "type": "ingredient",
+          "settings": {
+            "title": "Eucalyptus"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
