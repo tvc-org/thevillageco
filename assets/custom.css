@@ -970,6 +970,12 @@ header-drawer {
     color: var(--color-text-muted);
 }
 
+@media screen and (max-width: 1024px) {
+    .header-bottom {
+        justify-content: center;
+    }
+}
+
 .header-bottom .header-block {
     display: flex;
     align-items: center;
