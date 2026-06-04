@@ -508,6 +508,10 @@
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    {%- if request.page_type == 'index' -%}
+      <script src="{{ 'tvc-home-jump-nav.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     {%- comment -%} Klaviyo onsite tracking - required for embed forms to display {%- endcomment -%}
     <script
       async
