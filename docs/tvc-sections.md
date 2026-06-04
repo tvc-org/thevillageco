@@ -52,7 +52,7 @@ The Village Company uses **purpose-built sections** (e.g. `tvc-slideshow`) inste
 - Load stylesheet from the section file when possible:  
   `{{ 'section-tvc-slideshow.css' | asset_url | stylesheet_tag }}`  
   (or one shared TVC bundle if you consolidate later).
-- Homepage sections with pre-titles / title accents also load **`section-tvc-shared.css`** for `.tvc-pretitle` and `.tvc-title-accent` (legacy: `.tvc-home-intro__title-accent`).
+- Homepage sections with pre-titles / title accents also load **`section-tvc-shared.css`** for `.tvc-pretitle`, `.tvc-section-title` (32px mobile / 60px desktop), `.tvc-section-body`, and `.tvc-title-accent` (legacy: `.tvc-home-intro__title-accent`).
 - Scope design tokens on the root:  
   `.tvc-slideshow { --tvc-slide-radius: 12px; }`  
   so overrides stay predictable.

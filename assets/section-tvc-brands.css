@@ -16,10 +16,7 @@
   padding-top: 48px;
 }
 
-.tvc-brands__title {
-  color: #2c2c2c;
-  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  text-transform: uppercase;
+.tvc-brands__title.tvc-section-title {
   max-width: 970px;
 }
 

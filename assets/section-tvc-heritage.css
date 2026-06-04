@@ -1,0 +1,152 @@
+/* TVC Heritage — copy + timeline (left), circular video (right) */
+
+.tvc-heritage {
+  background-color: #f9f4ef;
+}
+
+.tvc-heritage__inner {
+  padding-bottom: 64px;
+  padding-top: 48px;
+}
+
+.tvc-heritage__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.tvc-heritage__main {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}
+
+.tvc-heritage__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tvc-heritage__timeline {
+  border-top: 1px solid #c5c5c5;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tvc-heritage__timeline-item {
+  border-bottom: 1px solid #c5c5c5;
+  padding: 24px 0;
+}
+
+.tvc-heritage__timeline-item:last-child {
+  border-bottom: none;
+}
+
+.tvc-heritage__timeline-row {
+  align-items: start;
+  display: grid;
+  gap: 16px 24px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.tvc-heritage__year {
+  color: #2c2c2c;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-size: 28px;
+  line-height: 1.1;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.tvc-heritage__timeline-text {
+  color: #2c2c2c;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.45;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.tvc-heritage__timeline-text p {
+  margin: 0 0 0.5em;
+}
+
+.tvc-heritage__timeline-text p:last-child {
+  margin-bottom: 0;
+}
+
+.tvc-heritage__media-col {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.tvc-heritage__media {
+  aspect-ratio: 1;
+  background-color: #fff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  width: min(100%, 420px);
+}
+
+.tvc-heritage__video {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.tvc-heritage__media-placeholder {
+  background-color: #e8e8e8;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 750px) {
+  .tvc-heritage__timeline-row {
+    grid-template-columns: minmax(100px, 140px) minmax(0, 1fr);
+  }
+
+  .tvc-heritage__year {
+    font-size: 36px;
+  }
+
+  .tvc-heritage__timeline-text {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-heritage__inner {
+    padding-bottom: 96px;
+    padding-top: 80px;
+  }
+
+  .tvc-heritage__layout {
+    align-items: start;
+    column-gap: 48px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr);
+  }
+
+  .tvc-heritage__media-col {
+    justify-content: flex-end;
+    position: sticky;
+    top: calc(var(--header-height, 120px) + 24px);
+  }
+
+  .tvc-heritage__media {
+    width: 100%;
+  }
+
+  .tvc-heritage__year {
+    font-size: 42px;
+  }
+}

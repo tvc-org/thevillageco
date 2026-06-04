@@ -1,0 +1,203 @@
+{{ 'section-tvc-shared.css' | asset_url | stylesheet_tag }}
+{{ 'section-tvc-heritage.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'tvc-heritage.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign tvc_heritage_timeline_blocks = section.blocks | where: 'type', 'timeline'
+  assign tvc_heritage_video = section.settings.video
+  assign tvc_heritage_anim_offset = 0
+  if section.settings.pre_title != blank or section.settings.title != blank or section.settings.text != blank
+    assign tvc_heritage_anim_offset = 1
+  endif
+-%}
+
+<div class="tvc-heritage">
+  <div class="page-width tvc-heritage__inner">
+    <div class="tvc-heritage__layout">
+      <div class="tvc-heritage__main">
+        {%- if section.settings.pre_title != blank
+          or section.settings.title != blank
+          or section.settings.text != blank
+        -%}
+          <div
+            class="tvc-heritage__intro{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: 0;"
+            {% endif %}
+          >
+            {%- if section.settings.pre_title != blank -%}
+              <p class="tvc-pretitle">{{ section.settings.pre_title | escape }}</p>
+            {%- endif -%}
+
+            {%- if section.settings.title != blank -%}
+              <h2 class="tvc-heritage__title tvc-section-title">{{ section.settings.title }}</h2>
+            {%- endif -%}
+
+            {%- if section.settings.text != blank -%}
+              <div class="tvc-heritage__body tvc-section-body rte">{{ section.settings.text }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if tvc_heritage_timeline_blocks.size > 0 -%}
+          <ul class="tvc-heritage__timeline" role="list">
+            {%- for block in tvc_heritage_timeline_blocks -%}
+              <li
+                class="tvc-heritage__timeline-item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                {{ block.shopify_attributes }}
+                {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index | plus: tvc_heritage_anim_offset }};"
+                {% endif %}
+              >
+                <div class="tvc-heritage__timeline-row">
+                  {%- if block.settings.year != blank -%}
+                    <p class="tvc-heritage__year">{{ block.settings.year | escape }}</p>
+                  {%- endif -%}
+                  {%- if block.settings.text != blank -%}
+                    <div class="tvc-heritage__timeline-text rte">{{ block.settings.text }}</div>
+                  {%- endif -%}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <div
+        class="tvc-heritage__media-col{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+        {% if settings.animations_reveal_on_scroll %}
+          data-cascade
+          style="--animation-order: {{ tvc_heritage_timeline_blocks.size | plus: tvc_heritage_anim_offset | plus: 1 }};"
+        {% endif %}
+      >
+        <div class="tvc-heritage__media">
+          {%- if tvc_heritage_video != blank -%}
+            {{
+              tvc_heritage_video
+              | video_tag:
+                image_size: '1200x',
+                autoplay: false,
+                loop: true,
+                muted: true,
+                playsinline: true,
+                controls: false,
+                preload: 'metadata',
+                class: 'tvc-heritage__video'
+            }}
+          {%- else -%}
+            <div class="tvc-heritage__media-placeholder" aria-hidden="true"></div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-heritage.name",
+  "tag": "section",
+  "class": "section section-tvc-heritage",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-heritage.settings.header_content.content"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "t:sections.tvc-heritage.settings.pre_title.label",
+      "default": "Our heritage"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "t:sections.tvc-heritage.settings.title.label",
+      "info": "t:sections.tvc-heritage.settings.title.info",
+      "default": "Sixty years of small comforts."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:sections.tvc-heritage.settings.text.label",
+      "default": "<p>For more than sixty years, TVC Group has been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-heritage.settings.header_media.content"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.tvc-heritage.settings.video.label",
+      "info": "t:sections.tvc-heritage.settings.video.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "timeline",
+      "name": "t:sections.tvc-heritage.blocks.timeline.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "t:sections.tvc-heritage.blocks.timeline.settings.year.label",
+          "default": "1961"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "t:sections.tvc-heritage.blocks.timeline.settings.text.label",
+          "default": "Mr. Bubble debuts. America's first kids' bubble bath."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-heritage.presets.name",
+      "category": "Homepage",
+      "blocks": [
+        {
+          "type": "timeline",
+          "settings": {
+            "year": "1961",
+            "text": "Mr. Bubble debuts. America's first kids' bubble bath. Still the #1 seller, more than sixty years on."
+          }
+        },
+        {
+          "type": "timeline",
+          "settings": {
+            "year": "1993",
+            "text": "Minnetonka Brands (now The Village Company) is founded, with a focus on personal care that prioritizes how it feels over how it sells."
+          }
+        },
+        {
+          "type": "timeline",
+          "settings": {
+            "year": "2000",
+            "text": "Village Naturals Therapy launches. Wellness made simple, with ingredients you can actually recognize."
+          }
+        },
+        {
+          "type": "timeline",
+          "settings": {
+            "year": "2015",
+            "text": "Soft & Dri joins the family. Fresh, clean, confident — same as it ever was."
+          }
+        },
+        {
+          "type": "timeline",
+          "settings": {
+            "year": "Today",
+            "text": "Six trusted brands. One promise: everyone deserves to feel their best, every day."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,4 +1,4 @@
-/* Shared typography for TVC homepage sections (home intro, brands, ingredients, …) */
+/* Shared typography for TVC homepage sections */
 
 .tvc-pretitle {
   color: #7b6655 !important;
@@ -10,6 +10,39 @@
   text-transform: uppercase;
 }
 
+.tvc-section-title,
+.tvc-brands__title.tvc-section-title,
+.tvc-ingredients__title.tvc-section-title,
+.tvc-heritage__title.tvc-section-title {
+  color: #2c2c2c;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-size: 32px;
+  line-height: 1.05;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.tvc-section-body,
+.tvc-ingredients__body.tvc-section-body,
+.tvc-heritage__body.tvc-section-body {
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  max-width: 680px;
+}
+
+.tvc-section-body p,
+.tvc-ingredients__body.tvc-section-body p,
+.tvc-heritage__body.tvc-section-body p {
+  color: #7b6756 !important;
+  margin: 0 0 1em;
+}
+
+.tvc-section-body p:last-child,
+.tvc-ingredients__body.tvc-section-body p:last-child,
+.tvc-heritage__body.tvc-section-body p:last-child {
+  margin-bottom: 0;
+}
+
 .tvc-title-accent,
 .tvc-home-intro__title-accent,
 .tvc-home-intro__title .tvc-home-intro__title-accent,
@@ -17,6 +50,23 @@
 .tvc-brands__title .tvc-title-accent,
 .tvc-brands__title .tvc-home-intro__title-accent,
 .tvc-ingredients__title .tvc-title-accent,
-.tvc-ingredients__title .tvc-home-intro__title-accent {
+.tvc-ingredients__title .tvc-home-intro__title-accent,
+.tvc-heritage__title .tvc-title-accent,
+.tvc-heritage__title .tvc-home-intro__title-accent {
   color: #a68b77;
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-section-title,
+  .tvc-brands__title.tvc-section-title,
+  .tvc-ingredients__title.tvc-section-title,
+  .tvc-heritage__title.tvc-section-title {
+    font-size: 60px;
+  }
+
+  .tvc-section-body,
+  .tvc-ingredients__body.tvc-section-body,
+  .tvc-heritage__body.tvc-section-body {
+    font-size: 20px;
+  }
 }

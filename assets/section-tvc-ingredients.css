@@ -15,28 +15,8 @@
   gap: 40px;
 }
 
-.tvc-ingredients__title {
-  color: #2c2c2c;
-  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: clamp(32px, 5.5vw, 56px);
-  line-height: 1.05;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.tvc-ingredients__body {
-  
-  font-family: Inter, sans-serif;
-  font-size: 18px;
+.tvc-ingredients__body.tvc-section-body {
   max-width: 520px;
-}
-
-.tvc-ingredients__body p {
-  color: #7B6756 !important;
-}
-
-.tvc-ingredients__body p:last-child {
-  margin-bottom: 0;
 }
 
 .tvc-ingredients__grid {
@@ -177,16 +157,8 @@
     top: calc(var(--header-height, 120px) + 24px);
   }
 
-  .tvc-ingredients__title {
-    font-size: clamp(40px, 3.2vw, 60px);
-  }
-
   .tvc-ingredients__panel {
     padding: 40px;
-  }
-
-  .tvc-ingredients__body p  {
-    font-size: 20px !important;
   }
 
   .tvc-ingredients__item-text p {

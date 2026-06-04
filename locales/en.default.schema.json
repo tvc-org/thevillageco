@@ -883,6 +883,47 @@
         "name": "TVC Ingredients"
       }
     },
+    "tvc-heritage": {
+      "name": "TVC Heritage",
+      "settings": {
+        "header_content": {
+          "content": "Content"
+        },
+        "pre_title": {
+          "label": "Pre-title"
+        },
+        "title": {
+          "label": "Title",
+          "info": "HTML allowed. Line breaks and <br> both work. Use <span class=\"tvc-title-accent\">…</span> for the accent color."
+        },
+        "text": {
+          "label": "Text"
+        },
+        "header_media": {
+          "content": "Media"
+        },
+        "video": {
+          "label": "Video",
+          "info": "Loops muted with no controls. Plays when the section scrolls into view."
+        }
+      },
+      "blocks": {
+        "timeline": {
+          "name": "Timeline",
+          "settings": {
+            "year": {
+              "label": "Year"
+            },
+            "text": {
+              "label": "Text"
+            }
+          }
+        }
+      },
+      "presets": {
+        "name": "TVC Heritage"
+      }
+    },
     "tvc-promo-callout": {
       "name": "TVC Promo callout",
       "settings": {
