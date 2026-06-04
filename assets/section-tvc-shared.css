@@ -3,7 +3,7 @@
 .tvc-pretitle {
   color: #7b6655 !important;
   font-family: Inter, Helvetica, Arial, sans-serif;
-  font-size: 13px;
+  font-size: 13px !important;
   font-weight: 600;
   line-height: 1.4;
   margin: 0 0 8px;
@@ -17,7 +17,7 @@
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   font-size: 32px;
-  line-height: 1.05;
+  line-height: 1;
   margin: 0;
   text-transform: uppercase;
 }

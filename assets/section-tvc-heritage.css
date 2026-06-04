@@ -1,12 +1,12 @@
 /* TVC Heritage — copy + timeline (left), circular video (right) */
 
-.tvc-heritage {
-  background-color: #f9f4ef;
+.section-tvc-heritage {
+  margin-top: 0 !important;
 }
 
 .tvc-heritage__inner {
-  padding-bottom: 64px;
   padding-top: 48px;
+  padding-bottom: 100px;
 }
 
 .tvc-heritage__layout {
@@ -31,7 +31,7 @@
 
 .tvc-heritage__timeline-item {
   border-bottom: 1px solid #c5c5c5;
-  padding: 24px 0;
+  padding: 16px 0 32px;
 }
 
 .tvc-heritage__timeline-item:last-child {
@@ -41,26 +41,25 @@
 .tvc-heritage__timeline-row {
   align-items: start;
   display: grid;
-  gap: 16px 24px;
+  gap: 16px;
   grid-template-columns: minmax(0, 1fr);
 }
 
 .tvc-heritage__year {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: 28px;
-  line-height: 1.1;
+  font-size: 28px !important;
+  line-height: 1 !important;
   margin: 0;
-  text-transform: uppercase;
 }
 
 .tvc-heritage__timeline-text {
-  color: #2c2c2c;
+  color: #7B6756;
   font-family: Inter, Helvetica, Arial, sans-serif;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.02em;
-  line-height: 1.45;
+  line-height: 1.875;
   margin: 0;
   text-transform: uppercase;
 }
@@ -105,7 +104,8 @@
 
 @media screen and (min-width: 750px) {
   .tvc-heritage__timeline-row {
-    grid-template-columns: minmax(100px, 140px) minmax(0, 1fr);
+    column-gap: 48px;
+    grid-template-columns: 130px minmax(0, 1fr);
   }
 
   .tvc-heritage__year {
@@ -113,21 +113,21 @@
   }
 
   .tvc-heritage__timeline-text {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 960px) {
   .tvc-heritage__inner {
-    padding-bottom: 96px;
-    padding-top: 80px;
+    padding-bottom: 160px;
+    padding-top: 70px;
   }
 
   .tvc-heritage__layout {
     align-items: start;
-    column-gap: 48px;
+    column-gap: 124px;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.42fr);
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 0.7fr);
   }
 
   .tvc-heritage__media-col {
@@ -141,6 +141,19 @@
   }
 
   .tvc-heritage__year {
-    font-size: 42px;
+    font-size: 42px !important;
+  }
+
+  .tvc-heritage__timeline-row {
+    column-gap: 90px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .tvc-heritage__layout {
+    column-gap: 224px;
+  }
+  .tvc-heritage__timeline-row {
+    column-gap: 130px;
   }
 }
