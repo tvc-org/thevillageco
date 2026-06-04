@@ -5,8 +5,8 @@
   HOW IT WORKS
   1) When sections['header'] is available, we render snippets/resolve-brand-handle.liquid
      with the header’s brand blocks — same rules as sections/header.liquid (full logic).
-  2) When it isn’t (common in theme.liquid while <body> is rendering), we use the FALLBACK
-     below so the body class still matches real brand context as closely as possible.
+  2) When it isn’t (layout/theme.liquid cannot read section-group sections via sections['header']),
+     we use the FALLBACK below so the body class still matches real brand context as closely as possible.
 
   KEEP IN SYNC WITH resolve-brand-handle.liquid
   The fallback only approximates parts of resolve-brand-handle that don’t need brand blocks:
@@ -16,9 +16,8 @@
     • Product: product.vendor | handleize — same idea as the product {% for %} in resolve-brand-handle.
     • Blog: village-naturals-therapy + fun — same as the blog {% if %} in resolve-brand-handle.
 
-  The fallback does NOT replicate: default brand, “The Village Co.” preference, mega menu
-  active link, or per-block brand_page_link matching. If those change behavior in the header,
-  body may still differ until sections['header'] is available in layout (rare) or we refactor.
+  The fallback does NOT replicate mega menu active link or per-block brand_page_link matching.
+  Homepage (index) defaults to the-village-co, matching resolve-brand-handle’s “The Village Co.” preference.
 
   When you change brand selection rules in resolve-brand-handle.liquid, update this fallback
   for any new URL keywords, vendors, or blog handles you rely on for body.* CSS.
@@ -55,6 +54,9 @@
       elsif blog.handle == 'fun'
         assign brand_body_handle = 'mr-bubble'
       endif
+    endif
+    if brand_body_handle == blank and request.page_type == 'index'
+      assign brand_body_handle = 'the-village-co'
     endif
   -%}
 {%- endif -%}

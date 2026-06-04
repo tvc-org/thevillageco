@@ -1,12 +1,16 @@
 /* TVC Ingredients — copy column + ingredient grid with hover reveal */
 
+.section-tvc-ingredients {
+  margin-top: 0 !important;
+}
+
 .tvc-ingredients {
   background-color: var(--brand-background-color, #f7f2ec);
 }
 
 .tvc-ingredients__inner {
-  padding-bottom: 64px;
   padding-top: 48px;
+  padding-bottom: 24px;
 }
 
 .tvc-ingredients__layout {
@@ -142,7 +146,7 @@
 @media screen and (min-width: 1260px) {
   .tvc-ingredients__inner {
     padding-bottom: 96px;
-    padding-top: 80px;
+    padding-top: 200px;
   }
 
   .tvc-ingredients__layout {

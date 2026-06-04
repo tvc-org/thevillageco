@@ -4,18 +4,20 @@
 (function () {
   if (!document.body.classList.contains('template-index')) return;
 
+  const initialHashId = window.location.hash.replace(/^#/, '');
+  const initialHashTarget = initialHashId ? document.getElementById(initialHashId) : null;
+
+  if (initialHashTarget) {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }
+
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function scrollBehavior() {
     return reducedMotion.matches ? 'auto' : 'smooth';
-  }
-
-  const SCROLL_PADDING_UP = 16;
-
-  function getHeaderHeight() {
-    const raw = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
-    const headerHeight = parseFloat(raw);
-    return Number.isFinite(headerHeight) && headerHeight > 0 ? headerHeight : 120;
   }
 
   function isScrollingUp(target) {
@@ -23,9 +25,40 @@
     return targetTop < window.scrollY - 1;
   }
 
-  /** Header hides on scroll down; it stays visible and overlaps when scrolling up. */
+  /** Overlap at viewport top: 0 when scrolling down (header hides); live header bottom when scrolling up. */
+  function getHeaderOverlap() {
+    const headerSection = document.querySelector('.section-header');
+    if (!headerSection) return 0;
+
+    if (!headerSection.classList.contains('shopify-section-header-hidden')) {
+      return Math.max(0, headerSection.getBoundingClientRect().bottom);
+    }
+
+    const headerBottom = document.querySelector('.header-bottom');
+    if (headerBottom && window.matchMedia('(min-width: 1025px)').matches) {
+      return headerBottom.offsetHeight;
+    }
+
+    const raw = getComputedStyle(document.documentElement).getPropertyValue('--header-height');
+    const headerHeight = parseFloat(raw);
+    return Number.isFinite(headerHeight) && headerHeight > 0 ? headerHeight : 0;
+  }
+
   function getScrollOffset(target) {
-    return isScrollingUp(target) ? getHeaderHeight() + SCROLL_PADDING_UP : 0;
+    return isScrollingUp(target) ? getHeaderOverlap() : 0;
+  }
+
+  function alignScrollUpTarget(target) {
+    if (!isScrollingUp(target)) return;
+
+    const headerSection = document.querySelector('.section-header');
+    if (!headerSection || headerSection.classList.contains('shopify-section-header-hidden')) return;
+
+    const overlap = headerSection.getBoundingClientRect().bottom;
+    const gap = target.getBoundingClientRect().top - overlap;
+    if (Math.abs(gap) < 2) return;
+
+    window.scrollBy({ top: gap, behavior: 'auto' });
   }
 
   function parseTargetId(href) {
@@ -45,15 +78,25 @@
     const target = document.getElementById(id);
     if (!target) return false;
 
+    const scrollingUp = isScrollingUp(target);
     const offset = getScrollOffset(target);
-    if (offset > 0) {
-      target.style.scrollMarginTop = `${offset}px`;
-    } else {
-      target.style.removeProperty('scroll-margin-top');
-    }
+    target.style.removeProperty('scroll-margin-top');
 
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top: Math.max(0, top), behavior: behavior || scrollBehavior() });
+    const behaviorValue = behavior || scrollBehavior();
+    window.scrollTo({ top: Math.max(0, top), behavior: behaviorValue });
+
+    if (scrollingUp && behaviorValue === 'smooth') {
+      const finalize = () => alignScrollUpTarget(target);
+      if ('onscrollend' in window) {
+        window.addEventListener('scrollend', finalize, { once: true });
+      } else {
+        window.setTimeout(finalize, 450);
+      }
+    } else if (scrollingUp) {
+      requestAnimationFrame(() => alignScrollUpTarget(target));
+    }
+
     return true;
   }
 
@@ -92,17 +135,17 @@
 
   function scrollToInitialHash() {
     const id = window.location.hash.replace(/^#/, '');
-    if (!id) return;
+    if (!id || !document.getElementById(id)) return;
 
     requestAnimationFrame(() => {
-      jumpTo(id, { updateHistory: false, behavior: 'auto' });
+      jumpTo(id, { updateHistory: false });
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scrollToInitialHash);
-  } else {
+  if (document.readyState === 'complete') {
     scrollToInitialHash();
+  } else {
+    window.addEventListener('load', scrollToInitialHash, { once: true });
   }
 
   window.addEventListener('hashchange', () => {

@@ -806,6 +806,10 @@ header-drawer {
     border-bottom: 1px solid var(--color-border);
 }
 
+.utility-bar--bottom-border {
+    border-bottom: 1px solid var(--color-border);
+}
+
 .header-top .header-brand {
     flex: 0 0 auto;
     display: flex;
@@ -1180,6 +1184,16 @@ div[class*='kl-teaser-'],
         padding: 0;
         position: relative;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    /* Homepage: nav links right-aligned, no header-bottom shadow */
+    .template-index .header-bottom {
+        box-shadow: none;
+    }
+
+    .template-index .header-bottom .header-bottom__links.mobile-hidden {
+        justify-content: flex-end;
+        padding-right: 36px;
     }
 
     .header-bottom .header-block {
@@ -3219,15 +3233,15 @@ body.village-naturals-therapy .search-modal.gradient {
 }
 
 @media screen and (max-width: 1024px) {
-    body.village-naturals-therapy .menu-drawer.gradient,
-    body.village-naturals-therapy .menu-drawer__submenu.gradient {
-        --gradient-background: var(--brand-background-color);
-        background: var(--brand-background-color);
-        background-color: var(--brand-background-color);
+    :is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .menu-drawer.gradient,
+    :is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .menu-drawer__submenu.gradient {
+        --gradient-background: var(--brand-background-color, #f7f2ec);
+        background: var(--brand-background-color, #f7f2ec);
+        background-color: var(--brand-background-color, #f7f2ec);
         background-attachment: scroll;
     }
 
-    body.village-naturals-therapy .menu-drawer__tout-cta.button {
+    :is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .menu-drawer__tout-cta.button {
         background: transparent;
     }
 }
