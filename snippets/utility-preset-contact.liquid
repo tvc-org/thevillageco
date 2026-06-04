@@ -1,6 +1,16 @@
-{% comment %}Auto preset: contact (page handle).{% endcomment %}
+{% comment %}
+  Auto preset: contact (page handle).
+  Source: theme_export__thevillagecompany-com-homepage-redesign-2024-megamenu__04JUN2026-0350pm
+  Regenerate: python3 scripts/generate-utility-presets.py
+{% endcomment %}
 <h2 class="utility-section-title">Send us a message!</h2>
-<div class="utility-subcopy rte"><p>We are experiencing extremely high volume on our customer support phone lines. We are working to resolve this issue as quickly as possible. In the meantime, please email us at <a href="mailto:info@thevillagecompany.com">info@thevillagecompany.com</a> and we will respond as soon as possible.</p><p>If you have a medical concern, please call us at <a href="tel:8886348192">(888) 634-8192</a>.</p></div>
+{% capture utility_contact_subcopy %}
+<p>We are currently experiencing issues with our phone lines. Please contact us using the form below or by emailing us at info@thevillagecompany.com. We are working to restore our phone lines as quickly as possible.</p><p><br>
+
+
+</p><p>If you have a medical concern or question, please call (888) 634-8192 to be connected to a health and safety specialist.</p><p></p>
+{% endcapture %}
+<div class="utility-subcopy rte">{{ utility_contact_subcopy }}</div>
 <div class="contact-wrapper">
   <div class="contact-form">
     {% render 'utility-contact-form' %}

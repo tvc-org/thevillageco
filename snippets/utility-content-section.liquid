@@ -36,8 +36,16 @@
         {%- if accordion_system != blank -%}
           {%- assign accordion_parts = accordion_system | split: 'accordion_content:' -%}
           <div class="system{% if accordion_counter == 0 %} active{% endif %}">
-            <button type="button" class="system-title utility-subtitle system-title-{{ accordion_counter }}" data-target="system-{{ accordion_counter }}">
-              {{ accordion_parts[0] | strip }}
+            <button
+              type="button"
+              class="system-title utility-subtitle system-title-{{ accordion_counter }}"
+              data-target="system-{{ accordion_counter }}"
+              aria-expanded="{% if accordion_counter == 0 %}true{% else %}false{% endif %}"
+            >
+              <span class="system-title__label">{{ accordion_parts[0] | strip }}</span>
+              <span class="svg-wrapper system-title__caret">
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </span>
             </button>
             <div class="system-content" data-target="system-{{ accordion_counter }}">
               <div class="content-inner rte">

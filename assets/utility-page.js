@@ -29,7 +29,8 @@
         return;
       }
 
-      system.classList.toggle('active');
+      const isActive = system.classList.toggle('active');
+      title.setAttribute('aria-expanded', isActive ? 'true' : 'false');
     });
   });
 })();
