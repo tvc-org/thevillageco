@@ -1056,6 +1056,14 @@
         "nav_menu": {
           "label": "Side navigation menu",
           "info": "Assign the same menu on all Support pages (e.g. utility-menu with FAQs, Contact, Privacy, Terms)."
+        },
+        "content_source": {
+          "label": "Page content",
+          "info": "Auto detects FAQs, Contact, Privacy, and Terms by page URL handle so all four pages can keep the utility template.",
+          "options": {
+            "auto": "Auto by page handle (recommended)",
+            "blocks": "Theme editor blocks only"
+          }
         }
       },
       "blocks": {

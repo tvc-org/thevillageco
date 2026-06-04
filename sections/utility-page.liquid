@@ -17,6 +17,9 @@
 
   <div class="utility-content">
     <div class="utility-content__inner inner-wrapper">
+      {%- if section.settings.content_source == 'auto' -%}
+        {% render 'utility-page-preset-by-handle' %}
+      {%- else -%}
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'page_heading' -%}
@@ -96,6 +99,7 @@
       {%- if section.blocks.size == 0 and page.content != blank -%}
         <div class="rte">{{ page.content }}</div>
       {%- endif -%}
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -117,6 +121,23 @@
       "id": "nav_menu",
       "label": "t:sections.utility_page.settings.nav_menu.label",
       "info": "t:sections.utility_page.settings.nav_menu.info"
+    },
+    {
+      "type": "select",
+      "id": "content_source",
+      "label": "t:sections.utility_page.settings.content_source.label",
+      "info": "t:sections.utility_page.settings.content_source.info",
+      "default": "auto",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.utility_page.settings.content_source.options.auto"
+        },
+        {
+          "value": "blocks",
+          "label": "t:sections.utility_page.settings.content_source.options.blocks"
+        }
+      ]
     }
   ],
   "blocks": [

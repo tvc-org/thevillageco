@@ -1,18 +1,35 @@
 {% comment %}
   Renders a utility content block (FAQ, legal, etc.).
-  Pass: block (section block object).
+  Pass: block (section block), or preset_* variables from utility presets.
 {% endcomment %}
-<section id="{{ block.settings.section_title | handleize }}" {{ block.shopify_attributes }}>
-  {%- if block.settings.section_title != blank -%}
-    <h2 class="utility-section-title">{{ block.settings.section_title | escape }}</h2>
+{%- liquid
+  if block != blank
+    assign section_title = block.settings.section_title
+    assign section_subtitle = block.settings.section_subtitle
+    assign section_accordion = block.settings.section_accordion
+    assign section_details = block.settings.section_details
+    assign shopify_attributes = block.shopify_attributes
+  else
+    assign section_title = preset_section_title
+    assign section_subtitle = preset_section_subtitle
+    assign section_accordion = preset_section_accordion
+    assign section_details = preset_section_details
+    assign shopify_attributes = ''
+  endif
+
+  assign section_id = section_title | default: 'section' | handleize
+-%}
+<section id="{{ section_id }}" {{ shopify_attributes }}>
+  {%- if section_title != blank -%}
+    <h2 class="utility-section-title">{{ section_title | escape }}</h2>
   {%- endif -%}
-  {%- if block.settings.section_subtitle != blank -%}
-    <p class="utility-subtitle">{{ block.settings.section_subtitle | escape }}</p>
+  {%- if section_subtitle != blank -%}
+    <p class="utility-subtitle">{{ section_subtitle | escape }}</p>
   {%- endif -%}
 
-  {%- if block.settings.section_accordion -%}
+  {%- if section_accordion -%}
     <div class="accordion-container tab-accordion-system">
-      {%- assign raw_content = block.settings.section_details -%}
+      {%- assign raw_content = section_details -%}
       {%- assign accordion_systems = raw_content | split: 'accordion_title:' -%}
       {%- assign accordion_counter = 0 -%}
       {%- for accordion_system in accordion_systems -%}
@@ -32,9 +49,9 @@
         {%- endif -%}
       {%- endfor -%}
     </div>
-  {%- elsif block.settings.section_details != blank -%}
+  {%- elsif section_details != blank -%}
     <div class="rte utility-section-body">
-      {%- assign raw_content = block.settings.section_details -%}
+      {%- assign raw_content = section_details -%}
       {%- if raw_content contains ':paragraph:' -%}
         {%- assign paragraphs = raw_content | split: ':paragraph:' -%}
         {%- for paragraph in paragraphs -%}

@@ -286,7 +286,8 @@
     },
 
     "utility_page": {
-      "nav_aria": "Support and information"
+      "nav_aria": "Support and information",
+      "preset_not_found": "No utility preset matched this page (handle: {{ handle }}). Add a block layout or contact dev."
     },
     "header": {
       "announcement": "Announcement",

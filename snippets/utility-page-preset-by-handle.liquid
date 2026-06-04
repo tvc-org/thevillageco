@@ -1,0 +1,47 @@
+{% comment %}
+  Renders migrated utility content by page handle (Option B: keep utility template assignment).
+{% endcomment %}
+{%- liquid
+  assign utility_preset = ''
+
+  case page.handle
+    when 'contact-us', 'contact'
+      assign utility_preset = 'contact'
+    when 'faqs', 'faq', 'frequently-asked-questions'
+      assign utility_preset = 'faq'
+    when 'privacy-policy', 'privacy'
+      assign utility_preset = 'privacy'
+    when 'terms-conditions', 'terms-and-conditions', 'terms-of-use', 'terms'
+      assign utility_preset = 'terms'
+  endcase
+
+  if utility_preset == ''
+    if page.handle contains 'contact'
+      assign utility_preset = 'contact'
+    elsif page.handle contains 'faq'
+      assign utility_preset = 'faq'
+    elsif page.handle contains 'privacy'
+      assign utility_preset = 'privacy'
+    elsif page.handle contains 'terms'
+      assign utility_preset = 'terms'
+    endif
+  endif
+-%}
+
+{%- if utility_preset == 'contact' -%}
+  {% render 'utility-preset-contact' %}
+{%- elsif utility_preset == 'faq' -%}
+  <h1 class="utility-page-title">{{ page.title | escape }}</h1>
+  {% render 'utility-preset-faq' %}
+{%- elsif utility_preset == 'privacy' -%}
+  <h1 class="utility-page-title">{{ page.title | escape }}</h1>
+  {% render 'utility-preset-privacy' %}
+{%- elsif utility_preset == 'terms' -%}
+  <h1 class="utility-page-title">{{ page.title | escape }}</h1>
+  {% render 'utility-preset-terms' %}
+{%- elsif page.content != blank -%}
+  <h1 class="utility-page-title">{{ page.title | escape }}</h1>
+  <div class="rte">{{ page.content }}</div>
+{%- else -%}
+  <p class="utility-subcopy">{{ 'sections.utility_page.preset_not_found' | t: handle: page.handle }}</p>
+{%- endif -%}
