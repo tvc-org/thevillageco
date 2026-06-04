@@ -325,7 +325,7 @@
       "name": "t:sections.tvc-heritage.presets.name",
       "settings": {
         "pre_title": "Our heritage",
-        "title": "Sixty years of small comforts.",
+        "title": "Sixty years of \nsmall comforts.",
         "text": "<p>TVC Group started with a single brand and a simple idea: the everyday rituals matter most. Six decades later, we're still in the business of small comforts — five brands, one belief, and a long list of moments that helped get us here.</p>",
         "video": "shopify://files/videos/TVC-Video4_1.mp4"
       }
