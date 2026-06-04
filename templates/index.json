@@ -275,12 +275,67 @@
         "title": "Carefully selected ingredients.\n<span class=\"tvc-title-accent\">Crafted with intention.</span>",
         "text": "<p>From fragrances that inspire calm and comfort to ingredients you can actually recognize — our formulas are made to get the most out of every moment.</p><p>Because everyone deserves to feel their best, every day.</p>"
       }
+    },
+    "tvc_heritage_xbV9AE": {
+      "type": "tvc-heritage",
+      "blocks": {
+        "timeline_8FNUUG": {
+          "type": "timeline",
+          "settings": {
+            "year": "1961",
+            "text": "Mr. Bubble debuts. America's first kids' bubble bath. Still the #1 seller, more than sixty years on."
+          }
+        },
+        "timeline_hW3TqA": {
+          "type": "timeline",
+          "settings": {
+            "year": "1993",
+            "text": "Minnetonka Brands (now The Village Company) is founded, with a focus on personal care that prioritizes how it feels over how it sells."
+          }
+        },
+        "timeline_BNHEWE": {
+          "type": "timeline",
+          "settings": {
+            "year": "2000",
+            "text": "Village Naturals Therapy launches. Wellness made simple, with ingredients you can actually recognize."
+          }
+        },
+        "timeline_9Ex3xE": {
+          "type": "timeline",
+          "settings": {
+            "year": "2015",
+            "text": "Soft & Dri joins the family. Fresh, clean, confident — same as it ever was."
+          }
+        },
+        "timeline_xJTPTk": {
+          "type": "timeline",
+          "settings": {
+            "year": "Today",
+            "text": "Six trusted brands. One promise: everyone deserves to feel their best, every day."
+          }
+        }
+      },
+      "block_order": [
+        "timeline_8FNUUG",
+        "timeline_hW3TqA",
+        "timeline_BNHEWE",
+        "timeline_9Ex3xE",
+        "timeline_xJTPTk"
+      ],
+      "name": "t:sections.tvc-heritage.presets.name",
+      "settings": {
+        "pre_title": "Our heritage",
+        "title": "Sixty years of small comforts.",
+        "text": "<p>TVC Group started with a single brand and a simple idea: the everyday rituals matter most. Six decades later, we're still in the business of small comforts — five brands, one belief, and a long list of moments that helped get us here.</p>",
+        "video": "shopify://files/videos/TVC-Video4_1.mp4"
+      }
     }
   },
   "order": [
     "featured_product_8tXYNU",
     "tvc_home_intro_eFKmKt",
     "tvc_brands_7wWERV",
-    "tvc_ingredients_Agg6Vq"
+    "tvc_ingredients_Agg6Vq",
+    "tvc_heritage_xbV9AE"
   ]
 }
