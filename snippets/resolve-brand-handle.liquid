@@ -70,4 +70,6 @@
 {% endif %}
 {%- if current_brand != blank and current_brand.settings.text != blank -%}
   {{- current_brand.settings.text | handleize -}}
+{%- else -%}
+  the-village-co
 {%- endif -%}

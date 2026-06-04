@@ -17,7 +17,7 @@
     • Blog: village-naturals-therapy + fun — same as the blog {% if %} in resolve-brand-handle.
 
   The fallback does NOT replicate mega menu active link or per-block brand_page_link matching.
-  Homepage (index) defaults to the-village-co, matching resolve-brand-handle’s “The Village Co.” preference.
+  When no sub-brand is detected, defaults to the-village-co (parent brand), matching resolve-brand-handle’s “The Village Co.” preference.
 
   When you change brand selection rules in resolve-brand-handle.liquid, update this fallback
   for any new URL keywords, vendors, or blog handles you rely on for body.* CSS.
@@ -55,10 +55,12 @@
         assign brand_body_handle = 'mr-bubble'
       endif
     endif
-    if brand_body_handle == blank and request.page_type == 'index'
-      assign brand_body_handle = 'the-village-co'
-    endif
   -%}
+{%- endif -%}
+
+{%- comment -%} Parent brand when no sub-brand (mr-bubble, therapy, soft-dri, etc.) was resolved {%- endcomment -%}
+{%- if brand_body_handle == blank -%}
+  {%- assign brand_body_handle = 'the-village-co' -%}
 {%- endif -%}
 
 {%- if brand_body_handle != blank %} {{ brand_body_handle }}{% endif -%}

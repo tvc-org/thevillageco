@@ -1191,7 +1191,7 @@ div[class*='kl-teaser-'],
         box-shadow: none;
     }
 
-    .template-index .header-bottom .header-bottom__links.mobile-hidden {
+    body.the-village-co .header-bottom .header-bottom__links.mobile-hidden {
         justify-content: flex-end;
         padding-right: 36px;
     }
