@@ -285,6 +285,9 @@
       "announcement_bar": "Announcement bar"
     },
 
+    "utility_page": {
+      "nav_aria": "Support and information"
+    },
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",

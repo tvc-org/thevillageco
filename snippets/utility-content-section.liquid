@@ -1,0 +1,50 @@
+{% comment %}
+  Renders a utility content block (FAQ, legal, etc.).
+  Pass: block (section block object).
+{% endcomment %}
+<section id="{{ block.settings.section_title | handleize }}" {{ block.shopify_attributes }}>
+  {%- if block.settings.section_title != blank -%}
+    <h2 class="utility-section-title">{{ block.settings.section_title | escape }}</h2>
+  {%- endif -%}
+  {%- if block.settings.section_subtitle != blank -%}
+    <p class="utility-subtitle">{{ block.settings.section_subtitle | escape }}</p>
+  {%- endif -%}
+
+  {%- if block.settings.section_accordion -%}
+    <div class="accordion-container tab-accordion-system">
+      {%- assign raw_content = block.settings.section_details -%}
+      {%- assign accordion_systems = raw_content | split: 'accordion_title:' -%}
+      {%- assign accordion_counter = 0 -%}
+      {%- for accordion_system in accordion_systems -%}
+        {%- if accordion_system != blank -%}
+          {%- assign accordion_parts = accordion_system | split: 'accordion_content:' -%}
+          <div class="system{% if accordion_counter == 0 %} active{% endif %}">
+            <button type="button" class="system-title utility-subtitle system-title-{{ accordion_counter }}" data-target="system-{{ accordion_counter }}">
+              {{ accordion_parts[0] | strip }}
+            </button>
+            <div class="system-content" data-target="system-{{ accordion_counter }}">
+              <div class="content-inner rte">
+                {{ accordion_parts[1] }}
+              </div>
+            </div>
+          </div>
+          {%- assign accordion_counter = accordion_counter | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- elsif block.settings.section_details != blank -%}
+    <div class="rte utility-section-body">
+      {%- assign raw_content = block.settings.section_details -%}
+      {%- if raw_content contains ':paragraph:' -%}
+        {%- assign paragraphs = raw_content | split: ':paragraph:' -%}
+        {%- for paragraph in paragraphs -%}
+          {%- if paragraph != blank -%}
+            <p>{{ paragraph }}</p>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- else -%}
+        {{ raw_content }}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>

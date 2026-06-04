@@ -1,25 +1,31 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "utility": {
+      "type": "utility-page",
       "settings": {
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "",
-        "heading_size": "h1",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
+        "banner_title": "Support & Information",
+        "nav_menu": "utility-menu"
+      },
+      "blocks": {
+        "heading": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Send us a message!"
+          }
+        },
+        "subcopy": {
+          "type": "subcopy",
+          "settings": {
+            "text": "<p>We are experiencing extremely high volume on our customer support phone lines. We are working to resolve this issue as quickly as possible. In the meantime, please email us at <a href=\"mailto:info@thevillagecompany.com\">info@thevillagecompany.com</a> and we will respond as soon as possible.</p><p>If you have a medical concern, please call us at <a href=\"tel:8886348192\">(888) 634-8192</a>.</p>"
+          }
+        },
+        "form": {
+          "type": "contact_form",
+          "settings": {}
+        }
+      },
+      "block_order": ["heading", "subcopy", "form"]
     }
   },
-  "order": [
-    "main",
-    "form"
-  ]
+  "order": ["utility"]
 }

@@ -1,0 +1,250 @@
+{{ 'section-utility-page.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'utility-page.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign contact_wrapper_open = false
+  assign contact_info_open = false
+-%}
+
+<div class="utility-page page-{{ page.handle | default: 'utility' }} section-{{ section.id }}">
+  <div class="utility-banner">
+    <h1 class="utility-title">{{ section.settings.banner_title | escape }}</h1>
+  </div>
+
+  <nav class="utility-nav" aria-label="{{ 'sections.utility_page.nav_aria' | t }}">
+    {% render 'utility-nav', menu: section.settings.nav_menu %}
+  </nav>
+
+  <div class="utility-content">
+    <div class="utility-content__inner inner-wrapper">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'page_heading' -%}
+            {%- if contact_info_open -%}</div>{%- assign contact_info_open = false -%}{%- endif -%}
+            {%- if contact_wrapper_open -%}</div>{%- assign contact_wrapper_open = false -%}{%- endif -%}
+            <h1 class="utility-page-title" {{ block.shopify_attributes }}>
+              {{ block.settings.title | default: page.title | escape }}
+            </h1>
+
+          {%- when 'section_heading' -%}
+            {%- if contact_info_open -%}</div>{%- assign contact_info_open = false -%}{%- endif -%}
+            {%- if contact_wrapper_open -%}</div>{%- assign contact_wrapper_open = false -%}{%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h2 class="utility-section-title" {{ block.shopify_attributes }}>{{ block.settings.title | escape }}</h2>
+            {%- endif -%}
+
+          {%- when 'subcopy' -%}
+            {%- if contact_info_open -%}</div>{%- assign contact_info_open = false -%}{%- endif -%}
+            {%- if contact_wrapper_open -%}</div>{%- assign contact_wrapper_open = false -%}{%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <div class="utility-subcopy rte" {{ block.shopify_attributes }}>{{ block.settings.text }}</div>
+            {%- endif -%}
+
+          {%- when 'richtext' -%}
+            {%- if contact_info_open -%}</div>{%- assign contact_info_open = false -%}{%- endif -%}
+            {%- if contact_wrapper_open -%}</div>{%- assign contact_wrapper_open = false -%}{%- endif -%}
+            {%- if block.settings.content != blank -%}
+              <div class="rte utility-richtext" {{ block.shopify_attributes }}>{{ block.settings.content }}</div>
+            {%- endif -%}
+
+          {%- when 'contact_form' -%}
+            {%- unless contact_wrapper_open -%}
+              <div class="contact-wrapper">
+              {%- assign contact_wrapper_open = true -%}
+            {%- endunless -%}
+            <div class="contact-form" {{ block.shopify_attributes }}>
+              {% render 'utility-contact-form' %}
+            </div>
+
+          {%- when 'contact_info' -%}
+            {%- unless contact_wrapper_open -%}
+              <div class="contact-wrapper">
+              {%- assign contact_wrapper_open = true -%}
+            {%- endunless -%}
+            {%- unless contact_info_open -%}
+              <div class="contact-info">
+              {%- assign contact_info_open = true -%}
+            {%- endunless -%}
+            <div class="info-block info-block--{{ block.settings.info_type }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.info_title != blank -%}
+                <p class="info-block-title">{{ block.settings.info_title | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.info_detail != blank -%}
+                {%- case block.settings.info_type -%}
+                  {%- when 'tel' -%}
+                    <a href="tel:{{ block.settings.info_detail | replace: ' ', '' | replace: '(', '' | replace: ')', '' | replace: '-', '' }}">
+                      {{ block.settings.info_detail | escape }}
+                    </a>
+                  {%- when 'email' -%}
+                    <a href="mailto:{{ block.settings.info_detail }}">{{ block.settings.info_detail | escape }}</a>
+                  {%- else -%}
+                    <address>{{ block.settings.info_detail | newline_to_br }}</address>
+                {%- endcase -%}
+              {%- endif -%}
+            </div>
+
+          {%- when 'content_section' -%}
+            {%- if contact_info_open -%}</div>{%- assign contact_info_open = false -%}{%- endif -%}
+            {%- if contact_wrapper_open -%}</div>{%- assign contact_wrapper_open = false -%}{%- endif -%}
+            {% render 'utility-content-section', block: block %}
+        {%- endcase -%}
+      {%- endfor -%}
+
+      {%- if contact_info_open -%}</div>{%- endif -%}
+      {%- if contact_wrapper_open -%}</div>{%- endif -%}
+
+      {%- if section.blocks.size == 0 and page.content != blank -%}
+        <div class="rte">{{ page.content }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.utility_page.name",
+  "tag": "section",
+  "class": "section-utility-page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_title",
+      "label": "t:sections.utility_page.settings.banner_title.label",
+      "default": "Support & Information"
+    },
+    {
+      "type": "link_list",
+      "id": "nav_menu",
+      "label": "t:sections.utility_page.settings.nav_menu.label",
+      "info": "t:sections.utility_page.settings.nav_menu.info"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "page_heading",
+      "name": "t:sections.utility_page.blocks.page_heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.utility_page.blocks.page_heading.settings.title.label",
+          "info": "t:sections.utility_page.blocks.page_heading.settings.title.info"
+        }
+      ]
+    },
+    {
+      "type": "section_heading",
+      "name": "t:sections.utility_page.blocks.section_heading.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:sections.utility_page.blocks.section_heading.settings.title.label",
+          "default": "Send us a message!"
+        }
+      ]
+    },
+    {
+      "type": "subcopy",
+      "name": "t:sections.utility_page.blocks.subcopy.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.utility_page.blocks.subcopy.settings.text.label"
+        }
+      ]
+    },
+    {
+      "type": "contact_form",
+      "name": "t:sections.utility_page.blocks.contact_form.name",
+      "limit": 1,
+      "settings": []
+    },
+    {
+      "type": "contact_info",
+      "name": "t:sections.utility_page.blocks.contact_info.name",
+      "settings": [
+        {
+          "type": "select",
+          "id": "info_type",
+          "label": "t:sections.utility_page.blocks.contact_info.settings.info_type.label",
+          "options": [
+            { "value": "tel", "label": "t:sections.utility_page.blocks.contact_info.settings.info_type.options.tel" },
+            { "value": "mail", "label": "t:sections.utility_page.blocks.contact_info.settings.info_type.options.mail" },
+            { "value": "email", "label": "t:sections.utility_page.blocks.contact_info.settings.info_type.options.email" }
+          ],
+          "default": "tel"
+        },
+        {
+          "type": "text",
+          "id": "info_title",
+          "label": "t:sections.utility_page.blocks.contact_info.settings.info_title.label"
+        },
+        {
+          "type": "textarea",
+          "id": "info_detail",
+          "label": "t:sections.utility_page.blocks.contact_info.settings.info_detail.label"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "name": "t:sections.utility_page.blocks.richtext.name",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:sections.utility_page.blocks.richtext.settings.content.label"
+        }
+      ]
+    },
+    {
+      "type": "content_section",
+      "name": "t:sections.utility_page.blocks.content_section.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "section_title",
+          "label": "t:sections.utility_page.blocks.content_section.settings.section_title.label"
+        },
+        {
+          "type": "text",
+          "id": "section_subtitle",
+          "label": "t:sections.utility_page.blocks.content_section.settings.section_subtitle.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "section_accordion",
+          "label": "t:sections.utility_page.blocks.content_section.settings.section_accordion.label",
+          "default": false
+        },
+        {
+          "type": "html",
+          "id": "section_details",
+          "label": "t:sections.utility_page.blocks.content_section.settings.section_details.label",
+          "info": "t:sections.utility_page.blocks.content_section.settings.section_details.info"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.utility_page.presets.contact.name",
+      "blocks": [
+        { "type": "section_heading" },
+        { "type": "subcopy" },
+        { "type": "contact_form" }
+      ]
+    },
+    {
+      "name": "t:sections.utility_page.presets.content.name",
+      "blocks": [
+        { "type": "page_heading" },
+        { "type": "content_section" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+{% comment %}
+  Utility side navigation. Pass: menu (link_list setting handle).
+{% endcomment %}
+{%- assign utility_menu = menu | default: section.settings.nav_menu -%}
+{%- if utility_menu != blank and linklists[utility_menu].links.size > 0 -%}
+  <div class="inner-wrapper links" data-utility-nav>
+    {%- assign nav_link_html = '' -%}
+    {%- assign active_link_title = '' -%}
+
+    {%- for link in linklists[utility_menu].links -%}
+      {%- if link.active -%}
+        {%- assign active_link_title = link.title -%}
+      {%- endif -%}
+
+      {%- capture nav_link_item -%}
+        {%- if link.links.size > 0 -%}
+          <div class="link-wrapper{% if link.active %} active{% endif %}">
+            <a class="link{% if link.active %} active{% endif %}" href="{{ link.url }}">{{ link.title | escape }}</a>
+            <div class="sublinks{% if link.active %} active{% endif %}">
+              {%- for sublink in link.links -%}
+                <a class="sublink" href="{{ link.url }}#{{ sublink.title | handleize }}">{{ sublink.title | escape }}</a>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- else -%}
+          <a class="link{% if link.active %} active{% endif %}" href="{{ link.url }}">{{ link.title | escape }}</a>
+        {%- endif -%}
+      {%- endcapture -%}
+      {%- assign nav_link_html = nav_link_html | append: nav_link_item -%}
+    {%- endfor -%}
+
+    {%- if active_link_title != blank -%}
+      <button type="button" class="link select-link" aria-expanded="false" data-utility-nav-toggle>
+        {{ active_link_title | escape }}
+        <span class="svg-wrapper utility-nav__caret">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    {%- endif -%}
+
+    <div class="link-container">
+      {{ nav_link_html }}
+    </div>
+  </div>
+{%- endif -%}

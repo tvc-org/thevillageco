@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "utility": {
+      "type": "utility-page",
+      "settings": {
+        "banner_title": "Support & Information",
+        "nav_menu": "utility-menu"
+      },
+      "blocks": {
+        "heading": {
+          "type": "page_heading",
+          "settings": {
+            "title": ""
+          }
+        }
+      },
+      "block_order": ["heading"]
+    }
+  },
+  "order": ["utility"]
+}

@@ -1047,6 +1047,101 @@
         "name": "TVC CTA short"
       }
     },
+    "utility_page": {
+      "name": "Utility page",
+      "settings": {
+        "banner_title": {
+          "label": "Banner heading"
+        },
+        "nav_menu": {
+          "label": "Side navigation menu",
+          "info": "Assign the same menu on all Support pages (e.g. utility-menu with FAQs, Contact, Privacy, Terms)."
+        }
+      },
+      "blocks": {
+        "page_heading": {
+          "name": "Page title",
+          "settings": {
+            "title": {
+              "label": "Title",
+              "info": "Leave blank to use the page title."
+            }
+          }
+        },
+        "section_heading": {
+          "name": "Section heading",
+          "settings": {
+            "title": {
+              "label": "Heading"
+            }
+          }
+        },
+        "subcopy": {
+          "name": "Intro text",
+          "settings": {
+            "text": {
+              "label": "Content"
+            }
+          }
+        },
+        "contact_form": {
+          "name": "Contact form"
+        },
+        "contact_info": {
+          "name": "Contact info",
+          "settings": {
+            "info_type": {
+              "label": "Type",
+              "options": {
+                "tel": "Telephone",
+                "mail": "Mailing address",
+                "email": "Email"
+              }
+            },
+            "info_title": {
+              "label": "Label"
+            },
+            "info_detail": {
+              "label": "Details"
+            }
+          }
+        },
+        "richtext": {
+          "name": "Rich text",
+          "settings": {
+            "content": {
+              "label": "Content"
+            }
+          }
+        },
+        "content_section": {
+          "name": "Content section",
+          "settings": {
+            "section_title": {
+              "label": "Title"
+            },
+            "section_subtitle": {
+              "label": "Subtitle"
+            },
+            "section_accordion": {
+              "label": "Use accordions"
+            },
+            "section_details": {
+              "label": "Content (HTML)",
+              "info": "For accordions, use accordion_title: / accordion_content: pairs. For multiple paragraphs, separate with :paragraph:"
+            }
+          }
+        }
+      },
+      "presets": {
+        "contact": {
+          "name": "Utility — Contact"
+        },
+        "content": {
+          "name": "Utility — Content page"
+        }
+      }
+    },
     "contact-form": {
       "name": "Contact Form",
       "presets": {
