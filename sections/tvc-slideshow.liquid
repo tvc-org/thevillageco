@@ -167,14 +167,17 @@
         aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
         tabindex="-1"
       >
-        <div class="{{ inner_classes }}">
+        <div
+          class="{{ inner_classes }}"
+          {% if media_aspect_style != blank %}
+            style="{{ media_aspect_style }}"
+          {% endif %}
+        >
           <div
             class="{{ media_classes }}{% if settings.animations_reveal_on_scroll and forloop.first %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll and forloop.first %}
               data-cascade
-              style="--animation-order: 1;{% if media_aspect_style != blank %} {{ media_aspect_style }}{% endif %}"
-            {% elsif media_aspect_style != blank %}
-              style="{{ media_aspect_style }}"
+              style="--animation-order: 1;"
             {% endif %}
           >
             {%- if show_video -%}
@@ -205,7 +208,8 @@
               {%- liquid
                 assign desktop_image = block.settings.image
                 assign mobile_image = block.settings.mobile_image
-                assign height = desktop_image.width | divided_by: desktop_image.aspect_ratio | round
+                assign width = desktop_image.width
+                assign height = width | divided_by: desktop_image.aspect_ratio | round
                 assign sizes = '100vw'
                 assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
                 assign fetch_priority = 'auto'
@@ -231,6 +235,7 @@
                     desktop_image
                     | image_url: width: 3840
                     | image_tag:
+                      width: width,
                       height: height,
                       sizes: sizes,
                       widths: widths,
@@ -243,6 +248,7 @@
                     | image_url: width: 3840
                     | image_tag:
                       loading: 'lazy',
+                      width: width,
                       height: height,
                       sizes: sizes,
                       widths: widths,

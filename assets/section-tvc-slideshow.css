@@ -403,16 +403,35 @@
   margin-right: 0;
 }
 
-@media screen and (max-width: 959px) {
-  .tvc-slideshow__media--preserve-aspect {
-    aspect-ratio: var(--tvc-media-aspect-mobile);
-  }
+/* Stacked cover mode absolutely positions picture; preserve-aspect needs in-flow sizing */
+.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect picture {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
 }
 
-@media screen and (min-width: 960px) {
-  .tvc-slideshow__media--preserve-aspect {
-    aspect-ratio: var(--tvc-media-aspect-desktop);
-  }
+.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect picture img,
+.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect > img {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+}
+
+.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect picture {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
+}
+
+.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect picture img,
+.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect > img {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: auto;
 }
 
 .tvc-slideshow__media--preserve-aspect picture,
@@ -422,6 +441,17 @@
 .tvc-slideshow__media--preserve-aspect > svg {
   object-fit: contain;
   object-position: center center;
+}
+
+/* Aspect ratio vars live on .tvc-slideshow__inner--preserve-aspect (survives scroll animations) */
+.tvc-slideshow__inner--preserve-aspect .tvc-slideshow__media--preserve-aspect {
+  aspect-ratio: var(--tvc-media-aspect-mobile);
+}
+
+@media screen and (min-width: 960px) {
+  .tvc-slideshow__inner--preserve-aspect .tvc-slideshow__media--preserve-aspect {
+    aspect-ratio: var(--tvc-media-aspect-desktop);
+  }
 }
 
 /* Preserve-aspect: remove “hero min-heights” that prevent proportional shrink */
