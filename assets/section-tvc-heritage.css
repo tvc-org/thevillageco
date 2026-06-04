@@ -22,12 +22,6 @@
   min-width: 0;
 }
 
-.tvc-heritage__intro {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .tvc-heritage__timeline {
   border-top: 1px solid #c5c5c5;
   list-style: none;
