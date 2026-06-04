@@ -769,6 +769,13 @@
     "tvc-home-intro": {
       "name": "TVC - Home Intro",
       "settings": {
+        "header_anchor": {
+          "content": "Jump navigation"
+        },
+        "anchor_id": {
+          "label": "Section ID",
+          "info": "In-page link target without # (e.g. our-story for /#our-story)."
+        },
         "header_content": {
           "content": "Content"
         },
@@ -806,6 +813,13 @@
     "tvc-brands": {
       "name": "TVC Brands",
       "settings": {
+        "header_anchor": {
+          "content": "Jump navigation"
+        },
+        "anchor_id": {
+          "label": "Section ID",
+          "info": "In-page link target without # (e.g. brands for /#brands)."
+        },
         "header_content": {
           "content": "Content"
         },
@@ -849,6 +863,13 @@
     "tvc-ingredients": {
       "name": "TVC Ingredients",
       "settings": {
+        "header_anchor": {
+          "content": "Jump navigation"
+        },
+        "anchor_id": {
+          "label": "Section ID",
+          "info": "In-page link target without # (e.g. innovation for /#innovation)."
+        },
         "header_content": {
           "content": "Content"
         },
@@ -886,6 +907,13 @@
     "tvc-heritage": {
       "name": "TVC Heritage",
       "settings": {
+        "header_anchor": {
+          "content": "Jump navigation"
+        },
+        "anchor_id": {
+          "label": "Section ID",
+          "info": "In-page link target without # (e.g. our-heritage for /#our-heritage)."
+        },
         "header_content": {
           "content": "Content"
         },

@@ -7,9 +7,15 @@
   if section.settings.pre_title != blank or section.settings.title != blank
     assign tvc_brands_anim_offset = 1
   endif
+  assign tvc_section_anchor = section.settings.anchor_id | strip | remove: '#' | handleize
 -%}
 
-<div class="tvc-brands">
+<div
+  class="tvc-brands"
+  {% if tvc_section_anchor != blank %}
+    id="{{ tvc_section_anchor }}"
+  {% endif %}
+>
   <div class="page-width tvc-brands__inner">
     {%- if section.settings.pre_title != blank or section.settings.title != blank -%}
       <div
@@ -150,6 +156,17 @@
     "templates": ["index"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-brands.settings.header_anchor.content"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "t:sections.tvc-brands.settings.anchor_id.label",
+      "info": "t:sections.tvc-brands.settings.anchor_id.info",
+      "default": "brands"
+    },
     {
       "type": "header",
       "content": "t:sections.tvc-brands.settings.header_content.content"

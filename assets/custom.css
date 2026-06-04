@@ -1133,9 +1133,37 @@ header-drawer {
     background: transparent;
 }
 
+/* Third-party floaters — cap below mobile header (999); !important beats inline z-index */
 .yotpo-widget-loyalty-floater-widget .yotpo-floater-widget-layout,
-.swell-tab {
+.swell-tab,
+div[class*='kl-teaser-'],
+.needsclick[class*='kl-teaser-'] {
     z-index: 998 !important;
+}
+
+/* Header + mobile menu drawer above loyalty / Klaviyo floaters */
+@media screen and (max-width: 1024px) {
+    .shopify-section-group-header-group,
+    .section-header.shopify-section-group-header-group {
+        z-index: 999 !important;
+    }
+
+    header.site-header,
+    .header-wrapper {
+        position: relative;
+        z-index: 999;
+    }
+
+    menu-drawer .menu-drawer,
+    .js details[open] > .menu-drawer,
+    .js details[open] > .menu-drawer__submenu {
+        z-index: 999;
+    }
+
+    .js menu-drawer > details > summary::before,
+    menu-drawer > details[open] > summary::before {
+        z-index: 998;
+    }
 }
 
 .menu-drawer__menu-item.link--text {

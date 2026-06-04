@@ -119,6 +119,7 @@
       ],
       "name": "t:sections.tvc-home-intro.presets.name",
       "settings": {
+        "anchor_id": "our-story",
         "pre_title": "Trusted personal care — since 1991",
         "title": "Built on trust.\n<span class=\"tvc-home-intro__title-accent\">Made for \neveryday life.</span>",
         "text": "<p>For over 30 years, we’ve been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>",
@@ -205,6 +206,7 @@
       ],
       "name": "t:sections.tvc-brands.presets.name",
       "settings": {
+        "anchor_id": "brands",
         "pre_title": "Brand portfolio",
         "title": "Our portfolio of\ntrusted personal care brands"
       }
@@ -271,6 +273,7 @@
       ],
       "name": "t:sections.tvc-ingredients.presets.name",
       "settings": {
+        "anchor_id": "innovation",
         "pre_title": "Thoughtful innovation",
         "title": "Carefully selected ingredients.\n<span class=\"tvc-title-accent\">Crafted with intention.</span>",
         "text": "<p>From fragrances that inspire calm and comfort to ingredients you can actually recognize — our formulas are made to get the most out of every moment.</p><p>Because everyone deserves to feel their best, every day.</p>"
@@ -324,6 +327,7 @@
       ],
       "name": "t:sections.tvc-heritage.presets.name",
       "settings": {
+        "anchor_id": "our-heritage",
         "pre_title": "Our heritage",
         "title": "Sixty years of \nsmall comforts.",
         "text": "<p>TVC Group started with a single brand and a simple idea: the everyday rituals matter most. Six decades later, we're still in the business of small comforts — five brands, one belief, and a long list of moments that helped get us here.</p>",

@@ -4,9 +4,15 @@
 {%- liquid
   assign tvc_hi_image = section.settings.image
   assign tvc_hi_callout_blocks = section.blocks | where: 'type', 'callout'
+  assign tvc_section_anchor = section.settings.anchor_id | strip | remove: '#' | handleize
 -%}
 
-<div class="tvc-home-intro">
+<div
+  class="tvc-home-intro"
+  {% if tvc_section_anchor != blank %}
+    id="{{ tvc_section_anchor }}"
+  {% endif %}
+>
   <div class="tvc-home-intro__grid">
     <div class="tvc-home-intro__content">
       <div
@@ -92,6 +98,17 @@
     "templates": ["index"]
   },
   "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-home-intro.settings.header_anchor.content"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "t:sections.tvc-home-intro.settings.anchor_id.label",
+      "info": "t:sections.tvc-home-intro.settings.anchor_id.info",
+      "default": "our-story"
+    },
     {
       "type": "header",
       "content": "t:sections.tvc-home-intro.settings.header_content.content"

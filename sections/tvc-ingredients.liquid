@@ -7,9 +7,15 @@
   if section.settings.pre_title != blank or section.settings.title != blank or section.settings.text != blank
     assign tvc_ingredients_anim_offset = 1
   endif
+  assign tvc_section_anchor = section.settings.anchor_id | strip | remove: '#' | handleize
 -%}
 
-<div class="tvc-ingredients">
+<div
+  class="tvc-ingredients"
+  {% if tvc_section_anchor != blank %}
+    id="{{ tvc_section_anchor }}"
+  {% endif %}
+>
   <div class="page-width tvc-ingredients__inner">
     <div class="tvc-ingredients__layout">
       {%- if section.settings.pre_title != blank
@@ -100,6 +106,17 @@
   "class": "section section-tvc-ingredients",
   "max_blocks": 12,
   "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-ingredients.settings.header_anchor.content"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "t:sections.tvc-ingredients.settings.anchor_id.label",
+      "info": "t:sections.tvc-ingredients.settings.anchor_id.info",
+      "default": "innovation"
+    },
     {
       "type": "header",
       "content": "t:sections.tvc-ingredients.settings.header_content.content"
