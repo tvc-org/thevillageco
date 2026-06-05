@@ -12,8 +12,10 @@ if (!customElements.get('product-form')) {
         this.submitButton = this.querySelector('[type="submit"]');
         this.submitButtonInner = this.submitButton.querySelector('.product-form__submit-inner');
         this.submitButtonText =
+          this.submitButton.querySelector('.quick-add__submit-text') ||
           this.submitButton.querySelector('.product-form__submit-text') ||
           (this.submitButtonInner && this.submitButtonInner.querySelector('span')) ||
+          this.submitButton.querySelector('.quick-add__submit-label') ||
           this.submitButton.querySelector('span');
 
         if (document.querySelector('cart-drawer')) this.submitButton.setAttribute('aria-haspopup', 'dialog');

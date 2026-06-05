@@ -69,6 +69,10 @@
     assign show_card_badges = true
   endif
 
+  if show_sold_out and badge_context != 'info'
+    assign badge_position = 'bottom left'
+  endif
+
   assign badge_modifier = ''
   if show_sold_out
     assign badge_modifier = 'card__badge--sold-out'

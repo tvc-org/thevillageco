@@ -3448,6 +3448,72 @@ body.mr-bubble .product-form__input--pill input[type='radio']:disabled:checked +
     color: #fff;
 }
 
+.badge.badge-sold-out {
+    background-color: #909090;
+    color: #fff;
+}
+
+/* Product card quick-add (collection / featured collection overlay) */
+.product-card-wrapper .quick-add__submit.button {
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #b8b8b8;
+    border-radius: 999px;
+    box-shadow: none;
+    color: #323131;
+    display: inline-flex;
+    font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+    font-size: 18px;
+    gap: 10px;
+    justify-content: center;
+    line-height: 1.2;
+    min-height: 0;
+    min-width: 0;
+    padding: 20px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.product-card-wrapper .quick-add__submit.button::before,
+.product-card-wrapper .quick-add__submit.button::after {
+    content: none;
+    display: none;
+}
+
+.product-card-wrapper .quick-add__submit.button:not([disabled]):hover {
+    background-color: #fff;
+    border-color: #b8b8b8;
+    color: #323131;
+}
+
+.product-card-wrapper .quick-add__submit.button:focus-visible {
+    outline: 2px solid #323131;
+    outline-offset: 2px;
+}
+
+.product-card-wrapper .quick-add__submit-label {
+    display: inline-flex;
+    flex: 0 1 auto;
+    align-items: center;
+}
+
+.product-card-wrapper .quick-add__submit-icon {
+    display: inline-flex !important;
+    flex-shrink: 0;
+    height: 26px;
+    width: 26px;
+}
+
+.product-card-wrapper product-form .quick-add__submit .quick-add__submit-icon {
+    display: inline-flex !important;
+}
+
+.product-card-wrapper .quick-add__submit-icon svg {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
 .card--media .card__inner .card__content {
     padding: 20px 8px !important;
 }

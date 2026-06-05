@@ -24,11 +24,15 @@
           aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
           data-product-url="{{ card_product.url }}"
         >
-          {{ 'products.product.choose_options' | t }}
+          <span class="quick-add__submit-label">
+            <span class="quick-add__submit-text">{{ 'products.product.choose_options' | t }}</span>
+          </span>
           {%- if horizontal_quick_add -%}
             <span class="icon-wrap">
               {{- 'icon-arrow.svg' | inline_asset_content -}}
             </span>
+          {%- else -%}
+            {% render 'quick-add-cart-icon' %}
           {%- endif -%}
           {%- render 'loading-spinner' -%}
         </button>
@@ -83,12 +87,14 @@
               disabled
             {% endif %}
           >
-            <span>
-              {%- if card_product.selected_or_first_available_variant.available -%}
-                {{ 'products.product.add_to_cart' | t }}
-              {%- else -%}
-                {{ 'products.product.sold_out' | t }}
-              {%- endif -%}
+            <span class="quick-add__submit-label">
+              <span class="quick-add__submit-text">
+                {%- if card_product.selected_or_first_available_variant.available -%}
+                  {{ 'products.product.add_to_cart' | t }}
+                {%- else -%}
+                  {{ 'products.product.sold_out' | t }}
+                {%- endif -%}
+              </span>
             </span>
             <span class="sold-out-message hidden">
               {{ 'products.product.sold_out' | t }}
@@ -97,6 +103,8 @@
               <span class="icon-wrap">
                 {{- 'icon-plus.svg' | inline_asset_content -}}
               </span>
+            {%- else -%}
+              {% render 'quick-add-cart-icon' %}
             {%- endif -%}
             {%- render 'loading-spinner' -%}
           </button>
@@ -122,10 +130,13 @@
           data-sold-out-message="true"
           disabled
         >
-          <span>{{ 'products.product.sold_out' | t }}</span>
+          <span class="quick-add__submit-label">
+            <span class="quick-add__submit-text">{{ 'products.product.sold_out' | t }}</span>
+          </span>
           <span class="sold-out-message hidden">
             {{ 'products.product.sold_out' | t }}
           </span>
+          {% render 'quick-add-cart-icon' %}
         </button>
       {% else %}
         {% render 'quantity-input', variant: card_product.selected_or_first_available_variant, min: 0 %}
@@ -153,7 +164,10 @@
           aria-labelledby="{{ product_form_id }}-submit title-{{ section_id }}-{{ card_product.id }}"
           data-product-url="{{ card_product.url }}"
         >
-          {{ 'products.product.choose_options' | t }}
+          <span class="quick-add__submit-label">
+            <span class="quick-add__submit-text">{{ 'products.product.choose_options' | t }}</span>
+          </span>
+          {% render 'quick-add-cart-icon' %}
           {%- render 'loading-spinner' -%}
         </button>
       </modal-opener>
