@@ -585,8 +585,8 @@
 }
 
 @media screen and (min-width:1025px) {
-    .button--secondary:not(.disabled):focus,
-    .button--secondary:not(.disabled):hover {
+    .article .button--secondary:not(.disabled):focus,
+    .article .button--secondary:not(.disabled):hover {
         color: #fff;
         background: #323131;
         border-color: #323131

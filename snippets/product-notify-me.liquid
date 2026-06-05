@@ -1,0 +1,12 @@
+{% comment %}
+  Empty anchor for Klaviyo Back in Stock (hosted onsite.js injects the trigger).
+  @param product {Object}
+  @param section_id {String}
+{% endcomment %}
+{%- unless product.metafields.custom_fields.disable_notify_me -%}
+  <div
+    id="ProductNotify-{{ section_id }}"
+    class="product-form__notify-me"
+    data-disable-notify="false"
+  ></div>
+{%- endunless -%}

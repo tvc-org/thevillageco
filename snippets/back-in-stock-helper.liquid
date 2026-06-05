@@ -1,0 +1,62 @@
+{% comment %}
+  Product + variant inventory data for Klaviyo Back in Stock.
+{% endcomment %}
+<script id="back-in-stock-helper">
+  var _BISConfig = _BISConfig || {};
+
+  {% if product %}
+    _BISConfig.product = {{ product | json }};
+
+    {% for variant in product.variants %}
+      _BISConfig.product.variants[{{ forloop.index | minus: 1 }}]['inventory_quantity'] = {{ variant.inventory_quantity }};
+    {% endfor %}
+
+    _BISConfig.productJsonPath = '/products/{{ product.handle }}.js';
+
+    (function () {
+      var productData = _BISConfig.product;
+      var matchPath = _BISConfig.productJsonPath;
+      var open = XMLHttpRequest.prototype.open;
+      var send = XMLHttpRequest.prototype.send;
+
+      XMLHttpRequest.prototype.open = function (method, url) {
+        this._bisUseLocalProduct =
+          typeof url === 'string' && url.indexOf(matchPath) !== -1;
+        return open.apply(this, arguments);
+      };
+
+      XMLHttpRequest.prototype.send = function (body) {
+        if (!this._bisUseLocalProduct) {
+          return send.apply(this, arguments);
+        }
+
+        var xhr = this;
+        var response = JSON.stringify(productData);
+
+        setTimeout(function () {
+          Object.defineProperty(xhr, 'readyState', { configurable: true, value: 4 });
+          Object.defineProperty(xhr, 'status', { configurable: true, value: 200 });
+          Object.defineProperty(xhr, 'responseText', { configurable: true, value: response });
+          Object.defineProperty(xhr, 'response', { configurable: true, value: response });
+          if (typeof xhr.onreadystatechange === 'function') {
+            xhr.onreadystatechange();
+          }
+          xhr.dispatchEvent(new Event('load'));
+          xhr.dispatchEvent(new Event('loadend'));
+        }, 0);
+      };
+    })();
+  {% endif %}
+
+  {% if customer %}
+    _BISConfig.customer = { email: {{ customer.email | json }} };
+  {% endif %}
+
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('variant')) return;
+    var field = document.querySelector('form[data-type="add-to-cart-form"] [name="id"]');
+    if (!field || !field.value) return;
+    window.history.replaceState({}, '', window.location.pathname + '?variant=' + field.value);
+  })();
+</script>

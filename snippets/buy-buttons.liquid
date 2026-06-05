@@ -22,6 +22,15 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+
+      assign quantity_rule_soldout = false
+      assign check_against_inventory = true
+      if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
+        assign check_against_inventory = false
+      endif
+      if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
+        assign quantity_rule_soldout = true
+      endif
     -%}
 
     <product-form
@@ -39,37 +48,38 @@
       {%- form 'product',
         product,
         id: product_form_id,
-        class: 'form',
+        class: 'form add-to-cart-form',
         novalidate: 'novalidate',
         data-type: 'add-to-cart-form'
       -%}
-        <input
-          type="hidden"
+        <script type="application/json" data-product-json>
+          {{ product | json }}
+        </script>
+        <select
           name="id"
-          value="{{ product.selected_or_first_available_variant.id }}"
-          {% if product.selected_or_first_available_variant.available == false
-            or quantity_rule_soldout
-            or product.selected_or_first_available_variant == null
-          %}
-            disabled
-          {% endif %}
-          class="product-variant-id"
+          id="productSelect-{{ section_id }}"
+          class="product-variant-id product-single__variants visually-hidden"
+          aria-hidden="true"
+          tabindex="-1"
         >
+          {%- for variant in product.variants -%}
+            <option
+              value="{{ variant.id }}"
+              data-sku="{{ variant.sku | escape }}"
+              {% if variant == product.selected_or_first_available_variant %}
+                selected="selected"
+              {% endif %}
+            >
+              {{- variant.title -}}
+            </option>
+          {%- endfor -%}
+        </select>
 
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
         <div class="product-form__buttons">
-          {%- liquid
-            assign check_against_inventory = true
-            if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
-              assign check_against_inventory = false
-            endif
-            if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
-              assign quantity_rule_soldout = true
-            endif
-          -%}
           <button
             id="ProductSubmitButton-{{ section_id }}"
             type="submit"
@@ -159,3 +169,4 @@
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 </div>
+{% render 'product-notify-me', product: product, section_id: section_id %}

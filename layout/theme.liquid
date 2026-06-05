@@ -513,10 +513,12 @@
       <script src="{{ 'tvc-home-jump-nav.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {%- comment -%} Klaviyo onsite tracking - required for embed forms to display {%- endcomment -%}
-    <script
-      async
-      src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"
-    ></script>
+    {%- comment -%} Klaviyo embed — PDP uses hosted onsite.js for Back in Stock {%- endcomment -%}
+    {%- unless request.page_type == 'product' -%}
+      <script
+        async
+        src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"
+      ></script>
+    {%- endunless -%}
   </body>
 </html>

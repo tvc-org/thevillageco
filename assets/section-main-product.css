@@ -445,10 +445,73 @@ a.product__text {
 .product-form__purchase-row {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   gap: 1.6rem;
   width: 100%;
   max-width: 60rem;
+}
+
+.product-form__purchase-row .product-form__notify-me {
+  flex: 0 0 100%;
+  margin-top: 0;
+  width: 100%;
+}
+
+.product-form__notify-me {
+  display: none;
+}
+
+.product-form__notify-me.is-visible {
+  display: block;
+}
+
+.product__info-container .product-form__notify-me .klaviyo-bis-trigger {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 3rem;
+  border: none;
+  border-radius: 999px;
+  background-color: #1a1a1a;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  min-height: 5.2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.product__info-container .product-form__purchase-row .product-form__notify-me .klaviyo-bis-trigger {
+  min-height: 62px;
+  height: 62px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 20px !important;
+}
+
+.product__info-container .product-form__notify-me .klaviyo-bis-trigger:not(.disabled):hover,
+.product__info-container .product-form__notify-me .klaviyo-bis-trigger:not(.disabled):focus-visible {
+  background-color: #000;
+  color: #fff;
+  outline: 0.2rem solid rgba(255, 255, 255, 0.6);
+  outline-offset: 0.2rem;
+}
+
+.product__info-container .product-form__notify-me .klaviyo-bis-trigger.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .product-form__purchase-row .product-form__quantity {

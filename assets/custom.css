@@ -596,6 +596,17 @@ body slider-component.slider-component-full-width {
     max-width: 100%;
 }
 
+/* PDP: hide duplicate sold-out badges until a single placement is chosen */
+.product__badges .card__badge--sold-out,
+.product__info-wrapper .price__badge-sold-out {
+    display: none !important;
+}
+
+#klaviyo-bis-iframe,
+#klaviyo-bis-modal {
+    z-index: 100000;
+}
+
 .shopify-section.section .collection .card--standard .card-information > .price {
     color: #777;
 }
