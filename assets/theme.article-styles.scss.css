@@ -413,6 +413,23 @@
     margin-bottom: 32px
 }
 
+.article .article-container img,
+.article .blog-copy-section img {
+    height: auto;
+    max-width: 100%
+}
+
+.ratio-height > .ratio-inner img,
+.ratio-height > .ratio-inner picture {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
 .article .article-container,
 .article .article-header,
 .article .article-share,
@@ -470,8 +487,10 @@
     -o-object-fit: cover;
     object-fit: cover;
     min-height: 256px;
+    height: auto;
     margin: 0;
-    display: inline-block
+    display: block;
+    max-width: 100%
 }
 
 .article .article-image-wrapper .article-image-caption {
@@ -790,6 +809,7 @@
 .article.metafields .article-container figure.inline-image img {
 	display:block;
 	width:100%;
+	height:auto;
 }
 
 .article.metafields h2, .article.metafields .blog-copy-section,
@@ -918,6 +938,7 @@
 .article.metafields .article-image-wrapper-meta img {
     display: block;
     max-width: 100%;
+    width: 100%;
     height: auto;
 }
 
@@ -958,10 +979,16 @@
 .article.metafields .blog-carousel .inner .image img {
 	display:block;
 	width:100%;
+	height:auto;
 }
 
-.article.metafields .blog-carousel.single .inner .image img {
-	height:auto;
+.blog-carousel.single.flickity-enabled .flickity-viewport {
+	height: auto !important;
+}
+
+.blog-carousel.single.flickity-enabled .flickity-slider {
+	height: auto !important;
+	position: relative;
 }
 
 .article.metafields .blog-carousel .inner .text,
@@ -1002,6 +1029,7 @@
 .article.metafields .blog-banner-section .image.full-width video {
 	max-width:none;
 	width:100%;
+    height:auto;
 }
 
 .article h2.related-posts-title {
@@ -1058,8 +1086,10 @@
 }
 
 .blog-carousel .item img {
+	display:block;
 	max-width:none;
 	width:100%;
+	height:auto;
 }
 
 .blog-carousel:not(.single) .flickity-viewport {
@@ -1595,6 +1625,7 @@
 .article.metafields .article-container figure.inline-image img {
 	display:block;
 	width:100%;
+	height:auto;
 }
 
 .article.metafields h2, .article.metafields .blog-copy-section,

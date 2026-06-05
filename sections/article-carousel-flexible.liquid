@@ -34,7 +34,7 @@
 
 {% if section.blocks.size > 0 %}
 <section class="blog-carousel-section single">
-	<div class="blog-carousel single" data-flickity='{ "freeScroll": true, "contain": "true" }'>
+	<div class="blog-carousel single" data-flickity='{ "freeScroll": true, "contain": true, "adaptiveHeight": true, "imagesLoaded": true }'>
 		{% for block in section.blocks %}
 		<div class="item">
 			<div class="inner">

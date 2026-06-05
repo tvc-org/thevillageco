@@ -12,6 +12,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Single carousels: resize Flickity once images load so slides keep natural aspect ratio
+  document.querySelectorAll('.blog-carousel.single[data-flickity]').forEach(function (carousel) {
+    function resizeCarousel() {
+      if (typeof Flickity === 'undefined') return;
+      var instance = Flickity.data(carousel);
+      if (instance) instance.resize();
+    }
+
+    carousel.querySelectorAll('img').forEach(function (img) {
+      if (img.complete) return;
+      img.addEventListener('load', resizeCarousel);
+    });
+
+    resizeCarousel();
+    window.addEventListener('load', resizeCarousel);
+  });
+
   // Initialize Flickity for blog carousels that don't already have data-flickity
   // (blog-carousel-section.liquid already uses data-flickity attribute)
   document.querySelectorAll('.blog-carousel:not([data-flickity])').forEach(function (carousel) {
