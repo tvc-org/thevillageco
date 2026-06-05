@@ -1,10 +1,9 @@
 /**
  * Dawn glue for Klaviyo Back in Stock.
  * Only reveal the notify slot once Klaviyo has finished init (modal exists).
- * Never show a pre-rendered trigger — that causes showModal errors on early click.
  */
 (function () {
-  const RETRY_DELAYS_MS = [0, 500, 1000, 2000, 3000];
+  const RETRY_DELAYS_MS = [0, 500, 1000, 2000, 3000, 5000];
 
   function getContainer() {
     return document.querySelector('.product-form__notify-me');
@@ -60,6 +59,7 @@
     });
   }
 
+  document.addEventListener('klaviyo:backinstock:enabled', schedule);
   document.addEventListener('DOMContentLoaded', schedule);
   window.addEventListener('load', schedule);
 
