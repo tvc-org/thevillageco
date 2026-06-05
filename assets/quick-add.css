@@ -29,6 +29,10 @@
   z-index: 101;
 }
 
+.quick-add-modal:not([open]) .quick-add-modal__toggle {
+  display: none;
+}
+
 .quick-add-modal .scroll-trigger.scroll-trigger {
   animation: none;
   opacity: 1;

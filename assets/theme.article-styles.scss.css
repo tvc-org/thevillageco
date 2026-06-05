@@ -333,6 +333,7 @@
 
 .article {
     font-family: 'Inter', sans-serif;
+    overflow:hidden;
     /* font-size: 14px; */
     /* font-size: 21px; */
 }
@@ -1508,7 +1509,7 @@
 }
 
 .article.metafields h1 {
-	font-weight:700;
+	font-weight:500;
 	color: #323131;
 }
 

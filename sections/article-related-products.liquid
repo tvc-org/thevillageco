@@ -17,7 +17,7 @@
     {
       "type": "select",
       "id": "quick_add",
-      "default": "none",
+      "default": "standard",
       "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
       "options": [
         {
@@ -98,16 +98,23 @@
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
-{%- unless section.settings.quick_add == 'none' -%}
+{%- liquid
+  assign card_quick_add = section.settings.quick_add
+  if card_quick_add == blank or card_quick_add == 'none'
+    assign card_quick_add = 'standard'
+  endif
+-%}
+
+{%- unless card_quick_add == 'none' -%}
   {{ 'quick-add.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 {%- endunless -%}
 
-{%- if section.settings.quick_add == 'standard' -%}
+{%- if card_quick_add == 'standard' -%}
   <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
-{%- if section.settings.quick_add == 'bulk' -%}
+{%- if card_quick_add == 'bulk' -%}
   <script src="{{ 'quick-add-bulk.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'quantity-popover.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -143,7 +150,7 @@
             lazy_load: lazy_load,
             skip_styles: skip_card_product_styles,
             section_id: section.id,
-            quick_add: 'standard'
+            quick_add: card_quick_add
           %}
         </li>
         {%- assign skip_card_product_styles = true -%}

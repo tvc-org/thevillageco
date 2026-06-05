@@ -633,6 +633,12 @@
     visibility: visible;
     pointer-events: auto;
   }
+
+  /* Closed quick-add modals live inside the overlay until JS moves them to <body>. */
+  .card__media-quick-add quick-add-modal:not([open]),
+  .card__media-quick-add .quick-add-modal:not([open]) {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
