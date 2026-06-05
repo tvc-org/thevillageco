@@ -14,9 +14,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24' # Force the pipeline onto Node 24
 
       - name: Run Theme Check
         run: npx --yes @shopify/cli@latest theme check
