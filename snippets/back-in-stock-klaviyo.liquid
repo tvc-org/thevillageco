@@ -2,7 +2,7 @@
   Klaviyo Back in Stock — requires https://a.klaviyo.com/media/js/onsite/onsite.js loaded first.
   @param section_id {String}
 {% endcomment %}
-<script>
+<script defer="defer">
   var klaviyo = klaviyo || [];
   klaviyo.init({
     account: {{ settings.klaviyo_company_id | default: 'UT3Uie' | json }},

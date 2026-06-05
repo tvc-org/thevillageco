@@ -74,6 +74,8 @@
           src="{{ article_images[0] }}"
           alt="{{ article_captions[0] | escape }}"
           loading="lazy"
+          width="1036"
+          height="495"
         >
         {%- if article_captions.size > 0 and article_captions[0] != blank -%}
           <figcaption class="article-image-caption">{{ article_captions[0] }}</figcaption>
@@ -119,6 +121,8 @@
             src="{{ article.image | image_url: width: 1024 }}"
             alt="{{ article.image.alt | default: article.title | escape }}"
             loading="lazy"
+            width="{{ article.image.width }}"
+            height="{{ article.image.height }}"
           >
         {%- endif -%}
       </figure>
@@ -140,6 +144,8 @@
             src="{{ article_images[img_loop] }}"
             alt="{{ article_captions[img_loop] | escape }}"
             loading="lazy"
+            width="1024"
+            height="683"
           >
           {%- if article_captions.size > img_loop and article_captions[img_loop] != blank -%}
             <figcaption class="article-image-caption">{{ article_captions[img_loop] }}</figcaption>
@@ -265,7 +271,13 @@
                         {{ item | image_url: width: 1280 }} 2x
                       "
                     >
-                    <img src="{{ item | image_url: width: 640 }}" alt="{{ item.alt | escape }}" loading="lazy">
+                    <img
+                      src="{{ item | image_url: width: 640 }}"
+                      alt="{{ item.alt | escape }}"
+                      loading="lazy"
+                      width="{{ item.width }}"
+                      height="{{ item.height }}"
+                    >
                   </picture>
                 </div>
               {%- endfor -%}
