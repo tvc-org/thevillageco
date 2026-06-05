@@ -1,5 +1,33 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
+{%- liquid
+  assign article_content_chunks = article.metafields.custom_fields.content_html_chunks.value
+  if article_content_chunks == blank
+    assign article_content_chunks = article.metafields.custom_fields.content_html_chunks | map: 'content_html_chunks'
+  endif
+
+  assign bonify_blog_sections = article.metafields.custom.blog_sections.value
+  assign use_bonify_article = false
+
+  if article_content_chunks != blank and article_content_chunks.size > 0
+    assign use_bonify_article = true
+  endif
+
+  if bonify_blog_sections != blank
+    assign use_bonify_article = true
+  endif
+
+  if template.suffix == 'metafields'
+    assign use_bonify_article = true
+  endif
+-%}
+
+{%- if use_bonify_article -%}
+  {{ 'component-card.css' | asset_url | stylesheet_tag }}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  {{ 'template-collection.css' | asset_url | stylesheet_tag }}
+  {% render 'article-bonify-render' %}
+{%- else -%}
 <article class="article-template">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
@@ -72,13 +100,7 @@
         </div>
 
       {%- when 'share' -%}
-        <div
-          class="article-template__social-sharing page-width page-width--narrow{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {{ block.shopify_attributes }}
-        >
-          {% assign share_url = request.origin | append: article.url %}
-          {% render 'share-button', block: block, share_link: share_url %}
-        </div>
+        {%- comment -%} Share is rendered globally via snippets/article-share.liquid in layout/theme.liquid {%- endcomment -%}
     {%- endcase -%}
   {%- endfor -%}
 
@@ -287,6 +309,7 @@
     </div>
   {%- endif -%}
 </article>
+{%- endif -%}
 
 <script type="application/ld+json">
   {{ article | structured_data }}

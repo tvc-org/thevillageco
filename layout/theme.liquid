@@ -442,6 +442,7 @@
         {%- endif -%}
         {{ content_for_layout }}
         {%- if template.name == 'article' -%}
+          {% render 'article-share' %}
           </article>
         {%- endif -%}
       </main>

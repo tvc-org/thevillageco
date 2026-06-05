@@ -1,0 +1,53 @@
+{% comment %}
+  Legacy article share links (Bonify article layout).
+  Accepts: share_title, share_permalink, share_image
+{% endcomment %}
+{%- liquid
+  assign share_url = shop.url | append: share_permalink
+  assign mail_subject = 'Check this out on ' | append: shop.name
+  assign mail_body = 'Have a look at this item from ' | append: shop.name | append: ': ' | append: share_url
+-%}
+<div class="social-sharing">
+  <a
+    class="share-fb"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="//www.facebook.com/sharer.php?u={{ share_url | url_encode }}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-facebook.svg' | inline_asset_content -}}
+    </span>
+    <span class="visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+  </a>
+  <a
+    class="share-tw"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ share_url | url_encode }}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-twitter.svg' | inline_asset_content -}}
+    </span>
+    <span class="visually-hidden">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+  </a>
+  <a
+    class="share-pin"
+    target="_blank"
+    rel="noopener noreferrer"
+    href="//pinterest.com/pin/create/button/?url={{ share_url | url_encode }}{% if share_image %}&amp;media={{ share_image | image_url: width: 1024 | url_encode }}&amp;description={{ share_title | url_param_escape }}{% endif %}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-pinterest.svg' | inline_asset_content -}}
+    </span>
+    <span class="visually-hidden">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
+  </a>
+  <a
+    class="share-mail"
+    href="mailto:?subject={{ mail_subject | url_param_escape }}&amp;body={{ mail_body | url_param_escape }}"
+  >
+    <span class="svg-wrapper">
+      {{- 'icon-email.svg' | inline_asset_content -}}
+    </span>
+    <span class="visually-hidden">Share by email</span>
+  </a>
+</div>

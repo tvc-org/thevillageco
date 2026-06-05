@@ -1,0 +1,14 @@
+{
+  "layout": "theme",
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "blocks": {},
+      "block_order": [],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,50 @@
+{% comment %}
+  Inline / related product grid for Bonify article content.
+  Accepts: products (product objects), product_handles (array of handles), section_id
+{% endcomment %}
+{%- liquid
+  assign bonify_section_id = section_id | default: section.id | default: 'article-bonify'
+-%}
+<div class="collection-listing-wrapper">
+  <ul
+    class="grid product-grid contains-card contains-card--product{% if settings.card_style == 'standard' %} contains-card--standard{% endif %} grid--3-col-desktop grid--2-col-tablet-down horizontal-layout collection-products items"
+    role="list"
+  >
+    {%- if products != blank -%}
+      {%- for inline_product in products -%}
+        {%- if inline_product != blank -%}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: inline_product,
+              media_aspect_ratio: 'square',
+              show_vendor: false,
+              show_rating: false,
+              lazy_load: true,
+              skip_styles: forloop.first,
+              quick_add: 'none',
+              section_id: bonify_section_id
+            %}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif product_handles != blank -%}
+      {%- for product_handle in product_handles -%}
+        {%- assign inline_product = all_products[product_handle] -%}
+        {%- if inline_product != blank -%}
+          <li class="grid__item">
+            {% render 'card-product',
+              card_product: inline_product,
+              media_aspect_ratio: 'square',
+              show_vendor: false,
+              show_rating: false,
+              lazy_load: true,
+              skip_styles: forloop.first,
+              quick_add: 'none',
+              section_id: bonify_section_id
+            %}
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+</div>

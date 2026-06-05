@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Handle inline image positioning
-  document.querySelectorAll('.article-container .inline-image').forEach(function (element) {
+  // Handle inline image positioning (JSON sections + Bonify metaobject copy)
+  document.querySelectorAll('.article-container .inline-image, .blog-copy-section .inline-image').forEach(function (element) {
     let position = element.dataset.position;
-    let photoIndex = position ? position : 0;
-    let paragraphs = element.parentElement.querySelectorAll('> p');
-    console.log('paragraphs.length: ' + paragraphs.length);
+    let parent = element.parentElement;
+    if (!parent) return;
+
+    let paragraphs = parent.querySelectorAll(':scope > p, :scope > .metafield-rich_text_field > p');
     let target = paragraphs[position];
-    console.log('target: ' + (target ? 'found' : 'not found'));
-    console.log('position: ' + position);
     if (target) {
-      element.parentElement.insertBefore(element, target);
+      parent.insertBefore(element, target);
     }
   });
 

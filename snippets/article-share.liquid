@@ -1,0 +1,17 @@
+{% comment %}
+  Article share block — rendered at the bottom of all blog articles.
+  Accepts: share_title, share_permalink, share_image (optional; defaults to article)
+{% endcomment %}
+{%- liquid
+  assign share_title = share_title | default: article.title
+  assign share_permalink = share_permalink | default: article.url
+  assign share_image = share_image | default: article.image
+-%}
+<div class="article-share">
+  <h3 class="article-share-header">Share</h3>
+  {% render 'article-bonify-social-sharing',
+    share_title: share_title,
+    share_permalink: share_permalink,
+    share_image: share_image
+  %}
+</div>

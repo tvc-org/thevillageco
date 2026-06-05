@@ -1,0 +1,329 @@
+{% comment %}
+  Legacy Bonify article body (custom_fields chunks + custom.blog_sections metaobjects).
+  Rendered inside layout/theme.liquid <article class="article metafields"> wrapper.
+{% endcomment %}
+{%- liquid
+  assign article_content_chunks = article.metafields.custom_fields.content_html_chunks.value
+  if article_content_chunks == blank
+    assign article_content_chunks = article.metafields.custom_fields.content_html_chunks | map: 'content_html_chunks'
+  endif
+
+  assign article_images = article.metafields.custom_fields.images.value
+  if article_images == blank
+    assign article_images = article.metafields.custom_fields.images | map: 'images'
+  endif
+
+  assign article_captions = article.metafields.custom_fields.image_captions.value
+  if article_captions == blank
+    assign article_captions = article.metafields.custom_fields.image_captions | map: 'image_captions'
+  endif
+
+  assign article_products_raw = article.metafields.custom_fields.products
+  assign article_products = article_products_raw | split: '|'
+  assign article_product_position = article.metafields.custom_fields.product_position
+  assign article_hide_featured_image = article.metafields.custom_fields.hide_featured_image
+  assign bonify_blog_sections = article.metafields.custom.blog_sections.value
+  assign bonify_related_posts = article.metafields.custom_fields.related_blog_posts
+-%}
+
+<header class="article-header" role="banner">
+  {%- if article.tags.size > 0 -%}
+    <ul class="article-tags">
+      {%- for tag in article.tags -%}
+        <li>
+          <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag | escape }}</a>
+          {%- unless forloop.last -%}, {%- endunless -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <div class="article-date">
+    <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>
+  </div>
+  <h1 class="article-title">{{ article.title | escape }}</h1>
+</header>
+
+{%- liquid
+  assign show_featured_image = true
+  if article_hide_featured_image != blank and article_hide_featured_image != 0 and article_hide_featured_image != '0'
+    assign show_featured_image = false
+  endif
+
+  comment
+    article.liquid (content_html_chunks) used article-image-wrapper for hero.
+    article.metafields.liquid used article-image-wrapper-meta for hero.
+  endcomment
+  assign use_metafields_hero = false
+  if template.suffix == 'metafields'
+    assign use_metafields_hero = true
+  endif
+
+  if use_metafields_hero
+    assign hero_wrapper_class = 'article-image-wrapper-meta'
+  else
+    assign hero_wrapper_class = 'article-image-wrapper'
+  endif
+-%}
+
+{%- if show_featured_image -%}
+  {%- if article_images.size > 0 -%}
+    <div class="{{ hero_wrapper_class }}">
+      <figure>
+        <img
+          class="lazy"
+          src="{{ article_images[0] }}"
+          alt="{{ article_captions[0] | escape }}"
+          loading="lazy"
+        >
+        {%- if article_captions.size > 0 and article_captions[0] != blank -%}
+          <figcaption class="article-image-caption">{{ article_captions[0] }}</figcaption>
+        {%- endif -%}
+      </figure>
+    </div>
+  {%- elsif article.image -%}
+    <div class="{{ hero_wrapper_class }}">
+      <figure>
+        {%- if use_metafields_hero -%}
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                {{ article | image_url: width: 1036, height: 495, crop: 'center' }} 1x,
+                {{ article | image_url: width: 2072, height: 990, crop: 'center' }} 2x
+              "
+            >
+            <source
+              media="(min-width: 640px)"
+              srcset="
+                {{ article | image_url: width: 767, height: 366, crop: 'center' }} 1x,
+                {{ article | image_url: width: 1534, height: 733, crop: 'center' }} 2x
+              "
+            >
+            <source
+              media="(min-width: 1px)"
+              srcset="
+                {{ article | image_url: width: 640, height: 306, crop: 'center' }} 1x,
+                {{ article | image_url: width: 1280, height: 612, crop: 'center' }} 2x
+              "
+            >
+            <img
+              src="{{ article | image_url: width: 640, height: 306, crop: 'center' }}"
+              alt="{{ article.image.alt | escape }}"
+              loading="lazy"
+              width="640"
+              height="306"
+            >
+          </picture>
+        {%- else -%}
+          <img
+            src="{{ article.image | image_url: width: 1024 }}"
+            alt="{{ article.image.alt | default: article.title | escape }}"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </figure>
+    </div>
+  {%- endif -%}
+{%- endif -%}
+
+<div itemprop="articleBody">
+  {%- assign img_loop = 1 -%}
+  {%- for chunk in article_content_chunks -%}
+    <div class="article-container">{{ chunk }}</div>
+
+    {%- if forloop.index == article_product_position and article_products.size > 0 -%}
+      {% render 'article-bonify-products-inline', product_handles: article_products, section_id: section.id %}
+    {%- elsif article_images.size > img_loop -%}
+      <div class="article-image-wrapper">
+        <figure>
+          <img
+            src="{{ article_images[img_loop] }}"
+            alt="{{ article_captions[img_loop] | escape }}"
+            loading="lazy"
+          >
+          {%- if article_captions.size > img_loop and article_captions[img_loop] != blank -%}
+            <figcaption class="article-image-caption">{{ article_captions[img_loop] }}</figcaption>
+          {%- endif -%}
+        </figure>
+      </div>
+      {%- assign img_loop = img_loop | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if bonify_blog_sections != blank -%}
+    {%- for metaobject in bonify_blog_sections -%}
+      {%- case metaobject.system.type -%}
+        {%- when 'blog_copy_section' -%}
+          <section class="blog-copy-section">
+            <div class="article-container">
+              {%- if metaobject.image -%}
+                <figure
+                  class="inline-image{% if metaobject.image_align_right %} image-right{% else %} image-left{% endif %}"
+                  data-position="{{ metaobject.image_paragraph_alignment.value }}"
+                >
+                  <img
+                    src="{{ metaobject.image | image_url: width: 403, height: 403, crop: 'center' }}"
+                    alt="{{ metaobject.image.alt | escape }}"
+                    loading="lazy"
+                    width="403"
+                    height="403"
+                  >
+                  {%- if metaobject.image_caption -%}
+                    <figcaption class="article-image-caption">{{ metaobject.image_caption | metafield_tag }}</figcaption>
+                  {%- endif -%}
+                </figure>
+              {%- endif -%}
+              {%- if metaobject.body_text -%}
+                {{ metaobject.body_text | metafield_tag }}
+              {%- endif -%}
+              {%- if metaobject.html_content -%}
+                {{ metaobject.html_content.value }}
+              {%- endif -%}
+            </div>
+          </section>
+        {%- when 'blog_image_carousel' -%}
+          <section class="blog-carousel-section">
+            <div class="blog-carousel image-carousel" data-flickity='{ "freeScroll": true, "contain": true }'>
+              {%- for item in metaobject.images.value -%}
+                <div class="item">
+                  <div class="inner">
+                    <div class="image ratio-height ratio-100">
+                      <div class="ratio-inner">
+                        <img
+                          src="{{ item.image | image_url: width: 614, height: 614, crop: 'center' }}"
+                          alt="{{ item.image.alt | escape }}"
+                          loading="lazy"
+                          width="614"
+                          height="614"
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </section>
+        {%- when 'blog_carousel_section' -%}
+          <section class="blog-carousel-section">
+            <div class="blog-carousel" data-flickity='{ "freeScroll": true, "contain": true }'>
+              {%- for item in metaobject.items.value -%}
+                <div class="item">
+                  <div class="inner">
+                    <div class="image ratio-height ratio-100">
+                      <div class="ratio-inner">
+                        <img
+                          src="{{ item.image | image_url: width: 614, height: 614, crop: 'center' }}"
+                          alt="{{ item.image.alt | escape }}"
+                          loading="lazy"
+                          width="614"
+                          height="614"
+                        >
+                      </div>
+                    </div>
+                    {%- if item.caption -%}
+                      <div class="text">
+                        {{ item.caption }}
+                        {%- if item.link_path and item.link_label -%}
+                          <a href="{{ item.link_path }}">{{ item.link_label }}</a>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          </section>
+        {%- when 'blog_banner_image' -%}
+          <section class="blog-banner-section">
+            {%- if metaobject.image.value -%}
+              {%- for item in metaobject.image.value -%}
+                <div
+                  class="image{% if metaobject.full_width %} full-width{% endif %}"
+                  {% if metaobject.bottom_margin %}
+                    style="margin-bottom: {{ metaobject.bottom_margin }}"
+                  {% endif %}
+                >
+                  <picture>
+                    <source
+                      media="(min-width: 768px)"
+                      srcset="
+                        {{ item | image_url: width: 1920 }} 1x,
+                        {{ item | image_url: width: 2496 }} 2x
+                      "
+                    >
+                    <source
+                      media="(min-width: 640px)"
+                      srcset="
+                        {{ item | image_url: width: 767 }} 1x,
+                        {{ item | image_url: width: 1534 }} 2x
+                      "
+                    >
+                    <source
+                      media="(min-width: 1px)"
+                      srcset="
+                        {{ item | image_url: width: 640 }} 1x,
+                        {{ item | image_url: width: 1280 }} 2x
+                      "
+                    >
+                    <img src="{{ item | image_url: width: 640 }}" alt="{{ item.alt | escape }}" loading="lazy">
+                  </picture>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
+          </section>
+        {%- when 'blog_related_products' -%}
+          <section class="blog-related-products-section">
+            {% render 'article-bonify-products-inline', products: metaobject.product.value, section_id: section.id %}
+          </section>
+      {%- endcase -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if bonify_related_posts != blank -%}
+    <div class="related-blog-posts">
+      <h2 class="related-posts-title">Additional Reads...</h2>
+      <div class="related-items">
+        {%- assign article_refs = bonify_related_posts | split: '|' -%}
+        {%- for article_ref in article_refs -%}
+          {%- assign article_blog_handle = article_ref | split: '.' -%}
+          {%- assign related_blog = blogs[article_blog_handle[0]] -%}
+          {%- if related_blog != blank -%}
+            {%- for related_article in related_blog.articles -%}
+              {%- if related_article.handle == article_blog_handle[1] -%}
+                <div class="item">
+                  {%- if related_article.image -%}
+                    <a class="image" href="{{ related_article.url }}">
+                      <picture>
+                        <source
+                          media="(min-width: 1px)"
+                          srcset="
+                            {{ related_article | image_url: width: 402, height: 402, crop: 'center' }} 1x,
+                            {{ related_article | image_url: width: 804, height: 804, crop: 'center' }} 2x
+                          "
+                        >
+                        <img
+                          src="{{ related_article | image_url: width: 402, height: 402, crop: 'center' }}"
+                          alt="{{ related_article.image.alt | escape }}"
+                          loading="lazy"
+                          width="402"
+                          height="402"
+                        >
+                      </picture>
+                    </a>
+                  {%- endif -%}
+                  <h2 class="h4 title">{{ related_article.title | link_to: related_article.url }}</h2>
+                  {%- if related_article.excerpt != blank -%}
+                    {{ related_article.excerpt | strip_html | truncate: 100 }}
+                  {%- else -%}
+                    {{ related_article.content | strip_html | truncate: 100 }}
+                  {%- endif -%}
+                </div>
+                {%- break -%}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>

@@ -549,5 +549,8 @@
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
     }
+  },
+  "date_formats": {
+    "month_day_year": "%B %d, %Y"
   }
 }
