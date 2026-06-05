@@ -475,7 +475,9 @@ body slider-component.slider-component-full-width {
 
 .shopify-section.section .collection .card--standard .card__inner,
 .shopify-section.section .collection-list .card--standard .card__inner,
-.shopify-section.section .collection .collection-grid-featured--desktop .card__inner {
+.shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+.blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+.article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner {
     border-radius: 12px;
     overflow: hidden;
 }
@@ -565,7 +567,9 @@ body slider-component.slider-component-full-width {
 }
 
 /* Featured collection — product cards use card-product-badges via card-product */
-.featured-collection .product-grid .card__inner > .card__badge--media {
+.featured-collection .product-grid .card__inner > .card__badge--media,
+.blog-related-products-section .product-grid .card__inner > .card__badge--media,
+.article .collection-listing-wrapper .product-grid .card__inner > .card__badge--media {
     z-index: 6;
 }
 
@@ -603,12 +607,27 @@ body slider-component.slider-component-full-width {
 body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
 body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
 body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+body.mr-bubble .product-grid .grid__item .card--standard .card__inner,
+body.mr-bubble .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+body.mr-bubble .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection-list .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
-body.soft-dri .product-grid .grid__item .card--standard .card__inner {
+body.soft-dri .product-grid .grid__item .card--standard .card__inner,
+body.soft-dri .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+body.soft-dri .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner {
     border-radius: 16px;
     border: 1px solid #C7C7C7;
+    overflow: hidden;
+}
+
+/* Therapy — collection card radius without border (incl. article product grids) */
+body.village-naturals-therapy .product-grid .grid__item .card--standard .card__inner,
+body.village-naturals-therapy .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+body.village-naturals-therapy .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner {
+    border-radius: 16px;
+    border: none;
+    overflow: hidden;
 }
 
 .shopify-section.section .collection .card--standard > .card__content .card__information {
@@ -625,10 +644,18 @@ body.soft-dri .product-grid .grid__item .card--standard .card__inner {
     body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+    body.mr-bubble .product-grid .grid__item .card--standard .card__inner,
+    body.mr-bubble .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+    body.mr-bubble .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection-list .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
-    body.soft-dri .product-grid .grid__item .card--standard .card__inner {
+    body.soft-dri .product-grid .grid__item .card--standard .card__inner,
+    body.soft-dri .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+    body.soft-dri .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
+    body.village-naturals-therapy .product-grid .grid__item .card--standard .card__inner,
+    body.village-naturals-therapy .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+    body.village-naturals-therapy .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner {
         border-radius: 35px;
     }
 }

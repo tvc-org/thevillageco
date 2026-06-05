@@ -407,6 +407,7 @@
     color:#323131;
 	white-space: pre-wrap;
 	word-wrap: break-word;
+    font-weight:bold;
 }
 
 .article .article-container p {
@@ -957,9 +958,8 @@
     /* vertical-align: middle; */
     /* font-size: 4.2rem; */
     /* line-height: 1; */
-    width: 0.65em;
-    margin-left: -0.65em;
-    transform: translateY(3px);
+    width: 0.85em;
+    margin-left: -0.85em;
 }
 
 /*.article.metafields .slick-slide .inner {
@@ -1165,6 +1165,10 @@
 .article.metafields .graphic-text-block .graphic img {
 	display:block;
 	width:24px;
+}
+
+.article.metafields .graphic-text-block p:first-child {
+	margin-top:0;
 }
 
 .article.metafields .graphic-text-block:last-child p:last-child {
