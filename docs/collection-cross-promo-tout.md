@@ -20,6 +20,7 @@ Per-collection promo cells in the product grid. Touts only render when assigned 
 | `video` | File | Video only. **Overrides** `image` when set. |
 | `title` | Multi-line text | Shown over media (line breaks preserved). |
 | `link` | URL | Card link; Shopify stores `{ url, text }` — theme uses `url` for `href` and `text` for the CTA label (default `Shop now` if empty). |
+| `mobile_link_label` | Single line text | Optional. When set, replaces the link CTA label below 750px; `link` text is used at 750px and up. |
 | `text_color` | Single line text | `dark` (default) or `light`. Dark = dark title/CTA with light bottom scrim; light = white text with dark scrim. |
 
 Create one metaobject **entry** per tout (e.g. “Mr Bubble cross promo”). Reuse the same entry on multiple collections if needed.
@@ -45,7 +46,7 @@ Collections with an empty list show no touts. Other collections are unaffected.
 collection.metafields.custom.cross_promo_touts.value
 ```
 
-Each item: `tout.grid_position`, `tout.image`, `tout.video`, `tout.title`, `tout.link`, `tout.text_color` (`.value` where needed). Media always fills the cell (`object-fit: cover`).
+Each item: `tout.grid_position`, `tout.image`, `tout.video`, `tout.title`, `tout.link`, `tout.mobile_link_label`, `tout.text_color` (`.value` where needed). Media always fills the cell (`object-fit: cover`).
 
 **Grid position** uses the collection’s full product order (`paginate.current_offset` + index), so a tout at position `5` only appears once (before the 5th product), not again on page 2. Collection featured image in the grid is not counted.
 

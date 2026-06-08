@@ -2356,6 +2356,10 @@
               "label": "Link",
               "info": "URL and link text; link text is used as the CTA label on the card."
             },
+            "mobile_link_label": {
+              "label": "Mobile link label",
+              "info": "Optional. Replaces the link CTA label below 750px when set."
+            },
             "text_color": {
               "label": "Text color",
               "options__1": {

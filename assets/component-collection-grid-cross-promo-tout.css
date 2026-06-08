@@ -1,6 +1,9 @@
 /* Collection grid — cross-promotion tout (full-bleed media, title/CTA overlay) */
 
-/* Match product card media (.card__inner.ratio) height only — not full card + title row */
+/*
+ * Desktop: match product card media (.card__inner.ratio) only — not title/price row.
+ * Mobile: stretch to full sibling product card height (image + info).
+ */
 .product-grid > .grid__item.collection-grid-tout {
   align-self: start;
 }
@@ -59,45 +62,112 @@
   justify-content: flex-end;
   align-items: flex-start;
   gap: 10px;
-  padding: 20px;
+  padding: 14px;
   pointer-events: none;
 }
 
 /* Default: dark text on media */
-.collection-grid-tout__media--text-dark .collection-grid-tout__overlay {
+/* .collection-grid-tout__media--text-dark .collection-grid-tout__overlay {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.72) 100%);
-}
+} */
 
-.collection-grid-tout__media--text-dark .collection-grid-tout__title,
-.collection-grid-tout__media--text-dark .collection-grid-tout__cta {
-  color: var(--color-text, #2c2c2c);
-}
-
-.collection-grid-tout__media--text-dark .collection-grid-tout__link:hover .collection-grid-tout__cta,
-.collection-grid-tout__media--text-dark .collection-grid-tout__link:focus-visible .collection-grid-tout__cta {
+.collection-grid-tout__media--text-dark .collection-grid-tout__title {
   color: var(--color-text, #2c2c2c);
 }
 
 /* Light text + scrim for busy/dark imagery */
-.collection-grid-tout__media--text-light .collection-grid-tout__overlay {
+/* .collection-grid-tout__media--text-light .collection-grid-tout__overlay {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.55) 100%);
+} */
+
+.collection-grid-tout__media--text-light .collection-grid-tout__title {
+  color: #fff;
 }
 
-.collection-grid-tout__media--text-light .collection-grid-tout__title,
+/* CTA — button treatment; colors invert per tout text theme */
+.collection-grid-tout__cta {
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  padding: 5px 16px;
+  border-radius: 120px;
+  transition: opacity 0.2s ease;
+}
+
+.collection-grid-tout__cta--desktop-only {
+  display: none;
+}
+
+.collection-grid-tout__media--text-dark .collection-grid-tout__cta {
+  color: #fff;
+  background-color: var(--color-text, #2c2c2c);
+}
+
 .collection-grid-tout__media--text-light .collection-grid-tout__cta {
-  color: #fff;
+  color: var(--color-text, #2c2c2c);
+  background-color: #fff;
 }
 
-.collection-grid-tout__media--text-light .collection-grid-tout__link:hover .collection-grid-tout__cta,
-.collection-grid-tout__media--text-light .collection-grid-tout__link:focus-visible .collection-grid-tout__cta {
-  color: #fff;
+.collection-grid-tout__link:hover .collection-grid-tout__cta,
+.collection-grid-tout__link:focus-visible .collection-grid-tout__cta {
+  opacity: 0.88;
 }
 
+@media screen and (max-width: 749px) {
+  .product-grid > .grid__item.collection-grid-tout {
+    align-self: stretch;
+  }
 
+  .collection-grid-tout__card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .collection-grid-tout__link {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .collection-grid-tout__media.ratio {
+    flex: 1 1 auto;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .collection-grid-tout__media.ratio::before {
+    content: none;
+    display: none;
+    padding-bottom: 0;
+  }
+
+  .collection-grid-tout__title {
+    font-size: 20px;
+  }
+}
 
 @media screen and (min-width: 750px) {
   .collection-grid-tout__overlay {
     padding: 32px;
+  }
+
+  .collection-grid-tout__cta {
+    font-size: 18px;
+    padding: 20px 35px;
+  }
+
+  .collection-grid-tout__cta--mobile-only {
+    display: none;
+  }
+
+  .collection-grid-tout__cta--desktop-only {
+    display: inline-block;
   }
 }
 

@@ -33,6 +33,8 @@
     assign tout_link_text = 'Shop now'
   endif
 
+  assign tout_mobile_link_text = tout.mobile_link_label.value | default: tout.mobile_link_label | strip
+
   assign tout_ratio = 1
   if image_ratio == 'portrait'
     assign tout_ratio = 0.8
@@ -106,7 +108,16 @@
               </h2>
             {%- endif -%}
             {%- if tout_link_url != blank and tout_link_text != blank -%}
-              <span class="collection-grid-tout__cta cta-link">{{ tout_link_text | escape }}</span>
+              {%- if tout_mobile_link_text != blank -%}
+                <span class="collection-grid-tout__cta collection-grid-tout__cta--mobile-only cta-link">
+                  {{- tout_mobile_link_text | escape -}}
+                </span>
+                <span class="collection-grid-tout__cta collection-grid-tout__cta--desktop-only cta-link">
+                  {{- tout_link_text | escape -}}
+                </span>
+              {%- else -%}
+                <span class="collection-grid-tout__cta cta-link">{{ tout_link_text | escape }}</span>
+              {%- endif -%}
             {%- endif -%}
           </div>
         {%- endif -%}
