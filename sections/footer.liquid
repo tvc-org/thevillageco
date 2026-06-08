@@ -5,13 +5,14 @@
 {{ 'component-list-payment.css' | asset_url | stylesheet_tag }}
 {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%} Same resolver as header — reads sections['header'].blocks after header-group renders {%- endcomment -%}
+{%- capture brand_handle_resolved -%}
+  {%- render 'resolve-brand-handle' -%}
+{%- endcapture -%}
+{% assign brand_handle_resolved = brand_handle_resolved | strip %}
+
 {% assign footer_brand_blocks = section.blocks | where: 'type', 'brand' %}
 {% if footer_brand_blocks.size > 0 %}
-  {%- comment -%} Same resolver as header — reads sections['header'].blocks after header-group renders {%- endcomment -%}
-  {%- capture brand_handle_resolved -%}
-    {%- render 'resolve-brand-handle' -%}
-  {%- endcapture -%}
-  {% assign brand_handle_resolved = brand_handle_resolved | strip %}
   {% for block in footer_brand_blocks %}
     {% assign block_brand_handle = block.settings.text | handleize %}
     {% if block.settings.text != blank and block_brand_handle == brand_handle_resolved %}
@@ -63,8 +64,13 @@
 {%- endstyle -%}
 
 {%- liquid
+  comment
+    TVC homepage footer layout: integrated Klaviyo signup, wide logo, no Shop/Help columns.
+    Apply on the homepage and every page that resolves to The Village Co (e.g. /pages/contact-us).
+    Sub-brands keep the stacked footer-subscription block + standard footer columns.
+  endcomment
   assign footer_is_homepage = false
-  if request.page_type == 'index'
+  if request.page_type == 'index' or brand_handle_resolved == 'the-village-co'
     assign footer_is_homepage = true
   endif
 -%}

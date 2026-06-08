@@ -278,6 +278,8 @@ a.product__text {
 
 .product__title > * {
   margin: 0;
+  letter-spacing: 0;
+  line-height: 1.1;
 }
 
 .product__title > a {
