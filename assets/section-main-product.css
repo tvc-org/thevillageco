@@ -282,6 +282,12 @@ a.product__text {
   line-height: 1.1;
 }
 
+body.village-naturals-therapy .product__title > * {
+  letter-spacing: -1px;
+  line-height: 1.2;
+  font-weight: 500;
+}
+
 .product__title > a {
   display: none;
 }

@@ -135,9 +135,12 @@ body.village-naturals-therapy .h3,
 body.village-naturals-therapy h4,
 body.village-naturals-therapy .h4,
 body.village-naturals-therapy h5,
-body.village-naturals-therapy .h5 {
+body.village-naturals-therapy .h5,
+body.village-naturals-therapy h6,
+body.village-naturals-therapy .h6 {
     font-family: "Larken", sans-serif;
     font-weight: 400;
+    color: var(--color-title-therapy);
 }
 
 /* ==========================================================================
@@ -1870,9 +1873,14 @@ body.bath-shoppe.template-product {
     border-bottom: 2px solid #e7e9ed !important;
 }
 
+body.village-naturals-therapy .accordion {
+    border-top: 1px solid #C8B5A2 !important;
+    border-bottom: 1px solid #C8B5A2 !important;
+}
+
 /* First accordion among siblings (not :first-child — PDP blocks share .product__info-container). */
 .accordion:nth-child(1 of .accordion),
-.accordion + .accordion {
+.accordion + .accordion, body.village-naturals-therapy .accordion + .accordion {
     border-top: none !important;
 }
 
@@ -1893,6 +1901,11 @@ body.bath-shoppe.template-product {
     text-transform: uppercase;
     font-family: "FuturaPTHeavy";
     font-size: 20px;
+}
+
+body.village-naturals-therapy .accordion__title {
+    font-weight: 700;
+    text-transform: none;
 }
 
 @media screen and (min-width: 1025px) {
@@ -2166,6 +2179,14 @@ body.soft-dri .footer__content-bottom-wrapper.page-width:first-child:before {
     .footer__social-col .list-social {
         justify-content: flex-start !important;
         column-gap: 14px;
+    }
+    .footer__social-col .list-social .list-social__item .svg-wrapper {
+        width: 32px;
+        height: 32px;
+    }
+    .footer__social-col .list-social .list-social__item .icon {
+        width: 32px;
+        height: 32px;
     }
     .footer__menus-col {
         order: 3;
@@ -3298,10 +3319,16 @@ body.mr-bubble .product-grid .grid__item .block-review-rate svg.star-container.y
     stroke: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
 }
 
-/* --- Village Naturals Therapy — Yotpo stars --- */
+/* --- Village Naturals Therapy — brand tokens --- */
 body.village-naturals-therapy {
+    --color-text-therapy: #4F463C;
+    --color-title-therapy: #3F3F3F;
+    --color-text: var(--color-text-therapy);
     --village-naturals-therapy-brand: #8E6D98;
+    color: var(--color-text-therapy);
 }
+
+/* --- Village Naturals Therapy — Yotpo stars --- */
 
 body.village-naturals-therapy .search-modal.gradient {
     --gradient-background: var(--brand-background-color);
@@ -3346,6 +3373,64 @@ body.village-naturals-therapy .product__info-wrapper .yotpo.bottomLine .yotpo-st
 body.mr-bubble .product__info-wrapper .yotpo.bottomLine .yotpo-icon-star.rating-star,
 body.mr-bubble .product__info-wrapper .yotpo.bottomLine .yotpo-stars .yotpo-icon {
     color: var(--brand-announcement-bar-background, var(--mr-bubble-brand-pink)) !important;
+}
+
+/* PDP variant pills — Therapy: outlined pills, Larken option label */
+body.village-naturals-therapy .product-form__pill-legend {
+    font-family: "Larken", sans-serif !important;
+    font-size: 20px !important;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--color-title-therapy) !important;
+}
+
+@media screen and (min-width: 1025px) {
+    body.village-naturals-therapy .product-form__pill-legend {
+        font-size: 24px !important;
+    }
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio'] + label {
+    background-color: transparent;
+    border: 1px solid rgba(21, 21, 21, 0.33);
+    color: var(--color-text-therapy);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio'] + label:before {
+    box-shadow: none;
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio'] + label:hover {
+    border-color: var(--color-title-therapy);
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio']:checked + label {
+    background-color: transparent;
+    border: 2px solid var(--color-title-therapy);
+    color: var(--color-title-therapy);
+    font-weight: 700;
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio']:checked + label::selection {
+    background-color: rgba(63, 63, 63, 0.15);
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio']:disabled + label,
+body.village-naturals-therapy .product-form__input--pill input[type='radio'].disabled + label {
+    background-color: transparent;
+    border-color: rgba(79, 70, 60, 0.2);
+    color: rgba(79, 70, 60, 0.45);
+}
+
+body.village-naturals-therapy .product-form__input--pill input[type='radio'].disabled:checked + label,
+body.village-naturals-therapy .product-form__input--pill input[type='radio']:disabled:checked + label {
+    background-color: transparent;
+    border-color: rgba(63, 63, 63, 0.35);
+    color: rgba(63, 63, 63, 0.45);
 }
 
 /* PDP variant pills: Mr. Bubble uses outlined active state (blue) instead of filled */
@@ -3525,6 +3610,10 @@ body.mr-bubble .product-form__input--pill input[type='radio']:disabled:checked +
 .badge.badge-new {
     color: #fff;
     background: #2C5DB5;
+}
+
+body.village-naturals-therapy .badge.badge-new {
+    background: var(--village-naturals-therapy-brand);
 }
 
 .badge.badge-low-stock {
