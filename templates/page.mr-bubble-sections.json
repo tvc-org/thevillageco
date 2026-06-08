@@ -28,13 +28,13 @@
             "image": "shopify://shop_images/make-a-splash-hero.jpg",
             "mobile_image": "shopify://shop_images/make-a-splash-hero-mobile.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Make a Splash Without the Sting",
-            "text": "<p>Turn every summer day into a bubble-filled adventure. Our tear-free formula means more playtime in the sun and more fun in the tub.</p>",
+            "heading": "Turn Bath Time Into Bubble Time",
+            "text": "<p>Watch bath time come to life with colorful, creative add-ins that transform an ordinary tub into a world of imaginative fun.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
-            "link": "shopify://collections/mr-bubble-collections",
-            "link_label": "Shop Summer Essentials"
+            "link": "shopify://collections/mr-bubble-bath-boosters",
+            "link_label": "Shop Bath Boosters"
           }
         }
       },
@@ -164,12 +164,12 @@
             "mobile_image": "shopify://shop_images/millions-of-bubbles-mobile.jpg",
             "preserve_image_aspect_ratio": true,
             "heading": "BUBBLES MAKE \nEVERYTHING BETTER",
-            "text": "<p>The original bubble bath, now 65 years of giggles and foam beards. Big, fluffy bubbles that are gentle enough for little skin</p>",
+            "text": "<p>For 65 years, Mr. Bubble Original Bubble Bath has filled tubs with fluffy bubbles, foam beards, and the classic bubble gum scent families love. Gentle on skin and made for bath-time fun.</p>",
             "stacked_text_in_media": true,
             "stacked_desktop_overlay_text_tone": "light",
             "stacked_text_position": "bottom_left",
-            "link": "shopify://pages/about-mr-bubble",
-            "link_label": "Our Story"
+            "link": "shopify://collections/mr-bubble-bubble-bath",
+            "link_label": "Shop Bubble Bath"
           }
         }
       },
@@ -195,7 +195,7 @@
             "collection": "mr-bubble-baby-bubble",
             "image_override": "shopify://shop_images/collection-baby-bubble.jpg",
             "title_override": "BABY BUBBLE",
-            "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
+            "short_description": "Created for the tiniest bathers, Mr. Bubble’s Baby Bubble collection combines skin-nourishing superfoods with the gentle care families have trusted for generations."
           }
         },
         "featured_collection_A4MMy9": {
@@ -203,8 +203,8 @@
           "settings": {
             "collection": "mr-bubble-bubble-bath",
             "image_override": "shopify://shop_images/collection-mr-bubble.jpg",
-            "title_override": "MR BUBBLE",
-            "short_description": "Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus."
+            "title_override": "BUBBLE BATH",
+            "short_description": "From the iconic bubble gum scent to extra-gentle, fragrance-free formulas, Mr. Bubble Bubble Bath delivers the bubbly fun families have loved for generations."
           }
         },
         "featured_collection_YfcNPj": {
@@ -256,7 +256,7 @@
             "image": "shopify://shop_images/super-blaster.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "SUPER BLASTER BODY WASH",
-            "text": "<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus.</p>",
+            "text": "<p>With a fun-to-use sprayer and bubbly cleansing action, Mr. Bubble Super Blaster Body Wash makes getting clean part of the fun.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_left",
