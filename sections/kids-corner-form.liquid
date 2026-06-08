@@ -1,0 +1,728 @@
+{% schema %}
+{
+  "name": "Kids Corner Form",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Kids Corner Form",
+      "category": "Custom Content",
+      "settings": {}
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"]
+  }
+}
+{% endschema %}
+
+<style>
+    /* Kids Corner color palette – single definition on :root */
+    :root {
+      --kc-blue: #003ca5;
+      --kc-blue-light: #00aeef;
+      --kc-pink: #ef5095;
+      --kc-pink-light: #FFC0CB;
+      --kc-text-dark: #333;
+      --kc-yellow: #f8d10c;
+    }
+
+    .kids-corner-section p {
+      line-height: 1.2;
+    }
+
+    /* Kids Corner form skin – handwritten-style layout, sans-serif */
+    /* Use ID so styles win over Cognito’s and apply to injected form */
+    #kids-corner-form.kids-corner-form,
+    #kids-corner-form {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 30px;
+    }
+
+    #kids-corner-form .cog-form__container { padding: 0; }
+    #kids-corner-form .cog-form__content { padding: 0; }
+
+    /* Header / title */
+    #kids-corner-form .cog-header { text-align: center; margin-bottom: 8px; }
+    #kids-corner-form .cog-heading {
+      font-family: 'Bubbly', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--kc-blue);
+      margin: 0 0 3px 0;
+    }
+    #kids-corner-form .cog-header__description {
+      font-family: 'Bubbly', sans-serif;
+      font-size: 15px;
+      color: var(--kc-blue);
+      margin: 0;
+    }
+
+    /* Rows and spacing – tight vertical rhythm to match design */
+    #kids-corner-form .cog-row { margin-bottom: 4px; }
+    #kids-corner-form .cog-field,
+    #kids-corner-form .cog-col { margin-bottom: 0; }
+    #kids-corner-form .cog-field__placeholder { display: none; }
+
+    /* Labels – inline with fields for single-line/phone/email/date */
+    #kids-corner-form .cog-label {
+      font-family: 'Bubbly', sans-serif;
+      font-size: 20px;
+      color: var(--kc-blue);
+      font-weight: 600;
+      margin: 0;
+    }
+    #kids-corner-form .cog-text--singleline .cog-label,
+    #kids-corner-form .cog-phone .cog-label,
+    #kids-corner-form .cog-email .cog-label,
+    #kids-corner-form .cog-date .cog-label {
+      display: inline;
+      margin-right: 6px;
+      white-space: nowrap;
+      margin: 0;
+    }
+    #kids-corner-form .cog-asterisk { color: var(--kc-pink); }
+    #kids-corner-form .cog-offscreen { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+    /* Inline layout: label and underline on same row */
+    #kids-corner-form .cog-text--singleline,
+    #kids-corner-form .cog-phone,
+    #kids-corner-form .cog-email,
+    #kids-corner-form .cog-date {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: flex-end;
+      gap: 0 6px;
+    }
+    #kids-corner-form .cog-text--singleline .cog-input,
+    #kids-corner-form .cog-phone .cog-input,
+    #kids-corner-form .cog-email .cog-input,
+    #kids-corner-form .cog-date .cog-input {
+      flex: 1;
+      min-width: 120px;
+    }
+
+    /* Single-line inputs: underline only */
+    #kids-corner-form .cog-text--singleline .el-input__inner,
+    #kids-corner-form .cog-phone .el-input__inner,
+    #kids-corner-form .cog-email .el-input__inner {
+      border: none;
+      border-bottom: 2px solid var(--kc-pink);
+      border-radius: 0;
+      background: transparent;
+      padding: 3px 0 6px 0;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--kc-text-dark);
+      width: 100%;
+      box-shadow: none;
+    }
+    #kids-corner-form .cog-text--singleline .el-input,
+    #kids-corner-form .cog-phone .el-input,
+    #kids-corner-form .cog-email .el-input { border: none; }
+    #kids-corner-form .cog-text--singleline .el-input__inner:focus,
+    #kids-corner-form .cog-phone .el-input__inner:focus,
+    #kids-corner-form .cog-email .el-input__inner:focus {
+      outline: none;
+      border-bottom-color: var(--kc-pink);
+    }
+
+    /* Date field same underline style */
+    #kids-corner-form .cog-date .el-input__inner,
+    #kids-corner-form .cog-date .el-date-editor { width: 100%; }
+    #kids-corner-form .cog-date .el-input__inner {
+      border: none;
+      border-bottom: 2px solid var(--kc-pink);
+      border-radius: 0;
+      background: transparent;
+      padding: 3px 0 6px 0;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--kc-text-dark);
+      box-shadow: none;
+    }
+    #kids-corner-form .cog-date .el-date-editor { border: none; }
+    #kids-corner-form .cog-date .el-input__suffix { display: none; }
+    #kids-corner-form .cog-date .el-input__prefix { display: none; }
+
+    /* Textarea: thick pink border */
+    #kids-corner-form .cog-text--multiplelines .el-textarea__inner {
+      border: 2px solid var(--kc-pink);
+      border-radius: 4px;
+      padding: 8px;
+      font-size: 16px;
+      font-family: inherit;
+      color: var(--kc-text-dark);
+      min-height: 100px;
+      resize: vertical;
+      background: #fff;
+    }
+    #kids-corner-form .cog-text--multiplelines .el-textarea__inner:focus {
+      outline: none;
+      border-color: var(--kc-pink);
+    }
+
+    /* Decorative squiggles above upload row */
+    #kids-corner-form .cog-row:has(.cog-file)::before {
+      content: '';
+      display: block;
+      height: 24px;
+      margin-bottom: 8px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 24'%3E%3Cpath fill='none' stroke='%23FFB6C1' stroke-width='2' d='M0 12 Q50 4 100 12 T200 12 T300 12 T400 12'/%3E%3Cpath fill='none' stroke='%23FFD700' stroke-width='1.5' d='M0 16 Q80 8 160 16 T320 16'/%3E%3Cpath fill='none' stroke='%234169E1' stroke-width='1.5' d='M20 8 Q120 18 220 8 T420 8'/%3E%3Cpath fill='none' stroke='%23FF69B4' stroke-width='2' d='M40 20 Q140 6 240 20'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+
+    /* Upload button: light pink bg, pink border */
+    #kids-corner-form .cog-file .el-upload-dragger {
+      border: 2px solid var(--kc-blue-light);
+      border-radius: 24px;
+      background: var(--kc-pink);
+      padding: 10px 20px;
+      text-align: center;
+    }
+    #kids-corner-form .cog-file .el-upload-dragger > div {
+      justify-content: center;
+      background: transparent !important;
+    }
+    #kids-corner-form .cog-file .cog-upload__upload-button,
+    #kids-corner-form .cog-file .el-button {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-family: 'Bubbly', sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+    }
+    #kids-corner-form .cog-file .cog-upload__drag-text {
+      color: #fff;
+      font-size: 15px;
+    }
+    #kids-corner-form .cog-file .cog-label { margin-bottom: 4px; }
+
+    /* Static content (disclaimer, etc.) */
+    #kids-corner-form .cog-content.cog-html p {
+      font-family: 'Bubbly', sans-serif;
+      color: var(--kc-blue);
+      font-size: 20px;
+      margin: 0 0 6px 0;
+    }
+    #kids-corner-form .cog-content.cog-html a {
+      color: var(--kc-blue);
+      text-decoration: none;
+      border-bottom: 2px solid var(--kc-pink);
+    }
+    #kids-corner-form .cog-content.cog-html a:hover { border-bottom-color: var(--kc-blue); }
+
+    /* Checkboxes: hide native input, use custom box with CSS checkmark */
+    #kids-corner-form .el-checkbox__original {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 1;
+    }
+    #kids-corner-form .el-checkbox__input {
+      position: relative;
+      display: inline-flex;
+    }
+    #kids-corner-form .el-checkbox__inner {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      min-height: 20px;
+      border: 2px solid var(--kc-pink);
+      border-radius: 2px;
+      background: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transform: none;
+    }
+    /* Hide Element’s checkmark SVG – we draw the check with CSS */
+    #kids-corner-form .el-checkbox__inner .el-checkbox__checkmark {
+      display: none;
+    }
+    /* Checked state: pink background + CSS checkmark */
+    #kids-corner-form .el-checkbox__input:has(.el-checkbox__original:checked) .el-checkbox__inner,
+    #kids-corner-form .el-checkbox__input.is-checked .el-checkbox__inner {
+      background: var(--kc-pink-light);
+      border-color: var(--kc-pink);
+    }
+    #kids-corner-form .el-checkbox__input:has(.el-checkbox__original:checked) .el-checkbox__inner::after,
+    #kids-corner-form .el-checkbox__input.is-checked .el-checkbox__inner::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 5px;
+      height: 10px;
+      border: solid var(--kc-pink);
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    #kids-corner-form .el-checkbox__label {
+      font-family: 'Bubbly', sans-serif;
+      color: var(--kc-blue);
+      font-size: 20px;
+      margin-left: 8px;
+    }
+
+    /* Official Rules checkbox: hide built-in label, show cog-content as the label */
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .cog-label.cog-offscreen,
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .el-checkbox__label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .cog-field.cog-field--11 {
+      flex: 0 0 28px;
+      min-width: 28px;
+    }
+
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0 8px;
+    }
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .cog-content.cog-html {
+      font-family: 'Bubbly', sans-serif;
+      color: var(--kc-blue);
+      font-size: 20px;
+      margin: 0;
+      order: 1;
+      padding: 0;
+    }
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .cog-content.cog-html p {
+      margin: 0;
+      font-family: inherit;
+      color: inherit;
+      font-size: inherit;
+    }
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .cog-content.cog-html a {
+      color: var(--kc-blue-light);
+      text-decoration: none;
+      border-bottom: 2px solid var(--kc-blue-light);
+    }
+    #kids-corner-form .cog-row:has(.cog-yesno):has(.cog-content) .cog-content.cog-html a:hover {
+      border-bottom-color: var(--kc-pink);
+    }
+
+    /* "Many will enter" disclaimer - smaller, darker */
+    #kids-corner-form .cog-page .cog-row:nth-last-child(3) .cog-content.cog-html p {
+      color: var(--kc-blue);
+      font-family: "FuturaPTDemi", sans-serif;
+    }
+
+    html .cog-col--21, :root:root:root:root:root .cog-col--21 {
+      flex: auto;
+      width: auto;
+    }
+
+    /* Submit button */
+    #kids-corner-form .cog-button--submit {
+      background: var(--kc-pink);
+      border: 2px solid var(--kc-blue);
+      border-radius: 12px;
+      color: #fff;
+      font-family: 'Bubbly', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      padding: 8px 20px;
+      margin-top: 6px;
+      transition: background 0.3s ease;
+    }
+    #kids-corner-form .cog-button--submit:hover {
+      background: var(--kc-blue);
+      color: #fff;
+    }
+
+    /* Hide or minimize Cognito branding */
+    #kids-corner-form .cog-branding { margin-top: 24px; font-size: 12px; opacity: 0.8; }
+    #kids-corner-form .cog-abuse { margin-top: 16px; font-size: 13px; color: #999; }
+
+    #kids-corner-form .cog-upload {
+      border: none !important;
+    }
+
+    .cog-upload__list > * {
+      border: #FF69B4 2px solid;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .kids-corner-header {
+      background-color: #00aeef;
+      background-image: url('{{ "kids-corner-header.jpg" | asset_url }}');
+      background-size: 100% auto;
+      background-position: bottom left;
+      background-repeat: no-repeat;
+
+      padding: 6% 2%;
+    }
+
+    @media (min-width: 768px) {
+      .kids-corner-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 6% 2%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .kids-corner-header {
+        padding-bottom: 40%;
+      }
+    }
+
+    .kids-corner-section {
+      background-color: #f0f0f0;
+      padding: 0;
+    }
+
+    .kids-corner-main {
+      max-width:1120px;
+      margin: 0 auto;
+      background-color: #fff;
+    }
+
+    .kids-corner-header-content {
+      flex: 0 0 38.8%;
+      padding: 0 20px;
+      container-type: inline-size;
+      container-name: header-content;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .kids-corner-header-content {
+        margin-right: 8%;
+      }
+    }
+
+    .kids-corner-header-content h1 {
+      font-size: 50px;
+      font-size: 15cqw;
+      line-height: 0.9;
+      text-align: center;
+      margin: 0;
+    }
+
+    .kids-corner-header-description {
+      font-size:20px;
+      font-size: 6cqw;
+      text-align: center;
+      background-color: #f35096;
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff;
+      margin: 0;
+      display: inline-block;
+      margin: 12px auto;
+    }
+
+    .block-image {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .color-white {
+      color: #fff;
+    }
+
+    .color-pink {
+      color: var(--kc-pink);
+    }
+
+    .color-yellow {
+      color: var(--kc-yellow);
+    }
+
+    .color-blue-light {
+      color: var(--kc-blue-light);
+    }
+
+    .font-bubbly {
+      font-family: 'Bubbly', sans-serif;
+    }
+
+    .kids-corner-intro-text {
+      padding: 40px 20px;
+      container-type: inline-size;
+    }
+
+    .kids-corner-intro-text p {
+      font-size: 22px;
+      font-family: 'FuturaPTMedium', sans-serif;
+    }
+
+    .bg-blue {
+      background-color: #00aeef;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .kids-corner-intro-text h2 {
+      font-size: 50px;
+      font-size: 5cqw;
+      margin-bottom: 24px;
+      margin-top: 0;
+    }
+
+    .kids-corner-form-container {
+      background-image: url('{{ 'kids-corner-form-bg.png' | asset_url }}');
+      background-size: 100% auto;
+      background-position: top center;
+      background-repeat: repeat-y;
+      margin-bottom: -12%;
+      container-type: inline-size;
+    }
+
+    .kids-corner-prizes-container {
+      background-image: url('{{ 'kids-corner-prizes-bg.png' | asset_url }}');
+      background-size: 100% auto;
+      background-position: top center;
+      background-repeat: repeat-y;
+      margin-bottom: -6%;
+    }
+
+    .kids-corner-prizes-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 30px;
+    }
+
+    .kids-corner-prizes-content.kids-corner-intro-text h2 {
+      font-size: 50px;
+      font-size: 8cqw;
+      margin-bottom: 32px;
+      /* margin-top: 24px; */
+      line-height: 1;
+  }
+
+    .kids-corner-prizes-content hr {
+      border:none;
+      outline:none;
+      background-color: var(--kc-yellow);
+      height: 3px;
+      margin: 24px 0 32px;
+    }
+
+    @media (max-width: 1024px) {
+      .kids-corner-prizes-content {
+        padding: 40px 10%;
+      }
+    }
+
+    .kids-corner-prizes-content.kids-corner-intro-text p {
+      line-height: 1;
+    }
+
+    @media ( min-width: 1025px) {
+      .kids-corner-prizes-content.kids-corner-intro-text p {
+        font-size: 32px;
+      }
+    }
+
+    .prizes-section {
+      background-color: var(--kc-blue-light);
+    }
+
+    .kids-corner-copyright {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      font-size: 16px;
+      z-index: 1;
+      transform: translateX(-50%);
+    }
+
+    @media (min-width: 1025px) {
+      .kids-corner-copyright {
+        font-size: 20px;
+        transform: translateX(0);
+        left: auto;
+        right: 8%;
+        bottom: 7%;
+      }
+    }
+
+    .deadline-callout {
+      position: absolute;
+      top: 0;
+      right: -2%;
+      font-size: 2cqw;
+      font-family: 'Bubbly', sans-serif;
+      text-align: center;
+      border-radius: 12px;
+      padding: 20px 40px;
+      background-color: var(--kc-blue-light);
+      transform: rotate(10deg) translateY(-50%);
+      line-height: 1.2;
+      z-index: 2;
+    }
+
+    .cog-confirmation__message {
+      text-align: center !important;
+    }
+
+    @media (max-width: 767px) {
+      .deadline-callout {
+        padding: 10px 20px;
+      }
+    }
+
+    /* Beat theme #MainContent / heading defaults (Inter, FuturaPTDemi, --color-text) */
+    #MainContent .kids-corner-section h1,
+    #MainContent .kids-corner-section h2,
+    #MainContent .kids-corner-section p {
+      letter-spacing: normal;
+    }
+
+    #MainContent .kids-corner-section .kids-corner-header-content h1,
+    #MainContent .kids-corner-section .kids-corner-header-content h1.font-bubbly {
+      font-family: 'Bubbly', sans-serif;
+      color: #fff;
+      line-height: 0.9;
+    }
+
+    #MainContent .kids-corner-section .kids-corner-header-description,
+    #MainContent .kids-corner-section .kids-corner-header-description.font-bubbly {
+      font-family: 'Bubbly', sans-serif;
+      color: #fff;
+      font-size: 20px;
+      font-size: 6cqw;
+      line-height: 1.2;
+    }
+
+    #MainContent .kids-corner-section .kids-corner-intro-text p {
+      font-family: 'FuturaPTMedium', sans-serif;
+      font-size: 22px;
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    #MainContent .kids-corner-section .kids-corner-intro-text p.color-pink {
+      color: var(--kc-pink);
+    }
+
+    #MainContent .kids-corner-section .kids-corner-intro-text.bg-blue p,
+    #MainContent .kids-corner-section .kids-corner-prizes-content p.color-white {
+      color: #fff;
+    }
+
+    #MainContent .kids-corner-section .kids-corner-intro-text h2,
+    #MainContent .kids-corner-section .kids-corner-prizes-content h2,
+    #MainContent .kids-corner-section .font-bubbly {
+      font-family: 'Bubbly', sans-serif;
+    }
+
+    #MainContent .kids-corner-section .color-white {
+      color: #fff;
+    }
+
+    #MainContent .kids-corner-section .color-yellow {
+      color: var(--kc-yellow);
+    }
+
+    #MainContent .kids-corner-section .color-blue-light {
+      color: var(--kc-blue-light);
+    }
+
+    @media (min-width: 1025px) {
+      #MainContent .kids-corner-section .kids-corner-prizes-content.kids-corner-intro-text p {
+        font-size: 32px;
+      }
+    }
+</style>
+
+<section class="kids-corner-section">
+  <div class="kids-corner-main">
+    <div class="kids-corner-header">
+      <div class="kids-corner-header-content">
+        <img
+          src="{{ 'mr-bubble-is-celebrating.png' | asset_url }}"
+          alt="Mr. Bubble is Celebrating"
+          class="mr-bubble-is-celebrating block-image"
+        >
+        <h1 class="color-white font-bubbly">
+          Product Design<br>
+          Contest!
+        </h1>
+        <p class="kids-corner-header-description font-bubbly">to encourage kid’s creativity</p>
+      </div>
+    </div>
+    <div class="kids-corner-intro-text">
+      <p class="color-pink">
+        Hi bubble buddies, it’s me, Mr. B! I’m turning 65 this year and to celebrate, I want to team up with creative
+        kids like you to dream up the next big, bubblin’ fun bath or shower product! Whether you have an idea for a new
+        product, an innovative scent or some cool new packaging, if it makes tub time more fun, I want to hear about it!
+      </p>
+    </div>
+    <div class="kids-corner-intro-text bg-blue text-center">
+      <h2 class="color-white font-bubbly">How to Enter</h2>
+      <p class="color-white">
+        Signing up is easy-bubblin’ peasy! Just ask a <strong>parent or guardian</strong> to help you fill out the form
+        below. If you have a drawing or photo of your idea, attach it — I’d love to see it!
+      </p>
+    </div>
+    <img src="{{ 'kids-corner-form-top.png' | asset_url }}" alt="How to Enter" class="block-image">
+    <div class="kids-corner-form-container" style="position: relative;">
+      <div class="deadline-callout color-white">
+        Start creating!
+        <br>
+        Entries are due
+        <br>
+        7/31/26!
+      </div>
+      <div id="kids-corner-form" class="kids-corner-form form-container">
+        <script
+          src="https://www.cognitoforms.com/f/seamless.js"
+          data-key="KzrGoeYLukaT48PeJvzkYA"
+          data-form="1"
+        ></script>
+      </div>
+    </div>
+    <img
+      src="{{ 'kids-corner-form-bottom.png' | asset_url }}"
+      alt="How to Enter"
+      class="block-image"
+      style="position: relative; z-index: 1; pointer-events: none;"
+    >
+    <div class="prizes-section" style="position: relative;">
+      <img src="{{ 'kids-corner-prizes-header.png' | asset_url }}" alt="Prizes" class="block-image">
+      <div class="kids-corner-prizes-container">
+        <div class="kids-corner-prizes-content kids-corner-intro-text">
+          <h2 class="color-yellow font-bubbly">Grand Prize</h2>
+          <p class="color-white">
+            <strong>Your idea could come to life as a real Mr. Bubble product</strong> + you’ll get bubble bath for a
+            year and recognition on our site and in social media!
+          </p>
+          <hr>
+          <h2 class="color-yellow font-bubbly">Everyone's a Winner:</h2>
+          <p class="color-white">
+            Every kid who submits an idea will receive an official <strong>Mr. Bubble Kid Inventor Certificate</strong>.
+          </p>
+        </div>
+      </div>
+      <img src="{{ 'kids-corner-prizes-footer.png' | asset_url }}" alt="Prizes" class="block-image">
+      <p class="kids-corner-copyright color-blue-light">© 2026 The Village Company</p>
+    </div>
+  </div>
+</section>

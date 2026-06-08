@@ -7,48 +7,21 @@
 
 {% assign footer_brand_blocks = section.blocks | where: 'type', 'brand' %}
 {% if footer_brand_blocks.size > 0 %}
-  {%- liquid
-    assign footer_current_brand = footer_brand_blocks | last
-    for block in footer_brand_blocks
-      if block.settings.text == 'The Village Co.'
-        assign footer_current_brand = block
-        break
-      endif
-    endfor
-  -%}
-  {%- liquid
-    assign current_url = request.path
-    assign url_segments = current_url | split: '/'
-    assign last_segment = url_segments | last
-    for block in footer_brand_blocks
-      if block.settings.brand_page_link != blank
-        if current_url contains block.settings.brand_page_link
-          assign footer_current_brand = block
-          break
-        elsif last_segment contains 'mr-bubble' and block.settings.brand_page_link contains 'mr-bubble'
-          assign footer_current_brand = block
-          break
-        elsif last_segment contains 'therapy' and block.settings.brand_page_link contains 'therapy'
-          assign footer_current_brand = block
-          break
-        endif
-      endif
-    endfor
-  -%}
-  {% if product %}
+  {%- comment -%} Same resolver as header — reads sections['header'].blocks after header-group renders {%- endcomment -%}
+  {%- capture brand_handle_resolved -%}
+    {%- render 'resolve-brand-handle' -%}
+  {%- endcapture -%}
+  {% assign brand_handle_resolved = brand_handle_resolved | strip %}
+  {% for block in footer_brand_blocks %}
+    {% assign block_brand_handle = block.settings.text | handleize %}
+    {% if block.settings.text != blank and block_brand_handle == brand_handle_resolved %}
+      {% assign footer_current_brand = block %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if footer_current_brand == blank %}
     {% for block in footer_brand_blocks %}
-      {% if block.settings.text == product.vendor %}
-        {% assign footer_current_brand = block %}
-        {% break %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-  {% if blog %}
-    {% for block in footer_brand_blocks %}
-      {% if block.settings.text == 'Village Naturals Therapy' and blog.handle == 'village-naturals-therapy' %}
-        {% assign footer_current_brand = block %}
-        {% break %}
-      {% elsif block.settings.text == 'Mr. Bubble' and blog.handle == 'fun' %}
+      {% if block.settings.text == 'The Village Co.' %}
         {% assign footer_current_brand = block %}
         {% break %}
       {% endif %}

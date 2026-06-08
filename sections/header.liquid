@@ -122,7 +122,10 @@
 {% assign brand_blocks = section.blocks | where: 'type', 'brand' %}
 {% assign tout_blocks = section.blocks | where: 'type', 'touts_group' %}
 
-{%- comment -%} Current brand: single source of truth in snippets/resolve-brand-handle.liquid {%- endcomment -%}
+{%- comment -%}
+  Brand resolution: snippets/resolve-brand-handle.liquid (single source of truth).
+  Header passes its brand blocks; footer re-runs the same snippet via sections['header'].
+{%- endcomment -%}
 {%- capture brand_handle_resolved -%}
   {%- render 'resolve-brand-handle', brand_blocks: brand_blocks -%}
 {%- endcapture -%}
@@ -207,7 +210,10 @@
     {% render 'header-search', input_id: 'Search-In-Modal-Header-Top' %}
   </div>
 
-  <header class="header site-header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width-x{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}">
+  <header
+    class="header site-header header--{{ section.settings.logo_position }} header--mobile-{{ section.settings.mobile_logo_position }} page-width-x{% if section.settings.menu_type_desktop == 'drawer' %} drawer-menu{% endif %}{% if section.settings.menu != blank %} header--has-menu{% endif %}{% if has_app_block %} header--has-app{% endif %}{% if social_links %} header--has-social{% endif %}{% if shop.customer_accounts_enabled %} header--has-account{% endif %}{% if localization_forms %} header--has-localizations{% endif %}"
+    data-current-brand="{{ brand_handle_resolved }}"
+  >
     {%- if current_brand.settings.menu != blank -%}
       <div class="header__left-icons hide-min-1025">
         {%- render 'header-drawer', current_brand: current_brand, tout_blocks: tout_blocks -%}

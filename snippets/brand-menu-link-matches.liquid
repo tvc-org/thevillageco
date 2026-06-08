@@ -1,0 +1,25 @@
+{% comment %}
+  Returns "true" when a nav link matches the current page (top-level or nested).
+  Accepts: link, current_url
+{% endcomment %}
+{%- liquid
+  assign link_matches = false
+  if link.active or link.child_active
+    assign link_matches = true
+  elsif link.url == current_url
+    assign link_matches = true
+  elsif link.url != blank and current_url contains link.url
+    assign link_matches = true
+  elsif page and link.type == 'page_link' and link.object.handle == page.handle
+    assign link_matches = true
+  elsif collection and link.type == 'collection_link' and link.object.handle == collection.handle
+    assign link_matches = true
+  elsif product and link.type == 'product_link' and link.object.handle == product.handle
+    assign link_matches = true
+  elsif blog and link.type == 'blog_link' and link.object.handle == blog.handle
+    assign link_matches = true
+  elsif article and link.type == 'article_link' and link.object.id == article.id
+    assign link_matches = true
+  endif
+-%}
+{%- if link_matches -%}true{%- endif -%}
