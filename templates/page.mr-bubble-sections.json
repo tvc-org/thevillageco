@@ -127,7 +127,7 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "preserve_image_aspect_ratio": false,
+            "preserve_image_aspect_ratio": true,
             "video": "shopify://files/videos/MRB_PLAYABLES_15_LogoOnly_2.mp4",
             "heading": "Turn Bath Time \nInto Bubble Time",
             "text": "<p>Fusce dapibus, tellus ac cursus commodo, tortor mauris condiaentum massa justo sit amet risus.</p>",
