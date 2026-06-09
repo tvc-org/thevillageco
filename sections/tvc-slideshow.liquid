@@ -147,15 +147,24 @@
         if block.settings.video != blank
           assign show_video = true
         endif
-        if show_video == false and block.settings.image != blank and block.settings.preserve_image_aspect_ratio
-          assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--preserve-aspect'
-          assign media_classes = media_classes | append: ' tvc-slideshow__media--preserve-aspect'
-          assign d_ar = block.settings.image.aspect_ratio
-          assign m_ar = d_ar
-          if block.settings.mobile_image != blank
-            assign m_ar = block.settings.mobile_image.aspect_ratio
+        if block.settings.preserve_image_aspect_ratio
+          assign d_ar = blank
+          assign m_ar = blank
+          if show_video
+            assign d_ar = block.settings.video.aspect_ratio
+            assign m_ar = d_ar
+          elsif block.settings.image != blank
+            assign d_ar = block.settings.image.aspect_ratio
+            assign m_ar = d_ar
+            if block.settings.mobile_image != blank
+              assign m_ar = block.settings.mobile_image.aspect_ratio
+            endif
           endif
-          assign media_aspect_style = '--tvc-media-aspect-desktop: ' | append: d_ar | append: '; --tvc-media-aspect-mobile: ' | append: m_ar | append: ';'
+          if d_ar != blank
+            assign inner_classes = inner_classes | append: ' tvc-slideshow__inner--preserve-aspect'
+            assign media_classes = media_classes | append: ' tvc-slideshow__media--preserve-aspect'
+            assign media_aspect_style = '--tvc-media-aspect-desktop: ' | append: d_ar | append: '; --tvc-media-aspect-mobile: ' | append: m_ar | append: ';'
+          endif
         endif
       -%}
       <div
@@ -498,8 +507,8 @@
         {
           "type": "checkbox",
           "id": "preserve_image_aspect_ratio",
-          "label": "Preserve image aspect ratio (no crop)",
-          "info": "Below 960px uses the mobile image’s aspect ratio when a mobile image is set; otherwise it uses the desktop image. From 960px up, uses the desktop image. Ignored when a video is set.",
+          "label": "Preserve media aspect ratio (no crop)",
+          "info": "Uses the video’s aspect ratio when a video is set (all breakpoints). For images: below 960px uses the mobile image’s aspect ratio when a mobile image is set; otherwise the desktop image. From 960px up, uses the desktop image.",
           "default": false
         },
         {

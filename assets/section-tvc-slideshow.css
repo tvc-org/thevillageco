@@ -394,7 +394,7 @@
   display: block;
 }
 
-/* Preserve image aspect ratio (must follow stacked/split cover rules so `contain` wins) */
+/* Preserve media aspect ratio (must follow stacked/split cover rules so `contain` wins) */
 .tvc-slideshow__media--preserve-aspect {
   min-height: 0 !important;
   width: 100%;
@@ -412,7 +412,8 @@
 }
 
 .tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect picture img,
-.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect > img {
+.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect > img,
+.tvc-slideshow--layout-stacked .tvc-slideshow__media--preserve-aspect video {
   position: relative;
   inset: auto;
   width: 100%;
@@ -427,7 +428,8 @@
 }
 
 .tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect picture img,
-.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect > img {
+.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect > img,
+.tvc-slideshow--layout-split .tvc-slideshow__media--preserve-aspect video {
   position: relative;
   inset: auto;
   width: 100%;
