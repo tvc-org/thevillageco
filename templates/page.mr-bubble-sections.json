@@ -254,6 +254,7 @@
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/super-blaster-wide.jpg",
+            "mobile_image": "shopify://shop_images/super-blaster-mobile.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "SUPER BLASTER BODY WASH",
             "text": "<p>With a fun-to-use sprayer and bubbly cleansing action, Mr. Bubble Super Blaster Body Wash makes getting clean part of the fun.</p>",
