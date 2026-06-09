@@ -25,7 +25,7 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "image": "shopify://shop_images/VNT_Collection_Calm_v2-1.jpg",
+            "image": "shopify://shop_images/VNT_Collection_Calm_v2-1-wide.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Ease Into Peace — \nNaturally",
             "text": "<p>Discover the Calm Collection — a soothing ritual of plant-based milk bubbles and mineral-rich magnesium flakes to help quiet your mind, melt tension, and restore balance after a long day.</p>",
@@ -58,7 +58,7 @@
           "settings": {
             "product": "comfort-foaming-bath-oil-body-wash",
             "collection": "",
-            "image": "shopify://shop_images/therapy-comfort.jpg",
+            "image": "shopify://shop_images/therapy-comfort-wide.jpg",
             "heading_block": "Relax the Mind. Revive the Body.",
             "text": "<p>Turn the bath into a quiet reset with moisturizing bubbles and a comforting blueberry citrus scent.</p>",
             "link_label": "Shop Comfort",
@@ -70,7 +70,7 @@
           "settings": {
             "product": "",
             "collection": "therapy-cold-allergy",
-            "image": "shopify://shop_images/therapy-breathe.jpg",
+            "image": "shopify://shop_images/therapy-breathe-wide.jpg",
             "heading_block": "Breathe Deep, Feel Better",
             "text": "<p>Invigorating Lemon, Peppermint, and Echinacea help open your senses and calm your mind when seasonal sniffles strike.</p>",
             "link_label": "Shop Breathe",
@@ -85,7 +85,8 @@
       "name": "t:sections.tvc-dual-feature.presets.name",
       "settings": {
         "heading": "",
-        "color_scheme": ""
+        "color_scheme": "",
+        "show_sound_toggle": false
       }
     },
     "tvc_featured_review_pdeaX4": {
