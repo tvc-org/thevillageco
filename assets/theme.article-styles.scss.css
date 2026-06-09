@@ -355,18 +355,21 @@
 
 .article h2 {
     font-family: 'Inter', sans-serif;
+	font-weight:700;
     /* font-size: 34px; */
     margin-bottom: 24px
 }
 
 .article h3 {
     font-family: 'Inter', sans-serif;
+	font-weight:700;
     /* font-size: 22px; */
     margin-bottom: .6666666667em
 }
 
 .article h4 {
     font-family: 'Inter', sans-serif;
+	font-weight:700;
     /* font-size: 35px; */
 }
 
@@ -376,9 +379,10 @@
 }
 
 .article h5 {
-    font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
+	font-weight:700;
     /* font-size: 16px; */
-    text-transform: uppercase
+    /* text-transform: uppercase */
 }
 
 .article .article-container a {
@@ -411,8 +415,22 @@
     font-weight:bold;
 }
 
-.article .article-container p {
-    margin-bottom: 32px
+#MainContent .article .article-container p {
+    margin-bottom: 32px;
+	font-size: 18px;
+	font-weight:500;
+	letter-spacing: -0.18px;
+	line-height: 1.5;
+	color: #000;
+}
+
+#MainContent .article .article-container ul li,
+#MainContent .article .article-container ol li {
+	color: #000;
+	font-size: 18px;
+	font-weight:500;
+	letter-spacing: -0.18px;
+	line-height: 1.5;
 }
 
 .article .article-container img,
@@ -446,6 +464,14 @@
 	max-width:1200px;
     margin-left: auto;
     margin-right: auto;
+	margin-top: 40px;
+}
+
+@media screen and (min-width:1025px) {
+	.article .collection-products.horizontal-layout,
+	.article .product-grid.horizontal-layout {
+		margin-top: 80px;
+	}
 }
 
 .article .product-grid.horizontal-layout {
@@ -696,9 +722,8 @@
 
 .article.metafields .article-date {
 	/* font-size:18px; */
-	color:#858585;
+	color:#000;
 	margin-bottom:15px;
-	text-transform:uppercase;
 }
 
 .article.metafields .article-header-container[class*=side-by-side] .article-date {
@@ -1306,6 +1331,16 @@
 	padding-right:20px;
 }
 
+.favorites-section {
+	margin-top: 40px;
+}
+
+@media screen and (min-width:1025px) {
+	.favorites-section {
+		margin-top: 80px;
+	}
+}
+
 @media (min-width: 768px) {
 .favorites-section {
 	display: grid;
@@ -1348,7 +1383,7 @@
 	}
 	
 	/* Remove focus/active state shadows */
-	.favorites-section.flickity-enabled:focus,
+.favorites-section.flickity-enabled:focus,
 	.favorites-section .flickity-viewport:focus,
 	.favorites-section .flickity-slider:focus {
 		outline: none;
@@ -1510,14 +1545,18 @@
 
 .article.metafields h1 {
 	font-weight:500;
-	color: #323131;
+	color: #000;
+	text-transform:uppercase;
+	line-height:1;
+	font-family: "FuturaPTMedium", Helvetica, Arial, sans-serif;
+	margin-top:14px;
 }
 
 .article.metafields .article-date {
-	font-size:18px;
-	color:#858585;
+	font-size:15px;
+	font-weight:500;
+	color:#000;
 	margin-bottom:15px;
-	text-transform:uppercase;
 }
 
 .article.metafields .article-header-container[class*=side-by-side] .article-date {
@@ -1640,10 +1679,10 @@
 	margin-top:50px;
 }
 
-.article.metafields h2,
+/* .article.metafields h2,
 .article.metafields .article-container ul {
-	margin-bottom:32px;
-}
+	margin-bottom:20px;
+} */
 
 .article.metafields .article-container ul li {
 	padding-left:2em;
@@ -1668,12 +1707,12 @@
 	}
 	
 	.article.metafields h1 {
-		font-size:56px;
+		font-size:60px;
 		margin-bottom:65px;
 	}
 	
 	.article.metafields h2 {
-		font-size:48px;
+		font-size:36px;
 		margin-top:72px;
 	}
 	
@@ -1684,8 +1723,7 @@
 	}
 	
 	.article.metafields h3 {
-		font-size:32px;
-		line-height:normal;
+		font-size:24px;
 	}
 	
 	.article.metafields .article-container figure.inline-image.image-left {
