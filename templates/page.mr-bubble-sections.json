@@ -25,7 +25,7 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "image": "shopify://shop_images/make-a-splash-hero.jpg",
+            "image": "shopify://shop_images/make-a-splash-hero-wide.jpg",
             "mobile_image": "shopify://shop_images/make-a-splash-hero-mobile.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Turn Bath Time Into Bubble Time",
