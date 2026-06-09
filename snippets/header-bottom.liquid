@@ -81,13 +81,9 @@
                       </a>
                       <div class="product-info">
                         <a href="{{ product.url | within: collection }}">
-                          <p class="product-name">{{ product.title }}</p>
+                          <p class="product-name h5">{{ product.title }}</p>
                         </a>
-                        <div class="text-center">
-                          <a class="shop-now button button--secondary" href="{{ product.url | within: collection }}"
-                            >Shop Now</a
-                          >
-                        </div>
+                        {% render 'price', product: product, price_class: 'nav-tout-price', show_compare_at_price: true %}
                       </div>
                     </div>
                   </div>
@@ -127,11 +123,8 @@
                       </a>
                       <div class="product-info">
                         <a href="{{ collection.url }}">
-                          <p class="product-name">{{ featured_title }}</p>
+                          <p class="product-name h5">{{ featured_title }}</p>
                         </a>
-                        <div class="text-center">
-                          <a class="shop-now button button--secondary" href="{{ collection.url }}">Shop Now</a>
-                        </div>
                       </div>
                     </div>
                   </div>
@@ -156,11 +149,8 @@
 
                         <div class="product-info">
                           <a href="{{ article.url }}">
-                            <p class="product-name">{{ featured_title }}</p>
+                            <p class="product-name h5">{{ featured_title }}</p>
                           </a>
-                          <div class="text-center">
-                            <a class="shop-now button button--secondary" href="{{ article.url }}">Read More</a>
-                          </div>
                         </div>
                       </div>
                     </div>
@@ -173,18 +163,8 @@
             {% for block in toutMatches %}
               {% if block.settings.bottom_button_link != blank and block.settings.bottom_button_text != blank %}
                 {% if bottom_button_count == 0 %}<div class="bottom-links">{% endif %}
-                <a href="{{ block.settings.bottom_button_link }}">
+                <a href="{{ block.settings.bottom_button_link }}" class="nav-tout-bottom-button">
                   <span>{{ block.settings.bottom_button_text }}</span>
-                  <svg
-                    class="chevron"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17"
-                    height="16"
-                    viewBox="0 0 17 16"
-                    fill="none"
-                  >
-                    <path d="M6.5 12L10.5 8L6.5 4" stroke="#323131" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="round"/>
-                  </svg>
                 </a>
                 {% assign bottom_button_count = 1 %}
               {% endif %}

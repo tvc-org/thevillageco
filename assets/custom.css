@@ -1107,8 +1107,8 @@ header-drawer {
 }
 
 .header-bottom .header-bottom__links .header-bottom__item .header-bottom__submenu li {
-    margin-top: 10px;
-    font-size: 14px;
+    margin-top: 6px;
+    font-size: 16px;
 }
 
 .header-bottom .header-bottom__links .header-bottom__item .header-bottom__submenu li a {
@@ -1116,15 +1116,16 @@ header-drawer {
 }
 
 .header-bottom .header-bottom__links .header-bottom__item .header-bottom__submenu li.level-2 {
-    font-size: 20px;
+    font-size: 18px;
+    font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
     position: relative;
-    text-transform: none;
-    padding-bottom: 20px;
-    margin-bottom: 12px;
+    padding-bottom: 0;
+    margin-bottom: 14px;
     line-height: 1.1;
 }
 
-.header-bottom .header-bottom__links .header-bottom__item .header-bottom__submenu li.level-2:after {
+/* .header-bottom .header-bottom__links .header-bottom__item .header-bottom__submenu li.level-2:after {
     content: "";
     display: block;
     background: var(--color-border);
@@ -1133,7 +1134,7 @@ header-drawer {
     position: absolute;
     bottom: 0;
     left: 0;
-}
+} */
 
 .header-bottom .header-bottom__links .header-bottom__item.active .header-bottom__submenu {
     display: block;
@@ -1143,25 +1144,41 @@ header-drawer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid var(--color-border);
+    padding: 24px 0 32px;
 }
 
-.header-bottom .header-bottom__links .header-bottom__item.active .header-bottom__submenu .bottom-links a {
-    text-align: center;
-    display: inline-flex;
+.nav-tout-bottom-button {
     align-items: center;
-    padding: 0 40px;
-    height: 50px;
+    background: #1B1B1B;
+    border-radius: 120px;
+    color: var(--color-white) !important;
+    display: inline-flex;
+    font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
     font-size: 14px;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    min-height: 44px;
+    min-width: 200px;
+    padding: 12px 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: opacity 0.15s ease;
 }
 
-.header-bottom .header-bottom__links .header-bottom__item.active .header-bottom__submenu .bottom-links a .chevron {
-    margin-left: 5px;
-    transition: transform 0.15s ease-out;
+@media screen and (min-width:1025px) {
+    .nav-tout-bottom-button {
+        font-size: 16px;
+        min-height: 60px;
+        padding: 20px 25px;
+    }
+  
 }
 
-.header-bottom .header-bottom__links .header-bottom__item.active .header-bottom__submenu .bottom-links a:hover .chevron {
-    transform: translateX(4px);
+.nav-tout-bottom-button:hover {
+    color: var(--color-white);
+    opacity: 0.88;
 }
 
 .header-bottom ul {
@@ -1172,10 +1189,6 @@ header-drawer {
 
 .header-bottom ul a {
     text-decoration: none;
-}
-
-.header-bottom .button.shop-now {
-    background: transparent;
 }
 
 /* Third-party floaters — cap below mobile header (999); !important beats inline z-index */
@@ -1213,6 +1226,59 @@ div[class*='kl-teaser-'],
 
 .menu-drawer__menu-item.link--text {
     color: var(--color-text-navigation);
+}
+
+.menu-drawer .menu-drawer__menu-item,
+.menu-drawer summary.menu-drawer__menu-item,
+.menu-drawer__close-button {
+    background-color: transparent;
+}
+
+.menu-drawer__menu-item--active,
+.menu-drawer__menu-item:focus,
+.menu-drawer__menu-item:focus-visible,
+.menu-drawer__close-button:focus,
+.menu-drawer__close-button:focus-visible,
+.menu-drawer__menu-item:hover,
+.menu-drawer__close-button:hover,
+.menu-drawer__menu-item--active:hover,
+.menu-drawer details[open] > summary.menu-drawer__menu-item {
+    background-color: transparent;
+}
+
+.menu-drawer summary.menu-drawer__menu-item > .svg-wrapper {
+    height: 24px;
+    position: absolute;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+}
+
+.menu-drawer summary.menu-drawer__menu-item > .svg-wrapper > :is(.icon-caret, .icon-caret-nav) {
+    display: block;
+    height: 24px;
+    position: static;
+    right: auto;
+    top: auto;
+    width: 24px;
+}
+
+.menu-drawer__close-button .svg-wrapper {
+    flex-shrink: 0;
+    height: 24px;
+    margin-right: 1rem;
+    transform: rotate(180deg);
+    width: 24px;
+}
+
+.menu-drawer__close-button .svg-wrapper > :is(.icon-caret, .icon-caret-nav) {
+    display: block;
+    height: 24px;
+    position: static;
+    right: auto;
+    top: auto;
+    width: 24px;
 }
 
 @media screen and (min-width: 1025px) {
@@ -1313,17 +1379,21 @@ div[class*='kl-teaser-'],
         box-shadow: 0 12px 8px -4px var(--color-shadow-dropdown);
     }
     .header-bottom__submenu .featured-product {
-        max-width: 220px;
-        height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        height: 100%;
+        justify-content: flex-start;
+        max-width: 290px;
     }
     .header-bottom__submenu .featured-product .image {
-        display: block;
-        position: relative;
         aspect-ratio: 1 / 1;
-        margin-bottom: 13px;
+        background: var(--color-white);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        display: block;
+        margin-bottom: 12px;
+        overflow: hidden;
+        position: relative;
     }
     .header-bottom__submenu .featured-product .image img {
         display: block;
@@ -1334,18 +1404,22 @@ div[class*='kl-teaser-'],
         height: 100%;
         object-fit: contain;
     }
-    .header-bottom__submenu .featured-product .product-name {
-        color: var(--color-text);
-        text-transform: none;
-        font-size: 14px;
-        text-align: center;
+    .header-bottom__submenu .featured-product .product-info {
+        text-align: left;
+        width: 100%;
     }
-    .header-bottom__submenu .featured-product .shop-now {
-        /* height: 42px;
-        display: inline-block;
-        width: auto;
-        padding: 0 40px;
-        margin-top: 10px; */
+    .header-bottom__submenu .featured-product .product-name {
+        letter-spacing: 0;
+        margin: 0 0 4px;
+        text-align: left;
+        text-transform: none;
+    }
+    .header-bottom__submenu .featured-product .nav-tout-price {
+        font-size: 16px;
+        letter-spacing: 0;
+        margin: 0;
+        text-align: left;
+        color: #777;
     }
 }
 
@@ -1405,7 +1479,7 @@ div[class*='kl-teaser-'],
 }
 
 /* ==========================================================================
-   Menu Drawer - Mobile nav touts
+   Menu Drawer - Mobile nav child / grandchild links
    ========================================================================== */
 
 .js .menu-drawer__submenu {
@@ -1416,6 +1490,30 @@ div[class*='kl-teaser-'],
     padding-bottom: 20px;
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
+}
+
+.menu-drawer__child--has-children {
+    margin-bottom: 0.4rem;
+}
+
+.menu-drawer__menu-item--parent {
+    font-size: 2rem;
+    letter-spacing: 0.11em;
+    text-transform: none;
+}
+
+.menu-drawer__grandchild-links {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0.8rem 3.8rem;
+}
+
+.menu-drawer__menu-item--grandchild {
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+    text-transform: uppercase;
 }
 
 .menu-drawer__touts {
@@ -1432,21 +1530,24 @@ div[class*='kl-teaser-'],
 }
 
 .menu-drawer__tout-product {
-    max-width: 140px;
-    margin: 3rem auto;
-    padding-bottom: 1rem;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin: 2rem auto;
+    max-width: 140px;
+    padding-bottom: 0.5rem;
 }
 
 .menu-drawer__tout-image {
-    display: block;
-    position: relative;
-    width: 140px;
     aspect-ratio: 1 / 1;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    display: block;
     margin-bottom: 8px;
     overflow: hidden;
+    position: relative;
+    width: 140px;
 }
 
 .menu-drawer__tout-image img {
@@ -1460,52 +1561,36 @@ div[class*='kl-teaser-'],
 }
 
 .menu-drawer__tout-info {
-    text-align: center;
-}
-
-.menu-drawer__tout-name {
-    color: var(--color-text);
-    text-transform: none;
-    font-size: 14px;
-    text-align: center;
+    text-align: left;
+    width: 100%;
 }
 
 .menu-drawer__tout-name {
     display: block;
-    text-decoration: none;
+    letter-spacing: 0;
     margin-bottom: 4px;
+    text-align: left;
+    text-decoration: none;
+    text-transform: none;
 }
 
-.menu-drawer__tout-cta {
-    white-space: nowrap;
-    margin-top: 8px;
+.menu-drawer__tout-info .nav-tout-price {
+    font-size: 16px;
+    letter-spacing: 0;
+    margin: 0;
+    text-align: left;
 }
 
 .menu-drawer__touts-bottom {
-    margin-top: 0.5rem;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-}
-
-.menu-drawer__tout-bottom-link {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 0 24px;
-    height: 44px;
-    font-size: 14px;
-    color: var(--color-text);
-    text-decoration: none;
-    text-transform: uppercase;
+    margin-top: 1rem;
+    padding: 0 3rem 2rem;
 }
 
-.menu-drawer__tout-bottom-link .chevron {
-    margin-left: 5px;
-    transition: transform 0.15s ease-out;
-}
-
-.menu-drawer__tout-bottom-link:hover .chevron {
-    transform: translateX(4px);
+.menu-drawer__tout-bottom-link.nav-tout-bottom-button {
+    width: 100%;
+    max-width: 280px;
 }
 
 /* ==========================================================================
@@ -1564,7 +1649,9 @@ div[class*='kl-teaser-'],
 
 @media screen and (min-width: 1025px) {
     .product-grid .grid__item .card__heading, 
-    .product-grid .grid__item .price {
+    .product-grid .grid__item .price,
+    .header-bottom__submenu .featured-product .nav-tout-price,
+    .menu-drawer__tout-info .nav-tout-price {
         font-size: 18px;
     }
 }
@@ -3345,9 +3432,6 @@ body.village-naturals-therapy .search-modal.gradient {
         background-attachment: scroll;
     }
 
-    :is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .menu-drawer__tout-cta.button {
-        background: transparent;
-    }
 }
 
 body.village-naturals-therapy .product__info-wrapper .yotpo-sr-bottom-line-summary svg.star-container.yotpo-sr-star-full linearGradient stop:first-of-type,

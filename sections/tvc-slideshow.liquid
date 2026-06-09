@@ -1,3 +1,4 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'section-tvc-slideshow.css' | asset_url | stylesheet_tag }}
@@ -166,6 +167,22 @@
             assign media_aspect_style = '--tvc-media-aspect-desktop: ' | append: d_ar | append: '; --tvc-media-aspect-mobile: ' | append: m_ar | append: ';'
           endif
         endif
+
+        assign slide_product = block.settings.product
+        assign slide_link = block.settings.link
+        if slide_product == blank and slide_link != blank and slide_link contains 'products/'
+          assign slide_link_handle = slide_link | split: 'products/' | last | split: '?' | first | split: '#' | first
+          if slide_link_handle != blank
+            assign slide_product = all_products[slide_link_handle]
+          endif
+        endif
+        if slide_link == blank and slide_product != blank
+          assign slide_link = slide_product.url
+        endif
+        if slide_product != blank
+          assign tvc_slideshow_badge_position_class = settings.badge_position | replace: ' ', '-'
+          assign media_classes = media_classes | append: ' tvc-slideshow__media--badge-' | append: tvc_slideshow_badge_position_class
+        endif
       -%}
       <div
         class="slideshow__slide grid__item slider__slide tvc-slideshow__slide"
@@ -274,6 +291,15 @@
               {%- endif -%}
             {%- endif -%}
 
+            {%- if slide_product != blank -%}
+              {%- assign tvc_slideshow_badge_section_id = section.id | append: '-' | append: block.id -%}
+              {%- render 'card-product-badges',
+                card_product: slide_product,
+                section_id: tvc_slideshow_badge_section_id,
+                badge_context: 'media'
+              -%}
+            {%- endif -%}
+
             {%- capture panel_content -%}
               {%- if block.settings.heading != blank -%}
                 <h2 class="tvc-slideshow__heading h2 mt-1 mb-3 md-mb-4">
@@ -283,12 +309,12 @@
               {%- if block.settings.text != blank -%}
                 <div class="tvc-slideshow__body rte">{{ block.settings.text }}</div>
               {%- endif -%}
-              {%- if block.settings.link != blank -%}
+              {%- if slide_link != blank -%}
                 {%- liquid
                   if block.settings.link_label != blank
                     assign link_label = block.settings.link_label
                   else
-                    assign link_label = 'Learn more'
+                    assign link_label = 'sections.collection_list.shop_now' | t
                   endif
                 -%}
                 {%- liquid
@@ -297,7 +323,7 @@
                     assign slideshow_link_classes = slideshow_link_classes | append: ' mb-5'
                   endif
                 -%}
-                <a href="{{ block.settings.link }}" class="{{ slideshow_link_classes }}">
+                <a href="{{ slide_link }}" class="{{ slideshow_link_classes }}">
                   {{- link_label | escape -}}
                 </a>
               {%- endif -%}
@@ -577,15 +603,26 @@
           "visible_if": "{{ section.settings.layout == 'stacked' }}"
         },
         {
-          "type": "url",
-          "id": "link",
-          "label": "Link"
+          "type": "header",
+          "content": "Product & link"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product",
+          "info": "Drives badges on slide media and sets the default CTA to the product URL with a “Shop now” label. Override the destination or label below as needed."
         },
         {
           "type": "text",
           "id": "link_label",
-          "label": "Link label",
-          "info": "If blank, “Learn more” is used when a link is set."
+          "label": "CTA label",
+          "info": "Overrides the default “Shop now” label when a CTA is shown. Leave blank to use “Shop now”."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "CTA link",
+          "info": "Overrides the product URL when set. When empty, uses the assigned product URL."
         }
       ]
     }

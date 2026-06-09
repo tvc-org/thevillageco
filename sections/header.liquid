@@ -452,6 +452,9 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    // TEMP: set false when done styling mega menu inner elements
+    const TVC_DISABLE_NAV_MOUSEOUT = true;
+
     const dropdownCheck = document.querySelectorAll('.header-bottom__item.has-dropdown').length;
     console.log('dropdownCheck', dropdownCheck);
 
@@ -479,11 +482,13 @@
       });
     });
 
-    document.querySelector('.header-bottom').addEventListener('mouseleave', function () {
-      if (!isMobileCheck()) {
-        closeNav();
-      }
-    });
+    if (!TVC_DISABLE_NAV_MOUSEOUT) {
+      document.querySelector('.header-bottom').addEventListener('mouseleave', function () {
+        if (!isMobileCheck()) {
+          closeNav();
+        }
+      });
+    }
   });
 
   document.addEventListener('DOMContentLoaded', function () {

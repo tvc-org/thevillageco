@@ -31,10 +31,7 @@
                       >
                         {{ link.title | escape }}
                         <span class="svg-wrapper">
-                          {{- 'icon-arrow.svg' | inline_asset_content -}}
-                        </span>
-                        <span class="svg-wrapper">
-                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                          {{- 'icon-caret-nav.svg' | inline_asset_content -}}
                         </span>
                       </summary>
                       <div
@@ -45,13 +42,13 @@
                         <div class="menu-drawer__inner-submenu">
                           <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
                             <span class="svg-wrapper">
-                              {{- 'icon-arrow.svg' | inline_asset_content -}}
+                              {{- 'icon-caret-nav.svg' | inline_asset_content -}}
                             </span>
                             {{ link.title | escape }}
                           </button>
                           <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
                             {%- for childlink in link.links -%}
-                              <li>
+                              <li{% if childlink.links != blank %} class="menu-drawer__child menu-drawer__child--has-children"{% endif %}>
                                 {%- if childlink.links == blank -%}
                                   <a
                                     id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
@@ -64,54 +61,32 @@
                                     {{ childlink.title | escape }}
                                   </a>
                                 {%- else -%}
-                                  <details id="Details-menu-drawer-{{ link.handle }}-{{ childlink.handle }}">
-                                    <summary
-                                      id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
-                                      class="menu-drawer__menu-item link link--text list-menu__item focus-inset"
-                                    >
-                                      {{ childlink.title | escape }}
-                                      <span class="svg-wrapper">
-                                        {{- 'icon-arrow.svg' | inline_asset_content -}}
-                                      </span>
-                                      <span class="svg-wrapper">
-                                        {{- 'icon-caret.svg' | inline_asset_content -}}
-                                      </span>
-                                    </summary>
-                                    <div
-                                      id="childlink-{{ childlink.handle | escape }}"
-                                      class="menu-drawer__submenu has-submenu gradient motion-reduce"
-                                    >
-                                      <button
-                                        class="menu-drawer__close-button link link--text focus-inset"
-                                        aria-expanded="true"
-                                      >
-                                        <span class="svg-wrapper">
-                                          {{- 'icon-arrow.svg' | inline_asset_content -}}
-                                        </span>
-                                        {{ childlink.title | escape }}
-                                      </button>
-                                      <ul
-                                        class="menu-drawer__menu list-menu"
-                                        role="list"
-                                        tabindex="-1"
-                                      >
-                                        {%- for grandchildlink in childlink.links -%}
-                                          <li>
-                                            <a
-                                              id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
-                                              href="{{ grandchildlink.url }}"
-                                              class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
-                                              {% if grandchildlink.current %}
-                                                aria-current="page"
-                                              {% endif %}
-                                            >
-                                              {{ grandchildlink.title | escape }}
-                                            </a>
-                                          </li>
-                                        {%- endfor -%}
-                                      </ul>
-                                    </div>
-                                  </details>
+                                  <a
+                                    id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}"
+                                    href="{{ childlink.url }}"
+                                    class="menu-drawer__menu-item menu-drawer__menu-item--parent link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                    {% if childlink.current %}
+                                      aria-current="page"
+                                    {% endif %}
+                                  >
+                                    {{ childlink.title | escape }}
+                                  </a>
+                                  <ul class="menu-drawer__grandchild-links list-menu" role="list">
+                                    {%- for grandchildlink in childlink.links -%}
+                                      <li>
+                                        <a
+                                          id="HeaderDrawer-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
+                                          href="{{ grandchildlink.url }}"
+                                          class="menu-drawer__menu-item menu-drawer__menu-item--grandchild link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"
+                                          {% if grandchildlink.current %}
+                                            aria-current="page"
+                                          {% endif %}
+                                        >
+                                          {{ grandchildlink.title | escape }}
+                                        </a>
+                                      </li>
+                                    {%- endfor -%}
+                                  </ul>
                                 {%- endif -%}
                               </li>
                             {%- endfor -%}
@@ -136,14 +111,10 @@
                                           %}
                                         </a>
                                         <div class="menu-drawer__tout-info">
-                                          <a href="{{ product.url }}" class="menu-drawer__tout-name">
+                                          <a href="{{ product.url }}" class="menu-drawer__tout-name h5">
                                             {{- product.title -}}
                                           </a>
-                                          <a
-                                            class="menu-drawer__tout-cta button button--secondary"
-                                            href="{{ product.url }}"
-                                            >Shop Now</a
-                                          >
+                                          {% render 'price', product: product, price_class: 'nav-tout-price', show_compare_at_price: true %}
                                         </div>
                                       </div>
                                     </div>
@@ -163,14 +134,9 @@
                                           %}
                                         </a>
                                         <div class="menu-drawer__tout-info">
-                                          <a href="{{ collection.url }}" class="menu-drawer__tout-name">
+                                          <a href="{{ collection.url }}" class="menu-drawer__tout-name h5">
                                             {{- featured_title -}}
                                           </a>
-                                          <a
-                                            class="menu-drawer__tout-cta button button--secondary"
-                                            href="{{ collection.url }}"
-                                            >Shop Now</a
-                                          >
                                         </div>
                                       </div>
                                     </div>
@@ -193,14 +159,9 @@
                                             %}
                                           </a>
                                           <div class="menu-drawer__tout-info">
-                                            <a href="{{ article.url }}" class="menu-drawer__tout-name">
+                                            <a href="{{ article.url }}" class="menu-drawer__tout-name h5">
                                               {{- featured_title -}}
                                             </a>
-                                            <a
-                                              class="menu-drawer__tout-cta button button--secondary"
-                                              href="{{ article.url }}"
-                                              >Read More</a
-                                            >
                                           </div>
                                         </div>
                                       </div>
@@ -213,25 +174,16 @@
                                   <div class="menu-drawer__touts-bottom">
                                     <a
                                       href="{{ block.settings.bottom_button_link }}"
-                                      class="menu-drawer__tout-bottom-link"
+                                      class="menu-drawer__tout-bottom-link nav-tout-bottom-button"
                                     >
                                       <span>{{ block.settings.bottom_button_text }}</span>
-                                      <svg
-                                        class="chevron"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="17"
-                                        height="16"
-                                        viewBox="0 0 17 16"
-                                        fill="none"
-                                      >
-                                        <path d="M6.5 12L10.5 8L6.5 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="round"/>
-                                      </svg>
                                     </a>
                                   </div>
                                 {%- endif -%}
                               {%- endif -%}
                             {%- endfor -%}
                           {%- endif -%}
+
                         </div>
                       </div>
                     </details>
