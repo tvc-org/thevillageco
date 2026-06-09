@@ -44,7 +44,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background: rgb(var(--color-background));
+  /* background: rgb(var(--color-background)); */
 }
 
 .tvc-slideshow--layout-stacked .tvc-slideshow__media:not(.tvc-slideshow__media--preserve-aspect) {
@@ -766,4 +766,66 @@ body.mr-bubble .tvc-slideshow__heading {
 
 .tvc-slideshow__sound-toggle[aria-pressed='true'] .tvc-slideshow__sound-icon--off {
   display: none;
+}
+
+/* Product badges on slide media — position follows Theme settings → Badges */
+.tvc-slideshow__media .card__badge {
+  position: absolute;
+  z-index: 2;
+  margin: 0;
+  align-self: unset;
+  justify-self: unset;
+  grid-row-start: auto;
+  width: auto;
+  max-width: calc(100% - 2rem);
+}
+
+.tvc-slideshow__media--badge-bottom-left .card__badge {
+  bottom: 20px;
+  left: 14px;
+  top: auto;
+  right: auto;
+}
+
+.tvc-slideshow__media--badge-bottom-right .card__badge {
+  bottom: 20px;
+  right: 14px;
+  top: auto;
+  left: auto;
+}
+
+.tvc-slideshow__media--badge-top-left .card__badge {
+  top: 20px;
+  left: 14px;
+  bottom: auto;
+  right: auto;
+}
+
+.tvc-slideshow__media--badge-top-right .card__badge {
+  top: 20px;
+  right: 14px;
+  bottom: auto;
+  left: auto;
+}
+
+@media screen and (min-width: 1025px) {
+  .tvc-slideshow__media--badge-bottom-left .card__badge {
+    bottom: 40px;
+    left: 40px;
+  }
+
+  .tvc-slideshow__media--badge-bottom-right .card__badge {
+    bottom: 40px;
+    right: 40px;
+  }
+
+  .tvc-slideshow__media--badge-top-left .card__badge {
+    top: 40px;
+    left: 40px;
+  }
+
+  .tvc-slideshow__media--badge-top-right .card__badge {
+    top: 40px;
+    right: 40px;
+  }
 }
