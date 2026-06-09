@@ -125,7 +125,7 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "preserve_image_aspect_ratio": false,
+            "preserve_image_aspect_ratio": true,
             "video": "shopify://files/videos/VN_MAGNESIUM_15_NoRetialInfo_040125_2.mp4",
             "heading": "Designed for \nReal Life Self-Care",
             "text": "<p>Modern living can be hectic — and your bath shouldn’t just be about getting clean. It should be a chance to:</p>",
