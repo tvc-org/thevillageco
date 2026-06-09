@@ -39,7 +39,7 @@
 .tvc-dual-feature__media {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1 / 0.8;
   overflow: hidden;
   border-radius: var(--border-radius, 0.4rem);
   background: rgba(var(--color-foreground), 0.06);
