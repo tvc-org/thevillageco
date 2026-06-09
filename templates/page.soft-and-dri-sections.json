@@ -25,7 +25,7 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "image": "shopify://shop_images/soft-dri-home-hero.jpg",
+            "image": "shopify://shop_images/soft-dri-home-hero-wide.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Your Mood. Your Scent. Your Day.",
             "text": "<p>Four aluminum-free formulas. All-day protection. <br/>Built to keep up with wherever life takes you.</p>",
@@ -58,7 +58,7 @@
           "settings": {
             "product": "soft-dri-sparkling-citrus-aluminum-free-deodorant",
             "collection": "",
-            "image": "shopify://shop_images/V2_sparkling-citrus-social_46345175-c514-45b5-b6cb-6da2a04465ce.jpg",
+            "image": "shopify://shop_images/V2_sparkling-citrus-wide.jpg",
             "heading_block": "Aluminum Free Solids",
             "text": "<p>Boosted with pH balancing minerals and formulated to go on smooth and clear — three empowering scents built to keep up with your day, every day.</p>",
             "link_label": "",
@@ -70,7 +70,7 @@
           "settings": {
             "product": "soft-dri-signature-classic-soft-scent-aerosol-deodorant",
             "collection": "",
-            "image": "shopify://shop_images/SND-flowers.jpg",
+            "image": "shopify://shop_images/SND-flowers-wide.jpg",
             "heading_block": "Classic Signature Aerosol",
             "text": "<p>Same soft, iconic scent you love — now with just six simple ingredients. Free from aluminum, parabens, and talc. All-day odor protection, nothing you don't need.</p>",
             "link_label": "",
@@ -85,7 +85,8 @@
       "name": "t:sections.tvc-dual-feature.presets.name",
       "settings": {
         "heading": "",
-        "color_scheme": ""
+        "color_scheme": "",
+        "show_sound_toggle": false
       }
     },
     "featured_collection_8BieNP": {
