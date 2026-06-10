@@ -1939,62 +1939,20 @@ div[class*='kl-teaser-'],
     margin-top: var(--section-margin);
 }
 
-/* Brand PDPs — use header --brand-background-color (matches collection PLP) */
-body.bath-shoppe.template-product {
-    --brand-background-color: #f3ebe3;
-}
-
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product #MainContent {
-    background: var(--brand-background-color);
+/* Brand PDPs — default cream bg from header :root --brand-background-color.
+   Mr. Bubble & Soft&Dri omit brand bg in header settings; exclude them here. */
+body.template-product:not(.mr-bubble):not(.soft-dri) #MainContent,
+body.template-product:not(.mr-bubble):not(.soft-dri) product-info.gradient,
+body.template-product:not(.mr-bubble):not(.soft-dri) .shopify-section.section > .gradient,
+body.template-product:not(.mr-bubble):not(.soft-dri) .shopify-section.section:has(.yotpo-widget-instance),
+body.template-product:not(.mr-bubble):not(.soft-dri) .tvc-cross-sell-addons.gradient,
+body.template-product:not(.mr-bubble):not(.soft-dri) .quantity:before {
+    --gradient-background: var(--brand-background-color, #f7f2ec);
+    background: var(--brand-background-color, #f7f2ec);
     background-attachment: scroll;
 }
 
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product product-info.gradient,
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product .shopify-section.section > .gradient,
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product .shopify-section.section:has(.yotpo-widget-instance),
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product .tvc-cross-sell-addons.gradient,
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product .quantity:before {
-    --gradient-background: var(--brand-background-color);
-    background: var(--brand-background-color);
-    background-attachment: scroll;
-}
-
-:is(
-    body.village-naturals-therapy,
-    body.the-village-co,
-    body.the-village-company,
-    body.bath-shoppe
-  ).template-product .shopify-section.section:has(.yotpo-widget-instance) {
+body.template-product:not(.mr-bubble):not(.soft-dri) .shopify-section.section:has(.yotpo-widget-instance) {
     color: #323131;
 }
 
@@ -3500,7 +3458,7 @@ body.village-naturals-therapy {
 
 /* --- Village Naturals Therapy — Yotpo stars --- */
 
-body.village-naturals-therapy .search-modal.gradient {
+:is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .search-modal.gradient {
     --gradient-background: var(--brand-background-color);
     background: var(--brand-background-color);
     background-attachment: scroll;

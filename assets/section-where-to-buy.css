@@ -1,0 +1,218 @@
+/* Where To Buy — ported from qa-theme; typography aligned with TVC site */
+
+.where-to-buy-page {
+  --wtb-blue: #00a1dd;
+  --wtb-text: #323131;
+  --wtb-field-bg: #f0f0f0;
+  --wtb-field-disabled: #ccc;
+  color: var(--wtb-text);
+}
+
+.where-to-buy-page .wtb-banner {
+  align-items: center;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 298px;
+  justify-content: center;
+  text-align: center;
+}
+
+.where-to-buy-page .wtb-banner h1 {
+  color: #fff;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  line-height: 45px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 1025px) {
+  .where-to-buy-page .wtb-banner h1 {
+    font-size: 55px;
+    letter-spacing: 5px;
+    line-height: 60px;
+  }
+}
+
+.where-to-buy-page .wtb-content {
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  line-height: 1.2;
+  padding: 40px 31px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .where-to-buy-page .wtb-content {
+    font-size: 24px;
+    line-height: 1.04;
+  }
+}
+
+.where-to-buy-page .wtb-content .wtb-images,
+.where-to-buy-page .wtb-content .wtb-text {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
+
+.where-to-buy-page .wtb-content .wtb-text {
+  margin-bottom: 31px;
+}
+
+.where-to-buy-page .wtb-content .wtb-images {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.where-to-buy-page .selectors {
+  background-color: var(--wtb-blue);
+  color: #fff;
+}
+
+.where-to-buy-page .selectors form {
+  margin: 0 auto;
+  max-width: 962px;
+  padding: 31px;
+}
+
+.where-to-buy-page .selectors .selector-wrapper {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.where-to-buy-page .selectors .selector-wrapper:last-of-type {
+  margin-right: 0;
+}
+
+.where-to-buy-page .selectors label {
+  display: block;
+  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.where-to-buy-page .selectors input,
+.where-to-buy-page .selectors select {
+  appearance: none;
+  background-color: var(--wtb-field-bg);
+  color: var(--wtb-text);
+  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+  font-size: 14px;
+  height: 50px;
+  letter-spacing: 2px;
+  line-height: 50px;
+  max-width: 221px;
+  padding: 0 15px;
+  text-transform: uppercase;
+}
+
+.where-to-buy-page .selectors select:disabled {
+  background-color: var(--wtb-field-disabled);
+  opacity: 1;
+}
+
+.where-to-buy-page .selectors .select-wrapper {
+  position: relative;
+}
+
+.where-to-buy-page .selectors .select-wrapper select {
+  padding-right: 36px;
+  width: 100%;
+}
+
+.where-to-buy-page .selectors .select-wrapper::after {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--wtb-text);
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.where-to-buy-page .selectors button {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+  font-size: 14px;
+  height: 50px;
+  letter-spacing: 2px;
+  line-height: 50px;
+  padding: 0 30px;
+  text-transform: uppercase;
+}
+
+.where-to-buy-page .selectors button[disabled] {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.where-to-buy-page .results-wrapper {
+  max-width: 100vw;
+  min-height: 681px;
+  overflow-x: auto;
+  padding: 0 31px;
+}
+
+.where-to-buy-page .results-wrapper .results {
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  margin: 60px auto;
+  max-width: 962px;
+  width: 100%;
+}
+
+.where-to-buy-page .results-wrapper .results td,
+.where-to-buy-page .results-wrapper .results th {
+  padding: 20px;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.where-to-buy-page .results-wrapper .results td {
+  border-top: 1px solid #979797;
+}
+
+@media screen and (max-width: 1024px) {
+  .where-to-buy-page .wtb-content .wtb-images {
+    flex-direction: column;
+  }
+
+  .where-to-buy-page .wtb-content .wtb-images img {
+    margin-bottom: 21px;
+  }
+
+  .where-to-buy-page .selectors .selector-wrapper {
+    display: block;
+    margin: 0;
+  }
+
+  .where-to-buy-page .selectors input,
+  .where-to-buy-page .selectors select {
+    margin-bottom: 21px;
+    max-width: none;
+    width: 100%;
+  }
+
+  .where-to-buy-page .selectors form {
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .where-to-buy-page .selectors button {
+    float: right;
+    margin-top: 31px;
+  }
+}

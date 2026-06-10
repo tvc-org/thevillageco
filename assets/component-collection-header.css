@@ -13,18 +13,18 @@
   max-width: calc(var(--page-width) + (var(--layout-gutter-x) * 2));
 }
 
-/* Village Naturals Therapy — collection PLP + header areas use brand page background */
-body.village-naturals-therapy.template-collection #MainContent {
-  background: var(--brand-background-color);
+/* Branded collection PLPs — default from header :root; skip mr-bubble & soft-dri */
+body.template-collection:not(.mr-bubble):not(.soft-dri) #MainContent {
+  background: var(--brand-background-color, #f7f2ec);
   background-attachment: scroll;
 }
 
-body.village-naturals-therapy.template-collection .collection-hero.gradient,
-body.village-naturals-therapy.template-collection .shopify-section.section > .gradient,
-body.village-naturals-therapy.template-collection .facets-container--collection-toolbar,
-body.village-naturals-therapy.template-collection .collection-mobile-toolbar {
-  --gradient-background: var(--brand-background-color);
-  background: var(--brand-background-color);
+body.template-collection:not(.mr-bubble):not(.soft-dri) .collection-hero.gradient,
+body.template-collection:not(.mr-bubble):not(.soft-dri) .shopify-section.section > .gradient,
+body.template-collection:not(.mr-bubble):not(.soft-dri) .facets-container--collection-toolbar,
+body.template-collection:not(.mr-bubble):not(.soft-dri) .collection-mobile-toolbar {
+  --gradient-background: var(--brand-background-color, #f7f2ec);
+  background: var(--brand-background-color, #f7f2ec);
   background-attachment: scroll;
 }
 

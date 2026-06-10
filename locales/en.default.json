@@ -64,6 +64,17 @@
       "next_slide": "Slide right",
       "previous_slide": "Slide left",
       "name": "Slider"
+    },
+    "where_to_buy": {
+      "before_search": "Search for a product",
+      "no_stores_found": "No stores found",
+      "no_products_found": "No products found",
+      "choose_brand": "Choose a Brand:",
+      "choose_brand_option": "Choose a Brand",
+      "choose_product": "Select a Product:",
+      "choose_product_option": "Choose a Product",
+      "zip_code": "Your Zip Code:",
+      "search": "Search"
     }
   },
   "newsletter": {

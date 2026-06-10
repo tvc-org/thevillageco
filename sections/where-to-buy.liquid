@@ -1,0 +1,182 @@
+{{ 'section-where-to-buy.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'where-to-buy.js' | asset_url }}" defer="defer"></script>
+
+{%- assign banner_image = section.settings.banner_image -%}
+
+<div
+  class="where-to-buy-page page-{{ page.handle | default: 'where-to-buy' }}"
+  data-before-search="{{ 'general.where_to_buy.before_search' | t | escape }}"
+  data-no-stores="{{ 'general.where_to_buy.no_stores_found' | t | escape }}"
+  data-no-products="{{ 'general.where_to_buy.no_products_found' | t | escape }}"
+  data-choose-product="{{ 'general.where_to_buy.choose_product' | t | escape }}"
+>
+  <div
+    class="wtb-banner"
+    {% if banner_image != blank %}
+      style="background-image: url({{ banner_image | image_url: width: 2160 }});"
+    {% endif %}
+  >
+    <h1>{{ page.title | escape }}</h1>
+  </div>
+
+  {%- if section.settings.body != blank or section.blocks.size > 0 -%}
+    <div class="wtb-content">
+      {%- if section.settings.body != blank -%}
+        <div class="wtb-text rte">
+          {{ section.settings.body }}
+        </div>
+      {%- endif -%}
+
+      {%- assign retailer_blocks = section.blocks | where: 'type', 'retailer_image' -%}
+      {%- if retailer_blocks.size > 0 -%}
+        <div class="wtb-images">
+          {%- for block in retailer_blocks -%}
+            {%- if block.settings.image != blank -%}
+              {%- capture retailer_alt -%}
+                {%- if block.settings.image.alt != blank -%}
+                  {{ block.settings.image.alt | escape }}
+                {%- else -%}
+                  {{ page.title | escape }}
+                {%- endif -%}
+              {%- endcapture -%}
+              {%- if block.settings.url != blank -%}
+                <a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+                  {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 400', alt: retailer_alt }}
+                </a>
+              {%- else -%}
+                <span {{ block.shopify_attributes }}>
+                  {{ block.settings.image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 400', alt: retailer_alt }}
+                </span>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="selectors">
+    <form id="wtb-selectors" novalidate>
+      <div class="selector-wrapper">
+        <label for="wtb-brand-{{ section.id }}">{{ 'general.where_to_buy.choose_brand' | t }}</label>
+        <div class="select-wrapper">
+          <select
+            id="wtb-brand-{{ section.id }}"
+            class="brand-selector field"
+            name="productfamilyid"
+            required
+          >
+            <option value="" selected disabled>{{ 'general.where_to_buy.choose_brand_option' | t }}</option>
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'brand' and block.settings.title != blank and block.settings.brand_id != blank -%}
+                <option value="{{ block.settings.brand_id | escape }}">
+                  {{ block.settings.title | escape }}
+                </option>
+              {%- endif -%}
+            {%- endfor -%}
+          </select>
+        </div>
+      </div>
+
+      <div class="selector-wrapper">
+        <label for="wtb-product-{{ section.id }}">{{ 'general.where_to_buy.choose_product' | t }}</label>
+        <div class="select-wrapper">
+          <select
+            id="wtb-product-{{ section.id }}"
+            class="product-selector field"
+            name="productid"
+            disabled
+            required
+          >
+            <option value="" selected disabled>{{ 'general.where_to_buy.choose_product_option' | t }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="selector-wrapper">
+        <label for="wtb-zip-{{ section.id }}">{{ 'general.where_to_buy.zip_code' | t }}</label>
+        <input
+          id="wtb-zip-{{ section.id }}"
+          class="zip-input field"
+          name="zip"
+          type="text"
+          inputmode="numeric"
+          pattern="[0-9]{5}"
+          maxlength="5"
+          required
+        >
+      </div>
+
+      <button type="submit" disabled>{{ 'general.where_to_buy.search' | t }}</button>
+    </form>
+  </div>
+
+  <div class="results-wrapper">
+    <table class="results" aria-live="polite">
+      <tr>
+        <th>{{ 'general.where_to_buy.before_search' | t }}</th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Where to buy",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner image"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Intro text",
+      "default": "<p>Choose a brand and product then type in your ZIP code to find our products near you.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Brand label"
+        },
+        {
+          "type": "text",
+          "id": "brand_id",
+          "label": "IRI brand ID",
+          "info": "Four character brand identifier in IRI"
+        }
+      ]
+    },
+    {
+      "type": "retailer_image",
+      "name": "Retailer logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Where to buy"
+    }
+  ]
+}
+{% endschema %}

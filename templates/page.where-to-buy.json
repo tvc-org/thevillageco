@@ -1,0 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "where-to-buy",
+      "settings": {
+        "banner_image": "shopify://shop_images/iStock-471488989_v1_d1cb9c0e-e6a0-4a66-a9f7-5244c4df562c.png",
+        "body": "<p>Choose a brand and product then type in your ZIP code to find our products near you. </p>"
+      },
+      "blocks": {
+        "brand_hallu": {
+          "type": "brand",
+          "settings": {
+            "title": "Hallu",
+            "brand_id": "HALU"
+          }
+        },
+        "brand_mr_bubble": {
+          "type": "brand",
+          "settings": {
+            "title": "Mr. Bubble",
+            "brand_id": "MRBB"
+          }
+        },
+        "brand_soft_dri": {
+          "type": "brand",
+          "settings": {
+            "title": "Soft & Dri",
+            "brand_id": "SDRI"
+          }
+        },
+        "brand_therapy": {
+          "type": "brand",
+          "settings": {
+            "title": "Village Naturals Therapy",
+            "brand_id": "VLNT"
+          }
+        },
+        "brand_dep": {
+          "type": "brand",
+          "settings": {
+            "title": "DEP",
+            "brand_id": "DEPT"
+          }
+        },
+        "brand_bath_shoppe": {
+          "type": "brand",
+          "settings": {
+            "title": "Bath Shoppe",
+            "brand_id": "BATH"
+          }
+        }
+      },
+      "block_order": [
+        "brand_hallu",
+        "brand_mr_bubble",
+        "brand_soft_dri",
+        "brand_therapy",
+        "brand_dep",
+        "brand_bath_shoppe"
+      ]
+    }
+  },
+  "order": ["main"]
+}
