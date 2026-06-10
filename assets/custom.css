@@ -10,7 +10,7 @@
     --color-text: #2C2C2C;
     --color-text-navigation: #464646;
     --color-text-muted: #9B9B9B;
-    --color-border: #d3d3d3;
+    --color-border: #e3e3e3;
     --color-accent: #434343;
     --color-badge: #808080;
     --color-shadow: rgba(50, 49, 49, 0.1);
@@ -1227,10 +1227,27 @@ div[class*='kl-teaser-'],
     menu-drawer > details[open] > summary::before {
         z-index: 998;
     }
+
+    .header__search details[open] > .search-modal,
+    .header-desktop-search-modal details[open] > .search-modal {
+        z-index: 1000;
+    }
 }
 
 .menu-drawer__menu-item.link--text {
-    color: var(--color-text-navigation);
+    color: #000;
+}
+
+.menu-drawer__navigation {
+    padding: 18px 0;
+}
+
+.js .menu-drawer__menu li {
+    margin-bottom: 5px;
+}
+
+.menu-drawer summary.menu-drawer__menu-item {
+    padding-right: 18px;
 }
 
 .menu-drawer .menu-drawer__menu-item,
@@ -1265,7 +1282,7 @@ div[class*='kl-teaser-'],
 .menu-drawer summary.menu-drawer__menu-item > .svg-wrapper {
     height: 24px;
     position: absolute;
-    right: 3rem;
+    right: 12px;
     top: 50%;
     transform: translateY(-50%);
     width: 24px;
@@ -1504,6 +1521,8 @@ div[class*='kl-teaser-'],
 .menu-drawer__menu-item {
     padding-left: 18px;
     padding-right: 18px;
+    font-size: 16px;
+    color: #000;
 }
 
 @media screen and (max-width: 1024px) {

@@ -2,7 +2,8 @@
   Tout nav featured image: custom, then Bonify custom_fields, then product/collection/article default image.
   Pass exactly one of: product, collection, article
   - image_width: number for image_url width
-  - image_widths: string for image_tag widths (e.g. '220, 440' or '160, 320')
+  - image_widths: string for image_tag widths (e.g. '220, 440' or '280, 560')
+  - image_sizes: optional sizes attribute (e.g. '280px')
   - load_lazy: if true, adds loading='lazy'
 {% endcomment %}
 {%- liquid
@@ -33,7 +34,13 @@
     endif
   endif
 -%}
-{%- if load_lazy -%}
+{%- if image_sizes != blank -%}
+  {%- if load_lazy -%}
+    {{- tout_img | image_url: width: image_width | image_tag: widths: image_widths, sizes: image_sizes, loading: 'lazy' -}}
+  {%- else -%}
+    {{- tout_img | image_url: width: image_width | image_tag: widths: image_widths, sizes: image_sizes -}}
+  {%- endif -%}
+{%- elsif load_lazy -%}
   {{- tout_img | image_url: width: image_width | image_tag: widths: image_widths, loading: 'lazy' -}}
 {%- else -%}
   {{- tout_img | image_url: width: image_width | image_tag: widths: image_widths -}}
