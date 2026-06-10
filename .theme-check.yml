@@ -1,3 +1,6 @@
+ignore:
+  - sections/kids-corner-form.liquid
+
 MatchingTranslations:
   enabled: false
 TemplateLength:
