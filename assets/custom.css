@@ -1956,6 +1956,16 @@ body.template-product:not(.mr-bubble):not(.soft-dri) .shopify-section.section:ha
     color: #323131;
 }
 
+/* Brand cart — same header :root --brand-background-color; skip mr-bubble & soft-dri */
+body.template-cart:not(.mr-bubble):not(.soft-dri) #MainContent,
+body.template-cart:not(.mr-bubble):not(.soft-dri) cart-items.gradient,
+body.template-cart:not(.mr-bubble):not(.soft-dri) #main-cart-footer.gradient,
+body.template-cart:not(.mr-bubble):not(.soft-dri) .shopify-section.section > .gradient {
+    --gradient-background: var(--brand-background-color, #f7f2ec);
+    background: var(--brand-background-color, #f7f2ec);
+    background-attachment: scroll;
+}
+
 .product__info-wrapper .yotpo-sr-bottom-line-text--right-panel {
     padding: 0 !important;
     margin: 4px 0 0 0 !important;
