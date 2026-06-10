@@ -136,6 +136,24 @@
       {%- endif -%}
     {%- endfor -%}
   {%- endif -%}
+  {%- if collection -%}
+    {%- assign collection_title_down = collection.title | downcase -%}
+    {%- if collection_title_down contains 'therapy:' -%}
+      {%- for block in resolved_brand_blocks -%}
+        {%- if block.settings.text == 'Village Naturals Therapy' -%}
+          {%- assign current_brand = block -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif collection_title_down contains 'mr. bubble:' -%}
+      {%- for block in resolved_brand_blocks -%}
+        {%- if block.settings.text == 'Mr. Bubble' -%}
+          {%- assign current_brand = block -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  {%- endif -%}
   {%- if current_brand != blank and current_brand.settings.text != blank -%}
     {%- assign brand_handle = current_brand.settings.text | handleize -%}
   {%- endif -%}
@@ -156,6 +174,14 @@
       if blog.handle == 'village-naturals-therapy'
         assign brand_handle = 'village-naturals-therapy'
       elsif blog.handle == 'fun'
+        assign brand_handle = 'mr-bubble'
+      endif
+    endif
+    if collection
+      assign collection_title_down = collection.title | downcase
+      if collection_title_down contains 'therapy:'
+        assign brand_handle = 'village-naturals-therapy'
+      elsif collection_title_down contains 'mr. bubble:'
         assign brand_handle = 'mr-bubble'
       endif
     endif
