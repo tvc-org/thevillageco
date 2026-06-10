@@ -19,6 +19,14 @@
   {{ 'component-collection-grid-cross-promo-tout.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
 
+{%- comment -%}
+  REVERT infinite scroll: set enable_infinite_scroll false below, or see docs/collection-infinite-scroll.md
+{%- endcomment -%}
+{%- if section.settings.enable_infinite_scroll -%}
+  {{ 'component-collection-infinite-scroll.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'collection-infinite-scroll.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
@@ -181,7 +189,7 @@
                   animation_order: collection_grid_stream_order
                 %}
               {%- endif -%}
-              {%- if collection.image -%}
+              {%- if collection.image and paginate.current_offset == 0 -%}
                 {% render 'collection-grid-featured-image',
                   collection: collection,
                   placement: 'grid',
@@ -237,10 +245,17 @@
                   animation_order: collection_grid_stream_order
                 %}
               {%- endif -%}
+              {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll -%}
+                <li class="collection-infinite-scroll__sentinel" aria-hidden="true"></li>
+              {%- endif -%}
             </ul>
 
             {%- if paginate.pages > 1 -%}
-              {% render 'pagination', paginate: paginate, anchor: '' %}
+              {%- if section.settings.enable_infinite_scroll -%}
+                {% render 'collection-infinite-scroll', paginate: paginate, section: section %}
+              {%- else -%}
+                {% render 'pagination', paginate: paginate, anchor: '' %}
+              {%- endif -%}
             {%- endif -%}
           </div>
         {%- endif -%}
@@ -265,6 +280,13 @@
       "step": 4,
       "default": 16,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_infinite_scroll",
+      "default": true,
+      "label": "t:sections.main-collection-product-grid.settings.enable_infinite_scroll.label",
+      "info": "t:sections.main-collection-product-grid.settings.enable_infinite_scroll.info"
     },
     {
       "type": "range",

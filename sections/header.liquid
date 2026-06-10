@@ -348,7 +348,7 @@
     }
 
     setHeaderHeight() {
-      console.log('setHeaderHeight', this.header.offsetHeight);
+      //console.log('setHeaderHeight', this.header.offsetHeight);
       document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
       if (this.announcementBar) {
         document.documentElement.style.setProperty(
@@ -414,14 +414,14 @@
 
     reveal() {
       if (this.headerIsAlwaysSticky) return;
-      console.log('reveal menu');
+      //console.log('reveal menu');
       this.header.classList.add('shopify-section-header-sticky', 'animate');
       this.header.classList.remove('shopify-section-header-hidden');
     }
 
     reset() {
       if (this.headerIsAlwaysSticky) return;
-      console.log('reset menu');
+      //console.log('reset menu');
       this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
     }
 
@@ -453,7 +453,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     const dropdownCheck = document.querySelectorAll('.header-bottom__item.has-dropdown').length;
-    console.log('dropdownCheck', dropdownCheck);
+    //console.log('dropdownCheck', dropdownCheck);
 
     document.querySelectorAll('.header-bottom__item.has-dropdown').forEach((item) => {
       item.addEventListener('mouseover', function () {
@@ -464,7 +464,7 @@
           this.classList.add('active');
           const dropdown = this.querySelector('.header-bottom__submenu');
           const height = dropdown.offsetHeight;
-          console.log('height: ' + height);
+          //console.log('height: ' + height);
           document.querySelector('.header-bottom').classList.add('active');
           document.querySelector('.header-bottom .dropdown-bg').style.height = height + 'px';
         }

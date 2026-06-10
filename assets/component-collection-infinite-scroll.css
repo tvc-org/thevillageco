@@ -1,0 +1,39 @@
+collection-infinite-scroll,
+.collection-infinite-scroll {
+  display: block;
+  margin: 2rem 0 0;
+  width: 100%;
+}
+
+.product-grid > .collection-infinite-scroll__sentinel {
+  flex: 0 0 100%;
+  height: 20px;
+  list-style: none;
+  margin: 0;
+  min-height: 20px;
+  padding: 0;
+  pointer-events: none;
+  width: 100%;
+}
+
+.collection-infinite-scroll__loading {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.collection-infinite-scroll__loading.hidden {
+  display: none;
+}
+
+.collection-infinite-scroll__end {
+  color: var(--color-text-muted, rgba(var(--color-foreground), 0.7));
+  font-size: 1.4rem;
+  margin: 0;
+  padding: 1rem 0 0;
+  text-align: center;
+}
+
+.collection-infinite-scroll__end.hidden {
+  display: none;
+}

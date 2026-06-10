@@ -1,0 +1,29 @@
+{% comment %}
+  Infinite scroll sentinel for collection product grids.
+
+  REVERT: In sections/main-collection-product-grid.liquid, set enable_infinite_scroll
+  to false (theme editor) or replace this render with:
+  {% render 'pagination', paginate: paginate, anchor: '' %}
+{% endcomment %}
+
+<collection-infinite-scroll
+  class="collection-infinite-scroll"
+  data-section-id="{{ section.id }}"
+  data-current-page="{{ paginate.current_page }}"
+  data-total-pages="{{ paginate.pages }}"
+  data-total-products="{{ collection.products_count }}"
+  data-products-per-page="{{ paginate.page_size }}"
+  data-initial-page-products="{{ collection.products.size }}"
+  {% if paginate.next %}
+    data-next-url="{{ paginate.next.url }}"
+  {% endif %}
+>
+  <div class="collection-infinite-scroll__status" role="status" aria-live="polite">
+    <div class="collection-infinite-scroll__loading hidden">
+      {%- render 'loading-spinner' -%}
+    </div>
+    <p class="collection-infinite-scroll__end hidden">
+      {{ 'sections.collection_template.infinite_scroll_end' | t }}
+    </p>
+  </div>
+</collection-infinite-scroll>

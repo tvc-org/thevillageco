@@ -2262,6 +2262,10 @@
         "products_per_page": {
           "label": "Products per page"
         },
+        "enable_infinite_scroll": {
+          "label": "Infinite scroll",
+          "info": "Load more products as shoppers scroll. Uncheck to use page number links instead."
+        },
         "columns_desktop": {
           "label": "Columns"
         },
