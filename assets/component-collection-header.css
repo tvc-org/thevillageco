@@ -83,8 +83,8 @@ body.village-naturals-therapy.template-collection .collection-mobile-toolbar {
     padding-top: 28px;
     padding-bottom: 28px;
     margin-bottom: 95px;
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
+    border-top: 1px solid var(--color-border-light);
+    border-bottom: 1px solid var(--color-border-light);
   }
 
   #FacetsWrapperDesktop {
