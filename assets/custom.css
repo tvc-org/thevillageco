@@ -760,6 +760,11 @@ header.site-header {
     height: 22px;
 }
 
+.header__icon--menu .icon.icon-close {
+    height: 14px;
+    width: 14px;
+}
+
 .header__icon.link.find-in-store {
     font-size: 16px;
     max-width: none;
@@ -1246,6 +1251,17 @@ div[class*='kl-teaser-'],
     background-color: transparent;
 }
 
+.menu-drawer__close-button {
+    font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    justify-content: center;
+    padding-left: 18px;
+    padding-right: 18px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .menu-drawer summary.menu-drawer__menu-item > .svg-wrapper {
     height: 24px;
     position: absolute;
@@ -1267,8 +1283,11 @@ div[class*='kl-teaser-'],
 .menu-drawer__close-button .svg-wrapper {
     flex-shrink: 0;
     height: 24px;
-    margin-right: 1rem;
-    transform: rotate(180deg);
+    left: 12px;
+    margin-right: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
     width: 24px;
 }
 
@@ -1482,14 +1501,55 @@ div[class*='kl-teaser-'],
    Menu Drawer - Mobile nav child / grandchild links
    ========================================================================== */
 
+.menu-drawer__menu-item {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+@media screen and (max-width: 1024px) {
+    menu-drawer .menu-drawer,
+    .js details[open] > .menu-drawer {
+        border-top: 1px solid var(--color-border);
+        max-width: 100%;
+        width: 400px;
+    }
+
+    .js menu-drawer > details > summary::before,
+    menu-drawer > details[open] > summary::before {
+        bottom: 0;
+        height: auto;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: var(--header-bottom-position, 0);
+        width: auto;
+    }
+}
+
 .js .menu-drawer__submenu {
     z-index: 2;
+}
+
+@media screen and (max-width: 1024px) {
+    /* Stock Dawn: fixed-height drawer shell never scrolls */
+    #menu-drawer.menu-drawer {
+        overflow-y: hidden;
+    }
+
+    #menu-drawer.menu-drawer .menu-drawer__navigation-container {
+        overflow-y: auto;
+    }
+
+    /* Submenu open: only .menu-drawer__inner-submenu scrolls */
+    #menu-drawer.menu-drawer.menu-drawer--submenu-active .menu-drawer__navigation-container,
+    #menu-drawer.menu-drawer .menu-drawer__navigation-container:has(.submenu-open) {
+        overflow: hidden;
+    }
 }
 
 .menu-drawer__inner-submenu {
     padding-bottom: 20px;
     box-sizing: border-box;
-    -webkit-overflow-scrolling: touch;
 }
 
 .menu-drawer__child--has-children {
@@ -1497,9 +1557,11 @@ div[class*='kl-teaser-'],
 }
 
 .menu-drawer__menu-item--parent {
-    font-size: 2rem;
-    letter-spacing: 0.11em;
-    text-transform: none;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
+    margin-bottom: 6px;
+    margin-top: 18px;
 }
 
 .menu-drawer__grandchild-links {
@@ -1509,16 +1571,16 @@ div[class*='kl-teaser-'],
 }
 
 .menu-drawer__menu-item--grandchild {
-    font-size: 1.4rem;
-    letter-spacing: 0.08em;
-    padding-bottom: 0.8rem;
-    padding-top: 0.8rem;
-    text-transform: uppercase;
+    font-size: 16px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #000 !important;
+    margin-bottom: 6px;
 }
 
 .menu-drawer__touts {
     margin-top: 2rem;
-    padding: 0 3rem 0;
+    padding: 0 18px 0;
 }
 
 .menu-drawer__tout {
@@ -1533,8 +1595,8 @@ div[class*='kl-teaser-'],
     align-items: flex-start;
     display: flex;
     flex-direction: column;
-    margin: 2rem auto;
-    max-width: 140px;
+    margin: 2rem 0;
+    max-width: 280px;
     padding-bottom: 0.5rem;
 }
 
@@ -1547,7 +1609,8 @@ div[class*='kl-teaser-'],
     margin-bottom: 8px;
     overflow: hidden;
     position: relative;
-    width: 140px;
+    width: 100%;
+    max-width: 280px;
 }
 
 .menu-drawer__tout-image img {
@@ -1583,14 +1646,14 @@ div[class*='kl-teaser-'],
 
 .menu-drawer__touts-bottom {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     margin-top: 1rem;
-    padding: 0 3rem 2rem;
+    padding: 0 18px 2rem;
 }
 
 .menu-drawer__tout-bottom-link.nav-tout-bottom-button {
     width: 100%;
-    max-width: 280px;
+    max-width: none;
 }
 
 /* ==========================================================================

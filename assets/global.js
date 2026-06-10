@@ -438,6 +438,10 @@ class MenuDrawer extends HTMLElement {
     ).forEach((button) => button.addEventListener('click', this.onCloseButtonClick.bind(this)));
   }
 
+  setSubmenuScrollLock(active) {
+    document.getElementById('menu-drawer')?.classList.toggle('menu-drawer--submenu-active', active);
+  }
+
   onKeyUp(event) {
     if (event.code.toUpperCase() !== 'ESCAPE') return;
 
@@ -473,6 +477,7 @@ class MenuDrawer extends HTMLElement {
         detailsElement.classList.add('menu-opening');
         summaryElement.setAttribute('aria-expanded', true);
         parentMenuElement && parentMenuElement.classList.add('submenu-open');
+        this.setSubmenuScrollLock(true);
         !reducedMotion || reducedMotion.matches
           ? addTrapFocus()
           : summaryElement.nextElementSibling.addEventListener('transitionend', addTrapFocus);
@@ -500,6 +505,7 @@ class MenuDrawer extends HTMLElement {
     this.mainDetailsToggle.querySelectorAll('.submenu-open').forEach((submenu) => {
       submenu.classList.remove('submenu-open');
     });
+    this.setSubmenuScrollLock(false);
     document.body.classList.remove(`overflow-hidden-${this.dataset.breakpoint}`);
     removeTrapFocus(elementToFocus);
     this.closeAnimation(this.mainDetailsToggle);
@@ -522,6 +528,7 @@ class MenuDrawer extends HTMLElement {
   closeSubmenu(detailsElement) {
     const parentMenuElement = detailsElement.closest('.submenu-open');
     parentMenuElement && parentMenuElement.classList.remove('submenu-open');
+    this.setSubmenuScrollLock(false);
     detailsElement.classList.remove('menu-opening');
     detailsElement.querySelector('summary').setAttribute('aria-expanded', false);
     removeTrapFocus(detailsElement.querySelector('summary'));
