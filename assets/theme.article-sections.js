@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Single carousels: resize Flickity once images load so slides keep natural aspect ratio
+  // Single carousels: resize Flickity once images load so adaptiveHeight recalculates
   document.querySelectorAll('.blog-carousel.single[data-flickity]').forEach(function (carousel) {
     function resizeCarousel() {
       if (typeof Flickity === 'undefined') return;

@@ -1008,15 +1008,6 @@
 	height:auto;
 }
 
-.blog-carousel.single.flickity-enabled .flickity-viewport {
-	height: auto !important;
-}
-
-.blog-carousel.single.flickity-enabled .flickity-slider {
-	height: auto !important;
-	position: relative;
-}
-
 .article.metafields .blog-carousel .inner .text,
 .article.metafields .blog-image-grid .inner .text {
 	margin-top:10px;
