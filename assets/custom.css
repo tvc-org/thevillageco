@@ -1322,11 +1322,18 @@ div[class*='kl-teaser-'],
 
     .header { border-bottom: none; }
 
+    .header-top {
+        position: relative;
+        z-index: 2;
+        background: var(--brand-background-color, rgb(var(--color-background)));
+    }
+
     .header-bottom {
         font-size: 16px;
         height: 80px;
         padding: 0;
         position: relative;
+        z-index: 1;
         box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.1);
     }
 
