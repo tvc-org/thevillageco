@@ -364,7 +364,7 @@ body.template-collection:not(.mr-bubble):not(.soft-dri) .collection-mobile-toolb
   border-radius: 8px;
 }
 
-@media screen and (max-width: 959px) {
+@media screen and (max-width: 1024px) {
   .collection-grid-featured--banner .collection-grid-featured__media {
     margin-top: 30px;
   }
