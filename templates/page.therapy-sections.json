@@ -32,8 +32,9 @@
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
-            "link": "shopify://collections/calm",
-            "link_label": "Shop Calm"
+            "product": "",
+            "link_label": "Shop Calm",
+            "link": "shopify://collections/calm"
           }
         }
       },
@@ -127,13 +128,14 @@
             "split_text_tone": "dark",
             "preserve_image_aspect_ratio": true,
             "video": "shopify://files/videos/VN_MAGNESIUM_15_NoRetialInfo_040125_2.mp4",
-            "heading": "Designed for \nReal Life Self-Care",
-            "text": "<p>Modern living can be hectic — and your bath shouldn’t just be about getting clean. It should be a chance to:</p>",
+            "heading": "Ease tension · Rest deeply · Nourish your skin",
+            "text": "<p>Epsom salts, calming aromatherapy, and hydrating botanicals — all in one ritual.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_left",
-            "link": "shopify://products/muscle-magnesium-bath-flakes",
-            "link_label": "Shop Now"
+            "product": "",
+            "link_label": "Shop Now",
+            "link": "shopify://products/muscle-magnesium-bath-flakes"
           }
         }
       },
@@ -180,8 +182,9 @@
             "stacked_text_in_media": true,
             "stacked_desktop_overlay_text_tone": "light",
             "stacked_text_position": "bottom_left",
-            "link": "shopify://collections/therapy-nighttime",
-            "link_label": "Shop Nightime Collection"
+            "product": "",
+            "link_label": "Shop Nightime Collection",
+            "link": "shopify://collections/therapy-nighttime"
           }
         }
       },
