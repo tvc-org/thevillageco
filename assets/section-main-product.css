@@ -1147,9 +1147,10 @@ body.village-naturals-therapy .product__title > * {
     padding: 0 3rem;
   }
 
-  .product-media-modal__dialog .global-media-settings--no-shadow {
+  /* commenting out for border on PDP zoom media images */
+  /* .product-media-modal__dialog .global-media-settings--no-shadow {
     overflow: visible !important;
-  }
+  } */
 }
 
 .product-popup-modal__content img {
