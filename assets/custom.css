@@ -1187,6 +1187,28 @@ header-drawer {
     opacity: 0.88;
 }
 
+/* Global buttons — pill radius + nav-tout typography */
+.button,
+.button::before,
+.button::after {
+    border-radius: 120px;
+}
+
+.button {
+    font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+@media screen and (min-width: 1025px) {
+    .button {
+        font-size: 16px;
+    }
+}
+
 .header-bottom ul {
     list-style: none;
     padding: 0;
@@ -3841,4 +3863,31 @@ body.village-naturals-therapy .badge.badge-new {
         font-size: 20px;
         padding: 7px 14px;
     }
+}
+
+.template-cart #MainContent {
+    padding-bottom: 60px;
+}
+
+@media screen and (min-width: 1025px) {
+    .template-cart #MainContent {
+        padding-bottom: 100px;
+    }
+}
+
+.cart-items th {
+    font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+    font-size: 16px;
+    color: var(--color-text);
+}
+
+.cart-item .price--end,
+.cart__footer .totals__total-value {
+    font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
+    font-size: 18px !important;
+    color: var(--color-text);
+}
+
+.cart__footer .totals__total-value {
+    line-height: 1 !important;
 }

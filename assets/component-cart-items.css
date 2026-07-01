@@ -365,3 +365,48 @@ cart-remove-button .icon-remove {
     padding-left: 0;
   }
 }
+
+/* Match PDP purchase-row quantity pill (section-main-product.css) */
+.cart-quantity.quantity {
+  width: auto;
+  min-height: 62px;
+  height: 62px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 4px;
+  border-radius: 999px;
+}
+
+.cart-quantity.quantity::before {
+  border-radius: 999px;
+}
+
+.cart-quantity.quantity::after {
+  border-radius: 999px;
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), 0.16);
+}
+
+.cart-quantity .quantity__button .svg-wrapper {
+  width: 14px;
+  height: 14px;
+}
+
+.cart-quantity .quantity__input {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 2ch;
+  min-width: 2ch;
+  max-width: 2ch;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #1f1f1f;
+}
+
+@media screen and (min-width: 750px) {
+  .cart-quantity.quantity {
+    width: min(14rem, 26vw);
+  }
+}
