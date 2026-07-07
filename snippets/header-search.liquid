@@ -63,6 +63,7 @@
               {%- endif -%}
             >
             <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
+            <input type="hidden" name="type" value="product">
             <input type="hidden" name="options[prefix]" value="last">
             <button
               type="reset"

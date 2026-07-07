@@ -176,7 +176,9 @@ class PredictiveSearch extends SearchForm {
       return;
     }
 
-    fetch(`${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&section_id=predictive-search`, {
+    fetch(
+      `${routes.predictive_search_url}?q=${encodeURIComponent(searchTerm)}&resources%5Btype%5D=product&section_id=predictive-search`,
+      {
       signal: this.abortController.signal,
     })
       .then((response) => {
