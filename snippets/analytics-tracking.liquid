@@ -1,6 +1,11 @@
 {% comment %}
   Google Tag Manager, Google Ads (gtag), and GA4.
   Ported from legacy OneRockwell theme (layout/theme.liquid).
+
+  Note: Console errors like "Shopify's Google Analytics stub called with UA-…" come from
+  a legacy Universal Analytics pixel still configured in Shopify admin (Customer events /
+  Google & YouTube app), not from this snippet. Remove UA-163800235-1 in admin — see
+  https://help.shopify.com/manual/promoting-marketing/pixels/pixel-migration#google
 {% endcomment %}
 <!-- Google Tag Manager -->
 <script>
@@ -17,18 +22,7 @@
 </script>
 <!-- End Google Tag Manager -->
 
-<!-- Google tag (gtag.js) — Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-843874207"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag('js', new Date());
-  gtag('config', 'AW-843874207');
-</script>
-
-<!-- Google tag (gtag.js) — GA4 -->
+<!-- Google tag (gtag.js) — Google Ads + GA4 (single loader) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-H05YJ078HZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,5 +30,6 @@
     dataLayer.push(arguments);
   }
   gtag('js', new Date());
+  gtag('config', 'AW-843874207');
   gtag('config', 'G-H05YJ078HZ');
 </script>
