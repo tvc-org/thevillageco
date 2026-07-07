@@ -95,6 +95,7 @@
     {% endif %}
 
     {% render 'meta-tags' %}
+    {% render 'analytics-tracking' %}
 
     {%- comment -%}
       Yotpo loads two separate “widgets repository” app keys (each key = its own bundle of widget instances in Yotpo).
@@ -431,6 +432,7 @@
     id="{{ page_title | handle }}"
     class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} {% if template.suffix %}template-suffix-{{ template.suffix }}{% endif %} page-{{ page_title | handle }}{% if brand_body_class != blank %} {{ brand_body_class }}{% endif %}"
   >
+    {% render 'analytics-tracking-noscript' %}
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>
@@ -545,5 +547,7 @@
         src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"
       ></script>
     {%- endif -%}
+
+    {% render 'klaviyo-event-tracking' %}
   </body>
 </html>

@@ -1,0 +1,81 @@
+{% comment %}
+  Klaviyo behavioral events: Added to Cart, Viewed Category, Viewed Page.
+  Ported from legacy OneRockwell theme (layout/theme.liquid).
+  Requires klaviyo.js (window._learnq) loaded earlier on the page.
+{% endcomment %}
+
+<!-- Klaviyo Added to Cart Tracking -->
+<script>
+  window.addEventListener('load', function () {
+    var _learnq = window._learnq || [];
+    window._learnq = _learnq;
+
+    function addedToCart() {
+      fetch(window.location.origin + '/cart.js')
+        .then(function (res) {
+          return res.clone().json();
+        })
+        .then(function (data) {
+          var cart = {
+            total_price: data.total_price / 100,
+            $value: data.total_price / 100,
+            total_discount: data.total_discount,
+            original_total_price: data.original_total_price / 100,
+            items: data.items,
+          };
+          if (klAjax) {
+            _learnq.push(['track', 'Added to Cart', cart]);
+            klAjax = false;
+          }
+        });
+    }
+
+    (function (ns, fetch) {
+      ns.fetch = function () {
+        var response = fetch.apply(this, arguments);
+        response.then(function (res) {
+          if (res.url && res.url.indexOf('/cart/add') !== -1) {
+            addedToCart();
+          }
+        });
+        return response;
+      };
+    })(window, window.fetch);
+
+    var klAjax = true;
+    var atcButtons = document.querySelectorAll("form[action*='/cart/add'] button[type='submit']");
+    for (var i = 0; i < atcButtons.length; i++) {
+      atcButtons[i].addEventListener('click', function () {
+        klAjax = true;
+      });
+    }
+  });
+</script>
+
+<!-- Klaviyo Viewed Category & Viewed Page Tracking -->
+<script>
+  var _learnq = window._learnq || [];
+  window._learnq = _learnq;
+  {%- if template.name == 'collection' and collection -%}
+  _learnq.push([
+    'track',
+    'Viewed Category',
+    {
+      CategoryName: {{ collection.title | json }},
+      CategoryID: {{ collection.id | json }},
+      ImageURL: {% if collection.image %}{{ collection.image | image_url: width: 1024 | json }}{% else %}''{% endif %},
+      URL: {{ request.origin | append: collection.url | json }},
+    },
+  ]);
+  {%- elsif template.name != 'product' -%}
+  _learnq.push([
+    'track',
+    'Viewed Page',
+    {
+      PageName: document.title,
+      ImageURL: {% if page.image %}{{ page.image | image_url: width: 1024 | json }}{% else %}''{% endif %},
+      URL: window.location.href,
+    },
+  ]);
+  {%- endif -%}
+</script>
