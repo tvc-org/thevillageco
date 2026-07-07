@@ -179,7 +179,7 @@
         if slide_link == blank and slide_product != blank
           assign slide_link = slide_product.url
         endif
-        if slide_product != blank
+        if slide_product != blank and section.settings.show_product_badges
           assign tvc_slideshow_badge_position_class = settings.badge_position | replace: ' ', '-'
           assign media_classes = media_classes | append: ' tvc-slideshow__media--badge-' | append: tvc_slideshow_badge_position_class
         endif
@@ -291,7 +291,7 @@
               {%- endif -%}
             {%- endif -%}
 
-            {%- if slide_product != blank -%}
+            {%- if slide_product != blank and section.settings.show_product_badges -%}
               {%- assign tvc_slideshow_badge_section_id = section.id | append: '-' | append: block.id -%}
               {%- render 'card-product-badges',
                 card_product: slide_product,
@@ -475,6 +475,13 @@
       "id": "show_sound_toggle",
       "label": "Show sound toggle",
       "info": "When enabled, video slides show a mute/unmute control (muted by default).",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product_badges",
+      "label": "Show product badges",
+      "info": "When enabled, slides linked to a product show sale, sold out, and tag badges on the media.",
       "default": true
     }
   ],
