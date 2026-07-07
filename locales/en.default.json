@@ -75,6 +75,10 @@
       "choose_product_option": "Choose a Product",
       "zip_code": "Your Zip Code:",
       "search": "Search"
+    },
+    "gdpr": {
+      "cookie_banner_label": "Cookie consent",
+      "cookie_accept": "Accept"
     }
   },
   "newsletter": {

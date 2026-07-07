@@ -1,9 +1,8 @@
-{% if cart == empty %}
-  <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-{% else %}
-  <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-{% endif %}
-
+{% comment %}
+  Fragment rendered into #cart-icon-bubble when cart sections refresh (add to cart, free-gift script, etc.).
+  Must match snippets/header-icons.liquid cart markup — custom icon, not Dawn icon-cart-empty/icon-cart.
+{% endcomment %}
+<span class="svg-wrapper">{{ 'icon-cart-custom.svg' | inline_asset_content }}</span>
 <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
 {%- if cart != empty -%}
   <div class="cart-count-bubble">

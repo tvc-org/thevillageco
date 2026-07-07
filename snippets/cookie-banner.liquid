@@ -1,0 +1,16 @@
+<div
+  id="CookieBanner"
+  class="cookie-banner"
+  data-days="{{ settings.cookie_banner_cookiedays }}"
+  role="dialog"
+  aria-label="{{ 'general.gdpr.cookie_banner_label' | t }}"
+  aria-hidden="true"
+  hidden
+>
+  <div class="cookie-banner__inner page-width">
+    <p class="cookie-banner__message">{{ settings.cookie_banner_text }}</p>
+    <button type="button" class="cookie-banner__accept button">
+      {{ 'general.gdpr.cookie_accept' | t }}
+    </button>
+  </div>
+</div>

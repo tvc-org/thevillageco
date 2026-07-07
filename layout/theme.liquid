@@ -527,6 +527,8 @@
       <script src="{{ 'tvc-home-jump-nav.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
+    <script src="{{ 'free-gift-cart.js' | asset_url }}" defer="defer"></script>
+
     {%- comment -%}
       Klaviyo embed (footer signup forms). PDP also loads legacy onsite.js for Back in Stock —
       defer klaviyo.js until after load on product pages so BIS init runs first.
@@ -546,6 +548,11 @@
         async
         src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{ settings.klaviyo_company_id | default: 'UT3Uie' | escape }}"
       ></script>
+    {%- endif -%}
+
+    {%- if settings.cookie_banner_enable -%}
+      {% render 'cookie-banner' %}
+      <script src="{{ 'cookie-banner.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
     {% render 'klaviyo-event-tracking' %}

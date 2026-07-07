@@ -1510,5 +1510,28 @@
         "default": "scheme-1"
       }
     ]
+  },
+  {
+    "name": "Cookie Banner",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "cookie_banner_enable",
+        "label": "Enable cookie banner",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "cookie_banner_text",
+        "label": "Cookie banner message",
+        "default": "We use cookies on our site to give you the best experience. To continue using our site, please accept cookies."
+      },
+      {
+        "type": "text",
+        "id": "cookie_banner_cookiedays",
+        "label": "Hide banner for this many days after accept",
+        "default": "365"
+      }
+    ]
   }
 ]
