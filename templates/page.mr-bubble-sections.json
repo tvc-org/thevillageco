@@ -49,7 +49,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     },
     "tvc_dual_feature_DaeV7K": {
@@ -151,7 +152,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     },
     "tvc_slideshow_DWTaV9": {
@@ -186,7 +188,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     },
     "collection_list_VdxPhX": {
@@ -245,7 +248,7 @@
         "heading": "Thank you!",
         "body": "<p>For 65 years, you've trusted us with your family's bath time moments.</p>",
         "cta_label": "Shop exclusive birthday products",
-        "cta_link": "shopify://collections/mr-bubble-bestsellers"
+        "cta_link": "shopify://collections/mr-bubble-limited-editions-gifts"
       }
     },
     "tvc_slideshow_arD8Lj": {
@@ -280,7 +283,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     }
   },
