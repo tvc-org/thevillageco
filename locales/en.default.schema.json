@@ -708,6 +708,10 @@
             "product": {
               "label": "Product"
             },
+            "show_product_badges": {
+              "label": "Show product badges",
+              "info": "When enabled, sale, sold out, and tag badges appear on this feature’s media."
+            },
             "collection": {
               "label": "Collection"
             },
