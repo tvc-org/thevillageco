@@ -57,7 +57,8 @@ class CollectionInfiniteScroll extends HTMLElement {
   }
 
   connectedCallback() {
-    this.grid = document.getElementById('product-grid');
+    this.gridId = this.dataset.gridId || 'product-grid';
+    this.grid = document.getElementById(this.gridId);
     this.sentinel = this.grid?.querySelector('.collection-infinite-scroll__sentinel');
     this.loadingEl = this.querySelector('.collection-infinite-scroll__loading');
     this.endEl = this.querySelector('.collection-infinite-scroll__end');
@@ -121,7 +122,7 @@ class CollectionInfiniteScroll extends HTMLElement {
 
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const nextGrid = doc.getElementById('product-grid');
+      const nextGrid = doc.getElementById(this.gridId);
 
       if (nextGrid) {
         this.appendGridItems(nextGrid);

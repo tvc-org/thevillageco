@@ -342,7 +342,11 @@
 .article .article-tags {
     font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
     /* font-size: 14px; */
-    text-transform: uppercase
+    text-transform: uppercase;
+}
+
+.article .article-tags a {
+	color: inherit;
 }
 
 .article h1 {
@@ -1111,6 +1115,30 @@
 
 .blog-carousel:not(.single) .flickity-viewport {
 	overflow:visible;
+}
+
+/* Hide focus ring on carousel container when using prev/next arrows */
+.blog-carousel.flickity-enabled:focus,
+.blog-carousel.flickity-enabled:focus-visible,
+.blog-carousel.flickity-enabled.focused,
+.blog-carousel .flickity-viewport:focus,
+.blog-carousel .flickity-viewport:focus-visible,
+.blog-carousel .flickity-viewport.focused,
+.blog-carousel .flickity-slider:focus,
+.blog-carousel .flickity-slider:focus-visible,
+.blog-carousel .flickity-slider.focused {
+	outline: none;
+	box-shadow: none;
+}
+
+.blog-carousel .flickity-button:focus,
+.blog-carousel .flickity-button:focus-visible,
+.blog-carousel .flickity-button.focused,
+.blog-carousel .flickity-prev-next-button:focus,
+.blog-carousel .flickity-prev-next-button:focus-visible,
+.blog-carousel .flickity-prev-next-button.focused {
+	outline: none;
+	box-shadow: none;
 }
 
 .blog-carousel .flickity-button-x, .blog-carousel:not(.single) .flickity-page-dots {

@@ -5,7 +5,8 @@ collection-infinite-scroll,
   width: 100%;
 }
 
-.product-grid > .collection-infinite-scroll__sentinel {
+.product-grid > .collection-infinite-scroll__sentinel,
+#blog-grid > .collection-infinite-scroll__sentinel {
   flex: 0 0 100%;
   height: 20px;
   list-style: none;

@@ -1,6 +1,58 @@
+{% comment %}
+  Blog landing — collection-wall layout.
+
+  Blog metafields (Bonify custom_fields):
+    - image — banner image URL or file (grid span on desktop, banner on mobile)
+    - video — optional banner video URL
+    - blog_description — subtitle in hero
+    - headline — blog-list-header heading
+{% endcomment %}
+
 {{ 'component-article-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{{ 'component-collection-header.css' | asset_url | stylesheet_tag }}
 {{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
+
+{%- if section.settings.enable_infinite_scroll -%}
+  {{ 'component-collection-infinite-scroll.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'collection-infinite-scroll.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- liquid
+  assign blog_description = blank
+  if blog.metafields.custom.blog_description != blank
+    assign blog_description = blog.metafields.custom.blog_description.value | default: blog.metafields.custom.blog_description
+  elsif blog.metafields.custom_fields.blog_description != blank
+    assign blog_description = blog.metafields.custom_fields.blog_description.value | default: blog.metafields.custom_fields.blog_description
+  endif
+
+  assign blog_image = blank
+  if blog.metafields.custom.image != blank
+    assign blog_image = blog.metafields.custom.image.value | default: blog.metafields.custom.image
+  elsif blog.metafields.custom_fields.image != blank
+    assign blog_image = blog.metafields.custom_fields.image.value | default: blog.metafields.custom_fields.image
+  endif
+
+  assign blog_video = blank
+  if blog.metafields.custom.video != blank
+    assign blog_video = blog.metafields.custom.video.value | default: blog.metafields.custom.video
+  elsif blog.metafields.custom_fields.video != blank
+    assign blog_video = blog.metafields.custom_fields.video.value | default: blog.metafields.custom_fields.video
+  endif
+
+  assign blog_headline = blank
+  if blog.metafields.custom.headline != blank
+    assign blog_headline = blog.metafields.custom.headline.value | default: blog.metafields.custom.headline
+  elsif blog.metafields.custom_fields.headline != blank
+    assign blog_headline = blog.metafields.custom_fields.headline.value | default: blog.metafields.custom_fields.headline
+  endif
+
+  assign show_blog_wall_hero = false
+  if blog_description != blank or blog_image != blank or blog_video != blank
+    assign show_blog_wall_hero = true
+  endif
+-%}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -16,37 +68,105 @@
   }
 {%- endstyle -%}
 
-{%- paginate blog.articles by 6 -%}
-  <div class="main-blog page-width section-{{ section.id }}-padding">
-    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ blog.title | escape }}
-    </h1>
+{%- paginate blog.articles by 9 -%}
+  <div class="main-blog section-{{ section.id }}-padding">
+    {%- if show_blog_wall_hero -%}
+      <div class="collection-hero collection-hero--split blog-wall-hero color-{{ section.settings.color_scheme }} gradient">
+        <div class="collection-hero__inner page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+          <div class="collection-hero__text-wrapper">
+            <h1 class="collection-hero__title">{{ blog.title | capitalize }}</h1>
+            {%- if blog_description != blank -%}
+              <div class="collection-hero__description rte">
+                <p>{{ blog_description }}</p>
+              </div>
+            {%- endif -%}
 
-    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      {%- for article in blog.articles -%}
-        <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          {%- render 'article-card',
-            article: article,
-            media_height: section.settings.image_height,
-            media_aspect_ratio: article.image.aspect_ratio,
-            show_image: section.settings.show_image,
-            show_date: section.settings.show_date,
-            show_author: section.settings.show_author,
-            show_excerpt: true
-          -%}
+            {%- if blog_video != blank -%}
+              <div class="blog-wall-hero__video collection-grid-featured collection-grid-featured--banner">
+                <div class="collection-grid-featured__media media media--transparent">
+                  <video autoplay muted loop playsinline class="collection-grid-featured__image">
+                    <source src="{{ blog_video }}" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+            {%- elsif blog_image != blank -%}
+              {% render 'blog-grid-featured-image',
+                image: blog_image,
+                image_alt: blog.title,
+                placement: 'banner',
+                image_ratio: 'portrait'
+              %}
+            {%- endif -%}
+          </div>
         </div>
-      {%- endfor -%}
-    </div>
-
-    {%- if paginate.pages > 1 -%}
-      {%- render 'pagination', paginate: paginate -%}
+      </div>
+    {%- else -%}
+      <div class="page-width">
+        <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+          {{ blog.title | escape }}
+        </h1>
+      </div>
     {%- endif -%}
+
+    <div class="page-width">
+      {%- if blog_headline != blank -%}
+        <div class="blog-list-header">
+          <h2 class="blog-list-header__headline">{{ blog_headline }}</h2>
+        </div>
+      {%- endif -%}
+
+      <ul
+        id="blog-grid"
+        data-id="{{ section.id }}"
+        class="grid product-grid blog-articles-grid grid--2-col-tablet-down grid--3-col-desktop"
+      >
+        {%- if blog_image != blank and paginate.current_offset == 0 -%}
+          {% render 'blog-grid-featured-image',
+            image: blog_image,
+            image_alt: blog.title,
+            placement: 'grid',
+            image_ratio: 'square',
+            columns_desktop: 3
+          %}
+        {%- endif -%}
+
+        {%- for article in blog.articles -%}
+          {%- assign lazy_load = false -%}
+          {%- if forloop.index > 2 -%}
+            {%- assign lazy_load = true -%}
+          {%- endif -%}
+          <li
+            class="grid__item blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {%- render 'article-card',
+              article: article,
+              media_aspect_ratio: 1,
+              show_image: section.settings.show_image,
+              show_date: section.settings.show_date,
+              show_author: section.settings.show_author,
+              show_excerpt: true,
+              lazy_load: lazy_load
+            -%}
+          </li>
+        {%- endfor -%}
+
+        {%- if paginate.pages > 1 and section.settings.enable_infinite_scroll -%}
+          <li class="collection-infinite-scroll__sentinel" aria-hidden="true"></li>
+        {%- endif -%}
+      </ul>
+
+      {%- if paginate.pages > 1 -%}
+        {%- if section.settings.enable_infinite_scroll -%}
+          {% render 'blog-infinite-scroll', paginate: paginate, section: section %}
+        {%- else -%}
+          {%- render 'pagination', paginate: paginate -%}
+        {%- endif -%}
+      {%- endif -%}
+    </div>
   </div>
 {%- endpaginate -%}
 
@@ -57,50 +177,23 @@
   "class": "section",
   "settings": [
     {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "grid",
-          "label": "t:sections.main-blog.settings.layout.options__1.label"
-        },
-        {
-          "value": "collage",
-          "label": "t:sections.main-blog.settings.layout.options__2.label"
-        }
-      ],
-      "default": "collage",
-      "label": "t:sections.main-blog.settings.layout.label"
+      "type": "checkbox",
+      "id": "enable_infinite_scroll",
+      "default": true,
+      "label": "Infinite scroll",
+      "info": "Load more posts as shoppers scroll. Uncheck to use page number links instead."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
     },
     {
       "type": "checkbox",
       "id": "show_image",
       "default": true,
       "label": "t:sections.main-blog.settings.show_image.label"
-    },
-    {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.main-blog.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.main-blog.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.main-blog.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.main-blog.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.main-blog.settings.image_height.label"
     },
     {
       "type": "checkbox",

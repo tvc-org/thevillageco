@@ -480,6 +480,9 @@ body slider-component.slider-component-full-width {
 .shopify-section.section .collection .card--standard .card__inner,
 .shopify-section.section .collection-list .card--standard .card__inner,
 .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+.main-blog .blog-articles-grid .article-card .card__inner,
+.main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+.main-blog .collection-grid-featured--banner .collection-grid-featured__media,
 .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
 .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner {
     border-radius: 12px;
@@ -622,12 +625,18 @@ body slider-component.slider-component-full-width {
 body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
 body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
 body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+body.mr-bubble .main-blog .blog-articles-grid .article-card .card__inner,
+body.mr-bubble .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+body.mr-bubble .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
 body.mr-bubble .product-grid .grid__item .card--standard .card__inner,
 body.mr-bubble .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
 body.mr-bubble .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection-list .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+body.soft-dri .main-blog .blog-articles-grid .article-card .card__inner,
+body.soft-dri .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+body.soft-dri .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
 body.soft-dri .product-grid .grid__item .card--standard .card__inner,
 body.soft-dri .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
 body.soft-dri .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner {
@@ -659,12 +668,18 @@ body.village-naturals-therapy .article .collection-listing-wrapper .product-grid
     body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+    body.mr-bubble .main-blog .blog-articles-grid .article-card .card__inner,
+    body.mr-bubble .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+    body.mr-bubble .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
     body.mr-bubble .product-grid .grid__item .card--standard .card__inner,
     body.mr-bubble .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
     body.mr-bubble .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection-list .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+    body.soft-dri .main-blog .blog-articles-grid .article-card .card__inner,
+    body.soft-dri .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+    body.soft-dri .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
     body.soft-dri .product-grid .grid__item .card--standard .card__inner,
     body.soft-dri .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
     body.soft-dri .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
@@ -1757,6 +1772,7 @@ div[class*='kl-teaser-'],
 .product-grid .grid__item .card__heading {
     font-size: 16px;
     letter-spacing: 0;
+    line-height: 1;
 }
 
 @media screen and (min-width: 1025px) {
