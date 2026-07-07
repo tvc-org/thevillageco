@@ -59,6 +59,7 @@
           "type": "feature",
           "settings": {
             "product": "",
+            "show_product_badges": true,
             "collection": "soft-dri-aluminum-free",
             "image": "shopify://shop_images/V2_sparkling-citrus-wide.jpg",
             "heading_block": "Aluminum Free Solids",
@@ -71,6 +72,7 @@
           "type": "feature",
           "settings": {
             "product": "soft-dri-signature-classic-soft-scent-aerosol-deodorant",
+            "show_product_badges": false,
             "collection": "",
             "image": "shopify://shop_images/SND-flowers-wide.jpg",
             "heading_block": "Classic Signature Aerosol",
