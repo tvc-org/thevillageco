@@ -194,8 +194,14 @@ body.village-naturals-therapy .h6 {
 
 .announcement-bar-section .announcement-bar,
 .announcement-bar-section .announcement-bar__announcement,
-.announcement-bar-section .announcement-bar__message {
-    color: var(--brand-announcement-bar-text);
+.announcement-bar-section .announcement-bar__message,
+.announcement-bar-section .announcement-bar__message.h5,
+body .announcement-bar-section .announcement-bar__message {
+    color: var(--brand-announcement-bar-text) !important;
+}
+
+.announcement-bar-section .announcement-bar__message span {
+    color: inherit;
 }
 
 .announcement-bar-section .announcement-bar__link {
