@@ -1,0 +1,81 @@
+{% comment %}
+  Collection card for page.collection-grid (Bonify metafields + fallbacks).
+
+  Accepts:
+  - collection: {Object} Collection Liquid object
+{% endcomment %}
+{%- liquid
+  assign grid_image = blank
+  if collection.metafields.custom.grid_image != blank
+    assign grid_image = collection.metafields.custom.grid_image.value
+  elsif collection.metafields.custom_fields.grid_image != blank
+    assign grid_image = collection.metafields.custom_fields.grid_image.value
+  else
+    assign grid_image = collection.featured_image
+  endif
+
+  assign card_title = blank
+  if collection.metafields.custom.display_title != blank
+    assign card_title = collection.metafields.custom.display_title.value | default: collection.metafields.custom.display_title
+  elsif collection.metafields.custom_fields.display_title != blank
+    assign card_title = collection.metafields.custom_fields.display_title.value | default: collection.metafields.custom_fields.display_title
+  endif
+
+  assign hover_text = blank
+  if collection.metafields.custom.grid_hover_text != blank
+    assign hover_text = collection.metafields.custom.grid_hover_text.value | default: collection.metafields.custom.grid_hover_text
+  elsif collection.metafields.custom_fields.grid_hover_text != blank
+    assign hover_text = collection.metafields.custom_fields.grid_hover_text.value | default: collection.metafields.custom_fields.grid_hover_text
+  endif
+
+  assign hover_color = blank
+  if collection.metafields.custom.grid_hover_color != blank
+    assign hover_color = collection.metafields.custom.grid_hover_color.value | default: collection.metafields.custom.grid_hover_color
+  elsif collection.metafields.custom_fields.grid_hover_color != blank
+    assign hover_color = collection.metafields.custom_fields.grid_hover_color.value | default: collection.metafields.custom_fields.grid_hover_color
+  endif
+-%}
+
+<div class="collection-grid-card" data-handle="{{ collection.handle }}">
+  <div class="collection-grid-card__media">
+    <a class="collection-grid-card__link" href="{{ collection.url }}">
+      {%- if grid_image != blank -%}
+        {{
+          grid_image
+          | image_url: width: 1000
+          | image_tag:
+            class: 'collection-grid-card__image',
+            widths: '330, 535, 750, 1000',
+            sizes: '(min-width: 990px) 33vw, 50vw',
+            loading: 'lazy',
+            alt: card_title | default: collection.title
+        }}
+      {%- endif -%}
+
+      {%- if hover_text != blank -%}
+        <div
+          class="collection-grid-card__hover"
+          {% if hover_color != blank %}
+            style="background-color: {{ hover_color }};"
+          {% endif %}
+        >
+          <div class="collection-grid-card__hover-text rte">
+            {{ hover_text }}
+          </div>
+        </div>
+      {%- endif -%}
+    </a>
+  </div>
+
+  <div class="collection-grid-card__info">
+    <a class="collection-grid-card__title-link" href="{{ collection.url }}">
+      <p class="collection-grid-card__title">
+        {%- if card_title != blank -%}
+          {{ card_title | escape }}
+        {%- else -%}
+          {%- render 'collection-display-title', collection: collection -%}
+        {%- endif -%}
+      </p>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,90 @@
+{% comment %}
+  Ported from live theme. Collection landing pages (e.g. /pages/therapy-collections).
+
+  Shopify admin: assign template "collection-grid" to the page.
+  Page metafields (Bonify custom_fields):
+    - display_title — optional hero heading override
+    - header_text — hero description (richtext)
+    - collections — pipe-separated collection handles
+    - seo_headline, seo_text, seo_headline_type — optional footer SEO block
+{% endcomment %}
+
+{{ 'section-page-collection-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign page_display_title = page.title
+  if page.metafields.custom.display_title != blank
+    assign page_display_title = page.metafields.custom.display_title.value | default: page.metafields.custom.display_title
+  elsif page.metafields.custom_fields.display_title != blank
+    assign page_display_title = page.metafields.custom_fields.display_title.value | default: page.metafields.custom_fields.display_title
+  endif
+
+  assign header_text = blank
+  if page.metafields.custom.header_text != blank
+    assign header_text = page.metafields.custom.header_text.value | default: page.metafields.custom.header_text
+  elsif page.metafields.custom_fields.header_text != blank
+    assign header_text = page.metafields.custom_fields.header_text.value | default: page.metafields.custom_fields.header_text
+  endif
+
+  assign collection_refs_raw = blank
+  if page.metafields.custom.collections != blank
+    assign collection_refs_raw = page.metafields.custom.collections.value | default: page.metafields.custom.collections
+  elsif page.metafields.custom_fields.collections != blank
+    assign collection_refs_raw = page.metafields.custom_fields.collections.value | default: page.metafields.custom_fields.collections
+  endif
+
+  assign seo_headline = blank
+  if page.metafields.custom.seo_headline != blank
+    assign seo_headline = page.metafields.custom.seo_headline.value | default: page.metafields.custom.seo_headline
+  elsif page.metafields.custom_fields.seo_headline != blank
+    assign seo_headline = page.metafields.custom_fields.seo_headline.value | default: page.metafields.custom_fields.seo_headline
+  endif
+
+  assign seo_text = blank
+  if page.metafields.custom.seo_text != blank
+    assign seo_text = page.metafields.custom.seo_text.value | default: page.metafields.custom.seo_text
+  elsif page.metafields.custom_fields.seo_text != blank
+    assign seo_text = page.metafields.custom_fields.seo_text.value | default: page.metafields.custom_fields.seo_text
+  endif
+
+  assign seo_headline_type = 'h1'
+  if page.metafields.custom.seo_headline_type != blank
+    assign seo_headline_type = page.metafields.custom.seo_headline_type.value | default: page.metafields.custom.seo_headline_type
+  elsif page.metafields.custom_fields.seo_headline_type != blank
+    assign seo_headline_type = page.metafields.custom_fields.seo_headline_type.value | default: page.metafields.custom_fields.seo_headline_type
+  endif
+-%}
+
+<div class="page-collection-grid">
+  <div class="collection-grid-header">
+    <h1 class="collection-grid-header__title">{{ page_display_title | escape }}</h1>
+    {%- if header_text != blank -%}
+      <div class="collection-grid-header__divider" aria-hidden="true"></div>
+      <div class="collection-grid-header__text rte">{{ header_text }}</div>
+    {%- endif -%}
+  </div>
+
+  {%- if collection_refs_raw != blank -%}
+    <div class="page-width">
+      <div class="collection-grid-list-wrapper">
+        <div class="collection-grid-list">
+        {%- assign collection_refs = collection_refs_raw | split: '|' -%}
+        {%- for collection_handle in collection_refs -%}
+          {%- assign col_handle = collection_handle | strip | handle | replace: 'therapy-all-products', 'therapy-collections' -%}
+          {%- assign grid_collection = collections[col_handle] -%}
+          {%- if grid_collection != blank and grid_collection.url != blank -%}
+            {% render 'collection-grid-card', collection: grid_collection %}
+          {%- endif -%}
+        {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if seo_headline != blank and seo_text != blank -%}
+    <section class="collection-grid-seo page-width">
+      <{{ seo_headline_type }} class="collection-grid-seo__headline">{{ seo_headline }}</{{ seo_headline_type }}>
+      <div class="collection-grid-seo__text rte">{{ seo_text }}</div>
+    </section>
+  {%- endif -%}
+</div>
