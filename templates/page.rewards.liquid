@@ -1,0 +1,30 @@
+{% comment %}
+  Ported from live theme (Option A). See docs/rewards-page-port.md for cleanup notes.
+
+  Shopify admin: assign template "rewards" and set page content to "Section 1" (TVC).
+  Sections 2–4 reserved for other brands if needed later.
+{% endcomment %}
+
+<script src="{{ 'utility-page.js' | asset_url }}" defer="defer"></script>
+
+<div class="page rewards-page">
+  {%- assign sectionType = page.content | handleize -%}
+  {%- case sectionType -%}
+    {%- when 'section-1' -%}
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="{{ settings.rewards_id_1 }}"></div>
+      {%- section 'rewards-yotpo-cta' -%}
+      {%- section 'rewards-faq-section-1' -%}
+    {%- when 'section-2' -%}
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="{{ settings.rewards_id_2 }}"></div>
+      {%- section 'rewards-faq-section-2' -%}
+    {%- when 'section-3' -%}
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="{{ settings.rewards_id_3 }}"></div>
+      {%- section 'rewards-faq-section-3' -%}
+    {%- when 'section-4' -%}
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="{{ settings.rewards_id_4 }}"></div>
+      {%- section 'rewards-faq-section-4' -%}
+  {%- endcase -%}
+</div>
+
+{{ 'section-utility-page.css' | asset_url | stylesheet_tag }}
+{{ 'theme.rewards-styles.scss.css' | asset_url | stylesheet_tag }}

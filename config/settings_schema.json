@@ -1393,6 +1393,32 @@
     ]
   },
   {
+    "name": "Yotpo Rewards",
+    "settings": [
+      {
+        "type": "text",
+        "id": "rewards_id_1",
+        "label": "Yotpo rewards widget instance ID (TVC / Section 1)",
+        "default": "94873"
+      },
+      {
+        "type": "text",
+        "id": "rewards_id_2",
+        "label": "Yotpo rewards widget instance ID (Section 2)"
+      },
+      {
+        "type": "text",
+        "id": "rewards_id_3",
+        "label": "Yotpo rewards widget instance ID (Section 3)"
+      },
+      {
+        "type": "text",
+        "id": "rewards_id_4",
+        "label": "Yotpo rewards widget instance ID (Section 4)"
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.search_input.name",
     "settings": [
       {

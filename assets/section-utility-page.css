@@ -362,12 +362,12 @@
   margin-bottom: 1rem;
 }
 
-/* Accordions (utility legal / FAQ — matches live .accordion-container) */
-.utility-page .tab-accordion-system {
+/* Accordions (utility legal / FAQ / rewards — matches live .accordion-container) */
+:is(.utility-page, .rewards-page) .tab-accordion-system {
   position: relative;
 }
 
-.utility-page .tab-accordion-system .system-title {
+:is(.utility-page, .rewards-page) .tab-accordion-system .system-title {
   background: transparent;
   border: 0;
   color: inherit;
@@ -383,7 +383,7 @@
   width: 100%;
 }
 
-.utility-page .accordion-container .system-title {
+:is(.utility-page, .rewards-page) .accordion-container .system-title {
   font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
   font-size: 16px;
   letter-spacing: normal;
@@ -392,13 +392,13 @@
   text-transform: uppercase;
 }
 
-.utility-page .accordion-container .system-title__label {
+:is(.utility-page, .rewards-page) .accordion-container .system-title__label {
   flex: 1;
   min-width: 0;
   padding-right: 1.5rem;
 }
 
-.utility-page .accordion-container .system-title__caret {
+:is(.utility-page, .rewards-page) .accordion-container .system-title__caret {
   flex-shrink: 0;
   position: absolute;
   right: 0.25rem;
@@ -407,17 +407,17 @@
   transition: transform 0.3s ease;
 }
 
-.utility-page .accordion-container .system-title__caret svg {
+:is(.utility-page, .rewards-page) .accordion-container .system-title__caret svg {
   display: block;
   height: 0.6rem;
   width: 1rem;
 }
 
-.utility-page .accordion-container .system.active .system-title__caret {
+:is(.utility-page, .rewards-page) .accordion-container .system.active .system-title__caret {
   transform: translateY(-50%) rotate(180deg);
 }
 
-.utility-page .accordion-container .system-content {
+:is(.utility-page, .rewards-page) .accordion-container .system-content {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -425,28 +425,28 @@
   visibility: hidden;
 }
 
-.utility-page .accordion-container .system-content .content-inner {
+:is(.utility-page, .rewards-page) .accordion-container .system-content .content-inner {
   padding-bottom: 20px;
 }
 
-.utility-page .accordion-container .system.active .system-content {
+:is(.utility-page, .rewards-page) .accordion-container .system.active .system-content {
   max-height: 5000px;
   opacity: 1;
   visibility: visible;
 }
 
-.utility-page .accordion-container .system {
+:is(.utility-page, .rewards-page) .accordion-container .system {
   border-top: 1px solid var(--utility-border);
   margin-bottom: 0;
 }
 
-.utility-page .accordion-container .system:last-child {
+:is(.utility-page, .rewards-page) .accordion-container .system:last-child {
   border-bottom: 1px solid var(--utility-border);
 }
 
 @media screen and (min-width: 1025px) {
-  .utility-page .accordion-container .system-title,
-  .utility-page .tab-accordion-system .system-title {
+  :is(.utility-page, .rewards-page) .accordion-container .system-title,
+  :is(.utility-page, .rewards-page) .tab-accordion-system .system-title {
     font-size: 17px;
     line-height: 62px;
     min-height: 62px;

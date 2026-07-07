@@ -138,6 +138,74 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "rewards-faq-section-1": {
+        "type": "rewards-faq-section-1",
+        "blocks": {
+          "dc839c27-0624-420b-a051-e2e6be395b0d": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "Will I receive rewards points for purchases I made before creating my rewards account?",
+              "faq_answer": "You will only receive points for purchases made after creating your rewards account. Make sure to create an account before placing an order so you can receive points!"
+            }
+          },
+          "105a35d9-4a13-4fe5-9be6-4787b0877d0e": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "When do my rewards points expire?",
+              "faq_answer": "Your points will expire after one year of inactivity. Inactivity includes not interacting with our program i.e., redeeming points, placing an order, etc."
+            }
+          },
+          "face3041-f79b-4027-8120-718dbb5892d0": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "How long does my rewards status last?",
+              "faq_answer": "Once you have signed up, your status will last for one year from the date you unlocked it. Make sure to keep interacting with our program to maintain your status (or even move up a tier)!"
+            }
+          },
+          "441869ac-52d1-4586-a522-eb1d148ea71d": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "Can I use more than one reward on a purchase?",
+              "faq_answer": "Yes, you may use your current rewards balance on any purchase. You may also use a discount code in addition to your rewards, however only one discount code can be applied at a time."
+            }
+          },
+          "6ab06fe7-2bc3-4460-a1e4-b67f1e23da06": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "Can I return my order if I redeemed rewards points for a discount?",
+              "faq_answer": "If you are returning the entire order, we will refund you the total dollar amount spent after the discount was applied. The points you used to redeem the discount will also be added back into your account!"
+            }
+          },
+          "ceea9777-7d13-4f5d-809a-4624b1bd8f43": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "What does it mean to earn points on entry?",
+              "faq_answer": "As soon as you reach the dollar spend required for that tier, you will enter the tier and receive the bonus points awarded for moving up!"
+            }
+          },
+          "8dbc5fc2-c700-4054-a20b-e8d0b19f0983": {
+            "type": "faq_block",
+            "settings": {
+              "faq_question": "How Do I Redeem Points On Subscription Orders",
+              "faq_answer": "1. Once logged into your account navigate to \"Manage Subscriptions.\"<br>2. Click on the subscription that you want to apply the code to.<br>3. Click on the product that you want to apply the discount to within that subscription and scroll down to the bottom of the page to paste in the discount code. The discount will be applied the next time your subscription order ships out."
+            }
+          }
+        },
+        "block_order": [
+          "dc839c27-0624-420b-a051-e2e6be395b0d",
+          "105a35d9-4a13-4fe5-9be6-4787b0877d0e",
+          "face3041-f79b-4027-8120-718dbb5892d0",
+          "441869ac-52d1-4586-a522-eb1d148ea71d",
+          "6ab06fe7-2bc3-4460-a1e4-b67f1e23da06",
+          "ceea9777-7d13-4f5d-809a-4624b1bd8f43",
+          "8dbc5fc2-c700-4054-a20b-e8d0b19f0983"
+        ],
+        "settings": {}
+      },
+      "rewards-faq-section-2": {
+        "type": "rewards-faq-section-2",
+        "settings": {}
       }
     },
     "content_for_index": [],
@@ -219,7 +287,11 @@
           "shadow": "#121212"
         }
       }
-    }
+    },
+    "rewards_id_1": "94873",
+    "rewards_id_2": "",
+    "rewards_id_3": "",
+    "rewards_id_4": ""
   },
   "presets": {
     "Default": {

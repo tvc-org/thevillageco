@@ -1,0 +1,57 @@
+{% assign faq_blocks = section.blocks | where: "type", "faq_block" %}
+
+{% if faq_blocks.size > 0 %}
+<div class="rewards-faq">
+    <h1 class="rewards-faq-title">FAQs</h1>
+
+    <div class="rewards-faq-content accordion-container tab-accordion-system">
+        {% assign counter = 0 %}
+
+        {%- for block in faq_blocks -%}
+            {%- if block.settings.faq_question != blank -%}
+
+            {% assign question = block.settings.faq_question %}
+            {% assign answer = block.settings.faq_answer %}
+
+            <div class="system">
+                <div class="system-title utility-subtitle system-title-{{ counter }}" data-target="system-{{- counter -}}">
+                    {{ question }}
+                </div>
+                <div class="system-content" data-target="system-{{- counter -}}">
+                    <div class="content-inner">
+                        {{ answer }}
+                    </div>
+                </div>
+            </div>
+            
+            {% assign counter = counter | plus: 1 %}
+            {%- endif -%}
+        {%- endfor -%}
+    </div>
+</div>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Rewards FAQ Section 3",
+    "blocks": [
+        {
+            "name": "FAQ Question",
+            "type": "faq_block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "faq_question",
+                    "label": "faq_question"
+                },
+                {
+                    "type": "text",
+                    "id": "faq_answer",
+                    "label": "faq_answer"
+                }
+    
+            ]
+        }
+    ]
+}
+{% endschema %}

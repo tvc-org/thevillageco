@@ -2,7 +2,7 @@
  * Utility pages: mobile nav toggle + FAQ/legal accordions.
  */
 (function () {
-  const page = document.querySelector('.utility-page');
+  const page = document.querySelector('.utility-page, .rewards-page');
   if (!page) return;
 
   const links = page.querySelector('[data-utility-nav]');
