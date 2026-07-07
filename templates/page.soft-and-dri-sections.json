@@ -32,8 +32,9 @@
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
-            "link": "shopify://products/soft-dri-signature-classic-soft-scent-aerosol-deodorant",
-            "link_label": "Shop Soft & Dri"
+            "product": "",
+            "link_label": "Shop Soft & Dri",
+            "link": "shopify://products/soft-dri-signature-classic-soft-scent-aerosol-deodorant"
           }
         }
       },
@@ -47,7 +48,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": false
       }
     },
     "tvc_dual_feature_JNAQzn": {
