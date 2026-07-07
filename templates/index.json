@@ -169,7 +169,7 @@
             "logo_background_color": "#231f20",
             "hover_image": "shopify://shop_images/brand-hover-hallu.jpg",
             "title": "Hallu",
-            "text": "A new kind of personal care experience. Details coming soon.",
+            "text": "HALLU adds color, calm, and feel-good fun to every soak.",
             "link": "shopify://collections/hallu-collections"
           }
         },
@@ -180,7 +180,7 @@
             "logo_background_color": "#092f57",
             "hover_image": "shopify://shop_images/brand-hover-dep.jpg",
             "title": "DEP",
-            "text": "A classic name, reimagined.\nStay tuned for what's next.",
+            "text": "DEP hair products deliver dependable, flake-free styling with the flexible or strong hold you need for every day.",
             "link": "shopify://collections/dep-dep-hair-gel"
           }
         },
@@ -330,7 +330,7 @@
         "anchor_id": "our-heritage",
         "pre_title": "Our heritage",
         "title": "Sixty years of \nsmall comforts.",
-        "text": "<p>TVC Group started with a single brand and a simple idea: the everyday rituals matter most. Six decades later, we're still in the business of small comforts — five brands, one belief, and a long list of moments that helped get us here.</p>",
+        "text": "<p>TVC Group started with a single brand and a simple idea: everyday rituals matter most. Six decades later, we're still in the business of small comforts — five brands, one belief, and a long list of moments that helped get us here.</p>",
         "video": "shopify://files/videos/TVC-Video4_1.mp4"
       }
     }
