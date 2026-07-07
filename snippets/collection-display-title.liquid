@@ -1,0 +1,15 @@
+{% comment %}
+  PLP display title without vendor prefix (e.g. "Mr. Bubble: Bubble Bath" → "Bubble Bath").
+
+  Accepts:
+  - collection: {Object} Collection Liquid object
+{% endcomment %}
+{%- liquid
+  assign title_parts = collection.title | split: ':'
+  if title_parts.size > 1
+    assign collection_display_title = title_parts[1] | strip
+  else
+    assign collection_display_title = collection.title | strip
+  endif
+-%}
+{{- collection_display_title | escape -}}
