@@ -1,0 +1,10 @@
+{% comment %}
+  ReCharge legacy widget mount point (inside product form).
+  ReCharge ScriptTag / app embed injects into .rc-widget-injection-parent.
+  @param product {Object}
+{% endcomment %}
+<div
+  class="rc-widget-injection-parent"
+  data-product-id="{{ product.id }}"
+  data-disable-subscription-variant="{{ product.metafields.custom_fields.disable_subscription_for_sku }}"
+></div>

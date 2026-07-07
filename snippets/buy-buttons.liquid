@@ -79,6 +79,8 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
+        {%- render 'recharge-subscription-widget', product: product -%}
+
         <div class="product-form__buttons">
           <button
             id="ProductSubmitButton-{{ section_id }}"

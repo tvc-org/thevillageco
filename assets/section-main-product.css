@@ -1894,3 +1894,88 @@ body.village-naturals-therapy .product__title > * {
   padding-left: 0;
   padding-right: 0;
 }
+
+/* ReCharge subscription widget (legacy injection parent) */
+.product-form .rc-widget-injection-parent {
+  margin-bottom: 2rem;
+}
+
+.product-form .rc-widget-injection-parent:not(:empty)::before {
+  content: 'Frequency';
+  display: block;
+  font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1025px) {
+  .product-form .rc-widget-injection-parent:not(:empty)::before {
+    font-size: 16px;
+  }
+}
+
+.product-form .rc-widget-injection-parent .rc-container-wrapper .rc-container {
+  margin: 0;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio {
+  padding: 0;
+  background-color: inherit;
+  position: relative;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio .rc_widget__option__selector {
+  padding: 5px 10px;
+  border: 1px solid #979797;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio.rc-option--active {
+  z-index: 1;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio.rc-option--active .rc_widget__option__selector {
+  border-color: #323131;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio:last-of-type {
+  top: -1px;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio .rc_widget__option__plans {
+  padding: 0;
+  margin-top: 23px;
+  position: relative;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio .rc_widget__option__plans::before {
+  content: 'Deliver Every';
+  display: block;
+  font-family: "FuturaPTDemi", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 1025px) {
+  .product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio .rc_widget__option__plans::before {
+    font-size: 16px;
+  }
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio .rc_widget__option__plans .rc-selling-plans__label {
+  font-size: 16px;
+  padding: 10px 20px;
+  display: block;
+  border: 1px solid #323131;
+  background: #fff;
+}
+
+.product-form .rc-widget-injection-parent .rc-container .rc-widget .rc-radio .rc_widget__option__plans .rc_widget__option__plans__dropdown {
+  padding: 10px 20px;
+  border: 1px solid #323131;
+  appearance: none;
+  width: 100%;
+}
