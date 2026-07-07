@@ -773,11 +773,15 @@ body.mr-bubble .tvc-slideshow__heading {
   position: absolute;
   z-index: 2;
   margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   align-self: unset;
   justify-self: unset;
   grid-row-start: auto;
   width: auto;
   max-width: calc(100% - 2rem);
+  pointer-events: none;
 }
 
 .tvc-slideshow__media--badge-bottom-left .card__badge {
