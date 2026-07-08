@@ -3532,6 +3532,26 @@ body.village-naturals-therapy {
     background-attachment: scroll;
 }
 
+:is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .predictive-search {
+    --gradient-background: var(--brand-background-color, #f7f2ec);
+    background: var(--brand-background-color, #f7f2ec);
+    background-color: var(--brand-background-color, #f7f2ec);
+    background-attachment: scroll;
+}
+
+/* Predictive search — match Therapy collection card media radius */
+.predictive-search__product-grid .card--standard .card__inner {
+    border-radius: 16px;
+    border: none;
+    overflow: hidden;
+}
+
+@media screen and (min-width: 960px) {
+    .predictive-search__product-grid .card--standard .card__inner {
+        border-radius: 35px;
+    }
+}
+
 @media screen and (max-width: 1024px) {
     :is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .menu-drawer.gradient,
     :is(body.village-naturals-therapy, body.the-village-co, body.the-village-company) .menu-drawer__submenu.gradient {
