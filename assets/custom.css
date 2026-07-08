@@ -53,6 +53,13 @@
     max-width: calc(var(--page-width) + (var(--layout-gutter-x) * 2));
 }
 
+@media screen and (min-width: 990px) {
+    .page-width-desktop {
+        padding: 0 var(--layout-gutter-x);
+        max-width: calc(var(--page-width) + (var(--layout-gutter-x) * 2));
+    }
+}
+
 @media screen and (min-width: 960px) {
     :root {
         --layout-gutter-x: 48px;
