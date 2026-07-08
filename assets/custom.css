@@ -3634,6 +3634,66 @@ body.village-naturals-therapy .product-form__input--pill input[type='radio']:che
     font-weight: 700;
 }
 
+/* Linked product pills — separate PDPs shown as variant-style swatches */
+.product-form__input--linked .product-linked-pill {
+    border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), 0.22);
+    background-color: rgb(var(--color-background));
+    color: rgb(var(--color-foreground));
+    border-radius: 999px;
+    display: inline-block;
+    margin: 0;
+    padding: 1.1rem 2.2rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    transition:
+        border-color var(--duration-short) ease,
+        background-color var(--duration-short) ease,
+        color var(--duration-short) ease;
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.product-form__input--linked .product-linked-pill:hover {
+    border-color: rgb(var(--color-foreground));
+}
+
+.product-form__input--linked .product-linked-pill.active {
+    background-color: rgb(var(--color-foreground));
+    color: rgb(var(--color-background));
+    border-color: rgb(var(--color-foreground));
+}
+
+.product-form__input--linked .product-linked-pill.disabled {
+    border-color: rgba(var(--color-foreground), 0.14);
+    color: rgba(var(--color-foreground), 0.45);
+    text-decoration: line-through;
+    pointer-events: none;
+}
+
+body.village-naturals-therapy .product-form__input--linked .product-linked-pill {
+    background-color: transparent;
+    border: 1px solid rgba(21, 21, 21, 0.33);
+    color: var(--color-text-therapy);
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+}
+
+body.village-naturals-therapy .product-form__input--linked .product-linked-pill:hover {
+    border-color: var(--color-title-therapy);
+}
+
+body.village-naturals-therapy .product-form__input--linked .product-linked-pill.active {
+    background-color: transparent;
+    border: 2px solid var(--color-title-therapy);
+    color: var(--color-title-therapy);
+    font-weight: 700;
+}
+
 body.village-naturals-therapy .product-form__input--pill input[type='radio']:checked + label::selection {
     background-color: rgba(63, 63, 63, 0.15);
 }

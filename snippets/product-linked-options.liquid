@@ -1,0 +1,102 @@
+{% comment %}
+  Linked products: separate PDPs grouped via a collection title containing settings.product_linked_key
+  (default "_linked:") or a matching product tag (e.g. "_linked:Milk Bath").
+
+  Accepts:
+  - product: {Object} product object
+  - section: {Object} section object (for styling hooks)
+  - linked_collection: {Object} optional pre-resolved collection
+  - linked_option_name: {String} optional pre-resolved option name to replace
+  - linked_product_tag: {String} optional tag used to find/filter siblings
+  - linked_collection_from_title: {Boolean} whether collection was matched by title key
+{% endcomment %}
+{%- liquid
+  assign linked_key = settings.product_linked_key | default: '_linked:'
+  assign linked_key_down = linked_key | downcase
+  assign linked_options_setting = settings.product_linked_options | default: 'Option,Variation'
+  assign linked_option_names = linked_options_setting | split: ','
+
+  unless linked_collection != blank
+    for collection in product.collections
+      assign title_parts = collection.title | downcase | split: linked_key_down
+      if title_parts.size > 1 and collection.products_count > 1
+        assign linked_collection = collection
+        assign linked_collection_from_title = true
+        break
+      endif
+    endfor
+  endunless
+
+  unless linked_collection != blank
+    assign linked_product_tag = blank
+    for tag in product.tags
+      assign tag_down = tag | downcase
+      if tag_down contains linked_key_down
+        assign linked_product_tag = tag
+        break
+      endif
+    endfor
+
+    if linked_product_tag != blank
+      for collection in product.collections
+        if collection.products_count < 2
+          continue
+        endif
+        assign matching_siblings = 0
+        for sibling in collection.products
+          if sibling.tags contains linked_product_tag
+            assign matching_siblings = matching_siblings | plus: 1
+          endif
+        endfor
+        if matching_siblings > 1
+          assign linked_collection = collection
+          break
+        endif
+      endfor
+    endif
+  endunless
+
+  unless linked_option_name != blank
+    for option_name in linked_option_names
+      assign option_name_stripped = option_name | strip
+      if product.options contains option_name_stripped
+        assign linked_option_name = option_name_stripped
+        break
+      endif
+    endfor
+  endunless
+-%}
+
+{%- if linked_collection != blank and linked_option_name != blank -%}
+  <fieldset class="product-form__input product-form__input--pill product-form__input--linked">
+    <legend class="form__label product-form__pill-legend">{{ linked_option_name }}</legend>
+    <div class="product-form__pill-row">
+      {%- for sibling in linked_collection.products -%}
+        {%- unless linked_collection_from_title or linked_product_tag == blank or sibling.tags contains linked_product_tag -%}
+          {%- continue -%}
+        {%- endunless -%}
+        {%- liquid
+          assign sibling_option_index = blank
+          for option in sibling.options
+            if option == linked_option_name
+              assign sibling_option_index = forloop.index0
+              break
+            endif
+          endfor
+        -%}
+        {%- if sibling_option_index != blank -%}
+          {%- assign sibling_label = sibling.selected_or_first_available_variant.options[sibling_option_index] -%}
+          <a
+            href="{{ sibling.url }}"
+            class="product-linked-pill{% if sibling.handle == product.handle %} active{% endif %}{% unless sibling.available %} disabled{% endunless %}"
+            {% if sibling.handle == product.handle %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- sibling_label -}}
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </fieldset>
+{%- endif -%}

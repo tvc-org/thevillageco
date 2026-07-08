@@ -1,0 +1,20 @@
+{%- liquid
+  assign canonical_link = canonical_url
+
+  if product and settings.product_linked_canonical
+    assign linked_key = settings.product_linked_key | default: '_linked:'
+    assign linked_key_down = linked_key | downcase
+
+    for collection in product.collections
+      assign title_parts = collection.title | downcase | split: linked_key_down
+      if title_parts.size > 1
+        for sibling in collection.products
+          assign canonical_link = shop.url | append: sibling.url
+          break
+        endfor
+        break
+      endif
+    endfor
+  endif
+-%}
+<link rel="canonical" href="{{ canonical_link }}">

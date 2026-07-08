@@ -1512,6 +1512,32 @@
     ]
   },
   {
+    "name": "Linked products",
+    "settings": [
+      {
+        "type": "text",
+        "id": "product_linked_key",
+        "label": "Linked collection key",
+        "default": "_linked:",
+        "info": "Collection titles containing this key group separate products as variant-style swatches (e.g. Bath Shoppe_linked:Milk Bath). Product tags with the same prefix are also supported."
+      },
+      {
+        "type": "text",
+        "id": "product_linked_options",
+        "label": "Linked option names",
+        "default": "Option,Variation",
+        "info": "Comma-separated product option names replaced by linked-product swatches (case sensitive)."
+      },
+      {
+        "type": "checkbox",
+        "id": "product_linked_canonical",
+        "label": "Use linked canonical URL",
+        "default": false,
+        "info": "When enabled, linked products share the canonical URL of the first product in the linked collection."
+      }
+    ]
+  },
+  {
     "name": "Cookie Banner",
     "settings": [
       {
