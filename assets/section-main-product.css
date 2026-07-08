@@ -951,7 +951,7 @@ body.village-naturals-therapy .product__title > * {
 .product-media-modal[open] {
   visibility: visible;
   opacity: 1;
-  z-index: 101;
+  z-index: 1001;
 }
 
 .product-media-modal__dialog {
