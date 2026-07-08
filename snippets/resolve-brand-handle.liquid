@@ -138,16 +138,24 @@
   {%- endif -%}
   {%- if collection -%}
     {%- assign collection_title_down = collection.title | downcase -%}
-    {%- if collection_title_down contains 'therapy:' -%}
+    {%- assign collection_handle_down = collection.handle | downcase -%}
+    {%- if collection_title_down contains 'therapy:' or collection_handle_down contains 'therapy' -%}
       {%- for block in resolved_brand_blocks -%}
         {%- if block.settings.text == 'Village Naturals Therapy' -%}
           {%- assign current_brand = block -%}
           {%- break -%}
         {%- endif -%}
       {%- endfor -%}
-    {%- elsif collection_title_down contains 'mr. bubble:' -%}
+    {%- elsif collection_title_down contains 'mr. bubble:' or collection_handle_down contains 'mr-bubble' or collection_handle_down contains 'kids-corner' -%}
       {%- for block in resolved_brand_blocks -%}
         {%- if block.settings.text == 'Mr. Bubble' -%}
+          {%- assign current_brand = block -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- elsif collection_handle_down contains 'soft-dri' -%}
+      {%- for block in resolved_brand_blocks -%}
+        {%- if block.settings.text == 'Soft&Dri' -%}
           {%- assign current_brand = block -%}
           {%- break -%}
         {%- endif -%}
@@ -179,10 +187,13 @@
     endif
     if collection
       assign collection_title_down = collection.title | downcase
-      if collection_title_down contains 'therapy:'
+      assign collection_handle_down = collection.handle | downcase
+      if collection_title_down contains 'therapy:' or collection_handle_down contains 'therapy'
         assign brand_handle = 'village-naturals-therapy'
-      elsif collection_title_down contains 'mr. bubble:'
+      elsif collection_title_down contains 'mr. bubble:' or collection_handle_down contains 'mr-bubble' or collection_handle_down contains 'kids-corner'
         assign brand_handle = 'mr-bubble'
+      elsif collection_handle_down contains 'soft-dri'
+        assign brand_handle = 'soft-dri'
       endif
     endif
   -%}

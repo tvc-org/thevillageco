@@ -4,10 +4,14 @@
   Accepts:
   - collection: {Object} Collection Liquid object
 {% endcomment %}
+{%- capture brand_home_url -%}
+  {%- render 'brand-home-url' -%}
+{%- endcapture -%}
+{%- assign brand_home_url = brand_home_url | strip -%}
 <nav class="collection-breadcrumbs" aria-label="Breadcrumb">
   <ol class="collection-breadcrumbs__list list-unstyled">
     <li class="collection-breadcrumbs__item">
-      <a class="collection-breadcrumbs__link" href="{{ routes.root_url }}">Home</a>
+      <a class="collection-breadcrumbs__link" href="{{ brand_home_url }}">Home</a>
     </li>
     <li class="collection-breadcrumbs__separator" aria-hidden="true">
       <span class="svg-wrapper">

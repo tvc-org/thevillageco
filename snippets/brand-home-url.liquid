@@ -1,0 +1,51 @@
+{% comment %}
+  Brand "home" URL for breadcrumbs — parent brand page when in brand context.
+
+  resolve-brand-handle is always used. Header brand_page_link is preferred when
+  sections['header'] is available; otherwise known brand handles map to page URLs.
+{% endcomment %}
+{%- liquid
+  assign brand_home_url = routes.root_url
+
+  capture brand_handle_resolved
+    render 'resolve-brand-handle'
+  endcapture
+  assign brand_handle_resolved = brand_handle_resolved | strip
+
+  assign brand_blocks = sections['header'].blocks | where: 'type', 'brand'
+  if brand_blocks.size > 0
+    for block in brand_blocks
+      assign block_brand_handle = block.settings.text | handleize
+      if block.settings.text != blank and block_brand_handle == brand_handle_resolved
+        if block.settings.brand_page_link != blank
+          assign brand_home_url = block.settings.brand_page_link
+        endif
+        break
+      endif
+    endfor
+  endif
+
+  if brand_home_url == routes.root_url and brand_handle_resolved != blank and brand_handle_resolved != 'the-village-co'
+    case brand_handle_resolved
+      when 'mr-bubble'
+        if pages['mr-bubble'] != blank
+          assign brand_home_url = pages['mr-bubble'].url
+        else
+          assign brand_home_url = '/pages/mr-bubble'
+        endif
+      when 'village-naturals-therapy'
+        if pages['therapy'] != blank
+          assign brand_home_url = pages['therapy'].url
+        else
+          assign brand_home_url = '/pages/therapy'
+        endif
+      when 'soft-dri'
+        if pages['soft-dri'] != blank
+          assign brand_home_url = pages['soft-dri'].url
+        else
+          assign brand_home_url = '/pages/soft-dri'
+        endif
+    endcase
+  endif
+-%}
+{{- brand_home_url -}}
