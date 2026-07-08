@@ -1069,6 +1069,12 @@ header-drawer {
     overflow: hidden;
 }
 
+@media screen and (max-width: 1439px) {
+    body.the-village-co .header-bottom .header-logo {
+        height: 40px;
+    }
+}
+
 .header-bottom .header-logo a {
     display: flex;
     align-items: center;
