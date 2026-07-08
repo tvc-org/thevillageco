@@ -369,12 +369,12 @@ cart-remove-button .icon-remove {
 /* Match PDP purchase-row quantity pill (section-main-product.css) */
 .cart-quantity.quantity {
   width: auto;
-  min-height: 62px;
-  height: 62px;
+  min-height: 42px;
+  height: 42px;
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
-  column-gap: 4px;
+  /* column-gap: 4px; */
   border-radius: 999px;
 }
 
@@ -405,8 +405,8 @@ cart-remove-button .icon-remove {
   color: #1f1f1f;
 }
 
-@media screen and (min-width: 750px) {
+/* @media screen and (min-width: 750px) {
   .cart-quantity.quantity {
     width: min(14rem, 26vw);
   }
-}
+} */
