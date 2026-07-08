@@ -28,14 +28,14 @@
             "image": "shopify://shop_images/make-a-splash-hero-wide.jpg",
             "mobile_image": "shopify://shop_images/make-a-splash-hero-mobile.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Turn Bath Time Into Bubble Time",
-            "text": "<p>Watch bath time come to life with colorful, creative add-ins that transform an ordinary tub into a world of imaginative fun.</p>",
+            "heading": "Wash Away the Mess, Keep the Memories",
+            "text": "<p>From muddy adventures to pool days and popsicle drips, Mr. Bubble's gentle formulas make it easy to wash away summer fun—one bubbly bath at a time.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "Shop Bath Boosters",
-            "link": "shopify://collections/mr-bubble-bath-boosters"
+            "link_label": "Shop Bubble Bath",
+            "link": "shopify://collections/mr-bubble-bubble-bath"
           }
         }
       },
@@ -60,6 +60,7 @@
           "type": "feature",
           "settings": {
             "product": "body-buffer-body-wash-infused-sponge",
+            "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/bubble-buffer-rocket.jpg",
             "video": "shopify://files/videos/MB-Rocket-right_1.mp4",
@@ -73,6 +74,7 @@
           "type": "feature",
           "settings": {
             "product": "limited-edition-par-fect-watermelon-bubble-bath",
+            "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/par-fect-watermelon-wide.jpg",
             "heading_block": "",
