@@ -229,9 +229,10 @@
             "text": "MRB - Shop All",
             "product_list": [],
             "collection_list": [
-              "mr-bubble-collections",
+              "mr-bubble-new-products",
               "mr-bubble-limited-editions-gifts",
-              "mr-bubble-new-products"
+              "mr-bubble-baby-bubble",
+              "mr-bubble-on-sale"
             ],
             "article_1": "",
             "article_2": "",
