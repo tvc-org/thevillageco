@@ -527,7 +527,14 @@
       <script src="{{ 'tvc-home-jump-nav.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    <script src="{{ 'free-gift-cart.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'continue-shopping.js' | asset_url }}" defer="defer"></script>
+
+    {%- comment -%}
+      Custom free-gift cart logic — production only. Dev/preview stores use EG Auto Add to Cart or another gift app.
+    {%- endcomment -%}
+    {%- if request.host == 'thevillagecompany.com' or request.host == 'www.thevillagecompany.com' -%}
+      <script src="{{ 'free-gift-cart.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
 
     {%- comment -%}
       Klaviyo embed (footer signup forms). PDP also loads legacy onsite.js for Back in Stock —
