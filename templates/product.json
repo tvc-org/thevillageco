@@ -164,11 +164,30 @@
       "settings": {
         "include_margins": true
       }
+    },
+    "1783704148da7b62cb": {
+      "type": "apps",
+      "blocks": {
+        "upsell_cross_sell_bundles_app_block_FKDwrj": {
+          "type": "shopify://apps/upsell-cross-sell-bundles/blocks/app-block/d57b28bc-34f0-4ebc-b397-9eb9c6ea4220",
+          "settings": {
+            "quickview_enabled": true,
+            "quick_add_to_cart_enabled": true
+          }
+        }
+      },
+      "block_order": [
+        "upsell_cross_sell_bundles_app_block_FKDwrj"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "related-products",
-    "yotpo_reviews_snippet"
+    "yotpo_reviews_snippet",
+    "1783704148da7b62cb"
   ]
 }
