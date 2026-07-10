@@ -1760,6 +1760,12 @@ div[class*='kl-teaser-'],
     min-height: 0;
     padding: 0;
     font-family: "FuturaPTMedium";
+    line-height: 1;
+}
+
+body.village-naturals-therapy .announcement-bar__message span {
+    display: inline-block;
+    transform:translateY(1px);
 }
 
 .announcement-bar .slider-button {
