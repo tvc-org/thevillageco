@@ -1,10 +1,18 @@
 /**
  * Remember the last browsed storefront URL and use it for "Continue shopping" links.
- * Falls back to the store homepage when no prior page is known (e.g. direct cart visit).
+ * Cart/checkout pages are never recorded — they must not overwrite the saved shopping URL.
  */
 (function () {
   const STORAGE_KEY = 'tvc:lastShoppingUrl';
   const EXCLUDED_PATH = /^\/(cart|checkout|account|challenge|password|apps|admin|policies)(\/|$|\?)/;
+
+  function isExcludedPage(pathname) {
+    return EXCLUDED_PATH.test(pathname || window.location.pathname);
+  }
+
+  function isBrowsablePath(path) {
+    return Boolean(path) && !EXCLUDED_PATH.test(path);
+  }
 
   function getContinueShoppingUrl() {
     const stored = sessionStorage.getItem(STORAGE_KEY);
@@ -12,14 +20,30 @@
     return window.Shopify?.routes?.root || '/';
   }
 
-  function isBrowsablePath(path) {
-    return Boolean(path) && !EXCLUDED_PATH.test(path);
-  }
-
   function recordLastShoppingUrl() {
+    if (isExcludedPage()) return;
+
     const path = window.location.pathname + window.location.search;
     if (isBrowsablePath(path)) {
       sessionStorage.setItem(STORAGE_KEY, path);
+    }
+  }
+
+  function hydrateFromReferrer() {
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+    const ref = document.referrer;
+    if (!ref) return;
+
+    try {
+      const refUrl = new URL(ref);
+      if (refUrl.origin !== window.location.origin) return;
+      const path = refUrl.pathname + refUrl.search;
+      if (isBrowsablePath(path)) {
+        sessionStorage.setItem(STORAGE_KEY, path);
+      }
+    } catch (error) {
+      // Ignore malformed referrer values.
     }
   }
 
@@ -30,13 +54,20 @@
     });
   }
 
+  window.applyContinueShoppingLinks = applyContinueShoppingLinks;
+
   function init() {
-    recordLastShoppingUrl();
+    if (isExcludedPage()) {
+      hydrateFromReferrer();
+    } else {
+      recordLastShoppingUrl();
+    }
+
     applyContinueShoppingLinks();
 
     if (typeof subscribe === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
       subscribe(PUB_SUB_EVENTS.cartUpdate, () => {
-        requestAnimationFrame(() => applyContinueShoppingLinks());
+        window.setTimeout(() => applyContinueShoppingLinks(), 0);
       });
     }
 
@@ -45,7 +76,11 @@
     });
   }
 
-  window.addEventListener('pageshow', recordLastShoppingUrl);
+  window.addEventListener('pageshow', () => {
+    if (!isExcludedPage()) {
+      recordLastShoppingUrl();
+    }
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

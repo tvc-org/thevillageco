@@ -112,8 +112,21 @@
       if (!response.ok) throw new Error('section fetch failed');
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const source = doc.querySelector('cart-items');
-      if (source) cartItems.innerHTML = source.innerHTML;
+      const sourceCartItems = doc.querySelector('cart-items');
+      if (!sourceCartItems) return;
+
+      // Sync cart state without replacing continue-shopping links outside .js-contents.
+      cartItems.className = sourceCartItems.className;
+
+      const sourceContents = sourceCartItems.querySelector('.js-contents');
+      const targetContents = cartItems.querySelector('.js-contents');
+      if (sourceContents && targetContents) {
+        targetContents.innerHTML = sourceContents.innerHTML;
+      }
+
+      if (typeof window.applyContinueShoppingLinks === 'function') {
+        window.applyContinueShoppingLinks(cartItems);
+      }
     } catch (error) {
       console.error('[free-gift-cart] cart page refresh failed, reloading', error);
       window.location.reload();
@@ -181,13 +194,14 @@
 
     try {
       let cart = await getCart();
-      const beforeCount = cart.item_count;
+      const beforeSnapshot = JSON.stringify(cart.items);
 
       cart = await checkCartAndAddFreeProduct(cart);
       cart = await checkQualifyingProductQuantities(cart);
 
-      if (cart.item_count !== beforeCount || isCartPage()) {
-        await refreshCartUI({ reloadCartPage: true });
+      const cartChanged = JSON.stringify(cart.items) !== beforeSnapshot;
+      if (cartChanged) {
+        await refreshCartUI({ reloadCartPage: isCartPage() });
       }
     } catch (error) {
       console.error('[free-gift-cart] maintenance failed', error);
