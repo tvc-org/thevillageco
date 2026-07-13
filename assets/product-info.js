@@ -204,6 +204,8 @@ if (!customElements.get('product-info')) {
           this.querySelector(`#Quantity-Rules-${this.dataset.section}`)?.classList.remove('hidden');
           this.querySelector(`#Volume-Note-${this.dataset.section}`)?.classList.remove('hidden');
 
+          this.updatePurchaseControlsVisibility(variant);
+
           this.productForm?.toggleSubmitButton(
             html.getElementById(`ProductSubmitButton-${this.sectionId}`)?.hasAttribute('disabled') ?? true,
             window.variantStrings.soldOut
@@ -230,6 +232,20 @@ if (!customElements.get('product-info')) {
         });
       }
 
+      updatePurchaseControlsVisibility(variant) {
+        const hide = variant?.price === 0;
+        const purchaseRow = this.querySelector('[data-purchase-controls-row]');
+        const purchaseActions = this.querySelector('[data-purchase-controls-hidden]');
+
+        if (purchaseRow) {
+          purchaseRow.classList.toggle('hidden', hide);
+        }
+
+        if (purchaseActions) {
+          purchaseActions.classList.toggle('hidden', hide);
+        }
+      }
+
       updateURL(url, variantId) {
         this.querySelector('share-button')?.updateUrl(
           `${window.shopUrl}${url}${variantId ? `?variant=${variantId}` : ''}`
@@ -241,6 +257,7 @@ if (!customElements.get('product-info')) {
 
       setUnavailable() {
         this.productForm?.toggleSubmitButton(true, window.variantStrings.unavailable);
+        this.updatePurchaseControlsVisibility(null);
 
         const selectors = ['price', 'Inventory', 'Sku', 'Price-Per-Item', 'Volume-Note', 'Volume', 'Quantity-Rules']
           .map((id) => `#${id}-${this.dataset.section}`)

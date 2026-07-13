@@ -10,7 +10,20 @@
   Usage:
   {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
 {% endcomment %}
-<div class="product-form__purchase-actions" {{ block.shopify_attributes }}>
+{%- liquid
+  assign hide_purchase_controls = false
+  if product != blank and product.selected_or_first_available_variant.price == 0
+    assign hide_purchase_controls = true
+  endif
+  if product != blank and product.metafields['custom_fields']['walmart_product'] == true
+    assign hide_purchase_controls = true
+  endif
+-%}
+<div
+  class="product-form__purchase-actions{% if hide_purchase_controls %} hidden{% endif %}"
+  data-purchase-controls-hidden
+  {{ block.shopify_attributes }}
+>
   {%- if product != blank -%}
     {%- liquid
       assign gift_card_recipient_feature_active = false
@@ -38,82 +51,82 @@
       data-hide-errors="{{ gift_card_recipient_feature_active }}"
       data-section-id="{{ section.id }}"
     >
-      <div class="product-form__error-message-wrapper" role="alert" hidden>
-        <span class="svg-wrapper">
-          {{- 'icon-error.svg' | inline_asset_content -}}
-        </span>
-        <span class="product-form__error-message"></span>
-      </div>
+        <div class="product-form__error-message-wrapper" role="alert" hidden>
+          <span class="svg-wrapper">
+            {{- 'icon-error.svg' | inline_asset_content -}}
+          </span>
+          <span class="product-form__error-message"></span>
+        </div>
 
-      {%- form 'product',
-        product,
-        id: product_form_id,
-        class: 'form add-to-cart-form',
-        novalidate: 'novalidate',
-        data-type: 'add-to-cart-form'
-      -%}
-        <script type="application/json" data-product-json>
-          {{ product | json }}
-        </script>
-        <select
-          name="id"
-          id="productSelect-{{ section_id }}"
-          class="product-variant-id product-single__variants visually-hidden"
-          aria-hidden="true"
-          tabindex="-1"
-        >
-          {%- for variant in product.variants -%}
-            <option
-              value="{{ variant.id }}"
-              data-sku="{{ variant.sku | escape }}"
-              {% if variant == product.selected_or_first_available_variant %}
-                selected="selected"
+        {%- form 'product',
+          product,
+          id: product_form_id,
+          class: 'form add-to-cart-form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <script type="application/json" data-product-json>
+            {{ product | json }}
+          </script>
+          <select
+            name="id"
+            id="productSelect-{{ section_id }}"
+            class="product-variant-id product-single__variants visually-hidden"
+            aria-hidden="true"
+            tabindex="-1"
+          >
+            {%- for variant in product.variants -%}
+              <option
+                value="{{ variant.id }}"
+                data-sku="{{ variant.sku | escape }}"
+                {% if variant == product.selected_or_first_available_variant %}
+                  selected="selected"
+                {% endif %}
+              >
+                {{- variant.title -}}
+              </option>
+            {%- endfor -%}
+          </select>
+
+          {%- if gift_card_recipient_feature_active -%}
+            {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
+          {%- endif -%}
+
+          {%- render 'recharge-subscription-widget', product: product -%}
+
+          <div class="product-form__buttons">
+            <button
+              id="ProductSubmitButton-{{ section_id }}"
+              type="submit"
+              name="add"
+              class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+              {% if product.selected_or_first_available_variant.available == false
+                or quantity_rule_soldout
+                or product.selected_or_first_available_variant == null
+              %}
+                disabled
               {% endif %}
             >
-              {{- variant.title -}}
-            </option>
-          {%- endfor -%}
-        </select>
-
-        {%- if gift_card_recipient_feature_active -%}
-          {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
-        {%- endif -%}
-
-        {%- render 'recharge-subscription-widget', product: product -%}
-
-        <div class="product-form__buttons">
-          <button
-            id="ProductSubmitButton-{{ section_id }}"
-            type="submit"
-            name="add"
-            class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
-            {% if product.selected_or_first_available_variant.available == false
-              or quantity_rule_soldout
-              or product.selected_or_first_available_variant == null
-            %}
-              disabled
-            {% endif %}
-          >
-            <span class="product-form__submit-inner">
-              <span class="product-form__submit-text">
-                {%- if product.selected_or_first_available_variant == null -%}
-                  {{ 'products.product.unavailable' | t }}
-                {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
-                  {{ 'products.product.sold_out' | t }}
-                {%- else -%}
-                  {{ 'products.product.add_to_cart' | t }}
-                {%- endif -%}
+              <span class="product-form__submit-inner">
+                <span class="product-form__submit-text">
+                  {%- if product.selected_or_first_available_variant == null -%}
+                    {{ 'products.product.unavailable' | t }}
+                  {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- else -%}
+                    {{ 'products.product.add_to_cart' | t }}
+                  {%- endif -%}
+                </span>
+                <span class="svg-wrapper product-form__submit-icon" aria-hidden="true">
+                  {{- 'icon-cart-custom.svg' | inline_asset_content -}}
+                </span>
               </span>
-              <span class="svg-wrapper product-form__submit-icon" aria-hidden="true">
-                {{- 'icon-cart-custom.svg' | inline_asset_content -}}
-              </span>
-            </span>
-            {%- render 'loading-spinner' -%}
-          </button>
-          {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
-          {%- endif -%}
-        </div>
+              {%- render 'loading-spinner' -%}
+            </button>
+            {%- if show_dynamic_checkout -%}
+              {{ form | payment_button }}
+            {%- endif -%}
+          </div>
       {%- endform -%}
     </product-form>
   {%- else -%}
@@ -136,7 +149,7 @@
     </div>
   {%- endif -%}
 
-  {%- if show_pickup_availability -%}
+  {%- if show_pickup_availability and hide_purchase_controls == false -%}
     {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
 
     {%- assign pick_up_availabilities = product.selected_or_first_available_variant.store_availabilities
@@ -171,4 +184,6 @@
     <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
   {%- endif -%}
 </div>
-{% render 'product-notify-me', product: product, section_id: section_id %}
+{%- unless hide_purchase_controls -%}
+  {% render 'product-notify-me', product: product, section_id: section_id %}
+{%- endunless -%}

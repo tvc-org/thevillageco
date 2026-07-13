@@ -5,6 +5,7 @@
   - card_product, section, section_id, quick_add, horizontal_quick_add, lazy_load — same meanings as card-product.
 {% endcomment %}
 {% assign product_form_id = 'quick-add-' | append: section_id | append: card_product.id %}
+{%- unless card_product.selected_or_first_available_variant.price == 0 -%}
 {% if quick_add == 'standard' %}
   <div class="quick-add no-js-hidden">
     {%- liquid
@@ -278,3 +279,4 @@
     </div>
   {% endif %}
 {% endif %}
+{%- endunless -%}

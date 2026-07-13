@@ -14,5 +14,17 @@
   endif
 -%}
 {%- if purchase_row_open -%}
-  <div class="product-form__purchase-row">
+  {%- liquid
+    assign hide_purchase_controls = false
+    if product.selected_or_first_available_variant.price == 0
+      assign hide_purchase_controls = true
+    endif
+    if product.metafields['custom_fields']['walmart_product'] == true
+      assign hide_purchase_controls = true
+    endif
+  -%}
+  <div
+    class="product-form__purchase-row{% if hide_purchase_controls %} hidden{% endif %}"
+    data-purchase-controls-row
+  >
 {%- endif -%}
