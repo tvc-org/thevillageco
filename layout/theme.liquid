@@ -530,11 +530,10 @@
     <script src="{{ 'continue-shopping.js' | asset_url }}" defer="defer"></script>
 
     {%- comment -%}
-      Custom free-gift cart logic — production only. Dev/preview stores use EG Auto Add to Cart or another gift app.
-    {%- endcomment -%}
-    {%- if request.host == 'thevillagecompany.com' or request.host == 'www.thevillagecompany.com' -%}
+      Custom free-gift cart logic disabled — promo handled by EG Auto Add to Cart on all environments.
+      To re-enable: uncomment the script tag below and disable the matching EG rule to avoid conflicts.
       <script src="{{ 'free-gift-cart.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    {%- endcomment -%}
 
     {%- comment -%}
       Klaviyo embed (footer signup forms). PDP also loads legacy onsite.js for Back in Stock —

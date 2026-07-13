@@ -1,5 +1,5 @@
 /**
- * Auto free-gift cart logic (custom promo — not handled by EasyGift).
+ * Auto free-gift cart logic (custom promo — disabled in theme; use EG Auto Add to Cart).
  * Ported from legacy theme.liquid active script.
  *
  * Promo 1: qualifying Baby Bubble variants → free gift variant; gift qty matches qualifying qty.
