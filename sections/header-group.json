@@ -110,6 +110,26 @@
             "menu": "tvc-home-simple"
           }
         },
+        "touts_group_CTxLPx": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "The Village Co.",
+            "nav_parent_title": "Shop",
+            "text": "TVC - Shop",
+            "product_list": [],
+            "collection_list": [
+              "mr-bubble-collections",
+              "therapy-collections",
+              "soft-dri-aluminum-free"
+            ],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "",
+            "bottom_button_text": ""
+          }
+        },
         "touts_group_z6EgtR": {
           "type": "touts_group",
           "settings": {
@@ -537,6 +557,7 @@
         "brand_H46BjU",
         "brand_Nhk8gC",
         "brand_WHwbqy",
+        "touts_group_CTxLPx",
         "touts_group_z6EgtR",
         "touts_group_cV3B44",
         "touts_group_Drzedz",
