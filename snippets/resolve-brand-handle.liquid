@@ -166,7 +166,11 @@
     {%- assign brand_handle = current_brand.settings.text | handleize -%}
   {%- endif -%}
 {%- else -%}
-  {%- comment -%} No header blocks (theme <head> only) — handle-only rules, no nav matching {%- endcomment -%}
+  {%- comment -%}
+    No header blocks (theme <head> only) — handle-only rules, no nav matching.
+    Product vendor only wins when it matches a header brand block text; unknown
+    vendors (Bath Shoppe, Hallu, DEP, etc.) fall through to the-village-co.
+  {%- endcomment -%}
   {%- liquid
     if template.suffix contains 'mr-bubble' or template.suffix contains 'kids-corner' or current_url contains 'mr-bubble' or current_url contains 'kids-corner' or last_segment contains 'mr-bubble' or last_segment contains 'kids-corner'
       assign brand_handle = 'mr-bubble'
@@ -176,7 +180,16 @@
       assign brand_handle = 'soft-dri'
     endif
     if product and product.vendor != blank
-      assign brand_handle = product.vendor | handleize
+      case product.vendor
+        when 'Mr. Bubble'
+          assign brand_handle = 'mr-bubble'
+        when 'Village Naturals Therapy'
+          assign brand_handle = 'village-naturals-therapy'
+        when 'Soft&Dri', 'Soft & Dri'
+          assign brand_handle = 'soft-dri'
+        when 'The Village Co.', 'The Village Company'
+          assign brand_handle = 'the-village-co'
+      endcase
     endif
     if blog
       if blog.handle == 'village-naturals-therapy'
