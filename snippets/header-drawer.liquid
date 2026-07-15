@@ -104,7 +104,7 @@
                                       <div class="menu-drawer__tout-product">
                                         <a class="menu-drawer__tout-image" href="{{ product.url }}">
                                           {% render 'tout-nav-featured-image',
-                                            product: product,
+                                            tout_product: product,
                                             image_width: 280,
                                             image_widths: '280, 560',
                                             image_sizes: '280px',
@@ -122,13 +122,13 @@
                                   {%- endfor -%}
                                   {%- for collection in block.settings.collection_list -%}
                                     {%- capture featured_title -%}
-                                      {%- render 'tout-nav-featured-title', collection: collection -%}
+                                      {%- render 'tout-nav-featured-title', tout_collection: collection -%}
                                     {%- endcapture -%}
                                     <div class="menu-drawer__tout menu-drawer__tout--collection">
                                       <div class="menu-drawer__tout-product">
                                         <a class="menu-drawer__tout-image" href="{{ collection.url }}">
                                           {% render 'tout-nav-featured-image',
-                                            collection: collection,
+                                            tout_collection: collection,
                                             image_width: 280,
                                             image_widths: '280, 560',
                                             image_sizes: '280px',
@@ -148,13 +148,13 @@
                                     {%- assign article = block.settings[article_field] -%}
                                     {%- if article != blank -%}
                                       {%- capture featured_title -%}
-                                        {%- render 'tout-nav-featured-title', article: article -%}
+                                        {%- render 'tout-nav-featured-title', tout_article: article -%}
                                       {%- endcapture -%}
                                       <div class="menu-drawer__tout menu-drawer__tout--article">
                                         <div class="menu-drawer__tout-product">
                                           <a class="menu-drawer__tout-image" href="{{ article.url }}">
                                             {% render 'tout-nav-featured-image',
-                                              article: article,
+                                              tout_article: article,
                                               image_width: 280,
                                               image_widths: '280, 560',
                                               image_sizes: '280px',

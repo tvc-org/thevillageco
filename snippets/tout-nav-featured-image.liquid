@@ -1,6 +1,7 @@
 {% comment %}
   Tout nav featured image: custom, then Bonify custom_fields, then product/collection/article default image.
-  Pass exactly one of: product, collection, article
+  Pass exactly one of: tout_product, tout_collection, tout_article
+  (Do not use product/collection/article — those collide with Shopify template globals on PDP/collection/article pages.)
   - image_width: number for image_url width
   - image_widths: string for image_tag widths (e.g. '220, 440' or '280, 560')
   - image_sizes: optional sizes attribute (e.g. '280px')
@@ -8,29 +9,29 @@
 {% endcomment %}
 {%- liquid
   assign tout_img = blank
-  if product != blank
-    if product.metafields.custom.featured_nav_image != blank
-      assign tout_img = product.metafields.custom.featured_nav_image.value
-    elsif product.metafields.custom_fields.featured_nav_image != blank
-      assign tout_img = product.metafields.custom_fields.featured_nav_image.value
+  if tout_product != blank
+    if tout_product.metafields.custom.featured_nav_image != blank
+      assign tout_img = tout_product.metafields.custom.featured_nav_image.value
+    elsif tout_product.metafields.custom_fields.featured_nav_image != blank
+      assign tout_img = tout_product.metafields.custom_fields.featured_nav_image.value
     else
-      assign tout_img = product.featured_image
+      assign tout_img = tout_product.featured_image
     endif
-  elsif collection != blank
-    if collection.metafields.custom.featured_nav_image != blank
-      assign tout_img = collection.metafields.custom.featured_nav_image.value
-    elsif collection.metafields.custom_fields.featured_nav_image != blank
-      assign tout_img = collection.metafields.custom_fields.featured_nav_image.value
+  elsif tout_collection != blank
+    if tout_collection.metafields.custom.featured_nav_image != blank
+      assign tout_img = tout_collection.metafields.custom.featured_nav_image.value
+    elsif tout_collection.metafields.custom_fields.featured_nav_image != blank
+      assign tout_img = tout_collection.metafields.custom_fields.featured_nav_image.value
     else
-      assign tout_img = collection.featured_image
+      assign tout_img = tout_collection.featured_image
     endif
-  elsif article != blank
-    if article.metafields.custom.featured_nav_image != blank
-      assign tout_img = article.metafields.custom.featured_nav_image.value
-    elsif article.metafields.custom_fields.featured_nav_image != blank
-      assign tout_img = article.metafields.custom_fields.featured_nav_image.value
+  elsif tout_article != blank
+    if tout_article.metafields.custom.featured_nav_image != blank
+      assign tout_img = tout_article.metafields.custom.featured_nav_image.value
+    elsif tout_article.metafields.custom_fields.featured_nav_image != blank
+      assign tout_img = tout_article.metafields.custom_fields.featured_nav_image.value
     else
-      assign tout_img = article.image
+      assign tout_img = tout_article.image
     endif
   endif
 -%}

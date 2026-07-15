@@ -58,7 +58,7 @@
                     <div class="featured-product">
                       <a class="image" href="{{ product.url | within: collection }}">
                         {% render 'tout-nav-featured-image',
-                          product: product,
+                          tout_product: product,
                           image_width: 440,
                           image_widths: '220, 440'
                         %}
@@ -93,7 +93,7 @@
                   <div class="product-column">
                     <div class="featured-product">
                       {% capture featured_title %}
-                        {% render 'tout-nav-featured-title', collection: collection %}
+                        {% render 'tout-nav-featured-title', tout_collection: collection %}
                       {% endcapture %}
                       <a class="image" href="{{ collection.url }}">
                         {% comment %}
@@ -103,7 +103,7 @@
                         {% endcomment %}
 
                         {% render 'tout-nav-featured-image',
-                          collection: collection,
+                          tout_collection: collection,
                           image_width: 440,
                           image_widths: '220, 440'
                         %}
@@ -137,11 +137,11 @@
                     <div class="product-column">
                       <div class="featured-product">
                         {% capture featured_title %}
-                          {% render 'tout-nav-featured-title', article: article %}
+                          {% render 'tout-nav-featured-title', tout_article: article %}
                         {% endcapture %}
                         <a class="image" href="{{ article.url }}">
                           {% render 'tout-nav-featured-image',
-                            article: article,
+                            tout_article: article,
                             image_width: 440,
                             image_widths: '220, 440'
                           %}

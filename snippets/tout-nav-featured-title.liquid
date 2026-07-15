@@ -1,24 +1,25 @@
 {% comment %}
   Tout collection/article display title: custom, then Bonify custom_fields, then resource default.
-  Pass exactly one of: collection, article
+  Pass exactly one of: tout_collection, tout_article
+  (Do not use collection/article — those collide with Shopify template globals.)
 {% endcomment %}
 {%- liquid
   assign tout_nav_title = ''
-  if collection != blank
-    if collection.metafields.custom.featured_nav_title != blank
-      assign tout_nav_title = collection.metafields.custom.featured_nav_title.value
-    elsif collection.metafields.custom_fields.featured_nav_title != blank
-      assign tout_nav_title = collection.metafields.custom_fields.featured_nav_title.value
+  if tout_collection != blank
+    if tout_collection.metafields.custom.featured_nav_title != blank
+      assign tout_nav_title = tout_collection.metafields.custom.featured_nav_title.value
+    elsif tout_collection.metafields.custom_fields.featured_nav_title != blank
+      assign tout_nav_title = tout_collection.metafields.custom_fields.featured_nav_title.value
     else
-      assign tout_nav_title = collection.title
+      assign tout_nav_title = tout_collection.title
     endif
-  elsif article != blank
-    if article.metafields.custom.featured_nav_title != blank
-      assign tout_nav_title = article.metafields.custom.featured_nav_title.value
-    elsif article.metafields.custom_fields.featured_nav_title != blank
-      assign tout_nav_title = article.metafields.custom_fields.featured_nav_title.value
+  elsif tout_article != blank
+    if tout_article.metafields.custom.featured_nav_title != blank
+      assign tout_nav_title = tout_article.metafields.custom.featured_nav_title.value
+    elsif tout_article.metafields.custom_fields.featured_nav_title != blank
+      assign tout_nav_title = tout_article.metafields.custom_fields.featured_nav_title.value
     else
-      assign tout_nav_title = article.title
+      assign tout_nav_title = tout_article.title
     endif
   endif
 -%}
