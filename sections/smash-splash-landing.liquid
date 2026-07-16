@@ -1,0 +1,187 @@
+{{ 'section-smash-splash.css' | asset_url | stylesheet_tag }}
+
+{%- comment -%} IFRAME RESIZER — load early (test page places this in <head>) {%- endcomment -%}
+<script src="https://mrbubble.kpicentral.com/js/iframeResizer.min.js" defer></script>
+
+<section class="smash-splash" aria-label="Smash & Splash Birthday Bash">
+  {%- comment -%} Hero {%- endcomment -%}
+  <div
+    class="smash-splash__hero"
+    style="--ss-hero-desktop: url('{{ 'bday-banner-desktop.jpg' | asset_url }}');"
+  >
+    <div class="smash-splash__hero-inner">
+      <img
+        class="smash-splash__logo"
+        src="{{ 'bday-smash-splash.png' | asset_url }}"
+        alt="Mr. Bubble Smash & Splash Birthday Bash"
+        width="760"
+        height="320"
+      >
+
+      <h1 class="smash-splash__headline">Get a reminder before the party starts!</h1>
+
+      <div class="smash-splash__copy">
+        <p>Mr. Bubble is turning 65 and we’re giving away limited-edition Smash & Splash Kits to celebrate.</p>
+        <p>
+          The kits feature DIY smash cake fixins and birthday-themed bath-time goodies that make getting clean MORE FUN
+          than getting dirty.®
+        </p>
+        <p>
+          <strong
+            >Sign up below and we’ll send you a reminder so you don’t miss your chance to join the birthday bash.</strong
+          >
+        </p>
+      </div>
+    </div>
+
+    <img
+      class="smash-splash__hero-mobile-img"
+      src="{{ 'bday-banner-mobile.jpg' | asset_url }}"
+      alt=""
+      width="800"
+      height="800"
+      loading="eager"
+    >
+  </div>
+
+  {%- comment -%} Repeating ticker {%- endcomment -%}
+  <div class="smash-splash__marquee" aria-hidden="true">
+    <div class="smash-splash__marquee-track">
+      <p class="smash-splash__marquee-text">
+        SMASH, SPLASH, CELEBRATE! SMASH, SPLASH, CELEBRATE! SMASH, SPLASH, CELEBRATE!
+      </p>
+      <p class="smash-splash__marquee-text">
+        SMASH, SPLASH, CELEBRATE! SMASH, SPLASH, CELEBRATE! SMASH, SPLASH, CELEBRATE!
+      </p>
+    </div>
+  </div>
+
+  {%- comment -%} What you could win {%- endcomment -%}
+  <div class="smash-splash__prizes">
+    <h2 class="smash-splash__prizes-title">What you could win:</h2>
+    <ul class="smash-splash__prize-grid">
+      <li class="smash-splash__prize">
+        <img
+          class="smash-splash__prize-icon"
+          src="{{ 'bday-icon-cake.png' | asset_url }}"
+          alt=""
+          width="200"
+          height="200"
+          loading="lazy"
+        >
+        <span class="smash-splash__prize-label"
+          >DIY Cake<br>
+          Decorating Kit</span
+        >
+      </li>
+      <li class="smash-splash__prize">
+        <img
+          class="smash-splash__prize-icon"
+          src="{{ 'bday-icon-foam.png' | asset_url }}"
+          alt=""
+          width="200"
+          height="200"
+          loading="lazy"
+        >
+        <span class="smash-splash__prize-label"
+          >Birthday<br>
+          Foam Soap</span
+        >
+      </li>
+      <li class="smash-splash__prize">
+        <img
+          class="smash-splash__prize-icon"
+          src="{{ 'bday-icon-party-pup.png' | asset_url }}"
+          alt=""
+          width="200"
+          height="200"
+          loading="lazy"
+        >
+        <span class="smash-splash__prize-label"
+          >Party Pup<br>
+          Bubble Bath</span
+        >
+      </li>
+      <li class="smash-splash__prize">
+        <img
+          class="smash-splash__prize-icon"
+          src="{{ 'bday-icon-bath-bomb.png' | asset_url }}"
+          alt=""
+          width="200"
+          height="200"
+          loading="lazy"
+        >
+        <span class="smash-splash__prize-label"
+          >Mr. Bubble<br>
+          Bath Bomb</span
+        >
+      </li>
+    </ul>
+  </div>
+
+  {%- comment -%}
+    Split: form first in DOM for mobile; CSS order swaps to visual | form on desktop.
+  {%- endcomment -%}
+  <div class="smash-splash__split">
+    <div class="smash-splash__form-col">
+      <div class="smash-splash__form-shell">
+        <iframe
+          id="smash-splash-entry-iframe"
+          src="https://mrbubble.kpicentral.com/"
+          title="Smash & Splash Birthday Bash entry form"
+          width="100%"
+          scrolling="no"
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="smash-splash__visual-col">
+      <img
+        src="{{ 'bday-65.jpg' | asset_url }}"
+        alt="Mr. Bubble celebrating 65 years with balloons and a gift"
+        width="1200"
+        height="1200"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</section>
+
+{%- comment -%} IFRAME RESIZER — init as close to end of body content as section allows {%- endcomment -%}
+<script>
+  (function () {
+    var iframeSelector = '#smash-splash-entry-iframe';
+
+    function initSmashSplashIframe() {
+      if (typeof iFrameResize !== 'function') return;
+      iFrameResize({ log: false, checkOrigin: false }, iframeSelector);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSmashSplashIframe);
+    } else {
+      initSmashSplashIframe();
+    }
+
+    // Deferred script may finish after DOMContentLoaded
+    window.addEventListener('load', initSmashSplashIframe);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Smash & Splash Landing",
+  "tag": "div",
+  "class": "section-smash-splash",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Smash & Splash Landing",
+      "category": "Custom Content"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"]
+  }
+}
+{% endschema %}

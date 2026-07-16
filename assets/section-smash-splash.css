@@ -1,0 +1,354 @@
+/* Smash & Splash Birthday Bash landing */
+
+.smash-splash {
+  --ss-navy: #003399;
+  --ss-pink: #f04d98;
+  --ss-pink-soft: #fee1e6;
+  --ss-white: #ffffff;
+  color: var(--ss-navy);
+  -webkit-font-smoothing: antialiased;
+}
+
+.smash-splash *,
+.smash-splash *::before,
+.smash-splash *::after {
+  box-sizing: border-box;
+}
+
+#MainContent .smash-splash h1,
+#MainContent .smash-splash h2,
+#MainContent .smash-splash p {
+  letter-spacing: normal;
+  margin: 0 0 16px 0;
+  color: inherit;
+}
+
+#MainContent .smash-splash .smash-splash__headline,
+#MainContent .smash-splash .smash-splash__copy,
+#MainContent .smash-splash .smash-splash__copy p,
+#MainContent .smash-splash .smash-splash__prizes-title,
+#MainContent .smash-splash .smash-splash__prize-label {
+  color: var(--ss-navy);
+}
+
+/* ----- Hero ----- */
+.smash-splash__hero {
+  position: relative;
+  background-color: var(--ss-pink-soft);
+  overflow: hidden;
+}
+
+.smash-splash__hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 20px 20px;
+}
+
+.smash-splash__logo {
+  display: block;
+  width: min(92%, 420px);
+  height: auto;
+  margin: 0 auto 28px;
+}
+
+.smash-splash__headline {
+  font-family: 'Bubbly', 'FuturaPTBold', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ss-navy);
+  max-width: 22ch;
+  margin: 0 auto 14px;
+}
+
+.smash-splash__copy {
+  font-family: 'FuturaPTMedium', sans-serif;
+  line-height: 1.35;
+  color: var(--ss-navy);
+  max-width: 36em;
+  margin: 0 auto;
+}
+
+#MainContent .smash-splash .smash-splash__copy > p {
+  font-size: 16px;
+}
+
+.smash-splash__copy p + p {
+  margin-top: 0.85em;
+}
+
+.smash-splash__hero-mobile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 18px;
+}
+
+.smash-splash__hero-desktop-spacer {
+  display: none;
+}
+
+@media screen and (min-width: 1025px) {
+  .smash-splash__hero {
+    background-color: #f7f4f0;
+    background-image: var(--ss-hero-desktop);
+    background-repeat: no-repeat;
+    /* Below 1440: nudge focal point left of center (0% = left, 50% = center) */
+    background-position: 35% center;
+    background-size: cover;
+    min-height: clamp(480px, 52vw, 680px);
+  }
+
+  .smash-splash__hero-inner {
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 56px 64px 64px;
+    min-height: inherit;
+  }
+
+  .smash-splash__logo {
+    width: min(100%, 400px);
+    margin: 0 0 24px;
+  }
+
+  .smash-splash__headline {
+    max-width: none;
+    width: min(100%, 400px);
+    margin: 0 0 18px;
+    font-size: 42px;
+  }
+
+  .smash-splash__copy {
+    max-width: 34em;
+    width: auto;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  #MainContent .smash-splash .smash-splash__copy > p {
+    font-size: 24px;
+  }
+
+  .smash-splash__hero-mobile-img {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .smash-splash__hero {
+    background-position: 50% center;
+  }
+}
+
+/* ----- Marquee ----- */
+.smash-splash__marquee {
+  background: var(--ss-navy);
+  color: var(--ss-white);
+  overflow: hidden;
+  padding: 14px 0;
+}
+
+.smash-splash__marquee-track {
+  display: flex;
+  width: max-content;
+  animation: smash-splash-marquee 28s linear infinite;
+}
+
+#MainContent .smash-splash .smash-splash__marquee-text,
+.smash-splash__marquee-text {
+  font-family: 'Bubbly', 'FuturaPTBold', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding-right: 2.5em;
+  color: #ffffff;
+  margin: 0;
+}
+
+@media screen and (min-width: 1025px) {
+  #MainContent .smash-splash .smash-splash__marquee-text,
+  .smash-splash__marquee-text {
+    font-size: 54px;
+  }
+}
+
+@keyframes smash-splash-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smash-splash__marquee-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .smash-splash__marquee-text:nth-child(2) {
+    display: none;
+  }
+}
+
+/* ----- Prizes ----- */
+.smash-splash__prizes {
+  background: var(--ss-white);
+  padding: 40px 20px 48px;
+  text-align: center;
+}
+
+.smash-splash__prizes-title {
+  font-family: 'Bubbly', 'FuturaPTBold', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--ss-navy);
+  margin: 0 0 60px !important;
+}
+
+.smash-splash__prize-grid {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px 16px;
+  max-width: 520px;
+}
+
+.smash-splash__prize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.smash-splash__prize-icon {
+  display: block;
+  width: 70px;
+  height: auto;
+}
+
+.smash-splash__prize-label {
+  font-family: 'Bubbly', 'FuturaPTBold', sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--ss-navy);
+  max-width: 12em;
+}
+
+@media screen and (min-width: 1025px) {
+  .smash-splash__prizes {
+    padding: 56px 40px 64px;
+  }
+
+  .smash-splash__prizes-title {
+    font-size: 71px;
+    margin-bottom: 80px !important;
+  }
+
+  .smash-splash__prize-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px 24px;
+    max-width: 1600px;
+  }
+
+  .smash-splash__prize-icon {
+    width: 160px;
+  }
+
+  .smash-splash__prize-label {
+    font-size: 47px;
+  }
+}
+
+/* ----- Split: form + 65 visual ----- */
+.smash-splash__split {
+  display: flex;
+  flex-direction: column;
+}
+
+.smash-splash__form-col {
+  order: 1;
+  background-color: #1e6fd9;
+  background-image: url('https://mrbubble.kpicentral.com/assets/birthday-bg.webp');
+  background-repeat: repeat;
+  background-size: 420px auto;
+  padding: 36px 16px 44px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.smash-splash__form-shell {
+  width: 100%;
+  max-width: 480px;
+}
+
+.smash-splash__form-shell iframe {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  border: 0;
+  border-radius: 2em;
+  background: transparent;
+}
+
+.smash-splash__visual-col {
+  order: 2;
+  background-color: #fee1e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.smash-splash__visual-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media screen and (min-width: 1025px) {
+  .smash-splash__split {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 640px;
+  }
+
+  .smash-splash__visual-col {
+    order: 1;
+    flex: 1 1 50%;
+    width: 50%;
+  }
+
+  .smash-splash__visual-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .smash-splash__form-col {
+    order: 2;
+    flex: 1 1 50%;
+    width: 50%;
+    padding: 48px 40px;
+    align-items: center;
+  }
+
+  .smash-splash__form-shell {
+    max-width: 520px;
+  }
+}
