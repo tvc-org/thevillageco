@@ -416,6 +416,27 @@
             "bottom_button_text": "Shop All"
           }
         },
+        "touts_group_zTr4hx": {
+          "type": "touts_group",
+          "settings": {
+            "brand_title": "Mr. Bubble",
+            "nav_parent_title": "Body Wash",
+            "text": "MRB - Body Wash",
+            "product_list": [
+              "super-blaster-body-wash",
+              "original-3in1-body-wash-shampoo-conditioner-16-oz",
+              "calm-sleep-3-in-1-bubble-bath-body-wash-shampoo",
+              "body-buffer-body-wash-infused-sponge"
+            ],
+            "collection_list": [],
+            "article_1": "",
+            "article_2": "",
+            "article_3": "",
+            "article_4": "",
+            "bottom_button_link": "shopify://collections/mr-bubble-all-in-one-body-washes",
+            "bottom_button_text": "Shop All"
+          }
+        },
         "touts_group_GDCBRh": {
           "type": "touts_group",
           "settings": {
@@ -573,6 +594,7 @@
         "touts_group_7Lbdew",
         "touts_group_MYhEHk",
         "touts_group_PMBpeb",
+        "touts_group_zTr4hx",
         "touts_group_GDCBRh",
         "touts_group_jFQWFc",
         "touts_group_ajxCyG",
