@@ -56,20 +56,6 @@
     "tvc_dual_feature_DaeV7K": {
       "type": "tvc-dual-feature",
       "blocks": {
-        "feature_WMtrmX": {
-          "type": "feature",
-          "settings": {
-            "product": "body-buffer-body-wash-infused-sponge",
-            "show_product_badges": true,
-            "collection": "",
-            "image": "shopify://shop_images/bubble-buffer-rocket.jpg",
-            "video": "shopify://files/videos/MB-Rocket-right_1.mp4",
-            "heading_block": "",
-            "text": "<p>Make Bath Time Blast Off into Fun!</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
         "feature_6iAqTx": {
           "type": "feature",
           "settings": {
@@ -82,11 +68,24 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "feature_h4wPiq": {
+          "type": "feature",
+          "settings": {
+            "product": "balloon-animal-bubble-bath",
+            "show_product_badges": true,
+            "collection": "",
+            "image": "shopify://shop_images/party-pup-for-web.jpg",
+            "heading_block": "",
+            "text": "<p>Meet Party Pup! A limited-edition collectible for Mr. Bubble's 65th birthday!</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://products/balloon-animal-bubble-bath"
+          }
         }
       },
       "block_order": [
-        "feature_WMtrmX",
-        "feature_6iAqTx"
+        "feature_6iAqTx",
+        "feature_h4wPiq"
       ],
       "name": "t:sections.tvc-dual-feature.presets.name",
       "settings": {
