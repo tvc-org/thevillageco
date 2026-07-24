@@ -1063,10 +1063,10 @@
         },
         "content_source": {
           "label": "Page content",
-          "info": "Auto detects FAQs, Contact, Privacy, and Terms by page URL handle so all four pages can keep the utility template.",
+          "info": "Use Theme editor blocks on the utility-terms, utility-privacy, or utility-faq templates for editable content. Auto falls back to hardcoded presets by page handle (or when blocks are empty).",
           "options": {
-            "auto": "Auto by page handle (recommended)",
-            "blocks": "Theme editor blocks only"
+            "auto": "Auto by page handle (preset fallback)",
+            "blocks": "Theme editor blocks (recommended)"
           }
         }
       },

@@ -17,7 +17,37 @@
 
   <div class="utility-content">
     <div class="utility-content__inner inner-wrapper">
-      {%- if section.settings.content_source == 'auto' -%}
+      {%- liquid
+        assign use_preset = false
+        if section.settings.content_source == 'auto'
+          assign use_preset = true
+        else
+          assign has_editable_content = false
+          for block in section.blocks
+            if block.type == 'content_section' and block.settings.section_details != blank
+              assign has_editable_content = true
+              break
+            endif
+            if block.type == 'richtext' and block.settings.content != blank
+              assign has_editable_content = true
+              break
+            endif
+            if block.type == 'subcopy' and block.settings.text != blank
+              assign has_editable_content = true
+              break
+            endif
+            if block.type == 'contact_form' or block.type == 'contact_info'
+              assign has_editable_content = true
+              break
+            endif
+          endfor
+          unless has_editable_content
+            assign use_preset = true
+          endunless
+        endif
+      -%}
+
+      {%- if use_preset -%}
         {% render 'utility-page-preset-by-handle' %}
       {%- else -%}
       {%- for block in section.blocks -%}

@@ -150,6 +150,14 @@ def main() -> None:
             contact_json.write_text(json.dumps(contact_data, indent=2, ensure_ascii=False) + "\n")
             print(f"Updated {contact_json} subcopy")
 
+    # Keep theme-editor templates seeded from the generated preset snippets
+    seed = ROOT / "scripts" / "seed-utility-templates-from-presets.py"
+    if seed.is_file():
+        import subprocess
+
+        print("Seeding page.utility-*.json from presets…")
+        subprocess.check_call([sys.executable, str(seed)], cwd=ROOT)
+
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,8 @@
 {% comment %}
-  Renders migrated utility content by page handle (Option B: keep utility template assignment).
+  Fallback / auto content by page handle.
+  Prefer theme-editor blocks via page.utility-terms|privacy|faq templates
+  (content_source: blocks). This snippet is used when content_source is auto
+  or when blocks mode has no populated content yet.
 {% endcomment %}
 {%- liquid
   assign utility_preset = ''
