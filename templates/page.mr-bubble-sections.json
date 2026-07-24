@@ -20,6 +20,25 @@
     "tvc_slideshow_YYRRVn": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_LBHeCg": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/Mr-Bubble-birthday-product-headers.jpg",
+            "mobile_image": "shopify://shop_images/Mr-Bubble-birthday-product-headers_mobile.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_7ELzFU": {
           "type": "slide",
           "settings": {
@@ -40,6 +59,7 @@
         }
       },
       "block_order": [
+        "slide_LBHeCg",
         "slide_7ELzFU"
       ],
       "name": "TVC Slideshow",
