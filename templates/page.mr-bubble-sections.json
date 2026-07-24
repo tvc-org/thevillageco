@@ -28,14 +28,14 @@
             "image": "shopify://shop_images/Mr-Bubble-smash-splash-giveaway-header.jpg",
             "mobile_image": "shopify://shop_images/Mr-Bubble-smash-splash-giveaway-header_f0f862f6-796c-44f9-a1fe-3d4bb5746691.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "It's Mr. Bubble's 65th Birthday!",
+            "text": "<p>And we're giving away Smash & Splash kits to celebrate. The kits feature DIY smash cake fixins and birthday-themed bath time goodies.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Sign up to Receive a Reminder to Enter",
+            "link": "shopify://pages/smash-splash"
           }
         },
         "slide_LBHeCg": {
@@ -59,6 +59,7 @@
         },
         "slide_7ELzFU": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
