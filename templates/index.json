@@ -144,7 +144,7 @@
           "type": "brand",
           "settings": {
             "logo": "shopify://shop_images/brands-therapy-logo.png",
-            "logo_background_color": "#7b6756",
+            "logo_background_color": "#8A5884",
             "hover_image": "shopify://shop_images/brand-hover-therapy.jpg",
             "title": "Therapy",
             "text": "Everyday wellness, made simple. Feel the difference of thoughtfully crafted ingredients.",
@@ -188,7 +188,7 @@
           "type": "brand",
           "settings": {
             "logo": "shopify://shop_images/brands-logo-bath-shoppe-padded.png",
-            "logo_background_color": "#556e2d",
+            "logo_background_color": "#4C8C2B",
             "hover_image": "shopify://shop_images/brand-hover-bath-shoppe.jpg",
             "title": "Village Naturals Bath Shoppe",
             "text": "Create luxurious, moisturizing milk baths for an elevated at-home spa experience.",
