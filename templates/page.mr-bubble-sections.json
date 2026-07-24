@@ -20,6 +20,25 @@
     "tvc_slideshow_YYRRVn": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_crXNpy": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/Mr-Bubble-smash-splash-giveaway-header.jpg",
+            "mobile_image": "shopify://shop_images/Mr-Bubble-smash-splash-giveaway-header_f0f862f6-796c-44f9-a1fe-3d4bb5746691.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_LBHeCg": {
           "type": "slide",
           "disabled": true,
@@ -59,6 +78,7 @@
         }
       },
       "block_order": [
+        "slide_crXNpy",
         "slide_LBHeCg",
         "slide_7ELzFU"
       ],
