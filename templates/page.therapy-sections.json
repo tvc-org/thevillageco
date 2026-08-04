@@ -20,6 +20,25 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_ACzBbR": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/VNT_MainHeader_RelaxationMonth_Desk.jpg",
+            "mobile_image": "shopify://shop_images/VNT_MainHeader_RelaxationMonth_Mobile.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_LqXL7C": {
           "type": "slide",
           "settings": {
@@ -39,6 +58,7 @@
         }
       },
       "block_order": [
+        "slide_ACzBbR",
         "slide_LqXL7C"
       ],
       "name": "TVC Slideshow",
