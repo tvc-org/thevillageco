@@ -48,7 +48,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     },
     "tvc_dual_feature_DLBXnj": {
@@ -57,19 +58,21 @@
         "feature_xDbEHJ": {
           "type": "feature",
           "settings": {
-            "product": "comfort-foaming-bath-oil-body-wash",
+            "product": "calm-milk-bath",
+            "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/therapy-comfort-wide.jpg",
-            "heading_block": "Relax the Mind. Revive the Body.",
-            "text": "<p>Turn the bath into a quiet reset with moisturizing bubbles and a comforting blueberry citrus scent.</p>",
-            "link_label": "Shop Comfort",
-            "link": ""
+            "image": "shopify://shop_images/VNT_HomeFeature_Calm.jpg",
+            "heading_block": "Soften, Hydrate, and Moisturize Your Skin",
+            "text": "<p>Turn your bath into a sanctuary of calm.</p>",
+            "link_label": "Shop Calm",
+            "link": "https://thevillagecompany.com/products/calm-milk-bath?variant=45409826865350"
           }
         },
         "feature_DpNyAj": {
           "type": "feature",
           "settings": {
             "product": "",
+            "show_product_badges": true,
             "collection": "therapy-cold-allergy",
             "image": "shopify://shop_images/therapy-breathe-wide.jpg",
             "heading_block": "Breathe Deep, Feel Better",
@@ -149,7 +152,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     },
     "tvc_cta_short_8Hhf33": {
@@ -198,7 +202,8 @@
         "split_media_position_desktop": "right",
         "auto_rotate": false,
         "change_slides_speed": 5,
-        "show_sound_toggle": true
+        "show_sound_toggle": true,
+        "show_product_badges": true
       }
     }
   },
