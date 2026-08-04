@@ -22,25 +22,25 @@
       "blocks": {
         "slide_ACzBbR": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/VNT_MainHeader_RelaxationMonth_Desk.jpg",
             "mobile_image": "shopify://shop_images/VNT_MainHeader_RelaxationMonth_Mobile.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "August is National Relaxation Month",
+            "text": "<p>Whether you're soaking away sore muscles, unwinding before bed, or simply taking a well-deserved moment to recharge, Village Naturals Therapy is here to help make every moment a little more restorative.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Relaxation Favorites",
+            "link": "shopify://collections/therapy-collections"
           }
         },
         "slide_LqXL7C": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
