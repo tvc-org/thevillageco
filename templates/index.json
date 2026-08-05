@@ -132,7 +132,7 @@
         "brand_RNBdDT": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/brands-Mr-Bubble-Logo.png",
+            "logo": "shopify://shop_images/brands-Mr-Bubble-Logo_v2.png",
             "logo_background_color": "#3884bb",
             "hover_image": "shopify://shop_images/brand-hover-mr-bubble.jpg",
             "title": "Mr. Bubble",
