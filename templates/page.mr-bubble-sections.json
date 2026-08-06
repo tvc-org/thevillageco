@@ -22,6 +22,7 @@
       "blocks": {
         "slide_crXNpy": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
@@ -40,7 +41,6 @@
         },
         "slide_LBHeCg": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
@@ -48,13 +48,13 @@
             "mobile_image": "shopify://shop_images/Mr-Bubble-birthday-product-headers_mobile.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "It's Mr. Bubble's 65th Birthday!",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "text": "<p>Keep the party going at home with exclusive new products. These limited-edition products are only available for a short time!</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "Sign Up to Receive a Reminder",
-            "link": "shopify://pages/smash-splash"
+            "link_label": "Shop Birthday Products",
+            "link": "shopify://collections/mr-bubble-limited-editions-gifts"
           }
         },
         "slide_7ELzFU": {
