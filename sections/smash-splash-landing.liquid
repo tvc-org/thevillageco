@@ -18,9 +18,14 @@
         height="320"
       >
 
-      <h1 class="smash-splash__headline">Get a reminder before the party starts!</h1>
+      {%- comment -%}
+        Timed copy swap at 2026-08-07 08:00 America/New_York (client-side; CDN cache bypass).
+        Preview after-copy anytime with ?copyUpdatePreview=true
+        Pre-cutover = reminder CTA; post-cutover = claim kit.
+      {%- endcomment -%}
+      <h1 class="smash-splash__headline" data-ss-copy="headline">Get a reminder before the party starts!</h1>
 
-      <div class="smash-splash__copy">
+      <div class="smash-splash__copy" data-ss-copy="body">
         <p>Mr. Bubble is turning 65 and we’re giving away limited-edition Smash & Splash Kits to celebrate.</p>
         <p>
           The kits feature DIY smash cake fixins and birthday-themed bath-time goodies that make getting clean MORE FUN
@@ -32,6 +37,21 @@
           >
         </p>
       </div>
+
+      <template id="smash-splash-copy-after">
+        <h1 class="smash-splash__headline" data-ss-copy="headline">Keep the party going at home.</h1>
+        <div class="smash-splash__copy" data-ss-copy="body">
+          <p>
+            Be one of the first 100 people to sign up and claim a limited-edition Smash & Splash Kit to celebrate
+            Mr. Bubble turning 65.
+          </p>
+          <p>
+            The kit features DIY smash cake fixins and birthday-themed, bath-time goodies that make getting clean MORE
+            FUN than getting dirty.®
+          </p>
+          <p><strong>Don’t wait! Claim yours today and be part of the fun.</strong></p>
+        </div>
+      </template>
     </div>
 
     <img
@@ -165,6 +185,40 @@
 
     // Deferred script may finish after DOMContentLoaded
     window.addEventListener('load', initSmashSplashIframe);
+  })();
+</script>
+
+{%- comment -%} Timed hero copy swap — 8:00 AM Eastern on 2026-08-07; ?copyUpdatePreview=true to force {%- endcomment -%}
+<script>
+  (function () {
+    var CUTOVER_MS = Date.parse('2026-08-07T08:00:00-04:00');
+    var template = document.getElementById('smash-splash-copy-after');
+    if (!template) return;
+
+    var params = new URLSearchParams(window.location.search);
+    var forcePreview = params.get('copyUpdatePreview') === 'true';
+
+    function applyAfterCopy() {
+      var nodes = template.content.cloneNode(true);
+      var nextHeadline = nodes.querySelector('[data-ss-copy="headline"]');
+      var nextBody = nodes.querySelector('[data-ss-copy="body"]');
+      var headline = document.querySelector('.smash-splash [data-ss-copy="headline"]');
+      var body = document.querySelector('.smash-splash [data-ss-copy="body"]');
+
+      if (headline && nextHeadline) headline.replaceWith(nextHeadline);
+      if (body && nextBody) body.replaceWith(nextBody);
+    }
+
+    if (forcePreview || Date.now() >= CUTOVER_MS) {
+      applyAfterCopy();
+      return;
+    }
+
+    var msUntil = CUTOVER_MS - Date.now();
+    // Cap setTimeout (some browsers clamp very large delays)
+    if (msUntil < 2147483647) {
+      setTimeout(applyAfterCopy, msUntil);
+    }
   })();
 </script>
 
