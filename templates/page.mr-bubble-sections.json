@@ -116,10 +116,10 @@
             "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/Mr-Bubble-mad-scientist-header.jpg",
-            "heading_block": "",
-            "text": "",
+            "heading_block": "NEW! Our Mad Scientist Is in the Lab",
+            "text": "<p>Mr. Bubble's newest experiment is creating mountains of colorful foam.</p>",
             "link_label": "Shop Now",
-            "link": "shopify://products/balloon-animal-bubble-bath"
+            "link": "shopify://products/mad-scientist-bath-potion-set"
           }
         }
       },
