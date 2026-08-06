@@ -112,12 +112,12 @@
         "feature_h4wPiq": {
           "type": "feature",
           "settings": {
-            "product": "balloon-animal-bubble-bath",
+            "product": "mad-scientist-bath-potion-set",
             "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/v2_party-pup-for-web.jpg",
+            "image": "shopify://shop_images/Mr-Bubble-mad-scientist-header.jpg",
             "heading_block": "",
-            "text": "<p>Meet Party Pup! A limited-edition collectible for Mr. Bubble's 65th birthday!</p>",
+            "text": "",
             "link_label": "Shop Now",
             "link": "shopify://products/balloon-animal-bubble-bath"
           }
