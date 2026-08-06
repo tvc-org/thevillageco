@@ -119,9 +119,13 @@
 
   .smash-splash__headline {
     max-width: none;
-    width: min(100%, 550px);
+    width: min(100%, 400px);
     margin: 0 0 18px;
     font-size: 42px;
+  }
+
+  .smash-splash--copy-updated .smash-splash__headline {
+    width: min(100%, 550px);
   }
 
   .smash-splash__copy {

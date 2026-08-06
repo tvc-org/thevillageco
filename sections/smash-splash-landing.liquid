@@ -199,6 +199,7 @@
     var forcePreview = params.get('copyUpdatePreview') === 'true';
 
     function applyAfterCopy() {
+      var root = document.querySelector('.smash-splash');
       var nodes = template.content.cloneNode(true);
       var nextHeadline = nodes.querySelector('[data-ss-copy="headline"]');
       var nextBody = nodes.querySelector('[data-ss-copy="body"]');
@@ -207,6 +208,7 @@
 
       if (headline && nextHeadline) headline.replaceWith(nextHeadline);
       if (body && nextBody) body.replaceWith(nextBody);
+      if (root) root.classList.add('smash-splash--copy-updated');
     }
 
     if (forcePreview || Date.now() >= CUTOVER_MS) {
