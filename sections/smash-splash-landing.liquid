@@ -3,7 +3,10 @@
 {%- comment -%} IFRAME RESIZER — load early (test page places this in <head>) {%- endcomment -%}
 <script src="https://mrbubble.kpicentral.com/js/iframeResizer.min.js" defer></script>
 
-<section class="smash-splash" aria-label="Smash & Splash Birthday Bash">
+<section
+  class="smash-splash{% if section.settings.kits_claimed %} smash-splash--kits-claimed smash-splash--copy-updated{% endif %}"
+  aria-label="Smash & Splash Birthday Bash"
+>
   {%- comment -%} Hero {%- endcomment -%}
   <div
     class="smash-splash__hero"
@@ -18,40 +21,55 @@
         height="320"
       >
 
-      {%- comment -%}
-        Timed copy swap at 2026-08-07 08:00 America/New_York (client-side; CDN cache bypass).
-        Preview after-copy anytime with ?copyUpdatePreview=true
-        Pre-cutover = reminder CTA; post-cutover = claim kit.
-      {%- endcomment -%}
-      <h1 class="smash-splash__headline" data-ss-copy="headline">Get a reminder before the party starts!</h1>
-
-      <div class="smash-splash__copy" data-ss-copy="body">
-        <p>Mr. Bubble is turning 65 and we’re giving away limited-edition Smash & Splash Kits to celebrate.</p>
-        <p>
-          The kits feature DIY smash cake fixins and birthday-themed bath-time goodies that make getting clean MORE FUN
-          than getting dirty.®
-        </p>
-        <p>
-          <strong
-            >Sign up below and we’ll send you a reminder so you don’t miss your chance to join the birthday bash.</strong
-          >
-        </p>
-      </div>
-
-      <template id="smash-splash-copy-after">
-        <h1 class="smash-splash__headline" data-ss-copy="headline">Keep the party going at home.</h1>
+      {%- if section.settings.kits_claimed -%}
+        {%- comment -%} Phase 3: all 100 kits claimed — admin toggle {%- endcomment -%}
+        <h1 class="smash-splash__headline" data-ss-copy="headline">
+          Keep celebrating all year long with Mr.Bubble.
+        </h1>
         <div class="smash-splash__copy" data-ss-copy="body">
           <p>
-            Be one of the first 100 people to sign up and claim a limited-edition Smash & Splash Kit to celebrate
-            Mr. Bubble turning 65.
+            Our Smash & Splash Kits have all been spoken for but the good times and bubbles keep coming!
           </p>
           <p>
-            The kit features DIY smash cake fixins and birthday-themed, bath-time goodies that make getting clean MORE
-            FUN than getting dirty.®
+            Enjoy this coupon and see for yourself how Mr.Bubble makes getting clean MORE FUN than getting dirty.®
           </p>
-          <p><strong>Don’t wait! Claim yours today and be part of the fun.</strong></p>
         </div>
-      </template>
+      {%- else -%}
+        {%- comment -%}
+          Timed copy swap at 2026-08-07 08:00 America/New_York (client-side; CDN cache bypass).
+          Preview claim-kit copy anytime with ?copyUpdatePreview=true
+          Pre-cutover = reminder CTA; post-cutover = claim kit.
+        {%- endcomment -%}
+        <h1 class="smash-splash__headline" data-ss-copy="headline">Get a reminder before the party starts!</h1>
+
+        <div class="smash-splash__copy" data-ss-copy="body">
+          <p>Mr. Bubble is turning 65 and we’re giving away limited-edition Smash & Splash Kits to celebrate.</p>
+          <p>
+            The kits feature DIY smash cake fixins and birthday-themed bath-time goodies that make getting clean MORE FUN
+            than getting dirty.®
+          </p>
+          <p>
+            <strong
+              >Sign up below and we’ll send you a reminder so you don’t miss your chance to join the birthday bash.</strong
+            >
+          </p>
+        </div>
+
+        <template id="smash-splash-copy-after">
+          <h1 class="smash-splash__headline" data-ss-copy="headline">Keep the party going at home.</h1>
+          <div class="smash-splash__copy" data-ss-copy="body">
+            <p>
+              Be one of the first 100 people to sign up and claim a limited-edition Smash & Splash Kit to celebrate
+              Mr. Bubble turning 65.
+            </p>
+            <p>
+              The kit features DIY smash cake fixins and birthday-themed, bath-time goodies that make getting clean MORE
+              FUN than getting dirty.®
+            </p>
+            <p><strong>Don’t wait! Claim yours today and be part of the fun.</strong></p>
+          </div>
+        </template>
+      {%- endif -%}
     </div>
 
     <img
@@ -188,48 +206,58 @@
   })();
 </script>
 
-{%- comment -%} Timed hero copy swap — 8:00 AM Eastern on 2026-08-07; ?copyUpdatePreview=true to force {%- endcomment -%}
-<script>
-  (function () {
-    var CUTOVER_MS = Date.parse('2026-08-07T08:00:00-04:00');
-    var template = document.getElementById('smash-splash-copy-after');
-    if (!template) return;
+{%- unless section.settings.kits_claimed -%}
+  {%- comment -%} Timed hero copy swap — 8:00 AM Eastern on 2026-08-07; ?copyUpdatePreview=true to force {%- endcomment -%}
+  <script>
+    (function () {
+      var CUTOVER_MS = Date.parse('2026-08-07T08:00:00-04:00');
+      var template = document.getElementById('smash-splash-copy-after');
+      if (!template) return;
 
-    var params = new URLSearchParams(window.location.search);
-    var forcePreview = params.get('copyUpdatePreview') === 'true';
+      var params = new URLSearchParams(window.location.search);
+      var forcePreview = params.get('copyUpdatePreview') === 'true';
 
-    function applyAfterCopy() {
-      var root = document.querySelector('.smash-splash');
-      var nodes = template.content.cloneNode(true);
-      var nextHeadline = nodes.querySelector('[data-ss-copy="headline"]');
-      var nextBody = nodes.querySelector('[data-ss-copy="body"]');
-      var headline = document.querySelector('.smash-splash [data-ss-copy="headline"]');
-      var body = document.querySelector('.smash-splash [data-ss-copy="body"]');
+      function applyAfterCopy() {
+        var root = document.querySelector('.smash-splash');
+        var nodes = template.content.cloneNode(true);
+        var nextHeadline = nodes.querySelector('[data-ss-copy="headline"]');
+        var nextBody = nodes.querySelector('[data-ss-copy="body"]');
+        var headline = document.querySelector('.smash-splash [data-ss-copy="headline"]');
+        var body = document.querySelector('.smash-splash [data-ss-copy="body"]');
 
-      if (headline && nextHeadline) headline.replaceWith(nextHeadline);
-      if (body && nextBody) body.replaceWith(nextBody);
-      if (root) root.classList.add('smash-splash--copy-updated');
-    }
+        if (headline && nextHeadline) headline.replaceWith(nextHeadline);
+        if (body && nextBody) body.replaceWith(nextBody);
+        if (root) root.classList.add('smash-splash--copy-updated');
+      }
 
-    if (forcePreview || Date.now() >= CUTOVER_MS) {
-      applyAfterCopy();
-      return;
-    }
+      if (forcePreview || Date.now() >= CUTOVER_MS) {
+        applyAfterCopy();
+        return;
+      }
 
-    var msUntil = CUTOVER_MS - Date.now();
-    // Cap setTimeout (some browsers clamp very large delays)
-    if (msUntil < 2147483647) {
-      setTimeout(applyAfterCopy, msUntil);
-    }
-  })();
-</script>
+      var msUntil = CUTOVER_MS - Date.now();
+      // Cap setTimeout (some browsers clamp very large delays)
+      if (msUntil < 2147483647) {
+        setTimeout(applyAfterCopy, msUntil);
+      }
+    })();
+  </script>
+{%- endunless -%}
 
 {% schema %}
 {
   "name": "Smash & Splash Landing",
   "tag": "div",
   "class": "section-smash-splash",
-  "settings": [],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "kits_claimed",
+      "label": "Kits claimed",
+      "info": "Turn on when all 100 Smash & Splash Kits are spoken for. Shows the sold-out / coupon copy and skips the timed claim-kit swap.",
+      "default": false
+    }
+  ],
   "presets": [
     {
       "name": "Smash & Splash Landing",

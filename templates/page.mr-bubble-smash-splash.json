@@ -11,7 +11,9 @@
   "sections": {
     "smash_splash_landing": {
       "type": "smash-splash-landing",
-      "settings": {}
+      "settings": {
+        "kits_claimed": false
+      }
     }
   },
   "order": ["smash_splash_landing"]
