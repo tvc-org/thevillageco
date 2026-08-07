@@ -103,10 +103,10 @@
             "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/mr-bubble-back-to-school-header.jpg",
-            "heading_block": "",
-            "text": "",
-            "link_label": "",
-            "link": ""
+            "heading_block": "<strong>A+ Clean Starts Here!</strong>",
+            "text": "<p>Everything you need to help your little learner head back to school feeling fresh, confident, and ready for anything.</p>",
+            "link_label": "Shop Back to School",
+            "link": "shopify://collections/mr-bubble-back-to-school"
           }
         },
         "feature_h4wPiq": {
