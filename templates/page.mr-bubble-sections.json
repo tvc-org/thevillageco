@@ -99,12 +99,12 @@
         "feature_6iAqTx": {
           "type": "feature",
           "settings": {
-            "product": "limited-edition-par-fect-watermelon-bubble-bath",
+            "product": "super-blaster-body-wash",
             "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/par-fect-watermelon-wide.jpg",
+            "image": "shopify://shop_images/mr-bubble-back-to-school-header.jpg",
             "heading_block": "",
-            "text": "<p>A hole-in-one bath experience.</p>",
+            "text": "",
             "link_label": "",
             "link": ""
           }
