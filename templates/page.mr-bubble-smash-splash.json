@@ -12,9 +12,11 @@
     "smash_splash_landing": {
       "type": "smash-splash-landing",
       "settings": {
-        "kits_claimed": false
+        "kits_claimed": true
       }
     }
   },
-  "order": ["smash_splash_landing"]
+  "order": [
+    "smash_splash_landing"
+  ]
 }
