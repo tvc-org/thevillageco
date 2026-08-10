@@ -44,8 +44,8 @@
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "image": "shopify://shop_images/Mr-Bubble-birthday-product-headers.jpg",
-            "mobile_image": "shopify://shop_images/Mr-Bubble-birthday-product-headers_mobile.jpg",
+            "image": "shopify://shop_images/upated-birthday-banner.jpg",
+            "mobile_image": "shopify://shop_images/updated-Mr-Bubble-birthday-product-headers_mobile.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "It's Mr. Bubble's 65th Birthday!",
             "text": "<p>Keep the party going at home with exclusive new products. These limited-edition items are only available for a short time!</p>",
