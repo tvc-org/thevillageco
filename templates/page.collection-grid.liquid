@@ -9,6 +9,7 @@
     - seo_headline, seo_text, seo_headline_type — optional footer SEO block
 {% endcomment %}
 
+{{ 'component-collection-header.css' | asset_url | stylesheet_tag }}
 {{ 'section-page-collection-grid.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
@@ -55,19 +56,52 @@
   endif
 -%}
 
-<div class="page-collection-grid">
-  <div class="collection-grid-header">
-    <h1 class="collection-grid-header__title">{{ page_display_title | escape }}</h1>
-    {%- if header_text != blank -%}
-      <div class="collection-grid-header__divider" aria-hidden="true"></div>
-      <div class="collection-grid-header__text rte">{{ header_text }}</div>
-    {%- endif -%}
+{%- liquid
+  capture brand_home_url
+    render 'brand-home-url'
+  endcapture
+  assign brand_home_url = brand_home_url | strip
+  if brand_home_url == blank
+    assign brand_home_url = routes.root_url
+  endif
+-%}
+
+{%- comment -%}
+  Section padding matches collection product-grid (36px / 27px mobile).
+{%- endcomment -%}
+<div class="page-collection-grid page-collection-grid--section-padding gradient color-scheme-1">
+  <div class="page-width">
+    <div class="collection-grid-header">
+      <h1 class="collection-grid-header__title">{{ page_display_title | escape }}</h1>
+      {%- if header_text != blank -%}
+        <div class="collection-grid-header__text rte">{{ header_text }}</div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="page-width">
+    <div class="collection-grid-toolbar">
+      <nav class="collection-breadcrumbs" aria-label="Breadcrumb">
+        <ol class="collection-breadcrumbs__list list-unstyled">
+          <li class="collection-breadcrumbs__item">
+            <a class="collection-breadcrumbs__link" href="{{ brand_home_url }}">Home</a>
+          </li>
+          <li class="collection-breadcrumbs__separator" aria-hidden="true">
+            <span class="svg-wrapper">
+              {{- 'icon-caret.svg' | inline_asset_content -}}
+            </span>
+          </li>
+          <li class="collection-breadcrumbs__item">
+            <span class="collection-breadcrumbs__current" aria-current="page">{{ page_display_title | escape }}</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
   </div>
 
   {%- if collection_refs_raw != blank -%}
     <div class="page-width">
-      <div class="collection-grid-list-wrapper">
-        <div class="collection-grid-list">
+      <div class="collection-grid-list">
         {%- assign collection_refs = collection_refs_raw | split: '|' -%}
         {%- for collection_handle in collection_refs -%}
           {%- assign col_handle = collection_handle | strip | handle | replace: 'therapy-all-products', 'therapy-collections' -%}
@@ -76,12 +110,11 @@
             {% render 'collection-grid-card', collection: grid_collection %}
           {%- endif -%}
         {%- endfor -%}
-        </div>
       </div>
     </div>
   {%- endif -%}
 
-  {%- if seo_headline != blank and seo_text != blank -%}
+  {%- if false and seo_headline != blank and seo_text != blank -%}
     <section class="collection-grid-seo page-width">
       <{{ seo_headline_type }} class="collection-grid-seo__headline">{{ seo_headline }}</{{ seo_headline_type }}>
       <div class="collection-grid-seo__text rte">{{ seo_text }}</div>

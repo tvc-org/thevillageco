@@ -34,6 +34,10 @@
   elsif collection.metafields.custom_fields.grid_hover_color != blank
     assign hover_color = collection.metafields.custom_fields.grid_hover_color.value | default: collection.metafields.custom_fields.grid_hover_color
   endif
+
+  if hover_color != blank
+    assign hover_color = hover_color | color_modify: 'alpha', 0.7
+  endif
 -%}
 
 <div class="collection-grid-card" data-handle="{{ collection.handle }}">
