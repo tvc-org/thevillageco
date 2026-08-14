@@ -1,31 +1,16 @@
 {% comment %}
-  Ported from live theme (Option A). See docs/rewards-page-port.md for cleanup notes.
+  Alternate template to preview the new Rewards experience on production.
 
-  Shopify admin: assign template "rewards" and set page content to "Section 1" (TVC).
-  Sections 2–4 reserved for other brands if needed later.
+  Open: /pages/rewards?view=rewards-preview
 
-  Yotpo page widget: production main theme keeps settings.rewards_id_1 (94873).
-  Local, dev store, and non-main themes use the staging page instance 1364760
-  and load section-rewards-yotpo-hero.css (new-comp overrides).
-
-  Preview new experience on production (alternate template — query params are not
-  available in Liquid): /pages/rewards?view=rewards-preview
+  Shopify does not expose arbitrary query params to Liquid (storefront cache),
+  so ?view= is the supported preview mechanism.
 {% endcomment %}
 
 <script src="{{ 'utility-page.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
-  assign rewards_widget_id_1 = settings.rewards_id_1
-  assign rewards_is_production = false
-  if theme.role == 'main'
-    if request.host == 'thevillagecompany.com' or request.host == 'www.thevillagecompany.com'
-      assign rewards_is_production = true
-    endif
-  endif
-
-  unless rewards_is_production
-    assign rewards_widget_id_1 = '1364760'
-  endunless
+  assign rewards_widget_id_1 = '1364760'
 -%}
 
 <div class="page rewards-page">
@@ -49,6 +34,4 @@
 
 {{ 'section-utility-page.css' | asset_url | stylesheet_tag }}
 {{ 'theme.rewards-styles.scss.css' | asset_url | stylesheet_tag }}
-{%- unless rewards_is_production -%}
-  {{ 'section-rewards-yotpo-hero.css' | asset_url | stylesheet_tag }}
-{%- endunless -%}
+{{ 'section-rewards-yotpo-hero.css' | asset_url | stylesheet_tag }}
