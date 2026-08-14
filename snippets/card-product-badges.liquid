@@ -8,6 +8,12 @@
   - show_low_stock: {Boolean} Include low-stock badge (default: true)
   - low_stock_threshold: {Number} Inventory qty threshold (default: 10)
   - badge_context: {String} "media" | "nav" | "info" | "content" (optional, default: media)
+
+  Tag badges: any product tag starting with "badge:" (e.g. badge:New, badge:Web Exclusive).
+  Label is the text after "badge:". Sale / sold-out / low-stock are not tag-based
+  (badge:Sale tags are ignored to avoid doubling the automatic Sale badge).
+
+  Sold out stays bottom-left; other badges stay at the usual (top-left) position.
 {% endcomment %}
 {%- liquid
   assign badge_product = card_product | default: product
@@ -17,16 +23,18 @@
   assign low_stock_threshold = low_stock_threshold | default: 10
   assign badge_context = badge_context | default: 'media'
 
-  assign tag_groups = 'badge:New' | split: ','
   assign sorted_tags = ''
 
-  for group in tag_groups
-    for tag in badge_product.tags
-      assign tag_group = tag | split: '_' | first
-      if tag_group == group
-        assign sorted_tags = sorted_tags | append: tag | append: ','
+  for tag in badge_product.tags
+    assign tag_prefix = tag | split: ':' | first | strip | downcase
+    if tag_prefix == 'badge'
+      assign tag_label = tag | split: ':' | last | strip | downcase
+      # Skip Sale / sold-out / low-stock tags — those badges are price/inventory-driven
+      if tag_label == 'sale' or tag_label == 'sold out' or tag_label == 'sold-out' or tag_label == 'sold_out' or tag_label == 'low stock' or tag_label == 'low-stock' or tag_label == 'low_stock'
+        continue
       endif
-    endfor
+      assign sorted_tags = sorted_tags | append: tag | append: ','
+    endif
   endfor
 
   assign sorted_tags_arr = sorted_tags | remove_last: ',' | split: ','
@@ -43,57 +51,59 @@
   if badge_product != blank
     if badge_product.available == false
       assign show_sold_out = true
-    else
-      if badge_product.compare_at_price > badge_product.price and badge_product.available
-        assign show_sale = true
+    endif
+
+    if badge_product.compare_at_price > badge_product.price
+      assign show_sale = true
+    endif
+
+    if show_low_stock and badge_product.available
+      assign badge_variant = badge_product.selected_or_first_available_variant
+      if badge_variant.inventory_management == 'shopify' and badge_variant.inventory_quantity > 0 and badge_variant.inventory_quantity <= low_stock_threshold
+        assign show_low_stock_badge = true
       endif
-      if show_low_stock and badge_product.available
-        assign badge_variant = badge_product.selected_or_first_available_variant
-        if badge_variant.inventory_management == 'shopify' and badge_variant.inventory_quantity > 0 and badge_variant.inventory_quantity <= low_stock_threshold
-          assign show_low_stock_badge = true
-        endif
-        unless show_low_stock_badge
-          for variant in badge_product.variants
-            if variant.available and variant.inventory_management == 'shopify' and variant.inventory_quantity > 0 and variant.inventory_quantity <= low_stock_threshold
-              assign show_low_stock_badge = true
-              break
-            endif
-          endfor
-        endunless
-      endif
+      unless show_low_stock_badge
+        for variant in badge_product.variants
+          if variant.available and variant.inventory_management == 'shopify' and variant.inventory_quantity > 0 and variant.inventory_quantity <= low_stock_threshold
+            assign show_low_stock_badge = true
+            break
+          endif
+        endfor
+      endunless
     endif
   endif
 
+  assign show_corner_badges = false
+  if show_tag_badges or show_sale or show_low_stock_badge
+    assign show_corner_badges = true
+  endif
+
   assign show_card_badges = false
-  if show_sold_out or show_sale or show_low_stock_badge or show_tag_badges
+  if show_sold_out or show_corner_badges
     assign show_card_badges = true
   endif
 
-  if show_sold_out and badge_context != 'info'
-    assign badge_position = 'bottom left'
+  assign corner_modifier = ''
+  if show_sale
+    assign corner_modifier = 'card__badge--on-sale'
+  elsif show_low_stock_badge
+    assign corner_modifier = 'card__badge--low-stock'
   endif
 
-  assign badge_modifier = ''
-  if show_sold_out
-    assign badge_modifier = 'card__badge--sold-out'
-  elsif show_sale
-    assign badge_modifier = 'card__badge--on-sale'
-  elsif show_low_stock_badge
-    assign badge_modifier = 'card__badge--low-stock'
+  assign badge_context_class = ''
+  if badge_context == 'nav'
+    assign badge_context_class = 'card__badge--nav'
+  elsif badge_context == 'media'
+    assign badge_context_class = 'card__badge--media'
+  elsif badge_context == 'info'
+    assign badge_context_class = 'card__badge--info'
   endif
 -%}
 {%- if show_card_badges and badge_product != blank -%}
-  <div
-    class="card__badge{% if badge_context != 'info' %} {{ badge_position }}{% endif %} {{ badge_modifier }}{% if badge_context == 'nav' %} card__badge--nav{% endif %}{% if badge_context == 'media' %} card__badge--media{% endif %}{% if badge_context == 'info' %} card__badge--info{% endif %}"
-  >
-    {%- if show_sold_out -%}
-      <span
-        id="Badge-{{ badge_section_id }}-{{ badge_product.id }}-sold-out"
-        class="badge badge--bottom-left badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}"
-      >
-        {{- 'products.product.sold_out' | t -}}
-      </span>
-    {%- else -%}
+  {%- if show_corner_badges -%}
+    <div
+      class="card__badge{% if badge_context != 'info' %} {{ badge_position }}{% endif %} {{ corner_modifier }} {{ badge_context_class }}"
+    >
       {%- if show_tag_badges -%}
         {%- for tag in sorted_tags_arr -%}
           {%- if tag contains 'badge:' -%}
@@ -124,6 +134,19 @@
           {{- 'products.product.inventory_low_stock' | t -}}
         </span>
       {%- endif -%}
-    {%- endif -%}
-  </div>
+    </div>
+  {%- endif -%}
+
+  {%- if show_sold_out -%}
+    <div
+      class="card__badge{% if badge_context != 'info' %} bottom left{% endif %} card__badge--sold-out {{ badge_context_class }}"
+    >
+      <span
+        id="Badge-{{ badge_section_id }}-{{ badge_product.id }}-sold-out"
+        class="badge badge--bottom-left badge-sold-out color-{{ settings.sold_out_badge_color_scheme }}"
+      >
+        {{- 'products.product.sold_out' | t -}}
+      </span>
+    </div>
+  {%- endif -%}
 {%- endif -%}
