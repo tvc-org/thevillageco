@@ -3,15 +3,40 @@
 
   Shopify admin: assign template "rewards" and set page content to "Section 1" (TVC).
   Sections 2–4 reserved for other brands if needed later.
+
+  Yotpo page widget: production main theme keeps settings.rewards_id_1 (94873).
+  Local, dev store, and non-main themes use the staging page instance 1364760
+  and load section-rewards-yotpo-hero.css (new-comp overrides).
+
+  Preview new experience on production: /pages/rewards?rewards_preview=1
 {% endcomment %}
 
 <script src="{{ 'utility-page.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign rewards_widget_id_1 = settings.rewards_id_1
+  assign rewards_is_production = false
+  if theme.role == 'main'
+    if request.host == 'thevillagecompany.com' or request.host == 'www.thevillagecompany.com'
+      assign rewards_is_production = true
+    endif
+  endif
+
+  assign rewards_preview_param = request.params.rewards_preview | default: '' | downcase
+  if rewards_preview_param == '1' or rewards_preview_param == 'true'
+    assign rewards_is_production = false
+  endif
+
+  unless rewards_is_production
+    assign rewards_widget_id_1 = '1364760'
+  endunless
+-%}
 
 <div class="page rewards-page">
   {%- assign sectionType = page.content | handleize -%}
   {%- case sectionType -%}
     {%- when 'section-1' -%}
-      <div class="yotpo-widget-instance" data-yotpo-instance-id="{{ settings.rewards_id_1 }}"></div>
+      <div class="yotpo-widget-instance" data-yotpo-instance-id="{{ rewards_widget_id_1 }}"></div>
       {%- section 'rewards-yotpo-cta' -%}
       {%- section 'rewards-faq-section-1' -%}
     {%- when 'section-2' -%}
@@ -28,3 +53,6 @@
 
 {{ 'section-utility-page.css' | asset_url | stylesheet_tag }}
 {{ 'theme.rewards-styles.scss.css' | asset_url | stylesheet_tag }}
+{%- unless rewards_is_production -%}
+  {{ 'section-rewards-yotpo-hero.css' | asset_url | stylesheet_tag }}
+{%- endunless -%}
