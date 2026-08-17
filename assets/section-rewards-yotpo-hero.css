@@ -242,8 +242,8 @@
   .yotpo-action-buttons-tile
   .yotpo-primary-button
   button {
-  background: #005fa9 !important;
-  border: 2px solid #005fa9 !important;
+  background: #006bb6 !important;
+  border: 2px solid #006bb6 !important;
   color: #fff !important;
 }
 
@@ -272,8 +272,8 @@
   .yotpo-secondary-button
   button {
   background: transparent !important;
-  border: 2px solid #005fa9 !important;
-  color: #005fa9 !important;
+  border: 2px solid #006bb6 !important;
+  color: #006bb6 !important;
 }
 
 .rewards-page
@@ -286,7 +286,7 @@
   .yotpo-action-buttons-tile
   .yotpo-secondary-button
   span {
-  color: #005fa9 !important;
+  color: #006bb6 !important;
 }
 
 @media screen and (min-width: 1025px) {
