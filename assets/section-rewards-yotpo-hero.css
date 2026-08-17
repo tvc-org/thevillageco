@@ -231,7 +231,7 @@
   text-transform: capitalize !important;
 }
 
-/* Redeem Now — solid dark */
+/* Redeem Now — solid blue, matching border */
 .rewards-page
   .yotpo-logged-in-view
   .yotpo-action-buttons-tile
@@ -242,8 +242,8 @@
   .yotpo-action-buttons-tile
   .yotpo-primary-button
   button {
-  background: #323131 !important;
-  border: 2px solid #323131 !important;
+  background: #728be2 !important;
+  border: 2px solid #728be2 !important;
   color: #fff !important;
 }
 
@@ -260,7 +260,7 @@
   color: #fff !important;
 }
 
-/* Rewards History — outline */
+/* Rewards History — outline + blue label */
 .rewards-page
   .yotpo-logged-in-view
   .yotpo-action-buttons-tile
@@ -272,8 +272,8 @@
   .yotpo-secondary-button
   button {
   background: transparent !important;
-  border: 2px solid #323131 !important;
-  color: #323131 !important;
+  border: 2px solid #728be2 !important;
+  color: #728be2 !important;
 }
 
 .rewards-page
@@ -286,7 +286,7 @@
   .yotpo-action-buttons-tile
   .yotpo-secondary-button
   span {
-  color: #323131 !important;
+  color: #728be2 !important;
 }
 
 @media screen and (min-width: 1025px) {
@@ -1282,6 +1282,64 @@
   border-right: none !important;
   border-top: none !important;
   background-color: transparent !important;
+}
+
+/* Current Status column — restore old-page black frame around active tier */
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-active
+  .yotpo-vip-tiers-grid-header,
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-active
+  .yotpo-vip-tiers-grid-benefit-status,
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-grid-vip-tier.yotpo-active
+  .yotpo-vip-tiers-grid-header,
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-grid-vip-tier.yotpo-active
+  .yotpo-vip-tiers-grid-benefit-status {
+  border-left: 1px solid #2c2c2c !important;
+  border-right: 1px solid #2c2c2c !important;
+}
+
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-active
+  .yotpo-vip-tiers-grid-header,
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-grid-vip-tier.yotpo-active
+  .yotpo-vip-tiers-grid-header {
+  border-top: 1px solid #2c2c2c !important;
+}
+
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-active
+  .yotpo-vip-tiers-grid-benefit-status:last-child,
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-grid-vip-tier.yotpo-active
+  .yotpo-vip-tiers-grid-benefit-status:last-child {
+  border-bottom: 1px solid #2c2c2c !important;
+}
+
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-active
+  .yotpo-vip-current-status,
+.rewards-page
+  .yotpo-vip-tiers-widget.yotpo-widget-override-css
+  .yotpo-active
+  .yotpo-vip-tiers-grid-status {
+  opacity: 1 !important;
+  background: #fff !important;
+  color: #2c2c2c !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* Zebra rows — first data row and every other (nth-child even after header) */
