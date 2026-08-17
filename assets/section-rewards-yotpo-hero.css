@@ -1647,6 +1647,84 @@
   }
 }
 
+/* Per-option Redeem buttons — pill styles */
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  button,
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  .yotpo-button-style {
+  border-radius: 120px !important;
+  min-height: 44px !important;
+  min-width: 140px !important;
+  padding: 12px 28px !important;
+  box-sizing: border-box !important;
+  box-shadow: none !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #323131 !important;
+  color: #fff !important;
+  white-space: nowrap !important;
+}
+
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  .yopto-widget-button-text,
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  button
+  span {
+  font-family: Inter, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1 !important;
+  text-transform: capitalize !important;
+  color: #fff !important;
+}
+
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  button:disabled,
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  button[disabled],
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  .yotpo-button-style:disabled,
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-redeem-button
+  .yotpo-button-style[disabled] {
+  background: #929292 !important;
+  color: #fff !important;
+  cursor: default !important;
+  opacity: 1 !important;
+}
+
+@media screen and (min-width: 1025px) {
+  .rewards-page
+    .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+    .yotpo-redemption-option-redeem-button
+    button,
+  .rewards-page
+    .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+    .yotpo-redemption-option-redeem-button
+    .yotpo-button-style {
+    min-height: 60px !important;
+    padding: 20px 32px !important;
+  }
+}
+
 
 /* ----- Refer a Friend (yotpo-widget-referral-widget) ----- */
 .rewards-page .yotpo-widget-referral-widget.yotpo-widget-override-css {
