@@ -2046,3 +2046,12 @@
     font-size: clamp(28px, 7vw, 42px) !important;
   }
 }
+
+
+.yotpo-widget-my-rewards-widget .yotpo-logged-in-view {
+  padding: 0 0 60px !important;
+}
+
+.yotpo-coupons-redemption-widget .yotpo-message-display-area {
+  height: auto !important;
+}
