@@ -178,6 +178,131 @@
   color: #323131 !important;
 }
 
+/* ----- Logged-in greeting (Redeem Now / Rewards History) ----- */
+.rewards-page .yotpo-logged-in-view .yotpo-action-buttons-tile {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rewards-page .yotpo-logged-in-view .yotpo-action-buttons-tile .yotpo-action-button-widget {
+  margin: 0 !important;
+}
+
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-button-style,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  button {
+  border-radius: 120px !important;
+  min-height: 44px !important;
+  min-width: 200px !important;
+  padding: 12px 25px !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yopto-widget-button-text,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-action-button-text,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  button
+  span {
+  font-family: Inter, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1 !important;
+  text-transform: capitalize !important;
+}
+
+/* Redeem Now — solid dark */
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-primary-button
+  .yotpo-button-style,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-primary-button
+  button {
+  background: #323131 !important;
+  border: 2px solid #323131 !important;
+  color: #fff !important;
+}
+
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-primary-button
+  .yopto-widget-button-text,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-primary-button
+  span {
+  color: #fff !important;
+}
+
+/* Rewards History — outline */
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-secondary-button
+  .yotpo-button-style,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-secondary-button
+  button {
+  background: transparent !important;
+  border: 2px solid #323131 !important;
+  color: #323131 !important;
+}
+
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-secondary-button
+  .yopto-widget-button-text,
+.rewards-page
+  .yotpo-logged-in-view
+  .yotpo-action-buttons-tile
+  .yotpo-secondary-button
+  span {
+  color: #323131 !important;
+}
+
+@media screen and (min-width: 1025px) {
+  .rewards-page
+    .yotpo-logged-in-view
+    .yotpo-action-buttons-tile
+    .yotpo-button-style,
+  .rewards-page
+    .yotpo-logged-in-view
+    .yotpo-action-buttons-tile
+    button {
+    min-height: 60px !important;
+    padding: 20px 25px !important;
+  }
+}
+
 /* ----- Mobile / tablet: image on top, text below ----- */
 @media screen and (max-width: 959px) {
   .rewards-page .yotpo-widget-hero-section.yotpo-widget-override-css {
