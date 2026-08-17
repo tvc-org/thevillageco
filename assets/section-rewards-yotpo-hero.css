@@ -4,10 +4,21 @@
  * How It Works: numbered steps matching new comp.
  */
 
+/* Page cream — sections stay transparent so shades don't stack */
+.rewards-page {
+  background-color: #f5f1ea;
+}
+
 /* ----- Shared ----- */
+.rewards-page .yotpo-widget-hero-section.yotpo-widget-override-css,
+.rewards-page .yotpo-widget-hero-section.yotpo-widget-override-css .yotpo-background {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
 .rewards-page .yotpo-widget-hero-section.yotpo-widget-override-css .yotpo-text-on-background {
   box-sizing: border-box;
-  background-color: #f5f1ea !important;
+  background-color: transparent !important;
   background-repeat: no-repeat !important;
   height: auto !important;
   min-height: 0 !important;
@@ -330,7 +341,7 @@
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 2012 / 1426;
-    background-color: #f5f1ea;
+    background-color: transparent;
     background-image: inherit;
     background-repeat: no-repeat;
     background-position: center center;
@@ -358,7 +369,7 @@
     height: auto !important;
     max-height: none !important;
     margin: 0 !important;
-    background-color: #f5f1ea;
+    background-color: transparent;
     padding: 28px 20px 36px !important;
     box-sizing: border-box;
   }
@@ -425,7 +436,7 @@
     bottom: 0;
     left: 0;
     width: 50%;
-    background-color: #f5f1ea;
+    background-color: transparent;
     z-index: 0;
     pointer-events: none;
   }
@@ -439,7 +450,7 @@
     right: 0;
     bottom: 0;
     width: 50%;
-    background-color: #f5f1ea;
+    background-color: transparent;
     background-image: inherit;
     background-repeat: no-repeat;
     background-position: center center;
@@ -501,6 +512,16 @@
 
 /* ----- How It Works (yotpo-rewards-guide-tile-wrapper) ----- */
 /* Prefix includes my-rewards-widget path so we beat theme.rewards-styles specificity */
+
+/* Logged-in greeting / my-rewards chrome — inherit page cream */
+.rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css,
+.rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css .yotpo-background,
+.rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css .yotpo-logged-in-view,
+.rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css .yotpo-outer-tile-wrapper {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
 .rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css .yotpo-rewards-guide-tile-wrapper {
   max-width: none !important;
   width: 100% !important;
@@ -871,7 +892,8 @@
 
 /* ----- How to Earn (yotpo-widget-campaign-widget) ----- */
 .rewards-page .yotpo-widget-campaign-widget.yotpo-widget-override-css {
-  background-color: #f1ece6 !important;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .rewards-page .yotpo-widget-campaign-widget.yotpo-widget-override-css .yotpo-widget-campaign-widget-container {
@@ -1215,15 +1237,15 @@
 /* ----- Reward Perks (yotpo-vip-tiers-widget) ----- */
 .rewards-page .yotpo-vip-tiers-widget.yotpo-widget-override-css,
 .rewards-page .yotpo-vip-tiers-widget.yotpo-widget-override-css .yotpo-background {
-  background-color: #f1ece6 !important;
-  background: #f1ece6 !important;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .rewards-page .yotpo-vip-tiers-widget.yotpo-widget-override-css .yotpo-vip-tiers-list {
   padding: clamp(48px, 6vw, 80px) 0 !important;
   box-sizing: border-box;
-  background-color: #f7f2ec !important;
-  background: #f7f2ec !important;
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .rewards-page .yotpo-vip-tiers-widget.yotpo-widget-override-css .yotpo-vip-tiers-headline {
@@ -1439,6 +1461,13 @@
     min-height: 160px !important;
     padding: 0 6px 12px !important;
   }
+}
+
+.rewards-page .yotpo-coupons-redemption-widget.yotpo-widget-override-css,
+.rewards-page .yotpo-coupons-redemption-widget.yotpo-widget-override-css .yotpo-background,
+.rewards-page .yotpo-coupons-redemption-widget.yotpo-widget-override-css .yotpo-coupouns-container {
+  background-color: transparent !important;
+  background: transparent !important;
 }
 
 .rewards-page .yotpo-coupons-redemption-widget.yotpo-widget-override-css .yotpo-coupouns-container {
