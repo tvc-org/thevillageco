@@ -39,6 +39,25 @@
             "link": "shopify://pages/smash-splash"
           }
         },
+        "slide_9UyrEb": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/MB-Halloween-Hdr-2026-V1.jpg",
+            "mobile_image": "shopify://shop_images/MB-Halloween-Hdr-2026-MOBILE.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_LBHeCg": {
           "type": "slide",
           "settings": {
@@ -79,6 +98,7 @@
       },
       "block_order": [
         "slide_crXNpy",
+        "slide_9UyrEb",
         "slide_LBHeCg",
         "slide_7ELzFU"
       ],
@@ -102,7 +122,7 @@
             "product": "super-blaster-body-wash",
             "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/mr-bubble-BTS-website-header.jpg",
+            "image": "shopify://shop_images/mr-bubble-BTS-website-header_a0531a38-699b-4690-af3d-b209ac216616.jpg",
             "heading_block": "<strong>A+ Clean Starts Here!</strong>",
             "text": "<p>Everything you need to help your little learner head back to school feeling fresh, confident, and ready for anything.</p>",
             "link_label": "Shop Back to School",
@@ -171,7 +191,7 @@
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "preserve_image_aspect_ratio": true,
-            "video": "shopify://files/videos/MRB_PLAYABLES_15_LogoOnly_2.mp4",
+            "video": "shopify://files/videos/Mr Bubble Smash Splash Recap 16x9 for Website_1.mp4",
             "heading": "Turn Bath Time \nInto Bubble Time",
             "text": "<p>Watch bath time come to life with colorful, creative add-ins that transform an ordinary tub into a world of imaginative fun.</p>",
             "stacked_text_in_media": false,
