@@ -192,14 +192,14 @@
             "split_text_tone": "dark",
             "preserve_image_aspect_ratio": true,
             "video": "shopify://files/videos/Mr Bubble Smash Splash Recap 16x9 for Website_1.mp4",
-            "heading": "Turn Bath Time \nInto Bubble Time",
-            "text": "<p>Watch bath time come to life with colorful, creative add-ins that transform an ordinary tub into a world of imaginative fun.</p>",
+            "heading": "Celebrating Mr. Bubble's BIG Birthday!",
+            "text": "<p>Watch as Mr. Bubble's fans smash a HUGE birthday cake made by celebrity chef Duff Goldman! The clean up is just as fun with Mr. Bubble!</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_left",
             "product": "",
-            "link_label": "Shop Bath Boosters",
-            "link": "shopify://collections/mr-bubble-bath-boosters"
+            "link_label": "Shop Birthday Exclusives",
+            "link": "shopify://collections/mr-bubble-limited-editions-gifts"
           }
         }
       },
