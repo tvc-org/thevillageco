@@ -1,21 +1,13 @@
 {{ 'section-where-to-buy.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'where-to-buy.js' | asset_url }}" defer="defer"></script>
 
-{%- assign banner_image = section.settings.banner_image -%}
-
 <div
   class="where-to-buy-page page-{{ page.handle | default: 'where-to-buy' }}"
-  data-before-search="{{ 'general.where_to_buy.before_search' | t | escape }}"
   data-no-stores="{{ 'general.where_to_buy.no_stores_found' | t | escape }}"
   data-no-products="{{ 'general.where_to_buy.no_products_found' | t | escape }}"
   data-choose-product="{{ 'general.where_to_buy.choose_product' | t | escape }}"
 >
-  <div
-    class="wtb-banner"
-    {% if banner_image != blank %}
-      style="background-image: url({{ banner_image | image_url: width: 2160 }});"
-    {% endif %}
-  >
+  <div class="wtb-banner">
     <h1>{{ page.title | escape }}</h1>
   </div>
 
@@ -112,11 +104,7 @@
   </div>
 
   <div class="results-wrapper">
-    <table class="results" aria-live="polite">
-      <tr>
-        <th>{{ 'general.where_to_buy.before_search' | t }}</th>
-      </tr>
-    </table>
+    <div class="results page-width" aria-live="polite"></div>
   </div>
 </div>
 

@@ -7,13 +7,12 @@
 
   const form = page.querySelector('#wtb-selectors');
   const productSelect = page.querySelector('.product-selector');
-  const resultsTable = page.querySelector('.results');
+  const results = page.querySelector('.results');
   const submitButton = form?.querySelector('button[type="submit"]');
 
-  if (!form || !productSelect || !resultsTable || !submitButton) return;
+  if (!form || !productSelect || !results || !submitButton) return;
 
   const messages = {
-    beforeSearch: page.dataset.beforeSearch || 'Search for a product',
     noStores: page.dataset.noStores || 'No stores found',
     noProducts: page.dataset.noProducts || 'No products found',
     chooseProduct: page.dataset.chooseProduct || 'Choose a Product',
@@ -36,7 +35,35 @@
     return Array.isArray(value) ? value : [value];
   }
 
+  function toTitleCase(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  }
+
+  function formatDistance(value) {
+    if (value == null || value === '') return '';
+    const text = String(value).trim();
+    if (/mile/i.test(text)) return text;
+    return `${text} miles`;
+  }
+
+  function formatPhoneHref(phone) {
+    const digits = String(phone || '').replace(/\D/g, '');
+    return digits ? `tel:${digits}` : '';
+  }
+
+  function mapsUrl(store) {
+    const query = [store.ADDRESS, store.CITY, store.STATE, store.ZIP].filter(Boolean).join(', ');
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+  }
+
+  function updateFieldFilledState(field) {
+    field.classList.toggle('is-filled', Boolean(field.value));
+  }
+
   function updateSubmitState() {
+    form.querySelectorAll('select, input').forEach(updateFieldFilledState);
     submitButton.disabled = !form.checkValidity();
   }
 
@@ -73,45 +100,74 @@
     updateSubmitState();
   }
 
-  function renderBeforeSearch() {
-    resultsTable.innerHTML = '';
-    const row = document.createElement('tr');
-    const cell = document.createElement('th');
-    cell.textContent = messages.beforeSearch;
-    row.appendChild(cell);
-    resultsTable.appendChild(row);
+  function renderMessage(text) {
+    results.innerHTML = '';
+    results.classList.remove('results--grid');
+    const message = document.createElement('p');
+    message.className = 'results-message';
+    message.textContent = text;
+    results.appendChild(message);
+  }
+
+  function clearResults() {
+    results.innerHTML = '';
+    results.classList.remove('results--grid');
+  }
+
+  function createStoreCard(store) {
+    const card = document.createElement('article');
+    card.className = 'store-card';
+
+    const title = document.createElement('h3');
+    title.className = 'store-card__title';
+    title.textContent = toTitleCase(store.NAME);
+    card.appendChild(title);
+
+    const details = document.createElement('div');
+    details.className = 'store-card__details';
+
+    const distance = document.createElement('p');
+    distance.className = 'store-card__distance';
+    distance.textContent = formatDistance(store.DISTANCE);
+    details.appendChild(distance);
+
+    if (store.ADDRESS) {
+      const address = document.createElement('a');
+      address.className = 'store-card__address';
+      address.href = mapsUrl(store);
+      address.target = '_blank';
+      address.rel = 'noopener noreferrer';
+      address.textContent = toTitleCase(store.ADDRESS);
+      details.appendChild(address);
+    }
+
+    const locality = document.createElement('p');
+    locality.className = 'store-card__locality';
+    locality.textContent = [toTitleCase(store.CITY), store.STATE, store.ZIP].filter(Boolean).join(' ');
+    details.appendChild(locality);
+
+    if (store.PHONE) {
+      const phone = document.createElement('a');
+      phone.className = 'store-card__phone';
+      phone.href = formatPhoneHref(store.PHONE);
+      phone.textContent = store.PHONE;
+      details.appendChild(phone);
+    }
+
+    card.appendChild(details);
+    return card;
   }
 
   function renderStores(stores) {
-    resultsTable.innerHTML = '';
-
     if (!stores.length) {
-      const row = document.createElement('tr');
-      const cell = document.createElement('th');
-      cell.textContent = messages.noStores;
-      row.appendChild(cell);
-      resultsTable.appendChild(row);
+      renderMessage(messages.noStores);
       return;
     }
 
-    const headers = ['Store Name', 'Distance', 'Address', 'City', 'Zip Code', 'State', 'Phone'];
-    const headerRow = document.createElement('tr');
-    headers.forEach((label) => {
-      const cell = document.createElement('th');
-      cell.textContent = label;
-      headerRow.appendChild(cell);
-    });
-    resultsTable.appendChild(headerRow);
-
-    const fields = ['NAME', 'DISTANCE', 'ADDRESS', 'CITY', 'ZIP', 'STATE', 'PHONE'];
+    results.innerHTML = '';
+    results.classList.add('results--grid');
     stores.forEach((store) => {
-      const row = document.createElement('tr');
-      fields.forEach((field) => {
-        const cell = document.createElement('td');
-        cell.textContent = store[field] || '';
-        row.appendChild(cell);
-      });
-      resultsTable.appendChild(row);
+      results.appendChild(createStoreCard(store));
     });
   }
 
@@ -174,6 +230,6 @@
 
   form.addEventListener('submit', handleSubmit);
 
-  renderBeforeSearch();
+  clearResults();
   updateSubmitState();
 })();

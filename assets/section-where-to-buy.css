@@ -3,19 +3,23 @@
 .where-to-buy-page {
   --wtb-blue: #00a1dd;
   --wtb-text: #323131;
-  --wtb-field-bg: #f0f0f0;
-  --wtb-field-disabled: #ccc;
+  --wtb-cream: #f5f1ea;
+  --wtb-field-border: #7b7a76;
+  --wtb-field-text: #8d8d8d;
+  --wtb-button: #929292;
+  --wtb-button-hover: #323131;
+  background-color: var(--wtb-cream);
   color: var(--wtb-text);
 }
 
 .where-to-buy-page .wtb-banner {
   align-items: center;
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: var(--wtb-blue);
+  background-image: none !important;
   display: flex;
-  height: 298px;
   justify-content: center;
+  min-height: 200px;
+  padding: 48px 24px;
   text-align: center;
 }
 
@@ -31,10 +35,13 @@
 }
 
 @media screen and (min-width: 1025px) {
+  .where-to-buy-page .wtb-banner {
+    min-height: 300px;
+  }
   .where-to-buy-page .wtb-banner h1 {
-    font-size: 55px;
-    letter-spacing: 5px;
-    line-height: 60px;
+    font-size: 60px;
+    line-height: 1;
+    font-weight: 400;
   }
 }
 
@@ -42,14 +49,18 @@
   font-family: Inter, Helvetica, Arial, sans-serif;
   font-size: 21px;
   line-height: 1.2;
-  padding: 40px 31px;
+  padding: 60px 31px 24px;
   text-align: center;
 }
 
 @media screen and (min-width: 768px) {
-  .where-to-buy-page .wtb-content {
-    font-size: 24px;
+  .where-to-buy-page .wtb-content, .where-to-buy-page .wtb-content p {
+    font-size: 24px !important;
     line-height: 1.04;
+  }
+
+  .where-to-buy-page .wtb-content {
+    padding-top: 80px;
   }
 }
 
@@ -57,7 +68,7 @@
 .where-to-buy-page .wtb-content .wtb-text {
   margin-left: auto;
   margin-right: auto;
-  max-width: 900px;
+  max-width: 1184px;
 }
 
 .where-to-buy-page .wtb-content .wtb-text {
@@ -71,19 +82,22 @@
 }
 
 .where-to-buy-page .selectors {
-  background-color: var(--wtb-blue);
-  color: #fff;
+  background-color: transparent;
+  color: var(--wtb-text);
 }
 
 .where-to-buy-page .selectors form {
+  box-sizing: border-box;
   margin: 0 auto;
-  max-width: 962px;
-  padding: 31px;
+  max-width: calc(1190px + (var(--layout-gutter-x) * 2));
+  padding: 0 var(--layout-gutter-x) 48px;
+  width: 100%;
 }
 
 .where-to-buy-page .selectors .selector-wrapper {
   display: inline-block;
   margin-right: 20px;
+  vertical-align: top;
 }
 
 .where-to-buy-page .selectors .selector-wrapper:last-of-type {
@@ -91,39 +105,62 @@
 }
 
 .where-to-buy-page .selectors label {
+  color: var(--wtb-text);
   display: block;
-  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
-  font-size: 14px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  text-transform: none;
 }
 
 .where-to-buy-page .selectors input,
 .where-to-buy-page .selectors select {
   appearance: none;
-  background-color: var(--wtb-field-bg);
-  color: var(--wtb-text);
-  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
-  font-size: 14px;
-  height: 50px;
-  letter-spacing: 2px;
-  line-height: 50px;
-  max-width: 221px;
+  background-color: transparent;
+  border: 1px solid var(--wtb-field-border);
+  border-radius: 0;
+  box-sizing: border-box;
+  color: var(--wtb-field-text);
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 58px;
+  letter-spacing: 0.5px;
+  line-height: 56px;
+  max-width: 284px;
+  overflow: hidden;
   padding: 0 15px;
-  text-transform: uppercase;
+  text-overflow: ellipsis;
+  text-transform: none;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.where-to-buy-page .selectors select.is-filled,
+.where-to-buy-page .selectors input.is-filled {
+  color: #000;
+}
+
+.where-to-buy-page .selectors .select-wrapper:has(select:disabled) {
+  opacity: 0.45;
 }
 
 .where-to-buy-page .selectors select:disabled {
-  background-color: var(--wtb-field-disabled);
-  opacity: 1;
+  cursor: default;
 }
 
 .where-to-buy-page .selectors .select-wrapper {
+  display: block;
+  max-width: 284px;
   position: relative;
+  width: 100%;
 }
 
 .where-to-buy-page .selectors .select-wrapper select {
+  display: block;
+  max-width: none;
   padding-right: 36px;
   width: 100%;
 }
@@ -131,7 +168,7 @@
 .where-to-buy-page .selectors .select-wrapper::after {
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid var(--wtb-text);
+  border-top: 6px solid var(--wtb-field-text);
   content: '';
   pointer-events: none;
   position: absolute;
@@ -140,48 +177,159 @@
   transform: translateY(-50%);
 }
 
+.where-to-buy-page .selectors .select-wrapper:has(select.is-filled)::after {
+  border-top-color: #000;
+}
+
+@media screen and (min-width: 1025px) {
+  .where-to-buy-page .selectors form {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 34px;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .where-to-buy-page .selectors .selector-wrapper {
+    flex: 1 1 0;
+    margin-right: 0;
+    max-width: 284px;
+    min-width: 0;
+    width: auto;
+  }
+
+  .where-to-buy-page .selectors .selector-wrapper:last-of-type {
+    flex: 1 1 0;
+    max-width: 284px;
+  }
+
+  .where-to-buy-page .selectors .select-wrapper {
+    max-width: none;
+    width: 100%;
+  }
+
+  .where-to-buy-page .selectors input,
+  .where-to-buy-page .selectors select {
+    max-width: none;
+    width: 100%;
+  }
+
+  .where-to-buy-page .selectors button {
+    flex: 0 1 auto;
+    margin-left: clamp(0px, 5vw, 76px);
+    min-width: 120px;
+  }
+}
+
 .where-to-buy-page .selectors button {
-  background-color: transparent;
-  border: 1px solid #fff;
+  background-color: #000;
+  border: none;
+  border-radius: 120px;
   color: #fff;
   cursor: pointer;
-  font-family: FuturaPTDemi, "Futura PT", Futura, sans-serif;
-  font-size: 14px;
-  height: 50px;
-  letter-spacing: 2px;
-  line-height: 50px;
-  padding: 0 30px;
-  text-transform: uppercase;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 62px;
+  letter-spacing: normal;
+  line-height: 62px;
+  min-height: 62px;
+  min-width: 140px;
+  padding: 0 36px;
+  text-transform: none;
+  transition: background-color 0.2s ease;
+}
+
+.where-to-buy-page .selectors button:hover:not([disabled]) {
+  background-color: var(--wtb-button-hover);
 }
 
 .where-to-buy-page .selectors button[disabled] {
+  background-color: var(--wtb-button);
   cursor: default;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 .where-to-buy-page .results-wrapper {
-  max-width: 100vw;
-  min-height: 681px;
-  overflow-x: auto;
-  padding: 0 31px;
+  padding: 0 0 80px;
 }
 
-.where-to-buy-page .results-wrapper .results {
-  font-family: Inter, Helvetica, Arial, sans-serif;
-  margin: 60px auto;
-  max-width: 962px;
+.where-to-buy-page .results {
+  margin: 40px auto 0;
   width: 100%;
 }
 
-.where-to-buy-page .results-wrapper .results td,
-.where-to-buy-page .results-wrapper .results th {
-  padding: 20px;
-  text-align: left;
-  text-transform: capitalize;
+.where-to-buy-page .results-message {
+  color: var(--wtb-text);
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
 }
 
-.where-to-buy-page .results-wrapper .results td {
-  border-top: 1px solid #979797;
+.where-to-buy-page .results--grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 750px) {
+  .where-to-buy-page .results--grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .where-to-buy-page .results--grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.where-to-buy-page .store-card {
+  background-color: #ece5dd;
+  box-sizing: border-box;
+  padding: 40px;
+}
+
+.where-to-buy-page .store-card__title {
+  color: #000;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.where-to-buy-page .store-card__details {
+  border-top: 2px solid #f7f3ec;
+  color: #676767;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 20px !important;
+  font-weight: 400;
+  gap: 4px;
+  line-height: 1.35;
+  margin-top: 16px;
+  padding-top: 16px;
+}
+
+.where-to-buy-page .store-card__details p {
+  color: #676767 !important;
+  font-size: 20px !important;
+  margin: 0;
+}
+
+.where-to-buy-page .store-card__address,
+.where-to-buy-page .store-card__phone {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.where-to-buy-page .store-card__address:hover,
+.where-to-buy-page .store-card__phone:hover {
+  color: var(--wtb-text);
 }
 
 @media screen and (max-width: 1024px) {
@@ -198,6 +346,11 @@
     margin: 0;
   }
 
+  .where-to-buy-page .selectors .select-wrapper {
+    max-width: none;
+    width: 100%;
+  }
+
   .where-to-buy-page .selectors input,
   .where-to-buy-page .selectors select {
     margin-bottom: 21px;
@@ -206,13 +359,11 @@
   }
 
   .where-to-buy-page .selectors form {
-    width: auto;
+    width: 100%;
   }
-}
 
-@media screen and (min-width: 1025px) {
   .where-to-buy-page .selectors button {
-    float: right;
-    margin-top: 31px;
+    margin-top: 24px;
+    width: 100%;
   }
 }
