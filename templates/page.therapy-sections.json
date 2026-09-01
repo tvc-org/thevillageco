@@ -20,6 +20,25 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_79bBVn": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/VNT_LaborDaySale_Desk_3861d008-c396-4033-85ad-4a8eccb03480.jpg",
+            "mobile_image": "shopify://shop_images/VNT_LaborDaySale_Mobile_10ac1a2a-f893-48f8-89c6-0a5aa9517a4a.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_ACzBbR": {
           "type": "slide",
           "disabled": true,
@@ -77,6 +96,7 @@
         }
       },
       "block_order": [
+        "slide_79bBVn",
         "slide_ACzBbR",
         "slide_hggjJp",
         "slide_LqXL7C"
