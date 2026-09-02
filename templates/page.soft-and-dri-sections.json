@@ -22,15 +22,14 @@
       "blocks": {
         "slide_XB4h7H": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/SND_LaborDaySale_Desk_cf5845c5-301e-4bad-86ae-a823682a7b89.jpg",
             "mobile_image": "shopify://shop_images/SND_LaborDaySale_Mobile_cc5e1e2a-b96c-432c-883b-976829b9f5e1.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "FRESH SAVINGS",
+            "text": "<p>Stock up on your favorites, discover something new, and make time for a little self-care. Get 30% off everything during our Labor Day Sale! Use code LABORDAY30 at checkout.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
@@ -41,6 +40,7 @@
         },
         "slide_e9EqgB": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
