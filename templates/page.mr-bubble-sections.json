@@ -22,21 +22,20 @@
       "blocks": {
         "slide_gY6Q6h": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/MRB_LaborDaySale_Desk_d9c28d8a-8a7c-410f-ac27-e747fb54a5e2.jpg",
             "mobile_image": "shopify://shop_images/MRB_LaborDaySale_Mobile_c45f03a0-1459-47f8-8337-874df6f22aeb.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "Bubble Up Some Savings This Labor Day",
+            "text": "<p>Get 30% off everything during our Labor Day Sale! Use code LABORDAY30 at checkout. Sale ends 9/8/26.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Now",
+            "link": "shopify://collections/mr-bubble-collections"
           }
         },
         "slide_crXNpy": {
@@ -79,6 +78,7 @@
         },
         "slide_LBHeCg": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
