@@ -19,6 +19,9 @@
     },
     "tvc_cta_short_hBeMhQ": {
       "type": "tvc-cta-short",
+      "custom_css": [
+        ".tvc-cta-short{margin-top: 80px;}"
+      ],
       "name": "t:sections.tvc-cta-short.presets.name",
       "settings": {
         "full_width": false,
@@ -28,7 +31,7 @@
         "description": "",
         "link_label": "",
         "link_url": "",
-        "bottom_margin": "none"
+        "bottom_margin": "default"
       }
     },
     "tvc_slideshow_UNmcj7": {
