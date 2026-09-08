@@ -25,7 +25,8 @@
       "name": "t:sections.tvc-cta-short.presets.name",
       "settings": {
         "full_width": false,
-        "image": "shopify://shop_images/halloween-better-bubbles.jpg",
+        "image": "shopify://shop_images/halloween-better-bubbles_22679f5b-20ed-4280-9d88-ebccf55e3236.jpg",
+        "mobile_image": "shopify://shop_images/halloween-better-bubbles-mobile.jpg",
         "preserve_image_aspect_ratio": true,
         "title": "",
         "description": "",
@@ -157,6 +158,7 @@
       "settings": {
         "full_width": false,
         "image": "shopify://shop_images/halloween-frightfully.jpg",
+        "mobile_image": "shopify://shop_images/halloween-frightfully-mobile.jpg",
         "preserve_image_aspect_ratio": true,
         "title": "",
         "description": "",
