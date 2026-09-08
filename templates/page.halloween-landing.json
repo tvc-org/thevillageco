@@ -28,7 +28,7 @@
         "description": "",
         "link_label": "",
         "link_url": "",
-        "bottom_margin": "default"
+        "bottom_margin": "none"
       }
     },
     "tvc_slideshow_UNmcj7": {
@@ -75,6 +75,7 @@
             "product": "limited-edition-ghoulish-grape-bubble-bath",
             "show_product_badges": true,
             "collection": "",
+            "image": "shopify://shop_images/halloween-splash-grape.jpg",
             "heading_block": "",
             "text": "",
             "link_label": "",
@@ -87,6 +88,7 @@
             "product": "limited-edition-ghostly-green-apple-bubble-bath",
             "show_product_badges": true,
             "collection": "",
+            "image": "shopify://shop_images/halloween-bubbles-bite.jpg",
             "heading_block": "",
             "text": "",
             "link_label": "",
@@ -114,6 +116,7 @@
             "product": "limited-edition-pumpkin-pie-bubble-bath",
             "show_product_badges": true,
             "collection": "",
+            "image": "shopify://shop_images/halloween-pumpkin.jpg",
             "heading_block": "",
             "text": "",
             "link_label": "",
@@ -126,6 +129,7 @@
             "product": "limited-edition-witchs-brew-bubble-bath",
             "show_product_badges": true,
             "collection": "",
+            "image": "shopify://shop_images/halloween-witches-brew.jpg",
             "heading_block": "",
             "text": "",
             "link_label": "",
@@ -155,7 +159,7 @@
         "description": "",
         "link_label": "",
         "link_url": "",
-        "bottom_margin": "default"
+        "bottom_margin": "none"
       }
     },
     "tvc_slideshow_J836aP": {
