@@ -11,13 +11,145 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "tvc_cta_short_hBeMhQ": {
+      "type": "tvc-cta-short",
+      "name": "t:sections.tvc-cta-short.presets.name",
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/halloween-better-bubbles.jpg",
+        "preserve_image_aspect_ratio": true,
+        "title": "",
+        "description": "",
+        "link_label": "",
+        "link_url": "",
+        "bottom_margin": "default"
+      }
+    },
+    "tvc_slideshow_UNmcj7": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_LTizhA": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/halloween-bubbling-fun.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "CREATE A BIG BUBBLIN’ FUN",
+            "text": "<p>Make bath time frightfully fun with limited-edition Halloween scents and spooky shapes made for plenty of bubbly play.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "Shop the Collection",
+            "link": "shopify://collections/mr-bubble-bath"
+          }
+        }
+      },
+      "block_order": [
+        "slide_LTizhA"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true,
+        "show_product_badges": true
+      }
+    },
+    "tvc_dual_feature_3XXd4k": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_n7phAc": {
+          "type": "feature",
+          "settings": {
+            "product": "limited-edition-ghoulish-grape-bubble-bath",
+            "show_product_badges": true,
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_zCeDHA": {
+          "type": "feature",
+          "settings": {
+            "product": "limited-edition-ghostly-green-apple-bubble-bath",
+            "show_product_badges": true,
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_n7phAc",
+        "feature_zCeDHA"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": "",
+        "show_sound_toggle": false
+      }
+    },
+    "tvc_dual_feature_BHGjMF": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_eDcd3T": {
+          "type": "feature",
+          "settings": {
+            "product": "limited-edition-pumpkin-pie-bubble-bath",
+            "show_product_badges": true,
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_rx6NQP": {
+          "type": "feature",
+          "settings": {
+            "product": "limited-edition-witchs-brew-bubble-bath",
+            "show_product_badges": true,
+            "collection": "",
+            "heading_block": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_eDcd3T",
+        "feature_rx6NQP"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": "",
+        "show_sound_toggle": false
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "tvc_cta_short_hBeMhQ",
+    "tvc_slideshow_UNmcj7",
+    "tvc_dual_feature_3XXd4k",
+    "tvc_dual_feature_BHGjMF"
   ]
 }
