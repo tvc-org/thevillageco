@@ -20,7 +20,7 @@
     "tvc_cta_short_hBeMhQ": {
       "type": "tvc-cta-short",
       "custom_css": [
-        ".tvc-cta-short{margin-top: 80px;}"
+        ".tvc-cta-short {margin-top: 70px; margin-bottom: 70px !important;}"
       ],
       "name": "t:sections.tvc-cta-short.presets.name",
       "settings": {
