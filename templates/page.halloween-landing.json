@@ -25,7 +25,7 @@
       "name": "t:sections.tvc-cta-short.presets.name",
       "settings": {
         "full_width": false,
-        "image": "shopify://shop_images/halloween-better-bubbles_22679f5b-20ed-4280-9d88-ebccf55e3236.jpg",
+        "image": "shopify://shop_images/halloween-better-bubbles.jpg",
         "mobile_image": "shopify://shop_images/halloween-better-bubbles-mobile.jpg",
         "preserve_image_aspect_ratio": true,
         "title": "",
@@ -41,7 +41,7 @@
         "slide_LTizhA": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/halloween-bubbling-fun.jpg",
             "preserve_image_aspect_ratio": false,
@@ -173,7 +173,7 @@
         "slide_iDJqGt": {
           "type": "slide",
           "settings": {
-            "split_background": "#FFD1DC",
+            "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/halloween-mad-science.jpg",
             "preserve_image_aspect_ratio": true,
