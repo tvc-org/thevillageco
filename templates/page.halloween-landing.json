@@ -46,7 +46,7 @@
             "image": "shopify://shop_images/halloween-bubbling-fun.jpg",
             "mobile_image": "shopify://shop_images/halloween-bubbling-fun-mobile.jpg",
             "preserve_image_aspect_ratio": true,
-            "heading": "CREATE A BIG BUBBLIN’ FUN",
+            "heading": "Create Big Bubblin' Fun This Halloween",
             "text": "<p>Make bath time frightfully fun with limited-edition Halloween scents and spooky shapes made for plenty of bubbly play.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
@@ -81,8 +81,8 @@
             "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/halloween-splash-grape.jpg",
-            "heading_block": "",
-            "text": "",
+            "heading_block": "A SPOOKY SPLASH OF GRAPE",
+            "text": "<p>Brew up mountains of grape-scented bubbles for a frightfully fun bath.</p>",
             "link_label": "",
             "link": ""
           }
@@ -94,8 +94,8 @@
             "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/halloween-bubbles-bite.jpg",
-            "heading_block": "",
-            "text": "",
+            "heading_block": "BUBBLES WITH A BITE",
+            "text": "<p>A crisp green apple scent and heaps of bubbles make bath time wickedly fun.</p>",
             "link_label": "",
             "link": ""
           }
@@ -122,8 +122,8 @@
             "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/halloween-pumpkin.jpg",
-            "heading_block": "",
-            "text": "",
+            "heading_block": "PUMPKIN SPICE. BUBBLE DELIGHT.",
+            "text": "<p>Fill the tub with warm pumpkin pie scent and a cauldron full of bubbles.</p>",
             "link_label": "",
             "link": ""
           }
@@ -135,8 +135,8 @@
             "show_product_badges": true,
             "collection": "",
             "image": "shopify://shop_images/halloween-witches-brew.jpg",
-            "heading_block": "",
-            "text": "",
+            "heading_block": "GET WICKEDLY BUBBLY",
+            "text": "<p>A sweet-and-sour apple scent turns ordinary bath time into a bubbling Halloween bash.</p>",
             "link_label": "",
             "link": ""
           }
