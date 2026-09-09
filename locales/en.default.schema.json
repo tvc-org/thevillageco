@@ -729,7 +729,8 @@
               "info": "Looping video, muted by default. Overrides image when set. Use section “Show sound toggle” for an unmute control."
             },
             "heading_block": {
-              "label": "Heading"
+              "label": "Heading",
+              "info": "Use a line break to control the desktop wrap (990px and up). On smaller screens the heading reflows as one block."
             },
             "text": {
               "label": "Text"

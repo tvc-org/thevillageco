@@ -148,7 +148,17 @@
 
               <div class="tvc-dual-feature__content mt-3 lg-mt-4">
                 {%- if d_heading_rt != blank -%}
-                  <h3 class="tvc-dual-feature__title">{{ d_heading_rt }}</h3>
+                  {%- capture d_heading_html -%}
+                    {{
+                      d_heading_rt
+                      | strip_html
+                      | escape
+                      | newline_to_br
+                      | replace: '<br />', ' <br class="tvc-dual-feature__br"> '
+                      | replace: '<br>', ' <br class="tvc-dual-feature__br"> '
+                    }}
+                  {%- endcapture -%}
+                  <h3 class="tvc-dual-feature__title">{{ d_heading_html | strip }}</h3>
                 {%- elsif d_heading_plain != blank -%}
                   <h3 class="tvc-dual-feature__title">{{ d_heading_plain | escape }}</h3>
                 {%- endif -%}
@@ -253,9 +263,10 @@
           "info": "t:sections.tvc-dual-feature.blocks.feature.settings.video.info"
         },
         {
-          "type": "inline_richtext",
+          "type": "textarea",
           "id": "heading_block",
-          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.heading_block.label"
+          "label": "t:sections.tvc-dual-feature.blocks.feature.settings.heading_block.label",
+          "info": "t:sections.tvc-dual-feature.blocks.feature.settings.heading_block.info"
         },
         {
           "type": "richtext",

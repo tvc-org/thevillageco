@@ -188,6 +188,12 @@
   max-width: 42rem;
 }
 
+@media screen and (max-width: 989px) {
+  .tvc-dual-feature__title .tvc-dual-feature__br {
+    display: none;
+  }
+}
+
 .tvc-dual-feature__body {
   margin: 0;
   max-width: 42rem;
