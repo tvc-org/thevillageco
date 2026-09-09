@@ -20,6 +20,25 @@
     "tvc_slideshow_p4QpyF": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_XB4h7H": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/SND_LaborDaySale_Desk2.jpg",
+            "mobile_image": "shopify://shop_images/SND_LaborDaySale_Mobile_cc5e1e2a-b96c-432c-883b-976829b9f5e1.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "FRESH SAVINGS",
+            "text": "<p>Stock up on your favorites, discover something new, and make time for a little self-care. Get 30% off everything during our Labor Day Sale! Use code LABORDAY30 at checkout.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections/soft-dri-aluminum-free"
+          }
+        },
         "slide_e9EqgB": {
           "type": "slide",
           "settings": {
@@ -39,6 +58,7 @@
         }
       },
       "block_order": [
+        "slide_XB4h7H",
         "slide_e9EqgB"
       ],
       "name": "TVC Slideshow",

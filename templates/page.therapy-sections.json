@@ -20,6 +20,25 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_79bBVn": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/VNT_LaborDaySale_Desk2.jpg",
+            "mobile_image": "shopify://shop_images/VNT_LaborDaySale_Mobile_10ac1a2a-f893-48f8-89c6-0a5aa9517a4a.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Treat Yourself This Labor Day",
+            "text": "<p>Stock up on your favorites, discover something new, and make time for a little self-care. Get 30% off everything during our Labor Day Sale! Use code LABORDAY30 at checkout.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections/therapy-collections"
+          }
+        },
         "slide_ACzBbR": {
           "type": "slide",
           "disabled": true,
@@ -41,6 +60,7 @@
         },
         "slide_hggjJp": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
@@ -59,7 +79,6 @@
         },
         "slide_LqXL7C": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
@@ -77,6 +96,7 @@
         }
       },
       "block_order": [
+        "slide_79bBVn",
         "slide_ACzBbR",
         "slide_hggjJp",
         "slide_LqXL7C"
