@@ -105,6 +105,8 @@ class CollectionInfiniteScroll extends HTMLElement {
         this.grid.appendChild(child);
       }
     });
+
+    return items;
   }
 
   async loadNextPage() {
@@ -123,9 +125,10 @@ class CollectionInfiniteScroll extends HTMLElement {
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
       const nextGrid = doc.getElementById(this.gridId);
+      let newItems = [];
 
       if (nextGrid) {
-        this.appendGridItems(nextGrid);
+        newItems = this.appendGridItems(nextGrid);
       }
 
       const nextScroller = doc.querySelector('collection-infinite-scroll');
@@ -137,8 +140,14 @@ class CollectionInfiniteScroll extends HTMLElement {
         this.finish();
       }
 
-      if (typeof initializeScrollAnimationTrigger === 'function') {
-        initializeScrollAnimationTrigger(this.grid);
+      // Only observe newly appended cards — re-observing existing ones can leave them stuck at opacity 0.01.
+      if (newItems.length && typeof initializeScrollAnimationTrigger === 'function') {
+        initializeScrollAnimationTrigger(newItems);
+      }
+
+      // Yotpo only inits widgets present at first paint; re-init only new cards' placeholders.
+      if (newItems.length && typeof refreshYotpoWidgetsWhenReady === 'function') {
+        refreshYotpoWidgetsWhenReady(newItems);
       }
 
       this.observeLoadTrigger();

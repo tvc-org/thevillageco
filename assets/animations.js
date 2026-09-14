@@ -21,8 +21,17 @@ function onIntersection(elements, observer) {
   });
 }
 
+function getScrollAnimationTriggerElements(rootEl = document) {
+  if (Array.isArray(rootEl) || NodeList.prototype.isPrototypeOf(rootEl)) {
+    return Array.from(rootEl).filter((el) => el?.classList?.contains(SCROLL_ANIMATION_TRIGGER_CLASSNAME));
+  }
+
+  if (!rootEl?.getElementsByClassName) return [];
+  return Array.from(rootEl.getElementsByClassName(SCROLL_ANIMATION_TRIGGER_CLASSNAME));
+}
+
 function initializeScrollAnimationTrigger(rootEl = document, isDesignModeEvent = false) {
-  const animationTriggerElements = Array.from(rootEl.getElementsByClassName(SCROLL_ANIMATION_TRIGGER_CLASSNAME));
+  const animationTriggerElements = getScrollAnimationTriggerElements(rootEl);
   if (animationTriggerElements.length === 0) return;
 
   if (isDesignModeEvent) {

@@ -32,4 +32,5 @@ Loads additional collection pages when the shopper scrolls near the bottom of th
 - Uses one `products_per_page` for all pages (standard Shopify `paginate`).
 - Cross-promo touts on page 2+ follow existing Liquid rules (`paginate.current_offset`).
 - Collection featured image only renders on page 1 (`paginate.current_offset == 0`).
+- After each page append, only new grid items get scroll-animation observers and Yotpo `initWidgets` (already-hydrated badges are skipped to avoid a full-grid refresh / stuck fade-ins).
 - SEO: paginated URLs (`?page=2`) still work if linked directly; crawlers that don’t scroll only see page 1 in the initial HTML.

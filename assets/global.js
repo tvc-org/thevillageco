@@ -1134,23 +1134,68 @@ class VariantSelects extends HTMLElement {
 
 customElements.define('variant-selects', VariantSelects);
 
-function refreshYotpoWidgets() {
+function protectHydratedYotpoWidgets(root) {
+  if (!root?.contains) return [];
+
+  const protectedEls = [];
+  document.querySelectorAll('.yotpo-widget-instance').forEach((el) => {
+    if (root.contains(el) || el.childElementCount === 0) return;
+    el.classList.remove('yotpo-widget-instance');
+    el.classList.add('yotpo-widget-instance--done');
+    protectedEls.push(el);
+  });
+  return protectedEls;
+}
+
+function yotpoInitRootFromElements(elements) {
+  return {
+    contains(node) {
+      return elements.some((el) => el === node || el.contains?.(node));
+    },
+    querySelector(sel) {
+      for (const el of elements) {
+        if (el.matches?.(sel)) return el;
+        const found = el.querySelector?.(sel);
+        if (found) return found;
+      }
+      return null;
+    },
+  };
+}
+
+function scopeHasYotpoWidgets(root) {
+  if (Array.isArray(root)) {
+    return root.some((el) => el?.matches?.('.yotpo-widget-instance') || el?.querySelector?.('.yotpo-widget-instance'));
+  }
+  return Boolean(root?.querySelector?.('.yotpo-widget-instance'));
+}
+
+function refreshYotpoWidgets(root) {
+  const protectedEls = root ? protectHydratedYotpoWidgets(root) : [];
+
+  let initialized = false;
   if (typeof yotpoWidgetsContainer !== 'undefined' && typeof yotpoWidgetsContainer.initWidgets === 'function') {
     yotpoWidgetsContainer.initWidgets();
-    return true;
-  }
-
-  if (window.yotpo && typeof window.yotpo.initWidgets === 'function') {
+    initialized = true;
+  } else if (window.yotpo && typeof window.yotpo.initWidgets === 'function') {
     window.yotpo.initWidgets();
-    return true;
+    initialized = true;
   }
 
-  return false;
+  // Keep protected nodes skipped on later infinite-scroll inits (Yotpo may restore the class).
+  protectedEls.forEach((el) => {
+    el.classList.remove('yotpo-widget-instance');
+    el.classList.add('yotpo-widget-instance--done');
+  });
+
+  return initialized;
 }
 
 function refreshYotpoWidgetsWhenReady(root, attempt = 0) {
-  if (!root?.querySelector?.('.yotpo-widget-instance')) return;
-  if (refreshYotpoWidgets()) return;
+  if (!scopeHasYotpoWidgets(root)) return;
+
+  const initRoot = Array.isArray(root) ? yotpoInitRootFromElements(root) : root;
+  if (refreshYotpoWidgets(initRoot)) return;
   if (attempt < 24) {
     setTimeout(() => refreshYotpoWidgetsWhenReady(root, attempt + 1), 250);
   }
