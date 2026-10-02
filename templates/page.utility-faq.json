@@ -18,15 +18,6 @@
             "title": ""
           }
         },
-        "content_faq_0_19a0485574e4": {
-          "type": "content_section",
-          "settings": {
-            "section_title": "Soft & Dri Classic Aerosol",
-            "section_subtitle": "",
-            "section_accordion": true,
-            "section_details": "accordion_title:\n💡 What’s new about the formula?accordion_content:\nWe’ve updated our aerosol deodorant formula to give you better performance than ever. Expect smoother application, faster drying, and longer-lasting odor and protection—all while keeping the scent you already love.  \n\n\naccordion_title:\n🌿 Has the scent changed? \naccordion_content:\nNot at all. The scent is exactly the same. If you're a fan of the fragrance, you're going to feel right at home.\n\naccordion_title:\n🧪 Why was the formula updated?\naccordion_content:\nWe’re always improving. The new formula is the result of innovation and feedback from customers like you. It’s designed to deliver even better freshness and comfort throughout the day.\n\naccordion_title:\n⚗️ Why is it now aluminum-free?\naccordion_content:We’ve made the switch to an aluminum-free formula in response to growing demand for more natural, skin-conscious personal care. While traditional antiperspirants use aluminum to block sweat, our new formula is designed to neutralize odor effectively without clogging pores—allowing your skin to breathe naturally, while keeping you fresh all day.\n\naccordion_title:\n🤍 Is it gentle on skin?\naccordion_content:\nYes! Our new formula is made to be kind to your skin. It’s free from harsh ingredients and suitable for most skin types.\n\naccordion_title:\n⏱️ How long does it last?\naccordion_content:The new formula offers all-day odor protection. Whether it’s a long workday or a workout, we’ve got you covered.\naccordion_title:\n\n🌬️ Does it feel different when I spray it?\naccordion_content:Slightly. You might notice a drier, more even spray that feels lighter and absorbs quicker. It’s a small tweak with a big comfort upgrade.\n\naccordion_title:\n📦 Any change to the packaging?\naccordion_content:Yes—it’s had a sleek refresh! The updated formula now comes in a smaller, more streamlined can that’s easier to hold and carry. Same great product inside, just in a more modern and convenient design.\n\naccordion_title:\n💸 Is it more expensive?\naccordion_content:Yes, the new deodorant is priced slightly higher than before—but with good reason. You’re getting an upgraded formula with enhanced odor protection, faster drying, and a more refined application experience. It’s a premium upgrade designed to give you more from every spray.\n\naccordion_title:\n🙋 What if I liked the old version better?\naccordion_content:We think you’ll love this one even more. But if you have any feedback, we’re always listening. Your opinion helps us get better every time."
-          }
-        },
         "content_faq_1_8058283af231": {
           "type": "content_section",
           "settings": {
@@ -57,7 +48,6 @@
       },
       "block_order": [
         "heading",
-        "content_faq_0_19a0485574e4",
         "content_faq_1_8058283af231",
         "content_faq_2_22b9f095f17c",
         "content_faq_3_bd215416bd99"
