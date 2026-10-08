@@ -139,8 +139,8 @@
         "feature_6iAqTx": {
           "type": "feature",
           "settings": {
-            "product": "super-blaster-body-wash",
-            "show_product_badges": true,
+            "product": "retro-bubble-bath-kit",
+            "show_product_badges": false,
             "collection": "",
             "image": "shopify://shop_images/Mr-Bubble-retro-on-tub.jpg",
             "heading_block": "A Time Capsule of Bubbles",
