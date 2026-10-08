@@ -152,8 +152,8 @@
         "feature_h4wPiq": {
           "type": "feature",
           "settings": {
-            "product": "mad-scientist-bath-potion-set",
-            "show_product_badges": true,
+            "product": "nutcracker-sponge",
+            "show_product_badges": false,
             "collection": "",
             "image": "shopify://shop_images/Festive-Nutcracker-Bath-Sponge-Scene.jpg",
             "heading_block": "The Perfect Stocking Stuffer",
