@@ -142,11 +142,11 @@
             "product": "super-blaster-body-wash",
             "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/mr-bubble-BTS-website-header_a0531a38-699b-4690-af3d-b209ac216616.jpg",
-            "heading_block": "A+ Clean Starts Here!",
-            "text": "<p>Everything you need to help your little learner head back to school feeling fresh, confident, and ready for anything.</p>",
-            "link_label": "Shop Back to School",
-            "link": "shopify://collections/mr-bubble-back-to-school"
+            "image": "shopify://shop_images/Mr-Bubble-retro-on-tub.jpg",
+            "heading_block": "A Time Capsule of Bubbles",
+            "text": "<p>Created to celebrate Mr. Bubble's 65th birthday, this limited-edition collection is a nostalgic time capsule packed with classic bubbles and retro charm.</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://products/retro-bubble-bath-kit"
           }
         },
         "feature_h4wPiq": {
