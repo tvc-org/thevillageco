@@ -155,11 +155,11 @@
             "product": "mad-scientist-bath-potion-set",
             "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/Mr-Bubble-mad-scientist-header.jpg",
-            "heading_block": "NEW! Our Mad Scientist Is in the Lab",
-            "text": "<p>Mr. Bubble's newest experiment is creating mountains of colorful foam.</p>",
+            "image": "shopify://shop_images/Festive-Nutcracker-Bath-Sponge-Scene.jpg",
+            "heading_block": "The Perfect Stocking Stuffer",
+            "text": "<p>Bring a little extra magic to bath time this holiday season with festive holiday bath sponges.</p>",
             "link_label": "Shop Now",
-            "link": "shopify://products/mad-scientist-bath-potion-set"
+            "link": "shopify://products/nutcracker-sponge"
           }
         }
       },
