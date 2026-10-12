@@ -20,6 +20,23 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_69d3VX": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_79bBVn": {
           "type": "slide",
           "disabled": true,
@@ -96,6 +113,7 @@
         }
       },
       "block_order": [
+        "slide_69d3VX",
         "slide_79bBVn",
         "slide_ACzBbR",
         "slide_hggjJp",
