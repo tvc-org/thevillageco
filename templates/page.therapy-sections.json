@@ -22,10 +22,12 @@
       "blocks": {
         "slide_69d3VX": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection.jpg",
+            "mobile_image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection_MOBILE.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Headline",
             "text": "<p>Add descriptive text for this slide.</p>",
