@@ -22,21 +22,20 @@
       "blocks": {
         "slide_69d3VX": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection.jpg",
             "mobile_image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection_MOBILE.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "Soak in Something Better",
+            "text": "<p>Made with 100% Natural Magnesium Chloride, our Magnesium Bath Flakes promote muscle relaxation and skin hydration. Now available in GLOW featuring a Moroccan Melody fragrance.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Now",
+            "link": "shopify://collections/therapy-magnesium-bath-flakes"
           }
         },
         "slide_79bBVn": {
@@ -98,6 +97,7 @@
         },
         "slide_LqXL7C": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
