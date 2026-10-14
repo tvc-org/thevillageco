@@ -11,13 +11,37 @@
   "sections": {
     "utility": {
       "type": "utility-page",
+      "blocks": {
+        "heading": {
+          "type": "section_heading",
+          "settings": {
+            "title": "Send us a message!"
+          }
+        },
+        "subcopy": {
+          "type": "subcopy",
+          "settings": {
+            "text": "<p>Contact us via phone at <a href=\"tel:1-800-699-6852\">1-800-699-6852</a>, or using the form below & we’ll be in touch!</p><p>If you have a medical concern or question, please call <a href=\"tel:1-888-634-8192\">1-888-634-8192</a> to be connected to a health and safety specialist.</p>"
+          }
+        },
+        "form": {
+          "type": "contact_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "subcopy",
+        "form"
+      ],
       "settings": {
         "banner_title": "Support & Information",
         "nav_menu": "utility-menu",
-        "content_source": "auto"
+        "content_source": "blocks"
       }
     }
   },
-  "order": ["utility"]
+  "order": [
+    "utility"
+  ]
 }
-
