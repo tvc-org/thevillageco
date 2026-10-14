@@ -23,11 +23,16 @@
           "settings": {
             "text": "<p>Contact us via phone at <a href=\"tel:1-800-699-6852\">1-800-699-6852</a>, or using the form below & we’ll be in touch!</p><p>If you have a medical concern or question, please call <a href=\"tel:1-888-634-8192\">1-888-634-8192</a> to be connected to a health and safety specialist.</p>"
           }
+        },
+        "contact_form_fGgaLK": {
+          "type": "contact_form",
+          "settings": {}
         }
       },
       "block_order": [
         "section_heading_yFnwam",
-        "subcopy_MWtLA8"
+        "subcopy_MWtLA8",
+        "contact_form_fGgaLK"
       ],
       "settings": {
         "banner_title": "Support & Information",
