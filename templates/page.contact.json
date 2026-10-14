@@ -37,7 +37,7 @@
       "settings": {
         "banner_title": "Support & Information",
         "nav_menu": "utility-menu",
-        "content_source": "auto"
+        "content_source": "blocks"
       }
     }
   },
