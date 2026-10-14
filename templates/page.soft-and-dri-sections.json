@@ -20,6 +20,25 @@
     "tvc_slideshow_p4QpyF": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_UYWFR8": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/SND_homepage.jpg",
+            "mobile_image": "shopify://shop_images/SND_homepage_mobile.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_XB4h7H": {
           "type": "slide",
           "disabled": true,
@@ -47,7 +66,7 @@
             "image": "shopify://shop_images/soft-dri-home-hero-wide.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Your Mood. Your Scent. Your Day.",
-            "text": "<p>Four aluminum-free formulas. All-day protection. <br/>Built to keep up with wherever life takes you.</p>",
+            "text": "<p>Four aluminum-free formulas. All-day protection.&nbsp;<br/>Built to keep up with wherever life takes you.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
@@ -58,6 +77,7 @@
         }
       },
       "block_order": [
+        "slide_UYWFR8",
         "slide_XB4h7H",
         "slide_e9EqgB"
       ],

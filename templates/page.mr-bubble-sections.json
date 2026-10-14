@@ -20,6 +20,25 @@
     "tvc_slideshow_YYRRVn": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_7ygtjW": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/MRB-header_b85e1546-09e5-4129-bc4a-03d1ccde6db4.jpg",
+            "mobile_image": "shopify://shop_images/MRB-header_mobile_646b05b0-7443-4b62-8d26-36206f9cfe27.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_gY6Q6h": {
           "type": "slide",
           "disabled": true,
@@ -67,7 +86,7 @@
             "mobile_image": "shopify://shop_images/MB-Halloween-Hdr-2026-MOBILE-4_786cb70b-634f-48e6-8d51-7f0c42ca69c1.jpg",
             "preserve_image_aspect_ratio": false,
             "heading": "Stir Up a Cauldron of Bubblin' Fun",
-            "text": "<p>This Halloween, let Mr. Bubble make bath time extra spook-tacular with exclusive Halloween Bubble Baths and Potions. </p>",
+            "text": "<p>This Halloween, let Mr. Bubble make bath time extra spook-tacular with exclusive Halloween Bubble Baths and Potions.&nbsp;</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
@@ -116,6 +135,7 @@
         }
       },
       "block_order": [
+        "slide_7ygtjW",
         "slide_gY6Q6h",
         "slide_crXNpy",
         "slide_9UyrEb",
