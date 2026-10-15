@@ -22,21 +22,20 @@
       "blocks": {
         "slide_7ygtjW": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/MRB-header_b85e1546-09e5-4129-bc4a-03d1ccde6db4.jpg",
             "mobile_image": "shopify://shop_images/MRB-header_mobile_646b05b0-7443-4b62-8d26-36206f9cfe27.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "25% Off Sitewide",
+            "text": "<p>Friends & Family Sale! Enjoy <strong>25% OFF</strong> all your favorites from Mr. Bubble. Enter code FRIENDS2026 at checkout to save. Offer ends 10/18/26.<br/><br/><br/><br/></p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Now",
+            "link": "shopify://collections/mr-bubble-collections"
           }
         },
         "slide_gY6Q6h": {
@@ -79,6 +78,7 @@
         },
         "slide_9UyrEb": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
