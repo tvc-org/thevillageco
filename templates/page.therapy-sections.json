@@ -22,6 +22,7 @@
       "blocks": {
         "slide_nB8KFj": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
@@ -40,7 +41,6 @@
         },
         "slide_69d3VX": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
