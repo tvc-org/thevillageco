@@ -14,13 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement_DUxgVf": {
-          "type": "announcement",
-          "settings": {
-            "text": "Save 25% Sitewide with code FRIENDS2026",
-            "link": "shopify://collections/the-village-co-bestsellers"
-          }
-        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
@@ -37,7 +30,6 @@
         }
       },
       "block_order": [
-        "announcement_DUxgVf",
         "announcement-bar-0",
         "announcement_inKhTr"
       ],
