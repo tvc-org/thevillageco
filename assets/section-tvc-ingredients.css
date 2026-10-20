@@ -110,7 +110,7 @@
 .tvc-ingredients__item-title {
   color: #2c2c2c;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: clamp(18px, 2.5vw, 26px);
+  font-size: clamp(18px, 2.5vw, 29.9px);
   line-height: 1.2;
   margin: 0;
   transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
@@ -162,7 +162,7 @@
 @media screen and (min-width: 1260px) {
   .tvc-ingredients__inner {
     padding-bottom: 96px;
-    padding-top: 200px;
+    padding-top: 120px;
   }
 
   .tvc-ingredients__layout {

@@ -25,7 +25,7 @@
 .tvc-mission__title {
   color: #113398;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: clamp(42px, 8vw, 78px);
+  font-size: clamp(42px, 8vw, 89.7px);
   font-weight: 400;
   letter-spacing: -1.56px;
   line-height: 85.5%;
@@ -47,6 +47,6 @@
   }
 
   .tvc-mission__title {
-    font-size: clamp(48px, 4.2vw, 78px);
+    font-size: clamp(48px, 4.2vw, 89.7px);
   }
 }

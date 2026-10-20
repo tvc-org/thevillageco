@@ -39,7 +39,7 @@
 }
 
 .tvc-home-intro__title {
-  font-size: clamp(42px, 8vw, 78px);
+  font-size: clamp(42px, 8vw, 89.7px);
 }
 
 .tvc-home-intro__body {
@@ -57,7 +57,7 @@
 .tvc-home-intro__secondary-title {
   color: #113398;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
-  font-size: clamp(32px, 6.15vw, 60px);
+  font-size: clamp(32px, 6.15vw, 69px);
   font-weight: 400;
   letter-spacing: -1.2px;
   line-height: 1;
@@ -146,7 +146,7 @@
   }
 
   .tvc-home-intro__title {
-    font-size: clamp(48px, 4.2vw, 78px);
+    font-size: clamp(48px, 4.2vw, 89.7px);
   }
 
   .tvc-home-intro__body {
@@ -154,7 +154,7 @@
   }
 
   .tvc-home-intro__secondary-title {
-    font-size: clamp(37px, 3.23vw, 60px);
+    font-size: clamp(37px, 3.23vw, 69px);
     margin-top: 120px;
   }
 
