@@ -80,6 +80,10 @@
       additional_props: input_dataset
     %}
   {%- elsif picker_type == 'button' -%}
+    {%- capture variant_option_icon -%}
+      {% render 'product-variant-option-icon', product: product, option_value: value %}
+    {%- endcapture -%}
+    {%- assign variant_option_icon = variant_option_icon | strip -%}
     <input
       type="radio"
       id="{{ input_id }}"
@@ -94,7 +98,13 @@
       {% endif %}
       {{ input_dataset }}
     >
-    <label for="{{ input_id }}">
+    <label
+      for="{{ input_id }}"
+      {% if variant_option_icon != blank %}
+        class="product-form__pill-label--icon"
+      {% endif %}
+    >
+      {{ variant_option_icon }}
       {{ value -}}
       {{ label_unavailable }}
     </label>

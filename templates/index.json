@@ -81,42 +81,6 @@
     },
     "tvc_home_intro_eFKmKt": {
       "type": "tvc-home-intro",
-      "blocks": {
-        "callout_CDpFeQ": {
-          "type": "callout",
-          "settings": {
-            "title": "30+",
-            "text": "Years of innovation"
-          }
-        },
-        "callout_i3VXT7": {
-          "type": "callout",
-          "settings": {
-            "title": "6",
-            "text": "Beloved brands"
-          }
-        },
-        "callout_GKCxgJ": {
-          "type": "callout",
-          "settings": {
-            "title": "365",
-            "text": "Days / year feeling good"
-          }
-        },
-        "callout_xXAQHX": {
-          "type": "callout",
-          "settings": {
-            "title": "∞",
-            "text": "Moments restored"
-          }
-        }
-      },
-      "block_order": [
-        "callout_CDpFeQ",
-        "callout_i3VXT7",
-        "callout_GKCxgJ",
-        "callout_xXAQHX"
-      ],
       "name": "t:sections.tvc-home-intro.presets.name",
       "settings": {
         "anchor_id": "our-story",

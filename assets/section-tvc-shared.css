@@ -1,7 +1,7 @@
 /* Shared typography for TVC homepage sections */
 
 .tvc-pretitle {
-  color: #7b6655 !important;
+  color: #84daf6 !important;
   font-family: Inter, Helvetica, Arial, sans-serif;
   font-size: 13px !important;
   font-weight: 600;
@@ -44,9 +44,6 @@
 }
 
 .tvc-title-accent,
-.tvc-home-intro__title-accent,
-.tvc-home-intro__title .tvc-home-intro__title-accent,
-.tvc-home-intro__title span.tvc-home-intro__title-accent,
 .tvc-brands__title .tvc-title-accent,
 .tvc-brands__title .tvc-home-intro__title-accent,
 .tvc-ingredients__title .tvc-title-accent,
@@ -64,9 +61,12 @@
     font-size: 60px;
   }
 
-  .tvc-section-body,
-  .tvc-ingredients__body.tvc-section-body,
-  .tvc-heritage__body.tvc-section-body {
+  #MainContent .tvc-section-body,
+  #MainContent .tvc-ingredients__body.tvc-section-body,
+  #MainContent .tvc-heritage__body.tvc-section-body,
+  #MainContent .tvc-section-body p,
+  #MainContent .tvc-ingredients__body.tvc-section-body p,
+  #MainContent .tvc-heritage__body.tvc-section-body p {
     font-size: 20px;
   }
 }

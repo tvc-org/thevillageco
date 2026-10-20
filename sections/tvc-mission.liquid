@@ -1,0 +1,75 @@
+{{ 'section-tvc-shared.css' | asset_url | stylesheet_tag }}
+{{ 'section-tvc-mission.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign tvc_section_anchor = section.settings.anchor_id | strip | remove: '#' | handleize
+-%}
+
+<div
+  class="tvc-mission"
+  {% if tvc_section_anchor != blank %}
+    id="{{ tvc_section_anchor }}"
+  {% endif %}
+>
+  <div
+    class="tvc-mission__inner{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+    {% if settings.animations_reveal_on_scroll %}
+      data-cascade
+    {% endif %}
+  >
+    {%- if section.settings.pre_title != blank -%}
+      <p class="tvc-pretitle">{{ section.settings.pre_title | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h2 class="tvc-mission__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.tvc-mission.name",
+  "tag": "section",
+  "class": "section section-tvc-mission",
+  "enabled_on": {
+    "templates": ["index"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.tvc-mission.settings.header_anchor.content"
+    },
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "t:sections.tvc-mission.settings.anchor_id.label",
+      "info": "t:sections.tvc-mission.settings.anchor_id.info",
+      "default": "our-mission"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-mission.settings.header_content.content"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "t:sections.tvc-mission.settings.pre_title.label",
+      "default": "Our Mission"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "t:sections.tvc-mission.settings.title.label",
+      "info": "t:sections.tvc-mission.settings.title.info",
+      "default": "To build & grow brands<br>that enhance<br>every body's every day."
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.tvc-mission.presets.name",
+      "category": "Homepage"
+    }
+  ]
+}
+{% endschema %}

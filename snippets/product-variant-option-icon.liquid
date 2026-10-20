@@ -1,0 +1,51 @@
+{% comment %}
+  Resolves a variant option icon from product.metafields.custom.variant_icons
+  (list of metaobjects with variant_name, emoji, icon_image).
+
+  Prefers icon_image over emoji. Outputs nothing when no match.
+
+  Accepts:
+  - product: {Object}
+  - option_value: {String} option value to match (e.g. "Birthday Cake")
+{% endcomment %}
+{%- liquid
+  assign icon_entries = product.metafields.custom.variant_icons.value | default: product.metafields.custom.variant_icons
+  assign option_key = option_value | strip | downcase
+  assign matched_image = nil
+  assign matched_emoji = nil
+
+  if icon_entries != blank and option_key != blank
+    for entry in icon_entries
+      assign entry_name = entry.variant_name.value | default: entry.variant_name | strip | downcase
+      if entry_name != option_key
+        continue
+      endif
+
+      assign entry_image = entry.icon_image.value | default: entry.icon_image
+      if entry_image != blank
+        assign matched_image = entry_image
+      endif
+
+      assign entry_emoji = entry.emoji.value | default: entry.emoji | strip
+      if entry_emoji != blank
+        assign matched_emoji = entry_emoji
+      endif
+
+      break
+    endfor
+  endif
+-%}
+{%- if matched_image != blank -%}
+  {{
+    matched_image
+    | image_url: width: 96
+    | image_tag:
+      class: 'product-form__pill-icon product-form__pill-icon--image',
+      widths: '48, 96',
+      sizes: '1.5em',
+      alt: '',
+      loading: 'lazy'
+  }}
+{%- elsif matched_emoji != blank -%}
+  <span class="product-form__pill-icon product-form__pill-icon--emoji" aria-hidden="true">{{ matched_emoji }}</span>
+{%- endif -%}

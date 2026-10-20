@@ -4,9 +4,9 @@
   margin-top: 0 !important;
 }
 
-.tvc-brands {
+/* .tvc-brands {
   background-color: #e9e1d9;
-}
+} */
 
 .tvc-brands__inner {
   display: flex;
@@ -17,6 +17,7 @@
 }
 
 .tvc-brands__title.tvc-section-title {
+  color: #113398 !important;
   max-width: 970px;
 }
 
@@ -109,14 +110,14 @@
 }
 
 .tvc-brands__item-title {
-  color: #2c2c2c;
+  color: #113398;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   font-size: 36px;
   text-decoration: none;
 }
 
 .tvc-brands__item-text {
-  color: #7B6756 !important;
+  color: #2c2c2c !important;
   font-family: Inter, sans-serif;
 }
 

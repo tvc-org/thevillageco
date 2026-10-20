@@ -1,9 +1,9 @@
 {{ 'section-tvc-shared.css' | asset_url | stylesheet_tag }}
 {{ 'section-tvc-home-intro.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'lottie-player.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'tvc-home-intro.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
-  assign tvc_hi_image = section.settings.image
-  assign tvc_hi_callout_blocks = section.blocks | where: 'type', 'callout'
   assign tvc_section_anchor = section.settings.anchor_id | strip | remove: '#' | handleize
 -%}
 
@@ -34,57 +34,36 @@
           <div class="tvc-home-intro__body rte">{{ section.settings.text }}</div>
         {%- endif -%}
 
-        {%- if tvc_hi_callout_blocks.size > 0 -%}
-          <ul class="tvc-home-intro__callouts" role="list">
-            {%- for block in tvc_hi_callout_blocks -%}
-              <li
-                class="tvc-home-intro__callout{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                  data-cascade
-                  style="--animation-order: {{ forloop.index | plus: 1 }};"
-                {% endif %}
-              >
-                {%- if block.settings.title != blank -%}
-                  <span class="tvc-home-intro__callout-title mb-4 lg-mb-5">{{ block.settings.title | escape }}</span>
-                {%- endif -%}
-                {%- if block.settings.text != blank -%}
-                  <span class="tvc-home-intro__callout-text mt-0">{{ block.settings.text | escape }}</span>
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
+        {%- if section.settings.secondary_title != blank -%}
+          <h3 class="tvc-home-intro__secondary-title">{{ section.settings.secondary_title | escape }}</h3>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_text != blank -%}
+          <div class="tvc-home-intro__secondary-text rte">{{ section.settings.secondary_text }}</div>
         {%- endif -%}
       </div>
     </div>
 
-    {%- if tvc_hi_image != blank -%}
-      <div
-        class="tvc-home-intro__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-        {% if settings.animations_reveal_on_scroll %}
-          data-cascade
-          style="--animation-order: {{ tvc_hi_callout_blocks.size | plus: 2 }};"
-        {% endif %}
-      >
-        {%- liquid
-          assign tvc_hi_alt = tvc_hi_image.alt | default: section.settings.pre_title
-          if tvc_hi_alt == blank and section.settings.title != blank
-            assign tvc_hi_alt = section.settings.title | strip_html
-          endif
-          assign tvc_hi_widths = '750, 990, 1200, 1500, 1800, 2200'
-        -%}
-        {{
-          tvc_hi_image
-          | image_url: width: 2200
-          | image_tag:
-            loading: 'lazy',
-            widths: tvc_hi_widths,
-            sizes: '(min-width: 960px) 50vw, 100vw',
-            class: 'tvc-home-intro__image',
-            alt: tvc_hi_alt
-        }}
-      </div>
-    {%- endif -%}
+    <div
+      class="tvc-home-intro__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      {% if settings.animations_reveal_on_scroll %}
+        data-cascade
+        style="--animation-order: 2;"
+      {% endif %}
+    >
+      <lottie-player
+        class="tvc-home-intro__lottie"
+        src="{{ 'TVC-leaf-pulse.json' | asset_url }}"
+        background="transparent"
+        renderer="svg"
+        loop
+        autoplay
+        aria-hidden="true"
+      ></lottie-player>
+      {%- if section.settings.media_text != blank -%}
+        <div class="tvc-home-intro__media-caption rte">{{ section.settings.media_text }}</div>
+      {%- endif -%}
+    </div>
   </div>
 </div>
 
@@ -93,7 +72,6 @@
   "name": "t:sections.tvc-home-intro.name",
   "tag": "section",
   "class": "section section-tvc-home-intro",
-  "max_blocks": 4,
   "enabled_on": {
     "templates": ["index"]
   },
@@ -133,65 +111,44 @@
       "default": "<p>For over 30 years, we've been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>"
     },
     {
+      "type": "text",
+      "id": "secondary_title",
+      "label": "t:sections.tvc-home-intro.settings.secondary_title.label",
+      "default": "Our new symbol"
+    },
+    {
+      "type": "richtext",
+      "id": "secondary_text",
+      "label": "t:sections.tvc-home-intro.settings.secondary_text.label",
+      "default": "<p>Our new symbol brings our mission to life. Each leaf represents the individuality of the people we serve, with their own routines, needs, and moments of personal care. Together, the leaves form something bigger: a family of brands united by a shared purpose of making everyday life a little better.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.tvc-home-intro.settings.header_media.content"
+    },
+    {
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.tvc-home-intro.settings.image.label"
-    }
-  ],
-  "blocks": [
+    },
     {
-      "type": "callout",
-      "name": "t:sections.tvc-home-intro.blocks.callout.name",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "t:sections.tvc-home-intro.blocks.callout.settings.title.label",
-          "default": "30+"
-        },
-        {
-          "type": "text",
-          "id": "text",
-          "label": "t:sections.tvc-home-intro.blocks.callout.settings.text.label",
-          "default": "Years of innovation"
-        }
-      ]
+      "type": "video",
+      "id": "video",
+      "label": "t:sections.tvc-home-intro.settings.video.label",
+      "info": "t:sections.tvc-home-intro.settings.video.info"
+    },
+    {
+      "type": "richtext",
+      "id": "media_text",
+      "label": "t:sections.tvc-home-intro.settings.media_text.label",
+      "info": "t:sections.tvc-home-intro.settings.media_text.info",
+      "default": "<p><strong>TVC Group</strong><br>A family of brands united by a shared purpose of making everyday life a little better.</p>"
     }
   ],
   "presets": [
     {
       "name": "t:sections.tvc-home-intro.presets.name",
-      "category": "Homepage",
-      "blocks": [
-        {
-          "type": "callout",
-          "settings": {
-            "title": "30+",
-            "text": "Years of innovation"
-          }
-        },
-        {
-          "type": "callout",
-          "settings": {
-            "title": "6",
-            "text": "Beloved brands"
-          }
-        },
-        {
-          "type": "callout",
-          "settings": {
-            "title": "365",
-            "text": "Days / year feeling good"
-          }
-        },
-        {
-          "type": "callout",
-          "settings": {
-            "title": "∞",
-            "text": "Moments restored"
-          }
-        }
-      ]
+      "category": "Homepage"
     }
   ]
 }

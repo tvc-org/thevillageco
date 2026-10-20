@@ -5,7 +5,18 @@
 }
 
 .tvc-ingredients {
-  background-color: var(--brand-background-color, #f7f2ec);
+  background: rgba(132, 218, 246, 0.1);
+}
+
+.section-tvc-ingredients .tvc-ingredients__title.tvc-section-title {
+  color: #87cef2;
+}
+
+.section-tvc-ingredients .tvc-ingredients__title .tvc-title-accent,
+.section-tvc-ingredients .tvc-ingredients__title .tvc-home-intro__title-accent,
+.section-tvc-ingredients .tvc-ingredients__title span.tvc-title-accent,
+.section-tvc-ingredients .tvc-ingredients__title span.tvc-home-intro__title-accent {
+  color: #113398;
 }
 
 .tvc-ingredients__inner {
@@ -21,6 +32,11 @@
 
 .tvc-ingredients__body.tvc-section-body {
   max-width: 520px;
+}
+
+.section-tvc-ingredients .tvc-ingredients__body.tvc-section-body p,
+.section-tvc-ingredients .tvc-ingredients__body.tvc-section-body > * {
+  color: #2c2c2c !important;
 }
 
 .tvc-ingredients__grid {

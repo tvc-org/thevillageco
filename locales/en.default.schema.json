@@ -771,6 +771,31 @@
         "name": "TVC Featured Review"
       }
     },
+    "tvc-mission": {
+      "name": "TVC Mission",
+      "settings": {
+        "header_anchor": {
+          "content": "Jump navigation"
+        },
+        "anchor_id": {
+          "label": "Section ID",
+          "info": "In-page link target without # (e.g. our-mission for /#our-mission)."
+        },
+        "header_content": {
+          "content": "Content"
+        },
+        "pre_title": {
+          "label": "Intro"
+        },
+        "title": {
+          "label": "Title",
+          "info": "HTML allowed. Use <br> for line breaks."
+        }
+      },
+      "presets": {
+        "name": "TVC Mission"
+      }
+    },
     "tvc-home-intro": {
       "name": "TVC - Home Intro",
       "settings": {
@@ -794,21 +819,25 @@
         "text": {
           "label": "Text"
         },
+        "secondary_title": {
+          "label": "Secondary title"
+        },
+        "secondary_text": {
+          "label": "Secondary text"
+        },
+        "header_media": {
+          "content": "Media"
+        },
         "image": {
           "label": "Image"
-        }
-      },
-      "blocks": {
-        "callout": {
-          "name": "Callout",
-          "settings": {
-            "title": {
-              "label": "Title"
-            },
-            "text": {
-              "label": "Text"
-            }
-          }
+        },
+        "video": {
+          "label": "Video",
+          "info": "Replaces the image when a file is selected. Loops muted with no controls. Plays when the section scrolls into view."
+        },
+        "media_text": {
+          "label": "Media text",
+          "info": "Shown at the bottom left of the media panel. Bold and line breaks are supported."
         }
       },
       "presets": {

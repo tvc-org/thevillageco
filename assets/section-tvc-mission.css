@@ -1,0 +1,52 @@
+/* TVC Mission — centered statement band */
+
+.section-tvc-mission {
+  margin-top: 40px !important;
+}
+
+.tvc-mission {
+  background: #86d0f4;
+}
+
+.tvc-mission__inner {
+  box-sizing: border-box;
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 72px var(--layout-gutter-x);
+  text-align: center;
+}
+
+.tvc-mission .tvc-pretitle {
+  color: #fff !important;
+  margin-bottom: 16px;
+  font-size: 18px !important;
+}
+
+.tvc-mission__title {
+  color: #113398;
+  font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
+  font-size: clamp(42px, 8vw, 78px);
+  font-weight: 400;
+  letter-spacing: -1.56px;
+  line-height: 85.5%;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 960px) {
+  .section-tvc-mission {
+    margin-top: 78px !important;
+  }
+
+  .tvc-mission__inner {
+    padding: 120px var(--layout-gutter-x);
+  }
+
+  .tvc-mission .tvc-pretitle {
+    margin-bottom: 24px;
+  }
+
+  .tvc-mission__title {
+    font-size: clamp(48px, 4.2vw, 78px);
+  }
+}

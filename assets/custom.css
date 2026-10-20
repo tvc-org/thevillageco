@@ -2809,7 +2809,7 @@ body.soft-dri .footer-brand-logo__image {
 .footer--homepage .footer__brand-col {
     flex: 0 1 47%;
     margin-right: 0;
-    max-width: 824px;
+    max-width: 395px;
     min-width: 0;
     width: 47%;
 }
@@ -3718,12 +3718,15 @@ body.village-naturals-therapy .product-form__input--pill input[type='radio']:dis
     color: rgba(63, 63, 63, 0.45);
 }
 
-/* PDP variant pills: Mr. Bubble uses outlined active state (blue) instead of filled */
+/* PDP variant pills: Mr. Bubble uses outlined active state instead of filled */
 body.mr-bubble .product-form__input--pill input[type='radio']:checked + label {
     background-color: rgb(var(--color-background));
-    color: var(--text-color-blue);
-    border-color: var(--text-color-blue);
-    border-width: 1px;
+    color: #000;
+    font-weight: 600;
+    /* NOTE: Selected border applied to all variant pills for now.
+       Revisit whether this should only apply when labels have icons/emojis
+       (.product-form__pill-label--icon). */
+    border: 2px solid #242424;
 }
 
 body.mr-bubble .product-form__input--pill input[type='radio']:checked + label::selection {

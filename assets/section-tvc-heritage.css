@@ -45,16 +45,29 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
+.section-tvc-heritage .tvc-heritage__title.tvc-section-title {
+  color: #113398;
+}
+
+.section-tvc-heritage .tvc-heritage__body.tvc-section-body p,
+.section-tvc-heritage .tvc-heritage__body.tvc-section-body > * {
+  color: #2c2c2c !important;
+}
+
 .tvc-heritage__year {
-  color: #2c2c2c;
+  color: #113398;
   font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif;
   font-size: 28px !important;
   line-height: 1 !important;
   margin: 0;
 }
 
+#MainContent .tvc-heritage__year {
+  color: #113398;
+}
+
 .tvc-heritage__timeline-text {
-  color: #7B6756;
+  color: #2c2c2c;
   font-family: Inter, Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: 400;
@@ -62,6 +75,11 @@
   line-height: 1.875;
   margin: 0;
   text-transform: uppercase;
+}
+
+#MainContent .tvc-heritage__timeline-text,
+#MainContent .tvc-heritage__timeline-text p {
+  color: #2c2c2c;
 }
 
 .tvc-heritage__timeline-text p {

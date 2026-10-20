@@ -128,11 +128,11 @@ variant-selects {
 .product-form__input--pill input[type='radio'] + label {
   border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), 0.22);
   background-color: rgb(var(--color-background));
-  color: rgb(var(--color-foreground));
+  color: #313131;
   border-radius: 999px;
   display: inline-block;
   margin: 0;
-  padding: 1.1rem 2.2rem;
+  padding: 1.1rem 1.5rem;
   font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -145,6 +145,38 @@ variant-selects {
   cursor: pointer;
   position: relative;
   flex: 0 0 auto;
+}
+
+.product-form__input--pill input[type='radio'] + label.product-form__pill-label--icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.product-form__pill-icon {
+  flex: 0 0 auto;
+  line-height: 1;
+  /* Shared ~14px optical size (Figma). Emoji fonts paint larger than their em
+     box, so emoji font-size is scaled down vs image height. */
+  --pill-icon-size: 0.77em;
+  --pill-icon-image-size: 1em;
+}
+
+.product-form__pill-icon--image {
+  display: block;
+  width: auto;
+  height: var(--pill-icon-image-size);
+  object-fit: contain;
+}
+
+.product-form__pill-icon--emoji {
+  display: inline-block;
+  font-size: var(--pill-icon-size);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .product-form__input--pill input[type='radio'] + label:before {
@@ -166,8 +198,12 @@ variant-selects {
 
 .product-form__input--pill input[type='radio']:checked + label {
   background-color: rgb(var(--color-foreground));
-  color: rgb(var(--color-background));
-  border-color: rgb(var(--color-foreground));
+  color: #000;
+  font-weight: 600;
+  /* NOTE: Selected border applied to all variant pills for now.
+     Revisit whether this should only apply when labels have icons/emojis
+     (.product-form__pill-label--icon). */
+  border: 2px solid #242424;
 }
 
 @media screen and (forced-colors: active) {

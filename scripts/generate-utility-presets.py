@@ -13,7 +13,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SNIPPETS = ROOT / "snippets"
-TEMPLATES = ROOT / "templates"
 
 DEFAULT_LIVE_EXPORT = Path.home() / (
     "Downloads/theme_export__thevillagecompany-com-homepage-redesign-2024-megamenu__04JUN2026-0350pm"
@@ -136,19 +135,6 @@ def main() -> None:
     if not subcopy:
         print("Warning: no contact-subcopy in source", file=sys.stderr)
     write_contact_preset(subcopy, source_label)
-
-    # Keep page.contact.json subcopy aligned for blocks-based contact template
-    contact_json = TEMPLATES / "page.contact.json"
-    if contact_json.is_file() and subcopy:
-        contact_data = json.loads(contact_json.read_text())
-        utility = contact_data["sections"].get("utility", contact_data["sections"].get("main"))
-        if utility and "blocks" in utility:
-            for block in utility["blocks"].values():
-                if block.get("type") == "subcopy":
-                    block["settings"]["text"] = subcopy
-                    break
-            contact_json.write_text(json.dumps(contact_data, indent=2, ensure_ascii=False) + "\n")
-            print(f"Updated {contact_json} subcopy")
 
     # Keep theme-editor templates seeded from the generated preset snippets
     seed = ROOT / "scripts" / "seed-utility-templates-from-presets.py"
