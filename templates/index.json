@@ -93,6 +93,15 @@
         "media_text": "<p><strong>TVC Group</strong><br/>A family of brands united by a shared purpose of making everyday life a little better.</p>"
       }
     },
+    "tvc_mission_WzG7zi": {
+      "type": "tvc-mission",
+      "name": "t:sections.tvc-mission.presets.name",
+      "settings": {
+        "anchor_id": "our-mission",
+        "pre_title": "Our Mission",
+        "title": "To build &amp; grow brands<br>that enhance<br>every body's every day."
+      }
+    },
     "tvc_brands_7wWERV": {
       "type": "tvc-brands",
       "blocks": {
@@ -175,7 +184,7 @@
       "settings": {
         "anchor_id": "brands",
         "pre_title": "Brand portfolio",
-        "title": "Our portfolio of\ntrusted personal care brands"
+        "title": "MANY BRANDS.<br>  \nONE PURPOSE."
       }
     },
     "tvc_ingredients_Agg6Vq": {
@@ -242,7 +251,7 @@
       "settings": {
         "anchor_id": "innovation",
         "pre_title": "Thoughtful innovation",
-        "title": "Carefully selected ingredients.\n<span class=\"tvc-title-accent\">Crafted with intention.</span>",
+        "title": "<span class=\"tvc-title-accent\">Carefully selected<br> ingredients.<br> \nCrafted with intention.</span>",
         "text": "<p>From fragrances that inspire calm and comfort to ingredients you can actually recognize — our formulas are made to get the most out of every moment.</p><p>Because everyone deserves to feel their best, every day.</p>"
       }
     },
@@ -297,7 +306,7 @@
         "anchor_id": "our-heritage",
         "pre_title": "Our heritage",
         "title": "Sixty years of \nsmall comforts.",
-        "text": "<p>The Village Company started with a single brand and a simple idea: everyday rituals matter most. Six decades later, we're still in the business of small comforts — six brands, one belief, and a long list of moments that helped get us here.</p>",
+        "text": "<p>TVC Group started with a single brand and a simple idea: the everyday rituals matter most. Six decades later, we're still in the business of small comforts — five brands, one belief, and a long list of moments that helped get us here.</p>",
         "video": "shopify://files/videos/TVC-Video4_1.mp4"
       }
     }
@@ -305,6 +314,7 @@
   "order": [
     "featured_product_8tXYNU",
     "tvc_home_intro_eFKmKt",
+    "tvc_mission_WzG7zi",
     "tvc_brands_7wWERV",
     "tvc_ingredients_Agg6Vq",
     "tvc_heritage_xbV9AE"
