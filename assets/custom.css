@@ -2845,7 +2845,7 @@ body.soft-dri .footer-brand-logo__image {
 
 .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:first-of-type p,
 .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:first-of-type p span {
-    color: var(--footer-text-color, #fff) !important;
+    color: #fff !important;
     font-family: FuturaPTMedium, "Futura PT", Futura, sans-serif !important;
     font-size: clamp(18px, 1.45vw, 26px) !important;
     font-weight: normal !important;
@@ -2859,7 +2859,7 @@ body.soft-dri .footer-brand-logo__image {
     align-items: flex-end !important;
     background: transparent !important;
     border: none !important;
-    border-bottom: 2px solid var(--footer-text-color, #f8eff0) !important;
+    border-bottom: 2px solid #fff !important;
     border-radius: 0 !important;
     display: flex !important;
     gap: 16px;
@@ -2874,7 +2874,7 @@ body.soft-dri .footer-brand-logo__image {
 .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"] {
     background: transparent !important;
     border: none !important;
-    color: var(--footer-text-color, #fff) !important;
+    color: #fff !important;
     font-family: Inter, sans-serif !important;
     font-size: 18px !important;
     font-weight: 400 !important;
@@ -2888,12 +2888,12 @@ body.soft-dri .footer-brand-logo__image {
 .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 1000px var(--footer-bg-color, #00a1dd) inset !important;
     box-shadow: 0 0 0 1000px var(--footer-bg-color, #00a1dd) inset !important;
-    -webkit-text-fill-color: var(--footer-text-color, #fff) !important;
-    caret-color: var(--footer-text-color, #fff);
+    -webkit-text-fill-color: #fff !important;
+    caret-color: #fff;
 }
 
 .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]::placeholder {
-    color: var(--footer-text-color, #fff) !important;
+    color: #fff !important;
     font-size: 18px !important;
 }
 
