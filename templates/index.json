@@ -84,10 +84,13 @@
       "name": "t:sections.tvc-home-intro.presets.name",
       "settings": {
         "anchor_id": "our-story",
-        "pre_title": "Trusted personal care",
-        "title": "Built on trust.\n<span class=\"tvc-home-intro__title-accent\">Made for \neveryday life.</span>",
-        "text": "<p>For over 30 years, we’ve been creating personal care products that help people feel better—body and mind. From a quiet soak to laughter-filled bath time with the kids, our products are designed for moments that restore, relax, and reconnect.</p>",
-        "image": "shopify://shop_images/tvc-home-intro.jpg"
+        "pre_title": "New Name. Same Brands You Know & Love.",
+        "title": "The Village<br> Company is<br> now <span class=\"tvc-home-intro__title-accent\">TVC Group</span>",
+        "text": "<p>Our new name reflects how we've grown, bringing together a family of beloved personal care brands, including Mr. Bubble®, Village Naturals® Therapy®, Village Naturals Bath Shoppe®, Soft & Dri®, Dep®, and HALLU®.<br/></p>",
+        "secondary_title": "Our new symbol",
+        "secondary_text": "<p>Our new symbol brings our mission to life. Each leaf represents the individuality of the people we serve, with their own routines, needs, and moments of personal care. Together, the leaves form something bigger: a family of brands united by a shared purpose of making everyday life a little better.</p>",
+        "image": "shopify://shop_images/tvc-home-intro.jpg",
+        "media_text": "<p><strong>TVC Group</strong><br/>A family of brands united by a shared purpose of making everyday life a little better.</p>"
       }
     },
     "tvc_brands_7wWERV": {
