@@ -1,12 +1,12 @@
 /**
  * Rewards page — Yotpo overrides toward new TVC comp (non-production).
- * Hero: cream text panel left / lifestyle image right; mobile stacks image above text.
+ * Hero: text panel left / lifestyle image right; mobile stacks image above text.
  * How It Works: numbered steps matching new comp.
  */
 
-/* Page cream — sections stay transparent so shades don't stack */
+/* Page ground — sections stay transparent so bands don't stack */
 .rewards-page {
-  background-color: #f5f1ea;
+  background-color: #fff;
 }
 
 /* ----- Shared ----- */
@@ -71,12 +71,12 @@
 
 .rewards-page .yotpo-widget-hero-section.yotpo-widget-override-css .yotpo-title::before {
   content: 'THE VILLAGE CO.';
-  color: #323131 !important;
+  color: #87cef2 !important;
 }
 
 .rewards-page .yotpo-widget-hero-section.yotpo-widget-override-css .yotpo-title::after {
   content: 'REWARDS';
-  color: #7B6756 !important;
+  color: #113398 !important;
   margin-top: 0.15em;
 }
 
@@ -151,14 +151,14 @@
   }
 }
 
-/* Join Now — solid dark */
+/* Join Now — solid dark blue */
 .rewards-page
   .yotpo-widget-hero-section.yotpo-widget-override-css
   .yotpo-customer-logged-out-buttons
   .yotpo-register-link
   button {
-  background: #323131 !important;
-  border: 2px solid #323131 !important;
+  background: #113398 !important;
+  border: 2px solid #113398 !important;
   color: #fff !important;
 }
 
@@ -177,8 +177,8 @@
   .yotpo-login-link
   button {
   background: transparent !important;
-  border: 2px solid #323131 !important;
-  color: #323131 !important;
+  border: 2px solid #113398 !important;
+  color: #113398 !important;
 }
 
 .rewards-page
@@ -186,7 +186,7 @@
   .yotpo-customer-logged-out-buttons
   .yotpo-login-link
   .yotpo-action-button-text {
-  color: #323131 !important;
+  color: #113398 !important;
 }
 
 /* ----- Logged-in greeting (Redeem Now / Rewards History) ----- */
@@ -513,7 +513,7 @@
 /* ----- How It Works (yotpo-rewards-guide-tile-wrapper) ----- */
 /* Prefix includes my-rewards-widget path so we beat theme.rewards-styles specificity */
 
-/* Logged-in greeting / my-rewards chrome — inherit page cream */
+/* Logged-in greeting / my-rewards chrome — inherit page background */
 .rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css,
 .rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css .yotpo-background,
 .rewards-page .yotpo-widget-my-rewards-widget.yotpo-widget-override-css .yotpo-logged-in-view,
@@ -526,7 +526,7 @@
   max-width: none !important;
   width: 100% !important;
   margin: 0 !important;
-  background-color: #f1ece6 !important;
+  background-color: rgba(132, 218, 246, 0.22) !important;
   box-sizing: border-box;
   padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 48px) !important;
 }
@@ -572,7 +572,7 @@
   line-height: 1.1 !important;
   text-align: center !important;
   text-transform: uppercase !important;
-  color: #343434 !important;
+  color: #113398 !important;
 }
 
 .rewards-page
@@ -713,7 +713,7 @@
   font-size: 38px !important;
   font-weight: 500 !important;
   line-height: 1 !important;
-  color: #f7f3ec !important;
+  color: #fff !important;
 }
 
 .rewards-page
@@ -744,7 +744,7 @@
   line-height: 0.95 !important;
   text-transform: uppercase !important;
   text-align: center !important;
-  color: #343434 !important;
+  color: #113398 !important;
 }
 
 .rewards-page
@@ -776,7 +776,7 @@
   font-style: normal !important;
   line-height: 1.45 !important;
   text-align: center !important;
-  color: #7b6756 !important;
+  color: #2c2c2c !important;
   white-space: normal !important;
   max-width: 240px !important;
 }
@@ -914,7 +914,7 @@
   line-height: 1.1 !important;
   text-align: center !important;
   text-transform: uppercase !important;
-  color: #343434 !important;
+  color: #113398 !important;
   margin: 0 auto clamp(64px, 7vw, 96px) !important;
   max-width: calc(var(--page-width) + (var(--layout-gutter-x) * 2));
   padding: 0 var(--layout-gutter-x);
@@ -1257,7 +1257,7 @@
   line-height: 1.1 !important;
   text-align: center !important;
   text-transform: uppercase !important;
-  color: #343434 !important;
+  color: #113398 !important;
   margin: 0 auto clamp(15px, 4vw, 40px) !important;
   max-width: 1200px;
   padding: 0 var(--layout-gutter-x, 16px);
@@ -1375,7 +1375,7 @@
   .yotpo-vip-tiers-container
   .yotpo-grid-vip-tier
   .yotpo-vip-tiers-grid-benefit-status:nth-child(even) {
-  background-color: #faf7f2 !important;
+  background-color: rgba(132, 218, 246, 0.18) !important;
 }
 
 
@@ -1391,7 +1391,7 @@
 }
 
 .rewards-page .yotpo-vip-tiers-widget.yotpo-widget-override-css .yotpo-vip-tiers-container .yotpo-vip-tiers-grid-header .yotpo-vip-tier-threshold {
-  color: #7B6756 !important;
+  color: #113398 !important;
   font-size: 13px !important;
   text-transform: uppercase !important;
   font-weight: 600 !important;
@@ -1494,7 +1494,7 @@
   line-height: 1.1 !important;
   text-align: center !important;
   text-transform: uppercase !important;
-  color: #343434 !important;
+  color: #87cef2 !important;
   margin: 0 0 0.5rem !important;
   padding: 0 !important;
 }
@@ -1510,7 +1510,7 @@
   line-height: 1.1 !important;
   text-align: center !important;
   text-transform: uppercase !important;
-  color: #7b6756 !important;
+  color: #113398 !important;
   margin: 0 0 clamp(28px, 4vw, 40px) !important;
   padding: 0 !important;
   border: none !important;
@@ -1583,6 +1583,15 @@
   }
 }
 
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-option-reward,
+.rewards-page
+  .yotpo-coupons-redemption-widget.yotpo-widget-override-css
+  .yotpo-redemption-reward {
+  color: #113398 !important;
+}
+
 @media screen and (max-width: 959px) {
   .rewards-page .yotpo-coupons-redemption-widget.yotpo-widget-override-css .yotpo-content-container .yotpo-headline,
   .rewards-page .yotpo-coupons-redemption-widget.yotpo-widget-override-css .yotpo-content-container .yotpo-rule {
@@ -1627,7 +1636,7 @@
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  background: #323131 !important;
+  background: #113398 !important;
   color: #fff !important;
   white-space: nowrap !important;
 }
@@ -1757,7 +1766,7 @@
 
 /* ----- Refer a Friend (yotpo-widget-referral-widget) ----- */
 .rewards-page .yotpo-widget-referral-widget.yotpo-widget-override-css {
-  /* background-color: #f1ece6 !important; */
+  /* background-color: rgba(132, 218, 246, 0.22) !important; */
   padding: clamp(40px, 5vw, 72px) var(--layout-gutter-x, 16px) !important;
   box-sizing: border-box;
 }
@@ -2000,7 +2009,7 @@
   line-height: 1.1 !important;
   text-align: center !important;
   text-transform: uppercase !important;
-  color: #343434 !important;
+  color: #113398 !important;
   margin: 0 0 clamp(36px, 4vw, 48px) !important;
   padding: 0 !important;
   border: none !important;
