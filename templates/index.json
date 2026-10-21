@@ -86,7 +86,7 @@
         "anchor_id": "our-story",
         "pre_title": "New Name. Same Brands You Know & Love.",
         "title": "The Village<br> Company is<br> now <span class=\"tvc-home-intro__title-accent\">TVC Group</span>",
-        "text": "<p>Our new name reflects how we've grown, bringing together a family of beloved personal care brands, including Mr. Bubble®, Village Naturals® Therapy®, Village Naturals Bath Shoppe®, Soft & Dri®, Dep®, and HALLU®.<br/></p>",
+        "text": "<p>Our new name reflects how we've grown, bringing together a family of beloved personal care brands, including Mr. Bubble®, Village Naturals Therapy®, Village Naturals Bath Shoppe®, Soft & Dri®, Dep®, and HALLU®.<br/></p>",
         "secondary_title": "Our new symbol",
         "secondary_text": "<p>Our new symbol brings our mission to life. Each leaf represents the individuality of the people we serve, with their own routines, needs, and moments of personal care. Together, the leaves form something bigger: a family of brands united by a shared purpose of making everyday life a little better.</p>",
         "image": "shopify://shop_images/tvc-home-intro.jpg",
@@ -269,7 +269,7 @@
           "type": "timeline",
           "settings": {
             "year": "1993",
-            "text": "Minnetonka Brands (now The Village Company) is founded, with a focus on personal care that prioritizes how it feels over how it sells."
+            "text": "Minnetonka Brands (now TVC Group) is founded, with a focus on personal care that prioritizes how it feels over how it sells."
           }
         },
         "timeline_BNHEWE": {
