@@ -1,10 +1,23 @@
 {% comment %} @deprecated Use card-product-badges.liquid {% endcomment %}
-{%- render 'card-product-badges',
-  product: product,
-  card_product: card_product,
-  section_id: section_id,
-  position: position,
-  show_low_stock: show_low_stock,
-  low_stock_threshold: low_stock_threshold,
-  badge_context: badge_context | default: 'nav'
--%}
+{%- render 'card-product-badges', product: product, card_product: card_product, section_id: section_id, position: position, show_low_stock: show_low_stock, low_stock_threshold: low_stock_threshold, badge_context: badge_context, default: 'nav' -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%- render 'card-product-badges',
+      product: product,
+      card_product: card_product,
+      section_id: section_id,
+      position: position,
+      show_low_stock: show_low_stock,
+      low_stock_threshold: low_stock_threshold,
+      badge_context: badge_context | default: 'nav'
+    -%}
+  to: "{%- render 'card-product-badges', product: product, card_product: card_product,
+    section_id: section_id, position: position, show_low_stock: show_low_stock, low_stock_threshold:
+    low_stock_threshold, badge_context: badge_context, default: 'nav' -%}"
+  position: 74..320
+{% endcomment %}
