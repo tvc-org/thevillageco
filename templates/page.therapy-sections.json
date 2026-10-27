@@ -158,14 +158,14 @@
         "feature_xDbEHJ": {
           "type": "feature",
           "settings": {
-            "product": "calm-milk-bath",
+            "product": "hydrate-bath-enhancer-vitamin-booster-serum",
             "show_product_badges": true,
             "collection": "",
-            "image": "shopify://shop_images/VNT_HomeFeature_Calm.jpg",
-            "heading_block": "Introducing Calm Plant Milk Bubble Bath",
-            "text": "<p>Turn your bath into a sanctuary of calm.</p>",
-            "link_label": "Shop Calm",
-            "link": "shopify://products/calm-milk-bath"
+            "image": "shopify://shop_images/Hydrate-website-image.jpg",
+            "heading_block": "Introducing Hydrate Bath Enhancer Serum",
+            "text": "<p>Packed with skin-loving vitamins and a Tropical Oasis scent.</p>",
+            "link_label": "Shop Now",
+            "link": "shopify://products/hydrate-bath-enhancer-vitamin-booster-serum"
           }
         },
         "feature_DpNyAj": {
