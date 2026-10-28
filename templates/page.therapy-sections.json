@@ -20,6 +20,24 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_KWDkWR": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/Updated-Tub-option.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_nB8KFj": {
           "type": "slide",
           "disabled": true,
@@ -134,6 +152,7 @@
         }
       },
       "block_order": [
+        "slide_KWDkWR",
         "slide_nB8KFj",
         "slide_69d3VX",
         "slide_79bBVn",
