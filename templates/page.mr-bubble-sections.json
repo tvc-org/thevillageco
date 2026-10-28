@@ -20,6 +20,24 @@
     "tvc_slideshow_YYRRVn": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_7cfQMG": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/Big-Bubblin-Fun-Holiday-Window-Display.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_7ygtjW": {
           "type": "slide",
           "disabled": true,
@@ -135,6 +153,7 @@
         }
       },
       "block_order": [
+        "slide_7cfQMG",
         "slide_7ygtjW",
         "slide_gY6Q6h",
         "slide_crXNpy",
