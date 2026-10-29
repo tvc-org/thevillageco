@@ -22,21 +22,20 @@
       "blocks": {
         "slide_7cfQMG": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/Big-Bubblin-Fun-Holiday-Window-Display.jpg",
             "mobile_image": "shopify://shop_images/Mr-Bubble-header-mobile.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "Step Into a World of Bubblin' Holiday Magic!",
+            "text": "<p>Make spirits bright and bath time bubbly with Mr. Bubble! From festive foam soaps to colorful bath time surprises, discover gifts and goodies that bring extra fun to the holiday season.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "SHOP HOLIDAY FUN",
+            "link": "shopify://collections/mr-bubble-limited-editions-gifts"
           }
         },
         "slide_7ygtjW": {
@@ -98,6 +97,7 @@
         },
         "slide_9UyrEb": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
