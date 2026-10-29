@@ -20,16 +20,14 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
-        "slide_KWDkWR": {
+        "slide_JNKJJE": {
           "type": "slide",
           "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
-            "image": "shopify://shop_images/Updated-Tub-option.jpg",
-            "mobile_image": "shopify://shop_images/mobile-version.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
+            "heading": "Make the season a little more cozy with Village Naturals Therapy. From comforting bath soaks to relaxing self-care essentials, discover thoughtful ways to treat yourself and everyone on your list.",
             "text": "<p>Add descriptive text for this slide.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
@@ -37,6 +35,24 @@
             "product": "",
             "link_label": "",
             "link": ""
+          }
+        },
+        "slide_KWDkWR": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/Updated-Tub-option.jpg",
+            "mobile_image": "shopify://shop_images/mobile-version.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "A Little Holiday Magic. A Lot of Relaxation.",
+            "text": "<p>Make the season a little more cozy with Village Naturals Therapy. From comforting bath soaks to relaxing self-care essentials, discover thoughtful ways to treat yourself and everyone on your list.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "GIVE THE GIFT OF RELAXATION",
+            "link": "shopify://collections/therapy-collections"
           }
         },
         "slide_nB8KFj": {
@@ -60,20 +76,21 @@
         },
         "slide_69d3VX": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection.jpg",
             "mobile_image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection_MOBILE.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Soak in Something Better",
-            "text": "<p>Made with 100% Natural Magnesium Chloride, our Magnesium Bath Flakes promote muscle relaxation and skin hydration. Now available in GLOW featuring a Moroccan Melody fragrance.</p>",
+            "heading": "A Little Holiday Magic. A Lot of Relaxation.",
+            "text": "<p>Make the season a little more cozy with Village Naturals Therapy. From comforting bath soaks to relaxing self-care essentials, discover thoughtful ways to treat yourself and everyone on your list.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "Shop Now",
-            "link": "shopify://collections/therapy-magnesium-bath-flakes"
+            "link_label": "GIVE THE GIFT OF RELAXATION",
+            "link": "shopify://collections/therapy-collections"
           }
         },
         "slide_79bBVn": {
@@ -153,6 +170,7 @@
         }
       },
       "block_order": [
+        "slide_JNKJJE",
         "slide_KWDkWR",
         "slide_nB8KFj",
         "slide_69d3VX",
