@@ -20,23 +20,6 @@
     "tvc_slideshow_6AtkEb": {
       "type": "tvc-slideshow",
       "blocks": {
-        "slide_JNKJJE": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "split_background": "#ffd1dc",
-            "split_text_tone": "dark",
-            "preserve_image_aspect_ratio": false,
-            "heading": "Make the season a little more cozy with Village Naturals Therapy. From comforting bath soaks to relaxing self-care essentials, discover thoughtful ways to treat yourself and everyone on your list.",
-            "text": "<p>Add descriptive text for this slide.</p>",
-            "stacked_text_in_media": false,
-            "stacked_desktop_overlay_text_tone": "dark",
-            "stacked_text_position": "bottom_center",
-            "product": "",
-            "link_label": "",
-            "link": ""
-          }
-        },
         "slide_KWDkWR": {
           "type": "slide",
           "settings": {
@@ -83,7 +66,7 @@
             "image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection.jpg",
             "mobile_image": "shopify://shop_images/Magnesium-Bath-Flakes-Spa-Collection_MOBILE.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "A Little Holiday Magic. A Lot of Relaxation.",
+            "heading": "Magnesium Flakes",
             "text": "<p>Make the season a little more cozy with Village Naturals Therapy. From comforting bath soaks to relaxing self-care essentials, discover thoughtful ways to treat yourself and everyone on your list.</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
@@ -170,7 +153,6 @@
         }
       },
       "block_order": [
-        "slide_JNKJJE",
         "slide_KWDkWR",
         "slide_nB8KFj",
         "slide_69d3VX",
