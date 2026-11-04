@@ -51,10 +51,52 @@
         "show_sound_toggle": true,
         "show_product_badges": true
       }
+    },
+    "tvc_dual_feature_dQwKca": {
+      "type": "tvc-dual-feature",
+      "blocks": {
+        "feature_N47yGH": {
+          "type": "feature",
+          "settings": {
+            "product": "unicorn-bath-bomb",
+            "show_product_badges": true,
+            "collection": "",
+            "image": "shopify://shop_images/halu-unicorn-bb.jpg",
+            "heading_block": "",
+            "text": "<p>A little magic for your bath. Watch it float, spin, and fizz into a colorful, bubbly wonderland.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "feature_3FLce7": {
+          "type": "feature",
+          "settings": {
+            "product": "mermaid-bath-bomb",
+            "show_product_badges": true,
+            "collection": "",
+            "image": "shopify://shop_images/halu-mermaid-bb.jpg",
+            "heading_block": "",
+            "text": "<p>Dive into a sea of bubbles and shimmering color with a bath bomb that makes every soak a splash.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "feature_N47yGH",
+        "feature_3FLce7"
+      ],
+      "name": "t:sections.tvc-dual-feature.presets.name",
+      "settings": {
+        "heading": "",
+        "color_scheme": "",
+        "show_sound_toggle": false
+      }
     }
   },
   "order": [
     "main",
-    "tvc_slideshow_VGctcJ"
+    "tvc_slideshow_VGctcJ",
+    "tvc_dual_feature_dQwKca"
   ]
 }
