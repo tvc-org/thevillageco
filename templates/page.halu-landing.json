@@ -92,11 +92,47 @@
         "color_scheme": "",
         "show_sound_toggle": false
       }
+    },
+    "tvc_slideshow_nYeRiG": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_xFDQJ4": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/halu-bora-bora-geode-bb.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "A HIDDEN GEM FOR YOUR BATH",
+            "text": "<p>Discover a little paradise in every soak. Bursting with colorful crystals, shimmering sparkle, and tropical-inspired fragrance, this bath bomb is pure magic.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "hallu-bora-bora-geode-bath-bomb",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_xFDQJ4"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true,
+        "show_product_badges": true
+      }
     }
   },
   "order": [
     "main",
     "tvc_slideshow_VGctcJ",
-    "tvc_dual_feature_dQwKca"
+    "tvc_dual_feature_dQwKca",
+    "tvc_slideshow_nYeRiG"
   ]
 }
