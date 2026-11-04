@@ -11,13 +11,50 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "tvc_slideshow_VGctcJ": {
+      "type": "tvc-slideshow",
+      "blocks": {
+        "slide_YDywEC": {
+          "type": "slide",
+          "settings": {
+            "split_background": "#FFD1DC",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/halu-festive-bubble.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "CELEBRATE THE SEASON WITH BUBBLES",
+            "text": "<p>Make the season a little more magical. Discover festive fragrances, colorful bubbles, and bath-time treats that bring joy to every soak.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "Shop Now",
+            "link": "shopify://collections/hallu-collections"
+          }
+        }
+      },
+      "block_order": [
+        "slide_YDywEC"
+      ],
+      "name": "TVC Slideshow",
+      "settings": {
+        "layout": "stacked",
+        "full_width": true,
+        "split_media_position_desktop": "right",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_sound_toggle": true,
+        "show_product_badges": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "tvc_slideshow_VGctcJ"
   ]
 }
