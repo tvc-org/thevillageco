@@ -88,7 +88,7 @@
           "settings": {
             "text": "The Village Co.",
             "brand_color": "#113398",
-            "footer_text_color": "#87CEF2",
+            "footer_text_color": "#87cef2",
             "brand_page_link": "",
             "footer_logo": "shopify://shop_images/tvc-group-logo-footer.png",
             "policy_extra_links": "tvc-footer-extra-links",
@@ -103,6 +103,13 @@
             "social_snapchat_link": "",
             "social_tumblr_link": "",
             "social_vimeo_link": ""
+          }
+        },
+        "sub_brand_hqiYLN": {
+          "type": "sub_brand",
+          "settings": {
+            "text": "Hallu",
+            "footer_logo": "shopify://shop_images/logo-halu.png"
           }
         },
         "footer-0": {
@@ -133,6 +140,7 @@
         "brand_Qm8y9b",
         "brand_Gtdy4W",
         "brand_H6kN3J",
+        "sub_brand_hqiYLN",
         "footer-0",
         "footer-1",
         "footer-2"
