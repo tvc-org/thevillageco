@@ -570,6 +570,13 @@
             "bottom_button_link": "shopify://collections/therapy-collections",
             "bottom_button_text": "All Products"
           }
+        },
+        "sub_brand_9rwakV": {
+          "type": "sub_brand",
+          "settings": {
+            "text": "Hallu",
+            "header_logo": "shopify://shop_images/logo-halu.png"
+          }
         }
       },
       "block_order": [
@@ -600,7 +607,8 @@
         "touts_group_NMAYaB",
         "touts_group_hUkgYf",
         "touts_group_9zbVBw",
-        "touts_group_YXUCGA"
+        "touts_group_YXUCGA",
+        "sub_brand_9rwakV"
       ],
       "settings": {
         "logo_position": "middle-left",
