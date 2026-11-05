@@ -13,7 +13,17 @@
 
   Accepts:
     brand_blocks (optional) — header brand blocks; pass explicitly from sections/header.liquid
+
+  A sub brand (snippets/sub-brand-handle.liquid) is not a header brand. Those pages
+  use The Village Co. header and footer. The body class stays the sub brand handle.
 {% endcomment %}
+{%- capture sub_brand_handle -%}
+  {%- render 'sub-brand-handle' -%}
+{%- endcapture -%}
+{%- assign sub_brand_handle = sub_brand_handle | strip -%}
+{%- if sub_brand_handle != blank -%}
+  {{- 'the-village-co' -}}
+{%- else -%}
 {%- liquid
   assign resolved_brand_blocks = brand_blocks
   if resolved_brand_blocks == blank and sections['header'] != blank
@@ -217,3 +227,4 @@
 {%- endif -%}
 
 {{- brand_handle -}}
+{%- endif -%}

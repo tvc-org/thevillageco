@@ -139,6 +139,22 @@
   {% endif %}
 {% endfor %}
 
+{%- capture sub_brand_handle_resolved -%}
+  {%- render 'sub-brand-handle' -%}
+{%- endcapture -%}
+{%- assign sub_brand_handle_resolved = sub_brand_handle_resolved | strip -%}
+{%- assign sub_brand_block = blank -%}
+{%- if sub_brand_handle_resolved != blank -%}
+  {%- assign sub_brand_blocks = section.blocks | where: 'type', 'sub_brand' -%}
+  {%- for block in sub_brand_blocks -%}
+    {%- assign sub_brand_block_handle = block.settings.text | handleize -%}
+    {%- if block.settings.text != blank and sub_brand_block_handle == sub_brand_handle_resolved -%}
+      {%- assign sub_brand_block = block -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
 <style>
   .brand--{{ current_brand.id }}, #fsb_bar, #fsb_placeholder,
   .header-bottom .header-bottom__links .header-bottom__item.active .header-bottom__link:after,
@@ -263,7 +279,7 @@
         if section.settings.menu_type_desktop == 'dropdown'
           render 'header-dropdown-menu', current_brand: current_brand, brand_blocks: brand_blocks
         elsif section.settings.menu_type_desktop != 'drawer'
-          render 'header-bottom', current_brand: current_brand, brand_blocks: brand_blocks, tout_blocks: tout_blocks
+          render 'header-bottom', current_brand: current_brand, brand_blocks: brand_blocks, tout_blocks: tout_blocks, sub_brand_block: sub_brand_block
         endif
       endif
     %}
@@ -776,6 +792,26 @@
           "type": "link_list",
           "label": "Menu",
           "id": "menu"
+        }
+      ]
+    },
+    {
+      "name": "Sub brand",
+      "type": "sub_brand",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Does not add a header tab. Name must match the Sub brand metafield choice and the footer Sub brand block, for example Hallu."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "header_logo",
+          "label": "Header logo"
         }
       ]
     },

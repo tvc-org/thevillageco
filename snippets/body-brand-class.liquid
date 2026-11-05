@@ -1,9 +1,20 @@
 {% comment %}
-  Appends the current brand handle as an extra class on <body> (see layout/theme.liquid).
-  Delegates to snippets/resolve-brand-handle.liquid — no local matching rules here.
+  Class for <body> (see layout/theme.liquid).
+
+  Header brands still come from snippets/resolve-brand-handle.liquid.
+  When a sub brand is set, this class is the sub brand (Hallu → hallu) and the
+  header brand resolves to The Village Co. so header-brand styles do not apply.
 {% endcomment %}
-{%- capture brand_body_handle -%}
-  {%- render 'resolve-brand-handle' -%}
+{%- capture sub_brand_handle -%}
+  {%- render 'sub-brand-handle' -%}
 {%- endcapture -%}
-{%- assign brand_body_handle = brand_body_handle | strip -%}
-{%- if brand_body_handle != blank %} {{ brand_body_handle }}{% endif -%}
+{%- assign sub_brand_handle = sub_brand_handle | strip -%}
+{%- if sub_brand_handle != blank -%}
+  {{- sub_brand_handle -}}
+{%- else -%}
+  {%- capture brand_body_handle -%}
+    {%- render 'resolve-brand-handle' -%}
+  {%- endcapture -%}
+  {%- assign brand_body_handle = brand_body_handle | strip -%}
+  {%- if brand_body_handle != blank %} {{ brand_body_handle }}{% endif -%}
+{%- endif -%}

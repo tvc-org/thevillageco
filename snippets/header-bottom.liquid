@@ -4,12 +4,21 @@
       href="{% if current_brand.settings.brand_page_link != blank %}{{ current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
       class="header-block header-brand"
     >
-      <img
-        src="{{ current_brand.settings.nav_image | img_url: 'x76' }}"
-        alt="{{ current_brand.settings.text | escape }}"
-        width="76"
-        height="76"
-      >
+      {%- if sub_brand_block != blank and sub_brand_block.settings.header_logo != blank -%}
+        <img
+          src="{{ sub_brand_block.settings.header_logo | image_url: height: 76 }}"
+          alt="{{ sub_brand_block.settings.text | escape }}"
+          width="{{ sub_brand_block.settings.header_logo.width }}"
+          height="{{ sub_brand_block.settings.header_logo.height }}"
+        >
+      {%- else -%}
+        <img
+          src="{{ current_brand.settings.nav_image | img_url: 'x76' }}"
+          alt="{{ current_brand.settings.text | escape }}"
+          width="76"
+          height="76"
+        >
+      {%- endif -%}
     </a>
   </div>
   <ul class="header-bottom__links mobile-hidden" data-size="{{ current_brand.settings.menu.links | size }}">

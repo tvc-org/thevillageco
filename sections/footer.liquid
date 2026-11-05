@@ -30,6 +30,22 @@
   {% endif %}
 {% endif %}
 
+{%- capture sub_brand_handle_resolved -%}
+  {%- render 'sub-brand-handle' -%}
+{%- endcapture -%}
+{%- assign sub_brand_handle_resolved = sub_brand_handle_resolved | strip -%}
+{%- assign sub_brand_block = blank -%}
+{%- if sub_brand_handle_resolved != blank -%}
+  {%- assign sub_brand_blocks = section.blocks | where: 'type', 'sub_brand' -%}
+  {%- for block in sub_brand_blocks -%}
+    {%- assign sub_brand_block_handle = block.settings.text | handleize -%}
+    {%- if block.settings.text != blank and sub_brand_block_handle == sub_brand_handle_resolved -%}
+      {%- assign sub_brand_block = block -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
 {%- style -%}
   .footer {
     margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
@@ -111,21 +127,27 @@
               if footer_is_homepage
                 assign footer_logo_width = 824
               endif
+              assign footer_logo_image = blank
+              assign footer_logo_alt = blank
+              if sub_brand_block != blank and sub_brand_block.settings.footer_logo != blank
+                assign footer_logo_image = sub_brand_block.settings.footer_logo
+                assign footer_logo_alt = sub_brand_block.settings.text
+              elsif footer_current_brand and footer_current_brand.settings.footer_logo != blank
+                assign footer_logo_image = footer_current_brand.settings.footer_logo
+                assign footer_logo_alt = footer_current_brand.settings.text
+              endif
             -%}
-            {%- if footer_brand_blocks.size > 0
-              and footer_current_brand
-              and footer_current_brand.settings.footer_logo != blank
-            -%}
+            {%- if footer_logo_image != blank -%}
               <div class="footer-brand-logo">
                 <a
                   href="{% if footer_current_brand.settings.brand_page_link != blank %}{{ footer_current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
                   class="footer-brand-logo__link"
                 >
                   <img
-                    src="{{ footer_current_brand.settings.footer_logo | image_url: width: footer_logo_width }}"
-                    alt="{{ footer_current_brand.settings.text | escape }}"
-                    width="{{ footer_current_brand.settings.footer_logo.width }}"
-                    height="{{ footer_current_brand.settings.footer_logo.height }}"
+                    src="{{ footer_logo_image | image_url: width: footer_logo_width }}"
+                    alt="{{ footer_logo_alt | escape }}"
+                    width="{{ footer_logo_image.width }}"
+                    height="{{ footer_logo_image.height }}"
                     loading="lazy"
                     class="footer-brand-logo__image{% if footer_is_homepage %} footer-brand-logo__image--homepage{% endif %}"
                   >
@@ -558,6 +580,26 @@
           "type": "text",
           "id": "social_vimeo_link",
           "label": "Vimeo"
+        }
+      ]
+    },
+    {
+      "name": "Sub brand",
+      "type": "sub_brand",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Name must match the header Sub brand block and the Sub brand metafield choice, for example Hallu. Footer colors and menus stay on the parent brand."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Footer logo"
         }
       ]
     },
