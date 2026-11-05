@@ -232,7 +232,9 @@
   >
     {%- if current_brand.settings.menu != blank -%}
       <div class="header__left-icons hide-min-1025">
-        {%- render 'header-drawer', current_brand: current_brand, tout_blocks: tout_blocks -%}
+        {%- if sub_brand_block == blank -%}
+          {%- render 'header-drawer', current_brand: current_brand, tout_blocks: tout_blocks -%}
+        {%- endif -%}
         {%- render 'header-search', input_id: 'Search-In-Modal' -%}
       </div>
     {%- elsif section.settings.logo_position == 'top-center' or section.settings.menu == blank -%}

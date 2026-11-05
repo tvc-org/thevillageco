@@ -3501,6 +3501,42 @@ img.object-fit-contain {
    Per-brand UI (body.{handle}, .footer-newsletter--{slug}, utilities).
    ========================================================================== */
 
+/* --- Hallu — white footer, black text, compact logo --- */
+body.hallu .footer.footer--branded {
+    background: #fff;
+    color: #000;
+    --footer-bg-color: #fff;
+    --footer-text-color: #000;
+}
+
+body.hallu .footer-brand-logo__image,
+body.hallu .footer--homepage .footer-brand-logo__image--homepage {
+    height: auto;
+    max-width: 155px;
+    width: auto;
+}
+
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:first-of-type p,
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:first-of-type p span,
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"],
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]::placeholder {
+    color: #000 !important;
+}
+
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type {
+    border-bottom-color: #000 !important;
+}
+
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill,
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:hover,
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:focus,
+body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:last-of-type input[type="email"]:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+    box-shadow: 0 0 0 1000px #fff inset !important;
+    -webkit-text-fill-color: #000 !important;
+    caret-color: #000;
+}
+
 /* --- Mr. Bubble — site + footer newsletter --- */
 body.mr-bubble {
     --text-color-blue: #2c5db5;

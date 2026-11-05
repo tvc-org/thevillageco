@@ -9,6 +9,9 @@
   {%- render 'sub-brand-handle' -%}
 {%- endcapture -%}
 {%- assign sub_brand_handle = sub_brand_handle | strip -%}
+{%- if sub_brand_handle contains 'Liquid error' -%}
+  {%- assign sub_brand_handle = blank -%}
+{%- endif -%}
 {%- if sub_brand_handle != blank -%}
   {{- sub_brand_handle -}}
 {%- else -%}

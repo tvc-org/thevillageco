@@ -21,6 +21,7 @@
       {%- endif -%}
     </a>
   </div>
+  {%- if sub_brand_block == blank -%}
   <ul class="header-bottom__links mobile-hidden" data-size="{{ current_brand.settings.menu.links | size }}">
     {%- for link in current_brand.settings.menu.links -%}
       {% assign toutMatches = '' | split: '' %}
@@ -199,6 +200,7 @@
       {%- endfor -%}
     {% endcomment %}
   </ul>
+  {%- endif -%}
 
   <div class="dropdown-bg hide-medium-down"></div>
 </div>
