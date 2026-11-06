@@ -14,6 +14,13 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
+        "announcement_UYJdVB": {
+          "type": "announcement",
+          "settings": {
+            "text": "30% off all MR. Bubble Products with code BUBBLY30",
+            "link": "shopify://collections/mr-bubble-collections"
+          }
+        },
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
@@ -30,6 +37,7 @@
         }
       },
       "block_order": [
+        "announcement_UYJdVB",
         "announcement-bar-0",
         "announcement_inKhTr"
       ],
