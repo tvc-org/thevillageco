@@ -22,25 +22,25 @@
       "blocks": {
         "slide_gmyghV": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/MB_30offHoliday_WebsiteHeader_v1.jpg",
             "mobile_image": "shopify://shop_images/MB_30offHoliday_WebsiteHeader_mobile.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "30% OFF",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "Unwrap 30% Off Mr. Bubble!",
+            "text": "<p>The holiday fun starts now! Make a splash with 30% off all Mr. Bubble favorites—from festive foam soaps and colorful bath time surprises to stocking stuffers that bring big smiles. Use code BUBBLY30!<br/><br/></p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop the Sale",
+            "link": "shopify://collections/mr-bubble-collections"
           }
         },
         "slide_7cfQMG": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
