@@ -114,7 +114,8 @@
           "type": "sub_brand",
           "settings": {
             "text": "Hallu",
-            "header_logo": "shopify://shop_images/logo-halu.png"
+            "header_logo": "shopify://shop_images/logo-halu.png",
+            "brand_page_link": "shopify://pages/hallu"
           }
         },
         "touts_group_CTxLPx": {
