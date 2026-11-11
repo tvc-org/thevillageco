@@ -1,7 +1,7 @@
 <div class="header-bottom">
   <div class="header-logo brand-{{ current_brand.id }}">
     <a
-      href="{% if current_brand.settings.brand_page_link != blank %}{{ current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
+      href="{% if sub_brand_block != blank %}{% if sub_brand_block.settings.brand_page_link != blank %}{{ sub_brand_block.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}{% elsif current_brand.settings.brand_page_link != blank %}{{ current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
       class="header-block header-brand"
     >
       {%- if sub_brand_block != blank and sub_brand_block.settings.header_logo != blank -%}

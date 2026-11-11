@@ -635,14 +635,23 @@ body slider-component.slider-component-full-width {
     display: none;
 }
 
+body.hallu .shopify-section.section .collection .card--standard .card__inner,
 body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
+body.hallu .shopify-section.section .collection-list .card--standard .card__inner,
 body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
+body.hallu .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
 body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+body.hallu .main-blog .blog-articles-grid .article-card .card__inner,
 body.mr-bubble .main-blog .blog-articles-grid .article-card .card__inner,
+body.hallu .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
 body.mr-bubble .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+body.hallu .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
 body.mr-bubble .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
+body.hallu .product-grid .grid__item .card--standard .card__inner,
 body.mr-bubble .product-grid .grid__item .card--standard .card__inner,
+body.hallu .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
 body.mr-bubble .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+body.hallu .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
 body.mr-bubble .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection .card--standard .card__inner,
 body.soft-dri .shopify-section.section .collection-list .card--standard .card__inner,
@@ -678,14 +687,23 @@ body.village-naturals-therapy .article .collection-listing-wrapper .product-grid
 }
 
 @media screen and (min-width: 960px) {
+    body.hallu .shopify-section.section .collection .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection .card--standard .card__inner,
+    body.hallu .shopify-section.section .collection-list .card--standard .card__inner,
     body.mr-bubble .shopify-section.section .collection-list .card--standard .card__inner,
+    body.hallu .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
     body.mr-bubble .shopify-section.section .collection .collection-grid-featured--desktop .card__inner,
+    body.hallu .main-blog .blog-articles-grid .article-card .card__inner,
     body.mr-bubble .main-blog .blog-articles-grid .article-card .card__inner,
+    body.hallu .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
     body.mr-bubble .main-blog .blog-articles-grid .collection-grid-featured--desktop .card__inner,
+    body.hallu .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
     body.mr-bubble .main-blog .collection-grid-featured--banner .collection-grid-featured__media,
+    body.hallu .product-grid .grid__item .card--standard .card__inner,
     body.mr-bubble .product-grid .grid__item .card--standard .card__inner,
+    body.hallu .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
     body.mr-bubble .blog-related-products-section .product-grid .grid__item .card--standard .card__inner,
+    body.hallu .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
     body.mr-bubble .article .collection-listing-wrapper .product-grid .grid__item .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection .card--standard .card__inner,
     body.soft-dri .shopify-section.section .collection-list .card--standard .card__inner,
@@ -703,7 +721,8 @@ body.village-naturals-therapy .article .collection-listing-wrapper .product-grid
     }
 }
 
-/* Mr. Bubble / Soft & Dri — TVC Dual Feature image area matches featured collection card radius */
+/* Hallu / Mr. Bubble / Soft & Dri — TVC Dual Feature image area matches featured collection card radius */
+body.hallu .tvc-dual-feature__media,
 body.mr-bubble .tvc-dual-feature__media,
 body.soft-dri .tvc-dual-feature__media {
     border-radius: 16px;
@@ -717,6 +736,7 @@ body.village-naturals-therapy .tvc-dual-feature__media {
 }
 
 @media screen and (min-width: 960px) {
+    body.hallu .tvc-dual-feature__media,
     body.mr-bubble .tvc-dual-feature__media,
     body.soft-dri .tvc-dual-feature__media {
         border-radius: 35px;
@@ -1798,6 +1818,10 @@ body.village-naturals-therapy .announcement-bar__message span {
     font-size: 16px;
     letter-spacing: 0;
     line-height: 1;
+}
+
+body.hallu .product-grid .grid__item .card__heading {
+    font-size: 24px;
 }
 
 @media screen and (min-width: 1025px) {
@@ -3501,10 +3525,65 @@ img.object-fit-contain {
    Per-brand UI (body.{handle}, .footer-newsletter--{slug}, utilities).
    ========================================================================== */
 
+/* --- Hallu — Populaire headings, white footer, black text, compact logo --- */
+body.hallu h1,
+body.hallu .h1,
+body.hallu h2,
+body.hallu .h2,
+body.hallu h3,
+body.hallu .h3,
+body.hallu h4,
+body.hallu .h4,
+body.hallu h5,
+body.hallu .h5,
+body.hallu h6,
+body.hallu .h6 {
+    font-family: Populaire, sans-serif;
+    font-weight: 400;
+}
+
+body.hallu .accordion__title {
+    font-size: 28px;
+}
+
+@media screen and (min-width: 1025px) {
+    body.hallu h2,
+    body.hallu .h2 {
+        font-size: 68px;
+    }
+
+    body.hallu h3,
+    body.hallu .h3 {
+        font-size: 56px;
+    }
+
+    body.hallu h4,
+    body.hallu .h4 {
+        font-size: 48px;
+    }
+
+    body.hallu .accordion__title {
+        font-size: 32px;
+    }
+}
+
+body.hallu .footer--branded .footer-block__heading {
+    font-family: Populaire, sans-serif;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 750px) {
+    body.hallu .footer--branded .footer-block__heading {
+        font-size: 32px;
+    }
+}
+
 /* --- Hallu — white footer, black text, compact logo --- */
 body.hallu .footer.footer--branded {
     background: #fff;
+    border-top: none;
     color: #000;
+    margin-top: var(--section-margin) !important;
     --footer-bg-color: #fff;
     --footer-text-color: #000;
 }
@@ -3514,6 +3593,16 @@ body.hallu .footer--homepage .footer-brand-logo__image--homepage {
     height: auto;
     max-width: 155px;
     width: auto;
+}
+
+body.hallu .footer__content-bottom .footer__content-bottom-wrapper.page-width:first-child:before {
+    display: none;
+}
+
+body.hallu .footer__content-bottom--legal .footer__copyright {
+    border-top: 1px solid #D5D5D5;
+    margin-top: 24px;
+    padding-top: 24px;
 }
 
 body.hallu .footer--homepage .footer__newsletter-form .klaviyo-form [data-testid="form-row"]:first-of-type p,

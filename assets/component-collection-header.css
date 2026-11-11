@@ -371,6 +371,7 @@ body.template-collection:not(.mr-bubble):not(.soft-dri) .collection-mobile-toolb
 }
 
 @media screen and (min-width: 960px) {
+  body.hallu .collection-grid-featured--banner .collection-grid-featured__media,
   body.mr-bubble .collection-grid-featured--banner .collection-grid-featured__media {
     border-radius: 35px;
   }

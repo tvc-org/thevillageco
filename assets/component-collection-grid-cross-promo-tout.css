@@ -172,6 +172,7 @@
 }
 
 /* Match PLP product card radius (custom.css brand rules) */
+body.hallu .collection-grid-tout__media,
 body.mr-bubble .collection-grid-tout__media,
 body.soft-dri .collection-grid-tout__media {
   border-radius: 16px;
@@ -184,6 +185,7 @@ body.village-naturals-therapy .collection-grid-tout__media {
 }
 
 @media screen and (min-width: 960px) {
+  body.hallu .collection-grid-tout__media,
   body.mr-bubble .collection-grid-tout__media,
   body.soft-dri .collection-grid-tout__media {
     border-radius: 35px;

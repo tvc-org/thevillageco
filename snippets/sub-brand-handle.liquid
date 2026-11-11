@@ -1,24 +1,27 @@
 {% comment %}
   Sub brand handle for the current page, product, or collection.
 
-  Metafield custom.sub_brand (single-line text choice, e.g. Hallu → hallu).
-  Storefront access on the definition must be Read.
+  Products: vendor Hallu (any casing) → hallu. No product metafield.
 
-  Temporary preview: template suffix halu-landing counts as Hallu until a real
-  page is assigned the metafield. Homepage: /?view=halu-landing
-  Page: /pages/mr-bubble?view=halu-landing
+  Collections: title contains "Hallu:" (any casing) → hallu. No collection metafield.
+
+  Pages: metafield custom.sub_brand (single-line text choice, e.g. Hallu → hallu).
+  Storefront access on the definition must be Read.
 {% endcomment %}
 {%- liquid
   assign sub_brand = blank
   if request.page_type == 'product'
-    assign sub_brand = product.metafields.custom.sub_brand.value | default: product.metafields.custom.sub_brand
+    assign product_vendor_handle = product.vendor | handleize
+    if product_vendor_handle == 'hallu'
+      assign sub_brand = 'Hallu'
+    endif
   elsif request.page_type == 'collection'
-    assign sub_brand = collection.metafields.custom.sub_brand.value | default: collection.metafields.custom.sub_brand
+    assign collection_title_down = collection.title | downcase
+    if collection_title_down contains 'hallu:'
+      assign sub_brand = 'Hallu'
+    endif
   elsif request.page_type == 'page'
     assign sub_brand = page.metafields.custom.sub_brand.value | default: page.metafields.custom.sub_brand
-  endif
-  if sub_brand == blank and template.suffix == 'halu-landing'
-    assign sub_brand = 'Hallu'
   endif
   assign sub_brand_handle = sub_brand | strip | handleize
 -%}

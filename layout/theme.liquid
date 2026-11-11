@@ -55,6 +55,16 @@
         src: url('{{ "FuturaPTHeavy.woff2" | asset_url }}') format('woff2'),
              url('{{ "FuturaPTHeavy.woff" | asset_url }}') format('woff');
       }
+      {%- if brand_body_class == 'hallu' -%}
+      @font-face {
+        font-family: 'Populaire';
+        src: url('{{ "Populaire-Regular.woff2" | asset_url }}') format('woff2'),
+             url('{{ "Populaire-Regular.woff" | asset_url }}') format('woff');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      {%- endif -%}
       {%- if brand_body_class == 'village-naturals-therapy' -%}
       @font-face {
         font-family: 'Larken';

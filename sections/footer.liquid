@@ -34,6 +34,9 @@
   {%- render 'sub-brand-handle' -%}
 {%- endcapture -%}
 {%- assign sub_brand_handle_resolved = sub_brand_handle_resolved | strip -%}
+{%- if sub_brand_handle_resolved contains 'Liquid error' -%}
+  {%- assign sub_brand_handle_resolved = blank -%}
+{%- endif -%}
 {%- assign sub_brand_block = blank -%}
 {%- if sub_brand_handle_resolved != blank -%}
   {%- assign sub_brand_blocks = section.blocks | where: 'type', 'sub_brand' -%}
@@ -83,15 +86,18 @@
   comment
     TVC homepage footer layout: integrated Klaviyo signup, wide logo, no Shop/Help columns.
     Apply on the homepage and every page that resolves to The Village Co (e.g. /pages/contact-us).
-    Sub-brands keep the stacked footer-subscription block + standard footer columns.
+    Sub-brands use the standard column footer (logo, Shop, Help, legal row).
+    No homepage newsletter and no social icons.
   endcomment
   assign footer_is_homepage = false
-  if request.page_type == 'index' or brand_handle_resolved == 'the-village-co'
-    assign footer_is_homepage = true
+  if sub_brand_handle_resolved == blank
+    if request.page_type == 'index' or brand_handle_resolved == 'the-village-co'
+      assign footer_is_homepage = true
+    endif
   endif
 -%}
 
-{%- if settings.signup_embed != blank and footer_is_homepage == false -%}
+{%- if settings.signup_embed != blank and footer_is_homepage == false and sub_brand_block == blank -%}
   {%- render 'footer-subscription', brand: footer_current_brand -%}
 {%- endif -%}
 <footer class="footer footer--{{ section.id }}{% if footer_is_homepage %} footer--homepage{% endif %}{% if footer_brand_blocks.size > 0 and footer_current_brand %} footer--branded{% endif %} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
@@ -140,7 +146,7 @@
             {%- if footer_logo_image != blank -%}
               <div class="footer-brand-logo">
                 <a
-                  href="{% if footer_current_brand.settings.brand_page_link != blank %}{{ footer_current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
+                  href="{% if sub_brand_block != blank %}{% if sub_brand_block.settings.brand_page_link != blank %}{{ sub_brand_block.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}{% elsif footer_current_brand.settings.brand_page_link != blank %}{{ footer_current_brand.settings.brand_page_link }}{% else %}{{ routes.root_url }}{% endif %}"
                   class="footer-brand-logo__link"
                 >
                   <img
@@ -191,8 +197,8 @@
             </div>
           {%- endif -%}
 
-          {%- comment -%} Social icons (right on desktop, below logo on mobile) {%- endcomment -%}
-          {%- unless footer_is_homepage -%}
+          {%- comment -%} Social icons. Sub brands omit them for now. {%- endcomment -%}
+          {%- if footer_is_homepage == false and sub_brand_block == blank -%}
           <div class="footer__social-col">
             {%- assign show_footer_social = false -%}
             {%- if section.settings.show_social -%}
@@ -211,10 +217,11 @@
               {%- endif -%}
             {%- endif -%}
           </div>
-          {%- endunless -%}
+          {%- endif -%}
         </div>
 
         {%- comment -%} Newsletter and Follow on Shop (when enabled) {%- endcomment -%}
+        {%- if sub_brand_block == blank -%}
         {%- if section.settings.newsletter_enable
           or shop.features.follow_on_shop?
           and section.settings.enable_follow_on_shop
@@ -296,6 +303,7 @@
               </div>
             {%- endif -%}
           </div>
+        {%- endif -%}
         {%- endif -%}
 
         {%- comment -%} Other blocks (text, image, brand_information, @app) {%- endcomment -%}
@@ -600,6 +608,11 @@
           "type": "image_picker",
           "id": "footer_logo",
           "label": "Footer logo"
+        },
+        {
+          "type": "url",
+          "id": "brand_page_link",
+          "label": "Brand page link"
         }
       ]
     },
