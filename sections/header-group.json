@@ -114,7 +114,8 @@
           "type": "sub_brand",
           "settings": {
             "text": "Hallu",
-            "header_logo": "shopify://shop_images/logo-halu.png"
+            "header_logo": "shopify://shop_images/logo-halu.png",
+            "brand_page_link": "shopify://pages/hallu"
           }
         },
         "touts_group_CTxLPx": {
@@ -256,6 +257,7 @@
             "text": "MRB - Shop All",
             "product_list": [],
             "collection_list": [
+              "mr-bubble-holiday-gifts",
               "mr-bubble-new-products",
               "mr-bubble-baby-bubble",
               "mr-bubble-on-sale"
@@ -468,7 +470,7 @@
               "hydrate-bath-enhancer-vitamin-booster-serum"
             ],
             "collection_list": [
-              "therapy-on-sale"
+              "village-naturals-therapy-holiday-gifts"
             ],
             "article_1": "",
             "article_2": "",

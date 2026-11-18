@@ -109,7 +109,8 @@
           "type": "sub_brand",
           "settings": {
             "text": "Hallu",
-            "footer_logo": "shopify://shop_images/logo-halu.png"
+            "footer_logo": "shopify://shop_images/logo-halu.png",
+            "brand_page_link": "shopify://pages/hallu"
           }
         },
         "footer-0": {
