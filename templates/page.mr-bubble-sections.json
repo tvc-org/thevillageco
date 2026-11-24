@@ -20,6 +20,25 @@
     "tvc_slideshow_YYRRVn": {
       "type": "tvc-slideshow",
       "blocks": {
+        "slide_yzmyWR": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "split_background": "#ffd1dc",
+            "split_text_tone": "dark",
+            "image": "shopify://shop_images/MB_BlackFridayCyberMonday_WebsiteBanner_v2.jpg",
+            "mobile_image": "shopify://shop_images/MB_BlackFridayCyberMonday_MobileBanner_v3.jpg",
+            "preserve_image_aspect_ratio": false,
+            "heading": "Headline",
+            "text": "<p>Add descriptive text for this slide.</p>",
+            "stacked_text_in_media": false,
+            "stacked_desktop_overlay_text_tone": "dark",
+            "stacked_text_position": "bottom_center",
+            "product": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
         "slide_gmyghV": {
           "type": "slide",
           "disabled": true,
@@ -173,6 +192,7 @@
         }
       },
       "block_order": [
+        "slide_yzmyWR",
         "slide_gmyghV",
         "slide_7cfQMG",
         "slide_7ygtjW",
