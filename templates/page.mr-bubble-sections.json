@@ -22,21 +22,20 @@
       "blocks": {
         "slide_yzmyWR": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/Mr.-Bubble-Holiday-30Off-Gift-Set_c53a88a7-4f94-4cec-8195-87a6c5ae2a49.jpg",
             "mobile_image": "shopify://shop_images/MB_BlackFridayCyberMonday_MobileBanner_v3_571ad298-db6a-4f8c-bb49-bf0315707dc3.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "The Black Friday Sale is On!",
+            "text": "<p>Save 30% sitewide with code THANKFUL30. Stock up on bubbly fun, holiday gifts, and more!&nbsp;</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Now",
+            "link": "shopify://collections/mr-bubble-collections"
           }
         },
         "slide_gmyghV": {
@@ -60,6 +59,7 @@
         },
         "slide_7cfQMG": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
