@@ -22,25 +22,25 @@
       "blocks": {
         "slide_WcR7Cr": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
             "image": "shopify://shop_images/VNT-30Off-Holiday-Bath-Essentials_f64ca3a5-dd6e-4721-8e70-aaff33171c97.jpg",
             "mobile_image": "shopify://shop_images/Village-Naturals-Holiday-Spa-Sale_mobile.jpg",
             "preserve_image_aspect_ratio": false,
-            "heading": "Headline",
-            "text": "<p>Add descriptive text for this slide.</p>",
+            "heading": "The Black Friday Sale is Here",
+            "text": "<p>Save 30% on bath soaks, bubbles, and more with code THANKFUL30.&nbsp;</p>",
             "stacked_text_in_media": false,
             "stacked_desktop_overlay_text_tone": "dark",
             "stacked_text_position": "bottom_center",
             "product": "",
-            "link_label": "",
-            "link": ""
+            "link_label": "Shop Now",
+            "link": "shopify://collections/therapy-collections"
           }
         },
         "slide_KWDkWR": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "split_background": "#ffd1dc",
             "split_text_tone": "dark",
